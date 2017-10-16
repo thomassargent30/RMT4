@@ -1,0 +1,1828 @@
+
+\input grafinp3
+\input psfig
+%\showchaptIDtrue
+%\def\@chaptID{4.}
+%%\eqnotracetrue
+%\hbox{}
+
+\chapter{Two Topics in International Trade\label{wldtrade}}
+\footnum=0
+\section{Two dynamic contracting problems}
+
+This chapter studies two models in which recursive contracts are
+used to overcome incentive problems commonly thought to occur in
+international trade.  The first is Andrew Atkeson's model of
+lending in the context of a dynamic setting that contains both a
+moral hazard problem due to asymmetric information {\it and\/} an
+enforcement problem due to borrowers' option to disregard the
+contract. It is a considerable technical achievement that Atkeson
+managed to include both of these elements in his contract design
+problem.  But this substantial technical accomplishment is not
+just showing off. As we shall see, {\it both\/} the moral hazard
+{\it and\/} the self-enforcement requirement for the contract are
+required in order to explain the feature of observed repayments
+that Atkeson was after: that the occurrence of especially low
+output realizations prompt the contract to call for net repayments
+from the borrower to the lender, exactly the occasions when an
+unhampered insurance scheme would have lenders extend credit to
+borrowers.
+
+The  second is Bond and Park's model of a recursive contract that induces two countries
+to adopt free trade when they begin with a pair of
+ promised values that implicitly determine the distribution
+of eventual welfare gains from trade liberalization.
+%%%a Pareto noncomparable initial condition.
+The new
+policy is accomplished by a gradual relaxation of tariffs, accompanied by
+trade concessions.  Bond and Park's model of gradualism is all about the
+dynamics of promised values that are used optimally to manage participation
+constraints.
+ \auth{Atkeson, Andrew} \auth{Bond, Eric W.} \auth{Park,
+Jee-Hyeong} \index{lending with moral hazard}
+\section{Lending with moral hazard and difficult enforcement}
+Andrew Atkeson (1991) designed a model to explain how, in defiance
+of the pattern predicted by complete markets models, low output
+realizations in various countries in the mid-1980s prompted
+international lenders to ask those countries for net repayments.  A complete
+markets model would have net flows to a borrower during
+periods of bad endowment shocks.  Atkeson's idea was that
+information and enforcement problems could produce the
+observed  outcome.  Thus,  Atkeson's model combines two
+features of the  models we have seen in chapter \use{socialinsurance}:
+incentive problems from private information and participation
+constraints coming from enforcement problems.
+
+
+Atkeson showed that the optimal contract  handles enforcement and information problems
+through the shape of the repayment schedule, thereby indirectly manipulating continuation values.
+  Continuation values respond only by updating
+a single state variable, a measure of resources available to the
+borrower, that appears in the optimum value function, which in turn
+is affected only through the repayment schedule.  Once this state
+variable is taken into account, promised values do not appear as
+independently manipulated state variables.\NFootnote{To understand
+how Atkeson achieves this outcome, the reader should also digest
+the approach described in chapter \use{credible}.}
+
+Atkeson's model brings together several features.  He studies
+a ``borrower'' who by himself is situated like a planner
+in a stochastic growth model, with the only vehicle for saving
+being a stochastic investment technology.  Atkeson adds the
+possibility that the planner can also borrow
+subject to both participation and information constraints.
+
+A borrower lives for $t=0,1,2,\ldots $.  He begins life with $Q_{0}$
+units of a single good.  At each date $t\geq 0$, the borrower has access
+to an investment technology.  If $I_t\geq 0$ units of the good are
+invested at  $t$, $Y_{t+1}=f(I_{t},\varepsilon_{t+1})$
+units of time $t+1$  goods are available, where $\varepsilon_{t+1}$ is
+an i.i.d. random variable.
+  Let  $g(Y_{t+1}, I_{t})$ be the
+probability density of  $Y_{t+1}$  conditioned on  $I_{t}$. It is
+assumed that increased investment shifts the distribution of returns
+toward higher returns.
+
+  The borrower has preferences over consumption streams ordered by
+$$  (1-\delta)E_0 \sum_{t=0}^\infty \delta^t u(c_t) \EQN atkes1 $$
+where $\delta \in (0,1)$ and $u(\cdot)$ is increasing, strictly concave,
+twice continuously differentiable, and $u'(0) = +\infty$.
+
+Atkeson used various technical conditions to render his model
+tractable. He assumed that for each investment $I$, $g(Y, I)$
+ has finite support  $\left(Y_{1},\ldots, Y_{n}\right)$, with
+$Y_n > Y_{n-1} > \ldots >Y_1$.  He assumed that  $g(Y_{i}, I)>0$
+  for all values of  $I$ and all states $Y_{i}$, making it
+impossible precisely to infer $I$  from $Y$.
+He further assumed that the distribution $g\left( Y,  I\right)$
+is given by the convex combination of two underlying distributions
+$g_0(Y)$ and $g_1(Y)$ as follows:
+$$g( Y, I) =\lambda(I) g_{0}(Y)
++[1-\lambda( I) ] g_{1}( Y),  \EQN assumpt5 $$
+where $g_{0}(Y_i)/g_1(Y_i) $  is monotone  and increasing
+in  $i$,  $0\leq \lambda(I) \leq 1$, $\lambda^{\prime}
+\left( I\right) >0$,  and \ $\lambda^{\prime \prime }\left( I\right) \leq
+0 $  for all  $I$.   Note that
+$$
+g_I(Y,I) = \lambda'(I) [g_0(Y) - g_1(Y)],  \EQN assumpt5_deriv
+$$
+where $g_I$ denotes the derivative with respect to $I$. Moreover,
+the assumption that increased investment shifts the distribution
+of returns toward higher returns implies
+$$
+\sum_i Y_i \left[g_0(Y_i) - g_1(Y_i) \right] >0.       \EQN assumpt5b
+$$
+
+We shall consider the borrower's choices in three environments: (1)
+autarky, (2) lending from risk-neutral lenders under complete observability
+of the borrower's choices and complete enforcement,  and (3) lending
+under incomplete observability and  limited enforcement. Environment
+3 is Atkeson's.
+%For expositional simplicity, we will initially proceed as if $Y$ is
+%a continuous variable.
+ We  can use environments 1 and 2 to construct
+bounds on the value function for performing computations described
+in an appendix.
+
+\subsection{Autarky}
+
+Suppose that there are no lenders.  Thus, the ``borrower'' is
+just an isolated household endowed with the technology. The
+household chooses $(c_{t},I_{t})$ to maximize expression
+\Ep{atkes1} subject to
+$$\eqalign{ c_{t}+I_{t} & \leq Q_{t}  \cr
+ Q_{t+1} & =Y_{t+1} .\cr} $$
+The optimal  value function $U(Q)$  for this problem  satisfies
+the Bellman equation
+$$U(Q)=\max_{Q\geq I \geq 0}\Bigl\{ (1-\delta)\,
+u(Q-I)+\delta \sum_{Q'} U\bigl(Q^{\prime}\bigr)g(Q^{\prime},I)
+    \Bigr\}.
+ \EQN bellmanaut $$
+The first-order condition for $I$ is
+$$ -(1-\delta) u'(Q-I) + \delta \sum_{Q'} U(Q') g_I(Q',I)
+                                      \leq 0, \hskip.5cm = 0 \;\hbox{\rm if}\; I>0.
+   \EQN foncautark $$
+%%for $0<I<Q$.
+This first-order condition implicitly defines a rule for
+accumulating capital under autarky.
+
+\index{complete markets}
+\subsection{Investment with full insurance}
+We now consider an environment in which in addition
+to investing $I$ in the technology, the borrower
+can issue \idx{Arrow securities} at a vector of prices $q(Y',I)$, where
+we let $'$ denote next period's values, and $d(Y')$ the
+quantity of one-period  Arrow securities issued by the borrower;
+$d(Y')$ is the number of units of next period's consumption
+good that the borrower promises to deliver.
+Lenders observe the level of investment $I$, and so the pricing kernel
+$q(Y',I)$ depends explicitly on $I$.  Thus, for  a promise to pay
+one unit of output next period contingent on
+next-period output realization
+$Y'$, for each level of $I$, the borrower faces a different price.
+(As we shall soon see,
+in Atkeson's model  lenders cannot observe $I$, making it impossible
+to condition the price on $I$.)
+We shall assume that the Arrow securities are priced by
+ risk-neutral investors who also have
+one-period discount factor $\delta$.
+This implies that the price
+of Arrow securities is given by
+$$ q(Y',I) = \delta g(Y', I),  \EQN atnew4 $$
+which in turn implies that the
+gross one-period risk-free interest rate is $\delta^{-1}$.
+
+In a complete markets world where there is no problem with information
+or enforcement, the borrower's optimal investment decision is not
+a function of the borrower's own holdings of the good. Instead, the
+optimal investment level maximizes the project's
+present value when evaluated at the prices for Arrow securities:
+$$\max_{I \geq 0}\Bigl\{ -I+ \sum_{Y'} Y' q(Y',I)\Bigr\}, \EQN atnew_invest
+$$
+and after imposing expression \Ep{atnew4}
+$$\max_{I \geq 0}\Bigl\{ -I+ \delta \sum_{Y'} Y' g(Y',I)\Bigr\}.
+$$
+Hence, when the prices for Arrow securities are determined by
+risk-neutral investors, the optimal investment level maximizes
+the project's expected payoffs discounted at the
+risk-free interest rate $\delta^{-1}$. The first-order condition
+for $I$ is
+$$ \sum_{Y'} Y' g_I(Y',I)
+                  \leq \delta^{-1}, \hskip.5cm = \delta^{-1}\;\hbox{\rm if}\; I>0;
+   \EQN atnew5
+$$
+and after invoking equation \Ep{assumpt5_deriv}
+$$
+\lambda'(I) \sum_{Y'} Y'
+ \left[g_0(Y') - g_1(Y') \right]  \leq \delta^{-1},
+                          \hskip.5cm = \delta^{-1}\;\hbox{\rm if}\; I>0.
+$$
+This condition uniquely determines the investment level $I$, since
+the left side is decreasing in $I$ and must eventually approach
+zero because of the upper bound on $\lambda(I)$.
+
+
+As in chapter \use{recurge}, we formulate the
+ borrower's budget constraints
+recursively as
+$$\EQNalign{ c & - \sum_{Y'} q(Y',I^*) d(Y')  + I^*   \leq Q \EQN atnew1;a \cr
+             Q' & = Y' - d(Y'), \EQN atnew1;b \cr} $$
+where $I^*$ is the solution to investment problem \Ep{atnew_invest}.
+Let $W(Q)$ be the optimal value for a borrower with goods $Q$.
+The borrower's  Bellman  equation is
+$$\eqalign{ W(Q)   = \max_{c, d(Y')} \bigg\{ &(1-\delta) u(c) + \delta
+     \sum_{Y'} W[Y' - d(Y')] g(Y',I^*)   \cr
+     & + \mu[ Q - c +\sum_{Y'} q(Y',I^*) d(Y')  - I^*] \biggr\},  \cr}
+   \EQN atnew2 $$
+where $\mu$ is a Lagrange multiplier on expression \Ep{atnew1;a}.
+First-order conditions with respect to
+$c, d(Y')$, respectively, are
+$$ \EQNalign{ c\rm{:}  & \ \ (1-\delta) u'(c) - \mu= 0, \EQN atnew3;a \cr
+  d(Y')\rm{:} &   \ \ - \delta W'[Y' - d(Y')] g(Y',I^*) + \mu q(Y',I^*)  = 0.
+       \EQN atnew3;b \cr } $$
+By substituting \Ep{atnew4} and \Ep{atnew3;a} into first-order condition
+\Ep{atnew3;b}, we obtain
+$$
+  - W'[Y' - d(Y')] + (1-\delta) u'(c) = 0,
+$$
+and after invoking the Benveniste-Scheinkman
+condition, $W'(Q')=(1-\delta)u'(c')$, we arrive at the consumption-smoothing
+result $c' = c$.  This in turn implies, via the status of
+$Q$ as the state variable in the Bellman
+equation, that $Q' = Q = Q_0$.  Thus, the
+solution has $I$ constant over time at a level $I^*$ determined
+by equation \Ep{atnew5}, and $c$ and the functions $d(Y')$
+satisfying
+$$\EQNalign{ c  + I^* & =  Q_0 + \sum_{Y'} q(Y',I^*) d(Y')   \EQN atnew6;a \cr
+               d(Y') & =  Y' - Q_0. \EQN atnew6;b \cr} $$
+The borrower borrows a constant $\sum_{Y'} q(Y',I^*) d(Y')$ each period,
+invests the same  $I^*$ each period,  and makes high repayments when
+$Y'$ is high and low repayments when $Y'$ is low.  This
+is the standard full-insurance solution.
+
+We now turn to Atkeson's  setting where  the borrower does
+better than under autarky but worse than with the
+loan contract under perfect enforcement and observable
+investment.  Atkeson found a contract
+with value $V(Q)$ for which $U(Q) \leq V(Q) \leq W(Q)$.
+We shall want to compute $W(Q)$ and $U(Q)$ in order to
+compute the value of the borrower
+under the more    restricted contract.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%As in chapter \use{recurge}, we formulate the
+% borrower's budget constraints
+%recursively as
+%$$\EQNalign{ c & - \sum_{Y'} q(Y',I) d(Y')  + I   \leq Q \EQN atnew1;a \cr
+%             Q' & = Y' - d(Y'). \EQN atnew1;b \cr} $$
+%Let $W(Q)$ be the optimal value for a borrower with goods $Q$.
+%The borrower's  Bellman  equation is
+%$$\eqalign{ W(Q)  & = \max_{c, I, d(Y')} \bigg\{ (1-\delta) u(c) + \delta
+%     \sum_{Y'} W[Y' - d(Y')] g(Y',I)   \cr
+%     & + \lambda [ Q - c +\sum_{Y'} q(Y',I) d(Y')  - I] \biggr\},  \cr}
+%   \EQN atnew2 $$
+%where $\lambda$ is a Lagrange multiplier on expression \Ep{atnew1;a}.
+%First-order conditions with respect to
+%$c, I, d(Y')$, respectively, are
+%$$ \EQNalign{ c\rm{:}  & \ \ (1-\delta) u'(c) - \lambda = 0, \EQN atnew3;a \cr
+%            I\rm{:} &  \ \ \delta \sum_{Y'}
+%    W[Y' - d(Y')] g_I(Y', I) +  \cr & \quad \quad
+%    \lambda q_I(Y',I) d(Y') - \lambda
+%    = 0, \EQN atnew3;b \cr
+%  d(Y')\rm{:} &   \ \ - \delta W'[Y' - d(Y')] g(Y',I) + \lambda q(Y',I)  = 0.
+%       \EQN atnew3;c \cr } $$
+%Letting risk-neutral lenders determine the price
+%of Arrow securities implies that
+%$$ q(Y',I) = \delta g(Y', I),  \EQN atnew4 $$
+%which in turn implies that the
+%gross one-period risk-free interest rate is $\delta^{-1}$.
+%At these prices for Arrow securities, it is profitable to invest in the
+%stochastic technology until the expected rate of return on the marginal
+%unit of investment is driven down to $\delta^{-1}$:
+%$$\EQNalign{
+%&\sum_{Y'}
+%    [Y'-d(Y')] g_I(Y',I)  = \delta^{-1},             \EQN atnew5 \cr
+%\noalign{\hbox{\rm and after invoking equation \Ep{assumpt5}}}
+%&\lambda'(I) \sum_{Y'} [Y' - d(Y')]
+% \left(g_0(Y') - g_1(Y') \right)  = \delta^{-1}. \cr}
+%$$
+%This condition uniquely determines the investment level $I$, since
+%the left side is decreasing in $I$ and must eventually approach
+%zero because of the upper bound on $\lambda(I)$. (The investment level
+%is strictly positive as long as the left-hand side exceeds $\delta^{-1}$
+%when $I=0$.)
+%
+%The first-order condition \Ep{atnew3;c} and the Benveniste-Scheinkman
+%condition, $W'(Q')=(1-\delta)u'(c')$, imply the consumption-smoothing
+%result $c' = c$.  This in turn implies, via the status of
+%$Q$ as the state variable in the Bellman
+%equation, that $Q' = Q$.  Thus, the
+%solution has $I$ constant over time at a level determined
+%by equation \Ep{atnew5}, and $c$ and the functions $d(Y')$
+%satisfying
+%$$\EQNalign{ c  + I & =  Q + \sum_{Y'} q(Y',I) d(Y')   \EQN atnew6;a \cr
+%               d(Y') & =  Y' - Q \EQN atnew6;b \cr} $$
+%The borrower borrows a constant $\sum_{Y'} q(Y',I) d(Y')$ each period,
+%invests the same  $I$ each period,  and makes high repayments when
+%$Y'$ is high and low repayments when $Y'$ is low.  This
+%is the standard full-insurance solution.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%
+\subsection{Limited commitment and unobserved investment}
+
+Atkeson designed an optimal recursive contract that copes with two
+impediments to risk sharing:
+(1) moral hazard, that is,  hidden action:
+  the lender cannot observe the borrower's action
+$I_{t}$ that affects the probability distribution of returns $Y_{t+1}$; and
+(2) one-sided limited commitment:  the borrower is free to default on the
+contract and can choose to revert to autarky at any state.
+
+Each period, the borrower confronts a
+two-period-lived, risk-neutral lender who
+is endowed with $M >0$ in each period of his life. Each lender
+can lend or borrow at a risk-free gross interest rate of $\delta^{-1}$ and
+must earn an expected return of at least $\delta^{-1}$ if
+he is to lend to the borrower.  The lender is also willing to
+{\it borrow\/} at this same expected rate of return.
+  The lender
+can lend up to $M$ units of consumption to the borrower in the first period
+of his life, and could {\it repay} (if the borrower lends)
+up to $M$ units of consumption
+in the second period of his life.
+The lender lends  $b_{t}\leq M$  units to the borrower and
+gets a state-contingent repayment $d(Y_{t+1})$, where $-M \leq d(Y_{t+1})$,
+ in the second period of his life.
+That the repayment is state contingent lets the
+lender insure the borrower.
+
+
+A lender is willing to make a one-period
+loan to the borrower, but  only
+ if the loan contract ensures repayment.
+The borrower will fulfill the contract
+only if he wants.
+The lender observes  $Q$,  but observes
+neither  $C$  nor  $I$. Next period, the lender can
+observe $Y_{t+1}$. He bases the repayment
+on that observation.
+
+
+
+Where $c_t + I_t - b_t = Q_t$,
+Atkeson's optimal recursive contract takes the form
+$$\EQNalign{d_{t+1}& =d\left(Y_{t+1},Q_{t}\right) \EQN contract1;a \cr
+   Q_{t+1} & =Y_{t+1}-d_{t+1} \EQN contract1;b \cr
+   b_t & = b(Q_t). \EQN contract1;c \cr}$$
+The repayment schedule  $d(Y_{t+1},Q_{t})$ depends
+only on observables and is designed to recognize the
+limited commitment and moral hazard problems.
+
+ Notice how $Q_t$ is the only state variable in the contract.  Atkeson
+uses the apparatus of Abreu, Pearce, and Stacchetti (1990),
+discussed in chapter \use{credible}, to show that the state can be
+taken to be $Q_t$, and that it is not necessary to keep track of the
+history of past $Q$'s.  Atkeson obtains the following \idx{Bellman equation}.
+Let $V(Q)$  be the optimum value of a borrower in state $Q$ under
+the optimal contract.  Let $A=(c,I,b,d(Y'))$, all to be chosen as functions
+of $Q$.  The Bellman equation is
+%{\eightpoint
+$$
+V(Q)=\max_{A}\Bigl\{ (1-\delta
+)\;u\,(\,c\,)+\delta \sum _{Y'} V\;[Y^{\prime
+}-d\;(Y^{\prime },Q)]\,g\,(Y^{\prime }, I)  \Bigr\} \EQN bellman1;a $$
+subject to
+%%%{\ninepoint
+$$\EQNalign{c & +I-b  \leq Q,\;\;   b\leq M, \ -d(Y^{\prime },Q)
+\leq M, \;\; c\geq 0, \;\; I\geq 0 \hskip1cm  \EQN bellman1;b \cr
+b&\leq \delta \sum_{Y'} d(Y^{\prime })\;g\,(Y^{\prime }, I\,)
+             \EQN bellman1;c \cr
+V&\,[Y^{\prime }-d\,(Y^{\prime })] \geq U\;(Y^{\prime }) \EQN bellman1;d
+\cr}$$
+$$ I  =\argmax_{\tilde I\,\epsilon [ 0,Q+b ] } \Bigl\{
+\bigl( 1-\delta \bigr) \;u\;\bigl( Q+b-\tilde I\bigr) +\delta
+\sum_{Y'} V\,\bigl[ Y^{\prime }-d\,( Y^{\prime},Q) \bigr]
+\,g\,( Y^{\prime }, \tilde I)
+     \Bigr\}.  \EQN bellman1;e $$
+%%%}%endninepoint
+\medskip
+Condition \Ep{bellman1;b} is feasibility.  Condition
+\Ep{bellman1;c} is a rationality constraint
+for lenders: it requires that the gross return from lending to the borrower
+be at least as great as the alternative
+yield available to lenders, namely, the risk-free gross interest rate
+ $\delta^{-1}$.
+Condition \Ep{bellman1;d}
+says that in every state tomorrow, the borrower must want
+to comply with the contract; thus the value of affirming
+the contract (the left side) must be at least as great as the value of
+autarky.  Condition \Ep{bellman1;e} states that the borrower chooses $I$ to
+maximize his expected utility under the contract.
+
+
+There are many value functions $V(Q)$ and associated
+contracts $b(Q), d(Y',Q)$ that satisfy conditions \Ep{bellman1}. Because
+we want the optimal contract, we want the $V(Q)$ that is the
+largest (hopefully, pointwise).     The usual
+strategy of iterating on the Bellman equation, starting
+from an arbitrary guess  $V^0(Q)$, say, $0$, will not work in this
+case because high candidate continuation values $V(Q')$ are
+needed to support good current-period outcomes.
+   But a modified version of the usual iterative strategy does work,
+which is to make sure that we start with a large enough initial
+guess at the continuation value function $V^0(Q')$.
+ Atkeson (1988, 1991) verified that the optimal contract can be constructed
+by iterating to convergence on conditions \Ep{bellman1}, provided
+that the iterations begin from a large enough initial value
+function $V^0(Q)$.  (See the appendix for a computational exercise
+using Atkeson's iterative strategy.)
+ He adapted ideas from  Abreu, Pearce, and Stacchetti (1990)
+to show this result.\NFootnote{See chapter \use{credible}
+for some work with the
+Abreu, Pearce, and Stacchetti structure, and for  how, with history dependence,
+ dynamic programming principles direct attention to
+{\it sets} of continuation value functions.  The need to handle
+a set of continuation values appropriately is why Atkeson must
+initiate his iterations from a sufficiently  high initial
+value function.}  In the next subsection, we shall form a Lagrangian in which the role of continuation values is explicitly accounted for.
+
+\vskip.5cm
+\medskip
+\noindent
+{\bf Binding participation constraint}
+\smallskip
+\noindent  Atkeson motivated his work as an effort to explain why
+countries often experience capital outflows in the very-low-income
+periods in which they would be borrowing
+{\it more} in a complete markets  setting.
+  The optimal contract associated with conditions \Ep{bellman1}
+ has the feature that Atkeson sought: the  borrower
+makes net repayments $d_t > b_t $ in states with low
+output realizations.
+
+Atkeson establishes this property using the following argument.
+First, to permit him to capture the borrower's best response with
+a first-order condition, he assumes the following conditions about the
+outcomes:\NFootnote{The first assumption makes the lender prefer that
+the borrower would make larger rather than smaller investments.
+See Rogerson (1985b) for conditions needed to validate the first-order
+approach to incentive problems.}
+\medskip
+\noindent{\sc Assumptions:}   For the optimum contract
+$$ \sum_i d_i \bigl[g_0(Y_i) - g_1(Y_i)\bigr]  \geq 0. \EQN assumpt6 $$
+This makes the value of repayments increasing in investment. In addition,
+assume that the borrower's constrained optimal investment level is interior.
+\medskip
+Atkeson assumes conditions \Ep{assumpt6} and
+\Ep{assumpt5}  to justify using the first-order condition
+for the right side of equation \Ep{bellman1;e} to characterize
+ the investment decision.
+The first-order condition for investment is
+ $$ - (1-\delta) u'(Q+b-I) + \delta \sum_i
+                       V(Y_i -d_i) g_I(Y_i,I) = 0.$$
+
+\subsection{Optimal capital outflows under distress}
+
+To deduce a key property of the repayment schedule, we will follow
+Atkeson by introducing a continuation value $\tilde V$ as an
+additional choice variable in a programming  problem that represents
+a form of the contract design problem.
+Atkeson shows how \Ep{bellman1} can be viewed as the outcome
+of a more elementary programming problem in which
+the contract designer chooses  the continuation value
+function from a set of permissible values.\NFootnote{See Atkeson (1991)
+and chapter \use{credible}.}
+Following Atkeson, let $U_d(Y_i) \equiv \tilde V(Y_i - d(Y_i))$
+where $\tilde V(Y_i - d(Y_i))$ is a continuation value function to be
+chosen by the author of the contract.   Atkeson shows that
+we can regard the contract author as choosing a continuation
+value function along with the elements of $A$, but that
+in the end it will be optimal for him to choose the continuation
+values  to satisfy
+the Bellman equation \Ep{bellman1;a}.
+
+We follow Atkeson and regard the $U_d(Y_i)$'s  as choice variables.
+ They must
+satisfy $U_d(Y_i) \leq V(Y_i - d_i)$, where $V(Y_i-d_i)$ satisfies
+the Bellman equation \Ep{bellman1}.
+\noindent
+Form the Lagrangian
+$$\eqalign{ J(A, U_d, \mu)  = &  (1-\delta) u(c) + \delta \sum_i U_d(Y_i) g(Y_i,I) \cr
+            & + \mu_1(Q + b - c -I) \cr
+        & + \mu_2 \bigl[\delta \sum_i d_i g(Y_i,I) - b\bigr] \cr
+        & + \delta \sum_i \mu_3(Y_i) g(Y_i, I) \bigl[U_d(Y_i)
+                - U(Y_i)\bigr] \cr
+        & + \mu_4 \bigl[ - (1-\delta) u'(Q+b-I) + \delta \sum_i
+                       U_d(Y_i) g_I(Y_i,I)\bigr] \cr
+        & + \delta \sum_i \mu_5(Y_i) g(Y_i,I) \bigl[ V(Y_i -d_i)
+                  - U_d(Y_i) \bigr], \cr} \EQN lagrange $$
+where the $\mu_j$'s are nonnegative Lagrange multipliers. To investigate
+the consequences of a binding participation constraint,
+rearrange the first-order condition with respect to  $U_d(Y_i)$
+to get
+$$ 1 + \mu_4 {g_I(Y_i,I) \over g(Y_i,I) } =
+    \mu_5(Y_i) - \mu_3(Y_i) , \EQN fonc2 $$
+where $g_I/g = \lambda'(I)\bigl[{g_0(Y_i) - g_1(Y_i) \over g(Y,I)}\bigr]$,
+which is negative for low $Y_i$ and positive for high $Y_i$.
+All the  multipliers are nonnegative. Then evidently  when
+the left side of equation \Ep{fonc2} is {\it negative}, we must have
+$\mu_3(Y_i) >0$, so that condition \Ep{bellman1;d} is binding
+and $U_d(Y_i) = U(Y_i)$.   Therefore,
+$V(Y_i - d_i)  = U(Y_i)$ for states with $\mu_3(Y_i) >0$.
+Atkeson uses this finding to show that in states  $Y_i$ where
+$\mu_3(Y_i) >0$, new loans $b'$ cannot exceed repayments
+$d_i=d(Y_i)$.   This conclusion follows from the following argument.
+The optimality condition \Ep{bellman1;e} implies that $V(Q)$ will
+satisfy
+$$ V(Q) = \max_{I \in [0, Q+b]} u(Q+b-I) + \delta \sum_{Y'}
+  V(Y' - d(Y')) g(Y',I).   \EQN andynew1 $$
+Using the participation constraint \Ep{bellman1;d} on the right side
+of \Ep{andynew1} implies
+$$ V(Q) \geq \max_{I \in [0, Q+b]} \left\{u(Q+b-I) + \delta \sum_{Y'}
+   U(Y_i') g(Y',I) \right\}  \equiv U(Q+b) \EQN andynew2 $$
+  where $U$ is the value function for the autarky problem
+\Ep{bellmanaut}.
+In states in which $\mu_3 >0$, we know that, first,
+$V(Q) = U(Y)$, and, second,  that by \Ep{andynew2} $V(Q) \geq U(Y + (b-d))$.
+But we also know that $U$ is increasing.  Therefore,
+we must have that $(b-d) \leq 0$, for otherwise
+ $U$ being increasing
+induces a contradiction.
+We conclude that
+ for those low-$Y_i$ states for which $\mu_3>0$,
+$b \leq d(Y_i)$, meaning that there are no capital inflows for
+these states.\NFootnote{This argument
+highlights the important role of limited enforcement in producing
+capital outflows at low output realizations.}
+
+%Thus, in low output realization states
+%where condition \Ep{bellman1;d} is binding, the borrower experiences a
+%``capital outflow.''
+Capital outflows in bad times
+provide good incentives because they occur only at output
+realizations so low that they are more likely  to occur when
+the borrower has undertaken too little investment.   Their role is to
+provide incentives for the borrower to invest enough
+to make it unlikely that those low-output states will occur.
+The occurrence of
+ capital outflows at low outputs is not
+called for by
+the complete markets contract \Ep{atnew6;b}. On the contrary,
+the complete markets
+contract provides
+a ``capital inflow'' to the lender in low-output states.
+That the pair of functions
+ $b_t = b(Q_t)$, $d_t = d(Y_t, Q_{t-1})$ forming the optimal
+contract  specifies repayments in those distressed  states is how the
+contract provides incentives for the borrower to make
+investment decisions that reduce the likelihood that combinations of
+$(Y_t, Q_t, Q_{t-1})$ will occur that
+trigger capital outflows under distress.
+
+ We remind the reader of the remarkable feature of Atkeson's
+contract that the repayment schedule and the state
+variable $Q$ ``do all the work.''  Atkeson's contract
+manages to encode all history dependence in an extremely
+economical fashion.  In the end, there is no need, as occurred
+in the problems that we studied in chapter \use{socialinsurance},
+to add a promised value as an independent state variable.
+%
+%result in an invest decision $I_t = I(Q_t)$ and a law of motion for the state
+%$$ Q_{t+1} = Y_{t+1} - d(Y_{t+1},Q_t), $$
+%where $ Y_{t+1} \sim g[Y_{t+1}, I(Q_t)]$.   We are interested
+%in net repayments at $t$, $d(Y_t, Q_{t-1}) - b(Q_t)$, and how they
+%compare with \Ep{atnew6;b}.  The computations indicate that
+%$\ldots$.
+%\medskip
+%\noindent{\bf Computational results to be added}
+%\medskip
+
+
+% INSERT BOND-PARK ANALYSIS
+%\showchaptIDtrue
+
+ \auth{Bond, Eric W.} \auth{Park, Jee-Hyeong}
+\section{Gradualism in trade policy}
+
+We now describe a version of Bond and Park's (2002) analysis
+of gradualism in bilateral agreements to liberalize international trade.
+Bond and Park cite examples in which a large country extracts a possibly
+rising sequence of transfers  from a small country in exchange for a gradual
+lowering of tariffs in the large country.  Bond and Park interpret
+gradualism in terms of the history-dependent policies that vary
+the continuation value of the large country in a way that induces it gradually
+to reduce its distortions from tariffs while still gaining from a move toward
+free trade.  They interpret the transfers as trade concessions.\NFootnote{Bond
+and Park say that in practice, the trade concessions take the form of
+reforms of policies in the small country about protecting intellectual
+property, protecting rights of foreign investors, and managing the domestic
+economy.  They do not claim explicitly to model these features.}
+
+We begin by laying out a simple general equilibrium model of trade
+between two countries.\NFootnote{Bond and Park (2002) work in terms of
+a partial equilibrium model that differs in details but shares the
+spirit of our model.} The outcome of this theorizing will be a
+pair of indirect utility functions $r_L$ and $r_S$ that give the
+welfare of a large and small country, respectively, both as
+functions of a tariff $t_L$ that the large country imposes on the
+small country, and a transfer $e_S$ that the small country
+voluntarily offers to the large country.
+
+\subsection{Closed-economy model}
+
+First, we describe a one-country model.  The country consists of a fixed
+number of identical households.  A typical household has preferences
+$$
+ u(c,\ell) = c + \ell - 0.5\,\ell^{\,2},
+                                                    \EQN M1utility
+$$
+where $c$ and $\ell$ are consumption of a single consumption good and
+leisure, respectively. The household is endowed with a quantity $\bar y$
+of the consumption good and one unit of time that can be used for either
+leisure or work,
+$$
+1= \ell + n_{1} + n_{2},   \EQN M1endow
+$$
+where $n_{j}$ is the labor input in the production of intermediate good $x_{j}$,
+for $j=1,2$. The two intermediate goods can be combined to produce additional
+units of the final consumption good.  The technology is as follows:
+$$\EQNalign{
+x_{1} &= n_{1} , & M1tech;a \cr
+x_{2} &= \gamma \, n_{2}, \hskip1cm \gamma\in [0,1],& M1tech;b \cr
+y    &= 2\, \min\{x_{1},\, x_{2}\},               & M1tech;c    \cr
+c    &= y + \bar y , & M1tech;d \cr}
+$$
+where consumption $c$ is the sum of production $y$ and the endowment
+$\bar y$.
+
+Because of the Leontief production function for the final consumption good,
+a closed economy will produce
+the same quantity of each intermediate good. For a given production
+parameter $\gamma$, let $\tilde \chi(\gamma)$ be the
+identical amount of each intermediate good that would be produced per unit
+of labor input.
+That is, a fraction $\tilde \chi(\gamma)$ of one unit of labor input would
+be spent on producing $\tilde \chi(\gamma)$ units of intermediate good 1
+and another fraction
+$\tilde \chi(\gamma)/\gamma$ of the labor input would be devoted
+to producing the same amount of intermediate good 2:
+$$
+\tilde \chi(\gamma) +  {\tilde \chi(\gamma) \over \gamma} = 1
+\hskip.5cm \Longrightarrow \hskip.5cm \tilde \chi(\gamma) = {\gamma \over 1+\gamma}.
+\EQN fernan1 $$
+The linear technology implies a competitively determined wage at
+which all output is paid out as labor compensation.
+The optimal choice of leisure makes
+the marginal utility of consumption from an extra unit of labor input
+equal to
+the marginal utility of an extra unit of leisure:
+$
+2\, \min\{\tilde \chi(\gamma),\, \tilde \chi(\gamma)\}
+=\,{d \hfill \over d \ell} \Bigl[\ell - 0.5\,\ell^{\,2}\Bigr] . $
+Substituting for $\tilde \chi(\gamma)$ from  \Ep{fernan1} gives
+$
+{2\, \gamma \over 1+\gamma} = 1-\ell $, which can be rearranged to
+become
+$$\ell={\cal L}(\gamma) =\, {1-\gamma \over 1+\gamma} .   \EQN M1ell
+$$
+It follows that per capita, the
+equilibrium quantity of each intermediate good
+is given by
+$$
+x_1 = x_2 = \chi(\gamma) \,\equiv\, \tilde \chi(\gamma) [1-{\cal
+L}(\gamma)] \,=\, {2\, \gamma^2 \over (1+\gamma)^2}. \EQN M1x
+$$
+
+\vskip.5cm
+\medskip
+\noindent
+{\bf Two countries under autarky}
+\smallskip
+\noindent  Suppose that there are two countries named $L$ and $S$ (denoting
+large and small).   Country
+$L$ consists of $N\geq1$ identical consumers, while country $S$ consists
+of one household. All households have the same preferences \Ep{M1utility},
+but technologies differ across countries. Specifically, country $L$ has
+production parameter $\gamma=1$ while country $S$ has $\gamma = \gamma_S <1$.
+
+
+Under no trade or {\it autarky\/}, each country is a closed economy
+whose allocations are given by \Ep{M1ell}, \Ep{M1x}, and \Ep{M1tech}.
+%Evaluating these
+%expressions, we obtain
+%$$\EQNalign{
+%\{\ell_L,n_{1L},n_{2L},c_L\}&=\{0,\,0.5,\, 0.5,\,  \bar y +1\},  \cr
+%\{\ell_S,n_{1S},n_{2S},c_S\}&=\{\ell(\gamma_S),\, x(\gamma_S), \,
+%(\gamma_S)/\gamma_S,\, \bar y + 2\, x(\gamma_S)\} \cr}.  $$
+Evaluating these
+expressions, we obtain
+$$\EQNalign{
+\{ \ell_L,n_{1L},n_{2L},c_L\}&=\{0,\,0.5,\, 0.5,\,  \bar y +1\},  \cr
+\{\ell_S,n_{1S},n_{2S},c_S\}&=\{{\cal L}(\gamma_S),\, \chi(\gamma_S), \,
+\chi(\gamma_S)/\gamma_S,\, \bar y + 2\, \chi(\gamma_S)\} . \cr}
+$$
+%for country $L$ and $S$, respectively.
+The relative price between the two intermediate goods is $1$ in country
+$L$ while for country $S$, intermediate good 2 trades at a price
+$\gamma_S^{-1}$ in terms of intermediate good 1. The difference in
+relative prices across countries implies gains from
+trade.
+
+\subsection{A Ricardian model of  two countries under free trade}
+
+Under free trade, country $L$ is large enough to meet both
+countries' demands for intermediate good 2 at a relative price of $1$
+and hence country $S$ will specialize in the production of
+intermediate good 1 with $n_{1S}=1$. To find the time $n_{1L}$
+that a worker in country $L$ devotes to the production of
+intermediate good 1, note
+that the world demand at a relative price of $1$ is equal to
+$0.5(N+1)$ and, after imposing market clearing, that
+$$\EQNalign{
+N \, n_{1L} \,+\, 1 \,&=\, 0.5\,(N+1) \cr
+n_{1L} \, & =\, {N-1 \over 2N}.}
+$$
+%The free-trade allocation becomes
+%$$\EQNalign{
+%\{\ell_L,n_{1L},n_{2L},c_L\}&=\{0,\,(N-1)/(2N),\, (N+1)/(2N),\,
+%\bar y +1\},  \cr
+%\{\ell_S,n_{1S},n_{2S},c_S\}&=\{0,\, 1, \, 0,\, \bar y + 1\} \cr}.
+%$$
+The free-trade allocation becomes
+$$\EQNalign{
+\{\ell_L,n_{1L},n_{2L},c_L\}&=\{0,\,(N-1)/(2N),\, (N+1)/(2N),\,
+  \bar y +1\},  \cr
+\{\ell_S,n_{1S},n_{2S},c_S\}&=\{0,\, 1, \, 0,\, \bar y + 1\}. \cr}
+$$
+%for country $L$ and $S$, respectively.
+Notice that the welfare of a household in country $L$ is the same as
+under autarky because we have
+$\ell_L=0$, $c_L=\bar y +1$. The invariance of country $L$'s allocation
+to opening trade is an immediate
+implication of the fact that the equilibrium prices under free trade
+are the same as those in country $L$ under autarky. Only
+country $S$ stands to gain from free trade.
+
+
+\subsection{Trade with a tariff}
+Although country $L$ has nothing to gain from free trade, it can gain
+from trade if it is accompanied by a distortion to the terms of
+trade that is implemented through
+a tariff on country $L$'s imports.
+Thus, assume that country $L$ imposes a tariff of $t_L \geq 0$
+ on all imports into $L$.  For any quantity of intermediate or final goods
+imported into country $L$, country $L$ collects  a fraction $t_L$ of those
+goods by levying the tariff. A necessary condition for the existence of
+an equilibrium with trade is that the tariff does not exceed $(1-\gamma_S)$,
+because otherwise country $S$ would choose to produce intermediate
+good 2 rather than import it from country $L$.
+
+Given that $t_L\leq 1- \gamma_S$,
+we can find the equilibrium with trade
+as follows. From the perspective of country $S$,
+$(1-t_L)$ acts like the production parameter $\gamma$,
+i.e., it determines the cost of obtaining one unit of intermediate good 2
+in terms of foregone production of intermediate good 1. Under
+autarky that price was $\gamma^{-1}$; with trade and a tariff $t_L$,
+that price becomes
+ $(1-t_L)^{-1}$. For country $S$, we can therefore draw upon
+the analysis of a closed economy and just replace $\gamma$ by $1-t_L$.
+The allocation with trade for country $S$ becomes
+$$
+\{\ell_S,n_{1S},n_{2S},c_S\}=\{{\cal L}(1-t_L),\, 1-{\cal L}(1-t_L), \,
+0,\, \bar y + 2\, \chi (1-t_L)\}.                \EQN Salloc
+$$
+In contrast to the equilibrium under autarky, country $S$ now allocates
+all labor input $1-{\cal L}(1-t_L)$ to the production of intermediate
+good 1 but retains only a quantity $\chi(1-t_L)$ of total production
+for its own use, and exports the rest $\chi(1-t_L)/(1-t_L)$ to country $L$.
+After paying tariffs, country $S$ purchases
+an amount $\chi(1-t_L)$ of intermediate good 2 from country $L$. Since
+this quantity of intermediate good 2 exactly equals the amount
+of intermediate good 1 retained in country $S$, production of
+the final consumption good given by \Ep{M1tech;c} equals
+$2\, \chi(1-t_L)$.
+
+Country $L$ receives a quantity $\chi(1-t_L)/(1-t_L)$ of intermediate good 1
+from country $S$, partly  as tariff revenue $t_L\, \chi(1-t_L)/(1-t_L)$ and
+partly as payments
+for its exports of intermediate good 2, $\chi(1-t_L)$. In response to the
+inflow of intermediate good 1, an aggregate quantity of labor equal to
+$\chi(1-t_L) + 0.5\, t_L\, \chi(1-t_L)/(1-t_L)$ is reallocated
+in country $L$ from the production of intermediate good 1 to the
+production of intermediate good 2.  This allows country $L$ to
+meet the demand for intermediate good 2 from country $S$ and at the
+same time increase its own use of each
+intermediate good by $0.5\, t_L\, \chi(1-t_L)/(1-t_L)$. The per capita
+trade allocation for country $L$ becomes
+$$\EQNalign{
+\{\ell_L,n_{1L},n_{2L},&c_L\}=
+\Biggl\{0,\, 0.5-{(1-0.5t_L)\,\chi(1-t_L) \over (1-t_L)N},\, \cr
+ &0.5+{(1-0.5t_L)\,\chi(1-t_L) \over (1-t_L)N},\,
+\bar y + 1 + t_L{\chi(1-t_L)\over (1-t_L)N} \Biggr\}.         \hskip1cm    & Lalloc \cr}
+$$
+
+\subsection{Welfare and Nash tariff}
+
+For a given tariff $t_L\leq 1-\gamma_S$, we can compute the welfare
+levels in a trade equilibrium.
+Let $u_S(t_L)$ and $u_L(t_L)$ be the indirect utility of
+country $S$ and country $L$, respectively, when the tariff is $t_L$.
+After substituting the equilibrium allocation \Ep{Salloc} and \Ep{Lalloc}
+into the utility function of \Ep{M1utility}, we obtain
+$$\eqalign{
+u_S(t_L) &= u(c_S,\ell_S)                                       \cr
+&= \bar y + 2 \, \chi(1-t_L) + {\cal L}(1-t_L) - 0.5\,{\cal L}
+(1-t_L)^{\,2},   \cr
+\noalign{\vskip.2cm}
+u_L(t_L) &= N\,u(c_L,\ell_L)
+= N\,(\bar y + 1) + t_L{\chi(1-t_L)\over 1-t_L}, \cr}   \EQN Lars1000
+$$
+where we multiply the utility function of the representative agent in
+country $L$ by $N$ because we are aggregating over all agents in a
+country. We now invoke equilibrium expressions \Ep{M1ell} and \Ep{M1x},
+and take derivatives with respect to $t_L$.
+As expected, the welfare of country $S$ decreases with the tariff
+while the welfare of country $L$ is a strictly concave function that
+initially increases with the tariff:
+$$\EQNalign{
+{d u_S(t_L) \over d t_L \hfill}&= -{4\,(1-t_L) \over (2-t_L)^3}<0\,,
+                                                           &Utilderiv;a  \cr
+\noalign{\vskip.2cm}
+{d\, u_L(t_L) \over d \, t_L \hfill}&= {2\,(2-3t_L) \over (2-t_L)^3}
+                   \cases{ >0 &for $t_L<2/3$ \cr \leq 0 &for $t_L\geq2/3$ \cr}
+ \, &Utilderiv;b \cr
+\noalign{\hbox{\rm and}}
+{d \, ^2 u_L(t_L) \over d\, t_L^2 \hfill} &= -{12 t_L \over (2-t_L)^4}\leq 0\,,
+                                                           &Utilderiv;c \cr}
+$$
+where it is understood that the expressions are evaluated for
+$t_L\leq 1-\gamma_S$.
+
+
+The tariff enables country $L$ to reap some of the benefits from trade.
+In our model, country $L$ prefers a tariff
+$t_L$ that maximizes its tariff revenues.
+
+\medskip
+\noindent{\sc Definition:} In a one-period
+ {\it Nash equilibrium\/}, the government
+of   country $L$ imposes a tariff rate that satisfies
+$$ t_L^N = \min\Bigl\{\argmax_{t_L} u_L(t_L),\; 1-\gamma_S\Bigr\}.  \EQN Nashtariff $$
+\medskip
+\noindent
+From expression
+\Ep{Utilderiv;b}, we have $ t_L^N = \min\{2/3,\, 1-\gamma_S\}$.
+
+\medskip
+\noindent{\sc Remark:} At the Nash tariff, country $S$ gains from trade
+if $2/3 < 1-\gamma_S$.  Country $S$ gets no gains from trade
+if $1 -\gamma_S \leq 2/3$.
+\medskip
+Measure world welfare by
+$u_W(t_L) \equiv u_S(t_L) + u_L(t_L)$. This measure of world
+welfare satisfies
+$$\EQNalign{
+{d\, u_W(t_L) \over d\, t_L \hfill}&= -{2\,t_L \over (2-t_L)^3}\leq 0\,,
+                                                           &Utilworld;a \cr
+\noalign{\hbox{\rm and}}
+{d\, ^2 u_W(t_L) \over d\, t_L^2 \hfill} &= -{4\,(1+t_L) \over (2-t_L)^4}<0\,.
+                                                           &Utilworld;b \cr}
+$$
+We summarize our findings:
+\medskip
+\noindent{\sc Proposition 1:}    World welfare $u_W(t_L)$ is  strictly concave,
+is decreasing in $t_L \geq 0$,  and is maximized by
+setting $t_L =0$.   %%%%Thus, $u_W(t_L)$ is maximized at $t_L=0$.
+But   $u_L(t_L)$ is strictly concave in $t_L$ and
+is maximized at $t_L^N >0$.  Therefore, $u_L(t_L^N) > u_L(0)$.
+\medskip
+\noindent A consequence of this proposition is that
+country $L$ prefers the Nash equilibrium to free trade, but country
+$S$ prefers free trade.  To induce
+country $L$
+to accept free trade, country $S$ will have to transfer resources
+to it.  We now study how country $S$ can do that efficiently in an
+intertemporal version of the model.
+
+
+ \auth{Bond, Eric W.} \auth{Park, Jee-Hyeong}
+
+\subsection{Trade concessions}
+To get a model in the spirit of Bond and Park (2002),
+we now assume that the two countries can make trade concessions
+that take the form of a direct transfer of the consumption good
+between them.
+ We augment
+ utility functions
+$u_L, u_S$
+ of the form \Ep{M1utility} with these transfers to obtain the
+payoff functions
+$$ \EQNalign{r_L(t_L, e_S) &= u_L(t_L) + e_S \EQN bppayoff1;a \cr
+             r_S(t_L, e_S) &= u_S(t_L) - e_S , \EQN bppayoff1;b \cr} $$
+where $t_L\geq 0$ is  a tariff on the imports of
+country $L$, $e_S\geq 0$ is a transfer from country $S$ to country
+$L$. These definitions make sense because the indirect utility
+functions \Ep{Lars1000} are linear in consumption of the final
+consumption good, so that by transferring the final consumption good, the
+small country transfers utility.
+The transfers $e_S$ are to be voluntary and must be nonnegative (i.e., the
+country cannot extract transfers from the large country).
+We have already seen that
+$u_L(t_L)$ is strictly concave and  twice continuously differentiable
+with $u_L'(0) >0$ and that  $u_W(t_L) \equiv u_S(t_L) + u_L(t_L)$ is
+strictly concave and twice continuously differentiable with
+$u_W'(0) =0$.
+We call {\it free trade\/} a situation in which $t_L=0$.
+We let $(t_L^N, e_S^N)$ be the Nash equilibrium tariff rate  and transfer
+for a one-period, simultaneous-move  game in which the two countries have
+payoffs
+\Ep{bppayoff1;a} and \Ep{bppayoff1;b}. Under Proposition 1,
+$t_L^N  >0, e_S^N =0$.
+ Also, $u_L(t_L^N) > u_L(0)$ and $u_S(0) > u_S(t_L^N)$,
+so that country $S$ gains and country $L$ loses in
+moving from the Nash equilibrium
+ to free trade with $e_S =0$.
+
+\subsection{A repeated tariff game}
+
+We now suppose that the economy repeats itself infinitely.
+for $t \geq 0$.
+Denote the pair of time $t$ actions of the
+two countries by $\rho_t= (t_{Lt},  e_{St})$.  For $t \geq 1$, denote
+the history of actions up to time $t-1$
+as $\rho^{t-1} = [\rho_{t-1}, \ldots, \rho_0]$.
+A policy $\sigma_{S}$ for country $S$ is an initial $e_{S0}$ and for $t\geq 1$
+a sequence of functions expressing $e_{St}= \sigma_{St}(\rho^{t-1})$.
+A policy $\sigma_{L}$
+for country $L$ is an initial $t_{L0}$ and for $t\geq 1$
+a sequence of functions expressing $t_{Lt}= \sigma_{Lt}(\rho^{t-1})$.
+Let $\sigma$ denote the pair of policies $(\sigma_{L},  \sigma_S)$.
+The {\it policy\/} or {\it strategy profile\/}
+ $\sigma$ induces time $t$ payoff
+$r_i(\sigma_t)$ for country
+$i$ at time $t$, where $\sigma_t$ is the time $t$ component of
+$\sigma$.
+We measure country
+$i$'s present discounted   value by
+$$ v_i(\sigma) = \sum_{t=0}^\infty \beta^t r_i(\sigma_t) \EQN trade20 $$
+where $\sigma$ affects $r_i$ through its effect on $c_i$.
+Define $\sigma|_{\rho^{t-1}}$ as the continuation of $\sigma$ starting at
+$t$  after
+history  $\rho^{t-1}$.
+Define the continuation value of $i$ at time $t$ as
+$$ v_{it} = v_i(\sigma|_{\rho^{t-1}}) =
+ \sum_{j=0}^\infty \beta^j r_i(\sigma_j|_{\rho^{t-1}}). $$
+
+We use the following standard definition:
+\medskip
+\noindent{\sc Definition:}
+A {\it subgame perfect equilibrium\/} is a strategy profile $\sigma$
+such that for all $t\geq 0$ and all histories $\rho^t$, country
+$L$ maximizes its continuation value starting from $t$, given
+$\sigma_S$, and country $S$  maximizes its continuation    value
+starting from $t$, given $\sigma_{L}$.
+\medskip
+
+It is easy to verify that a strategy that forever repeats the
+static Nash equilibrium outcome $(t_L, e_S)= (t_L^N, 0)$ is
+a subgame perfect equilibrium.
+
+
+\subsection{Time-invariant transfers}
+
+We first study circumstances under which
+there exists a time-invariant transfer
+$e_S >0$ that will induce country $L$ to move  to free trade.
+
+
+Let $v_i^N = {u_i(t_L^N) \over 1 -\beta}$ be the present discounted value
+of country $i$ when the static Nash equilibrium is repeated forever.
+If both countries are to prefer free trade with a time-invariant
+transfer level $e_S>0$,
+the following two participation constraints
+must hold:
+$$\EQNalign{ v_L & \equiv {u_L(0) + e_S \over 1 -\beta} \geq u_L(t_L^N)
+   + e_S + \beta v_L^N
+\EQN tradepL \cr
+             v_S & \equiv{ u_S(0) - e_S \over 1 -\beta} \geq  u_S(0)
+ + \beta v_S^N.
+ \EQN tradepS \cr}$$
+The timing here articulates what it means for $L$ and $S$ to
+choose simultaneously: when $L$ defects from $(0, e_S)$, $L$
+retains the transfer $e_S$ for that period. Symmetrically, if $S$
+defects, it enjoys the zero tariff  for that one period.   These
+temporary gains provide the temptations to defect. Inequalities
+\Ep{tradepL} and \Ep{tradepS} say that countries $L$ and $S$ both get
+higher continuation values from remaining in free trade with the
+transfer $e_S$ than they get in the repeated static Nash
+equilibrium.  Inequalities \Ep{tradepL} and \Ep{tradepS}  invite
+us to study strategies that have each country respond to any
+departure from what it had expected the other country to do this
+period by forever after choosing the Nash equilibrium actions
+$t_L= t_L^N$ for country $L$ and  $e_S=0$ for country $S$. Thus,
+the response to any deviation from anticipated behavior is to
+revert to the repeated static
+ Nash equilibrium, itself a subgame perfect
+equilibrium.\NFootnote{In chapter \use{credible},
+we study  the consequences of reverting to a subgame perfect equilibrium
+that gives {\it worse\/} payoffs to both $S$ and $L$ and how
+the worst subgame perfect equilibrium
+payoffs and strategies  can be constructed.}
+
+Inequality \Ep{tradepL} (the participation constraint for $L$)
+ and the definition of $v_L^N$ can be  rearranged
+to get
+$$ e_S \geq {u_L(t_L^N) - u_L(0) \over \beta }.  \EQN tradees1$$
+Time-invariant transfers $e_S$ that satisfy inequality \Ep{tradees1} are
+sufficient to induce $L$ to abandon the Nash equilibrium and
+set its tariff to zero.
+The {\it minimum\/} time-invariant transfer that will induce $L$
+to accept free trade is then
+$$ e_{S{\rm min}} = {u_L(t_L^N) - u_L(0) \over \beta }.  \EQN tradees2$$
+
+  Inequality \Ep{tradepS} (the participation constraint for $S$)
+ and the definition of $v_S^N$ yield
+$$ e_S \leq \beta (u_S(0) - u_S(t_L^N)),  \EQN tradees3 $$
+which restricts the time-invariant transfer that $S$ is willing
+to make to move to free trade by setting $t_L =0$.
+  Evidently, the {\it largest\/}
+time-invariant transfer
+that $S$ is willing to pay is
+$$ e_{S { \rm max}} = \beta (u_S(0) - u_S(t_L^N)).  \EQN tradees4 $$
+
+ If we substitute $e_S = e_{S {\rm min}}$ into the definition
+of $v_L$ in \Ep{tradepL}, we find that the {\it lowest\/}
+continuation value $v_L$ for country $L$ that can be supported
+by a stationary transfer is
+$$ v_L^* = \beta^{-1} (v_L^N - u_L(0)) . \EQN VLmin $$
+If we substitute $e_S = e_{S {\rm max}}$ into the definition
+of $v_L$ we can conclude that the {\it highest\/} $v_L$ that can be sustained
+by a stationary transfer is
+$$ v_L^{**} = {u_L(0) + \beta (u_S(0) - u_S(t_L^N)) \over 1 -\beta} .
+  \EQN VLmax $$
+
+For there to exist a time-invariant transfer $e_S$ that induces both countries
+to accept free trade, we require that
+$v_L^* <v_L^{**}$ so that $[v_L^*,v_L^{**}]$ is nonempty.
+  For a class of world economies differing only in their
+discount factors, we can compute
+a discount factor $\beta$ that makes $v_L^* = v_L^{**}$. This
+is the critical value for the discount factor below which
+the interval $[v_L^*, v_L^{**}]$ is empty. Thus,
+equating the right sides of \Ep{VLmin} and \Ep{VLmax} and solving
+for $\beta$
+gives the critical value
+$$ \beta_c \equiv \sqrt{{ u_L(t_L^N) - u_L(0) \over u_S(0) - u_S(t_t^N)}}.
+  \EQN betac $$
+We know that the numerator under the square root is positive
+and that it is less than the denominator (because $S$ gains by
+moving to free trade more than $L$ loses, i.e., $u_W(t_L)$ is maximized
+at $t_L=0$).  Thus, \Ep{betac} has a solution
+$\beta_c \in (0,1)$.   For $\beta > \beta_c$,
+there is a nontrivial interval $[v_L^*, v_L^{**}]$.
+For $\beta < \beta_c$, the interval is empty.
+
+Now consider the utility possibility frontier
+{\it without\/} the participation constraints
+\Ep{tradepL}, \Ep{tradepS}, namely,
+$$  v_S = {u_W(0) \over 1-\beta} - v_L. \EQN utilppf $$
+  Then we have the following:
+\medskip
+\noindent{\sc Proposition 2:}
+There is a critical value $\beta_c$
+such
+that for $\beta > \beta_c$, the interval
+$[v_L^*, v_L^{**}]$ is nonempty.
+ For $v_L \in [v_L^*, v_L^{**}]$, a pair
+$(v_L, v_S)$ on the unconstrained utility possibility frontier
+\Ep{utilppf} can be attained by a time-invariant  policy $(0, e_s)$ with
+transfer $e_S >0$ from $S$ to $L$. The policy is supported by
+a trigger strategy  profile that reverts forever to
+$(t_L, 0)$ if expectations are ever disappointed.
+
+
+\subsection{Gradualism: time-varying trade policies}
+
+From now on, we assume that $\beta > \beta_c$, so that
+$[v_L^*,v_L^{**}]$ is nonempty. We make this assumption because we want
+to study settings in which the two countries eventually move to free trade
+even if they don't start there.
+  Notice %%%that $v_L^N < v_L^* $.
+from expression \Ep{VLmin} that
+$$\eqalign{ v_L^* &= \beta^{-1} \left( \left[u_L(t_L^N)
+                         + \beta v_L^N \right] - u_L(0) \right) \cr
+ &= v_L^N + \beta^{-1} \left( u_L(t_L^N) - u_L(0) \right) > v_L^N . \cr}
+\EQN bopark_lbound
+$$
+Thus, even when $[v_L^*, v_L^{**}]$
+is nonempty, there is an interval of continuation values $[v_L^N,
+v_L^*)$ that cannot be sustained by a time-invariant transfer
+scheme. Values $v_L >  v_L^{**}$ also fail to be sustainable by a
+time-invariant transfer because the required $e_S$ is too high.
+For initial values $v_L < v_L^*$ or $v_L > v_L^{**}$, Bond and
+Park construct time-varying  tariff and transfer schemes that
+sustain continuation value $v_L$. They proceed by designing a
+recursive contract similar to ones constructed by Thomas and
+Worrall (1988) and again by Kocherlakota (1996a). \auth{Worrall,
+Tim} \auth{Thomas, Jonathan} \auth{Kocherlakota, Narayana R.}
+
+   Let $v_L(\sigma), v_S(\sigma)$ be the discounted present
+values delivered to countries
+$L$ and $S$ under policy $\sigma$.
+For a given initial promised value
+$v_L$ for country $L$,  let $P(v_L)$ be the
+maximal continuation value $v_S$  for country $S$,
+ associated with a possibly time-varying trade policy.  The value
+function $P(v_L)$ satisfies the functional equation
+   $$  P(v_L) = \sup_{t_L, e_S, y} \left\{ u_S(t_L) - e_S
+    + \beta P(y)  \right\}, \EQN bondpark1  $$
+where the maximization is subject to $t_L \geq 0, e_S \geq 0$ and
+$$ \EQNalign{ & u_L(t_L) + e_S + \beta y \geq v_L \EQN bondpark2;a \cr
+    & u_L(t_L) + e_S + \beta y \geq u_L(t_L^N) + e_S + \beta v_L^N
+   \EQN bondpark2;b \cr
+  & u_S(t_L) - e_S + \beta P(y) \geq u_S(t_L) +\beta v_S^N  .
+  \EQN  bondpark2;c \cr} $$
+Here, $y$ is the continuation value for $L$, meaning next period's value
+of $v_L$.
+ Constraint \Ep{bondpark2;a} is the promise-keeping constraint, while
+\Ep{bondpark2;b} and \Ep{bondpark2;c} are
+the participation constraints for countries
+$L$ and  $S$, respectively. The constraint set is convex and the objective
+is concave, so $P(v_L)$ is concave (though not strictly concave,
+an important qualification, as we shall see).
+
+
+As with our study of Thomas and Worrall's  and Kocherlakota's model, we place nonnegative
+multipliers $\theta$ on \Ep{bondpark2;a} and
+$\mu_L, \mu_S$ on \Ep{bondpark2;b} and \Ep{bondpark2;c}, respectively,
+form a Lagrangian, and obtain the following first-order necessary
+conditions for
+a saddlepoint:
+$$ \EQNalign{t_L: \ \ &  u_S'(t_L) + (\theta+ \mu_L) u_L'(t_L) \leq
+ 0 , \ \ = 0 \ {\rm if} \ t_L > 0  \hskip1cm \EQN bondpark3;a \cr
+  y: \  \ & P'(y) (1+\mu_S) + (\theta +\mu_L) =0 \EQN bondpark3;b \cr
+ e_S: \ \  & - 1 +\theta - \mu_S \leq 0 , \ =0 \ {\rm if } \
+  e_S > 0 . \EQN bondpark3;c \cr} $$
+We analyze the consequences of these first-order conditions for
+the optimal contract in three regions delineated by the
+continuation values $v_L^*, v_L^{**}$.
+%%values of the multipliers  $\mu_S, \mu_L$.
+
+We break our analysis into two parts.  We begin by displaying particular
+policies that attain initial values on the constrained Pareto
+frontier.  Later, we show that there can be many  additional
+policies that attain the same values, which as we shall see is
+a consequence of a flat
+interval in the   constrained Pareto frontier.
+
+\subsection{Baseline policies}
+%%\vskip.5cm
+\medskip
+\noindent
+{\bf Region I:} $v_L \in [v_L^*, v_L^{**}]$ (neither PC binds)
+\smallskip
+\noindent When the initial value is in this interval, the continuation
+value stays in this interval.
+From the envelope property, %%Benveniste-Scheinkman formula,
+$P'(v_L) = - \theta $.
+If $v_L \in [v_L^*, v_L^{**}]$,
+  neither participation constraint binds, and we have
+$\mu_S=\mu_L=0$.   Then \Ep{bondpark3;b} implies
+$$ P'(y) = P'(v_L).  $$
+%By the concavity of $P$,
+ This can be satisfied
+by setting $y=v_L$.
+Then $y=v_L$ and the always binding promise-keeping constraint
+in \Ep{bondpark2;a}   imply that
+$$v_L = y = {u_L(t_L) +  e_S \over 1 - \beta } \geq v_L^* > v_L^N \equiv
+{u_L(t_L^N) \over 1 - \beta } ,   \EQN bopark1
+$$
+where the weak inequality states that $v_L$ trivially satisfies the
+lower bound of region I, which in turn is strictly
+greater than the Nash value $v_L^N$ according to expression \Ep{bopark_lbound}.
+Because $u_L(t)$ is maximized
+at $t_L^N$, the strict inequality in expression \Ep{bopark1}  holds
+only if $e_S >0$.
+  Then inequality \Ep{bondpark3;c}
+and   $e_S >0$ imply
+that $\theta = 1$.
+Rewrite \Ep{bondpark3;a} as
+$$u_W'(t_L)   \leq  0, \;\; =0 \ {\rm if}  \ t_L >0. $$
+By Proposition 1, this implies that $t_L =0$.
+We can solve for $e_S$  from
+$$ v_L = {u_L(0) + e_S \over 1 -\beta} \EQN bondpark8 $$ and
+then obtain $P(v_L)$ from ${u_S(0) - e_S \over 1-\beta}$.
+
+Before turning to region II with $v_L > v_L^{**}$, we shall first
+establish that there indeed exist such high continuation values for the
+large country which cannot be sustained by a time-invariant transfer
+scheme. This is done by showing that $P(v_L^{**}) > v_S^N$. That is,
+there is scope for further increasing the continuation value of
+the large country beyond $v_L^{**}$ before the associated continuation
+value of the small country is reduced to $v_S^N$. The argument goes
+as follows:
+$$\eqalign{
+P(v_L^{**}) &= {u_W(0) \over 1-\beta} - v_L^{**} \cr &=
+{u_L(0)+u_S(0)\over 1-\beta}-{u_L(0) + \beta (u_S(0) - u_S(t_L^N))
+\over 1 -\beta}\cr &= u_S(0) + \beta { u_S(t_L^N) \over 1 -\beta}
+>
+   u_S(t_L^N) + \beta { u_S(t_L^N) \over 1 -\beta} \equiv v_S^N, \cr }
+                                                                \EQN bopark_ubound
+$$
+where the first equality uses the fact that the continuation value
+$v_L^{**}$ lies on the unconstrained Pareto
+frontier whose slope is $-1$ and the second equality invokes expression
+\Ep{VLmax}. It then follows that $P(v_L^{**}) > v_S^N$.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Then $y=v_L$, \Ep{bondpark2;a}, and
+%\Ep{bondpark2;b}   imply
+%that $v_L = y = {u_L(t_L) +  e_S \over 1 - \beta }
+%> v_L^N = {u_L(t_L^N) \over 1-\beta}$.  Because $u_L(t)$ is maximized
+%at $t_L^N$, this equation  holds  only if $e_S >0$.
+%  Then inequality \Ep{bondpark3;c}
+%and   $e_S >0$ imply
+%that $\theta = 1$.
+%Rewrite \Ep{bondpark3;a} as
+%$$u_W'(t_L)   \leq  0, \ =0 \ {\rm if}  \ t_L >0. $$
+%This implies that $t_L =0$.
+%We can solve for $e_S$  from
+%$$ v_L = {u_L(0) + e_S \over 1 -\beta} \EQN bondpark8 $$ and
+%then obtain $P(v_L)$ from ${u_S(0) - e_S \over 1-\beta}$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\subsection{Region II: $\mu_S >0$ ($PC_S$ binds)}
+
+\vskip.5cm
+\medskip
+\noindent
+{\bf Region II:} $v_L > v_L^{**}$ ($PC_S$ binds)
+\smallskip
+\noindent We shall verify that in region II, there is a solution
+to the first-period first order necessary conditions
+with $\mu_S >0$ and $e_S >0$.
+When $v_L> v_L^{**}$, $\mu_S \geq 0$ and $\mu_L =0$.
+When $\mu_S >0$, inequality \Ep{bondpark3;c} and
+$e_S >0$  imply
+$$
+ \theta = 1 + \mu_S > 1.  \EQN bopark2
+$$   Express \Ep{bondpark3;a} as
+$$ u_W'(t_L)  +(\theta -1) u_L'(t_L) \leq 0, \;\; =0 \ {\rm if} \ t_L >0.
+\EQN bondpark4 $$
+Because $u_W'(0) =0$ and $u_L'(0)>0$, this   inequality can be satisfied
+only if $t_L>0$.    Equation     \Ep{bondpark3;b}
+implies that
+$$P'(y) =- (1+\mu_S)^{-1} \theta = -1,
+$$
+where the second inequality invokes \Ep{bopark2}.
+Therefore, $y \in [v_L^*, v_L^{**}]$, the region
+of the Pareto frontier whose slope is $-1$ and
+in which neither participation constraint
+binds. We can solve for the required transfer
+from $t=1$ onward from the following version
+of \Ep{bondpark8}: $$y= {u_L(0) + e_S' \over 1 -\beta}, \EQN bondpark12 $$
+where $e_S'$ denotes the value of $e_S$ for $t\geq 1$, because
+once we move into \hbox{region I}, we stay there, having a time invariant
+$e_S'>0$ with $t_L'=0$,  as our analysis
+of region I indicated.       We can solve for $t_L, e_S$ for period
+zero as follows.  For a given $\theta >1$,
+solve the following equations for
+$y, P(y), t_L, e_S, P(v_L)$:
+$$\EQNalign{ & u_S'(t_L) + \theta u_L'(t_L) = 0 \EQN bondpark6;a \cr
+     & v_L = u_L(t_L) + e_S + \beta y \EQN bondpark6;b   \cr
+    & - e_S + \beta P(y) = \beta v_S^N \EQN bondpark6;c \cr
+    & P(v_L)  = u_S(t_L) - e_S + \beta P(y) \EQN bondpark6;d \cr
+   & y + P(y) = {u_W(0) \over 1 -\beta} .  \EQN bondpark6;e \cr}  $$
+To find the maximized value $P(v_L)$, we must search
+over solutions of \Ep{bondpark6}
+for the $\theta >1$ that corresponds to the specified initial
+continuation value $v_L$, (i.e., we are performing the
+minimization over $\mu_S$  entailed in finding the
+saddlepoint of the Lagrangian).
+
+Using expression \Ep{bondpark6;c}, we can show that the transfer $e_S$
+in period zero is also strictly positive,
+$$
+e_S = \beta [P(y) - v_S^N] \geq \beta \left[P(v_L^{**}) - v_S^N\right]> 0,
+$$
+where we have used the fact that $y \leq v_L^{**}$ and invoked the finding
+in expression \Ep{bopark_ubound} that $P(v_L^{**}) > v_S^N$. Concerning
+the relative size of $e_S$ at $t=0$ compared to the transfer $e_S'$ that
+the small country pays in period $t=1$ and forever afterwards, we notice
+that $e_S'$ is also subject to a participation constraint \Ep{bondpark2;c}
+with the very same continuation value $P(y)$ (but where $u_S(t_L')=u_S(0)$).
+Hence, we can express \Ep{bondpark2;c} for all periods $t\geq1$, given
+a time-invariant continuation value $P(y)$ determined by
+\Ep{bondpark6}, as
+$$
+e_S' \leq \beta [P(y) - v_S^N] = e_S,
+$$
+where the equality sign follows from \Ep{bondpark6;c}. We conclude
+that the transfer is nonincreasing over time for our solution to an initial
+continuation value in region II.
+
+Thus, in region II, $t_L>0$ in period $0$, followed by $t_L'=0$ thereafter.
+Moreover, the initial promised value to the large country $v_L > v_L^{**}$
+is followed by a lower time-invariant continuation value $y \leq v_L^{**}$.
+Subtracting \Ep{bondpark6;b} from \Ep{bondpark12} gives
+$$ y= v_L + (u_L(0) - u_L(t_L)) + (e_S' - e_S).  $$
+The contract sets the continuation value
+ $y < v_L$ by making  $t_L >0$ (thereby making
+$u_L(0) - u_L(t_L) <0$) and also possibly letting $e_S' - e_S <0$, so that
+transfers can fall between periods  $0$ and $1$.
+In region II, country $L$ induces $S$ to accept free trade by
+a two-stage lowering of the tariff from the Nash level,
+ so that $0 < t_L <t_L^N$ in period $0$,
+with $t_L'=0$ for $t \geq 1$;      in return, it gets
+period $0$ transfers of $e_S > 0$ and constant transfers
+$e_S' > 0$ thereafter.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Thus, in Region II, $t_L>0$ in period $0$, followed by $t_L=0$ thereafter.
+%Subtracting \Ep{bondpark6;b} from \Ep{bondpark12} gives
+%$$ y= v_L + (u_L(0) - u_L(t_L)) + (e_S' - e_S).  $$
+%The contract sets the continuation value
+% $y < v_L$ by making  $t_L >0$ (thereby making
+%$u_L(0) - u_L(t_L) <0$) and also possibly letting $e_S' - e_S >0$, so that
+%transfers can rise between periods  zero and one.
+%In region II, country $L$ induces $S$ to accept free trade by
+%a two-stage lowering of the tariff from the Nash level,
+% so that $0 < t_L <t_L^N$ in period zero,
+%with $t_L=0$ for $t \geq 1$;      in return, it gets
+%period zero transfers of $e_S \geq 0$ and constant transfers
+%$e_S' > e_S$ thereafter.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\vskip.5cm
+%\vfil\eject
+\medskip
+\noindent
+{\bf Region III:} $v_L \in  [v_L^N, v_L^{*})$ ($PC_L$ binds)
+\smallskip
+\noindent The analysis of region III is subtle.\NFootnote{The findings
+of this  section  reproduce ones summarized in
+Bond and Park's (2002) corollary to their Proposition 2.} It is natural
+to expect that $\mu_S =0, \mu_L >0$ in  this region.
+However, assuming that $\mu_L >0$ can be shown to lead
+to a contradiction, implying that the pair
+$v_L, P(v_L)$ both is and is not on the unconstrained
+Pareto frontier.\NFootnote{Please show this in exercise
+ {\it \the\chapternum.2\/}.}
+
+  We can avoid the contradiction by assuming that $\mu_L =0$, so that
+the participation constraint for country $L$ is barely binding.
+We shall construct a solution to \Ep{bondpark3} and \Ep{bondpark2}
+with period $0$ transfer $e_S>0$.
+Note that \Ep{bondpark3;c} with $e_S >0$ implies $\theta =1$,
+which from the envelope property $P'(v_L) = -\theta$ implies
+that $(v_L, P(v_L))$ is actually on the {\it un}constrained  Pareto
+frontier, a reflection of the participation constraint
+for country $L$ barely binding.
+With $\theta = 1$ and $\mu_L=0$, \Ep{bondpark3;a} implies
+that $t_L=0$, which confirms $(v_L, P(v_L))$  being on the Pareto frontier.
+We  can then solve the following equations
+for $P(v_L), e_S, y, P(y)$:
+$$ \EQNalign{ & P(v_L) + v_L  = {u_W(0) \over 1 -\beta} \EQN bondpark9;a \cr
+              & v_L = u_L(0) + e_S + \beta y \EQN bondpark9;b \cr
+              & u_L(0) + e_S + \beta y = u_L(t_L^N) + e_S + \beta v_L^N
+                  \EQN bondpark9;c \cr
+              & P(v_L) = u_S(0) - e_S + \beta P(y) \EQN bondpark9;d  \cr
+              & P(y) + y =
+                   {u_W(0) \over 1 -\beta}. \EQN bondpark9;e \cr  }$$
+We shall soon see that these constitute only four linearly
+independent equations.  Equations \Ep{bondpark9;a} and
+\Ep{bondpark9;e}  impose that both $(v_L, P(v_L))$ and $(y, P(y))$
+lie on the unconstrained Pareto frontier.  We can solve these
+equations recursively.  First, solve for $y$ from \Ep{bondpark9;c}.
+Then solve for $P(y)$ from \Ep{bondpark9;e}.  Next, solve for
+$P(v_L)$ from \Ep{bondpark9;a}. Get $e_S$ from \Ep{bondpark9;b}.
+Finally, equations \Ep{bondpark9;a}, \Ep{bondpark9;b}, and
+\Ep{bondpark9;d} imply that equation \Ep{bondpark9;e} holds, which
+establishes the reduced rank of the system of equations.
+
+  We can use \Ep{bondpark12} to compute $e_S'$, the transfer from
+ period  $1$ onward.   In particular,
+$e_S'$ satisfies $ y = u_L(0) + e_S' + \beta y$.   Subtracting
+\Ep{bondpark9;b} from this equation gives
+$$ y - v_L = e_S' - e_S > 0.$$
+
+Thus, when
+$v_L < v_L^{*}$, country $S$ induces country $L$ immediately
+to reduce its tariff to zero by paying transfers that rise between
+period $0$  and period $1$ and that  thereafter remain constant.
+That the initial tariff is zero means that we are immediately
+on the unconstrained Pareto frontier.  It just takes time-varying
+transfers to put us there.
+
+%%%%%%%%%%%%
+%$$ \grafone{bondpark1.eps,height=2.5in}{{\bf Figure XXX.1}
+%The constrained Pareto frontier $v_S = P(v_L)$
+%in the Bond-Park model.}$$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\midfigure{bondpark1f}
+\centerline{\epsfxsize=3truein\epsffile{bondpark1.eps}}
+\caption{The constrained Pareto frontier $v_S = P(v_L)$ in the Bond-Park model.}
+\infiglist{bondpark1f}
+\endfigure
+
+
+\vskip.5cm
+\medskip
+\noindent
+{\bf Interpretations}
+\smallskip
+\noindent For values of $v_L$ within
+regions II and III, time-invariant transfers $e_S$ from country
+$S$ to country $L$ are not capable of sustaining immediate and
+enduring free trade.  But patterns of time-varying transfers
+and tariff reductions are able to induce both countries to
+move permanently to free trade after a one-period transition.
+There is an asymmetry between regions II and III, revealed in
+%figure XXXX.1
+Figure \Fg{bondpark1f} and in our finding that $t_L=0$ in region III, so
+that the move to free trade is immediate.
+The asymmetry emerges from a difference in the quality of
+instruments that the unconstrained country ($L$ in region II, $S$ in
+region III) has to induce the constrained country eventually to accept free
+trade by moving those instruments over time appropriately to
+manipulate the continuation values of the constrained country
+to gain its assent.  In region II, where $S$ is constrained,
+all that $L$ can do is manipulate the time path of $t_L$,
+a relatively inefficient instrument because it is a distorting
+tax.  By lowering $t_L$ gradually, $L$ succeeds in raising
+ the continuation
+values of $S$ gradually, but at the cost of imposing a distorting
+tax, thereby keeping $(v_L, P(v_L))$ inside the Pareto frontier.
+In region III, where $L$ is constrained, $S$ has at its disposal a
+nondistorting  instrument for  raising country $L$'s continuation
+value by  increasing the transfer $e_S$ after period $0$.
+
+
+The basic principle at work is   to  make the continuation
+value rise for the country whose participation constraint
+is binding.
+
+\subsection{Multiplicity of payoffs and continuation values}
+
+We now find more equilibrium policies
+that support values in our three regions.
+The unconstrained Pareto frontier is a straight line in the
+space $(v_L, v_S)$ with a slope of $-1$:
+$$ v_L + v_S = {u_W(0) \over 1-\beta} \equiv W.
+$$
+This reflects the fact that utility is perfectly transferable
+between the two countries. As a result, there is a continuum
+of ways to pick current payoffs $\{r_i;\, i=L,S\}$ and
+continuation values $\{v_i';\, i=L,S\}$ that deliver
+the promised values $v_L$ and $v_S$
+to country $L$ and $S$, respectively. For example, each
+country could receive a current payoff equal to the annuity
+value of its promised value, $r_i = (1-\beta)v_i$, and retain its
+promised value as a continuation value, $v_i' = v_i$.
+That would clearly deliver the promised value to each country,
+$$
+r_i + \beta v_i' = (1-\beta) v_i + \beta v_i = v_i.
+$$
+Another example would reduce the prescribed current payoff to
+country $S$ by $\triangle_S>0$ and increase the prescribed payoff
+to country $L$ by the same amount. Continuation values $(v_S',v_L')$
+would then have to be set such that
+$$ \EQNalign{
+& (1-\beta) v_S - \triangle_S + \beta v_S' = v_S, \cr
+& (1-\beta) v_L + \triangle_S + \beta v_L' = v_L. \cr}
+$$
+Solving from these equations, we get
+$$
+\triangle_S = \beta (v_S' - v_S) = - \beta (v_L' - v_L).
+$$
+Here country $S$ is compensated for the reduction in current
+payoff by an equivalent increase in the discounted
+continuation value, while
+country $L$ receives corresponding changes of
+opposite signs.
+
+Since the constrained Pareto frontier coincides with the
+unconstrained Pareto frontier in regions I and III,
+we would expect that the tariff games would also be  characterized
+by multiplicities of payoffs and continuation values. We will now
+examine how the participation constraints shape
+the range of admissible equilibrium values.
+
+
+\vfil\eject
+\medskip
+\noindent
+{\bf Region I (revisited):} $v_L \in [v_L^*, v_L^{**}]$
+\smallskip
+\noindent From our earlier analysis, an equilibrium in region I satisfies
+$$ \EQNalign{
+& u_L(0) + e_S + \beta y = v_L,                  \EQN regionI;a \cr
+& u_L(0) + e_S + \beta y \geq u_L(t_L^N) + e_S + \beta v_L^N,
+                                                 \EQN regionI;b \cr
+& u_S(0) - e_S + \beta (W - y) \geq u_S(0) +\beta v_S^N  ,
+                                                 \EQN regionI;c \cr} $$
+where we have invoked that $P(y)=W-y$ in regions I and III.
+We  consider only $y \in [v_L^N, v_L^{**}]$ because our
+earlier analysis ruled out any transitions from region I to region II.
+
+Equation \Ep{regionI;a} determines the transfer and continuation
+value needed to deliver the promised value $v_L$ to country $L$
+under free trade:
+$$
+e_S + \beta y = v_L - u_L(0).
+$$
+The participation constraint for country $S$ requires that
+inequality \Ep{regionI;c} be satisfied, which can be rewritten as
+$$
+e_S + \beta y \leq \beta (W - v_S^N) .      \EQN regionIS
+$$
+Since we are postulating that we are in region I with no
+binding participation constraints, this condition
+is indeed satisfied. Notice that incentive compatibility on
+behalf of country $S$ does not impose any restrictions on the
+mixture of transfer and continuation value
+that deliver $e_S+\beta y$ to country $L$ beyond
+our restriction above that $y \leq v_L^{**}$.
+
+Turning to the participation constraint for country $L$,
+we can rearrange inequality \Ep{regionI;b} to become
+$$
+y \geq \beta^{-1} \Bigl(u_L(t_L^N) + \beta v_L^N - u_L(0) \Bigr)
+= \beta^{-1} \Bigl(v_L^N - u_L(0) \Bigr) = v_L^*.
+$$
+Thus, there cannot be a transition from region I to region III, a result
+to be interpreted as follows.
+We showed earlier that free trade is not incentive compatible with a time-invariant
+transfer when the promised value of country $L$ lies in region III.
+In other words, an initial promised value in region III cannot
+by itself serve
+as a continuation value to support free trade.
+Now we are trying to attain free trade by offering country $L$
+a continuation value in that very region III together with
+a transfer that is even larger than the time-invariant transfer
+considered earlier. (The transfer is larger than the
+earlier time-invariant transfer because the initial
+promised value $v_L$ is now assumed to lie in region I.)
+Since that continuation value in region III was not incentive compatible for
+country $L$ at a smaller transfer from country $S$, it will
+certainly not be incentive compatible now when the transfer
+is larger.
+
+We conclude that there is a multiplicity of current payoffs and
+continuation values in region I. Specifically, admissible equilibrium
+continuation values are
+$$
+y \in \left[ v_L^*, \;
+          \min \left\{\beta^{-1}\left(v_L - u_L(0)\right),\, v_L^{**}\right\}\right],
+                                                    \EQN regionIrange
+$$
+where the upper bound incorporates our nonnegativity constraint
+on transfers from country $S$ to country $L$, i.e., imposing
+$e_S\geq 0$ in equation \Ep{regionI;a}.
+
+
+\vskip.5cm
+\medskip
+\noindent
+{\bf Region II (revisited):} $v_L > v_L^{**}$
+\smallskip
+\noindent From our earlier analysis, an equilibrium in region II satisfies:
+$$ \EQNalign{
+& u_L(t_L) + e_S + \beta y = v_L                   \EQN regionII;a \cr
+& u_L(t_L) + e_S + \beta y \geq u_L(t_L^N) + e_S + \beta v_L^N
+                                                 \EQN regionII;b \cr
+& u_S(t_L) - e_S + \beta (W - y) = u_S(t_L) +\beta v_S^N  ,
+                                                 \EQN regionII;c \cr} $$
+where $0<t_L<t_L^N$ and we have used our earlier finding that the continuation
+value $y$ will be in the region of the constrained Pareto frontier
+whose slope is $-1$, i.e., $y \in [v_L^N, v_L^{**}]$ for which
+$P(y)=W-y$.
+
+Equation \Ep{regionII;c} determines the combination of the transfer and
+continuation value received by country $L$:
+$$
+e_S + \beta y = \beta (W - v_S^N) .
+$$
+Once again, this participation constraint for
+country $S$ does not impose any restrictions on the
+relative composition of the transfer versus the continuation value
+assigned to country $L$ (besides
+our restriction above that $y \leq v_L^{**}$). For region II,
+we have already shown that
+the combined value of $e_S+\beta y$ is not sufficient to
+support free trade, and that the necessary tariff in period 0 can
+then be computed from equation \Ep{regionII;a}.
+
+Finally, the participation constraint \Ep{regionII;b}
+for country $L$
+does impose a restriction on admissible equilibrium continuation
+values $y$,
+$$
+y \geq \beta^{-1} \Bigl(u_L(t_L^N) + \beta v_L^N - u_L(t_L) \Bigr)
+= \beta^{-1} \Bigl(v_L^N - u_L(t_L) \Bigr).
+$$
+Notice that this lower bound on admissible values of $y$ lies
+inside region III,
+$$
+\beta^{-1}\Bigl(v^N_L -u_L(t_L)\Bigr) \cases{
+> \beta^{-1} \Bigl(v^N_L -u_L(t^N_L)\Bigr) = v^N_L, &\cr
+\noalign{\vskip.1cm}
+< \beta^{-1} \Bigl(v^N_L -u_L(0)\Bigr) = v^*_L. &\cr}
+$$
+In contrast to our analysis of region I, a transition
+into region III is possible when the initial promised value
+belongs to region II. The reason is that the constrained
+efficient tariff is then strictly positive in period $0$, which
+relaxes the participation constraint for country $L$.
+Hence, the range of admissible continuation values in region II
+becomes
+$$
+y \in \left[ \beta^{-1}\left(v^N_L - u_L(t_L)\right),\; v_L^{**}\right].
+$$
+
+
+\vskip.5cm
+\medskip
+\noindent
+{\bf Region III (revisited):} $v_L \in  [v_L^N, v_L^{*})$
+\smallskip
+\noindent The study of multiplicity of current payoffs and continuation
+values in region III exactly parallels our analysis of region I.
+The range of admissible continuation values is once again given
+by \Ep{regionIrange}. The lower bound of $v^*_L$ is pinned down
+by the participation constraint \Ep{regionI;b}
+for country $L$ and
+this implies an immediate transition out of region III into region I.
+
+For the lowest possible promised value $v_L = v_L^N$, the range
+of continuation values in \Ep{regionIrange} becomes degenerate,
+with only one admissible value of $y=v^*_L$. From equation
+\Ep{regionI;a}, we can verify that the pair
+$(v_L,y)=(v^N_L,v^*_L)$ implies an equilibrium transfer that is
+zero, $e_S=0$. For any other promised value in region III, $v_L\in
+(v_L^N, v_L^{*}]$, there is a multiplicity of current payoffs and
+continuation values. We can then pick a continuation value
+$y>v^*_L$ that implies that the participation constraint
+for country $L$ is not binding. Without any binding
+participation constraints, it becomes apparent why our
+analysis of multiplicity in region I is also valid for region III.
+
+
+\section{Another model}
+Fuchs and Lippi (2006) are  motivated by a vision  about the nature of monetary unions that was not well captured by work in the previous literature.
+In particular, earlier work (1) assumed away commitment problems between members  that would occur within  an ongoing currency union, and (2)
+modeled the consequences of abandoning a currency  as reversion to a worst case outcome of a repeated game played by independent monetary-fiscal
+authorities.  The Fuchs-Lippi paper repairs both of these deficiencies by (1) imposing participation constraints each period for each member within
+a currency union, and   (2) assuming that the consequence of a breakup is to move to the {\it best\/} outcome of the game played by independent monetary-fiscal authorities.
+
+Here is the setup. Two countries have ideal levels of a policy setting (e.g., an interest rate) that are each hit by country-specific
+idiosyncratic shocks.  The history of these shocks is common knowledge.  When not in a union, the countries play a repeated game. The best
+equilibrium outcome is the point to which the countries  revert after a breakup. When in a union, the two countries play another repeated game.  The authors
+model the benefit of being in the union as making it harder to effect a surprise change than it is outside it, thereby making it easier to abstain
+from opportunistic monetary policy that, e.g., exploits the Phillips curve to get short run benefits in exchange for long-run costs.
+\auth{Fuchs, William}%
+\auth{Lippi, Francesco}%
+
+The authors use `dynamic programming squared' to express  equilibrium strategies within the currency union game in terms of the current observed shock vector
+and continuation values. The union  chooses a `public good', namely, the common policy each period.
+It is a weighted average of the ideal points for the two
+individual countries, with the weights being tilted a country whose participation constraint is binding that period.  The authors show that there
+are three possible cases: (1) the shocks and initial continuation values are such that only country A's constraint is binding, in which case the policy tilts toward country A's ideal point;
+(2) only country B's participation constraint is binding, in which case the policy tilts toward country B's ideal point; (3) the continuation values
+and shocks are such that both countries' participation constraints are binding.  In case (3), the currency union breaks up.
+
+  Depending on the specification of functional forms, preferences, and the joint distribution of shocks, case (3) may or may not be possible.  When it is, one can use the model to calculate waiting times to breakup of a union.  Many currency unions have broken up in the past, an observation
+  that could be used to help reverse engineer parameter values -- something that the authors don't do.
+
+  It is interesting to compare this model with an earlier risk-sharing model of Thomas and Worrall  and Kocherlakota that we studied in chapter \use{socialinsurance}. In that model, there was no case 3 and the analogue of the union, the relationship between the firm and the worker in Thomas and Worrall or between two consumers in Kocherlakota, lasts forever. One never observes defaults along the equilibrium path.  What is the source of the different  outcome
+   in the Fuchs-Lippi model? The answer hinges on the part of the payoff structure of the Fuchs-Lippi model that
+  captures the `public good' aspect of the monetary union policy choice. Both countries have to live with the same setting of a policy instrument
+  and what one gains the other does not necessarily lose.  In the chapter \use{socialinsurance} model, each period when one person gets more, the other necessarily gets less, creating a symmetry in the participation constraints that prevents them from binding simultaneously.
+
+\section{Concluding remarks}
+
+Although the substantive application differs, mechanically
+the models of this chapter work much like models that we studied in
+chapters \use{stackel}, \use{socialinsurance}, and \use{credible}.  The key idea
+is to cope with binding incentive constraints (in this case, participation
+constraints), partly by changing the continuation values for those
+agents whose incentive constraints  are binding.   For example, that creates
+``intertemporal tie-ins'' that  Bond and Park
+interpret as ``gradualism.''
+
+\appendix{A}{Computations for Atkeson's model}
+
+  It is instructive to compute  a numerical example of the optimal
+contract for Atkeson's (1988) model.  Following Atkseson, we work with the
+following numerical example.  Assume
+$u(c) = 2 c^{.5}, \lambda(I) = \bigl({I \over Y_n + 2M}\bigr)^{.5},
+g_i(Y_j)={\exp^{-\alpha_i Y_j} \over \sum_{k=1}^n \exp^{-\alpha_i Y_k}}$
+with $n=5, Y_1 =100, Y_n =200, M=100, \alpha_1 = \alpha_2 =-.5, \delta =.9$.
+ Here is  a version of  Atkeson's numerical algorithm:
+\auth{Atkeson, Andrew}
+\medskip
+\noindent{1.}  First, solve the Bellman equation \Ep{bellmanaut} and
+\Ep{foncautark}
+for the autarky value $U(Q)$.
+Use a polynomial for the value function.\NFootnote{We recommend the
+Schumaker shape-preserving spline mentioned in chapter \use{practical} and
+described by Judd (1998).}
+\index{spline!shape preserving}
+\medskip
+
+\noindent{2.}  Solve the Bellman equation for the full-insurance
+setting for the value function $W(Q)$ as follows.
+First, solve equation \Ep{atnew5} for $I$.  Then solve equation
+\Ep{atnew6;b} for $d(Y') = Y' - Q$ and compute $c = c(Q)$ from
+\Ep{atnew6;a}.  Since $c$ is constant, $W(Q) =  u[c(Q)]$.
+\medskip
+Now, solve the Bellman equation for the contract with limited commitment
+and unobserved action.
+First, approximate $V(Q)$   by a polynomial, using
+the method described in chapter \use{practical}.
+Next, iterate on the Bellman equation, starting from
+initial value function $V^0(Q) = W(Q)$ computed earlier. As
+Atkeson shows, it  is
+important to start with a value function {\it above} $V(Q)$.
+We know that $W(Q) \geq V(Q)$.
+
+
+Use the following steps:
+
+\medskip
+\item{1.} Let $V^j(Q)$ be the value function at the $j$th
+iteration.  Let $d$ be the vector $\left[\matrix{d_1 & \ldots & d_n \cr}
+\right]'$.   Define
+$$ X(d) = \sum_i V^j (Y_i - d_i) [g_0(Y_i) - g_1(Y_i)]. \EQN foncI $$
+   The first-order condition
+for the borrower's problem \Ep{bellman1;e} is
+$$ -(1-\delta) u'(Q+b-I) + \delta \lambda'(I) X \geq 0,
+\quad = 0 \ {\rm if} \ I >0. $$
+Given a candidate
+continuation value function $V^j$, a value $Q$,
+and    $b, d_1, \ldots, d_n$, solve the borrower's
+first-order condition for a function
+ $$ I = f(b, d_1, \ldots, d_n; Q).  $$
+Evidently, when $X(d) <0$, $I=0$.  From equation \Ep{foncI} and
+the particular example,
+$$ I=f(b,d;Q) = {\delta^2 (Y_n + 2M) X(d)^2 \over 4(1-\delta)^2
+       + \delta^2 (Y_n + 2M) X(d)^2 } (Q +b).  \EQN compute1  $$
+Summarize this equation in a Matlab function.
+
+
+\medskip
+\item{2.}  Use equation \Ep{compute1} and the constraint \Ep{bellman1;c}
+at equality to form
+$$ b= \delta \sum_i d_i g[Y_i, f(b, d)]. $$
+Solve this equation for a new function
+$$ b= m(d) .\EQN compute2 $$
+\medskip
+\item{3.}  Write one step on the Bellman equation
+as
+$$\eqalign{ V^{j+1}(Q) = & \max_{d} \Biggl\{ (1-\delta)
+     u\bigl[Q + m(d) -
+f(m(d), d)\bigr] \cr
+  & +  \delta \sum_i  V^j(Y_i - d_i) g\bigl[Y_i,
+   f(m(d), d)\bigr] \cr
+& - \sum_i \theta_i \Bigl[ \max\bigl(0,U(Y_i) -
+    V^j(Y_i-d_i)\bigr) \Bigr] \cr
+  & - \sum_i \eta_i \max[0, -d_i - M] - \eta_0 \max[0, m(d) -M] \Biggr\}, \cr}
+                                        \EQN compute3$$
+where $V^j(Q)$ is the value function at the $j$th iteration, and
+$\theta_i >0, \eta_i$ are positive penalty parameters designed
+to enforce the participation constraints \Ep{bellman1;d} and
+the restrictions on the size of borrowing and repayments.
+The idea is to set the $\theta_i$'s and $\eta_i$'s  large enough to
+assure that $d$ is set so that constraint \Ep{bellman1;d} is satisfied
+for all $i$.
+
+
+
+%\section{Exercises}
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+
+\medskip
+\noindent {\it Exercise \the\chapternum.1}
+\medskip
+\noindent Consider a version of Bond and Park's model with
+$\gamma_S=.4$ and  the payoff functions  \Ep{bppayoff1;a} and
+\Ep{bppayoff1;b}, with
+$$\eqalign{ u_L(t_L)  &  = -.5 (t_L - .5 )^2  \cr
+            u_W(t_L)  &  = - .5 t_L^2 ,    \cr}  $$
+where $u_W(t_L) = u_L(t_L) + u_S(t_L)$.
+\medskip
+\noindent{\bf a.} Compute the cutoff value $\beta_c$ from \Ep{betac}.
+For $\beta \in (\beta_c,1)$, compute
+$v_L^*, v_L^{**}$.
+\medskip
+\noindent
+{\bf b.}  Compute the constrained Pareto frontier.  ({\it Hint:}  In
+region II, use \Ep{bondpark6} for a grid of values
+$v_L$ satisfying $v_L > v_L^{**}$.)
+
+\medskip
+\noindent{\bf c.}  For a given $v_L \in (v_L^N, v^*)$,
+compute $e_S, e_S', y$.
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.2} \quad
+\medskip
+\noindent Consider the Bond-Park model
+analyzed above.   Assume that in region III,  $\mu_L >0, \mu_S =0$.  Show
+that this leads to a contradiction.

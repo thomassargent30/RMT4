@@ -1,0 +1,4068 @@
+\input grafinp3
+%\input grafinput8
+\input psfig
+%\eqnotracetrue
+
+%\input form1
+
+\input psfig
+%\input grafinput8
+
+%\showchaptIDtrue
+%\def\@chaptID{7.}
+
+%\hbox{}
+\footnum=0
+\chapter{Equilibrium with Complete Markets\label{recurge}}
+
+\section{Time $0$ versus sequential trading}
+ This chapter describes competitive   equilibria
+of a pure exchange infinite horizon economy with stochastic
+endowments.  These are  useful for studying risk sharing,
+asset pricing, and consumption.       We describe two systems of markets:  an {\it Arrow-Debreu\/} structure with complete
+markets in dated contingent claims all traded at time $0$,
+\auth{Arrow, Kenneth J.}\auth{Debreu, Gerard}%
+ and a
+sequential-trading structure with complete one-period {\it Arrow
+securities\/}.
+ \index{Arrow securities}%
+These two entail different assets  and timings of
+trades, but have identical consumption allocations.
+Both are referred to as complete markets
+economies.  They allow more comprehensive sharing of risks
+than do the incomplete markets economies to be
+studied in chapters \use{selfinsure} and \use{incomplete}, or the economies
+with imperfect enforcement or imperfect information, studied  in chapters
+\use{socialinsurance} and \use{socialinsurance2}.
+\index{complete markets}
+
+
+
+
+\section{The physical setting: preferences and endowments}
+%%\subsection{Preferences and endowments}
+In each period $t\geq 0$, there is a realization of a stochastic
+event $s_t \in S$. Let the history of events up and until time $t$
+be denoted $s^t = [s_0, s_1, \ldots, s_t]$. The unconditional
+probability of observing a particular sequence of events $s^t$ is
+given by a probability measure $\pi_t(s^t)$. For $t > \tau$, we write the probability
+of observing $s^t$ conditional on the realization of $s^\tau$as $\pi_t(s^t\vert s^\tau)$.
+In this chapter, we shall assume that trading occurs after
+observing $s_0$,
+which we capture by setting $\pi_0(s_0)=1$ for the initially
+given value of $s_0$.\NFootnote{Most of our formulas carry over to
+the case where trading occurs before $s_0$ has been realized;
+just postulate a nondegenerate probability
+distribution $\pi_0(s_0)$ over the initial state.}
+%so that the appropriate distribution of $s^t$ is
+%conditional on $s_0$.\NFootnote{Most of our formulas carry over to
+%the case where trading occurs before $s_0$ has been realized; just
+%replace the probability measure $\pi_t(s^t\vert s_0)$ by
+%$\pi_t(s^t)$.}
+
+ In section \use{sec:Markovs} we shall follow much of the
+ literatures in macroeconomics and econometrics and assume that
+ $\pi_t(s^t)$ is induced by  a Markov process. We wait to impose
+ that special assumption until section \use{sec:Markovs} because some important findings do not
+ require making that assumption.
+
+
+
+
+There are $I$ consumers named $i=1, \ldots , I$. Agent $i$
+owns a stochastic endowment of one good
+$y_t^i(s^t)$ that depends on the
+history $s^t$.
+The history $s^t$ is publicly observable.
+Household $i$
+purchases a history-dependent  consumption plan $c^i =
+ \{c_t^i(s^t)\}_{t=0}^\infty$ and
+orders these
+consumption streams by\NFootnote{Exercises  \the\chapternum.13 -  \the\chapternum.17
+study examples in which we replace \Ep{eq0} with
+$$ U_i(c^i) =
+   \sum_{t=0}^\infty \sum_{s^t} \beta^t u_i[c_t^i(s^t)]
+   \pi_t^i(s^t), $$
+where $\pi^i(s^t)$ is a personal probability distribution specific to consumer $i$.  Blume and Easley
+(2006) studied such settings and focused  particularly on whose  beliefs ultimately influence  tails
+of allocations and prices. We discuss related consequences of heterogenous beliefs and   heterogenous discounting in
+appendices to this chapter.
+%Throughout most of this chapter, we adopt the assumption, routinely
+%employed in much of macroeconomics,
+%that all agents share  probabilities.
+}
+\auth{Blume, Lawrence}%
+\auth{Easley, David}%
+$$ U_i(c^i) =
+   \sum_{t=0}^\infty \sum_{s^t} \beta^t u_i[c_t^i(s^t)]
+   \pi_t(s^t),
+ \EQN eq0 $$
+ where $0 < \beta < 1$.
+The right side is equal to $ E_0 \sum_{t=0}^\infty \beta^t
+u_i(c_t^i) $, where $E_0$ is the mathematical expectation operator,
+conditioned on $s_0$. Here $u_i(c)$ is an increasing, twice
+continuously differentiable, strictly concave function of
+consumption $c\geq 0$  of one good. The utility function satisfies
+the Inada condition\NFootnote{This Inada condition implies that each
+agent chooses strictly positive consumption for every
+date-history pair. Those interior solutions enable us to confine our
+analysis to Euler equations that hold with equality and also guarantee that
+`natural debt limits' don't bind  in economies with
+sequential trading of Arrow securities.}
+%%\NFootnote{One role of this Inada
+%%condition is  to make
+%%the consumption of each agent strictly positive in every
+%%date-history pair.  A related role is to deliver a state-by-state borrowing limit
+%%to impose in economies with sequential trading of Arrow securities.}
+%justify the  restrictions that we impose
+%on the quantity
+%of Arrow  securities that can be issued.}
+$$ \lim_{c \downarrow 0} u'_i(c) = +\infty.$$
+
+%%TOM: I have percentaged out the following paragraph because it might be too
+%%much to ask from the students at this point. (In any case, we should delete
+%%the reference to `common utility function,' after our generalization above.
+%%The preceding footnote might suffice where we announce what will be discussed
+%%in the appendices of this chapter.
+
+%Notice that in assuming \Ep{eq0}, we are imposing  identical preference orderings
+%across all individuals $i$ that can be represented in terms of discounted
+%expected utility
+%with  common $\beta$, common utility function $u(\cdot)$, and common probability
+%distributions $\pi_t(s^t)$. As we proceed through this chapter,
+%watch for results that would evaporate if we were
+%instead to allow $\beta, u(\cdot)$, or $\pi_t(s^t)$ to depend on $i$.
+
+A {\it feasible allocation} satisfies
+$$\sum_i c_t^i(s^t) \leq \sum_i y_t^i(s^t)  \EQN eq4 $$
+for all $t$ and for all $s^t$.
+
+
+\section{Alternative trading arrangements}
+For a two-event stochastic process $s_t \in S = \{0, 1\}$, the
+trees in Figures \Fg{tree1f} and \Fg{tree2f} % 7.1 and 7.2
+ give
+two portraits of how histories $s^t$ unfold.  From the
+perspective of time $0$ given $s_0=0$, Figure \Fg{tree1f} portrays
+all prospective histories possible up to time
+$3$. Figure \Fg{tree2f} portrays  a {\it particular\/} history that it is
+known the economy has indeed followed up to   time $2$, together
+with the  two possible one-period continuations into period $3$
+that can occur after that history.
+
+
+\midfigure{tree1f}
+\centerline{\epsfxsize=3truein\epsffile{tree1.eps}} \caption{The
+Arrow-Debreu commodity space for a two-state Markov chain. At time
+$0$, there are trades in time $t=3$ goods for each of the eight
+nodes that signify histories that can possibly be reached starting from
+the node at time $0$.} \infiglist{tree1f}
+\endfigure
+
+
+
+In this chapter we shall study two distinct trading arrangements
+that correspond, respectively,  to the two views of the economy in
+Figures \Fg{tree1f} and \Fg{tree2f}. %7.1 and 7.2.
+One is
+what we shall call the Arrow-Debreu structure.  Here  markets meet
+at time $0$ to  trade claims to consumption at all times $t >0$
+and that are contingent on all possible histories up to $t$,
+$s^t$. In that economy, at time $0$ and for all $t \geq 1$, households trade claims on
+the time $t$ consumption good {\it at all nodes\/} $s^t$. After
+time $0$, no further trades occur.
+     The other economy has {\it sequential\/} trading of
+only one-period-ahead state-contingent claims. Here trades of one-period ahead state-contingent claims occur
+at each date $t \geq 0$.   Trades for history
+$s^{t+1}$--contingent date $t+1$ goods occur only at the {\it
+particular\/}   date $t$ history $s^t$ that has been reached at
+$t$, as in Figure \Fg{tree2f}.   %.
+ It turns out that  these two trading
+arrangements support identical equilibrium allocations. Those
+allocations share the notable property of  being functions only of
+the {\it aggregate\/} endowment realization $\sum_{i=1}^I y_t^i(s^t)$ and time-invariant
+parameters describing the initial distribution of wealth.
+
+
+
+
+
+
+\subsection{History dependence}
+Before trading, the situation of household $i$ at time $t$ depends on the history $s^t$.
+  A natural measure of household
+$i$'s luck in life is  $\{y^i_0(s_0), y^i_1(s^1), \ldots,$
+$ y^i_t(s^t)\}$, which evidently in general depends on the history $s^t$. A
+question that will occupy us in this chapter and in chapters
+\use{incomplete} and
+\use{socialinsurance} is whether, after trading, the household's
+consumption allocation at time $t$ is also history dependent.  Remarkably, in
+the complete markets models of this chapter, the consumption
+allocation  at time $t$  depends only on the aggregate
+endowment realization at time $t$ and some time-invariant parameters that describe the time $0$ {\it initial\/} distribution of wealth. The market incompleteness of chapter
+\use{incomplete} and the  information and enforcement frictions of
+chapter \use{socialinsurance} will break that result and put
+history dependence into equilibrium allocations.
+
+
+
+\topfigure{tree2f}
+\centerline{\epsfxsize=3truein\epsffile{tree2.eps}} \caption{The
+commodity space with Arrow securities.  At date $t=2$, there are
+trades in time $3$ goods for only those time $t=3$ nodes that can
+be reached from the realized time $t=2$ history $(0,0, 1)$.}
+\infiglist{tree2f}
+\endfigure
+
+%\midinsert
+%$$ \grafone{tree2.eps,height=.9in}{{\bf Figure 7.2}  The commodity space
+%with Arrow securities. At date $t=2$, there are   trades in time $3$
+%goods for only those time $t=3$ nodes that can be  reached from the
+%realized time $t=2$ history $(0,0, 1)$.}
+%$$
+%\endinsert
+\section{Pareto problem}
+As a benchmark against which to measure allocations attained by a
+market  economy, we seek efficient allocations. An allocation is
+said to be efficient if it is Pareto optimal: it has the property
+that any reallocation  that makes one household strictly better
+off also makes one or more other households worse off. We can find
+efficient allocations by posing a Pareto problem for a fictitious
+social planner. The  planner attaches nonnegative {\it Pareto
+weights\/} $\lambda_i, i=1, \ldots, I$ to the consumers' utilities and
+chooses allocations $c^i, i=1, \ldots, I$ to maximize
+$$ W = \sum_{i=1}^I \lambda_i U_i(c^i)  \EQN planner1  $$
+subject to \Ep{eq4}.
+We call an allocation {\it efficient\/}
+if it solves this problem for some set of
+nonnegative $\lambda_i$'s.
+Let $\theta_t(s^t)$ be a nonnegative Lagrange multiplier on the
+feasibility constraint \Ep{eq4}
+for time  $t$ and  history  $s^t$,  and form
+the Lagrangian
+$$ L =
+ \sum_{t=0}^\infty \sum_{s^t}
+   \left\{  \sum_{i=1}^I \lambda_i \beta^t u_i(c_t^i(s^t)) \pi_t(s^t)
+     + \theta_t(s^t) \sum_{i=1}^I [ y_t^i(s^t) - c_t^i(s^t) ]  \right\} . $$
+The first-order condition for maximizing $L$
+with respect to $c_t^i(s^t)$ is
+$$ \beta^t u'_i(c_t^i(s^t))\pi_t(s^t) = \lambda_i^{-1}  \theta_t(s^t)
+\EQN planner2 $$
+for each $i, t, s^t$.  Taking the ratio of \Ep{planner2} for  consumers
+$i$ and $1$, respectively,
+gives
+$$ {u'_i(c^i_t(s^t)) \over u'_1(c^1_t(s^t))} = {\lambda_1  \over \lambda_i}  \EQN foncPareto101 $$
+which implies
+$$ c_t^i(s^t) = u^{\prime -1}_i
+    \left(\lambda_i^{-1} \lambda_1 u'_1(c_t^1(s^t)) \right). \EQN planner3
+$$
+Substituting \Ep{planner3} into feasibility condition \Ep{eq4} at
+equality gives
+$$ \sum_i u^{\prime -1}_i
+    \left(\lambda_i^{-1} \lambda_1 u'_1(c_t^1(s^t)) \right)
+  = \sum_i y_t^i(s^t)  . \EQN planner4 $$
+Equation \Ep{planner4} is one equation in the one unknown  $c_t^1(s^t)$. The right
+side of \Ep{planner4} is the realized aggregate endowment, so the
+left side is  a function only of the aggregate endowment. Thus, given $\{\lambda_i\}_{i=1}^I$,
+$c_t^1(s^t)$ depends only on the current realization of the
+aggregate endowment and not separately  either on  the date $t$ or on the specific history $s^t$
+leading up to that aggregate endowment or  the cross-section distribution of individual
+endowments realized at $t$. Equation \Ep{planner3} then implies that for all $i$,
+$c_t^i(s^t)$ depends only on the aggregate endowment realization.
+We thus have:
+\medskip
+\noindent{\sc Proposition 1:} An efficient allocation is a function of
+the realized aggregate endowment and  does not depend separately  on either the specific history $s^t$
+leading up to that aggregate endowment or on the cross-section distribution of individual
+endowments realized at $t$: $c_t^i(s^t)=c_\tau^i(\tilde
+s^{\tau})$ for $s^t$ and $\tilde s^{\tau}$ such that $\sum_j
+y_t^j(s^t) = \sum_j y_\tau^j(\tilde s^{\tau})$.
+\medskip
+
+ To compute the optimal allocation, first solve  \Ep{planner4}
+for $c_t^1(s^t)$, then solve \Ep{planner3} for $c_t^i(s^t)$.
+Note  from \Ep{planner3} that only the ratios of the Pareto weights matter,
+so that we are free to normalize the weights, e.g., to impose
+$\sum_i \lambda_i=1$.
+
+
+
+\subsection{Time invariance of Pareto weights}
+  Through  equations \Ep{planner3} and \Ep{planner4},
+the allocation $c_t^i(s^t)$ assigned to consumer $i$
+depends in a time-invariant way on the aggregate endowment
+$\sum_j y_t^j(s^t)$.  Consumer $i$'s share of the aggregate endowment varies
+directly with his Pareto weight $\lambda_i$.   In chapter
+\use{socialinsurance}, we shall see that the constancy through
+time of the Pareto weights
+ $\{\lambda_j\}_{j=1}^I$ is a telltale sign that there are no
+enforcement- or information-related  incentive problems
+in this economy. In chapter \use{socialinsurance}, when we inject those imperfections  into the environment, the time invariance of the Pareto
+weights evaporates.
+\index{Pareto weights!time invariance}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Time $0$ trading: Arrow-Debreu securities}
+We now describe how an optimal allocation can be attained by a
+competitive equilibrium with the Arrow-Debreu timing. Households
+trade dated history-contingent claims to consumption. There is a
+complete set of securities. Trades occur at time $0$, after $s_0$
+has been realized. At $t=0$, households can exchange claims on
+time $t$ consumption, contingent on history $s^t$ at price
+$q_t^0(s^t)$, measured in some unit of account. The superscript $0$ refers to the date at which
+trades occur, while the subscript $t$ refers to the date that
+deliveries are to be made.  The household's budget constraint is
+$$ \sum_{t=0}^\infty \sum_{s^t}  q_t^0(s^t)  c_t^i(s^t)   \leq
+   \sum_{t=0}^\infty \sum_{s^t}  q_t^0(s^t) y_t^i(s^t).   \EQN eq2 $$
+The household's problem is to choose  $c^i$
+to maximize expression \Ep{eq0} subject to inequality  \Ep{eq2}.
+%Here $q_t^0(s^t)$
+%is the price of time $t$ consumption contingent on
+%history $s^t$ at $t$ in terms of an abstract unit of account
+%or  numeraire.
+
+Underlying the {\it single\/}  budget constraint \Ep{eq2} is the
+fact that multilateral   trades are possible through a clearing
+operation that keeps track of net claims.\NFootnote{In
+ the language of modern payments systems, this is a system
+with net settlements, not gross settlements, of trades.}
+All trades occur at time $0$.  After time $0$, trades that
+were agreed to at time $0$ are executed, but no more trades occur.
+
+
+Attach a Lagrange multiplier $\mu_i$ to each household's  budget constraint  \Ep{eq2}.
+We obtain the
+first-order conditions for the household's problem:
+$$  {\partial U_i(c^i) \over \partial c_t^i(s^t)} = \mu_i q_t^0(s^t), \EQN eq3b $$
+for all $i, t, s^t$.
+The left side is the derivative of total utility with respect to
+the time $t$, history $s^t$ component of consumption.  Each
+household has its own Lagrange multiplier $\mu_i$ that is independent of time. With specification \Ep{eq0} of the utility functional,
+we have
+$$ {\partial U_i(c^i) \over \partial c_t^i(s^t)} =   \beta^t
+ u'_i[c_t^i(s^t)] \pi_t(s^t) .  \EQN eq3a $$
+This expression  implies that equation \Ep{eq3b} can be written
+$$ \beta^t u'_i[c_t^i(s^t)] \pi_t(s^t) = \mu_i q_t^0(s^t). \EQN eq3 $$
+
+
+We use the following  definitions:
+\medskip
+\noindent{\sc Definitions:}   A {\it price system} is a sequence of
+functions $\{q_t^0(s^t)\}_{t=0}^\infty$.  An {\it allocation} is
+a list of sequences of functions $c^i=\{c_t^i(s^t)\}_{t=0}^\infty$,
+ one for each $i$.
+\medskip
+\noindent{\sc Definition:} A {\it competitive equilibrium} is
+a feasible allocation and a price system such that, given
+the price system,  the allocation solves
+each household's problem.
+\medskip
+Notice that equation \Ep{eq3} implies
+$$ {u'_i[c_t^i(s^t)] \over
+ u'_j[c_t^j(s^t)] }
+ = {\mu_i\over \mu_j}          \EQN eq5 $$
+for all pairs $(i,j)$.
+Thus, ratios of marginal utilities between pairs of agents are
+constant across all histories and dates.
+
+
+An equilibrium allocation solves equations  \Ep{eq4},  \Ep{eq2},
+and \Ep{eq5}. Note that equation \Ep{eq5} implies that
+$$ c_t^i(s^t) = u^{\prime -1}_i  \left\{u'_1[c_t^1(s^t)] {\mu_i \over \mu_1}
+ \right\}. \EQN eq7 $$
+Substituting this into equation \Ep{eq4} at equality gives
+$$ \sum_i
+u^{\prime -1}_i  \left\{u'_1[c_t^1(s^t)] {\mu_i \over \mu_1}\right\} =
+       \sum_i y_t^i(s^t) .  \EQN eq8 $$
+The right side of equation \Ep{eq8} is the current realization of
+the aggregate endowment. %It does not {\it per se} depend on the
+%specific history leading up this outcome;
+Therefore, the left
+side, and  so $c_t^1(s^t)$,  must also depend only on the current
+aggregate endowment, as well as on the ratios
+$\{ {\frac{\mu_i}{\mu_1}} \}_{i=2}^I$.  It follows from equation \Ep{eq7} that the
+equilibrium allocation $c_t^i(s^t)$ for each $i$ depends only on
+the economy's aggregate endowment as well as on
+$\{ {\frac{\mu_j}{\mu_1}} \}_{j=2}^I$. We summarize this analysis  in
+the following proposition:
+\medskip
+\noindent{\sc Proposition 2:}  The competitive equilibrium allocation
+is a function of the realized aggregate endowment and does not depend
+on time $t$ or the specific history or on
+the cross section distribution of endowments:
+$c_t^i(s^t)=c_\tau^i(\tilde s^{\tau})$ for all histories $s^t$ and $\tilde
+s^{\tau}$ such that $\sum_j y_t^j(s^t) = \sum_j y_\tau^j(\tilde
+s^{\tau})$.
+
+
+%is not history dependent; $c^i_t(s^t)=\bar c^i(s_t)$.
+\medskip
+
+
+\index{history dependence}
+%\medskip
+%The lack of history dependence of the equilibrium allocation is noteworthy.
+%In chapters \use{incomplete} and \use{socialinsurance}, we shall analyze
+%settings in which impediments to trade that emerge from information
+%and enforcement problems cause allocations to be history dependent.
+
+
+
+
+
+
+\subsection{Equilibrium pricing function}
+  Suppose that $c^i$, $i=1, \ldots, I$  is an equilibrium allocation.
+Then the   marginal condition \Ep{eq3b} or \Ep{eq3} can be regarded as determining
+the price system $q_t^0(s^t)$ as a function of the equilibrium allocation assigned
+to household $i$, for any $i$. But to exploit this fact in computation, we need a way first to compute
+an equilibrium allocation without simultaneously  computing prices.  As we shall see soon, solving the planning problem provides a convenient way
+to do that.
+
+
+  Because the units of the
+price system are arbitrary, one of the prices
+can be  normalized
+at any positive value.  We shall set $q^0_0(s_0)= 1$,
+putting the price system in units of time $0$
+  goods. This choice implies that
+ $\mu_i  =  u'_i[c_0^i(s_0)] $
+for all $i$.
+%one of the multipliers
+%can be  normalized
+%at any positive value.  We shall set $\mu_1 =  u'[c_0^1(s_0)]$, so that
+%$q_0^0(s_0) = 1$, putting the price system in units of time $0$
+%  goods.\NFootnote{This choice
+%also implies that $\mu_i  =  u'[c_0^i(s_0)] $
+%for all $i$.}
+
+
+
+\subsection{Optimality of equilibrium allocation}
+  A competitive  equilibrium allocation   is a particular Pareto
+optimal allocation, one that sets the Pareto weights $\lambda_i =
+\mu_i^{-1}$.  These weights are unique up to multiplication by a positive scalar. Furthermore, at a
+competitive equilibrium allocation, the {\it shadow prices\/}
+$\theta_t(s^t)$ for the associated planning problem equal the
+prices $q_t^0(s^t)$ for goods to be delivered at date $t$
+contingent on history $s^t$ associated with the Arrow-Debreu
+competitive equilibrium. That  allocations for the planning
+problem and the competitive equilibrium are identical reflects the
+two fundamental theorems of welfare economics (see Mas-Colell,
+Whinston, and Green (1995)).
+The first welfare theorem states that a  competitive equilibrium allocation is efficient.
+The second welfare theorem states that any efficient allocation can be supported by a competitive equilibrium
+with an appropriate initial distribution of wealth.
+ \auth{Mas-Colell, Andreu}
+\auth{Whinston, Michael D.}\auth{Green, Jerry R.}
+
+
+\subsection{Interpretation of trading arrangement}
+  In the  competitive   equilibrium, all trades occur at $t=0$ in
+one market.  Deliveries occur after $t=0$, but no more trades.
+  A vast clearing or credit system operates at $t=0$.
+It ensures that condition \Ep{eq2} holds for each household
+$i$.   A symptom of the once-and-for-all and net-clearing trading arrangement is
+that each household faces one  budget constraint that accounts
+for  trades across all dates and histories.
+
+
+  In section \use{sec:arrowsecurities}, we describe another trading arrangement with
+more trading dates but fewer securities at each date. %As a prelude
+%to that section, we describe some asset-pricing implications
+%embedded in the model with time $0$ trading. But first we study
+%three examples of equilibrium allocations when markets are
+%complete.
+
+
+\subsection{Equilibrium computation}
+To compute an equilibrium, we have somehow to determine ratios of
+the Lagrange multipliers, $\mu_i / \mu_1$, $i=1, \ldots, I $,
+that appear in equations \Ep{eq7} and \Ep{eq8}.  The following {\it
+Negishi algorithm\/} accomplishes this.\NFootnote{See Negishi
+(1960).}
+\medskip
+\noindent{\bf 1.}  Fix a positive value for one $\mu_i$, say $\mu_1$,
+throughout the algorithm.  Guess  some positive values for the
+remaining  $\mu_i$'s. Then solve  equations \Ep{eq7} and \Ep{eq8} for
+a candidate consumption allocation $c^i, i=1, \ldots, I$.
+
+\medskip
+\noindent{\bf 2.}  Use \Ep{eq3} for any household $i$ to solve for the
+price system $q_t^0(s^t)$.
+\medskip
+\noindent{\bf 3.}  For $i =1, \ldots, I$, check the budget constraint
+\Ep{eq2}.  For those $i$'s for which the cost of consumption
+exceeds the value of their endowment, raise $\mu_i$, while for
+those $i$'s for which the reverse inequality holds, lower $\mu_i$.
+\medskip \noindent{\bf 4.} Iterate to convergence on steps 1-3.
+\medskip
+Multiplying all of the $\mu_i$'s by a positive scalar
+simply  changes the units of the price system. That is why we
+are free to normalize as we have in step 1.
+
+In general, the equilibrium price system and distribution of wealth are mutually determined. Along with the equilibrium allocation, they solve
+a vast system of simultaneous equations.  The Negishi algorithm provides one way to solve those equations.
+In applications, it can be complicated to implement.  Therefore, in order to simplify things,
+  most of the examples and exercises in this chapter specialize  preferences
+in a way that eliminates the dependence of equilibrium prices on the distribution of wealth.
+
+
+
+
+
+
+
+\section{Simpler computational algorithm}
+The preference specification in the following example enables us to avoid iterating on Pareto weights as in
+the Negishi algorithm.
+\subsection{Example 1: risk sharing}\label{sec:ex1_risksharing}%
+\noindent Suppose that the agents have identical preference orderings where
+the one-period utility function is of the constant
+relative risk-aversion (CRRA) form
+$$ u(c) = (1-\gamma)^{-1} c^{1-\gamma} , \ \gamma > 0.$$
+Then equation \Ep{eq5} implies
+$$ [c_t^i(s^t)]^{-\gamma}
+   = [c_t^j(s^t)]^{-\gamma} {\mu_i \over \mu_j} $$
+or
+$$ c_t^i(s^t) = c_t^j(s^t) \left({\mu_i \over \mu_j}\right)^{-{1 \over  \gamma}}.
+    \EQN consmooth $$
+Equation \Ep{consmooth} states that time $t$ elements
+of consumption allocations  to
+distinct agents are
+constant fractions of one another. With a power utility function,
+ it says that  individual
+consumption is perfectly correlated with the aggregate endowment
+or aggregate consumption.\NFootnote{Equation \Ep{consmooth}
+implies that conditional on the history $s^t$, time $t$ consumption $c_t^i(s^t)$
+ is independent of the household's
+individual endowment at $t, s^t$, $y_t^i(s^t)$.  Mace (1991), Cochrane (1991),
+and Townsend (1994) have tested and rejected versions of this
+conditional independence hypothesis. In chapter
+\use{socialinsurance}, we study how particular impediments to
+trade explain these rejections. } \auth{Cochrane, John
+H.} \auth{Mace, Barbara} \auth{Townsend, Robert M.}
+
+The fractions  of the aggregate endowment assigned to each
+individual are independent of the realization of $s^t$.    Thus,
+there is extensive cross-history and cross-time consumption
+sharing. The constant-fractions-of-consumption characterization
+comes from two aspects of the theory: (1) complete markets
+and (2) a  homothetic one-period utility function.
+
+
+\subsection{Implications for equilibrium computation}\label{sec:compeasy}%
+\noindent Equation \Ep{consmooth} and the pricing formula
+\Ep{eq3} imply that an equilibrium price vector satisfies
+$$ q_t^0(s^t) = \mu_i^{-1} \alpha_i^{-\gamma} \beta^t (\overline y_t(s^t))^{-\gamma} \pi_t(s^t) , \EQN price_precompute$$
+%$$ q_t^0(s^t) = \mu_i^{-1} \beta^t \left(\alpha_i \overline y_t(s^t)\right)^{-\gamma} \pi_t(s^t)  $$
+where $c_t^i(s_t) = \alpha_i \overline y_t(s^t)$, $\overline y_t(s^t) = \sum_i y_t^i(s^t)$, and $\alpha_i$ is consumer $i$'s
+fixed consumption share of the aggregate endowment.
+We are free to normalize the price system by setting $\mu_i \alpha_i^{-\gamma}$ for one consumer to an arbitrary positive number.
+
+The homothetic CRRA preference specification that leads to equation \Ep{price_precompute} allows us to compute an equilibrium
+using the following steps:
+\medskip
+\item{1.} Use \Ep{price_precompute} to compute an equilibrium price system.
+
+\medskip
+\item{2.} Use this price system and consumer $i$'s budget constraint to compute
+$$ \alpha_i = {\frac {\sum_{t=0}^\infty \sum_{s^t} q_t^0(s^t) y_t^i(s^t) } {\sum_{t=0}^\infty \sum_{s^t} q_t^0(s^t) \bar y_t(s^t)  } } .$$
+Thus, consumer $i$'s fixed consumption share $\alpha_i$ equals its share of aggregate wealth evaluated at the competitive  equilibrium price vector.
+
+%\section{Further Examples}
+
+
+\subsection{Example 2: no aggregate uncertainty}\label{sec:example2GG}%
+In this example, the endowment structure is sufficiently simple that we can compute an equilibrium without assuming a homothetic
+one-period utility function. Let the stochastic event $s_t$ take values on the unit interval
+$[0,1]$.  There are two households, with $ y_t^1(s^t) =s_t$ and
+$y_t^2(s^t) =1-s_t$.  Note that the aggregate endowment is
+constant, $\sum_i y_t^i(s^t) =1$.  Then equation \Ep{eq8} implies
+that $c_t^1(s^t)$ is constant over time and across histories, and
+equation \Ep{eq7} implies that $c_t^2(s^t)$ is also constant.
+%  We use a guess-and-verify
+%method to find the equilibrium.
+%Guess that
+Thus, the equilibrium allocation satisfies
+$c_t^i(s^t) = \bar c^i$ for all $t$ and $s^t$, for $i=1,2$.  Then
+from equation \Ep{eq3},
+$$ q_t^0(s^t) = \beta^t \pi_t(s^t) {u'_i(\bar c^i) \over \mu_i}, \EQN ADprice $$
+for all $t$ and $s^t$, for $i=1,2$.  Household $i$'s budget constraint
+implies
+ $$ {u'_i(\bar c^i) \over \mu_i} \sum_{t=0}^\infty \sum_{s^t} \beta^t \pi_t(s^t)
+\left[\bar c^i - y_t^i(s^t)\right] = 0 .$$ Solving this equation
+for $\bar c^i$ gives
+$$ \bar c^i =( 1 -\beta) \sum_{t=0}^\infty \sum_{s^t} \beta^t \pi_t(s^t) y_t^i(s^t) .
+      \EQN eq20 $$
+Summing equation  \Ep{eq20} verifies that $\bar c^1 + \bar c^2
+=1$.\NFootnote{If we let $\beta^{-1} = 1 +r$, where $r$ is
+interpreted as the risk-free rate of interest, then note that
+\Ep{eq20} can be expressed as
+$$ \bar c^i =\left({r \over 1+r}\right) E_0 \sum_{t=0}^\infty
+     (1+r)^{-t}  y_t^i(s^t) .
+$$%%      \EQN eq20new $$
+Hence, equation \Ep{eq20} is a version of Friedman's permanent income
+model,  which asserts that a household with zero financial assets
+consumes the annuity value of its human wealth defined as the
+expected discounted value of its labor income (which for present
+purposes we take to be $ y^i_t(s^t)$).  In the present
+example, the household completely  smooths its consumption across
+time and
+  histories,
+something that the household in Friedman's model typically cannot
+do. See chapter \use{selfinsure}.}
+
+
+\subsection{Example 3: periodic endowment processes}
+ Consider the special case of the previous example in which
+ $s_t$ is deterministic and alternates between the values 1 and 0;
+$s_0=1$, $s_t=0$ for $t$ odd, and $s_t=1$ for $t$ even.
+%is a two-state Markov chain taking the two values
+%$\{0,1\}$, with transition probabilities
+%$\pi(1 | 0) = \pi(0 | 1) = 1$,
+%$\pi(0 | 0) = \pi(1 | 1) = 0$. Suppose that
+%$\pi_0(1) =1$, so that the initial value of the shock $s_0$ and therefore
+%of the endowment $y_0^1$ is $1$.
+Thus, the endowment processes
+are perfectly predictable sequences $(1, 0, 1, \ldots)$ for
+the first  agent and $(0, 1, 0, \ldots)$ for the second agent.
+Let $\tilde s^t$ be the history of $(1, 0, 1, \ldots)$ up to
+$t$.  Evidently, $\pi_t(\tilde s^t) =1$, and the probability
+assigned to all other histories up to $t$ is zero.
+The equilibrium price system is then
+$$ q_t^0(s^t) =\cases{ \beta^t, & if $s^t = \tilde s^t$; \cr
+                       0, & otherwise;\cr}  $$
+when using the time $0$ good as numeraire, $q^0_0(\tilde s_0)=1$.
+From equation \Ep{eq20}, we have
+$$ \EQNalign{ \bar c^1 &=( 1 -\beta) \sum_{j=0}^\infty \beta^{2j}
+                      = {1 \over 1 + \beta },   \EQN alloc;a \cr
+              \bar c^2 & =( 1 -\beta) \beta \sum_{j=0}^\infty \beta^{2j}
+                      = { \beta \over 1 + \beta}.  \EQN alloca;b \cr} $$
+Consumer 1 consumes more every period because he is richer by virtue
+of receiving his endowment earlier.
+
+\subsection{Example 4}\label{sec:example4}%
+In this example, we assume that the one-period utility function is $\frac{c^{1-\gamma}}{1-\gamma}$.
+There are two consumers named $i=1,2$.  Their endowments are $y_t^1 = y_t^2 = .5 $ for $t=0,1$ and
+$y_t^1 = s_t $ and $y_t^2 = 1-s_t$ for $t \geq 2$.  The state space $s_t = \{0,1\}$ and $s_t$ is governed by
+a  Markov chain with  probability $\pi(s_0 = 1) = 1$ for the initial state and  time-varying transition probabilities  $\pi_1(s_1 =1 | s_0 =1) = 1 , \pi_2(s_2=1|s_1=1) = \pi_2(s_2=0|s_1 = 1) = .5,  \pi_t(s_t=1 | s_{t-1} = 1) =1, \pi_t(s_t =0 | s_{t-1}=0) = 1$
+for $t > 2$.  This specification implies that $\pi_t(1, 1,  \ldots,1, 1, 1) = .5$ and $\pi_t( 0, 0,  \ldots, 0, 1 ,1 )=.5$
+for all $t > 2$.
+
+We can apply the method of subsection \use{sec:compeasy} to compute an equilibrium.  The aggregate endowment is $\overline y_t(s^t)=1$
+for all $t$ and all $s^t$.  Therefore, an equilibrium price vector is
+$q_1^0(1,1) = \beta, q^0_2(0,1,1)= q^0_2(1,1,1)= .5 \beta^2$ and $q_t^0(1, 1, \ldots, 1, 1) = q_t^0(0, 0, \ldots, 1, 1) = .5 \beta^t$
+for $t > 2$.  Use these prices to compute the value of agent $i$'s endowment: $\sum_t \sum_{s^t} q_t^0(s^t) y_t^i(s^t)
+=\sum_t \beta^t .5 [.5 + .5 + 0 + \ldots + 0] +  \sum_t \beta^t .5 [.5 + .5 + 1 + \ldots +1] = 2 \sum_t \beta^t .5 [.5 + .5 + \ldots + .5] = .5 \sum_t \beta^t = {.5 \over 1 - \beta}$. %\frac{.5}{1-\beta}$.
+  Consumer $i$'s budget constraint is satisfied when he consumes a constant
+consumption of $.5$ each period in each state: $c_t^i(s^t) = .5$ for all $t$ for all $s^t$.
+
+In subsection \use{sec:example4cont}, we shall use the equilibrium allocation from the Arrow-Debreu economy in this example
+to synthesize an equilibrium in an economy with sequential trading.
+
+
+
+
+
+\section{Primer on asset pricing}
+Many asset-pricing models       assume complete markets and price
+an asset by breaking it into a sequence of history-contingent
+claims, evaluating each  component of that sequence with the
+relevant ``state price deflator'' $q_t^0(s^t)$, then adding up
+those values. The  asset is  {\it redundant\/}, in the
+sense that it offers a bundle of history-contingent dated claims,
+each component of which has already  been priced by the market.
+While we shall devote chapters \use{assetpricing1} and \use{assetpricing2} entirely  to
+asset-pricing theories, it is useful to give some pricing formulas
+at this  point because they help illustrate  the complete market
+competitive structure.
+
+
+\subsection{Pricing redundant assets}
+  Let $\{d_t(s^t)\}_{t=0}^\infty$ be a stream of claims
+on time $t$, history $s^t$ consumption, where $d_t(s^t)$ is a measurable
+function of $s^t$.  The price of   an asset entitling
+the owner to this stream
+must be
+$$ p^0_0(s_0)  = \sum_{t=0}^\infty  \sum_{s^t} q_t^0(s^t) d_t(s^t) . \EQN asset1
+$$
+If this equation did not hold, someone could make unbounded profits
+by synthesizing this asset  through
+purchases or sales  of  history-contingent dated commodities
+and then either buying or selling the asset.
+We shall elaborate  this arbitrage argument
+below and later in  chapter \use{assetpricing1} on asset pricing.
+
+
+
+
+\subsection{Riskless consol}
+  As an example, consider the price of a {\it riskless consol}, that is,
+an asset offering to pay one unit of consumption for sure
+each period.  Then  $d_t(s^t) = 1$ for all $t$ and $s^t$, and the price
+of this asset is
+$$ \sum_{t=0}^\infty  \sum_{s^t} q_t^0(s^t) . \EQN consol1 $$
+
+
+\subsection{Riskless strips}
+  As another example, consider a  sequence of  {\it strips} of \index{strips}%
+payoffs on the riskless consol.  The time $t$ strip is just the payoff
+process $d_\tau = 1 \ {\rm if} \ \tau=t \geq 0$,
+ and $0 \ {\rm otherwise}$.  Thus,
+the owner of the strip is entitled  to the time $t$ coupon only.
+The value of the time $t$ strip at time $0$ is evidently
+$$ \sum_{s^t} q_t^0(s^t) .$$
+Compare this to the price of the consol \Ep{consol1}.  We can think of the $t$-period riskless strip as a
+$t$-period zero-coupon bond. See appendix  \use{sec:backus} of chapter \use{assetpricing2} for an
+account of a  closely related model of yields on such bonds.
+
+
+\subsection{Tail assets}
+Return to the stream of dividends $\{d_t(s^t)\}_{t \geq 0}$
+generated by the asset   priced in equation \Ep{asset1}. For $\tau
+\geq 1$, suppose that we strip off the first $\tau-1$ periods of
+the dividend and want  the time $0$ value of the remaining dividend
+stream $\{d_t(s^t)\}_{t \geq   \tau}$.   Specifically, we seek
+the value of this  asset for a particular possible realization of $s^\tau$. Let
+$p^0_\tau(s^\tau)$ be the time $0$ price of an asset that entitles
+the owner to dividend stream  $\{d_t(s^t)\}_{t \geq   \tau}$ if
+history $s^\tau$ is realized,
+$$ p^0_\tau(s^\tau)  = \sum_{t \geq \tau} \;
+\sum_{s^t \vert s^\tau} q_t^0(s^t) d_t(s^t) ,
+                                                                    \EQN asset2
+$$
+where the summation over $s^t \vert s^\tau$ means that we sum
+over all possible subsequent histories $\tilde s^t$ such that
+$\tilde s^\tau=s^\tau$.
+When the units of the price are time $0$, state $s_0$ goods, the normalization is $q_0^0(s_0)=1$.
+To convert the price into units of time $\tau$, history $s^\tau$ consumption
+goods, divide by $q^0_\tau(s^\tau)$ to get
+$$ p^\tau_\tau(s^\tau)  \equiv {p^0_\tau(s^\tau) \over q^0_\tau(s^\tau)}
+  =   \sum_{t \geq \tau} \; \sum_{s^t \vert s^\tau}
+{q_t^0(s^t) \over q_\tau^0(s^\tau)} d_t(s^t) .          \EQN asset3
+$$
+Notice that\NFootnote{Because the marginal conditions hold for all
+consumers, this condition holds for all $i$.}
+$$ \eqalign{  q^\tau_t(s^t) \equiv
+{q_t^0(s^t) \over q_\tau^0(s^\tau)} & = {\beta^t u'_i[c_t^i(s^t)] \pi_t(s^t)
+               \over \beta^\tau u'_i[c_\tau^i(s^\tau)] \pi_\tau(s^\tau) } \cr
+        & = \beta^{t - \tau} {u'_i[c_t^i(s^t)] \over u'_i[c_\tau^i(s^\tau)]}
+          \pi_t(s^t|s^\tau). \cr}
+    \EQN qdef $$
+Here
+$q^\tau_t(s^t)$ is the price of one unit of consumption delivered
+at time $t$, history $s^t$ in terms of the date $\tau$, history $s^\tau$
+consumption good; $\pi_t(s^t|s^\tau)$ is the
+probability of history $s^t$ conditional on history
+$s^\tau$ at date $\tau$.  %%%, as given by \Ep{cecm_pi}.
+Thus, the price at time  $\tau$, history $s^\tau$   for the ``tail asset'' is
+$$ p^\tau_\tau(s^\tau)
+  =   \sum_{t \geq \tau} \; \sum_{s^t \vert s^\tau}
+q_t^\tau(s^t)  d_t(s^t) .                              \EQN asset4 $$
+
+
+When we want to create a time series of, say, equity prices,
+we use the ``tail asset'' pricing formula \Ep{asset4}.  An equity purchased
+at time $\tau$ entitles the owner to the dividends from time
+$\tau$ forward.   Our formula \Ep{asset4} expresses
+the asset price in terms of prices with time $\tau$, history
+$s^\tau$ good as numeraire.
+
+
+
+
+
+\subsection{One-period returns}
+The one-period version of equation \Ep{qdef} is
+$$q^\tau_{\tau+1}(s^{\tau +1}) = \beta {u'_i[c_{\tau+1}^i(s^{\tau+1})]
+               \over u'_i[c_\tau^i(s^\tau)] } \pi_{\tau+1}(s^{\tau+1} \vert s^\tau). $$
+The right side is the one-period {\it pricing kernel} at time $\tau$.
+If we want to  find the  price  at time $\tau$ at history $s^\tau$
+of a claim to a random payoff $\omega(s_{\tau+1})$, we use
+$$ p^\tau_{\tau}(s^\tau) = \sum_{s_{\tau+1}} q^\tau_{\tau+1}(s^{\tau+1})
+      \omega(s_{\tau+1}) $$
+or
+$$ p^\tau_{\tau}(s^\tau) = E_\tau \left[\beta {u'(c_{\tau+1}) \over u'(c_{\tau})}
+       \omega(s_{\tau +1}) \right], \EQN oneperiodp1 $$
+where $E_\tau$ is the conditional expectation operator.
+We have deleted the $i$ subscripts on utility function,
+and the $i$ superscripts on consumption, with the
+understanding that equation \Ep{oneperiodp1} is true for any consumer $i$;
+we have also suppressed the  dependence of $c_{\tau}$ on $s^\tau$,
+which is implicit.
+
+
+Let $R_{\tau+1} \equiv \omega(s_{\tau+1}) /p^\tau_{\tau}(s^\tau) $
+ be the one-period gross {\it return} on the asset.
+Then for any asset, equation \Ep{oneperiodp1} implies
+$$ 1 = E_\tau \left[\beta{u'(c_{\tau+1}) \over u'(c_\tau)} R_{\tau+1} \right]
+     \equiv E_\tau \left[ m_{\tau+1} R_{\tau+1} \right]  .
+    \EQN oneperiodr1 $$
+The term $m_{\tau+1} \equiv \beta u'(c_{\tau+1}) / u'(c_\tau)$
+functions as a {\it stochastic discount factor}.    Like
+$R_{\tau+1}$, it is a random \index{stochastic discount factor}%
+variable  measurable with respect to $s_{\tau+1}$, given
+$s^{\tau}$.
+    Equation \Ep{oneperiodr1} is a restriction on
+the conditional moments of returns and $m_{t+1}$.  Applying
+the law of iterated expectations to equation \Ep{oneperiodr1} gives
+the unconditional moments restriction
+$$ 1 = E \left[\beta{u'(c_{\tau+1}) \over u'(c_\tau)} R_{\tau+1} \right]
+     \equiv E \left[ m_{\tau+1} R_{\tau+1} \right]  .
+    \EQN oneperiodr2 $$
+In chapters \use{assetpricing1} and \use{assetpricing2} we shall many more instances of this
+equation.
+
+
+In the next section, we display  another market structure in which
+  the one-period pricing kernel $q^t_{t+1}(s^{t+1})$    also plays
+a decisive role.  This structure uses the
+celebrated one-period ``Arrow  securities,'' the sequential
+trading of which  substitutes perfectly for the comprehensive trading
+of long horizon claims at  time $0$.
+
+\index{Arrow securities}
+
+\section{Sequential trading}\label{sec:arrowsecurities}%
+This section describes an alternative
+market structure that preserves both the  equilibrium  allocation
+ and the  key one-period asset-pricing formula
+\Ep{oneperiodp1}.
+
+
+\auth{Arrow, Kenneth J.}
+
+\subsection{Arrow securities}
+We build on an insight of Arrow (1964) that one-period securities
+are enough to implement complete markets, provided that new
+one-period  markets are reopened for trading each period and provided that time $t$, history $s^t$ wealth is properly assigned to each agent.
+ Thus, at
+each date  $t \geq 0$, but only at the history $s^t$ actually realized,  trades occur in a set of claims   to
+one-period-ahead state-contingent consumption. We describe a
+competitive equilibrium of this sequential-trading economy.
+  With a full array of these one-period-ahead claims,
+the sequential-trading arrangement attains the same allocation
+as the competitive  equilibrium that we described earlier.
+ \index{Arrow securities}
+
+\auth{Arrow, Kenneth J.}
+
+
+\subsection{Financial wealth as an endogenous state variable}
+A key step in constructing a sequential-trading arrangement is to
+identify a variable to serve as the state in a value function for
+the household at date $t$. We find this state by taking an
+equilibrium allocation and price system for the (Arrow-Debreu)
+time $0$ trading structure and applying a guess-and-verify method.
+We begin by asking the following question. In the competitive
+equilibrium where all trading takes place at time $0$, what is the implied continuation wealth of household $i$ at time $t$ after history $s^t$?
+The answer is obtained by summing up the value of the household's
+holdings of claims to current and future consumption as of time $t$ and
+history $s^t$. Since history $s^t$ has been realized, we discard all
+claims contingent on time $t$ histories $\tilde s^t \neq s^t$ that
+were not realized. Hence, the implied wealth is simply determined
+by the trades that were undertaken by household $i$ at the outset of a
+time $0$ trading equilibrium, when the household can be thought of as
+having sold off the entire endowment stream on the right side of budget
+constraint \Ep{eq2} in order to acquire the contingent consumption claims
+on the left side of budget constraint \Ep{eq2}.
+
+The differences in a sequential-trading arrangement are that (Arrow)
+one-period securities are traded period by period, and that households
+retain the ownership to their endowment processes throughout time.
+Hence, from the perspective of a sequential-trading arrangement, the
+wealth of household $i$ at a point in time can be decomposed into two
+components of {\it financial wealth} and {\it non-financial wealth},
+respectively.\NFootnote{In some applications,  financial wealth
+is also called `non-human wealth' and non-financial wealth is called
+`human wealth'.}
+Financial wealth at time $t$ after history $s^t$ is the household's
+beginning-of-period holdings of Arrow securities that are contingent on
+the current state $s_t$ being realized,
+while the household's current and future endowment constitute non-financial
+wealth. Given Arrow's (1964) insight that the two trading arrangements
+yield an identical equilibrium allocation, a household's financial wealth
+in a sequential trading equilibrium should be equal to the above implied
+continuation wealth in a time $0$ trading equilibrium, except for reducing
+the latter by the value of the household's current and future endowment
+(non-financial wealth). Thus, the
+financial wealth of household $i$ at time $t$ after history $s^t$,
+expressed in terms of the date $t$, history $s^t$ consumption good is
+$$
+\Upsilon^i_t(s^t) =
+\sum_{\tau=t}^\infty \; \sum_{s^\tau \vert s^t}
+    q_\tau^t(s^\tau) \left[ c^i_\tau(s^\tau) - y_\tau^i(s^\tau) \right]. \EQN cecm_wealth$$
+Notice that budget constraint \Ep{eq2} at equality implies that
+each household starts out with zero financial wealth at time $0$,
+$\Upsilon^i_0(s^0)=0$ for all $i$. At $t >0$, financial wealth
+$\Upsilon^i_t(s^t)$ typically differs from zero for household $i$,
+but it sums to zero across $i$,
+$$
+\sum_{i=1}^{I}  \Upsilon^i_t(s^t) = 0, \qquad \forall t, s^t,
+$$
+which follows from feasibility constraint \Ep{eq4} at equality.
+That is, the traded Arrow securities that make up financial
+wealth are in zero net supply -- positive holdings of some households
+constitute indebtedness of other households who have issued those
+securities.
+
+
+
+
+%%%%%%%%%%%%%%
+
+%A key step in constructing a sequential-trading arrangement is to
+%identify a variable to serve as the state in a value function for
+%the household at date $t$. We find this state by taking an
+%equilibrium allocation and price system for the (Arrow-Debreu)
+%time $0$ trading structure and applying a guess-and-verify method.
+%We begin by asking the following question. In the competitive
+%equilibrium where all trading takes place at time $0$, what is the implied
+%continuation wealth of household $i$ at time
+%$t$ after history $s^t$, but before adding in its time $t$, history $s^t$ endowment
+%$y_t^i(s^t)$? To answer this question, in period $t$, conditional on history
+%$s^t$, we sum up the value of the household's purchased claims to
+%current and future goods net of its outstanding liabilities. Since
+%history $s^t$ has been realized, we discard all claims and liabilities
+%contingent on time $t$ histories $\tilde s^t \neq s^t$ that were not realized.
+%Household $i$'s net claim to delivery of goods in a future period $\tau\geqt$
+%contingent on history $\tilde s^\tau$ whose time $t$ partial history
+%$\tilde s^t=s^t$ is  $[c^i_\tau(\tilde s^\tau)-y_\tau^i(\tilde s^\tau)]$.
+%Thus, the household's financial wealth, or the value of all its
+%current and future net claims, expressed in terms of the date $t$,
+%history $s^t$ consumption good is
+%$$
+%\Upsilon^i_t(s^t) =
+%\sum_{\tau=t}^\infty \; \sum_{s^\tau \vert s^t}
+%    q_\tau^t(s^\tau) \left[ c^i_\tau(s^\tau) - y_\tau^i(s^\tau) \right].
+%\EQN cecm_wealth$$
+%Notice that feasibility
+%constraint \Ep{eq4} at equality implies that
+%$$
+%\sum_{i=1}^{I}  \Upsilon^i_t(s^t) = 0, \qquad \forall t, s^t.
+%$$
+
+
+%\subsection{Financial and non-financial wealth}
+%Define $\Upsilon^i_t(s^t)$ as {\it financial wealth}
+%and $\sum_{\tau=t}^\infty \; \sum_{s^\tau \vert s^t}
+%    q_\tau^t(s^\tau)  y_\tau^i(s^\tau)$ as {\it non-financial wealth}.\NFootnote{In
+%some applications,  financial wealth
+%is also called `non-human wealth' and non-financial wealth is called `human wealth'.}
+%In terms of these concepts,
+%     \Ep{cecm_wealth} implies
+%     $$
+%\Upsilon^i_t(s^t) +
+%\sum_{\tau=t}^\infty \; \sum_{s^\tau \vert s^t}
+%    q_\tau^t(s^\tau)  y_\tau^i(s^\tau) = \sum_{\tau=t}^\infty \;
+%\sum_{s^\tau \vert s^t}
+%    q_\tau^t(s^\tau)  c^i_\tau(s^\tau)  , \EQN cecm_wealth$$
+%which states that at each time and each history, the sum of financial and
+%non-financial wealth
+%equals the present value of current and future consumption claims.
+%At time $0$,  we have set $ \Upsilon^i_t(s^0)=0$ for all $i$. At $t >0$,
+%financial wealth
+%$\Upsilon^i_t(s^t)$ typically differs from zero for  individual $i$,
+%but it sums to zero across $i$.
+
+
+
+%\index{wealth!financial}
+%\index{wealth!non-financial}
+
+
+
+
+
+
+\subsection{Reopening markets}
+
+Formula \Ep{qdef}  takes the form of a pricing
+function for a complete markets economy with date- and history-contingent
+commodities whose markets can be regarded as having been reopened at date $\tau$, history
+$s^\tau$, starting from   wealth levels implied by the tails of each household's
+endowment and consumption streams for a complete markets economy that originally convened at $t=0$.
+ We leave it as an exercise to the
+reader to prove the following proposition.
+
+
+\medskip
+\noindent{\sc Proposition 3:} Start from the distribution of time
+$t$, history $s^t$ wealth that is implicit in a time $0$ Arrow-Debreu
+equilibrium. If markets are reopened at date $t$ after history
+$s^t$, no trades  occur. That is,  given the  price system
+\Ep{qdef}, all households choose to continue the  tails of their
+original consumption plans.
+\medskip
+\index{no-trade result}
+
+
+
+
+
+
+\index{Ponzi schemes!ruling out} \index{debt limit!natural}
+\subsection{Debt limits}
+
+In moving from  the Arrow-Debreu economy to one with sequential
+trading, we propose to  match  the time $t$, history $s^{t}$ wealth of
+the household  in the sequential economy with the equilibrium  tail wealth
+$\Upsilon^i_t(s^t)$ from the Arrow-Debreu economy computed in equation
+\Ep{cecm_wealth}. But first we have to say something about debt
+limits, a feature that was only implicit in the time $0$ budget constraint \Ep{eq2} in the Arrow-Debreu economy.
+%because we imposd \Ep{eq2}.
+In moving to the sequential formulation, we    restrict asset trades to prevent Ponzi schemes.  We
+want the weakest possible restrictions.  We
+synthesize restrictions that work by starting from the equilibrium
+allocation of the Arrow-Debreu economy (with time $0$ markets), and
+find some state-by-state debt limits that support
+the equilibrium allocation that emerged from the Arrow-Debreu economy under a sequential trading arrangement.
+ Often we'll refer to these weakest possible
+debt limits as the ``\idx{natural debt limit}s.'' These limits come
+from the common sense requirement that it has to be {\it
+feasible\/} for the consumer to repay his state contingent debt in
+every possible state.
+%If we assume that $c_t^i$ must be
+%nonnegative or if an Inada condition at $c=0$ keeps $c \geq 0$,
+Together with  our assumption that $c_t^i(s^t)$ must be nonnegative, that
+feasibility requirement leads to the natural debt limits.
+%Throughout this section we assume either the additional restriction
+%$c_t^i \geq 0$  or else impose an Inada condition  on the
+%one-period utility function:
+%$\lim_{c \downarrow 0 }u'(c) = +\infty$.  Either of these leads us
+%to restrict attention to nonnegative consumption
+%processes.
+
+
+
+
+Let $q_\tau^t(s^\tau)$ be the Arrow-Debreu price, denominated  in
+units of the date $t$, history
+ $s^t$  consumption good.
+Consider the value of the tail of  agent $i$'s endowment sequence
+at time $t$ in history $s^t$:
+$$ A^i_t(s^t) =
+   \sum_{\tau=t}^\infty \; \sum_{s^\tau \vert s^t}
+    q^t_\tau(s^\tau) y_\tau^i(s^\tau).   \EQN cecm_debt1$$
+ We call
+$A^i_t(s^t)$ the {\it natural debt limit} at time $t$ and history
+$s^t$. It is the  maximal value that agent $i$   can
+repay starting from that period, assuming that his consumption is
+zero always.
+%\NFootnote{These debt limits require
+%either an Inada condition on preferences that implies that
+%$c_t^i \geq 0$ or an arbitrary restriction that $c_t^i >0$.}
+With sequential trading, we shall require that household $i$ at time $t-1$ and
+history $s^{t-1}$ cannot promise to pay more than $A^i_t(s^t)$
+conditional on the realization of $s_t$ tomorrow, because it will
+not be feasible to repay more. Household $i$ at
+time $t-1$ faces one such borrowing constraint for each possible
+realization of $s_t$  tomorrow.
+
+
+\subsection{Sequential trading}
+There is a sequence of markets in one-period-ahead
+state-contingent
+ claims.    At each date $t \geq 0$,
+households trade claims to date $t+1$ consumption, whose payment
+is  contingent
+on the realization of $s_{t+1}$.   Let $\tilde a_t^i(s^t)$ denote the
+claims to time $t$ consumption, other than its time $t$  endowment $y_t^i(s^t)$,
+that household $i$ brings into time $t$ in history $s^t$. Suppose that
+$ \tilde Q_t(s_{t+1} | s^t)$
+is a {\it pricing kernel}  to be interpreted as follows:
+$\tilde Q_t(s_{t+1} | s^t)$ is the price of one unit of time $t+1$ consumption,
+contingent on the realization $s_{t+1}$ at $t+1$, when the
+history at $t$ is $s^t$.
+ %We are guessing
+%that such a pricing kernel exists.
+% and depends neither  on $t$ nor the distribution
+%of wealth.
+The household faces a sequence of budget constraints
+for $t \geq 0$, where the time $t$, history $s^t$ budget constraint is
+$$ \tilde c_t^i(s^t) + \sum_{s_{t+1}} \tilde a^i_{t+1}(s_{t+1},s^t) \tilde Q_t(s_{t+1} | s^t)
+     \leq  y_t^i(s^t) + \tilde a_t^i(s^t) . \EQN eq10   $$
+%Here it is understood that $\theta^i_{t+1}=\theta^i_{t+1}(s_{t+1})$,
+%which depends on the realization of $s_{t+1}$ and the amount
+%$\theta^i_{t+1}(s_{t+1})$ purchased at $t$.
+At time $t$, a household chooses $\tilde c^i_t(s^t)$
+and $\{\tilde a^i_{t+1}(s_{t+1},s^t)\}$, where
+$\{\tilde a^i_{t+1}(s_{t+1},s^t)\}$  is a vector of claims on time $t+1$ consumption,
+there being one element of the vector for each  value of the time $t+1$ realization of
+$s_{t+1}$.    To rule out Ponzi schemes,
+we impose the state-by-state borrowing
+constraints
+$$ -  \tilde a^i_{t+1}(s^{t+1}) \leq  A^i_{t+1}(s^{t+1}),        \EQN cecm_debt2$$
+where $A^i_{t+1}(s^{t+1})$ is computed in equation \Ep{cecm_debt1}.
+
+
+Let $\eta^i_t(s^t)$ and $\nu^i_t(s^t;s_{t+1})$ be  nonnegative
+Lagrange multipliers on the budget constraint \Ep{eq10} and the
+borrowing constraint \Ep{cecm_debt2}, respectively, for time $t$
+and history $s^t$. Form the Lagrangian  \offparens
+$$ \eqalign{ L^i =
+ &\sum_{t=0}^\infty \sum_{s^t}
+   \Bigr\{  \beta^t u_i(\tilde c_t^i(s^t)) \pi_t(s^t)  \cr
+ & +\eta^i_t(s^t) \Bigl [y_t^i(s^t) + \tilde a_t^i(s^t) - \tilde c_t^i(s^t)
+       - \sum_{s_{t+1}} \tilde a^i_{t+1}(s_{t+1},s^t) \tilde Q_t(s_{t+1} | s^t) \Bigr] \cr
+ & +\sum_{s_{t+1}} \nu^i_t(s^t;s_{t+1}) \left[ A^i_{t+1}(s^{t+1}) + \tilde a^i_{t+1}(s^{t+1}) \right]
+                                                             \Bigl\}, \cr} $$
+for a given initial wealth $\tilde a^i_0(s_0)$.
+The first-order conditions for maximizing $L^i$ with respect to
+$\tilde c^i_t(s^t)$ and $\{\tilde a^i_{t+1}(s_{t+1},s^t)\}_{s_{t+1}}$ are
+$$\EQNalign{
+\beta^t u'_i(\tilde c_t^i(s^t)) \pi_t(s^t) -\eta^i_t(s^t) &=0\,,\EQN seqFOC;a \cr
+\noalign{\vskip.2cm}
+-\eta^i_t(s^t) \tilde Q_t(s_{t+1} | s^t) + \nu^i_t(s^t;s_{t+1})
++ \eta^i_{t+1}(s_{t+1},s^t) & =0\,, \hskip1cm \EQN seqFOC;b \cr}
+$$
+for all $s_{t+1}$, $t$, $s^t$. In the optimal solution to this
+problem, the natural debt limit \Ep{cecm_debt2} will not be
+binding, and hence the Lagrange multipliers $\nu^i_t(s^t;s_{t+1})$
+ all equal  zero for the following reason: if there were any
+history $s^{t+1}$ leading to a binding natural debt limit, the
+household would from then on have to set consumption equal to zero
+in order to honor its debt. Because the household's utility
+function satisfies the Inada condition
+$\lim_{c \downarrow 0} u'_i(c) = +\infty$, that would mean that all
+future marginal utilities would be infinite. Thus, it would be easy
+to find alternative affordable allocations that yield higher
+expected utility by postponing earlier consumption to periods
+after such a binding constraint. %, i.e., alternative preferable
+%allocations where the natural debt limits no longer bind.
+
+After
+setting $\nu^i_t(s^t;s_{t+1})=0$ in equation \Ep{seqFOC;b}, the
+first-order conditions imply the following restrictions on the
+optimally chosen consumption allocation,
+$$ \tilde Q_t(s_{t+1} | s^t) = \beta
+{ u'_i(\tilde c_{t+1}^i(s^{t+1})) \over u'_i(\tilde c_t^i(s^t)) }
+\pi_t(s^{t+1} | s^t),                                \EQN seqFOCc
+$$
+for all $s_{t+1}$, $t$, $s^t$.
+
+
+
+
+ \medskip
+\noindent{\sc Definition:}  A {\it distribution of wealth} is
+a vector $\vec {\tilde a}_t(s^t) = \{\tilde a_t^i(s^t)\}_{i=1}^I$ satisfying
+$\sum_i \tilde a_t^i(s^t) = 0$.
+\medskip
+
+
+\noindent{\sc Definition:} A {\it   competitive equilibrium with sequential trading of one-period Arrow securities} is
+an initial distribution of wealth $\vec {\tilde a}_0(s_0)$, a collection of borrowing limits $\{A_t^i(s^t)\}$ satisfying
+\Ep{cecm_debt1} for all $i$, for all $t$, and for all $s^t$,
+a feasible allocation $\{\tilde c^i\}_{i=1}^I$, and pricing
+kernels $\tilde Q_t(s_{t+1} | s^t)$ such
+that
+
+\noindent{\bf (a)} for all $i$, given
+ $\tilde a^i_0(s_0)$, the borrowing limits $\{A_t^i(s^t)$,  and the pricing kernels, the consumption allocation
+$\tilde c^i$ solves the household's problem for all $i$;
+
+\noindent{\bf (b)} for all realizations of $\{s^t\}_{t=0}^\infty$, the
+households' consumption
+allocations and implied  portfolios
+$\{\tilde c^i_t(s^t), \{\tilde a^i_{t+1}(s_{t+1},s^t)\}_{s_{t+1}}\}_i$
+satisfy
+$\sum_i \tilde c^i_t(s^t) = \sum_i y_t^i(s^t)$ and
+$\sum_i \tilde a_{t+1}^i(s_{t+1},s^t) = 0$
+for all $s_{t+1}$.
+%for all $i$,  $\{\theta_t^i\}_{t=0}^\infty$ satisfies
+%$\theta_{t+1}^i = g(\theta_t^i,s_t,s_{t+1})$; and
+%(c) for all $t$,  $\sum_i h(\theta_{t}^i,s_t) = \sum_i y^i(s_t)$.
+\medskip
+\noindent This definition leaves open the initial
+distribution of wealth. We'll say more about the initial distribution of wealth soon.  %The Arrow-Debreu equilibrium with
+%complete markets at time $0$ in effect pinned down a {\it
+%particular\/} distribution of wealth.
+\index{competitive
+equilibrium!sequential trading}
+
+
+\subsection{Equivalence of allocations}
+By making an appropriate guess about the form of the pricing
+kernels, it is easy to show that a competitive equilibrium
+allocation of the complete markets model with time $0$ trading is
+also an allocation for a competitive equilibrium with sequential trading of one-period
+Arrow securities, one
+with a particular initial distribution of wealth.  Thus, take
+$q_t^0(s^t)$ as given from the Arrow-Debreu equilibrium and
+suppose that the pricing kernel $\tilde Q_t(s_{t+1} | s^t)$ makes
+the following recursion true:
+$$\EQNalign{
+ q^0_{t+1}(s^{t+1}) &= \tilde Q_t(s_{t+1} | s^t) q_t^0(s^t), \cr
+\noalign{\hbox{\rm or}}
+\tilde Q_t(s_{t+1} | s^t) &= q^t_{t+1}(s^{t+1}),       \EQN eq16 \cr}
+$$
+where recall that $q_{t+1}^t(s^{t+1}) ={\frac{q_{t+1}^0(s^{t+1})}{q_t^0 (s^t)}}$.
+
+
+Let
+$\{c_t^i(s^t)\}$ be a competitive equilibrium allocation
+in the Arrow-Debreu economy.
+If equation \Ep{eq16} is satisfied, that allocation is also a
+sequential-trading competitive equilibrium allocation.  To show this fact,
+take the household's first-order conditions \Ep{eq3} for the Arrow-Debreu
+economy from two successive periods and divide one by
+the other to get
+$$ {\beta u'_i[c_{t+1}^i(s^{t+1})] \pi(s^{t+1} | s^t) \over
+       u'_i[c_t^i(s^t)]} = {q^0_{t+1}(s^{t+1}) \over q_t^0(s^t) }
+   = \tilde Q_t(s_{t+1}\vert s^t).  \EQN eq17 $$
+If the pricing kernel satisfies equation \Ep{eq16}, this equation
+is equivalent with the first-order condition \Ep{seqFOCc} for the sequential-trading
+competitive equilibrium economy. It remains for us
+to choose the initial wealth of the sequential-trading equilibrium so
+that the sequential-trading competitive equilibrium duplicates the
+Arrow-Debreu competitive equilibrium allocation.
+
+
+We conjecture that the initial wealth vector
+$\vec {\tilde a}_0(s_0)$ of the sequential-trading economy should be chosen
+to be the zero vector. This is a natural conjecture, because
+it means that each household must rely on its own
+endowment stream to finance consumption, in the same way that households are
+constrained to finance their history-contingent purchases
+for the infinite future at time $0$ in the Arrow-Debreu economy.
+To prove that the conjecture is correct, we must show that the zero
+initial wealth vector enables household $i$ to finance $\{c^i_t(s^t)\}$
+and leaves no room to increase consumption in any period
+ after any history.
+
+
+The proof proceeds by guessing that, at time $t\geq 0$ and history
+$s^t$, household $i$ chooses a portfolio given
+by $\tilde a^i_{t+1}(s_{t+1},s^t)=\Upsilon^i_{t+1}(s^{t+1})$ for all
+$s_{t+1}$.  The value of this  portfolio expressed
+in terms of the date $t$, history $s^t$ consumption good is
+$$\EQNalign{
+  \sum_{s_{t+1}} \tilde a^i_{t+1}(s_{t+1},s^t)  \tilde Q_t(s_{t+1} | s^t)
+& = \sum_{s^{t+1}\vert s^t} \Upsilon^i_{t+1}(s^{t+1}) q^t_{t+1}(s^{t+1}) \cr
+&= \sum_{\tau=t+1}^\infty \; \sum_{s^\tau \vert s^t}
+    q_\tau^t(s^\tau) \left[ c^i_\tau(s^\tau) -
+y_\tau^i(s^\tau) \right] ,\hskip1cm
+                                                   \EQN cecm_Wcost \cr}
+$$
+where we have invoked expressions \Ep{cecm_wealth} and
+\Ep{eq16}.\NFootnote{We have also used the following identities,
+$$
+q^{t+1}_\tau(s^\tau) q^t_{t+1}(s^{t+1})
+=  {q_\tau^0(s^\tau) \over q_{t+1}^0(s^{t+1})}
+   {q_{t+1}^0(s^{t+1}) \over q_t^0(s^t)}
+= q^t_\tau(s^\tau) \ \hbox{\rm for} \;\tau>t.
+$$}
+To demonstrate that household $i$ can afford this portfolio strategy, we now
+use budget constraint \Ep{eq10} to compute the implied consumption plan
+$\{\tilde c^i_\tau(s^\tau)\}$. First, in the initial period $t=0$ with
+$\tilde a^i_0(s_0)=0$, the substitution of equation \Ep{cecm_Wcost} into
+budget constraint \Ep{eq10}
+at equality yields
+$$ \tilde c_0^i(s_0) + \sum_{t=1}^\infty \; \sum_{s^t}
+    q_t^0(s^t) \left[ c^i_t(s^t) - y^i_t(s^t) \right]
+   =  y^i_t(s_0) + 0\,.  $$
+This expression together with budget constraint \Ep{eq2} at
+equality imply $\tilde c_0^i(s_0) = c_0^i(s_0)$. In other words,
+the proposed  portfolio is affordable in period $0$ and the
+associated consumption plan is the same as in the competitive
+equilibrium of the Arrow-Debreu economy. In all consecutive future
+periods $t > 0$ and histories $s^t$, we replace $\tilde
+a^i_t(s^t)$ in constraint \Ep{eq10} by $\Upsilon^i_t(s^t)$, and
+after noticing that the value of the asset portfolio in
+\Ep{cecm_Wcost} can be written as
+$$
+\sum_{s_{t+1}} \tilde a^i_{t+1}(s_{t+1},s^t) \tilde Q_t(s_{t+1} | s^t)
+= \Upsilon^i_t(s^t) - \left[ c^i_t(s^t) - y^i_t(s^t) \right],
+\EQN cecm_Wcost2
+$$
+it follows immediately from \Ep{eq10} that $\tilde c^i_t(s^t)= c^i_t(s^t)$
+for all periods and histories.
+
+
+We have shown that the proposed portfolio strategy attains the same
+consumption plan
+as in the competitive equilibrium of the Arrow-Debreu economy, but what
+precludes household $i$ from further increasing current consumption by
+reducing some component of the asset portfolio? The answer lies
+in the debt limit restrictions to which the household must adhere. In
+particular,
+if the household wants to ensure that consumption plan
+$\{c^i_\tau(s^\tau)\}$
+can be attained starting next period in all possible future states,
+the household should subtract the value of this commitment to future
+consumption
+from the natural debt limit in \Ep{cecm_debt1}.
+ Thus, the household is facing a
+state-by-state borrowing constraint that is more
+ restrictive than restriction \Ep{cecm_debt2}:
+for any $s^{t+1}$,
+$$  -  \tilde a^i_{t+1}(s^{t+1}) \leq  A^i_{t+1}(s^{t+1} )
+- \sum_{\tau=t+1}^\infty \; \sum_{s^\tau \vert s^{t+1}}
+  q_\tau^{t+1}(s^\tau) c^i_\tau(s^\tau)
+  = - \Upsilon^i_{t+1}(s^{t+1}),$$
+or
+$$   \tilde a^i_{t+1}(s^{t+1})  \geq  \Upsilon^i_{t+1}(s^{t+1}). $$
+Hence, household $i$ does not want to increase consumption at time $t$ by
+reducing next period's wealth below $\Upsilon^i_{t+1}(s^{t+1})$ because
+that would jeopardize attaining the preferred consumption plan
+that satisfies first-order conditions \Ep{seqFOCc} for all future periods and
+histories.
+
+
+
+
+
+
+
+
+\section{Recursive competitive equilibrium}\label{sec:Markovs}%
+We have established that  equilibrium allocations are the same
+in the Arrow-Debreu economy with  complete markets in dated
+contingent claims all traded at time 0 and in a sequential-trading
+economy with a complete set of one-period Arrow securities. This finding
+holds for arbitrary individual endowment processes
+$\{y^i_t(s^t)\}_i$ that are measurable functions of the history of
+events $s^t$, which in turn are governed by some arbitrary
+probability measure $\pi_t(s^t)$. At this level of generality,
+ the pricing kernels $\tilde Q_t(s_{t+1} | s^t)$ and the
+wealth distributions $\vec {\tilde a}_t(s^t)$ in the
+sequential-trading economy both depend on the history $s^t$, so both
+ are time-varying functions of all past events
+$\{s_\tau\}_{\tau=0}^t$. This can make it  difficult to
+formulate an economic model that can be used to confront empirical
+observations. We want  a framework in which economic outcomes
+are functions of a limited number of ``state variables'' that
+summarize the effects of past events and current information. This
+ leads us to make the following specialization of the
+exogenous forcing processes that facilitates a recursive formulation
+of the sequential-trading equilibrium.
+
+
+\subsection{Endowments governed by a Markov process}
+Let $\pi(s'|s)$ be a Markov chain with given initial distribution
+$\pi_0(s)$ and state space $s\in S$.   That is, ${\rm
+Prob}(s_{t+1}  = s' \vert
+ s_t = s) =\pi(s'|s)$ and ${\rm Prob}  (s_0 = s) = \pi_0(s)$.
+As we saw in chapter \use{timeseries},
+ the chain induces a sequence of probability
+measures $\pi_t(s^t)$  on histories $s^t$
+via the recursions
+$$ \pi_t(s^t) = \pi(s_t | s_{t-1}) \pi(s_{t-1} | s_{t-2}) \ldots
+       \pi(s_1 | s_0)   \pi_0(s_0) . \EQN eq1  $$
+%We call $s_t$ the {\it state\/} at $t$ and $s^t$ the {\it history\/} at $t$.
+In this chapter, we have assumed that trading occurs after $s_0$ has been observed,
+which we capture by setting $\pi_0(s_0)=1$ for the initially
+given value of $s_0$.
+%Formula \Ep{eq1} is the unconditional probability of $s^t$ when
+%$s_0$ has not been realized.  In this chapter we have assumed that
+%trading occurs after $s_0$ has been observed, so we have used
+%the distribution of $s^t$ that is conditional
+%on $s_0$,
+%$$ \pi_t(s^t|s_0) = \pi(s_t | s_{t-1}) \pi(s_{t-1} | s_{t-2}) \ldots
+%       \pi(s_1 | s_0)   . \EQN eq1a  $$
+
+Because of the Markov property, the conditional probability
+$\pi_t(s^t\vert s^\tau)$ for $t>\tau$ depends only on the state
+$s_\tau$ at time $\tau$ and does not depend on the history
+before $\tau$,
+$$\pi_t(s^t|s^\tau) = \pi(s_t\vert s_{t-1}) \pi(s_{t-1} \vert s_{t-2})
+          \ldots\pi(s_{\tau+1} \vert s_\tau).\EQN cecm_pi$$
+
+
+Next, we assume that households' endowments in period $t$ are
+time invariant measurable functions of $s_t$,
+$y^i_t(s^t)=y^i(s_t)$ for each $i$. %This assumption means that
+%each household's endowment follows a Markov process, since $s_t$
+%itself is governed by a Markov process.
+Of course, all of our
+previous results continue to hold, but the Markov assumption
+for $s_t$ imparts further structure to the equilibrium.
+
+
+\index{history dependence!lack of}
+\subsection{Equilibrium outcomes inherit the Markov property}
+Proposition 2  asserted a particular kind of history independence
+of the equilibrium allocation that prevails under any
+stochastic process for the endowments. In particular, each
+individual's consumption is  a function only of the current
+realization of the aggregate endowment and does not depend on the
+specific history leading to that outcome.\NFootnote{Of course, the equilibrium allocation also depends on the distribution
+of $\{y_t^i(s^t)\}$ {\it processes} across agents $i$, as reflected in the relative values of the Lagrange multipliers
+$\mu_i$.} Now, under %the
+%assumption that  all time $t$ endowments depend only on the time $t$ value of a Markov state $s_t$,
+%it follows immediately from equations \Ep{eq7} and \Ep{eq8} that
+%the equilibrium allocation is  a function only of the current
+%our
+%state $s_t$,
+our present assumption that $y_t^i(s^t)= y^i(s_t)$ for each $i$, it follows immediately that
+$$
+c^i_t(s^t) = \bar c^i(s_t).     \EQN Markovc
+$$
+
+Substituting \Ep{cecm_pi} and \Ep{Markovc} into
+\Ep{seqFOCc} shows that the pricing kernel in the sequential-trading
+equilibrium is   a function only of the current state,
+$$
+\tilde Q_t(s_{t+1} | s^t) = \beta
+{ u'_i(\bar c^i(s_{t+1})) \over u'_i(\bar c^i(s_t)) }
+\pi(s_{t+1} | s_t) \equiv Q(s_{t+1} | s_t).   \EQN MarkovQ
+$$
+After similar substitutions with respect to equation \Ep{qdef},
+we can also
+establish history independence of the relative prices in the
+Arrow-Debreu economy:
+
+
+
+
+\medskip
+\noindent{\sc Proposition 4:}  If time $t$  endowments are a function of a Markov
+state $s_t$, the Arrow-Debreu equilibrium price of date-$t\geq 0$,
+history $s^t$
+consumption goods expressed in terms of date $\tau$ ($0\leq \tau \leq t$),
+history $s^\tau$
+consumption goods is not history dependent:
+$q^\tau_t(s^t) = q^{j}_{k}(\tilde s^{k})$ for $j, k \geq 0$
+such that $t-\tau=k-j$ and
+$[s_\tau, s_{\tau+1}, \ldots , s_t] =
+ [\tilde s_{j}, \tilde s_{j+1}, \ldots , \tilde s_{k}]$.
+\medskip
+
+
+Using this proposition, we can verify that both the natural debt
+limits \Ep{cecm_debt1} and households' wealth levels \Ep{cecm_wealth}
+exhibit history independence,
+$$\EQNalign{
+ A^i_t(s^t) &= \bar A^i(s_t) \,,              \EQN MarkovA \cr
+ \Upsilon^i_t(s^t) &= \bar \Upsilon^i(s_t)\,. \EQN MarkovU \cr}
+$$
+The finding concerning wealth levels \Ep{MarkovU} conveys a  useful
+insight into how the sequential-trading competitive equilibrium
+attains the first-best outcome in which no idiosyncratic risk is
+borne by individual households. In particular, each household
+enters every period with a wealth level that is independent of
+past realizations of his endowment. That is, his past trades have
+fully insured him against the idiosyncratic outcomes of his
+endowment. And from that very same insurance motive, the household
+now enters the present period with a wealth level that is a
+function of the current state $s_t$. It is a state-contingent
+wealth level that was chosen by the household in the previous
+period $t-1$, and this wealth will be just sufficient to
+continue  a trading strategy previously designed to insure against future
+idiosyncratic risks. The optimal holding of wealth is  a function
+ of $s_t$ alone because the current state $s_t$ determines the
+current endowment and the current pricing kernel  and contains all information
+relevant for predicting
+future realizations of the household's endowment process as well as future prices. It can
+be shown that a household especially wants  higher wealth levels for
+those states next period that  either  make his next period
+endowment low or more generally  signal poor future prospects for its endowment into
+the more distant future. Of course, individuals' desires are tempered by differences in the economy's
+aggregate endowment across states (as reflected in equilibrium
+asset prices). Aggregate shocks cannot be diversified away but
+must  be borne somehow  by all of the households. The pricing kernel
+$Q(s_t\vert s_{t-1})$ and the assumed clearing of all markets
+set into action  an ``invisible hand'' that coordinates households'
+transactions at time $t-1$  in such a way  that only aggregate
+risk and  no idiosyncratic risk is borne by the households.
+
+
+
+
+\subsection{Recursive formulation of optimization and equilibrium}
+The fact  that the pricing kernel $Q(s'|s)$ and the endowment $y^i(s)$
+are functions of a Markov process $s$ motivates us to seek a
+recursive formulation of the household's optimization problem.
+Household $i$'s state at time $t$ is its wealth $a^i_t$ and the
+current realization $s_t$. We seek a pair of optimal policy
+functions $h^i(a,s)$, $g^i(a,s,s')$ such that the household's
+optimal decisions are
+$$\EQNalign{ c_t^i  & = h^i(a^i_t, s_t),   \EQN policy1;a \cr
+         a_{t+1}^i(s_{t+1}) & = g^i(a_t^i, s_t, s_{t+1}). \EQN policy1;b
+  \cr} $$
+
+
+Let $v^i(a,s)$ be the optimal value of household $i$'s problem
+starting from state $(a, s)$;     $v^i(a,s)$ is the maximum
+expected discounted utility  that household $i$ with current wealth $a$
+can attain in state $s$.
+The Bellman equation for the household's problem is
+$$ v^i(a, s) = \max_{c, \hat a(s')} \left\{ u_i(c) + \beta
+\sum_{s'} v^i[\hat a(s'),s'] \pi (s' | s) \right\} \EQN eq11 $$
+where the maximization is subject to the following version
+of constraint \Ep{eq10}:
+$$ c + \sum_{s'} \hat a(s') Q(s' | s)
+     \leq  y^i(s) + a  \EQN eq12   $$
+and also
+$$\EQNalign{c & \geq 0, \EQN eeq12;a \cr
+           -   \hat a(s') & \leq \bar A^i(s'), \hskip.5cm \forall s'.   \EQN eeq12;b \cr}$$
+Let the optimum decision rules be
+$$\EQNalign{ c & =  h^i(a,s), \EQN policy2;a \cr
+            \hat a(s') & = g^i(a,s,s').  \EQN policy2;b \cr}$$
+Note that the solution of the Bellman equation implicitly depends
+on $Q(\cdot \vert \cdot)$ because it appears in the constraint
+\Ep{eq12}. In particular, use the first-order conditions for  the
+problem on the right of equation \Ep{eq11} and the
+\idx{Benveniste-Scheinkman formula} and rearrange to get
+$$ Q(s_{t+1} | s_t ) = {\beta u'_i(c_{t+1}^i) \pi(s_{t+1} | s_t)
+                 \over u'_i(c_t^i) }, \EQN eq14 $$
+where it is understood that $c_t^i = h^i(a_t^i,s_t)$
+and
+$c_{t+1}^i = h^i(a_{t+1}^i(s_{t+1}), s_{t+1})
+= h^i(g^i(a_t^i,s_t,s_{t+1}), s_{t+1})$.
+
+
+
+
+
+
+
+
+
+
+% \medskip
+%\specsec{Definition:}  A {\it distribution of wealth} is
+%a vector $\vec a_t = \{a_t^i\}_{i=1}^I$ satisfying $\sum_i a_t^i = 0$.
+%\medskip
+
+
+\medskip\noindent{\sc Definition:} A {\it  recursive competitive equilibrium} is
+an initial distribution of wealth $\vec a_0$, a set of borrowing limits $\{\bar A^i(s)\}_{i=1}^I$,
+a pricing kernel $Q(s' | s)$, sets of value functions $\{v^i(a,s)\}_{i=1}^I$, and
+decision rules $\{h^i(a,s), g^i(a,s,s')\}_{i=1}^I$ such
+that
+
+\noindent{\bf (a)} The state-by-state borrowing constraints satisfy the recursion
+$$ \bar A^i(s) = y^i(s) + \sum_{s'} Q(s'|s) \bar A^i(s'|s).  \EQN borrowingconA $$
+\medskip
+\noindent{\bf (b)} For all $i$, given
+ $a^i_0$, $\bar A^i(s)$,  and the pricing kernel, the value functions and decision rules
+solve the household's problem;
+\medskip
+\noindent{\bf (c)} For all realizations of $\{s_t\}_{t=0}^\infty$, the consumption and asset
+portfolios $\{\{c^i_t,$
+$\{\hat a^i_{t+1}(s')\}_{s'}\}_i\}_t$ implied by the
+decision rules satisfy $\sum_i c^i_t = \sum_i y^i(s_t)$ and
+$\sum_i \hat a_{t+1}^i(s') = 0$
+for all $t$ and $s'$.
+%for all $i$,  $\{\theta_t^i\}_{t=0}^\infty$ satisfies
+%$\theta_{t+1}^i = g(\theta_t^i,s_t,s_{t+1})$; and
+%(c) for all $t$,  $\sum_i h(\theta_{t}^i,s_t) = \sum_i y^i(s_t)$.
+\medskip
+\noindent \index{recursive!competitive equilibrium}
+
+
+We shall use the recursive competitive equilibrium concept
+extensively in our discussion of asset pricing in chapter \use{assetpricing1}.
+
+\subsection{Computing an equilibrium with sequential trading of  Arrow-securities}\label{sec:example4cont}%
+We use example 4 from subsection \use{sec:example4} to illustrate the following algorithm for computing an
+equilibrium in an economy with sequential trading of a complete set of Arrow securities:
+
+\medskip
+\item {1.}  Compute an equilibrium of the Arrow-Debreu economy with time $0$ trading.
+\medskip
+\item {2.} Set the equilibrium allocation for the sequential trading economy to  the equilibrium allocation from Arrow-Debreu
+time $0$ trading economy.
+\medskip
+\item {3.} Compute equilibrium prices from  formula \Ep{eq14} for a Markov economy
+or the corresponding formula \Ep{eq17} for a non-Markov economy.
+\medskip
+\item{4.} Compute debt limits from \Ep{borrowingconA}.
+\medskip
+\item {5.}  Compute portfolios of one-period Arrow securities  by first computing implied time $t$, history $s^t$ wealth
+$\Upsilon^i_t(s^t) $ from \Ep{cecm_wealth} evaluated at the Arrow-Debreu equilibrium prices,
+then set $a_t^i(s_t) = \Upsilon^i_t(s^t)$.
+
+\medskip
+
+Applying this procedure to example 4 from section \use{sec:example4} gives us
+the price system $Q_0(s_1=1| s_0=1) =\beta, Q_0(s_1=0|s_0=1) =0, Q_1(s_2=1|s_1=1) = .5 \beta, Q_1(s_2=0|s_1=0) = .5 \beta$  and
+$Q_t(s_{t+1} = 1| s_t =1) = Q_t(s_{t+1} = 0| s_t =0) = \beta $ for $t \geq 2$.
+Also, $\Upsilon^i_t(s^t) = 0$ for $i=1,2$ and $t=0,1$.  For $t \geq 2$,
+$\Upsilon_t^1 (s_t =1)= \sum_{\tau \geq t} \beta^{\tau - t}[.5 -1] = {-.5 \over 1-\beta}$ and
+$\Upsilon_t^2(s_t=1) = \sum_{\tau \geq t} \beta^{\tau - t}[.5 -0] = {.5 \over 1-\beta}$.
+Therefore, in period $1$, the first  consumer trades Arrow securities in amounts $a_2^1(s_2=1) = {-.5 \over 1-\beta},
+a_2^1(s_2 = 0) = {.5 \over 1-\beta}$, while the second consumer trades  Arrow securities in amounts $a_2^1(s_2=1) = {.5 \over 1-\beta},
+a_2^1(s_2 = 0) = {-.5 \over 1-\beta}$   After period $2$, the consumers perpetually roll over their debts or assets of either
+${.5 \over 1-\beta}$ or ${-.5 \over 1 - \beta}$.
+
+
+\section{$j$-step pricing kernel}\label{sec:multi-step}%
+We are sometimes interested in the price at time $t$ of a claim to
+one unit of consumption at date $\tau >t $ contingent on the
+time $\tau$ state being $s_\tau$, {\it regardless\/} of the
+particular history by which $s_\tau$ is reached at $\tau$.  We let
+$Q_j(s' | s)$ denote the $j$-step pricing kernel to be interpreted
+as follows: $Q_j(s' | s)$ gives the price of one unit of
+consumption $j$ periods ahead, contingent on the state in that
+future period being $s'$, given that the current state is $s$. For
+example, $j=1$ corresponds to the one-step pricing kernel $Q(s' |
+s)$.
+
+
+With markets in all possible $j$-step-ahead contingent claims,
+the counterpart to constraint \Ep{eq10}, the household's budget
+constraint at time $t$, is
+$$ c_t^i + \sum_{j=1}^\infty \sum_{ s_{t+j}} Q_j( s_{t+j} | s_t)
+   z^i_{t,j}( s_{t+j}) \leq  y^i(s_t) + a_t^i. \EQN cecm_eq10   $$
+Here $z^i_{t,j}( s_{t+j})$ is household $i$'s holdings at
+the end of period $t$ of contingent claims that pay one unit of
+the consumption good $j$ periods ahead at date $t+j$, contingent on
+the state at date $t+j$ being $ s_{t+j}$. The household's
+wealth in the next period  depends on the chosen asset portfolio
+and the realization of $s_{t+1}$,
+$$
+a^i_{t+1}(s_{t+1}) = z^i_{t,1}(s_{t+1})
+   + \sum_{j=2}^\infty \sum_{ s_{t+j}}  Q_{j-1}( s_{t+j} | s_{t+1})
+           z^i_{t,j}( s_{t+j}) .
+$$
+The realization of $s_{t+1}$ determines which element of the vector of
+one-period-ahead claims $\{z^i_{t,1}( s_{t+1})\}$  pays off at
+time $t+1$,
+and also the capital gains and losses inflicted on the holdings of longer horizon
+claims implied by equilibrium prices $Q_j( s_{t+j+1} | s_{t+1})$.
+
+
+With respect to $z^i_{t,j}( s_{t+j})$ for $j>1$,
+use the first-order condition for the problem on the right of \Ep{eq11}
+and the Benveniste-Scheinkman formula and rearrange to get
+$$ Q_j( s_{t+j} | s_t ) = \sum_{s_{t+1}}
+   {\beta u'_i[c^i_{t+1}(s_{t+1})] \pi(s_{t+1} | s_t) \over u'_i(c_t^i) }
+   Q_{j-1}( s_{t+j} | s_{t+1} ).             \EQN Qrecurs $$
+This expression, evaluated at the competitive equilibrium
+consumption allocation, characterizes two adjacent pricing
+kernels.\NFootnote{According to expression \Ep{Markovc}, the
+equilibrium consumption allocation is not history dependent, so
+that $(c_t^i, \{c^i_{t+1}(s_{t+1})\}_{s_{t+1}})= (\bar c^i(s_t),
+\{\bar c^i(s_{t+1})\}_{s_{t+1}})$. Because marginal conditions
+hold for all households, the characterization of pricing kernels
+in \Ep{Qrecurs} holds for any $i$.} Together with first-order
+condition \Ep{eq14}, formula \Ep{Qrecurs}  implies that the
+kernels $Q_j, j = 2, 3, \ldots,$ can be computed recursively:
+$$ Q_j( s_{t+j} | s_t) = \sum_{s_{t+1}} Q_1(s_{t+1} | s_t)
+                      Q_{j-1}( s_{t+j} | s_{t+1}). \EQN Qrecurs2 $$
+
+
+
+
+\subsection{Arbitrage-free pricing}
+It is useful briefly to describe how arbitrage free pricing theory
+\index{arbitrage!no-arbitrage principle}%
+ deduces restrictions on asset
+prices by manipulating  budget sets with redundant
+assets.
+%\NFootnote{Arbitrage pricing theory was advocated by
+%Stephen Ross (1976).} \auth{Ross, Stephen}
+We now present an
+arbitrage argument as an alternative way of deriving restriction
+\Ep{Qrecurs2} that was established above by using households'
+first-order conditions evaluated at the equilibrium consumption
+allocation. In addition to $j$-step-ahead contingent claims, we
+illustrate the arbitrage-free pricing theory by augmenting the trading
+opportunities in our Arrow securities economy by letting the
+consumer also trade  an ex-dividend Lucas tree. Because markets
+are already complete, these additional assets are redundant. They
+have to be priced in a way that leaves the budget set
+unaltered.\NFootnote{That the additional assets are redundant
+follows from the fact that trading Arrow securities is sufficient
+to complete markets.}
+
+
+  Assume that at time $t$,  in addition to purchasing
+a quantity $z_{t,j}(s_{t+j})$   of $j$-step-ahead claims paying
+one unit of consumption at time $t+j$ if the state takes value
+$s_{t+j}$ at time $t+j$, the consumer also purchases  $N_{t}$
+units of  a stock or  Lucas tree. Let the ex-dividend price of the
+tree at time $t$  \index{arbitrage}%
+ be $p(s_t)$.  Next period, the
+tree pays a dividend $d(s_{t+1})$ depending on the
+ state $s_{t+1}$. Ownership of the $N_{t}$ units
+of the tree  at the beginning of $t+1$ entitles the
+consumer to a claim on  $N_{t}[p(s_{t+1}) + d(s_{t+1})]$
+ units of time $t+1$ consumption.\NFootnote{We calculate the price of this asset
+using a different method in
+chapter \use{assetpricing1}.}
+As before, let $a_t$ be the wealth  of the consumer, apart from
+his endowment, $y(s_t)$.  In this setting, the augmented version of
+constraint \Ep{cecm_eq10}, the consumer's budget constraint, is
+$$c_t + \sum_{j=1}^\infty \sum_{s_{t+j}} Q_j(s_{t+j} | s_t)
+      z_{t,j}(s_{t+j}) + p(s_t) N_{t} \leq a_t  + y(s_t)
+\EQN arbit1;a $$
+and
+$$\eqalign{ a_{t+1}(s_{t+1}) & = z_{t,1}(s_{t+1}) + \left[p(s_{t+1})
++ d(s_{t+1})\right] N_{t} \cr
+   + & \sum_{j=2}^\infty \sum_{s_{t+j}} Q_{j-1}(s_{t+j} | s_{t+1})
+       z_{t,j}(s_{t+j}). \cr} \EQN arbit1;b $$
+Multiply equation  \Ep{arbit1;b} by $Q_1(s_{t+1} | s_t)$, sum
+over $s_{t+1}$, solve for \hfil\break
+ $\sum_{s_{t+1}} Q_1(s_{t+1} | s_t) z_{t,1}(s_t)$,
+and substitute this expression in \Ep{arbit1;a} to get
+$$\EQNalign{ c_t +& \left\{p(s_t) - \sum_{s_{t+1}} Q_1(s_{t+1} | s_t)
+      [ p(s_{t+1}) + d(s_{t+1})]   \right\} N_{t} \cr
+      + & \sum_{j=2}^{\infty} \sum_{s_{t+j}} \left\{
+     Q_j(s_{t+j} | s_t) - \sum_{s_{t+1}} Q_{j-1}(s_{t+j} | s_{t+1})
+      Q_1(s_{t+1} | s_t) \right\} z_{t,j}(s_{t+j}) \hskip1cm \cr
+     + & \sum_{s_{t+1}} Q_1(s_{t+1} | s_t ) a_{t+1}(s_{t+1})
+                                 \leq a_t + y(s_t). \EQN arbit2\cr}$$
+If the two terms in braces are not zero, the consumer can attain
+unbounded consumption and future wealth by purchasing or selling
+either the stock (if the first term in braces is not zero) or a
+state-contingent  claim (if any of the terms in the second set of
+braces is not zero).   Therefore, so long as the utility function
+has no satiation point, in any equilibrium, the terms in the
+braces must be zero. Thus, we have the  arbitrage-free pricing
+formulas \index{arbitrage!no-arbitrage principle}%
+$$\EQNalign{ p(s_t) &=  \sum_{s_{t+1}} Q_1(s_{t+1} | s_t)
+      [ p(s_{t+1}) + d(s_{t+1})],    \EQN arbit3;a \cr
+     Q_j(s_{t+j} | s_t) & = \sum_{s_{t+1}} Q_{j-1}(s_{t+j} | s_{t+1})
+      Q_1(s_{t+1} | s_t) . \EQN arbit3;b \cr } $$
+These are called {\it arbitrage-free pricing formulas\/} because if they were
+violated,  there would exist an {\it arbitrage}.  An
+\idx{arbitrage} is defined as a risk-free transaction that earns
+positive profits.
+
+
+
+\section{Term structure of yields on risk-free claims}\label{sec:term_structure_LA}%
+Assume that we are in the setting of section \use{sec:Markovs}.
+Recall formula \Ep{eq14} for the price $Q_\tau(s_{t+\tau} | s_t)$ of a $\tau$-period ahead Arrow security in Markov state
+$s_t$.  At time $t$ in Markov state $s_t$, the price of a risk-free claim on  one unit of consumption at time $t+\tau$ is\NFootnote{The one-period gross {\it return\/} on this risk-free claim on consumption  at time $t+\tau$ is risky and equals
+$$ R_\tau(s_{t+1},s_t) = {\frac{p_{\tau-1}(s_{t+1}) - p_\tau(s_t)}{p_\tau(s_t)}} .$$}
+$$ p_\tau(s_t) = \sum_{s_{t+\tau} } Q_\tau(s_{t+\tau} | s_t) . $$
+At time $t$, the  ``yield to maturity'' or just ``yield'' of a sure claim to one unit of time $t+j$ consumption is
+the scalar $\rho_\tau(s_t)$ that satisfies \index{yield!to maturity}
+$$ p_\tau(s_t) = \exp( -\tau \rho_\tau(s_t)) $$
+or
+$$ \rho_\tau(s_t) = - {\frac{\log p_\tau(s_t)}{\tau}}.  \EQN eq:yield $$
+The vector  $\rho_\tau(s_t)_{\tau=1}^T$ is  called the ``term structure of interest rates.''
+Theories of  the term structure of interest rates to be outlined in chapters \use{assetpricing1} and \use{assetpricing2}
+seek to explain the evolution of $\rho_\tau(s_t)_{\tau=1}^T$ over time.
+
+\subsection{Constructing yields}
+
+Often prices $p_\tau(s_t)$ are not observed directly because claims to risk-free promises to goods $t+j$ periods ahead are not traded.  But when
+enough distinct {\it bundles\/} of such claims are traded, there are ways to estimate the $p_\tau(s_t)$'s by appropriately unbundling a set of bond prices.
+  Here is brief account of how.
+Suppose that at time $t$ observations are available on the prices of a number $I$  bonds. The $i$th bond is a claim
+to a stream of risk-free claims to $d_{i,t+\tau}$ units of time $t+\tau$ consumption for dates $t+ \tau$ where $\tau = 1, 2, \ldots, T$.
+Some components of  $d_{i,t+\tau}$ can be zero.  According to our theory,  the observed price $v_{i,t}$ of  bond $i$ at $t$ satisfies
+$$ v_{i,t}(s_t) = \sum_{\tau =1}^T d_{i,t+\tau} p_\tau(s_t) . $$  Represent this equation for our collection of bonds as $i = 1, \ldots , I$
+as
+$$  \bmatrix{ v_{1,t} \cr v_{1,t+2} \cr \vdots \cr v_{I,t} } =
+     \bmatrix{ d_{1,t+1} & d_{1,t+2} & \cdots & d_{1,t+\tau} \cr
+      d_{2,t+1} & d_{2,t+2} & \cdots & d_{2,t+\tau} \cr
+      \vdots & \vdots & \vdots & \vdots \cr
+       d_{I,t+1} & d_{I,t+2} & \cdots & d_{I,t+\tau} }
+      \bmatrix{ p_1(s_t) \cr p_2(s_t) \cr \vdots \cr p_I(s_t) }   $$
+or
+$$ V_t = D_t P_t . $$
+If we observe $V_t$ and $D_t$, we can recover the prices $P_t$ by applying an appropriate inverse or generalized inverse to each side of this matrix
+equation.
+If $I =T$ and $D_t$ is of full rank, we use
+$$ P_t = D_t^{-1} V_t ,$$
+while if $ I > T$ we use the least squares formula
+$$ \hat P_t = (D_t' D_t)^{-1} D_t' V_t \EQN ls101 $$
+and if $T > I$ we use the formula
+$$ \hat P_t = D_t' (D_t D_t')^{-1} V_t . \EQN ls102 $$
+We use  formula \Ep{ls101} when there are too many securities and formula \Ep{ls102}  when there are too few securities  relative to the primitive securities whose prices $P_t$ we want
+to infer. After we have constructed $P_t$ or $\hat P_t$, we construct yields from equation \Ep{eq:yield}. \index{inverse!generalized}%
+\index{least squares}%
+
+
+
+
+
+
+
+\section{Recursive version of Pareto problem}\label{sec:RecursivePareto}%
+At the  outset of this chapter, we characterized Pareto
+optimal allocations. By formulating a Pareto problem  recursively, this section
+gives a preview of things to come in chapters \use{socialinsurance}
+and \use{credible}.
+For this purpose, we
+consider a special case of the section \use{sec:example2GG} example 2 of an
+economy with a constant aggregate
+endowment and two types of household with $y_t^1 = s_t$, $y_t^2 = 1-s_t$.
+We now assume that the $s_t$ process
+is i.i.d., so that $\pi_t(s^t) = \pi(s_t)
+\pi(s_{t-1}) \cdots \pi(s_0)$.   Also, let's assume
+that $s_t$ has a discrete distribution
+so that
+$s_t \in [\overline s_1, \ldots, \overline s_S]$
+with probabilities $\Pi_i = {\rm Prob}(s_t = \overline s_i)$
+where $\overline s_{i+1} > \overline s_i$ and $\overline s_1 \geq 0$
+and $\overline s_S \leq 1$.
+
+
+
+
+In our recursive formulation, each period a planner
+delivers a pair of previously promised discounted
+utility streams by assigning a state-contingent
+consumption allocation today and a pair of state-contingent
+promised discounted utility streams starting tomorrow.
+Both the state-contingent consumption  today and the promised
+discounted utility tomorrow are functions of the initial
+promised discounted utility levels.
+
+
+  Define $v$ as  the expected discounted utility of
+a type 1 person
+and $P(v)$ as the maximal expected discounted utility
+that can be offered to a type 2 person, given that
+a type 1 person is offered at least $v$. Each of these expected values
+is to be evaluated before the realization of the state at the initial
+date.
+
+The Pareto problem is to choose stochastic processes $\{c_t^1(s^t), c_t^2(s^t)\}_{t=0}^\infty$ to
+ maximize
+$P(v)$ subject to  $c_t^1(s^t) + c_t^2(s^t) =1$ and the utility constraint
+$\sum_{t=0}^\infty \sum_{s^t} \beta^t u_1(c_t^1(s^t)) \pi_t(s^t) \geq v.$
+In terms of the competitive equilibrium
+allocation calculated for  the section \use{sec:example2GG} example 2  economy above,
+let $\overline c= \overline c^1$ be the  constant consumption
+allocated to a type 1 person and $1-\overline
+c=\overline c^2$ be the constant consumption
+allocated to a type 2 person.
+Since we have shown that the competitive equilibrium allocation is
+a Pareto optimal allocation, we already know one point on the
+Pareto frontier $P(v)$. In particular, when a type 1 person is promised
+$v= u_1(\overline c) / (1 - \beta) $, a type 2 person attains
+life-time utility
+$P(v) =  u_2(1-\overline c) / (1-\beta)$.
+%%%Evidently, $v= {u(\overline c) \over 1 - \beta} $,
+%%%$P(v) =  {u(1-\overline c)\over 1-\beta}$, and
+%%%$P'(v) = -{u'(1-\overline c) \over u'(\overline c)}$.
+
+We can express the discounted values $v$  and $P(v)$ recursively\NFootnote{This is our first example
+of a `dynamic program squared'.  We call it that because the state variable $v$ that appears in the Bellman equation
+for $P(v)$ itself satisfies another Bellman equation.}
+as
+$$  v = \sum_{s=1}^S \left[ u_1(c_s)   +\beta w_s \right]  \Pi_i $$
+and
+$$ P(v) = \sum_{s=1}^S \left[ u_2(1- c_s) + \beta P(w_s) \right] \Pi_s, $$
+where $c_s$ is consumption of the type 1 person in state $s$,
+$w_s$ is the continuation value assigned to the type
+$1$ person in state $s$; and $1-c_s$ and $P(w_s)$ are the consumption
+and the continuation value, respectively, assigned to a type 2 person in state $s$.
+Assume that  the continuation values $w_s \in V$, where $V$ is a set
+of admissible discounted values of utility.   In this section,
+ we assume
+that $V = [u_1(\epsilon) / (1-\beta),\,  u_1(1) / (1 -\beta)]$ where
+$\epsilon\in(0,1)$ is an arbitrarily small number.
+%%%$V = [0, {u(1) \over 1 -\beta}]$. In effect, a consumption
+%%%plan offers a household a state-contingent consumption vector in
+%%%period $i$ and  a state-contingent vector of continuation values
+%%%$w_i$ in state $i$, with each $w_i$ itself being a present value
+%%%of one-period future utilities.
+
+In effect, before the realization of the current state, a Pareto optimal
+allocation offers the type 1 person a state-contingent vector of
+consumption $c_s$ in state $s$ and
+a state-contingent vector of continuation values
+$w_s$ in state $s$, with each $w_s$ itself being a present value
+of one-period future utilities.
+In terms of the pair of values
+$(v, P(v))$,
+ we can express the Pareto problem recursively as
+$$ P(v) = \max_{\{c_s, w_s \}_{s=1}^S }
+  \sum_{s=1}^S [ u_2(1-c_s) + \beta P(w_s)] \Pi_s  \EQN paret1 $$
+where the maximization is subject to
+$$ \sum_{s=1}^S [u_1(c_s) + \beta w_s ] \Pi_s \geq v \EQN paret2 $$
+where $c_s \in [0,1]$ and $w_s \in V$.
+
+
+To solve the Pareto problem, form the
+Lagrangian
+$$ L = \sum_{s=1}^S \Pi_s [u_2(1-c_s) + \beta P(w_s)
+   + \theta (u_1(c_s) + \beta w_s) ] - \theta v $$
+where $\theta $ is a Lagrange multiplier on constraint \Ep{paret2}.
+First-order conditions
+with respect to $c_s$ and $w_s$, respectively, are
+$$\EQNalign{ - u'_2(1-c_s) + \theta u'_1(c_s) & = 0, \EQN paret3;a \cr
+        P'(w_s) + \theta & = 0. \EQN paret3;b \cr} $$
+The envelope condition is
+$ P'(v) = -\theta$.  Thus, \Ep{paret3;b} becomes
+$  P'(w_s) = P'(v)   $.  But $P(v)$ happens to be strictly concave,
+so  this equality implies
+$ w_s = v$.  Therefore,  any solution of the Pareto problem leaves
+the continuation value $w_s$ independent  of  the state $s$.
+Equation
+\Ep{paret3;a} implies that
+$${u'_2(1-c_s) \over u'_1(c_s)} = -P' (v) .\EQN paret4 $$
+Since the right side of \Ep{paret4} is independent of $s$, so is
+the left side, and therefore $c$ is independent of $s$.
+  And since $v$ is constant over time (because $w_s = v$ for all $s$),
+it follows that $c$ is constant over time.
+
+
+ Notice from
+\Ep{paret4} that $P'(v)$ serves as a   relative Pareto weight on
+the type 1 person. The recursive formulation brings out that,
+because $P'(w_s) = P'(v)$,
+ the relative  Pareto weight remains constant over time and is independent
+of the  realization of $s_t$.    The planner imposes
+complete risk sharing.
+
+
+In chapter \use{socialinsurance}, we shall encounter recursive formulations
+again. Impediments to risk sharing that occur in the form
+either of enforcement or of information constraints will
+impel the planner sometimes to make continuation values respond
+to the current realization of shocks to endowments or preferences.
+
+
+
+
+\section{Concluding remarks}
+  The  framework in this chapter serves much of  macroeconomics
+either
+as foundation or straw man (``benchmark'' is a kinder phrase than
+``straw man'').
+   It is the foundation of
+extensive literatures on asset pricing and risk sharing.
+We describe the literature on asset pricing in more
+detail in chapters \use{assetpricing1} and \use{assetpricing2}.
+The model also serves as benchmark, or point of departure,
+for a variety of models designed to confront observations
+that seem inconsistent with complete markets. In particular,
+for models   with exogenously imposed   incomplete markets,
+see chapters \use{selfinsure} on precautionary saving and
+\use{incomplete} on  incomplete markets. For
+models with endogenous incomplete markets,
+see chapters \use{socialinsurance} and \use{socialinsurance2} on
+enforcement and information problems. For
+models of money, see
+chapters \use{fiscalmonetary} and \use{townsend}.
+ To take monetary theory as an example, complete
+markets models assign no role to  money because they
+contain an efficient multilateral trading mechanism, with such
+extensive  netting of claims that no additional asset is
+required to facilitate bilateral exchanges.   Any modern model of
+money introduces frictions that impede complete markets.     Some
+monetary models (e.g., the cash-in-advance model of Lucas, 1981)
+impose minimal impediments to complete markets in ways that  preserve many
+of the asset-pricing implications of complete markets models while
+also activating classical monetary doctrines like the quantity
+theory of money. The shopping time model of chapter
+\use{fiscalmonetary}
+ is constructed in a similar
+spirit.  Other monetary  models, such as the Townsend turnpike
+model of chapter \use{townsend} or the Kiyotaki-Wright search
+model of chapter \use{search2}, impose more  extensive frictions
+on multilateral exchanges and leave the complete markets model
+farther behind.
+  Before leaving the complete markets model, we'll put it
+to work in several of the following chapters.
+% \use{ogmodels}, \use{ricardian}, and \use{assetpricing}.
+\auth{Lucas, Robert E., Jr.} \auth{Kiyotaki,
+Nobuhiro} \auth{Wright, Randall} \auth{Townsend, Robert M.}
+
+%
+%
+%\auth{Alvarez, Fernando} \auth{Jermann, Urban} \auth{Lustig,
+%Hanno}\auth{Hansen, Lars P.}\auth{Tallarini, Thomas}
+%%\vfil\eject
+%\appendix{A}{Consumption strips and the cost of business cycles}
+%%\subsection{Consumption strips}
+%  This appendix briefly describes  the ideas of
+%Alvarez and Jermann (2003); Lustig (2000); Hansen, Sargent, and Tallarini (1999);
+%and Tallarini (2000).   Their purpose
+%is to   link measures of the cost of business cycles with
+%a risk premium for some assets.
+%To this end, consider an endowment economy with a representative
+%consumer  endowed with a consumption process
+%$c_t = c(s_t)$, where $s_t$ is  Markov with transition
+%probabilities $\pi(s'|s)$.      Alvarez and Jermann
+%define a one-period  consumption strip as a claim to the random
+%payoff $c_t$, sold  at date $t-1$. The price in terms of
+%time $t-1$ consumption of this one-period consumption strip is
+%$$ a_{t-1} = E_{t-1} m_t c_t ,\EQN alvjer1 $$
+%where  $m_t$ is the one-period stochastic discount factor
+%$$ m_t = {\beta u'(c_t) \over u'(c_{t-1})} . \EQN alvjer2 $$
+%Using the definition of a conditional covariance,
+%equation \Ep{alvjer1} implies
+%$$ a_{t-1} = E_{t-1} m_t E_{t-1} c_t + {\rm cov}_{t-1} (c_t, m_t),
+%          \EQN alvjer3 $$
+%where ${\rm cov}_{t-1} (c_t, m_t) <0$.
+%Note that the price of  a one-period claim on $E_{t-1} c_t $ is simply
+%$$ \tilde a_{t-1} = E_{t-1} m_t E_{t-1} c_t, \EQN  alvjer4 $$
+%so that the negative covariance in equation \Ep{alvjer3} is a discount
+%due to risk in the price  of the risky claim on $c_t$ relative
+%to the risk-free claim on a payout with the same mean.
+%Define the multiplicative risk premium on the consumption strip
+%as  $(1+\mu_{t-1}) \equiv \tilde a_t / a_t $, which evidently
+%equals
+% $$  1 + \mu_{t-1} = {E_{t-1} m_t E_{t-1} c_t \over
+%                      E_{t-1} m_t c_t }. \EQN alvjer5 $$
+%
+%
+%
+%\auth{Alvarez, Fernando} \auth{Jermann, Urban} \auth{Lustig,
+%Hanno}
+%\subsection{Link to business cycle costs}
+%The cost of business cycle as defined in chapter \use{practical}
+%does not link immediately to an asset-pricing calculation because
+%it is inframarginal.   Alvarez and Jermann (2003) and Hansen,
+%Sargent, and Tallarini (1999) were interested in coaxing attitudes
+%about \auth{Tallarini, Thomas}\auth{Hansen, Lars P.}%
+% the cost of
+%business  cycles from asset prices. Alvarez and Jermann designed a
+%notion of the  marginal   costs of business cycles to match asset
+%pricing. With the timing conventions of Lustig (2000),  their
+%concept of marginal cost corresponds to the  risk premium in
+%one-period consumption strips.
+%
+%
+%  Alvarez and Jermann (2003) and Lustig (2000) define
+%the total costs of business cycles in terms of a
+%stochastic process of adjustments to consumption $\Omega_{t-1}$
+%constructed to satisfy
+%$$ E_0 \sum_{t=0}^\infty \beta^t u[(1+\Omega_{t-1})c_t ]
+%     = E_0 \sum_{t=0}^\infty \beta^t u(E_{t-1} c_t) .$$
+%The idea is to compensate the consumer for the
+%one-period-ahead risk in consumption that he faces.
+%
+%
+%The time $t$ component of the marginal
+% cost of business cycles  is defined as follows through
+%a variational argument, taking the endowment as a benchmark.
+%Let $\alpha \in (0,1)$ be a parameter to index consumption
+%processes.  Define
+%$\Omega_{t-1}(\alpha)$ implicitly by means of
+%$$ E_{t-1} u\{[1+\Omega_{t-1}(\alpha)]c_t\} =
+%    E_{t-1} u[\alpha E_{t-1} c_t + (1-\alpha) c_t].  \EQN alvjer6 $$
+%Differentiate equation \Ep{alvjer6} with respect to $\alpha$ and evaluate
+%at $\alpha=0$ to get
+%$$ \Omega'_{t-1}(0) = {E_{t-1} u'(c_t) (E_{t-1} c_t - c_{t})
+%                \over E_{t-1} c_t u'(c_t) }  .$$
+%Multiply both numerator and denominator of the right side
+%by $\beta / u'(c_{t-1})$ to get
+%$$ \Omega'_{t-1}(0) = {E_{t-1} m_t (E_{t-1} c_t - c_t )
+%                     \over E_{t-1} m_t c_t } ,\EQN alvjer7 $$
+%where we use $\Omega_{t-1}(0)=0$.
+%Rearranging gives
+%$$ 1 + \Omega'_{t-1}(0)  = {E_{t-1} m_t E_{t-1} c_t \over
+%                            E_{t-1} m_t c_t }. \EQN alvjer8 $$
+%Comparing equation \Ep{alvjer8} with \Ep{alvjer5} shows that
+%the marginal cost of business cycles equals the multiplicative
+%risk premium on the one-period consumption strip. Thus,
+%in this economy, the marginal cost of business cycles
+%can be coaxed from asset market data.
+
+
+\vfill\eject
+
+\noindent
+{\bf Appendices: Departures from key assumptions}
+
+\medskip
+
+\noindent
+The  finding that the equilibrium consumption of a household
+depends in a time-invariant way on the aggregate endowment hinges
+ on this chapter's assumptions that there are  complete markets and  that
+consumers  share the same  discount factor and the same probabilities.
+In appendix \use{app:compAA}, we show that when households have heterogeneous
+discount factors,  equilibrium allocations eventually entail  efficient
+ immiserization: at equilibrium prices,  less patient
+households choose to consume almost nothing
+as time approaches infinity.
+In appendix \use{app:compB}, we show that when households have heterogeneous beliefs,  as  time passes  equilibrium allocations assign   less
+and less  to those
+with less accurate beliefs.
+Consumers' asset choices accompany these outcomes in ways that reflect their disparate probability assessments.
+Appendix \use{sec:Beker} shows that if markets are incomplete, there no longer prevails an inextricable
+link between  either the degree of patience or the
+accuracy of beliefs and  which consumers continue to consume  asymptotically. Instead, many things can happen.
+
+
+
+\appendix{A}{Heterogenous discounting\label{app:compAA}}
+
+We now modify \Ep{eq0} to allow for heterogenous discount
+factors.  Let $\beta_i$ denote
+the subjective discount factor of household $i$, where
+$1 > \beta_1\geq \beta_2 \ldots \geq \beta_I > 0$.
+Counterparts to first-order conditions \Ep{foncPareto101} for the
+Pareto problem become
+$$ \left[ \beta_i \over \beta_1 \right]^t
+{u_i^\prime(c^i_t(s^t)) \over u_1^\prime(c^1_t(s^t))}
+                   = {\lambda_1  \over \lambda_i}.  \EQN discount_0 $$
+These imply that ratios of marginal utilities in an efficient allocation are no longer time invariant.
+ Specifically, let $\lambda^t_i$ be the
+Pareto weight attached to consumer $i$'s utility in a
+remainder Pareto problem at date $t$. It is instructive to
+normalize  the weight assigned to the
+most patient household at the value assigned in the initial time $t=0$
+Pareto problem, i.e., $\lambda^t_1 = \lambda_1$ for all $t\geq0$.
+From expression \Ep{discount_0} we can then infer that the continuation
+Pareto weight on household $i$'s utility satisfies
+$$
+\lambda^t_i =  \left[ \beta_i \over \beta_1 \right]^t \lambda_i,
+$$
+where $\lambda_i$ is the weight on household $i$'s utility in the
+initial Pareto problem.
+%Since  $\lambda^t_i$ for all $i  \neq 1$,  converges to
+%zero, the most patient $i=1$ agent  eventually consumes everything.
+For a consumer $i$ with  $\beta_i < \beta_1$, $\lambda^t_i$ converges to
+zero.  The most patient type of household eventually
+consumes everything.
+
+
+\appendix{B}{Heterogenous beliefs \label{app:compB}}
+\auth{Debreu, Gerard}%
+ Instead of our highly restrictive specification  % time-separable, discounted expected utility preferences
+ \Ep{eq0}, namely,
+ $$U_i(c^i) =
+   \sum_{t=0}^\infty \sum_{s^t} \beta^t u_i[c_t^i(s^t)]
+   \pi_t(s^t),$$
+% $ U^i(c^i) = \sum_{t=0}^\infty \sum_{s^t} \beta^t u(c^i(s^t)) \pi_t(s^t)$,
+we could follow
+  Debreu (1954, 1959)  and impute  more  general preferences to
+consumer $i$.    We %Debreu
+could just posit $I$  distinct   preference orderings   $U_i(c^i)$.
+% over consumption plans $\{c_t^i(s^t)\}_{t\geq 0}$. instead of the special
+% time-separable, discounted expected utility form of \Ep{eq0}.
+The functions
+$U_i(c^i)$ could   directly specify attitudes about  tradeoffs among consumption goods at different times and histories.
+There is no need to say anything directly about how likely the $s^\infty$ paths are from  anyone's  point of view, including the planner's.
+To the Pareto planner, all that matters are  the preferences $U_i(c^i)$ of the $I$ consumers and the aggregate resources available at different dates and histories.
+The outcome of a Pareto problem is an allocation  across people
+for all times and all histories.  %In the broader construction of Debreu,
+The theory   can be silent about probabilities over histories $\{s^\infty\}$.
+
+
+
+\index{rational expectations}%
+We break that silence %about   which
+%history $\{s^\infty\}$ is likely  actually to  occur
+when we assign  probabilities $\pi_t(s^t)$ over histories $s^t$ to someone either inside the model or outside the model.
+In the body of this chapter, we  assigned the same probabilities to all agents inside the model, to an outside observer (``the economist''),
+and presumably to ``nature''.  In particular, when we  adopted our restrictive expected utility specification \Ep{eq0}, we
+ imputed a common probability specification $\{\pi_t(s^t)\}$   to all consumers $i=1, \ldots, I$.  Beyond that,
+ at various points in the body of the  chapter and  in  chapters \use{assetpricing1} and \use{assetpricing2} about asset pricing,
+ we   go on to impute the same common probability model shared by agents inside the model  both to outside economists and to   `nature', alternatively known as the
+actual history-generating mechanism.  Imputing common beliefs to everyone inside a model, to nature,
+and to the author of the model too, is to embrace the  ``rational expectations hypothesis.''
+\index{rational expectations!communism}%
+\index{communism!rational expectations}%
+Widely used in macroeconomics, finance, and public finance, this ``communism of probability models'' assumption imposes substantially more structure than did Debreu.
+%By doing that, the rational expectations assumption acquires empirical power.
+By equating probability distributions
+ across all agents inside a model,  nature, and  an outside econometrician, the rational expectations hypothesis eliminates parameters that would
+ be required to describe heterogeneous beliefs. In doing this it combines and confounds  potentially distinct roles that actual and  perceived probabilities  $\pi_t(s^t)$ play in influencing not only actual outcomes but also   individuals'
+preferences, and through them, Pareto optimal allocations and competitive equilibrium prices.
+To indicate some of these conceptually distinct roles, it is useful temporarily to abandon the assumption of common beliefs and to follow
+Blume and Easley (2006) by considering
+a setting with disparate beliefs.  This will  allow us to evaluate  Milton Friedman's (1953, p. 22) conjecture
+that, by redistributing wealth towards people with more accurate beliefs, market forces eventually make outcomes resemble
+ a rational expectations equilibrium. \index{rational expectations}%
+
+
+Thus, suppose that we modify  the utility functional \Ep{eq0} for consumer $i$
+to allow for different probabilities
+$$ U_i(c^i) = \sum_{t=0}^\infty \sum_{s^t} \beta^t u_i(c^i_t(s^t))
+\pi_t^i(s^t) .  \EQN heterogbel1 $$
+With preferences altered in this way, assume that the planner
+maximizes the same welfare function $W$ defined in \Ep{planner1}.    Then  counterparts to first-order conditions \Ep{foncPareto101} become
+$$ {\frac{\pi_t^i(s^t)}{\pi_t^1(s^t)}} \;
+{\frac{u_i^\prime(c^i_t(s^t))}{u_1^\prime(c^1_t(s^t))}}
+ = {\frac{\lambda_1}{\lambda_i}} \; .
+                                                    \EQN heterogbel2 $$
+The likelihood ratios ${\frac{\pi_t^i(s^t)}{\pi_t^1(s^t)}}$, which are identically unity when there are common beliefs, now influence optimal allocations.
+For a given vector of time $0$  Pareto weights $\{\lambda_i\}_{i=1}^I$, the Pareto planner assigns relatively more consumption to
+people who place higher probabilities on a date-history pair.
+
+
+It is useful once again to let $\lambda^t_i(s^t)$ be the
+Pareto weight attached to consumer $i$'s utility in a
+remainder or continuation Pareto problem as of date $t$, history $s^t$.  A continuation Pareto
+planner chooses a continuation allocation
+$\{c_{\tau}^i(s^\tau);$ for all $\tau\geq t,s^\tau | s^t\}$,
+$i = 1, \ldots , I$  to maximize
+$$ W_t(s^t) = \sum_i \lambda^t_i(s^t)
+\sum_{\tau = t}^\infty \sum_{s^\tau | s^t}
+\beta^t u_i(c_{\tau}^i(s^\tau)) \pi_{\tau}^i(s^\tau | s^t) .$$
+Under heterogenous
+beliefs, the allocations chosen by every  continuation  planner  equal  continuations of the  original allocation provided that
+ continuation Pareto weights satisfy
+$$
+\lambda^t_i(s^t) =  \left[ \pi_t^i(s^t) \over \pi_t^1(s^t) \right]
+                    \lambda_i.
+$$
+
+\index{Friedman, Milton}%
+
+\subsection{Example: one type's beliefs are closer to the truth}
+\label{sec:heterogbel_example}%
+
+\noindent
+The  Pareto problem above does not involve a {\it true} probability specification. But a true
+stochastic process must be specified if we want to compute
+an {\it actual} distribution of consumption governed by
+\Ep{heterogbel2}.
+We now describe an  example that illustrates the principle that
+ the consumer whose probability specification is closest to nature's
+will eventually consume the entire aggregate endowment.
+
+ Suppose that $s_t$ is
+truly independent and identically distributed and that
+${\rm Prob}(s_t = s) = \pi(s)>0$ for all $s\in S$,
+and $\sum_s \pi(s)=1$.
+Consumer $i$ also believes that $s_t$ is
+independent and identically distributed but with
+subjective probabilities ${\rm Prob}(s_t = s) = \pi^i(s)>0$
+for all $s\in S$, and $\sum_s \pi^i(s)=1$.
+The \idx{entropy} of the actual distribution $\pi$
+relative to consumer $i$'s distribution $\pi^i$ is
+$$ {\rm ent}(\pi, \pi^i) = \sum_s \pi(s)
+\log \left({\frac{\pi(s)}{\pi^i(s)}}\right).
+$$
+Relative entropy is a nonnegative function that attains
+a minimum value of 0 when $\pi^i=\pi$.\NFootnote{To show
+that relative entropy is a nonnegative function, note
+that the negative of ${\rm ent}(\pi, \pi^i)$ is bounded
+from above by zero:
+$$ -{\rm ent}(\pi, \pi^i) = \sum_s \pi(s) \log
+\left({\frac{\pi^i(s)}{\pi(s)}}\right)
+\leq \log \left(\sum_s \pi(s) {\frac{\pi^i(s)}{\pi(s)}}\right)
+= \;\log \left(\sum_s \pi^i(s)\right) =0,
+$$
+where the weak inequality follows from Jensen's inequality
+and concavity of the natural log function.
+Equality holds for $\pi^i=\pi$, and by strict concavity
+of the  log function, ${\rm ent}(\pi, \pi^i) >0$
+for all $\pi^i \not= \pi$.}
+Relative entropy indicates how far one probability distribution
+is from another.\NFootnote{Relative entropy also governs statistical properties of likelihood ratio tests for
+discriminating one statistical model from another in large samples.} \index{entropy}%
+
+Let the beliefs
+of consumer 1 be closer to the truth than those of
+other consumers, as measured by  \idx{relative entropy}, so that
+${\rm ent}(\pi, \pi^i) > {\rm ent}(\pi, \pi^1) \geq 0$ for all
+$i>1$.
+Under our assumption of i.i.d.\ uncertainty, first-order
+conditions \Ep{heterogbel2} can be written
+$$ {\frac{u_i^\prime(c^i_t(s^t))}{u_1^\prime(c^1_t(s^t))}}
+ = {\frac{\lambda_1}{\lambda_i}} \;
+   {\frac{\prod_{\tau=0}^t \pi^1(s_{\tau})}
+        {\prod_{\tau=0}^t \pi^i(s_{\tau})}}
+ = {\frac{\lambda_1}{\lambda_i}} \;
+{\frac{\prod_{\tau=0}^t {\frac{\displaystyle \pi(s_{\tau})}
+                            {\displaystyle \pi^i(s_{\tau})}}}
+     {\prod_{\tau=0}^t {\frac{\displaystyle \pi(s_{\tau})}
+                            {\displaystyle \pi^1(s_{\tau})}}}}\,,
+                                                    \EQN heterogbel10
+$$
+where the second equality is obtained after multiplying and dividing
+by $\pi_t(s^t)=\prod_{\tau=0}^t \pi(s_{\tau})$. After taking
+logarithms and then dividing by $t$, expression \Ep{heterogbel10}
+becomes
+$$ {\frac{1}{t}}\,
+\log\left[{\frac{u_i^\prime(c^i_t(s^t))}{u_1^\prime(c^1_t(s^t))}}\right]
+ = {\frac{1}{t}}\, \log\left({\frac{\lambda_1}{\lambda_i}}\right) \; +
+{\frac{1}{t}}\sum_{\tau=0}^t
+\left[\log\left({\frac{\pi(s_{\tau})}{\pi^i(s_{\tau})}}\right)
+- \log\left({\frac{\pi(s_{\tau})}{\pi^1(s_{\tau})}}\right)\right].
+$$
+Since the log likelihood ratios
+$\log\left({\frac{\pi(s_{\tau})}{\pi^i(s_{\tau})}}\right)$ are
+independent and identically distributed random variables, by
+the law of large numbers
+$$ {\frac{1}{t}}\sum_{\tau=0}^t
+\log\left({\frac{\pi(s_{\tau})}{\pi^i(s_{\tau})}}\right)
+\rightarrow
+\sum_s \pi(s) \log \left({\frac{\pi(s)}{\pi^i(s)}}\right)
+= {\rm ent}(\pi, \pi^i).
+$$
+Consequently,
+$$ {\frac{1}{t}}\,
+\log\left[{\frac{u_i^\prime(c^i_t(s^t))}{u_1^\prime(c^1_t(s^t))}}\right]
+\rightarrow
+{\rm ent}(\pi, \pi^i) - {\rm ent}(\pi, \pi^1) >0,
+                                                    \EQN heterogbel11
+$$
+so the strictly positive right side implies that the ratio of marginal
+utilities diverges to $+\infty$. Since the marginal utility in the
+denominator is bounded below because of the finite aggregate endowment,
+we conclude that the marginal utility of consumer $i$ goes to
+infinity and hence $\lim_t c^i_t(s^t)\rightarrow 0$.
+
+This example is a special case of
+Blume and Easley's (2006) more general proposition that in the limit as $t \rightarrow +\infty$, the  consumer with beliefs closest to the truth, as measured by relative entropy, receives the entire allocation.
+\auth{Blume, Lawrence}%
+\auth{Easley, David}%
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\subsection{Example 1: one type knows the truth}
+%\label{sec:heterogbel_example1}%
+
+%\noindent
+%This example illustrates that if one person's probability specification matches nature's while everyone else's doesn't, then  asymptotically
+%the ratio of the knowledgeable person's consumption to that of a less knowledgeable person  diverges to $+\infty$.
+
+
+%Suppose  that $S = \{0, 1\},  I=2$, and that  agent $i$ believes that $s_t$ %is independently and identically distributed
+%with ${\rm Prob}(s_t = 0) = \alpha_i$.  Then for a history  $s_t, s_{t-1}, %\ldots, s_1$ with $s_\tau = 1$ $t-n$ times and
+%$s_\tau = 0$ $n$ times, we have
+%$$ L_t^2 (s^t) \equiv {\frac{\pi_t^2(s^t)}{\pi_t^1(s^t)}}  = \left({\frac{1-\alpha_2}{1-\alpha_1}}\right)^{t-n}
+%\left({\frac{\alpha_2}{\alpha_1}}\right)^n . \EQN LRatexam1 $$
+%The  likelihood ratio  $L_t^i (s^t)$ is a random variable.
+%Suppose that $\{s_t\}_{t=1}^\infty$ is truly independently and identically %distributed with ${\rm Prob}(s_t = 0) = \tilde \alpha$.  To compute
+%the {\it actual} distribution of consumption governed by \Ep{heterogbel2}, %we  want  the likelihood ratio \Ep{LRatexam1} under the true distribution.
+%For the empirical  distribution, ${\frac{n}{t}}$ is the fraction of $0$'s in a sample of length $t$.  A Law of Large Numbers asserts that
+%$$ \lim_{t \rightarrow \infty} {\frac{n}{t}} = \tilde \alpha .$$
+%So
+%$$ \lim_{t\rightarrow \infty} L_t^2 = \lim_{t \rightarrow \infty}\left({\frac{1-\alpha_2}{1-\alpha_1}}\right)^{(1-\tilde \alpha) t}
+%\left({\frac{\alpha_2}{\alpha_1}}\right)^{\tilde \alpha t} .$$
+
+
+%Now assume that $\alpha_2 = \tilde \alpha, \alpha_1 \neq \tilde \alpha$, so %that consumer 2 knows the true distribution, while consumer 1 does not.
+%Then for large $t$ we have the good approximation
+%$$ L_t^2 = \left({\frac{1-\tilde \alpha}{1-\alpha_1}}\right)^{(1-\tilde \alpha) t}
+%\left({\frac{\tilde \alpha}{\alpha_1}}\right)^{\tilde \alpha t} , $$
+%which implies that
+%$$ {\frac{1}{t}} \log L_t^2 = (1-\tilde \alpha) \log \left( {\frac{1-\tilde %\alpha}{1 - \alpha_1}} \right)
+%  + \tilde \alpha \log \left({\frac{\tilde \alpha}{\alpha_1}}\right)  . \EQN LRatexam2$$
+%The right side of \Ep{LRatexam2} is the expected log likelihood ratio evaluated under the true distribution. This object is
+%the \idx{entropy} of the actual distribution parameterized by $\tilde \alpha$ relative to consumer
+%1's distribution, call it ${\rm ent}(\tilde \alpha, \alpha_1)$.  Given $\tilde \alpha \in [0,1]$, \idx{relative entropy} is a nonnegative function
+%of $\alpha_1$ on the interval $\alpha_1 \in [0,1]$; it attains its minimum %value of $0$ at the value $\alpha_1 = \tilde \alpha$. Relative
+%entropy indicates how far one probability distribution is from another.\NFootnote{Relative entropy also governs statistical properties of likelihood ratio tests for discriminating one statistical model from another.} \index{entropy}%
+
+%From equation \Ep{ LRatexam2}, we conclude that
+%$$ L_t^2 = e^{{\rm ent}(\tilde \alpha,  \alpha_1) t} , \EQN LRatexam3 $$
+%which evidently diverges to $+ \infty$ if  ${\rm ent}(\tilde \alpha,  \alpha_1) >0$, i.e., whenever $\alpha_1 \neq \tilde \alpha$.
+%To create an example, for our utility function,  set $\gamma=1$  so that
+% $u(c) = \log (c)$.  Then
+% $$ c_t^2(s^t) = \left( {\frac{\lambda_2}{\lambda_1}} \right)L_t^2  c_t^1(s^t) , \EQN LRatexam4 $$
+%so that when entropy is positive, the ratio of person $2$'s consumption to %person 1's consumption diverges to $+\infty$ so long as
+%$ \left( {\frac{\lambda_2}{\lambda_1}} \right) > 0$.
+
+%\subsection{Example 2: one type is closer to the truth}
+
+%This example illustrates that if one consumer's probability specification is wrong but still `better' than those of other consumers, then
+% asymptotically
+%the ratio of the consumption of the person with the better approximation   %to that of the person with the worse approximation diverges to $+\infty$.
+
+%Modify the preceding example  to assume that $\alpha_2 \neq \tilde \alpha$ %and $\alpha_1 \neq \tilde \alpha$, so that both consumers
+%have beliefs that differ from the true data generating process.  Proceeding %as before, we deduce that under the true process
+%$$ {\frac{1}{t}} \log L_t^2 =   (1-\tilde \alpha) \log \left( {\frac{1- \alpha_2}{1 - \alpha_1}} \right)
+%  + \tilde \alpha \log \left({\frac{ \alpha_2}{\alpha_1}}\right)  $$ which %can be rewritten as
+%$$ \eqalign{ {\frac{1}{t}} \log L_t^2 & =   (1- \tilde \alpha) \log \left( %{\frac{1-  \tilde \alpha}{1 -   \alpha_1}} \right)
+%  + \tilde \alpha \log \left({\frac{\tilde  \alpha}{ \alpha_1}}\right) \cr
+%    & - (1- \tilde \alpha) \log \left( {\frac{1- \tilde \alpha}{1 -  \alpha_2}} \right)
+%  - \tilde \alpha \log \left({\frac{ \tilde \alpha}{ \alpha_2}}\right) }  $$
+%  or
+%$$   {\frac{1}{t}} L_t^2 = {\rm ent}(\tilde \alpha, \alpha_1) - {\rm ent} (\tilde \alpha, \alpha_2) .$$
+%It follows that
+%$$ L_t^2 = e^{\left[ {\rm ent}(\tilde \alpha, \alpha_1) - {\rm ent} (\tilde %\alpha, \alpha_2) \right] t}, $$
+%so that \Ep{LRatexam4} now implies that if ${\rm ent}(\tilde \alpha, \alpha_1) - {\rm ent} (\tilde \alpha, \alpha_2) >0 $, then the ratio of person $2$'s consumption to person 1's diverges to $+\infty$.
+
+%This example is a special case of
+%Blume and Easley's (2006) more general proposition that in the limit  those  %consumers with beliefs closest to the truth, as measured by relative entropy, acquire the entire allocation.
+%\index{Blume, Lawrence}%
+%\auth{Easley, David}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\subsection{Equilibrium prices reflect beliefs}
+
+Do competitive equilibrium prices ``accurately reflect available information?''  If ``accurately'' means ``embed correct probability assessments,''
+the theory presented in this appendix answers ``no, not at first, but yes asymptotically''.  The ``yes asymptotically'' answer formalizes
+Milton Friedman's assertion that competition and survival of the fittest will eventually align the subjective beliefs reflected in competitive equilibrium prices of
+risky securities with the objective probabilities that generate the data.
+
+
+\subsection{Mispricing?}
+
+In our example, what drives the divergence outcome is that the consumer with the less accurate beliefs ``pays too much'' when buying  insurance
+and ``accepts too little'' when selling insurance.  The inexorable working of the law of large numbers eventually transfers more and more wealth to  consumers with  more
+accurate beliefs.
+
+\subsection{Learning}
+
+While we have presented simple examples in which agents don't learn about probabilities, the same basic force  continues to drive outcomes
+when consumers can learn.
+Thus, Blume and Easley (2006) presented richer examples with heterogeneous beliefs across agents who
+ update  using Bayes' rule.
+   Entropy continues to play the same key role in governing  tails of Pareto allocations.
+ Blume and Easley's  analysis covers cases  in which the sole source of heterogeneity is that different Bayesian
+agents have different priors.  They construct examples in which    agents with either
+ a looser  or a less accurate prior receive  equilibrium allocations that approach zero asymptotically. Relative entropies play a key role
+ in their analysis.
+
+
+
+\subsection{Role of complete markets}
+In the body of this chapter, we showed that   Pareto optimal  consumption allocations are  competitive equilibrium allocations
+for two alternative trading structures with complete markets, one with  trading of many securities only at time $0$, and another with trading each
+period $t \geq 0$ of far fewer one-period securities.  In studying these structures, we maintained the
+homogeneous beliefs  of preference specification \Ep{eq0}.  Equivalence of  Pareto optimal allocations to competitive equilibrium allocations
+ also applies to the heterogenous beliefs setting of this appendix.
+
+The assertions about limiting allocations that we have made in  this appendix  all come from manipulating  first-order condition \Ep{heterogbel2} for our  Pareto problem. These assertions about  outcomes in complete markets economies don't carry over to
+incomplete market economies, for example, of the type to be analyzed in chapter \use{incomplete}.   Indeed, there exist examples of incomplete markets
+economies in which the consumption of the consumer with {\it less\/} accurate beliefs grows over time.\NFootnote{See
+Blume and Easley (2006) and
+Cogley, Sargent, and Tsyrennikov (2013).}
+
+\auth{Cogley, Timothy}%
+\auth{Sargent,  Thomas J.}%
+\auth{Tsyrennikov, Viktor}%
+\auth{Blume, Lawrence}%
+\auth{Easley, David}%
+
+
+
+
+
+\appendix{C}{Incomplete markets\label{sec:Beker}}
+Beker and Chattopadhyay (2010) analyze infinite horizon
+economies with two consumers, one good, and incomplete markets.
+So long as an equilibrium remains effectively constrained
+by market incompleteness, Beker and Chattopadhyay prove that either (a) the consumption
+of both consumers is arbitrarily close to zero infinitely often,
+or (b) the consumption of one consumer
+converges to zero. The result prevails  whether or not
+beliefs are  heterogeneous. Moreover, a consumer whose consumption eventually
+vanishes can be marginally more patient or have  more
+accurate beliefs than another consumer whose consumption remains positive.  These outcomes stand in contrast to
+those  with complete markets, as illustrated
+by an  example to be presented in section \use{sec:Beker_example}.
+
+\auth{Beker, Pablo}%
+\auth{Chattopadhyay, Subir}%
+
+To attain an outcome in which both consumers' consumptions remain positive,
+Beker and Chattopadhyay  show that it is sufficient to assume
+that individuals' endowments are uniformly
+positive and governed by a Markov process. Imposition  of a uniform bound on the
+value of a consumer's debt prevents a
+consumer's consumption from vanishing:  even the most unfortunate run of
+low endowments will eventually be interrupted
+by  lucky draws of higher endowments that
+had not earlier been fully mortgaged to support past
+consumption.\NFootnote{Finding that nobody's consumption asymptotically vanishes in
+an incomplete-market economy with  Markov endowments is reassuring for the way we compute
+stationary equilibria in the class of so-called Bewley models of
+chapter \use{incomplete}.}
+
+A possible limitation of by Beker and
+Chattopadhyay's  analysis  is that they assumed that equilibrium outcomes are such that
+consumers' Euler
+equations always hold with equality. But   in
+an incomplete-market economy  in which  Ponzi schemes
+are ruled out by imposing ad hoc borrowing limits, a consumer's Euler equation will occasionally hold as a strict inequality (see chapter \use{selfinsure}).
+
+To assure that Euler equations always hold with equality in  an
+equilibrium, we recommend  loosening borrowing limits as much as possible by
+imposing {\it natural debt limits}. As discussed in chapter
+\use{incomplete}, natural debt limits in an incomplete-market
+economy depend  on worst-case scenarios, i.e., they require  that  if
+a worst possible state were to last forever, a consumer
+would be able to  service  debt set at his
+natural debt limit by setting  consumption identically to zero forever. Under
+our maintained assumption that preferences satisfy an Inada
+condition that asserts that the marginal utility of consumption becomes
+infinite when consumption goes to zero, it follows that a consumer
+will always choose debt to be  strictly less than
+his natural debt limit, making the Euler equation
+ hold with equality always.
+
+
+
+\subsection{An example economy}
+
+There are two types of consumers in equal numbers, so we refer to
+one representative consumer for each type, indexed by $i=1,2$.
+Agent $i$ has preferences ordered by
+$$ U_i(c^i) =
+   \sum_{t=0}^\infty \sum_{s^t} \beta_i^t \,u_i[c_t^i(s^t)]\,
+   \pi_t^i(s^t),  \EQN Beker0 $$
+where  $u_1(c)=c^{1-\gamma}/(1-\gamma)$,
+for $\gamma\in(0,1)$ and $\gamma> 1$, and  $u_2(c) = \ln (c)$.
+For all $t\geq0$, and all $s^t$ the true
+probabilities $\pi_t(s^t)>0$ and the subjective probabilities
+$\pi_t^i(s^t)>0$ for all $i$.
+The aggregate endowment is always strictly positive and stochastic:
+for all $t\geq 0$ and all $s^t$, $Y_t(s^t)>0$; and there exist
+$s^{t+1}|s^t$ and $\tilde s^{t+1}|s^t$ such that
+$Y_{t+1}(s^{t+1}) \neq Y_{t+1}(\tilde s^{t+1})$.
+Agent $2$ receives the entire aggregate
+endowment  in the initial period $0$,
+but nothing there afterwards: $(y_0^1(s^0), y_0^2(s^0)) = (0, Y_0(s^0))$ and
+$(y_t^1(s^t), y_t^2(s^t)) = (Y_t(s^t), 0)$ for all $t> 0$
+and all $s^t$.
+
+
+
+Agents sequentially trade  a single one-period asset
+available in zero net supply having exogenous gross
+payoffs $\mu_{t+1}(s^{t+1})>0$ for all $t\ge0$ and all $s^{t+1}$.
+One unit of the asset acquired in period $t$ at history $s^t$ bears
+ gross payoff $\mu_{t+1}(s_{t+1}, s^t)$ at $t+1$  when
+state $s_{t+1}$ is realized. Let $b^i_{t+1}(s^t)$ denote the quantity of
+the single asset purchased (or sold, if the quantity is negative)
+by consumer $i$ at an equilibrium price $p_t(s^t)$.
+The one-period budget constraint of consumer $i$ is
+$$ c^i_t(s^t) + p_t(s^t) b^i_{t+1}(s^t) \leq a^i_t(s^t),  \EQN Beker1
+$$
+where $a^i_t(s^t)$ is consumer $i$'s accumulated wealth at the beginning
+of period $t$, history $s^t$, including his endowment (this differs from our definition of $a^i_t(s^t)$
+in the body of this chapter
+that excluded current period's endowment), i.e.,
+$$ a^i_t(s^t) = \mu_t(s^t) b^i_t(s^{t-1}) + y^i_t(s^t).  \EQN Beker2
+$$
+Agent $i$'s choice of asset $b^i_{t+1}(s^t)$ satisfies an Euler equation
+$$
+p_t(s^t) = \beta_i {\sum_{s^{t+1} | s^t} \pi^i_{t+1}(s^{t+1}| s^t)
+\mu_{t+1}(s^{t+1}) [c^i_{t+1}(s^{t+1})]^{-\gamma} \over
+[c^i_t(s^t)]^{-\gamma} },                                 \EQN Beker3
+$$
+with preference parameter $\gamma>0$ for consumer $1$ and $\gamma=1$ for
+consumer $2$.
+
+Agent $2$'s logarithmic utility function and the fact that
+his sole endowment is received at time $0$
+imply that consumer $2$'s decision rules
+are \NFootnote{We guess, and then verify, that consumer $2$'s
+value function takes the form
+$v_t(a^2_t(s^t),s^t) = \ln[a^2_t(s^t)]/(1-\beta_2) + \hat v_t(s^t)$,
+i.e., the value function can be decomposed into two additively
+separable terms. The consumer can exert control over wealth in the first
+term, while the second term is a function of prices that are taken as
+given by the consumer. The Bellman equation, with our guess of the value
+function, becomes
+$$\EQNalign{
+v_t(a^2_t(s^t),s^t) &= \max_{b^2_{t+1}(s^t)} \Biggl\{
+\ln\left[a^2_t(s^t) - p_t(s^t) b^2_{t+1}(s^t)\right]            \cr
+& + \beta_2  \sum_{s^{t+1}|s^t}  \pi_{t+1}^2(s^{t+1}|s^t)
+\left(  { \ln\left[\mu_{t+1}(s^{t+1}) b^2_{t+1}(s^{t})\right] \over 1-\beta_2 }
+        + \hat v_{t+1}(s^{t+1}) \right) \Biggr\},      \hskip.5cm (\star)   \cr}
+$$
+where the budget constraint \Ep{Beker1} and the law of motion for wealth
+\Ep{Beker2} are substituted into the utility function and the next
+period's value function, respectively. Taking a first-order condition
+with respect to $b^2_{t+1}(s^t)$ and rearranging, yields
+asset decision rule \Ep{Beker4;b}, which after substituted into
+budget constraint \Ep{Beker1}, yields consumption decision rule
+\Ep{Beker4;a}. Next, we substitute this optimal choice into the right
+side of $\rm{(\star)}$, and rearrange,
+$$\EQNalign{
+v_t(a^2_t(s^t),s^t) =& { \ln[a^2_t(s^t)] \over 1-\beta_2 }
++ \ln(1-\beta_2) + \beta_2  \sum_{s^{t+1}|s^t}  \pi_{t+1}^2(s^{t+1}|s^t) \cr
+& \cdot \left( {1 \over 1 - \beta_2} \ln\left[ \beta_2 {\mu_{t+1}(s^{t+1}) \over p_t(s^t)}\right] + \hat v_{t+1}( s^{t+1}) \right) \equiv
+{ \ln[a^2_t(s^t)] \over 1-\beta_2 } +  \hat v_t(s^t),  \cr}
+$$
+which is the form of value function that we had conjectured. Another way
+to demonstrate the optimality of decision rules \Ep{Beker4}, is to consider
+the corresponding finite-horizon problem and recursively, compute
+time-dependent value functions as well as decision rules. As
+the remainder problem goes to infinity, the decision rules can be shown to
+converge to \Ep{Beker4}.}
+$$ \EQNalign{ c^2_t(s^t) &=( 1 -\beta_2) a^2_t(s^t),   \EQN Beker4;a \cr
+              b^2_{t+1}(s^t) &= \beta_2 a^2_t(s^t) / p_t(s^t),
+                                                        \EQN Beker4;b \cr} $$
+so consumer $2$ consumes a constant fraction $(1-\beta_2)$ of his
+beginning-of-period wealth and saves the rest.  Substituting decision rule \Ep{Beker4;a}
+for next period's consumption $c^2_{t+1}(s^{t+1})$ in consumer $2$'s
+Euler equation \Ep{Beker3} and  invoking the law of motion for
+wealth in \Ep{Beker2} gives
+$$ \EQNalign{
+p_t(s^t) &= \beta_2 {\sum_{s^{t+1} | s^t} \pi^2_{t+1}(s^{t+1}| s^t)
+\mu_{t+1}(s^{t+1}) [(1 -\beta_2) \mu_{t+1}(s^{t+1}) b^2_{t+1}(s^t)]^{-1}
+         \over [c^2_t(s^t)]^{-1} }                                \cr
+  &= \beta_2 { [(1 -\beta_2) b^2_{t+1}(s^t)]^{-1}
+             \;\sum_{s^{t+1} | s^t} \pi^2_{t+1}(s^{t+1}| s^t)
+         \over [c^2_t(s^t)]^{-1} }                                 \cr
+  &= \beta_2 {\mu_{t+1}(\tilde s^{t+1}) [c^2_{t+1}(\tilde s^{t+1})]^{-1}
+         \over [c^2_t(s^t)]^{-1} },                  \EQN Beker5  \cr}
+$$
+for any $\tilde s^{t+1} | s^t$. Equality \Ep{Beker5} implies that
+the product
+%is constant for all
+%$s_{t+1}$, i.e.,
+ $\mu_{t+1}(s^{t+1}) [c^2_{t+1}(s^{t+1})]^{-1}$ of two $s^{t+1}$-measurable random variables
+equals an $s^t$-measurable random variable. %Therefore, we are free to represent
+%its future value by the product that will be realized after
+%any history $\tilde s^{t+1} |s^t$.
+
+Market clearing dictates that
+$$ \EQNalign{ c^1_t(s^t)     &= Y_t(s^t) - c^2_t(s^t),  \EQN Beker6;a \cr
+              b^1_{t+1}(s^t) &= - b^2_{t+1}(s^t),       \EQN Beker6;b \cr}
+$$
+for all $t\geq 0$ and all $s^t$. For $t >0$,  we can use
+consumer $2$'s consumption decision rule \Ep{Beker4;a} and the law of
+motion for wealth in \Ep{Beker2} to express consumption market
+clearing condition \Ep{Beker6;a} as
+$$
+c^1_t(s^t)  = Y_t(s^t) - (1 -\beta_2) \mu_t(s^t) b^2_t(s^{t-1}),
+                                                        \EQN Beker7
+$$
+for all $t>0$ and all $s^t$.
+
+To characterize an equilibrium, it is useful to
+compute
+%the following variable for consumer $i$ with preference
+%parameter $\gamma$,
+$$
+\xi^i_t(\tilde s^{t}) =
+{\mu_{t}(\tilde s^{t}) [c^i_{t}(\tilde s^{t})]^{-\gamma}
+\over   \sum_{s^{t} | s^{t-1}} \pi^i_{t}(s^{t}| s^{t-1})
+\mu_{t}(s^{t}) [c^i_{t}(s^{t})]^{-\gamma} },       \EQN Beker8
+$$
+for $\tilde s^{t} | s^{t-1}$.
+The random variable $\xi^i_t(\tilde s^{t})$ has conditional mean one.
+For consumer $2$, we showed in \Ep{Beker5} that the
+product $\mu_{t}(s^{t}) [c^2_{t}(s^{t})]^{-1}$ is constant across
+realizations of the stochastic event $s_{t}$ and hence,
+$\xi^2_t(\tilde s^{t})=1$. For consumer $1$, we can use
+market-clearing condition \Ep{Beker7} to deduce
+$$
+\xi^1_t(\tilde s^{t}) =
+{\mu_{t}(\tilde s^{t}) [Y_{t}(\tilde s^{t})
+          - (1 -\beta_2) \mu_{t}(\tilde s^{t}) b^2_{t}(s^{t-1})]^{-\gamma}
+\over   \sum_{s^{t} | s^{t-1}} \pi^1_{t}(s^{t}| s^{t-1})
+\mu_{t}(s^{t}) [Y_{t}(s^{t})
+          - (1 -\beta_2) \mu_{t}(s^{t}) b^2_{t}(s^{t-1})]^{-\gamma} }
+                                                            \EQN Beker9
+$$
+for $\tilde s^{t} | s^{t-1}$.
+
+
+\subsection{Asset payoff correlated with i.i.d.\ aggregate
+            endowment}\label{sec:Beker_example}%
+\noindent
+We now assume that asset payoffs are perfectly correlated with the
+aggregate endowment, $\mu_t(s^t)=Y_t(s^t)$ that in turn is governed by
+an i.i.d.\ process, $Y_t(s^t) = Y(s_t)$ with probability
+$\pi_t(s^t)=\pi(s_t)>0$, for $s_t\in S$. Agent $i$ knows that the
+stochastic outcomes are governed by an i.i.d.\ process; his subjective
+probabilities are $\pi^i(s)>0$ for $s\in S$.
+
+Substituting $\mu_t(s^t)=Y_t(s^t)$ into \Ep{Beker9} yields
+$$ \EQNalign{
+\xi^1_t(\tilde s^{t}) &= {[Y_{t}(\tilde s^{t})]^{1-\gamma}
+                     [1 - (1 -\beta_2) b^2_{t}(s^{t-1})]^{-\gamma}
+\over   \sum_{s^{t} | s^{t-1}} \pi^1_{t}(s^{t}| s^{t-1})
+[Y_{t}(s^{t})]^{1-\gamma} [1 - (1 -\beta_2) b^2_{t}(s^{t-1})]^{-\gamma} } \cr
+&= {[Y(\tilde s_t)]^{1-\gamma}
+\over   \sum_{s\in S} \pi^1(s)
+[Y(s)]^{1-\gamma} }\equiv \xi^1(\tilde s_{t}),    \EQN Beker10 \cr}
+$$
+where the second equality  invokes the assumption of i.i.d.\ aggregate
+endowment.
+
+Substituting $\mu_t(s^t)=Y_t(s^t)$ into Euler equation \Ep{Beker3} and
+equating the left sides for consumers $1$ and $2$, thereby eliminating $p_t(s^t)$, yields
+$$ \EQNalign{
+&\beta_1 {\sum_{s^{t+1} | s^t} \pi^1_{t+1}(s^{t+1}| s^t)
+Y_{t+1}(s^{t+1}) [c^1_{t+1}(s^{t+1})]^{-\gamma} \over
+[c^1_t(s^t)]^{-\gamma} }                              \cr
+& \hskip5cm =
+\beta_2 {Y_{t+1}(\tilde s^{t+1}) [c^2_{t+1}(\tilde s^{t+1})]^{-1}
+         \over [c^2_t(s^t)]^{-1} },        \hskip1cm  \EQN Beker11 \cr}
+$$
+where the expression for consumer $2$ is taken from \Ep{Beker5}. Recall
+that we can pick any $\tilde s^{t+1}|s^t$, because the product
+$\mu_{t+1}(\tilde s^{t+1}) [c^2_{t+1}(\tilde s^{t+1})]^{-1}$ is
+constant across realizations of $\tilde s^{t+1}| s^t$. Now
+let $\tilde s_{t+1}$ denote the particular event that is
+ realized at time $t+1$ so that the realized history
+becomes $\tilde s^{t+1}$.
+Next, multiply and divide the left side of \Ep{Beker11} by
+$Y_{t+1}(\tilde s^{t+1}) [c^1_{t+1}(\tilde s^{t+1})]^{-\gamma}$,
+$$
+\beta_1 \, {1 \over \xi^1_{t+1}(\tilde s^{t+1}) } \,
+ {[c^1_{t+1}(\tilde s^{t+1})]^{-\gamma}
+\over [c^1_t(s^t)]^{-\gamma} }
+=
+\beta_2 {[c^2_{t+1}(\tilde s^{t+1})]^{-1}
+         \over [c^2_t(s^t)]^{-1} },              %%% \EQN Beker12
+$$
+then rearrange to get
+$$ \EQNalign{
+{ [c^1_{t+1}(\tilde s^{t+1})]^{\gamma} \over c^2_{t+1}(\tilde s^{t+1}) }
+&= {\beta_1 \over \beta_2}\, {1 \over \xi^1_{t+1}(\tilde s^{t+1}) }\,
+{ [c^1_{t}(\tilde s^{t})]^{\gamma} \over c^2_{t}(\tilde s^{t}) } \cr
+&= \left[{\beta_1 \over \beta_2}\right]^{t+1}
+ {1 \over \prod_{j=1}^{t+1} \xi^1(\tilde s_j) }\,
+{ [c^1_{0}(\tilde s^{0})]^{\gamma} \over c^2_{0}(\tilde s^{0}) },
+                                                         \EQN Beker13  \cr }
+$$
+where the second equality is obtained by iterating. We have also
+invoked the assumption of an i.i.d.\ stochastic process so that
+$\xi^1_t(\tilde s^{t}) = \xi^1(\tilde s_t)$, as defined in \Ep{Beker10}.
+
+Given a preference parameter $\gamma\neq 1$ for consumer $1$,
+we now show that $\prod_{j=1}^{T} \xi^1(\tilde s_j) \rightarrow 0$ as $T$
+goes to infinity for $\{\pi^1(s); s\in S\}$ sufficiently close
+to $\{\pi(s); s\in S\}$. It suffices to show that
+$\lim_{T\to\infty} {1 \over T}$
+$ \sum_{j=1}^{T} \log( \xi^1(\tilde s_j)) <0$,
+i.e.,
+$$
+\left[
+\lim_{T\to\infty} {1 \over T} \sum_{j=1}^{T}
+\log\left( [Y(\tilde s_j)]^{1-\gamma}  \right) \right]
+- \log\left( \sum_{s\in S} \pi^1(s) [Y(s)]^{1-\gamma} \right) <0.  \EQN Beker14
+$$
+Since the aggregate endowment is an i.i.d.\ process, by the law of
+large numbers,
+$$
+{1 \over T} \sum_{j=1}^{T} \log\left( [Y(\tilde s_j)]^{1-\gamma}  \right)
+\rightarrow
+\sum_{s\in S} \pi(s) \log \left( [Y(s)]^{1-\gamma} \right),     %%%\EQN Beker15
+$$
+and so, by Jensen's inequality, there exists $\epsilon >0$ such that
+$$
+\left[
+\lim_{T\to\infty} {1 \over T} \sum_{j=1}^{T}
+\log\left( [Y(\tilde s_j)]^{1-\gamma}  \right) \right]
+- \log\left( \sum_{s\in S} \pi(s) [Y(s)]^{1-\gamma} \right) < -\epsilon,
+                                                               %%% \EQN Beker16
+$$
+where by continuity, the inequality  in \Ep{Beker14} also holds for
+$\{\pi^1(s); s\in S\}$ sufficiently close to $\{\pi(s); s\in S\}$.
+
+It now follows from \Ep{Beker13} that if both consumers have the same
+discount factor, $\beta_1=\beta_2$, and if both  hold the same true beliefs
+$\pi^1(s)=\pi^2(s)=\pi(s)$ for all $s\in S$, then the ratio of consumer
+$1$'s consumption to consumer $2$'s consumption diverges to $+ \infty$.
+Given that feasibility (market clearing) imposes an upper bound on
+consumer $1$'s consumption, $c^1_t(s^t) \leq Y_t(s^t)$, we conclude that
+$c^2_T(s^T) \rightarrow 0$ as $T$ goes to infinity, i.e.,
+consumer $2$'s consumption vanishes with probability one. In contrast, in a complete
+market economy, the consumption allocation would be invariant to
+calender time and just depend on the aggregate endowment
+realization (and a set of time-invariant Pareto weights).
+
+Actually, our finding in this example does not depend
+on the beliefs held by consumer $2$, since his subjective
+probabilities $\{\pi^2(s); s\in S\}$ are absent from equilibrium
+expression \Ep{Beker13}. For the sake of the argument, suppose
+that consumer $2$ holds the true beliefs but that consumer $1$ has incorrect
+beliefs. As shown above, for
+$\{\pi^1(s); s\in S\}$ sufficiently close to $\{\pi(s); s\in S\}$,
+consumer $2$'s consumption  eventually vanishes.
+This  differs from the outcome in the complete market
+economy that we studied in section \use{sec:heterogbel_example},
+where the consumer with the true beliefs would eventually consume the
+entire aggregate endowment.
+
+Using  the same line of reasoning, another implication of \Ep{Beker13}
+is that even if consumer $1$ is marginally less patient than consumer $2$,
+$\beta_1 < \beta_2$, and allowing for the possibility that
+consumer $1$ also has marginally incorrect beliefs, it still follows
+that consumer $2$'s consumption goes to zero as time goes
+to infinity. The consumption of a more patient consumer with more accurate
+beliefs could not vanish
+ in a complete market economy.
+
+%Beker and Chattopadhyay (2010) use this example to illustrate one of
+%the possible outcomes in an infinite-horizon endowment economy populated
+%by two types of consumers and where markets are incomplete. Their
+%general finding is that either (i) the two consumers' one-period ahead
+%intertemporal marginal rates
+%of substitution are equalized in the limit or (ii) the ratio of marginal
+%rates of substitution displays one period ahead conditional variability
+%forever and then either (a) both consumers will experience consumption
+%arbitrarily close to zero infinitely often, or (b) one of the two consumers
+%will vanish eventually, as in the example. The finding applies
+%regardless of whether beliefs are homogeneous or heterogenous.
+
+
+
+
+\subsection{Beneficial market incompleteness}
+
+Modifying the preceding example, we now assume that the preference parameter
+of consumer $1$
+is $\gamma=1$, i.e., both consumers have a logarithmic utility function,
+and that  discount factors are identical, $\beta_1 = \beta_2 = \beta$.
+According to \Ep{Beker10}, $\xi^1(\tilde s)=1$ for all $\tilde s\in S$
+and hence, the consumption ratio $c^1_t(\tilde s^t) / c^2_t(\tilde s^t)$
+in \Ep{Beker13} remains constant over time. In this
+incomplete markets economy, it turns out that the consumption allocation
+does not depend on whether consumers' beliefs are correct or incorrect. Furthermore,
+the allocation equals  the allocation that would prevail in
+a complete markets economy with correct beliefs.
+This outcome motivates our section title `beneficial' market
+incompleteness;  we use quotation marks to acknowledge
+a paternalistic view that the welfare of consumers who maximize expected
+utility are to be evaluated from the perspective  of true
+probabilities.\NFootnote{One qualification to  calling it `beneficial'
+market incompleteness is that an consumer with subjective probabilities
+that differ from the true probabilities would at any point in time
+prefer to make other choices if there were complete rather than
+incomplete markets and thus, the consumer is constantly under the subjective
+perception of being deprived of preferable options that he could have
+chosen under complete markets. One countercriticism in favor of the
+paternalistic view is that with utility functions defined over actual
+consumption at each point in time, what matters are the histories of
+consumption that will eventually be realized. That is, there is no loss
+of utility {\it per se} from a deluded consumer holding dismal subjective
+beliefs about future consequences of having had to make choices from a
+restricted set of options. But rather, market incompleteness is
+beneficial by compelling the consumer period-by-period to choose a better
+allocation (in terms of expected utility under the true probability
+distribution).}
+% ...along some equilibrium realizations,
+%deluded choices made under incorrect beliefs could possibly result in
+%higher ex-post lifetime utility (in terms of period-$0$ discounted
+%utility), if initial realizations of events were deemed more
+%likely under the consumer's subjective beliefs as compared to the true
+%true probabilities. Admitted, the consumer
+%with less correct beliefs in a complete market economy will eventually
+%vanish, but the distant future matters less under discounting.}
+
+First, we compute the allocation of a complete markets economy in which everyone has
+correct beliefs. Referring to our sections
+\use{sec:ex1_risksharing} and \use{sec:compeasy} analysis
+of an economy with a common utility function of the constant relative
+risk-aversion (CRRA) form, an equilibrium allocation assigns
+ consumers  constant fractions of the aggregate endowment
+at all times and histories.   Those fractions equal  consumers' shares of the aggregate
+present-value wealth evaluated at the competitive equilibrium price
+vector. Let $\lambda_i$ denote the consumption share of consumer $i$.
+Using the good in period $0$ as  numeraire,  Arrow-Debreu
+security prices are
+$$
+q^0_t(s^t) = \beta^t \pi_t(s^t) { [\lambda_i Y_t(s^t)]^{-1} \over
+             [\lambda_i Y_0(s^0)]^{-1} }
+           = \beta^t \pi_t(s^t) { Y_0(s^0) \over Y_t(s^t) }.  \EQN Beker17
+$$
+The value of consumer $1$'s wealth is
+$\sum_{t=1}^\infty \sum_{s^t} q^0_t(s^t) Y_t(s^t)$ and consumer $2$'s
+wealth is $Y_0(s^0)$, so the share $\lambda_2$ of consumer $2$ is
+$$
+\lambda_2 = { \displaystyle Y_0(s^0) \over \displaystyle
+Y_0(s^0) + \sum_{t=1}^\infty \sum_{s^t} q^0_t(s^t) Y_t(s^t) }
+          = {\displaystyle Y_0(s^0) \over \displaystyle
+Y_0(s^0) + {\displaystyle \beta Y_0(s^0) \over \displaystyle 1-\beta }}
+= 1-\beta,                                                    \EQN Beker18
+$$
+where the second equality invokes the equilibrium expression
+for prices \Ep{Beker17}. The corresponding consumption share of
+consumer $1$ is $\lambda_1= \beta$.
+
+Second, we verify that  regardless of whether
+consumers' beliefs are correct, the  allocation equals the equilibrium allocation for the incomplete markets economy. We have already verified
+equality for $t=0$
+because the  allocation $c^2_0(s^0)=\lambda_2 Y_0(s^0)
+= (1-\beta) Y_0(s^0)$ is indeed the consumption of consumer $2$ in
+an incomplete market economy, as given by \Ep{Beker4;a}, where
+consumer $2$ consumes a fraction $(1-\beta)$ of his initially
+accumulated wealth $a^2_0(s^0)=Y_0(s^0)$. To confirm that it is the equilibrium allocation
+for all future periods, we conjecture that consumption shares
+$(\lambda_1, \lambda_2)$ constitute an incomplete market equilibrium,
+then compute the implied equilibrium prices $p_t(s^t)$ from
+Euler equations. Next, given those prices, we compute consumers' choices
+of consumption and verify that they coincide with the conjectured
+consumption shares $(\lambda_1, \lambda_2)$. We do this
+with consumer $2$'s Euler equation \Ep{Beker5},
+$$
+p_t(s^t) = \beta {Y_{t+1}(\tilde s^{t+1}) [\lambda_2 Y_{t+1}(\tilde s^{t+1})]^{-1}
+         \over [\lambda_2 Y_t(s^t)]^{-1} } = \beta Y_t(s^t).   \EQN Beker19
+$$
+Given these prices,
+%% $p_t(s^t)=\beta Y_t(s^t)$, for all $t\geq 0$ and all $s^t$,
+we use consumer $2$'s decision rule in \Ep{Beker4;b} to compute his
+asset choice at time $0$, $b^2_1(s^0) = \beta Y_0(s^0)/p_0(s^0) = 1$,
+i.e., consumer $2$ purchases one unit of the asset with asset payoffs
+next period equal to $\mu_1(s^1) = Y_1(s^1)$. It follows that
+consumer $2$'s beginning-of-period wealth in period $1$ is
+$a^2_1(s^1)=Y_1(s^1)$,
+so we can apply the same  reasoning to period $1$:
+according to decision rules \Ep{Beker4}, consumer $2$ consumes a fraction
+$(1-\beta)$ of $a^2_1(s^1)$ and saves the rest by purchasing
+assets $b^2_2(s^1)= \beta a^2_1(s^1)/p_1(s^1)=1$. This continues
+{\it ad infinitum}, where in each period, consumer $2$ lends
+a fraction $\beta$ of his accumulated wealth to consumer $1$ in exchange
+for consumer $1$'s entire endowment  next period. In this way we  verify
+our conjecture that the incomplete market economy has an equilibrium
+allocation with constant consumption shares
+$(\lambda_1, \lambda_2)=(\beta, 1-\beta)$. Because our argument has
+not involved any mathematical expectations, consumers' beliefs can be either correct or
+incorrect.\NFootnote{Why don't consumers' beliefs matter in the incomplete
+markets economy? Actually, our assertion that no expectations were
+involved in the above reasoning is subject to  a qualification.
+That qualification is best seen by replacing consumer $2$'s Euler
+equation in the above reasoning with that of consumer $1$, as given
+by \Ep{Beker3}. This switch reinserts expectations into our
+reasoning, but as before for consumer $2$ in \Ep{Beker5}, these
+expectations now also vanish for consumer $1$ when the product
+$\mu_{t+1}(s^{t+1}) [c^1_{t+1}(s^{t+1})]^{-1}$ is  constant across realizations of next period's stochastic
+event $s_{t+1}$.}
+
+What features of the example explain why the equilibrium
+allocation of the incomplete market economy, with or without
+correct beliefs, equals that of the complete market economy
+with correct beliefs? Starting with the case of correct beliefs, we
+know from section \use{sec:ex1_risksharing}
+that  a common utility
+function of the constant relative risk-aversion (CRRA) form
+implies that an efficient allocation prescribes that each
+ consumer consumes a constant share of the aggregate endowment
+in all periods and all states. So it seems to be important
+that the exogenously specified payoffs of the single asset in the
+incomplete market economy are perfectly correlated with the
+aggregate endowment.
+
+What  role is played by the exogenous package  of
+Arrow securities implicit in the single asset in the
+incomplete market economy?  How can we be certain that this mix
+can support the same  allocation that would prevail in  a complete
+market economy? The answer is that consumer $1$ owns the entire
+aggregate endowment after period $0$ and hence, the efficient
+risk sharing  characterized here by having each distinct consumer
+consume a constant fraction of the aggregate endowment can be achieved
+by trading Arrow securities for each possible
+state next period in proportion to the realizations of the
+aggregate endowment in those states.  The  trades implicit in
+  the  bundle
+associated with the single asset in the incomplete market economy accomplish exactly this.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\section{Exercises}
+\showchaptIDfalse \showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue \showsectIDtrue
+\medskip
+\medskip
+\noindent{\it Exercise \the\chapternum.1}\quad {\bf Existence of
+representative consumer}
+\medskip
+\noindent Suppose households 1 and 2 have one-period utility
+functions $u(c^1)$ and $w(c^2)$, respectively, where $u$ and $w$
+are both increasing, strictly concave, twice differentiable
+functions of a scalar consumption rate.  Consider the Pareto
+problem:
+ $$v_\theta(c) = \max_{\{c^1, c^2\}} \left[ \theta u(c^1)
+   + (1-\theta) w(c^2) \right]$$ subject to
+the constraint $c^1 + c^2 = c$.  Show that the solution of this
+problem has the form of a concave utility function $v_\theta(c)$,
+which depends on the Pareto weight $\theta$. Show that
+$v_\theta'(c) = \theta u'(c^1) = (1-\theta) w'(c^2)$.
+
+The function $v_\theta(c)$ is the utility function of the {\it
+representative consumer}.  Such a representative consumer always
+lurks within a complete markets competitive equilibrium even with
+heterogeneous preferences. At a competitive equilibrium, the
+marginal utilities of the representative agent and each and every
+agent are proportional.
+\vfil\eject
+\medskip
+\noindent {\it Exercise \the\chapternum.2} \quad  {\bf Term
+structure of interest rates}
+\medskip
+\noindent Consider an economy with a single consumer.  There is
+one good in the economy, which arrives in the form of an exogenous
+endowment obeying\NFootnote{Such a specification was adopted by Mehra
+and Prescott (1985).} \auth{Prescott, Edward C.} \auth{Mehra,
+Rajnish}%
+$$ y_{t+1}  = \lambda_{t+1} y_t,$$
+where $y_t$ is the endowment at time $t$ and $\{\lambda_{t+1}\}$
+is  governed by a two-state Markov chain with transition matrix
+$$ P = \left[\matrix{ p_{11} & 1 - p_{11} \cr
+              1 - p_{22} & p_{22} \cr} \right],$$
+and initial distribution $\pi_\lambda = \left[\matrix{\pi_0 & 1 -
+\pi_0\cr}\right]$.  The value of $\lambda_t$ is given by $\bar
+\lambda_1 = .98$ in state 1 and $\bar \lambda_2 = 1.03$ in state
+2.
+ Assume that the history of $y_s, \lambda_s$ up to $t$ is
+observed at time $t$.  The consumer has endowment process
+$\{y_t\}$ and has preferences over consumption streams that are
+ordered by
+$$  E_0 \sum_{t=0}^\infty \beta^t u(c_t)  $$
+where $\beta \in (0,1)$ and $u(c) = {c^{1-\gamma} \over 1 -
+\gamma}$, where $\gamma \geq 1$.
+
+\medskip
+\noindent{\bf a.} Define a competitive equilibrium, being careful
+to name all of the objects of which it consists.
+\medskip
+\noindent{\bf b.}  Tell how to compute a competitive equilibrium.
+\medskip
+\noindent  For the remainder of this problem, suppose that
+$p_{11} = .8$, $p_{22} = .85$, $\pi_0 = .5$, $\beta = .96$, and
+$\gamma =2$.
+  Suppose that the economy begins
+with $\lambda_0 = .98$ and $y_0=1$.
+\medskip
+\noindent{\bf c.} Compute the (unconditional) average growth rate
+of consumption, computed before having observed $\lambda_0$.
+\medskip
+\noindent{\bf d.} Compute the time $0$ prices of three risk-free
+discount bonds, in particular, those  promising to pay one unit of
+time $j$ consumption for $j=0, 1, 2$, respectively.
+\medskip
+\noindent{\bf e.}
+  Compute the time $0$ prices of three  bonds,
+in particular, ones  promising to pay one unit of time $j$
+consumption contingent on $\lambda_j = \bar \lambda_1$ for
+$j=0,1,2$, respectively.
+
+\medskip
+\noindent{\bf f.}
+  Compute the time $0$ prices of three  bonds,
+in particular, ones  promising to pay one unit of time $j$
+consumption contingent on $\lambda_j = \bar \lambda_2$ for
+$j=0,1,2$, respectively.
+\medskip
+\noindent{\bf g.} Compare the prices that you computed in parts d,
+e, and f.
+
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.3} \ \  An economy consists
+of two infinitely lived consumers named $i=1,2$. There is one
+nonstorable consumption good. Consumer $i$ consumes $c^i_t$ at
+time $t$. Consumer $i$ ranks consumption streams by
+$$ \sum_{t=0}^\infty \beta^t u(c^i_t), $$
+where $\beta\in (0,1)$ and $u(c)$ is increasing, strictly concave,
+and twice continuously differentiable.   Consumer $1$ is  endowed
+with a stream of the consumption good $y^i_t = 1, 0, 0, 1, 0, 0,
+1, \ldots$.  Consumer $2$ is endowed with a stream of the
+consumption good   $0, 1, 1, 0, 1, 1, 0, \ldots$.  Assume that
+there are complete markets with time $0$ trading.
+
+\medskip
+\noindent{\bf a.}  Define a competitive equilibrium.
+\medskip
+\noindent{\bf b.}  Compute a competitive equilibrium.
+\medskip
+\noindent{\bf c.}  Suppose that one of the consumers markets a
+derivative  asset that promises to pay  .05 units of consumption
+each period.    What would the price of that asset be?
+
+\medskip
+\noindent{\it Exercise \the\chapternum.4} \ \  Consider a pure
+endowment economy with a single representative consumer; $\{c_t,
+d_t\}_{t=0}^\infty$ are the consumption and endowment processes,
+respectively. Feasible allocations satisfy
+$$ c_t \leq d_t .$$
+The endowment process is described by\NFootnote{See Mehra and
+Prescott (1985).}
+$$ d_{t+1} =\lambda_{t+1} d_t .  $$
+The growth rate $\lambda_{t+1}$ is described by a two-state
+Markov process with transition probabilities
+$$ P_{ij} = {\rm Prob} (\lambda_{t+1} = \bar \lambda_j \vert
+    \lambda_t = \bar \lambda_i ). $$
+Assume that
+$$ P = \left[\matrix{ .8 & .2 \cr
+                      .1 & .9 \cr} \right], $$
+and that
+$$ \bar \lambda = \left[\matrix{.97 \cr
+                                1.03 \cr}\right].$$
+In addition, $\lambda_0 = .97$ and $d_0 = 1$  are both known at
+date $0$.  The consumer has preferences over consumption ordered
+by
+$$ E_0 \sum_{t=0}^\infty \beta^t {c_t^{1-\gamma} \over 1 - \gamma},$$
+where $E_0$ is the mathematical expectation operator, conditioned
+on information known at time $0$, $\gamma = 2, \beta = .95$.
+\medskip
+
+
+\noindent{\bf Part I}
+\medskip
+\noindent  At time $0$, after $d_0$ and $\lambda_0$ are known,
+there are complete markets in date- and history-contingent claims.
+The market prices are denominated in units of time $0$ consumption
+goods.
+
+\medskip
+\noindent{\bf a.}  Define a competitive equilibrium, being careful
+to specify all  the objects composing an equilibrium.
+
+\medskip
+\noindent{\bf b.}  Compute the equilibrium price of a claim to one
+unit of consumption at date $5$, denominated in units of time $0$
+consumption, contingent on the following history of growth rates:
+$(\lambda_1, \lambda_2, \ldots, \lambda_5) =( .97, .97, 1.03, .97,
+1.03)$.  Please give a numerical answer.
+
+\medskip
+\noindent{\bf c.}  Compute the equilibrium price of a claim to one
+unit of consumption at date $5$, denominated in units of time $0$
+consumption, contingent on the following history of growth rates:
+$(\lambda_1, \lambda_2, \ldots, \lambda_5) = (1.03,  1.03, 1.03,
+1.03, .97)$.
+
+
+
+\medskip
+\noindent{\bf d.}  Give a formula for the price at time $0$ of a
+claim on the entire endowment sequence.
+
+\medskip
+\noindent{\bf e.}  Give a formula for the price at time $0$ of a
+claim on consumption in period 5,   contingent on the growth rate
+$\lambda_5$ being $.97$ (regardless of the intervening growth
+rates).
+
+\vfil\eject
+
+\medskip
+\noindent{\bf Part II}
+
+\medskip
+\noindent Now assume a different market structure.  Assume that at
+each date $t\geq 0$ there  is a complete set of one-period forward
+Arrow securities.
+\medskip
+\noindent{\bf f.}  Define a (recursive) competitive equilibrium
+with Arrow securities, being careful to define all of the objects
+that compose such an equilibrium.
+\medskip
+\noindent{\bf g.} For the representative consumer in this
+economy, for each state compute the ``natural debt limits'' that
+constrain state-contingent borrowing.
+\medskip
+\noindent{\bf h.} Compute a competitive equilibrium with Arrow
+securities. In particular,  compute both the pricing kernel and
+the allocation.
+\medskip
+\noindent{\bf i.}  An entrepreneur       enters this economy and
+proposes to issue a new security each period,  namely, a risk-free
+two-period bond.  Such a bond issued in period $t$ promises to pay
+one unit of  consumption at time $t+1$ for sure. Find the price of
+this new security in period $t$, contingent on $\lambda_t$.
+
+
+
+
+
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.5} \quad
+\medskip
+\noindent  An economy consists of two consumers, named $i=1,2$.
+The economy exists in discrete time  for periods $t \geq 0$.
+There is one good in the economy, which is not storable and
+arrives in the form of an endowment stream owned by each consumer.
+The endowments to consumers $i=1,2$ are
+$$\eqalign{ y_t^1 & = s_t \cr
+            y_t^2 & = 1 \cr }  $$
+where $s_t$ is a random variable governed by a two-state Markov
+chain with values $s_t = \bar s_1 = 0$ or  $s_t  = \bar s_2 = 1 $.
+The Markov chain  has time invariant transition probabilities
+denoted by $\pi(s_{t+1} =  s' | s_t = s) = \pi(s'|s)$, and the
+probability distribution over the initial  state is $\pi_0(s)$.
+The {\it aggregate endowment} at $t$ is $Y(s_t) = y_t^1 + y_t^2$.
+
+
+   Let $c^i$ denote the stochastic
+process of consumption for agent $i$.
+  Household $i$ orders consumption streams according to
+$$ U(c^i)= \sum_{t=0}^\infty \sum_{s^t}  \beta^t \ln [c_t^i(s^t)]
+ \pi_t (s^t),  $$
+where $\pi_t(s^t)$ is the probability of the history $s^t = (s_0,
+s_1, \ldots , s_t)$.
+\medskip
+\noindent{\bf a.}  Give a formula for $\pi_t(s^t)$.
+\medskip
+\noindent{\bf b.}  Let $\theta \in (0,1)$ be a Pareto weight on
+household $1$.  Consider the     planning problem
+$$ \max_{c^1, c^2} \left\{ \theta \ln(c^1) + (1-\theta) \ln(c^2)
+  \right\}  $$
+where the maximization is subject to
+$$ c_t^1(s^t) + c_t^2(s^t) \leq Y(s_t) . $$
+Solve the Pareto problem, taking $\theta$ as a parameter.
+\medskip
+
+\noindent{\bf c.}   Define a {\it competitive equilibrium} with
+history-dependent Arrow-Debreu  securities traded once and for all
+at time $0$.  Be careful to define all of the objects that compose
+a competitive equilibrium.
+\medskip
+\noindent{\bf d.}   Compute the competitive equilibrium price
+system (i.e., find the prices of all of the Arrow-Debreu
+securities).
+\medskip
+\noindent{\bf e.}    Tell the relationship between the solutions
+(indexed by $\theta$) of the Pareto problem  and the competitive
+equilibrium allocation.  If you wish, refer to the two welfare
+theorems.
+\medskip
+\noindent{\bf f.}  Briefly tell how you can compute the
+competitive equilibrium price system {\it before} you have figured
+out the competitive equilibrium allocation.
+\medskip
+\noindent {\bf g.}   Now define a recursive  competitive
+equilibrium with trading every period in one-period Arrow
+securities only.   Describe all of the objects of which such an
+equilibrium is composed. (Please denominate the prices of
+one-period time $t+1$ state-contingent
+ Arrow securities in units of time $t$ consumption.)
+   Define
+the ``natural borrowing limits'' for each consumer in each state.
+Tell how to compute these natural borrowing limits.
+
+\medskip
+\noindent{\bf h.} Tell how to  compute the    prices of
+one-period Arrow securities.  How many prices are there (i.e., how
+many numbers do you have to compute)? Compute all of these prices
+in the special case that $\beta = .95$ and $\pi(s_j | s_i) =
+P_{ij}$ where $P = \left[\matrix{ .8 & .2 \cr
+   .3 & .7 \cr}\right]$.
+\medskip
+\noindent{\bf i.}  Within the one-period Arrow securities economy,
+  a new asset is introduced.     One of the households
+decides to market a one-period-ahead riskless claim to one unit
+of consumption (a one-period real bill). Compute the equilibrium
+prices of this security when $s_t = 0$ and when    $s_t =1$.
+Justify your formula for these prices in terms of first
+principles.
+
+\medskip
+\noindent{\bf j.}  Within the one-period Arrow securities
+equilibrium,  a new asset is introduced.     One of the households
+decides to market a two-period-ahead riskless claim to one unit of
+consumption (a two-period real bill). Compute the equilibrium
+prices of this security when $s_t = 0$ and when    $s_t =1$.
+\medskip
+\noindent{\bf k.}
+  Within the one-period Arrow securities
+equilibrium,  a new asset is introduced.     One of the households
+decides at time $t$ to market five-period-ahead claims to
+consumption at $t+5$ contingent on  the value of $s_{t+5}$.
+Compute the equilibrium prices of these securities when $s_t = 0$
+and $s_t =1$  and $s_{t+5} = 0$ and $s_{t+5} = 1$.
+\medskip
+
+
+
+
+
+
+\noindent{\it Exercise \the\chapternum.6} \quad {\bf Optimal
+taxation}
+\medskip
+\noindent
+ The government of a small country
+must finance an exogenous stream of government purchases
+$\{g_t\}_{t=0}^\infty$.  Assume that $g_t$ is described by a
+discrete-state Markov chain with transition matrix $P$ and initial
+distribution $\pi_0$.   Let $\pi_t(g^t)$ denote the probability of
+the history $g^t= g_t, g_{t-1} , \ldots , g_0$, conditioned on
+$g_0$.  The state of the economy is completely described by the
+history $g^t$. There are complete markets in date-history claims
+to goods. At time $0$, after $g_0$ has been realized, the
+government can purchase or sell  claims to time $t$  goods
+contingent on the history $g^t$ at a price $p_t^0(g^t) = \beta^t
+\pi_t(g^t)$, where $\beta \in (0,1)$. The date-state  prices are
+exogenous to the small country. The government finances its
+expenditures by raising history-contingent tax revenues of $R_t =
+R_t(g^t) $ at time $t$.  The present
+ value of its expenditures
+must not exceed  the present  value of its revenues.
+
+Raising revenues by taxation is distorting.  The government
+confronts a dead weight loss function $W(R_t)$ that measures the
+distortion at time $t$. Assume that $W$ is an increasing, twice
+differentiable, strictly convex function that satisfies $W(0) =0,
+W'(0) = 0 , W'(R) > 0$ for $R >0$ and $W''(R) > 0$ for $R \geq 0$.
+The government devises a state-contingent taxation and borrowing
+plan to minimize
+$$ E_0 \sum_{t=0}^\infty  \beta^t W(R_t), \eqno(1) $$
+where $E_0$ is the mathematical expectation conditioned on $g_0$.
+
+
+Suppose that $g_t$ takes two possible values, $\bar g_1 =.2$
+(peace) and $\bar g_2 = 1$ (war) and that   $P = \left[\matrix{ .8
+& .2 \cr
+                                 .5 & .5 \cr}\right]. $
+Suppose that $g_0 = .2.$   Finally, suppose that $W(R) = .5 R^2$.
+
+\medskip
+\noindent{\bf a.} Please write out (1) long hand, i.e., write out
+an explicit expression for the mathematical expectation $E_0$ in
+terms of a summation over the appropriate probability
+distribution.
+\medskip
+\noindent{\bf b.}   Compute the optimal tax and borrowing plan. In
+particular,
+ give analytic expressions for
+$R_t =R_t(g^t)$ for all $t$ and all $g^t$.
+\medskip
+\noindent{\bf c.}  There is    an equivalent market setting in
+which the government can buy and sell one-period Arrow securities
+each period.   Find the price of one-period Arrow securities at
+time $t$, denominated in units of the time $t$ good.
+\medskip
+\noindent{\bf d.} Let $B_t(g_t)$  be the one-period Arrow
+securities at $t$ that the government issued for state $g_t$ at
+time $t-1$. For $t >0$,
+ compute
+$B_t(g_t)$  for $g_t =\bar g_1$ and $g_t = \bar g_2$.
+
+\medskip
+\noindent{\bf e.} Use your answers to parts b and d to describe
+the government's optimal policy for taxing and borrowing.
+
+
+\medskip
+
+%\vfil\eject
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.7} \quad {\bf A competitive
+equilibrium}
+
+\medskip
+\noindent
+ An endowment  economy consists
+of two type of consumers.  Consumers of type 1 order consumption
+streams of the one good according to
+$$ \sum_{t=0}^\infty \beta^t c^1_t $$
+and consumers of type 2 order consumption streams according to
+$$ \sum_{t=0}^\infty \beta^t \ln(c^2_t) $$
+where $c_t^i\geq 0$ is the consumption of a type $i$ consumer and
+$\beta \in (0,1)$ is  a common discount factor. The consumption
+good is tradable but nonstorable. There are equal numbers of the
+two types of consumer. The consumer of type 1 is endowed with the
+consumption sequence
+$$ y_t^1 = \mu >0 \quad \forall t \geq 0 $$
+where $\mu >0$. The consumer of type 2 is endowed with the
+consumption sequence
+$$ y_t^2 = \cases{ 0 & if  $t\geq 0$ is even   \cr
+                   \alpha & if $t\geq 0 $ is odd \cr} $$
+where $\alpha = \mu(1+\beta^{-1})$.
+
+\medskip
+\noindent{\bf a.} Define a competitive equilibrium with time $0$
+trading. Be careful to include definitions of all of the objects
+of which a competitive equilibrium is composed.
+\medskip
+\noindent{\bf b.}  Compute a competitive equilibrium allocation
+with time $0$ trading.
+
+\medskip
+\noindent{\bf c.}  Compute the time $0$ wealths of the two types
+of consumers using the competitive equilibrium prices.
+\medskip
+\noindent{\bf d.}  Define
+ a competitive equilibrium with sequential
+trading of Arrow securities.
+\medskip
+\noindent{\bf e.} Compute
+ a competitive equilibrium with sequential
+trading of Arrow securities.
+
+%\vfil\eject
+\medskip
+
+\noindent{\it Exercise \the\chapternum.8} \quad {\bf Corners}
+\medskip
+\noindent
+ A pure endowment  economy consists
+of two type of consumers.  Consumers of type 1 order consumption
+streams of the one good according to
+$$ \sum_{t=0}^\infty \beta^t c^1_t $$
+and consumers of type 2 order consumption streams according to
+$$ \sum_{t=0}^\infty \beta^t \ln(c^2_t) $$
+where $c_t^i\geq 0$ is the consumption of a type $i$ consumer and
+$\beta \in (0,1)$ is  a common discount factor. Please note the
+nonnegativity constraint on consumption of each person (the force
+of this is that $c^i_t$ is {\it consumption\/}, not {\it
+production\/}).   The consumption good is tradable but
+nonstorable. There are equal numbers of the two types of consumer.
+The consumer of type 1 is endowed with the consumption sequence
+$$ y_t^1 = \mu >0 \quad \forall t \geq 0 $$
+where $\mu >0$. The consumer of type 2 is endowed with the
+consumption sequence
+$$ y_t^2 = \cases{ 0 & if  $t\geq 0$ is even   \cr
+                   \alpha & if $t\geq 0 $ is odd \cr} $$
+where $$\alpha = \mu(1+\beta^{-1}).\eqno(1) $$
+
+\medskip
+\noindent{\bf a.} Define a competitive equilibrium with time $0$
+trading. Be careful to include definitions of all of the objects
+of which a competitive equilibrium is composed.
+\medskip
+\noindent{\bf b.}  Compute a competitive equilibrium allocation
+with time $0$ trading. Compute the equilibrium price system.
+Please also compute the sequence of one-period gross interest
+rates.  Do they differ between odd and even periods?
+
+\medskip
+\noindent{\bf c.}  Compute the time $0$ wealths of the two types
+of consumers using the competitive equilibrium prices.
+\medskip
+\noindent{\bf d.} Now consider an economy identical to the
+preceding one except in one respect.  The endowment of consumer 1
+continues to be 1 each period, but we assume that the endowment of
+consumer 2 is larger (though it continues to be zero in every even
+period). In particular, we alter  the assumption about endowments
+in condition (1) to the new condition
+$$\alpha > \mu(1+\beta^{-1}). $$
+Compute the competitive equilibrium allocation and price system
+for this economy.
+\medskip
+\noindent{\bf e.}  Compute the sequence of one-period interest
+rates implicit in the equilibrium price system that you computed
+in part d.  Are interest rates higher or lower than those you
+computed in part b?
+\index{equivalent martingale measure}
+\medskip
+\noindent{\it Exercise \the\chapternum.9}\quad {\bf Equivalent
+martingale measure}
+\medskip\noindent
+Let $\{d_t(s_t)\}_{t=0}^\infty$ be   a stream of payouts. Suppose
+that there are complete markets.  From \Ep{eq3} and
+\Ep{asset1}, the price at time $0$ of a claim on this stream of
+dividends is
+$$ a_0 = \sum_{t=0}\sum_{s^t} \beta^t {u'(c_t^i(s^t))\over \mu_i} \pi_t(s^t) d_t(s_t). $$
+Show that this $a_0$ can also be represented as
+$$\eqalignno{ a_0  & = \sum_t b_t \sum_{s^t} d_t(s_t) \tilde \pi_t(s^t) &(1) \cr
+        & = \tilde E_0 \sum_{t=0}^\infty b_t d_t(s_t) \cr} $$
+where $\tilde E$ is the mathematical expectation with respect to
+the twisted measure $\tilde \pi_t(s^t)$ defined by
+$$ \eqalign{ \tilde \pi_t (s^t) & = b_t^{-1} \beta^t {u'(c_t^i(s^t))\over \mu_i} \pi_t(s^t)   \cr
+      b_t & = \sum_{s^t} \beta^t {u'(c_t^i(s^t))\over \mu_i}\pi_t(s^t) . \cr}$$
+Prove that $\tilde \pi_t(s^t)$ is a probability measure.
+Interpret $b_t$ itself as a price of particular asset. Note:
+$\tilde \pi_t(s^t)$ is called an {\it equivalent martingale
+measure\/}. \index{martingale!equivalent measure}%
+ See chapters
+\use{assetpricing1} and \use{assetpricing2}.
+%\vfil\eject
+\medskip
+\noindent{\it Exercise \the\chapternum.10}\quad {\bf
+Harrison-Kreps prices}
+\medskip\noindent
+Show that the asset price  in (1) of the previous exercise can also be
+represented as
+$$\eqalign{ a_0 & = \sum_{t=0}^\infty \sum_{s^t}\beta^t  p_t^0(s^t)  d_t(s^t)\pi_t(s^t) \cr
+              & = E_0 \sum_{t=0}^\infty \beta^t p_t^0 d_t \cr} $$
+where $p_t^0(s^t)= q_t^0(s^t) / [\beta^t \pi_t(s^t)]$.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.11}\quad {\bf Early
+resolution of uncertainty}
+\medskip\noindent
+An economy consists of two households named $i=1,2$.   Each
+household evaluates streams of a single consumption good according
+to $ \sum_{t=0}^\infty \sum_{s^t} \beta^t u[c_t^i(s^t)]
+\pi_t(s^t)
+ $.  Here $u(c)$ is an increasing,
+twice continuously differentiable, strictly concave function of
+consumption $c$  of one good. The utility function satisfies the
+Inada condition $ \lim_{c \downarrow 0} u'(c) = +\infty.$ A
+feasible allocation satisfies $\sum_i c_t^i(s^t) \leq \sum_i
+y^i(s_t) $.  The households' endowments of the one nonstorable
+good are both functions of a state variable $s_t \in {\bf S} =
+\left\{0, 1, 2\right\}$; $s_t$ is described by a time invariant
+Markov chain with initial distribution $\pi_0 = \left[\matrix{0 &
+1 & 0 \cr}\right]' $ and transition density defined by the
+stochastic matrix
+$$P = \left[\matrix{ 1 & 0 & 0 \cr .5 & 0 & .5 \cr 0 & 0 & 1\cr}\right].$$  The endowments of the two households
+are
+$$\eqalign{ y_t^1 & = s_t /2 \cr
+            y_t^2 & = 1-s_t/2 .\cr} $$
+ \medskip
+\noindent{\bf a.}  Define a competitive equilibrium with Arrow
+securities.
+\medskip
+\noindent{\bf b.}  Compute a competitive equilibrium with Arrow
+securities.
+\medskip
+\noindent {\bf c.} By hand, simulate the economy.  In particular,
+for every possible realization of the histories $s^t$, describe
+time series of $c_t^1, c_t^2$ and the wealth levels $a_t^i$
+of the households.  (Note: Usually this would be an impossible
+task by hand, but this problem has been set up to make the task
+manageable.)
+
+\medskip
+\noindent{\it Exercise \the\chapternum.12}\quad donated by Pierre-Olivier
+Weill
+\medskip
+\noindent An economy is populated by a continuum of  infinitely
+lived consumers of  types $j \in \{0,1\}$, with a
+measure one of each. There is one nonstorable consumption good
+ arriving in the form of an endowment stream owned by each
+consumer. Specifically, the endowments are
+%
+%\begin{eqnarray*}
+%y_t^0(s_t)&=& (1-s_t) \bar y^0 \medskip
+%y_t^1(s_t)&=& s_t \bar y^1,
+%\end{eqnarray*}
+
+$$\eqalign{
+y_t^0(s_t)&= (1-s_t) \bar y^0 \cr
+y_t^1(s_t)&= s_t \bar y^1,\cr}$$
+\noindent where $s_t$ is a two-state time-invariant Markov chain
+ valued in $\{0,1\}$ and $\bar y^0 < \bar y^1$. The initial
+state is $s_0=1$. Transition probabilities are denoted $\pi(s' |
+s)$ for  $(s,s') \in \{0,1\}^2$, where $'$ denotes a next period value.
+ The aggregate endowment is
+ $y_t(s_t) \equiv (1-s_t) \bar y^0 + s_t \bar y^1$. Thus,
+  this economy fluctuates stochastically between recessions
+$y_t(0)= \bar y^0$ and booms $y_t(1) = \bar y^0$. In a recession,
+the aggregate endowment is owned by type $0$ consumers, while in a
+boom it is owned by a type $1$ consumers. A consumer orders
+consumption streams according to:
+$$
+U(c^j) = \sum_{t=0}^{\infty} \sum_{s^t} \beta^t \pi(s^t | s_0)
+  {c_t^j(s^t)^{1-\gamma}\over {1-\gamma}},
+$$
+\noindent where $s^t=(s_t,s_{t-1},\ldots,s_0)$ is the history of
+the state up to time $t$, $\beta \in (0,1)$ is the discount
+factor, and $\gamma >0$ is the coefficient of relative risk
+aversion.\medskip
+
+\noindent {\bf a.} Define a competitive equilibrium with time $0$
+trading. Compute the price system $\{q_t^0(s^t)\}_{t=0}^{\infty}$
+and the equilibrium allocation $\{c^j(s^t)\}_{t=0}^{\infty}$, for
+$j \in \{0,1\}$.\medskip
+
+\noindent {\bf b.} Find a utility function $\bar U(c) = E_0\bigl(
+\sum_{t=0}^{\infty} \beta^t u(c_t) \bigr)$ such that the price
+system $q_t^0(s^t)$ and the aggregate endowment $y_t(s_t)$ is an
+equilibrium allocation of the single-agent economy $\bigl( \bar U
+,\{y_t(s_t)\}_{t=0}^{\infty} \bigr)$. How does your answer depend
+on the initial distribution of endowments $y_t^j(s_t)$ among the
+two types $j \in \{0,1\}$? How would you defend the
+representative agent assumption in this economy?\medskip
+
+\noindent {\bf c.} Describe the equilibrium allocation under the
+following three market structures: (i) at each node $s^t$,
+agents can  trade only claims on their entire endowment streams;
+(ii) at each node $s^t$, there is a complete set of one-period
+ahead Arrow securities; and (iii) at each node $s^t$, agents can
+only trade two risk-free assets, namely, a one-period zero-coupon bond
+that pays one unit of consumption for sure at $t+1$ and a
+two-period zero-coupon bond that pays one unit of the consumption good
+for sure at $t+2$. How would you modify your answer in the absence
+of aggregate uncertainty?\medskip
+
+\noindent {\bf d.} Assume that $\pi(1|0)=1$, $\pi(0|1)=1$, and as
+before $s_0=1$. Compute the allocation in an equilibrium with
+time $0$ trading. Does the type $j=1$ agent always consume the
+largest share of the aggregate endowment? How does it depend on
+parameter values? Provide economic intuition for your results.\medskip
+
+\noindent {\bf e.} Assume that $\pi(1|0)=1$ and $\pi(0|1)=1$.
+Remember that $s_0=1$. Assume that at $t=1$ agent $j=0$ is given
+the option to default on her financial obligation. For example, in
+the time $0$ trading economy, these obligations are deliveries of
+goods. Upon default, it is assumed that the agent is excluded from
+the market and has to consume her endowment forever. Will the
+agent ever exercise her option to default?
+
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.13} \quad {\bf Diverse beliefs, I}
+\medskip
+\noindent
+ A pure endowment economy is populated by two consumers. Consumer $i$ has preferences over history-contingent
+consumption sequences $\{c_t^i(s^t)\}$ that are ordered by
+$$ \sum_{t=0}^\infty \sum_{s^t} \beta^t u(c_t^i(s^t)) \pi_t^i (s^t) ,$$
+where $u(c) = \ln(c)$  and where $\pi_t^i(s^t)$ is a density that consumer $i$ assigns to history $s^t$. The state space is time invariant. In particular,
+$s_t \in S = \{0, .5,  1\}$ for all $t \geq 0$.
+Only two histories are possible for $t=0, 1, 2, \ldots$:
+$$ \eqalign{ & {\rm history \ 1}: .5, 1, 1, 1, 1, \ldots \cr
+             & {\rm history \ 2}: .5, 0, 0, 0, 0, \ldots \cr } $$
+Consumer $1$ assigns probability $1/3$ to  history 1  and probability $2/3$ to history 2, while consumer 2 assigns probability
+$2/3$ to history 1 and probability $1/3$ to history 2.  Nature assigns equal probabilities to the two histories.
+The endowments of the two consumers are:
+
+$$ \eqalign{ y_t^1 & = s_t \cr
+          y_t^2 & = 1-s_t . \cr} $$
+
+\medskip
+\noindent{\bf a.} Define a competitive  equilibrium with sequential trading of a complete set of one-period Arrow securities.
+
+\medskip
+\noindent {\bf b.}  Compute a competitive equilibrium with sequential trading of a complete set of one-period Arrow securities.
+
+\medskip
+\noindent{\bf c.} Is the equilibrium allocation Pareto optimal?
+
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.14} \quad {\bf Diverse beliefs, II}
+\medskip
+\noindent
+Consider the following $I$ person  pure endowment economy.  There is a state variable $s_t \in S$ for all $t\geq 0$.
+Let $s^t$ denote a history of $s$ from $0$ to $t$.  The time $t$  aggregate endowment is a function of the history, so $Y_t = Y_t(s^t)$.  Agent $i$ attaches a personal probability of $\pi_t^i(s^t)$ to history $s^t$. The history $s^t$ is observed by all
+$I$ people at time $t$. Assume that  for all $i$, $\pi_t^i(s_t) > 0$ if and only if  $\pi_t^1(s_t) > 0$ (so the consumers agree about which histories have positive probability).
+   Consumer $i$ ranks consumption plans $c_t^i(s^t)$ that are measurable functions of histories
+via the expected utility functional
+$$ \sum_{t=0}^\infty  \sum_{s^t}\beta^t \ln (c_t^i(s^t)) \pi_t^i(s^t) \leqno(1) $$
+The ownership structure of the economy is not yet determined.
+
+\medskip
+\noindent A planner puts positive Pareto weights $\lambda_i >0$ on consumers $i=1, \ldots, I$ and solves a time $0$ Pareto
+problem that respects each consumer's preferences as represented by (1).
+
+\medskip
+\noindent {\bf a.}  Show how to solve for a Pareto optimal allocation.  Display an expression for $c^i_t(s^t)$ as a function
+of $Y_t(s^t)$ and other pertinent variables.
+
+\medskip
+\noindent {\bf b.} Under what circumstances does the Pareto plan imply  complete risk-sharing among the $I$ consumers?
+
+\medskip
+\noindent {\bf c.}  Under what circumstances does the Pareto plan imply an allocation that is not history dependent? By `not history
+dependent', we mean
+that  $Y_t(s^t) = Y_t(\tilde s^t)$  would imply the same allocation at time $t$?
+\medskip
+\noindent {\bf d.}  For a given set of Pareto weights, find an associated equilibrium price vector and an initial distribution
+of wealth among the $I$ consumers that makes the Pareto allocation be the  allocation associated with  a competitive
+equilibrium with time $0$ trading of history-contingent claims on consumption.
+
+\medskip
+\noindent {\bf e.}  Find a formula for the equilibrium price vector in terms of equilibrium
+quantities and the beliefs of consumers.
+
+\medskip
+\noindent {\bf f.} Suppose that $I=2$.  Show that as $\lambda_2 / \lambda_1 \rightarrow + \infty$, the planner would distribute
+initial wealth in a way that makes consumer $2$'s beliefs more and more influential in determining  equilibrium prices.
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.15} \quad {\bf Diverse beliefs, III}
+\medskip
+\noindent An economy consists of two consumers named $i=1,2$.   Each
+consumer evaluates streams of a single nonstorable consumption good according
+to $$ \sum_{t=0}^\infty \sum_{s^t} \beta^t \ln [c_t^i(s^t)]
+\pi_t^i(s^t).
+ $$  Here $\pi_t^i(s^t)$ is consumer $i$'s subjective probability over history $s^t$. %and  $u(c)$ is an increasing,
+%twice continuously differentiable, strictly concave function of
+%consumption $c$  of one good. The utility function satisfies the
+%Inada condition $ \lim_{c \downarrow 0} u'(c) = +\infty.$
+ A
+feasible allocation satisfies $\sum_i c_t^i(s^t) \leq \sum_i
+y^i(s_t) $ for all $t \geq 0$ and for all $s^t$.  The consumers' endowments of the one good are  functions of a state variable $s_t \in {\bf S} =
+\left\{0, 1, 2\right\}$.  In truth,  $s_t$ is described by a time invariant
+Markov chain with initial distribution $\pi_0 = \left[\matrix{0 &
+1 & 0 \cr}\right]' $ and transition density defined by the
+stochastic matrix
+$$P = \left[\matrix{ 1 & 0 & 0 \cr .5 & 0 & .5 \cr 0 & 0 & 1\cr}\right]$$
+where $P_{ij} = {\rm Prob}[s_{t+1} = j-1| s_t = i-1]$ for $i=1,2,3$ and $j=1,2,3$.  The endowments of the two consumers
+are
+$$\eqalign{ y_t^1 & = s_t /2 \cr
+            y_t^2 & = 1-s_t/2 .\cr} $$
+In part I, both consumers know the true probabilities over histories $s^t$ (i.e., they
+know both $\pi_0$ and $P$).  In part II, the two consumers have different subjective probabilities.
+
+\vfil\eject
+
+\medskip
+\noindent{\bf Part I:}
+\medskip
+\noindent Assume that both consumers know $(\pi_0, P)$, so that
+$\pi_t^1(s^t) = \pi_t^2(s^t)$ for all $t\geq 0$ for all $s^t$.
+
+
+\medskip
+\noindent{\bf a.}  Show how to deduce $\pi_t^i(s^t)$ from
+$(\pi_0, P)$.
+
+ \medskip
+\noindent{\bf b.}  Define a competitive equilibrium with sequential trading of Arrow
+securities.
+\medskip
+\noindent{\bf c.}  Compute a competitive equilibrium with sequential trading of Arrow
+securities.
+\medskip
+\noindent {\bf d.} By hand, simulate the economy.  In particular,
+for every possible realization of the histories $s^t$, describe
+time series of $c_t^1, c_t^2$ and the wealth levels for the two consumers.
+
+\medskip
+\noindent{\bf Part II:}
+\medskip
+
+\noindent Now assume that while consumer 1 knows $(\pi_0, P)$, consumer 2 knows $\pi_0$ but thinks
+that $P$ is
+$$\hat P= \left[\matrix{ 1 & 0 & 0 \cr .4 & 0 & .6 \cr 0 & 0 & 1\cr}\right].$$
+\medskip
+\noindent {\bf e.} Deduce $\pi_t^2(s^t)$ from $(\pi_0, \hat P)$ for all $t \geq 0$ for all $s^t$.
+\medskip
+\noindent{\bf f.} Formulate and solve a Pareto problem for this economy.
+\medskip
+\noindent{\bf g.} Define an equilibrium with time $0$ trading of a complete set of
+Arrow-Debreu history-contingent securities.
+\medskip
+\noindent{\bf h.} Compute  an equilibrium with time $0$ trading of a complete set of
+Arrow-Debreu history-contingent securities.
+
+\medskip
+\noindent{\bf i.} Compute an equilibrium with sequential trading of Arrow securities.  For every
+possible realization of $s^t$ for all $t\geq 0$, please describe time series of $c_t^1, c_t^2$ and the wealth levels for the two consumers.
+
+
+%%%%% HHHH new question Fall 2008
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.16} \quad {\bf Diverse beliefs, IV}
+\medskip
+\noindent
+ A pure exchange economy is populated by two consumers. Consumer $i$ has preferences over history-contingent
+consumption sequences $\{c_t^i(s^t)\}$ that are ordered by
+$$ \sum_{t=0}^\infty \sum_{s^t} \beta^t u(c_t^i(s^t)) \pi_t^i (s^t) ,$$
+where $u(c) = \ln(c)$, $\beta \in (0,1)$,   and  $\pi_t^i(s^t)$ is a density that consumer $i$ assigns to history $s^t$. The state space is time invariant. In particular,
+$s_t \in S = \{0, .5,  1\}$ for all $t \geq 0$.
+Only two histories are possible for $t=0, 1, 2, \ldots$:
+$$ \eqalign{ & {\rm history \ 1}: .5, 1, 1, 1, 1, \ldots \cr
+             & {\rm history \ 2}: .5, 0, 0, 0, 0, \ldots \cr } $$
+Consumer $1$ assigns probability $1$ to  history 1  and probability $0$ to history 2, while consumer 2 assigns probability
+$0$ to history 1 and probability $1$ to history 2.  Nature assigns equal probabilities to the two histories.
+The endowments of the two consumers are:
+
+$$ \eqalign{ y_t^1 & = s_t \cr
+          y_t^2 & = 1-s_t . \cr} $$
+
+\medskip
+\noindent{\bf a.} Formulate and solve a  Pareto problem for this economy.
+
+\medskip
+\noindent{\bf b.} Define a competitive  equilibrium with sequential trading of a complete set of one-period Arrow securities.
+
+\medskip
+\noindent {\bf c.} Does a competitive equilibrium with sequential trading of a complete set of one-period Arrow securities
+exist for this economy?  If it does, compute it.  If it does not, explain why.
+
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.17} \quad {\bf Diverse beliefs, V}
+\medskip
+\noindent
+ A pure exchange economy is populated by two consumers. Consumer $i$ has preferences over history-contingent
+consumption sequences $\{c_t^i(s^t)\}$ that are ordered by
+$$ \sum_{t=0}^\infty \sum_{s^t} \beta^t u(c_t^i(s^t)) \pi_t^i (s^t) ,$$
+where $u(c) = \ln(c)$, $\beta \in (0,1)$,   and $\pi_t^i(s^t)$ is a density that consumer $i$ assigns to history $s^t$. The state space is time invariant. In particular,
+$s_t \in S = \{0, .5,  1\}$ for all $t \geq 0$.
+Only two histories are possible for $t=0, 1, 2, \ldots$:
+$$ \eqalign{ & {\rm history \ 1}: .5, 1, 1, 1, 1, \ldots \cr
+             & {\rm history \ 2}: .5, 0, 0, 0, 0, \ldots \cr } $$
+Consumer $1$ assigns probability $1$ to  history 1  and probability $0$ to history 2, while consumer 2 assigns probability
+$0$ to history 1 and probability $1$ to history 2.  Nature assigns equal probabilities to the two histories.
+The endowments of the two consumers are:
+
+$$ \eqalign{ y_t^1 & = 1- s_t \cr
+          y_t^2 & = s_t . \cr} $$
+
+\medskip
+\noindent{\bf a.} Formulate and solve a  Pareto problem for this economy.
+
+\medskip
+\noindent{\bf b.} Define a competitive  equilibrium with sequential trading of a complete set of one-period Arrow securities.
+
+\medskip
+\noindent {\bf c.} Does a competitive equilibrium with sequential trading of a complete set of one-period Arrow securities
+exist for this economy?  If it does, compute it.  If it does not, explain why.
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.18} \quad {\bf Risk-free bonds}
+
+\medskip
+\noindent
+An economy consists of a single representative consumer who  ranks streams of a single nonstorable consumption good according
+to $ \sum_{t=0}^\infty \sum_{s^t} \beta^t \ln [c_t(s^t)]
+ \pi_t(s^t)$.  Here $\pi_t(s^t)$ is the  subjective probability that the consumer attaches to  a history  $s^t$ of a Markov state $s_t$, where
+ $s_t \in \{1, 2\}$. Assume that the subjective probability $\pi_t(s^t)$  equals the objective probability.  %and  $u(c)$ is an increasing,
+%twice continuously differentiable, strictly concave function of
+%consumption $c$  of one good. The utility function satisfies the
+%Inada condition $ \lim_{c \downarrow 0} u'(c) = +\infty.$
+  Feasibility for this pure endowment economy is expressed by the condition $c_t \leq y_t$, where $y_t$ is the endowment at time
+  $t$.  The endowment is exogenous and governed by
+$$ y_{t+1} = \lambda_{t+1} \lambda_t \cdots \lambda_1 y_0$$
+ for $t \geq 0$ where  $y_0 > 0$.  Here $\lambda_t$ is a function of the Markov state $s_t$.  Assume that
+$\lambda_t = 1$ when $s_t=1$ and $\lambda _t = 1 + \zeta$ when $s_t =2 $, where $\zeta >0$. States  $s^t =[s_t, \ldots, s_0]$ are known
+at time $t$, but future states are not.    The state   $s_t$ is described by a time invariant
+Markov chain with initial probability distribution $\pi_0 = \left[\matrix{
+1 & 0 \cr}\right]' $ and transition density defined by the
+stochastic matrix
+$$P = \left[\matrix{ P_{11} & P_{12}\cr
+                      P_{21} & P_{22} }\right]$$
+where $P_{ij} = {\rm Prob}[s_{t+1} = j| s_t = i]$ for $i=1,2$ and $j=1,2$. Assume that $P_{ij} \geq 0$ for all  pairs $(i,j)$.
+
+
+
+
+
+\medskip
+\noindent{\bf a.}  Show how to deduce $\pi_t(s^t)$ from
+$(\pi_0, P)$.
+
+ \medskip
+\noindent{\bf b.}  Define a competitive equilibrium with sequential trading of Arrow
+securities.
+\medskip
+\noindent{\bf c.}  Compute a competitive equilibrium with sequential trading of Arrow
+securities.
+\medskip
+\noindent {\bf d.} Let $p_t^b$ be the time $t$ price of a risk-free claim to one unit of consumption at time $t+1$.
+Define a competitive equilibrium with sequential trading of  risk-free claims to consumption one period ahead.
+\medskip
+\noindent {\bf e.} Let $R_t = (p_t^b)^{-1}$ be the  one-period risk-free gross interest rate.
+Give a formula for $R_t$  and tell how it depends on the history $s^t$.
+\medskip
+\noindent {\bf f.}  Suppose that $\beta = .95, \zeta = .02$ and $P =  \left[\matrix{ 1 &  0 \cr
+                      .5 & .5 }\right]$.  Please compute $R_t$ when $s_t =1$.  Then compute $R_t$ when
+                      $s_t =2$.
+\medskip
+\noindent{\bf g.} What parts of your answers depend on assuming that the subjective probability $\pi_t(s^t)$
+equals the objective probability?
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.19} \quad {\bf Entropy}
+
+\medskip
+
+\noindent
+Let $\tilde f(s)$ and $f(s)$ be two alternative probability density functions for a random variable $s$.
+Define the relative entropy of $f$ with respect to $\tilde f$ by
+$$ {\rm ent} (f, \tilde f) = \int \log \Biggl( { \tilde f(s) \over f(s)  }\Biggr) \tilde f(s) d s = \int \log \Biggl( { \tilde f(s) \over f(s)  }\Biggr) \Biggl( { \tilde f(s) \over f(s)  }\Biggr)
+f(s) d s .$$
+
+\medskip
+\noindent Prove that ${\rm ent} (f, \tilde f) \geq 0$ and that ${\rm ent} (\tilde f, \tilde f) = 0$.
+
+\medskip
+
+\noindent {\bf Hint 1:}  Define $m(s)  = \Bigl( { \tilde f(s) \over f(s)  }\Bigr)$ and express entropy
+as
+$$ \int m(s) \log m(s) f(s) ds .$$
+
+\medskip
+
+\noindent {\bf Hint 2:}  Verify that $m \log m \geq m - 1 $.
+
+\medskip
+
+\noindent {\bf Hint 3:} Verify that $\int m (s) f(s) = 1$.
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.20} \quad {\bf Heterogeneous  beliefs again}
+
+\medskip
+
+\noindent Consider an example of the heterogeneous beliefs economy described in Appendix \use{app:compB}  of this  chapter.
+Suppose  that $S = \{0, 1\},  I=2$, and that  agent $i$ believes that $s_t$ is independently and identically distributed
+with ${\rm Prob}(s_t = 0) = \alpha_i$. Assume that $u_i(c^i_t) = \log c^i_t$ for both consumers. The aggregate endowment is $y_t(s^t) = 1 - .5 s_t$. Feasibility requires
+$c_t^1 + c_t^2 \leq y_t(s^t)$.  A time $0$ Pareto planner puts weight $\lambda \in (0,1)$ on consumer 1 and weight $(1-\lambda)$ on consumer 2.
+Suppose that $\{s_t\}_{t=1}^\infty$ is truly independently and identically distributed with ${\rm Prob}(s_t = 0) = \tilde \alpha$.
+Assume that $I=2, \alpha_2 = \tilde \alpha, \alpha_1 \neq \tilde \alpha$, so that consumer 2 knows the true distribution, while consumer 1 does not.
+
+\medskip
+
+\noindent{\bf a.}  Let $L^2_t(s^t) = {\pi_t^2(s^t) \over \pi_t^1(s^t)}$.  Show that a Pareto optimal allocation satisfies
+$$ c_t^2(s^t) = \Biggl[ { (1-\lambda) L^2(s^t) \over \lambda + (1-\lambda) L_t^2(s^t) } \Biggr] y_t(s^t) .$$
+
+\medskip
+\noindent{\bf b.}  Find a formula for the price $\tilde Q(s_{t+1} | s^t)$ of Arrow securities.
+
+\medskip
+\noindent{\bf c.} State assumptions under which you can show that
+$$ \tilde Q_t(s_{t+1} | s^t) \rightarrow  \beta \Biggl( {y_t(s_t) \over y_{t+1}(s_{t+1})} \Biggr) \pi_t^2(s_{t+1}| s^t), $$
+as $t \rightarrow +\infty$ in some sense. Describe the sense in which what you claim is true.
+
+\medskip
+\noindent{\bf d.} Use your findings from part {\bf c} to argue that the ``tail'' of the economy resembles a representative
+consumer economy.
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.21} \quad {\bf Recursive version of Pareto problem}
+
+\medskip
+
+
+\noindent {\bf a.}  Please reread section  \use{sec:RecursivePareto}.
+
+\medskip
+
+\noindent {\bf b.}  Assume exactly the same setting as in section  \use{sec:RecursivePareto}, except now assume that consumer  $1$ believes probabilities $\Pi_s^1$ and that consumer two  believes
+probabilities $\Pi_s^2$.
+
+\medskip
+
+\noindent {\bf c.}  Formulate a recursive version of the Pareto problem in terms of the Bellman equation
+$$  P(v) = \max_{\{c_s, w_s\}} \sum_{i=s}^S [ u_2(1-c_s) + \beta P(w_s) ] \Pi_s^2  $$
+where the maximization is subject to
+$$ \sum_{s=1}^S [u_1(c_s) + \beta w_s ] \Pi_s^1 \geq v  $$
+where $c_s$ is consumption assigned to consumer 1, $1-c_s$ is consumption assigned to consumer 2,  $v$ is the promised value assigned to consumer 1,
+$w_s$ is a continuation  value assigned to
+consumer 1,
+$P(v)$ is the value attained by consumer 2, and $P(w_s)$ is the continuation value assigned to consumer 2.
+
+\medskip
+
+\noindent{\bf d.}  Assuming that $P(v)$ is concave and differentiable, find first-order conditions for $c_s, w_s$ for $s = 1, \ldots, S$.
+
+\medskip
+
+
+\noindent{\bf e.}  Argue that these first-order conditions imply that for states $i$ such that ${\Pi_s^1 \over \Pi_s^2} > 1$, the Pareto planner
+gives larger values of  {\it both\/} $c_s^1$ and $w_s^1$ than he or she does in states for which  ${\Pi_s^1 \over \Pi_s^2} < 1$.
+
+
+\medskip
+\noindent {\bf f.}  How do the outcomes described in item {\bf e} relate to the asymptotic outcomes described in Appendix \use{app:compB}  of this  chapter?
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.22} \quad {\bf Recovering probabilities from prices}
+\medskip
+\noindent Consider a representative agent economy with an exogenous endowment of a single consumption good governed by a two-state Markov chain
+with state $s_t \in \{ 1, 2\}$ having transition  matrix $P$ with typical element $P_{ij} = {\rm Prob} (s_{t+1} = j | s_t = i)$.
+The representative consumer's endowment $y_t$ is a time invariant function  $y(s_t)> 0$ of the Markov state. So is his consumption.
+The representative consumer orders consumption streams by
+$$ E_0 \sum_{t=0}^\infty \beta^t u(c_t), $$
+where $\beta \in (0,1)$ and $u(c)= {\frac{1}{1-\gamma}}c^{1-\gamma}$ for $\gamma > 0$.
+At each date $t \geq 0$, there are complete markets in $h$-step ahead Arrow securities of horizons $h=1,2$.
+Recall formula \Ep{Qrecurs2} for the $h$-step ahead Arrow securities prices, which  for convenience we repeat here
+$$ Q_h( s_{t+h} | s_t) = \sum_{s_{t+1}} Q_1(s_{t+1} | s_t)
+                      Q_{h-1}( s_{t+h} | s_{t+1}). $$
+
+\medskip
+\noindent{\bf a.} With an abuse of notation, arrange the one-period Arrow security prices into a $2 \times 2$ matrix $Q$ defined
+according to
+$$ Q_{ij} = Q(s_{t+1} = j| s_t = i). $$
+Then show that formula \Ep{Qrecurs2} can be represented as
+$$ Q^h = Q Q^{h-1} $$
+for $h \geq 2$.
+
+\medskip
+\noindent {\bf b.}  Suppose that you observe a complete set of one and two period ahead Arrow securities prices for {\it one\/} and only one state $i$.  That is,
+you know the $i$th row of both $Q$ and $Q^2$.  Show how you can recover both rows of $Q$ from this information.
+
+\medskip
+\noindent{\bf c.}  Recall  that consumption of a representative consumer is a time-invariant function of the Markov state.
+Find a formula for each element of $Q$  in terms of $\beta, \gamma$, the consumption rates in the two states, and  $P$.
+
+\medskip
+\noindent{\bf d.} Prove that if you  know all elements of $Q$, you can infer $\beta$ and all elements of $P$ even if you don't know  $\gamma$.
+
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.23} \quad {\bf Recovering probabilities from prices, II}
+\medskip
+\noindent Consider a representative agent economy with an exogenous endowment of a single consumption good whose geometric growth rate is
+governed by  a two-state Markov chain
+with state $s_t \in \{ 1, 2\}$ having transition  matrix $P$ with typical element $P_{ij} = {\rm Prob} (s_{t+1} = j | s_t = i)$.
+The growth rate of the consumer's endowment $y_t$ is a time invariant function  $\lambda(s_t)> 0$ of the Markov state.
+The endowment obeys $y_{t+1} = \lambda_{t+1} y_t$ for $t \geq 0$.
+The representative consumer orders consumption streams by
+$$ E_0 \sum_{t=0}^\infty \beta^t u(c_t), $$
+where $\beta \in (0,1)$ and $u(c)= {\frac{1}{1-\gamma}}c^{1-\gamma}$ for $\gamma > 0$.
+There are complete markets in one and two period Arrow securities.
+
+
+\medskip
+\noindent{\bf a.} With an abuse of notation, arrange the one-period Arrow security prices into a $2 \times 2$ matrix $Q$ defined
+according to
+$$ Q_{ij} = Q(s_{t+1} = j| s_t = i). $$
+Then show that formula \Ep{Qrecurs2} can be represented as
+$$ Q^h = Q Q^{h-1} $$
+for $h \geq 2$.
+
+
+\medskip
+\noindent {\bf b.}  Suppose that you observe all one and two period  Arrow securities prices for a single state $i$.  That is,
+you know the $i$th row of both $Q$ and $Q^2$.  Show how you can recover both rows of $Q$ from this information.
+
+
+\medskip
+\noindent{\bf c.}  Find a formula for each element of $Q$  in terms of $\beta, \gamma$, and $P$.
+
+\medskip
+\noindent{\bf d.}   Prove that if you  know all elements of $Q$, you {\it cannot} infer $\beta$ and all elements of $P$ even if you know  $\gamma$.
+
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.24} \quad {\bf Recovering probabilities from prices, III}
+\medskip
+\noindent Consider a representative agent economy with an exogenous endowment of a single consumption good governed by a two-state Markov chain
+with state $s_t \in \{ 1, 2\}$ having transition  matrix $P$ with typical element $P_{ij} = {\rm Prob} (s_{t+1} = j | s_t = i)$.
+The representative consumer's endowment $y_t$ is a time invariant function  $y(s_t)> 0$ of the Markov state. So is his consumption $c_t = c(s_t)$.
+The representative consumer orders consumption streams by
+$$ E_0 \sum_{t=0}^\infty \beta^t u(c_t), $$
+where $\beta \in (0,1)$,  $u(c)= {\frac{1}{1-\gamma}}c^{1-\gamma}$ for $\gamma > 0$, and $E_0$ denotes a mathematical expectation conditioned on date
+$0$ information, in this case the time $0$ value  $s_0$ of the state.
+At each date $t \geq 0$, there are complete markets in one-step ahead Arrow securities.
+There are also markets in $h$-period risk-free pure discount  bonds.  A risk-free pure discount $h$-period bond issued at $t$ promises to pay one unit of
+consumption at date $t+h$ for sure.  At time $t$, the equilibrium price of a sure claim on one unit of  consumption
+at time $t+h$ is $p^t_{t+h}$.
+
+\medskip
+\noindent{\bf a.} Please present a formula for a stochastic discount factor for pricing $h$-period ahead risky claims for this economy.
+Is this stochastic discount factor unique?
+
+\medskip
+\noindent {\bf b.}  Please find formulas for the equilibrium  price $p^t_{t+h}$  of $h$-period  risk-free pure discount bonds for $h \geq 1$.
+
+
+\medskip
+\noindent{\bf c.}  At a single date  $t$, you observe the state of  the economy $s_t$. You also observe $p^t_{t+h}$ for $h=1,2,3,4$.
+Your friend tells you that from these four observations you can infer $\beta, P_{11}, P_{22}$, and $\left({\frac{c(1)}{c(2)}}\right)^{-\gamma}$ for this economy.
+Do you agree?  Provide an argument.
+
+
+
+
+
+
+\eqnotracefalse

@@ -1,0 +1,27 @@
+%
+% The following macros insert graphs in a TeX document with a caption.
+%
+%
+%
+
+% load the fonts if not done before
+\ifx\tenpoint\undefined
+\input fonts \else\relax\fi
+\input psfig2
+
+\newdimen\captionsize 
+\def\grafbox#1#2#3#4{\vtop{\hsize=#1
+     \vbox to0pt{}\line{\hfil#3\hfil}
+     \vskip40pt\line{\hfil\vbox to #2{#4\vss}\hfil}}}
+\def\grafone#1#2{\setbox1=\psfig{figure=#1} 
+     \ifdim\wd1 >\hsize\captionsize=\hsize \else\captionsize=\wd1 \fi 
+     \advance\captionsize by-1em
+   \setbox2=\vbox{\hsize=\captionsize\eightpoint\noindent\strut #2\hfil}
+   \centerline{\grafbox{\wd1}{\ht2}{\box1}{\box2}}}
+\def\graftwo#1#2#3#4{\setbox1=\psfig{figure=#1} \setbox3=\psfig{figure=#3} 
+   \setbox2=\vbox{\hsize=\wd1 \eightpoint\noindent\strut #2\hfil}
+   \setbox4=\vbox{\hsize=\wd3 \eightpoint\noindent\strut #4\hfil}
+   \line{\hss\grafbox{\wd1}{\ht2}{\box1}{\box2}\hskip40pt plus6pt minus6pt
+           \grafbox{\wd3}{\ht4}{\box3}{\box4}\hss}}
+
+%

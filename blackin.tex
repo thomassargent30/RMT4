@@ -1,0 +1,823 @@
+
+%\showchapterIDtrue
+%\chapter{Preface\label{preface}}
+\footnum=0
+\
+%\showchapterIDtrue
+
+
+%\def\@chaptID{1.}
+%\chap{-23}{0}{Preface}
+%\pagenumbers
+%\pageno=-1
+%\noindent{\Tbf Preface}
+%\chapter{Preface\label{preface}}
+%\medskip
+\nosechead{Recursive Methods}
+\noindent Much of this book is about how to use recursive methods to study dynamic
+macro\-economic models. Recursive methods are very important in the
+analysis of dynamic systems in economics and other sciences. They
+originated after World War II in diverse literatures promoted by
+Wald (sequential analysis), Bellman (dynamic programming), and
+Kalman (Kalman filtering). \auth{Kalman, Rudolf} \auth{Bellman,
+Richard} \auth{Wald, Abraham}
+\nosechead{Dynamics}
+\noindent Dynamics studies sequences  of vectors of random variables
+indexed by time, called {\it time series}.     Time series
+are immense objects, with as many components as the
+number  of variables times the number of time periods.
+A dynamic economic
+model  characterizes and
+interprets covariations  among   of all of these components
+in terms of the purposes and opportunities  of economic agents.
+Agents {\it choose\/} components of the time series in light
+of their opinions about other components.
+
+Recursive methods   break a dynamic problem
+into pieces by forming a sequence  of problems, each one
+being a constrained choice between utility today and utility  tomorrow.
+The idea is to find a way to describe the position
+of the system now, where it might be tomorrow, and
+how agents care now about where  it is tomorrow. Thus,
+recursive methods study dynamics indirectly by characterizing a pair
+of {\it functions}: a transition function mapping the {\it state} today into the state tomorrow,
+ and another function mapping the state into
+the other endogenous variables of the model.
+The {\it state\/} is a vector of variables that characterizes
+the system's current position.  Time series
+are generated from these objects
+by iterating  transition laws.
+%Only experience from
+%solving practical problems
+%fully conveys
+%the power of  this construction.     This book provides
+%many applications.
+
+%\vfil\eject
+%\nosechead{Recursive approach}
+
+Recursive methods  focus on a tradeoff between the current period's
+utility and a continuation value for utility in all future periods and
+the evolution of
+state variables that capture all consequences of today's actions and
+events.  Half of
+the job  is accomplished
+once we choose and understand the roles of suitable  state variables.
+
+
+Another reason for learning about  recursive methods  is
+the increased importance of numerical simulations in
+macroeconomics. Many computational algorithms use
+recursive methods. When such numerical simulations are called for
+in this book, we give some suggestions for how to proceed but rely on other sources to
+provide important details.\NFootnote{Judd
+(1998) and Miranda and Fackler (2002) provide good treatments of
+numerical methods in economics.}\auth{Judd, Kenneth L.}
+\auth{Miranda, Mario J.}\auth{Fackler, Paul L.}
+
+
+
+\nosechead{Philosophy}\noindent
+We think that only experience from
+solving practical problems
+fully conveys
+the power of  the recursive approach.     Therefore, this book provides
+many applications.
+ The book mixes tools and   applications.      We  present the tools with just enough technical
+sophistication
+for our applications, but little more.         We aim
+to give readers a taste of the power of the methods and
+to direct them to sources where  they can learn more.
+
+  Macroeconomic dynamics is now an immense field with
+diverse applications.  We do not pretend to survey the field, only
+to sample it.  We intend our sample to equip  the reader to
+approach much of the field with confidence. Fortunately for us,
+  good  books cover parts of the field
+that we neglect, for example, Adda and Cooper (2003), Aghion and Howitt (1998), Altug and Labadie
+(1994), Azariadis (1993), Barro and
+Sala-i-Martin (1995), Benassy (2011),  Blanchard and Fischer (1989),  Christensen and  Kiefer (2009), Canova (2007), Cooley (1995),  Cooper (1999),
+DeJong and Dave (2011), Farmer (1993),  Gali (2008), Hansen and Sargent (2013),
+Majumdar (2009), Pissarides (1990),
+Romer (1996),  Shimer (2010), Stachurski (2009),  Walsh (1998),
+and   Woodford (2000).   Bertsekas (1976) and Stokey and  Lucas with
+Prescott (1989)  remain standard references
+for recursive methods in macro\-economics. %Chapters \use{search1}
+%and
+Technical  Appendix \use{functional}  in this book revises material
+from  chapter 2 of Sargent (1987b). \auth{Farmer, Roger}
+\auth{Woodford, Michael} \auth{Azariadis, Costas} \auth{Romer,
+David} \auth{Fischer, Stanley} \auth{Blanchard, Olivier J.}
+\auth{Cooper, Russell} \auth{Walsh, Carl} \auth{Prescott, Edward
+C.} \auth{Stokey, Nancy L.} \auth{Lucas, Robert E.,
+Jr.}\auth{Labadie, Pamela} \auth{Altug, Sumru}\auth{Howitt, Peter} \auth{Aghion, Philippe}\auth{Farmer,
+Roger} \auth{Cooper, Russell} \auth{Adda, Jerome}
+\auth{Benassy, Jean-Pascal}
+\auth{Canova, Fabio}
+\auth{Shimer, Robert}
+\auth{Majumdar, Mukul}
+\auth{Christensen, Bent Jasper}
+\auth{Kiefer,  Nicholas M.}
+\auth{Stachurski, John}
+\auth{DeJong, David}
+\auth{Dave, Chetan}
+\auth{Gali, Jordi}
+\auth{Hansen, Lars P.}
+
+
+
+\nosechead{Changes in the fourth edition} \noindent
+This edition
+contains two  new chapters and substantial revisions of many
+other chapters from earlier editions.  New to this edition
+are chapter
+\use{optaxrecur} on recursive formulations of optimal taxation problems and chapter \use{mechanics_matching}
+about the structure underlying models with ``matching functions'' that map unemployment and vacancies into
+job-finding and job-filling probabilities. Chapter \use{stackel} has been extensively revised and simplified in ways
+that closely link its formulation of Stackelberg plans   to  one in our  new chapter \use{optaxrecur}.
+% \use{overview}, \use{linappro},
+%\use{growth1}, \use{stackel}, \use{socialinsurance2}, \use{uninsur1},
+%and
+%\use{wldtrade}.
+The new chapters and  revisions cover   topics that
+ widen and deepen
+the message that recursive methods are pervasive and powerful.
+
+
+\nosechead{New chapters}\noindent
+Chapter \use{optaxrecur} applies ``dynamic programming squared''  to two of the optimal taxation models studied in
+chapter \use{optax}, namely, Lucas and Stokey's (1983) model of optimal taxation and borrowing in an economy with complete markets, and
+an incomplete markets version of that model. Among other insights that  recursive formulations bring to  these models is a sharp
+characterization of the time inconsistency of optimal plans that emerges in the form of two value functions for each optimal taxation problem,
+one for time $t=0$, another for all times $t \geq 1$. Distinct value functions, state vectors,  decision rules,  and  Bellman equations at times $t=0$  and $t \geq 1$
+are tell-tale signs of time-inconsistency.
+
+The ``Shimer puzzle'' is  that standard calibrations of matching models do not generate fluctuations in unemployment rates nearly as large
+as those observed over business cycles.\NFootnote{A puzzle is always relative to a  model. A `puzzle' is a feature or  prediction of a model that
+ is contradicted by data.} \index{puzzle!definition}%
+Chapter \use{mechanics_matching} looks under the hood of a variety of matching models that have been reconfigured in attempts to confront the Shimer puzzle.
+The chapter examines a variety of different reconfigurations of the standard model and identifies  a
+single common economic force that each  of these diverse specifications activates in order address the Shimer critique.
+
+
+
+%\nosechead{Revisions of other chapters}\noindent
+
+\nosechead{Ideas}
+\noindent Beyond emphasizing recursive  methods,
+     the economics  of this book
+revolves around several main  ideas.
+\medskip
+\item{1.}  The competitive equilibrium model of
+a dynamic stochastic economy:
+This model contains  complete markets, meaning
+that  all commodities at different dates
+that are contingent  on 
+random events can be traded in a market with a centralized
+clearing arrangement.  In one version of the model,
+all trades occur at the beginning of time.  In another,
+trading in one-period claims occurs sequentially.
+The model   is a foundation for  asset-pricing theory, growth
+theory, real business cycle theory, and normative
+public finance.    There is no room for fiat money in
+the standard competitive equilibrium model, so we
+shall have to alter the model to make room for  fiat money.
+\medskip
+\item{2.} A class of incomplete markets models with heterogeneous
+agents:  These models arbitrarily restrict the types of assets
+that can be traded, thereby possibly igniting a precautionary
+motive    for agents to hold those assets.    Such models
+have been used to study the
+distribution of wealth  and the evolution of an individual or
+family's wealth over time.   One model in this class lets money in.
+
+\medskip
+\item{3.}   Several models of
+fiat money:    We add a shopping time specification
+to a competitive equilibrium model to get a simple vehicle
+for explaining ten
+  doctrines of monetary economics. These doctrines depend
+on the government's intertemporal budget constraint and the demand
+for fiat money, aspects that transcend many models.     We also use
+Samuelson's overlapping generations model, Bewley's
+incomplete markets model,  and Townsend's
+turnpike model to perform a variety of policy experiments.
+
+\medskip
+\item{4.}  Restrictions on government  policy implied by the arithmetic of
+budget sets:  Most of the ten monetary doctrines reflect
+properties of the government's budget constraint.  Other
+important doctrines do too.
+These doctrines, known as Modigliani-Miller
+and Ricardian equivalence theorems, have a common structure that come from
+identifying an equivalence class of
+government policies that produce the same allocations.
+We display the structure of such theorems with an eye to
+finding 
+features whose absence causes them to fail, letting
+particular policies matter.
+\medskip
+\item{5.} Ramsey taxation problems:
+What is the optimal tax structure when only distorting taxes are
+available? The primal approach to taxation recasts this question as a
+problem in which a government chooses  allocations directly and  tax rates only indirectly. Permissible allocations are those that
+satisfy resource constraints and implementability constraints, where
+the latter are budget constraints in which the consumer
+and firm first-order conditions are used to eliminate 
+prices and tax rates. We study labor and
+capital taxation, and examine the optimality of the inflation
+tax prescribed by the Friedman rule.
+
+
+\medskip
+\item{6.}  Social insurance with private information and
+enforcement problems: We use the recursive contracts approach to
+study a variety of problems in which a benevolent social insurer
+ balances providing insurance against
+providing incentives.  Applications
+include the provision of unemployment insurance
+and the design of loan contracts when a lender
+has an imperfect capacity to monitor a borrower.
+\medskip
+\item{7.}   Reputation  models in macroeconomics:   We study
+how far reputation can go to overcome a government's
+inability to  commit to a policy.   The theory describes
+multiple systems of expectations about its behavior
+to which a government wants to conform.  The theory
+has many applications, including implementing optimal
+taxation policies and  making monetary
+policy in the presence of a temptation to inflate
+offered by a Phillips curve.
+\medskip
+\item{8.}  Search models: Search theory
+makes  assumptions
+different from   ones underlying a complete markets competitive
+equilibrium model.  It imagines that  there is no
+centralized  place where exchanges can be made,
+or that there are not standardized commodities.  Buyers
+and/or sellers have to devote effort to search
+for opportunities to buy or sell good or factors of production, opportunities that might 
+arrive randomly. We describe the basic
+McCall search model and various applications.
+We also describe some equilibrium versions of the McCall model
+and compare
+them with  models of another  type that postulate
+matching functions.
+\medskip
+\item {9.} Matching models.  A matching function
+accepts measures of  job seekers and vacancies as inputs and maps them
+ opportunities to  form matches.  Models with matching functions
+build in congestion externalities that job searchers impose on  other job searchers
+and that vacancy posters impose on other job searchers.  The models study how these externalities contend with each other
+ and how they shape job-finding rates, job-filling rates, and unemployment rates.
+In the last fifteen years, matching models have been revised in ways intended to make them
+fit business cycle facts and welfare state outcomes.
+\medskip
+\item{10.} Employment lotteries versus career time-averaging.  A model that was popular until recently interpreted
+ the aggregate labor supply
+as the fraction of people that a planner chooses assigns to work by using  a lottery
+in which the losers must work and the winners enjoy leisure.  An  alternative
+model instead focuses on an individual worker who  chooses the fraction of his or her
+life to work within a life-cycle model.  The two frameworks have strikingly similar
+implications about some aggregate outcomes, but not about others.
+\medskip
+\item{11.} Heterogeneous beliefs.  While  for very good reasons most applied macroeconomic models continue to assume  rational expectations,
+it is useful to study  frameworks in which there are multiple beliefs either across people or, in models of ``ambiguity'' and
+``robustness'', within the mind of one decision maker.  Parts of chapters \use{recurge} and \use{assetpricing2} study
+such models.
+
+
+
+\nosechead{Theory and evidence}
+
+\noindent Though this book aims to give the reader the tools
+to read about applications, we spend little time
+on empirical applications.
+  However, the empirical failures of one class of models have been a main force
+prompting development of another class of models.
+Thus,  the  perceived empirical failures of the standard
+complete markets general equilibrium model stimulated
+the development of the incomplete markets and recursive
+contracts models.   For example, the complete markets model
+forms  a standard benchmark model  or point of departure
+for theories and empirical work  on
+consumption and asset pricing.   The complete markets model
+has these empirical problems:  (1)  there is too much
+correlation between individual income and consumption growth
+in micro data (e.g., Cochrane, 1991 and Attanasio and Davis, 1995);
+(2)  the equity premium is larger in the data than
+is implied by a representative agent  asset-pricing model with reasonable
+risk-aversion parameter (e.g., Mehra and Prescott, 1985); and
+ (3) the risk-free interest rate is   too low relative
+to the observed aggregate rate of consumption  growth (Weil, 1989).
+While there have been numerous attempts to explain these puzzles
+by altering the preferences in the standard complete markets
+model, there has  also been work that abandons the complete
+markets assumption  and replaces it with
+some version of either exogenously or endogenously incomplete
+markets.   The Bewley models of chapters \use{selfinsure}  and
+\use{incomplete}  are
+examples of exogenously incomplete markets.   By ruling
+out complete markets, this model structure  helps
+with empirical  problems 1 and 3 above (e.g., see
+Huggett, 1993), but not much with problem 2.     In chapter
+\use{socialinsurance}, we study some models that can be thought of as
+having endogenously incomplete markets.   They can also explain
+puzzle 1 mentioned earlier in this paragraph;
+  at this time it is not really known how far
+they take us toward solving problem 2, though Alvarez and Jermann (1999)
+report promise.
+
+
+\nosechead{Micro foundations}
+
+\noindent This book is  about micro foundations for macroeconomics.
+Browning, Hansen, and Heckman (1999) identify two possible justifications
+for putting microfoundations underneath macroeconomic models.
+The first is  aesthetic and preempirical: models with micro foundations
+are by construction coherent and explicit.   And because they
+contain descriptions of agents' purposes, they  allow us to
+analyze policy interventions using standard methods of welfare
+economics.    Lucas (1987) gives a distinct second reason:
+\auth{Lucas, Robert E., Jr.}%
+       a model with micro foundations     broadens the
+sources of empirical evidence that can be used to
+assign numerical values to  the model's parameters.    Lucas
+endorses  Kydland and Prescott's (1982) procedure of
+borrowing parameter values from micro studies.   Browning, Hansen,
+and Heckman (1999)  challenge
+Lucas's recommended  empirical strategy.
+Most seriously, they point out that  in many contexts the
+specifications underlying the microeconomic studies  cited by
+a calibrator
+conflict with those of  the macroeconomic  model being
+``calibrated.''    It is typically not obvious how
+to transfer parameters from one data set and model specification
+to another data set and model specification.
+\auth{Heckman, James J.} \auth{Hansen, Lars P.}
+\auth{Browning, Martin}
+
+
+  Although we take seriously the doubts
+about Lucas's justification for microeconomic foundations
+that
+Browning, Hansen and  Heckman raise, we remain strongly attached
+to micro foundations. For us, it remains enough
+to appeal to the first justification, namely, the coherence provided
+by micro foundations and the virtues that come from
+having the ability to ``see the agents'' in
+an artificial economy.
+  We see Browning,  Hansen, and  Heckman as raising
+ many legitimate
+questions about empirical strategies for implementing
+macro models with micro foundations.
+We don't think that the clock will soon be turned back to a time
+when macroeconomics was done without
+micro foundations.
+
+
+
+\nosechead{Road map}
+
+\noindent Chapter \use{overview} is either a preview or review or both. It is either a reader's guide to what is to come or a concise review of main themes
+  that have been studied.  There is a case for
+reading it quickly before diving into the other chapters, while not expecting fully to understand everything
+that is written there. After many of the other chapters have been mastered, it could be useful to read it again.  
+
+Chapter \use{timeseries} describes   two basic models of a time series:
+a Markov chain and  a linear first-order difference equation.
+In different ways, these models use the algebra of first-order
+difference equations
+to form tractable models of time series.  Each model
+has its own notion of the state of a system.  These time
+series models define essential   objects in terms of which
+the choice problems of later chapters are formed and their
+solutions are represented.
+
+  Chapters \use{dynamicdp1}, \use{practical}, and \use{dplinear}
+  introduce aspects of dynamic programming, including
+numerical dynamic programming. Chapter \use{dynamicdp1} describes the
+basic functional equation of dynamic programming, the Bellman
+equation, and several of its properties. Chapter \use{practical}
+describes some numerical ways for solving dynamic programs, based
+on Markov chains.  Chapter \use{dplinear} describes linear
+quadratic dynamic programming and some uses and extensions of it,
+including how to use it to approximate solutions of problems that
+are not linear quadratic. This chapter also tells how the Kalman
+filter from chapter \use{timeseries} is
+mathematically equivalent to the linear quadratic dynamic
+programming problem from chapter \use{dplinear}.\NFootnote{The equivalence is through duality,
+in the sense of mathematical programming.} Chapter \use{search1}
+describes a classic two-action dynamic programming problem, the
+McCall search model, as well as Jovanovic's extension of it, a
+good application of  the Kalman filter.
+
+  While single agents appear in   chapters  \use{dynamicdp1} through
+\use{search1},
+systems with multiple agents, whose environments  and choices must
+be reconciled through markets,  appear for the first time
+in chapters \use{recurpe} and \use{recurge}.
+ Chapter \use{recurpe} uses linear quadratic dynamic
+programming to introduce two important and related equilibrium concepts:
+ rational expectations equilibrium and  Markov perfect
+equilibrium.    Each of these equilibrium
+concepts can be viewed as a fixed point in a space of beliefs
+about what other agents intend to do;  and each    is
+formulated using recursive methods.
+Chapter \use{recurge} introduces two notions of competitive equilibrium
+in dynamic stochastic pure exchange  economies, then applies
+them to pricing various  consumption streams.
+
+Chapter \use{ogmodels}  interprets  an overlapping generations model
+as a version of the general competitive  model with
+a peculiar preference pattern.        It then goes on to
+use a sequential formulation of equilibria to display
+how the overlapping generations model can be used to study
+issues in monetary and fiscal economics, including Social Security.
+
+Chapter \use{ricardian} compares an important aspect
+of an overlapping generations model with
+an infinitely lived agent  model  with a particular
+kind of incomplete market structure.  This chapter is thus
+our first  encounter with an incomplete markets model.
+The chapter analyzes the Ricardian equivalence  theorem in two distinct
+but isomorphic settings:  one a model with infinitely lived
+agents who face borrowing constraints, another with overlapping generations
+of two-period-lived agents with a bequest motive.    We describe
+situations in which the timing of taxes does or does not
+matter, and explain how binding borrowing
+constraints in the infinite-lived model correspond
+to nonoperational bequest motives in the overlapping generations
+model.
+%We also introduce the idea of ``natural'' and ``ad hoc'' debt
+%limits, and why it matters which is imposed in the infinite
+%horizon model.
+
+Chapter \use{linappro} studies fiscal policy within a nonstochastic growth model with
+distorting taxes.  This chapter studies  how foresight about future policies and
+transient responses to past ones contribute to current outcomes. In particular, this chapter describes
+`feedforward' and `feedback' components of mathematical formulas  for equilibrium outcomes.
+Chapter \use{growth1} describes the recursive competitive equilibrium concept and applies it within the context of
+the stochastic growth model.
+
+Chapter \use{assetpricing1} studies asset pricing  and a host of practical
+doctrines associated with asset pricing, including
+Ricardian equivalence again and Modigliani-Miller theorems
+for private and government finance. Chapter \use{assetpricing2} studies empirical strategies
+for implementing asset pricing models. Building on work by Darrell Duffie, Lars Peter Hansen,  and their co-authors,  chapter  \use{assetpricing2} discusses  ways of characterizing asset pricing puzzles
+associated with the preference specifications and market structures commonly used in other parts of macroeconomics.
+It then describes alterations of those structures that hold promise for  resolving some of those puzzles.
+\auth{Hansen, Lars P.}%
+\auth{Duffie, Darrell}%
+Chapter \use{growth} is about economic growth.  It describes
+the basic growth model, and analyzes the key features
+of the  specification of  the technology that allows
+the model to exhibit balanced growth.
+
+ Chapter \use{optax} studies competitive
+equilibria distorted by taxes  and our first
+mechanism design problems, namely,
+ones that seek to find the optimal temporal pattern of
+distorting taxes. In a nonstochastic economy, a
+striking finding is that the optimal tax rate on capital
+is zero in the long run.
+
+
+Chapter \use{selfinsure} is about self-insurance.  We study
+ a single agent whose limited menu
+of assets gives him  an incentive
+to self-insure by accumulating assets.     We study
+a special case of what has sometimes been called
+the ``savings problem,'' and analyze in detail the motive for
+self-insurance and the surprising implications it
+has  for the agent's ultimate consumption and asset holdings.
+The type of agent studied in this chapter will be a component
+of the incomplete markets models to be studied in chapter \use{incomplete}.
+
+    Chapter \use{incomplete} studies incomplete
+markets economies with heterogeneous agents and imperfect markets
+for sharing risks.  The models of market incompleteness in this
+chapter  come from simply ruling out markets in many assets,
+without motivating  the absence of those asset markets   from the
+physical structure of the economy. We  wait until chapter
+\use{socialinsurance} to study   reasons that such markets may not
+exist.
+
+The next chapters describe   recursive
+contracts.   Chapter
+\use{stackel} describes what we
+call ``dynamic programming squared'' and uses   linear quadratic dynamic programming
+to explain it in a context in which key objects can be computed easily. A tell tale sign of a dynamic programming squared problem
+is that there is a Bellman equation inside another Bellman equation.  Chapter \use{optaxrecur}
+uses dynamic programming squared  to reformulate two optimal taxation models
+from  chapter \use{optax} recursively.
+ Chapter \use{socialinsurance} describes models in
+the mechanism design tradition, work that starts to provide
+a foundation for incomplete assets markets, and that recovers
+specifications resembling  models
+of chapter \use{incomplete}. Chapter \use{socialinsurance}
+is about the optimal
+provision of social insurance in the presence
+of information  and enforcement problems.
+ Relative to earlier chapters, chapter \use{socialinsurance}  escalates
+the sophistication with which recursive methods are applied, by
+utilizing promised values as state variables. Chapter
+\use{socialinsurance2} extends the analysis to a general
+equilibrium setting and draws out some implications for asset
+prices, among other things. Chapter \use{uninsur1} uses recursive
+contracts to design optimal unemployment insurance and
+worker compensation schemes.
+
+Chapters \use{credible} and \use{chang} apply some of the same ideas to  problems
+in ``reputational macroeconomics,'' using promised values to
+formulate a notion of credibility. We study how a  reputational
+mechanism can make policies sustainable even when a government can't commit -- meaning choose a plan for all $t \geq 0$  once-and-for-all at time $0$ -- in the way
+ assumed in the
+ analysis of chapter \use{optax}. We use this reputational approach
+in chapter \use{fiscalmonetary} to assess whether the Friedman rule is sustainable. Chapter
+\use{wldtrade} describes a model of gradualism  in trade policy
+that has  features in common with the first model of chapter
+\use{socialinsurance}.
+
+ Chapter \use{fiscalmonetary} switches
+gears by adding money to a very simple competitive
+equilibrium model, in a superficial way;  the excuse for
+that superficial device      is that it permits us
+to present  and unify ten  well-known monetary doctrines.
+Chapter \use{townsend} presents a less superficial model of
+money, the turnpike model of Townsend,
+which is basically a special nonstochastic
+version of one of the models of chapter \use{incomplete}.   The specialization
+allows us to focus on a variety of monetary doctrines.
+
+Chapter \use{search2}
+ describes multiple agent models of search and matching. Except
+for a section on money in a search model, we  focus  on applications to labor.
+ To bring
+out the economic forces at work in different frameworks,
+we examine the general equilibrium effects of layoff taxes.  Chapter \use{mechanics_matching} investigates
+some fundamental forces common to a variety of superficially different matching models.   Chapter \use{macrolaborII}
+compares forces in an employment lotteries model with those operating in a time-averaging model
+of aggregate labor supply.
+
+  Two appendixes
+ collect various technical results on
+functional analysis and linear projections and hidden Markov models.
+
+
+\nosechead{Alternative  uses of the book}
+
+ \noindent We have used parts  of  this book to teach both first- and second-year
+graduate courses in macroeconomics and monetary economics at the University
+of Chicago, Stanford University, New York University, Princeton University, and the
+Stockholm School of Economics.  Here are some  alternative plans
+for courses:
+
+\medskip
+%\item{1.} A one-semester first-year course:  chapters 1-5, 7, 8, 9,
+%and either chapter 10, 11, or 12.
+\item{1.} A one-semester first-year course:  chapters
+\use{timeseries}--\use{search1}, \use{recurge}, \use{ogmodels}, \use{ricardian},
+ and either chapter \use{assetpricing1}, \use{growth}, or \use{optax}.
+
+\medskip
+%\item{2.}  A second-semester first-year course:  add chapters 6, 10, 11,
+%12, parts of 13 and 14, and all of 15.
+\item{2.}  A second-semester first-year course:  add chapters
+\use{recurge}, \use{growth1}, \use{assetpricing1}, \use{assetpricing2}, \use{growth},
+\use{optax},  parts of \use{selfinsure} and \use{incomplete}, and all of
+\use{socialinsurance}.
+
+\medskip
+%\item{3.}  A first course in monetary economics:  chapters 8, 16,
+%17, 18, and last section of 19.
+ \item{3.}  A first course in
+monetary economics:  chapters \use{ogmodels}, \use{credible}, \use{chang},
+\use{wldtrade},
+\use{fiscalmonetary}, \use{townsend}, and the last section of \use{search2}.
+\medskip
+\item{4.} A second-year macroeconomics course: select from
+chapters \use{assetpricing1}--\use{macrolaborII}.
+ %10-19.
+%, 11, 12, 13, 14, 15, and 18.
+\medskip
+\item{5.} A self-contained course about recursive contracts:
+chapters
+\use{stackel}--%, \use{socialinsurance},
+%\use{socialinsurance2},
+%\use{uninsur1},
+%\use{credible},
+\use{wldtrade}. \medskip
+
+As an example, Sargent used the following structure for
+ a one-quarter first-year
+course at the University of Chicago:   for the first and last
+weeks of the quarter, students were asked  to read  the monograph
+by Lucas (1987). Students were ``prohibited'' from reading the
+monograph in the intervening weeks.   During    the middle eight
+weeks of the quarter, students read material from   chapters
+\use{search1} (about search theory); chapter \use{recurge} (about complete markets);
+chapters \use{ogmodels}, \use{fiscalmonetary}, and
+\use{townsend} (about models of money); and a little bit of
+chapters
+\use{socialinsurance}, \use{socialinsurance2}, and \use{uninsur1}
+(on social insurance with incentive constraints). The substantive
+theme of the course was the issues set out in a nontechnical way
+by Lucas (1987).
+  However, to understand
+Lucas's arguments, it helps to know the tools and models studied
+in the middle weeks of the course.     Those weeks also exposed
+students to a range of alternative models that could
+be used to measure Lucas's arguments against some of the
+criticisms   made, for example,  by Manuelli and Sargent (1988).
+\auth{Manuelli, Rodolfo}%
+
+Another one-quarter course would  assign Lucas's  (1992) article
+on efficiency and distribution in the first and last weeks. In the
+intervening weeks of the course, assign chapters \use{selfinsure},
+\use{incomplete}, and \use{socialinsurance}.
+%13, 14, 15.
+
+
+As another example, Ljungqvist used the following material in a
+four-week segment on employment/unemployment in first-year
+macroeconomics at the Stockholm School of Economics. Labor market
+issues command a strong interest especially in Europe. Those
+issues help motivate studying the   tools in chapters
+\use{search1} and \use{search2} (about search and matching models), and parts
+of \use{uninsur1} (on the optimal provision of unemployment
+compensation). On one level, both chapters \use{search1} and
+\use{search2} focus on labor markets as a central application of the
+theories presented, but on another level, the skills and
+understanding acquired in these chapters transcend the specific
+topic of labor market dynamics. For example, the thorough practice
+on formulating and solving dynamic programming problems in chapter
+\use{search1} is generally useful  to any student of economics, and the
+models of chapter \use{search2} are  an entry-pass to other
+heterogeneous-agent models like those in chapter \use{incomplete}.
+Further, an excellent way to motivate the study of recursive
+contracts in chapter \use{uninsur1} is to  ask how unemployment
+compensation should optimally  be provided in the presence of
+incentive problems.
+
+As a final example, Sargent used versions of the material in
+\use{search1}, \use{linappro}, and \use{assetpricing2} to teach undergraduate
+classes at Princeton and NYU.
+
+\nosechead{Computer programs}
+
+\noindent Various exercises and examples use Matlab programs.  These
+programs are referred to in a special index at the end of the
+book.  They can be downloaded from %$<$http://homepages.nyu.edu/pub/\raise-4pt\hbox{\~{}}ts43/source\hbox{\_{}}code/mitbook.zip$>$.
+%$<$https://files.nyu.edu/ts43/public/books.html$>$.
+$<$www.tomsargent.com/source\_code/mitbook.zip$>$.
+Python and Julia programs for some of the models studied in this book are described at
+$<$https://lectures.quantecon.org/$>$.
+%\nosechead{Answers to exercises}
+%
+%\noindent We have created a web site with additional exercises
+%and  answers to the exercises in the text.  It is at
+%$<$http://www.stanford.edu/\raise-4pt\hbox{\~{}}sargent$>$.
+
+\nosechead{Notation}
+
+ \noindent We use the symbol~\hskip-.75em$\qed$ to denote the conclusion of a proof.
+The editors of this book requested  that where possible,
+ brackets and braces be used in place of multiple  parentheses
+to denote composite functions.  Thus, the reader will
+often encounter $f[u(c)]$   to express
+the composite function $f \circ u$.
+
+\nosechead{Brief history of the notion of the state}
+
+  \noindent This book reflects progress economists
+have made in refining the notion of state so that more and
+more problems can be formulated recursively.
+  The art in applying recursive methods is to find a convenient definition
+of the  state.  It is often not obvious what the
+state is, or even whether a finite-dimensional
+ state {\it exists} (e.g., maybe the entire infinite
+history of the system is needed to characterize  its current
+position).
+Extending the range of problems susceptible to
+recursive methods has been one of the major
+accomplishments of macroeconomic theory since 1970.
+ In diverse contexts, this enterprise
+ has been about  discovering a convenient
+state  and constructing a first-order difference equation to
+describe its motion. In models equivalent to  single-agent control
+problems, state variables are either capital stocks or information
+variables that help predict the future.\NFootnote{Any available
+variables
+ that {\it Granger cause}  variables impinging on
+the optimizer's objective function or constraints enter the state
+as information variables. See C.W.J. Granger (1969).}
+\auth{Granger, C.W.J.}%
+  In single-agent
+ models of optimization
+in the presence of measurement errors, the true state vector is
+latent or  ``hidden'' from the optimizer and the economist, and
+needs to be  estimated. Here {\it beliefs} come to  serve as the
+patent state. For example, in a Gaussian setting, the mathematical
+expectation and covariance matrix of the  latent state vector,
+conditioned on the available history of observations, serves as
+the state. In authoring  his celebrated filter, Kalman (1960)
+showed how an estimator of the hidden state could be constructed
+recursively by means of a difference equation that uses the
+current observables to update the estimator of last period's
+hidden state.\NFootnote{In competitive multiple-agent models  in
+the presence of measurement errors, the dimension of the hidden
+state threatens to explode
+ because beliefs about beliefs about
+$\ldots$ naturally
+appear, a problem studied by Townsend
+ (1983).  This threat has been  overcome through thoughtful
+and economical definitions of the state.
+For example, one way is to  give up on
+seeking a purely
+ ``autoregressive''  recursive structure and to include
+ a moving
+ average piece in the descriptor of beliefs.  See Sargent (1991).
+Townsend's equilibria have the property that prices fully reveal
+the private information of  diversely informed agents.} Muth
+(1960); Lucas (1972), Kareken, Muench, and Wallace (1973);
+Jovanovic (1979);  and Jovanovic and Nyarko (1996)  all used
+versions   of the Kalman filter to study systems in which agents
+make decisions with imperfect observations about the state.
+
+\auth{Townsend, Robert M.} \auth{Wallace, Neil} \auth{Lucas,
+Robert E., Jr.} \auth{Kareken, John} \auth{Muth, John F.}
+\auth{Jovanovic, Boyan} \auth{Nyarko, Yaw}
+ \auth{Hansen, Lars P.} \auth{Epple, Dennis} \auth{Roberds, William}%
+For a while, it seemed that some very important problems in
+macroeconomics could not be  formulated  recursively. Kydland and
+Prescott (1977) argued that it would be difficult to apply
+recursive methods to  macroeconomic policy design problems,
+including two examples about taxation and a Phillips curve.
+\auth{Kydland, Finn E.}\auth{Prescott, Edward C.}%
+  As Kydland and Prescott
+formulated them,  the problems were not recursive:  the fact that
+the public's  forecasts of the government's future decisions
+influence the public's current decisions made the government's
+problem  simultaneous, not sequential.
+But soon Kydland and Prescott (1980) and Hansen, Epple,
+and Roberds (1985) proposed
+a recursive formulation of such problems by expanding
+the state of the economy to include a Lagrange multiplier
+or {\it costate} variable associated with the government's
+budget  constraint. The costate variable acts as
+the marginal cost
+ of keeping a   promise made earlier by the government.
+Marcet and Marimon (1999) extended and formalized
+a recursive version of such problems. % \auth{Marcet, Albert} \auth{Marimon, Ramon}
+
+ A significant breakthrough in the application of
+    recursive methods
+was achieved by several researchers including Spear and Srivastava
+(1987), Thomas and Worrall (1988), and Abreu, Pearce, and
+Stacchetti (1990).
+ \auth{Abreu, Dilip}%
+\auth{Spear, Stephen E.}%
+\auth{Thomas, Jonathan}%
+ \auth{Worrall, Tim}%
+ \auth{Pearce, David}%
+\auth{Stacchetti, Ennio}%
+ They discovered
+a state variable for recursively formulating an
+ infinitely repeated moral hazard problem. That  problem
+requires the
+principal  to  track  a history
+of outcomes  and to use it  to construct statistics for drawing
+inferences about the agent's actions.
+Problems involving self-enforcement of contracts and a
+government's
+reputation share this feature.
+A {\it continuation value}
+promised by the principal to the agent can
+ summarize the history.
+Making the promised valued  a state variable allows
+a recursive  solution in terms of a function
+mapping the inherited promised value and random
+variables  realized today into an action or
+ allocation today and a promised value for
+tomorrow.  The sequential nature of the solution allows us to
+recover history-dependent strategies just as we use a stochastic
+difference equation to find a ``moving average''
+representation.\NFootnote{Related
+ ideas are used by Shavell and Weiss (1979); Abreu, Pearce,
+and Stacchetti (1986, 1990) in  repeated games; and Green  (1987)
+and Phelan and Townsend (1991) in dynamic mechanism design. Andrew
+Atkeson (1991) extended  these ideas to study  loans made by
+borrowers who cannot tell whether they are making consumption
+loans or investment loans.} \auth{Atkeson, Andrew} \auth{Townsend,
+Robert M.} \auth{Phelan, Christopher} \auth{Shavell, Stephen}
+\auth{Green, Edward J.}\auth{Abreu, Dilip} \auth{Pearce, David}
+\auth{Stacchetti, Ennio} \auth{Weiss, Laurence}
+
+  It is now standard to
+use a continuation value  as a state variable
+in models of credibility and dynamic incentives.     We shall
+study several such models in this book, including ones for
+optimal unemployment insurance and for designing loan contracts
+that must overcome information and enforcement problems.
+

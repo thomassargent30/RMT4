@@ -1,0 +1,476 @@
+
+\input grafinp3
+%\input grafinput8
+\input psfig
+%\eqnotracetrue
+
+%\showchaptIDtrue
+%\def\@chaptID{9.}
+
+%\eqnotracetrue
+
+\hbox{}
+
+\def\toone{{t+1}}
+\def\ttwo{{t+2}}
+\def\tthree{{t+3}}
+\def\Tone{{T+1}}
+\def\TTT{{T-1}}
+\def\rtr{{\rm tr}}
+
+\chapter{Ricardian Equivalence\label{ricardian}}
+\footnum=0
+
+\section{Borrowing limits and Ricardian equivalence}
+
+  This chapter studies whether the timing of taxes
+matters.  Under some assumptions it does and under others it does
+not.  The Ricardian doctrine describes assumptions under
+which the timing of lump taxes does not matter.
+In this chapter, we will study how the timing of taxes interacts
+with restrictions on the ability of households to borrow.  We study
+the issue in two equivalent settings:
+(1) an infinite horizon economy with an infinitely lived
+representative agent; and (2) an infinite horizon economy
+with a sequence of one-period-lived agents, each of whom cares
+about its immediate descendant. We assume that
+the interest rate is exogenously given. For example,
+the economy might be a small open economy that faces a given
+interest rate determined in the
+international capital market. Chapters \use{linappro} amd  \use{assetpricing1} will describe
+ general equilibrium
+analyses of the Ricardian doctrine where the interest
+rate is determined within the model.
+
+  The key findings of the chapter are that in the infinite horizon
+model, Ricardian equivalence holds under what  we earlier
+called the natural borrowing limit, \index{borrowing constraint!natural}%
+but not under more stringent ones.  The natural borrowing limit
+ lets households borrow up to the capitalized
+value of their endowment sequences.  These results have limited counterparts
+in the overlapping generations model, since that model is equivalent
+to an infinite horizon model with a  no-borrowing constraint.\NFootnote{This is one of the insights in the
+influential paper of Barro (1974) that reignited modern interest in Ricardian equivalence.}
+  In the overlapping generations model,
+a no-borrowing constraint translates into a requirement
+that bequests be nonnegative.
+Thus, in the overlapping generations  model, the domain
+of the Ricardian proposition is restricted, at least relative
+to the infinite horizon model under the natural borrowing limit.
+
+
+\section{Infinitely lived agent economy}
+
+Each of $N$ identical
+households orders a consumption stream by
+%of a single good by %with preferences
+$$ \sum_{t=0}^\infty \beta^t u(c_t), \EQN ricardo1 $$
+where $\beta \in (0,1)$ and $u(\cdot)$ is a strictly  increasing,
+strictly concave, twice-differentiable
+utility function.
+We impose the Inada condition
+$ \lim_{c \downarrow 0} u'(c) = +\infty.$
+This Inada condition is important  because we will be stressing
+the feature that $c \geq 0$.  There is no uncertainty.
+The household can invest in a single risk-free asset bearing a fixed gross
+one-period rate of return $R>1$, a loan either to foreigners or to the
+government.  At time $t$, the household faces the budget
+constraint
+$$ c_t + R^{-1} b_{t+1} \leq y_t + b_t,  \EQN ricardo2$$
+where $b_0$ is given.   Throughout this chapter,
+we assume that $R \beta =1$.  Here
+$\{y_t\}_{t=0}^\infty$ is a given nonstochastic
+nonnegative endowment sequence and
+$ \sum_{t=0}^\infty \beta^t y_t$
+$< \infty$.
+
+We   investigate two alternative restrictions on asset holdings
+$\{b_t\}_{t=0}^\infty$.  One is that
+$b_t \geq 0$ for all $t \geq 0$, which allows
+the household to lend but not borrow.  The alternative
+is to  permit the household to borrow, but only an amount
+that it is feasible to repay.     To discover this amount,
+set $c_t=0$ for all $t$ in formula \Ep{ricardo2} and solve forward for
+$b_t$ to get
+$$ \tilde b_t = - \sum_{j=0}^\infty R^{-j} y_{t+j},   \EQN ricardo3 $$
+where we have ruled out Ponzi schemes by imposing the transversality condition
+$$
+\lim_{T\to\infty} R^{-T} b_{t+T} \,=\, 0.            \EQN ricardo_TVC
+$$
+Following Aiyagari (1994),
+ we call $\tilde b_t$ the
+{\it \idx{natural debt limit}}.\NFootnote{Even with $c_t=0$, the consumer
+cannot repay more than $\tilde b_t$.} Thus, our alternative restriction
+on assets is
+$$ b_t \geq \tilde b_t , \EQN ricardo4 $$
+which, because $\tilde b_t$ is typically negative,  is evidently weaker than $b_t \geq 0$.\NFootnote{We encountered
+a more general version of equation \Ep{ricardo4} in chapter \use{recurge} when
+we discussed Arrow securities.}\auth{Aiyagari, Rao}
+
+\subsection{Optimal  consumption/savings decision when $b_{t+1} \geq 0$}
+Consider the  household's problem of choosing $\{c_t, b_{t+1}\}_{t=0}^\infty$
+to maximize expression \Ep{ricardo1}
+subject to a given initial condition for initial assets $b_0$, the budget constraints \Ep{ricardo2},  and $b_{t+1} \geq 0$ for all $t$.  The first-order
+ conditions for this problem are
+$$ \EQNalign{ u'(c_t) & \geq \beta R u'(c_{t+1}),\quad \forall t \geq 0;
+                                                                 \EQN ricardo5;a \cr
+\noalign{\hbox{\rm and}}
+              u'(c_t) & > \beta R u'(c_{t+1}) \quad {\rm implies} \quad
+       b_{t+1} = 0 . \EQN ricardo5;b \cr} $$
+Because $\beta R =1$, these conditions  and the constraint
+\Ep{ricardo2} imply that $c_{t+1} = c_t$
+when $b_{t+1} > 0$,  but when the consumer is
+borrowing constrained, $b_{t+1}=0$    and $y_t + b_t = c_t < c_{t+1}$.
+The optimal consumption plan  evidently
+depends on the $\{y_t\}$ path, as the following examples illustrate.
+
+\medskip
+\noindent{\it Example 1:}
+\quad   Assume $b_0 = 0$ and the endowment path
+$\{y_t\}_{t=0}^\infty = \{y_h, y_l, y_h, y_l, \ldots\}$,
+where $y_h > y_l > 0$.
+The present value of the household's endowment is
+$$ \sum_{t=0}^\infty \beta^t y_t =
+   \sum_{t=0}^\infty \beta^{2t} (y_h + \beta y_l)
+   = {y_h + \beta y_l \over 1-\beta^2}.
+$$
+The annuity value $\bar c$ that has the same present value as the
+endowment stream satisfies
+$$
+{\bar c \over 1-\beta}= {y_h + \beta y_l \over 1-\beta^2},
+\qquad \hbox{\rm or} \quad
+ \bar c = {y_h + \beta y_l \over 1+\beta}.
+$$
+The solution to the household's optimization problem is the
+constant consumption stream
+$c_t = \bar c$ for all $t \geq 0$. Using the budget constraint
+\Ep{ricardo2}, we can back out the associated savings plan:
+$b_{t+1} =(y_h-y_l)/(1+\beta)$ for even $t$,
+and $b_{t+1} =0$ for odd $t$.
+The consumer is never borrowing constrained.\NFootnote{Note $b_t=0$
+does not imply that the consumer is borrowing constrained. We say that he is borrowing constrained if the Lagrange multiplier
+on the constraint $b_t \geq 0$ is not zero.}
+\medskip
+
+\noindent{\it Example 2:} \quad  Assume $b_0 =0$ and the endowment path
+$\{y_t\}_{t=0}^\infty = \{y_l, y_h, y_l, y_h, \ldots\}$,
+where $y_h > y_l > 0$.
+The optimal plan  is $c_0=y_l$ and $b_1=0$, and from period 1 onward,
+the solution is the same as in example 1. Hence, the consumer is borrowing
+constrained the first period.\NFootnote{Examples 1 and 2 illustrate a
+general result stated in chapter \use{selfinsure}. Given a borrowing constraint
+and a nonstochastic endowment stream, the impact of the
+borrowing constraint will not vanish until the household reaches
+the period with the highest annuity value for the remainder
+of the endowment stream.}
+
+
+
+\medskip
+\noindent{\it Example 3:} \quad  Assume $b_0=0$ and
+$ y_t = \lambda^t$ where $1 < \lambda < R$.  Notice that
+$\lambda \beta <1$.  The solution with the borrowing constraint
+$b_t \geq 0$ is $c_t = \lambda^t , b_t=0$ for all $t \geq 0$.
+The consumer is always borrowing constrained.
+\medskip
+
+\subsection{Optimal  consumption/savings decision when $b_{t+1} \geq \tilde b_{t+1}$}
+\noindent{\it Example 4:} \quad  Assume the same  $b_0$ and same endowment
+sequence $ y_t = \lambda^t$ as in example 3, but now impose only
+the natural borrowing constraint \Ep{ricardo4}.   The present
+value of the household's endowment is
+$$ \sum_{t=0}^\infty \beta^t \lambda^t = {1 \over 1 -\lambda \beta}.$$
+The household's budget constraint for each $t$ is
+satisfied at a constant consumption level $\hat c$ satisfying
+$$
+{\hat c \over 1 -\beta} = {1 \over 1-\lambda \beta}, \qquad \hbox{\rm or}
+\quad  \hat c = {1-\beta \over 1 - \lambda \beta}.
+$$   Substituting
+this consumption rate into formula \Ep{ricardo2} and solving forward gives
+$$ b_t =
+   {1  - \lambda^t \over 1 - \beta \lambda }. \EQN ricardo6$$
+   The consumer issues more and more debt as time passes
+and uses his rising endowment to service it.   The
+consumer's debt always satisfies the
+natural debt limit at $t$; in particular, $ b_t > \tilde b_t = -\lambda^t /(1 - \beta \lambda)$.
+\medskip
+\noindent{\it Example 5:} \quad   Take the specification of example 3,
+but now impose  $\lambda <1$.    Note that the solution
+\Ep{ricardo6} implies $b_t  \geq 0$, so that the constant consumption
+path $c_t = \hat c$ in example 4
+ is now the solution even if the borrowing constraint $b_t \geq 0$
+is imposed.
+
+\section{Government}
+Add a government  to the model in a way that leaves the consumer's preferences over consumption plans continue to be ordered by
+\Ep{ricardo1}.   The government
+purchases a stream $\{g_t\}_{t=0}^\infty$  per household.  This stream does not appear in the consumer's utility functional.
+The government levies
+ a stream of lump-sum taxes $\{\tau_t\}_{t=0}^\infty$
+on the   household, subject to the sequence of budget constraints
+$$ B_t + g_t = \tau_t + R^{-1} B_{t+1}, \EQN ricardo7 $$
+where $B_t$ is one-period  debt  due at $t$, denominated
+in the time $t$ consumption good, that the government owes the households
+or foreign investors.  Notice that we allow the government
+to borrow, even though in  examples 1, 2,  3, and 5
+ we did not permit the household to borrow. (If $B_t <0$, the
+government lends to households or to foreign investors.)  Solving the
+government's budget constraint forward gives the intertemporal constraint
+$$ B_t = \sum_{j=0}^\infty R^{-j}(\tau_{t+j} - g_{t+j}) \EQN ricardo8$$
+for $t \geq 0$, where we have ruled out Ponzi schemes by imposing the
+transversality condition
+$$
+\lim_{T\to\infty} R^{-T} B_{t+T} \,=\, 0.
+$$
+
+\subsection{Effect on household}
+We must now deduct $\tau_t$ from the household's endowment in equation
+\Ep{ricardo2},
+$$ c_t + R^{-1} b_{t+1} \leq y_t - \tau_t + b_t.  \EQN ricardo2tax$$
+ Solving this tax-adjusted budget constraint forward
+and invoking transversality condition \Ep{ricardo_TVC} yield
+$$ b_t = \sum_{j=0}^\infty R^{-j} (c_{t+j} + \tau_{t+j} - y_{t+j}).
+ \EQN ricardo9$$
+The natural debt limit is obtained by setting $c_t=0$ for all $t$
+in \Ep{ricardo9},
+$$b_t \geq \tilde b_t = \sum_{j=0}^\infty R^{-j} (\tau_{t+j} - y_{t+j}).
+    \EQN ricardo3a$$
+A comparison of  equations \Ep{ricardo3} and \Ep{ricardo3a} indicates how taxes affect
+$\tilde b_t$
+
+
+
+We use the following definition:
+\medskip\noindent{\sc Definition:} Given initial conditions $(b_0, B_0)$,
+an {\it equilibrium} is
+a household plan $\{c_t,   b_{t+1}\}_{t=0}^\infty$ and a government
+policy $\{g_t, \tau_t, B_{t+1}\}_{t=0}^\infty$ such that (a) the government
+policy satisfies the government budget    constraint \Ep{ricardo7}, and
+(b) given $\{\tau_t\}_{t=0}^\infty$, the household's  plan is optimal.
+\medskip
+  We can now state a Ricardian proposition
+ under the natural debt limit.
+
+\medskip\noindent{\sc Proposition 1:} Suppose that  the natural
+debt limit prevails. Given initial conditions $(b_0, B_0)$,
+let $\{\bar c_t, \bar b_{t+1}\}_{t=0}^\infty$ and
+$\{\bar g_t, \bar \tau_t , \bar B_{t+1}\}_{t=0}^\infty$ be an equilibrium.
+Consider any other tax policy $\{\hat \tau_t\}_{t=0}^\infty$ satisfying
+$$ \sum_{t=0}^\infty R^{-t} \hat \tau_t =
+\sum_{t=0}^\infty R^{-t} \bar \tau_t . \EQN ricardo10$$
+Then  $\{\bar c_t, \hat b_{t+1}\}_{t=0}^\infty$ and $\{\bar g_t, \hat \tau_t,
+\hat B_{t+1}\}_{t=0}^\infty$ is also an equilibrium where
+$$ \hat b_t = \sum_{j=0}^\infty R^{-j} (\bar c_{t+j} +
+\hat \tau_{t+j} - y_{t+j})                         \EQN ricardobb$$
+and
+$$ \hat B_t = \sum_{j=0}^\infty R^{-j}(\hat \tau_{t+j} -\bar g_{t+j}).
+                                                    \EQN ricardobbg$$
+\medskip
+
+\noindent{\sc Proof:} The first point of the proposition
+is that the same consumption plan $\{\bar c_t\}_{t=0}^\infty$, but adjusted
+borrowing plan $\{\hat b_{t+1}\}_{t=0}^\infty$, solve the household's optimum
+problem under the altered government tax scheme.
+    Under the natural debt limit,
+the household in effect faces  a single intertemporal
+budget constraint \Ep{ricardo9}. At time $0$, the household can be
+thought of as choosing an optimal consumption plan subject to
+the single constraint,
+$$ b_0 = \sum_{t=0}^\infty R^{-t} (c_{t} - y_{t})
+        +  \sum_{t=0}^\infty R^{-t} \tau_{t}.$$
+Thus, the household's budget set, and therefore its optimal  plan,
+does not depend
+on the timing of taxes, only their present value.   The altered
+tax plan leaves the household's   intertemporal   budget set unaltered
+and therefore doesn't affect its optimal consumption plan. Next,
+we construct the adjusted borrowing plan
+$\{\hat b_{t+1}\}_{t=0}^\infty$ by solving the budget constraint \Ep{ricardo2tax}
+forward to obtain \Ep{ricardobb}.\NFootnote{It is straightforward to verify that
+the adjusted borrowing plan $\{\hat b_{t+1}\}_{t=0}^\infty$
+must satisfy the transversality condition
+\Ep{ricardo_TVC}. In any period $(k-1)\geq 0$, solving the budget constraint
+\Ep{ricardo2tax} backward yields
+$$
+b_k = \sum_{j=1}^k R^j \left[ y_{k-j} - \tau_{k-j}
+           - c_{k-j} \right] + R^k b_0.
+$$
+Evidently, the difference between $\bar b_k$ of the initial
+equilibrium and $\hat b_k$ is equal to
+$$
+\bar b_k - \hat b_k = \sum_{j=1}^k R^j
+          \left[ \hat \tau_{k-j} - \bar \tau_{k-j} \right],
+$$
+and after multiplying both sides by $R^{1-k}$,
+$$
+R^{1-k} \left(\bar b_k - \hat b_k \right) = R \sum_{t=0}^{k-1} R^{-t}
+          \left[ \hat \tau_{t} - \bar \tau_{t} \right].
+$$
+The limit of the right side is zero when $k$ goes to infinity due to
+condition \Ep{ricardo10}, and hence, the fact that the
+equilibrium borrowing plan $\{\bar b_{t+1}\}_{t=0}^\infty$ satisfies transversality
+condition \Ep{ricardo_TVC} implies that so must
+$\{\hat b_{t+1}\}_{t=0}^\infty$.}
+The adjusted borrowing plan trivially
+satisfies  the (adjusted) natural debt limit in every period,
+since the consumption
+plan $\{\bar c_t\}_{t=0}^\infty$ is a nonnegative sequence.
+
+The second point of the proposition is that the altered government tax
+and borrowing plans continue to satisfy the government's budget constraint.
+In particular, we see that the government's budget set at time $0$ does
+not depend on the timing of taxes, only their present value,
+$$
+B_0  = \sum_{t=0}^\infty R^{-t} \tau_t - \sum_{t=0}^\infty R^{-t} g_{t}.
+$$
+Thus, under the altered tax plan with an unchanged present value of taxes,
+the government can finance the same expenditure plan $\{\bar g_t\}_{t=0}^\infty$.
+The adjusted borrowing plan $\{\hat B_{t+1}\}_{t=0}^\infty$ is computed
+in a similar way as above to arrive at \Ep{ricardobbg}. \qed
+
+\medskip
+
+This proposition depends on imposing  on the household  the natural debt limit,
+which is weaker than the no-borrowing constraint.
+Under the no-borrowing constraint, we require that the asset choice
+$b_{t+1}$ at time $t$ satisfy budget constraint \Ep{ricardo2tax}
+and  not fall below zero. That is, under the no-borrowing constraint,
+we have to check more than just a single  intertemporal budget
+constraint for the household at time $0$.
+Changes in the timing of taxes that
+obey equation \Ep{ricardo10} evidently alter the right side of
+equation \Ep{ricardo2tax}
+and can, for example, cause a previously binding
+ borrowing constraint no longer
+to  be binding, and  vice versa.
+Binding borrowing constraints in either the initial
+$\{\bar \tau_t\}_{t=0}^\infty$ equilibrium or the new $\{\hat \tau_t\}_{t=0}^\infty$ equilibria eliminates
+a Ricardian proposition as general as Proposition 1.
+More restricted versions of the proposition evidently hold across restricted
+equivalence classes of taxes that do not alter when the borrowing
+constraints are binding
+across the two equilibria being compared.
+
+
+\medskip
+\specsec{Proposition 2:}  Consider an initial equilibrium
+with consumption path $\{\bar c_t\}_{t=0}^\infty$
+in which $b_{t+1} >0$ for all $t \geq 0$.  Let $\{\bar \tau_t \}_{t=0}^\infty$
+be the tax  rate in the initial equilibrium, and let
+$\{\hat \tau_t\}_{t=0}^\infty$ be any other tax-rate sequence for which
+$$ \hat b_t = \sum_{j=0}^\infty R^{-j} (\bar c_{t+j} +
+\hat \tau_{t+j} - y_{t+j}) \geq 0 $$
+for all $t \geq 0$.  Then
+$\{\bar  c_t\}_{t=0}^\infty$ is also an equilibrium allocation
+for the $\{\hat \tau_t\}_{t=0}^\infty$ tax sequence.
+\medskip
+We leave the proof of this proposition to the reader.
+\section{Linked generations interpretation}
+
+  Much of the
+preceding analysis with borrowing constraints applies to a setting
+with overlapping generations linked by a bequest motive.
+Assume that there is a sequence of  one-period-lived agents.
+For each $t\geq 0$ there is a one-period-lived agent who
+values consumption and the utility of his direct descendant, a young
+person at time $t+1$.  Preferences of a young person at $t$ are
+ordered by
+$$  u(c_t)  + \beta V(b_{t+1}), $$
+where $u(c)$ is the same utility function
+as in the previous section,
+$b_{t+1}\geq 0$  are bequests from the  time $t$   person to
+the time $t+1$ person, and $V(b_{t+1})$ is the maximized utility
+function of a time $t+1$ agent.   The maximized utility function
+is defined recursively by
+$$ V(b_t) =  \max_{c_t, b_{t+1}} \{u(c_t) + \beta V(b_{t+1}) \} \EQN ricardo11$$
+where the maximization is subject to
+$$ c_t + R^{-1} b_{t+1} \leq y_t -\tau_t + b_t\EQN ricardo12$$
+and $b_{t+1} \geq 0$.   The constraint $b_{t+1} \geq 0$ requires that
+bequests cannot be negative.   Notice that a person cares about
+his direct descendant, but not vice versa.
+We continue to assume that there is an infinitely lived government
+whose taxes and purchasing and borrowing strategies are as described in
+the previous section.
+
+In consumption outcomes, this model is equivalent to the previous model
+with a no-borrowing constraint.  Bequests here play the
+role of savings $b_{t+1}$ in the previous model.  A positive
+savings condition $b_{t+1} >0$  in the previous version of the
+model becomes an ``operational bequest motive'' in the overlapping
+generations model.
+
+  It follows that we can obtain a restricted Ricardian
+equivalence proposition, qualified as in Proposition 2.
+The qualification is that the initial equilibrium must have an operational
+bequest motive for all $t \geq 0$, and that the new
+tax policy must not be so different from  the initial one
+that it renders the bequest motive inoperative.
+
+\section{Concluding remarks}%
+The arguments in this chapter were cast in a setting with
+an exogenous interest rate $R$ and a capital market that is outside of the
+model. When we discussed potential failures of Ricardian equivalence due to
+households facing no-borrowing constraints, we were also implicitly
+contemplating changes in the government's outside asset position. For example,
+consider an altered tax plan $\{\hat \tau_t\}_{t=0}^\infty$ that satisfies \Ep{ricardo10}
+and shifts taxes away from the future toward the present. A
+large enough change will definitely ensure that the government is a lender
+in early periods. But since the households are not allowed to become indebted,
+the government must lend abroad and we can show that Ricardian equivalence
+breaks down.
+
+The readers might be able to  anticipate
+ the nature of the general equilibrium proof of Ricardian
+equivalence in chapter \use{assetpricing1}.
+ First, private consumption and government
+expenditures must then be consistent with the aggregate endowment in each
+period, $c_t+g_t=y_t$, which implies that an altered tax plan cannot
+affect the consumption allocation as long as government expenditures
+are kept the same. Second, interest rates are determined by intertemporal
+marginal rates
+of substitution evaluated at the equilibrium consumption allocation, as
+studied in chapter \use{recurge}.
+ Hence, an unchanged consumption allocation implies
+that interest rates are also unchanged.
+Third, at those very interest rates, it can be shown that households
+would like to choose asset positions that exactly offset any changes in
+the government's asset holdings implied by an altered tax plan.
+For example, in the case of the tax change contemplated in the preceding
+paragraph, the households would demand loans exactly equal to the
+rise in government lending generated by budget surpluses in early periods.
+The households would use those loans to meet the higher taxes and thereby
+ finance an unchanged consumption plan.
+
+\auth{Blanchard, Olivier J.}   \auth{Diamond, Peter A.}
+\auth{Barro, Robert J.}\auth{Bernheim, B. Douglas} \auth{Bagwell, Kyle}
+The finding of Ricardian equivalence in the infinitely lived agent model
+is a useful starting point for identifying alternative assumptions under
+which the irrelevance result might fail to hold,\NFootnote{Seater (1993) reviews
+the theory and empirical evidence on Ricardian equivalence.%
+\auth{Seater, John, J}}%
+such as our imposition of borrowing constraints that are tighter
+than the ``natural debt limit.''
+Another deviation from the benchmark model is finitely lived agents,
+as analyzed by Diamond (1965) and Blanchard (1985).
+But as suggested by Barro (1974)
+and shown in this chapter, Ricardian equivalence will
+continue to hold if agents are altruistic toward their descendants
+and there is an operational bequest motive.
+ Bernheim and Bagwell (1988)
+take this argument to its extreme and formulate a model where all
+agents are interconnected because of linkages across dynastic
+families.  They show how those linkages can become extensive enough  to render neutral all redistributive
+policies, including ones attained via distortionary taxes. But, in general, replacing
+lump-sum taxes by distortionary taxes is a sure-fire way to undo
+Ricardian equivalence (see, e.g.,\ Barsky, Mankiw, and Zeldes, 1986).
+We will return to the question of the timing of distortionary
+taxes in chapter \use{optax}. Kimball and Mankiw (1989) describe
+how incomplete markets can make the timing of taxes interact with
+a precautionary savings motive in a way that disarms
+Ricardian equivalence.    We take up precautionary savings and
+incomplete markets in chapters \use{selfinsure} and
+\use{incomplete}.  Finally, by
+allowing distorting taxes to be history dependent, Bassetto and
+Kocherlakota (2004) attain a Ricardian equivalence result for a
+variety of taxes. \auth{Bassetto, Marco} \auth{Kocherlakota,
+Narayana R.}\auth{Kimball, Miles S.} \auth{Barsky, Robert}
+\auth{Mankiw, Gregory} \auth{Zeldes, Stephen P.}

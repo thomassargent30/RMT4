@@ -1,0 +1,1042 @@
+
+\input grafinp3
+%\input grafinput8
+\input psfig
+%\eqnotracetrue
+
+%\showchaptIDtrue
+%\def\@chaptID{6.}
+
+%\eqnotracetrue
+
+%\hbox{}
+
+\def\toone{{t+1}}
+\def\ttwo{{t+2}}
+\def\tthree{{t+3}}
+\def\Tone{{T+1}}
+\def\TTT{{T-1}}
+\def\rtr{{\rm tr}}
+
+\chapter{Recursive Competitive Equilibrium: I \label{recurpe}}
+\footnum=0
+
+\section{An equilibrium concept}
+
+This chapter formulates competitive and oligopolistic
+equilibria in some dynamic settings.
+Up to now, we have studied  single-agent problems where
+components of the state vector not under the control
+of the agent were taken as given.  In this chapter, we
+describe multiple-agent settings in which  components
+of the state vector that one agent takes as exogenous are
+determined by the decisions of other agents.   We study partial
+equilibrium models of a kind applied in
+microeconomics.\NFootnote{For example, see Rosen and Topel (1988)  and Rosen, Murphy, and
+Scheinkman  (1994)}    We describe
+two closely related equilibrium  concepts for such models:
+a rational expectations or recursive competitive  equilibrium,
+and a Markov perfect equilibrium.   The first
+equilibrium concept jointly restricts a Bellman equation and
+a transition law that is taken as given in that Bellman
+equation.  The second equilibrium concept leads
+to pairs (in the duopoly case) or sets (in the oligopoly case)
+ of Bellman equations  and transition equations that are  to be
+solved by simultaneous backward induction.
+
+   Though the equilibrium concepts introduced in this chapter
+ transcend  linear quadratic setups, we choose to
+present them in the context of linear quadratic examples
+because this renders the    Bellman equations
+ tractable.
+
+\auth{Rosen, Sherwin}
+\auth{Murphy, Kevin}
+\auth{Topel, Robert}
+\auth{Scheinkman, Jose}
+\auth{Lucas, Robert E., Jr.}
+\auth{Prescott, Edward C.}
+\auth{Mehra, Rajnish}
+
+\section{Example: adjustment costs}
+
+  This section describes a model of a competitive market with
+producers who face adjustment costs.\NFootnote{The model is
+a version of one analyzed by Lucas and Prescott (1971) and
+Sargent (1987a).  The recursive competitive equilibrium concept
+was used by Lucas and Prescott (1971) and described further
+by Prescott and  Mehra (1980).} \index{Big $K$, little $k$}%
+In the course of the exposition, we
+ introduce and exploit  a version of the `big $K$, little $k$' trick that is widely used in macroeconomics and applied economic dynamics.\NFootnote{Also see section
+ \use{sec:bigKlittlek} of chapter \use{growth1}.}
+ The model consists of $n$ identical firms whose profit function
+makes them want to forecast the aggregate output decisions
+of other firms just like them in order to choose
+their own output.    We assume that $n$ is a large number
+so that the output of any single firm has a negligible effect on
+aggregate output and, hence, firms are justified in treating their forecast
+of aggregate output as unaffected by their own output decisions.
+  Thus, one of $n$  competitive firms sells  output $y_t$
+and chooses a production plan to maximize
+$$ \sum_{t=0}^\infty \beta^t R_t  \EQN comp1 $$
+where
+$$ R_t = p_t y_t - .5 d (y_{t+1} - y_t )^2 \EQN comp2 $$
+subject to $y_0$ being a given initial condition.  Here
+$\beta \in (0,1)$ is a discount factor, and $d >0$ measures
+a cost of adjusting the rate of output.  The firm is a
+price taker.  The price $p_t$ lies on the inverse demand curve
+$$ p_t = A_0 - A_1 Y_t \EQN comp3d $$
+where $A_0 >0, A_1 > 0 $ and $Y_t$ is the market-wide level of
+output, being the sum of output of $n$ identical firms.
+The firm believes that market-wide output
+follows the law of motion
+$$ Y_{t+1} = H_0 + H_1 Y_t \equiv H(Y_t) , \EQN comp3 $$
+where $Y_0$ is a known initial condition.  The
+belief parameters $H_0, H_1$ are   equilibrium
+objects, but for now we proceed on faith and
+take them  as given.
+The firm observes $Y_t$ and $y_t$ at time $t$ when it chooses
+$y_{t+1}$.    The adjustment cost $d(y_{t+1}-y_t)^2$ gives
+the firm the incentive to forecast the market price, but since the market price
+is a function of market output $Y_t$ via the demand equation \Ep{comp3d}, this in turn motivates the firm to forecast future
+values of $Y$.  To state the firm's optimization problem completely requires that
+we specify laws of motion for all state variables, including ones like $Y$ that it cares
+about but does not control.  For this reason, the perceived law of motion \Ep{comp3} for $Y$ is among the constraints
+that the firm faces.
+
+Substituting equation \Ep{comp3d} into equation \Ep{comp2} gives
+$$ R_t = (A_0 - A_1 Y_t) y_t - .5 d (y_{t+1} - y_t )^2. $$
+The firm's incentive to forecast the market price
+translates into an incentive to forecast
+the level of market output $Y$.
+We can write the Bellman equation for the firm
+as
+$$ v(y,Y) = \max_{y'} \left\{ A_0 y - A_1 y Y - .5 d (y' - y)^2
+      + \beta v(y', Y')\right\}  \EQN comp4$$
+where the maximization is subject to the perceived law of motion $Y'=H(Y)$.
+Here $'$ denotes next period's value of a variable.
+The Euler equation for the firm's problem is
+$$ - d(y' - y) + \beta v_y(y',Y') =0. \EQN comp5$$
+Noting that for this problem the control is $y'$ and applying
+the \idx{Benveniste-Scheinkman formula} from chapter \use{dynamicdp1} %\Ep{130}
+ gives
+$$ v_y(y,Y) = A_0 - A_1 Y + d(y' - y). $$
+Substituting this equation into equation \Ep{comp5} gives
+$$ -d(y_{t+1} - y_t) + \beta [A_0 - A_1 Y_{t+1} + d(y_{t+2} - y_{t+1} )] =0.
+\EQN comp7  $$
+
+In the process of
+solving its Bellman equation,
+the firm sets  an output   path  that satisfies equation
+\Ep{comp7}, taking equation
+ \Ep{comp3} as given,  subject to the initial conditions
+$(y_0, Y_0)$ as well as an extra
+terminal condition.  The  terminal condition is
+$$ \lim_{t \rightarrow \infty } \beta^t y_t v_y(y_{t}, Y_t) = 0. \EQN comp8  $$
+This is called the \index{transversality condition}%
+transversality condition and acts as
+ a first-order necessary  condition  ``at infinity.''
+The firm's decision rule solves the difference
+equation \Ep{comp7} subject to the given initial condition
+$y_0$ and the terminal condition \Ep{comp8}.
+Solving  Bellman equation \Ep{comp4} by backward induction automatically
+incorporates both equations \Ep{comp7} and \Ep{comp8}.
+
+  The  firm's optimal policy function is
+$$ y_{t+1} = h(y_t, Y_t). \EQN comp9 $$
+Then with $n$ identical firms, setting $Y_t = ny_t$ makes
+ the actual law of motion for
+output for the market
+$$ Y_{t+1} = n h(Y_t/n, Y_t). \EQN comp9a $$
+Thus, when firms believe that the law of motion for market-wide
+ output is equation \Ep{comp3}, their optimizing behavior makes
+the actual law of motion equation \Ep{comp9a}.
+
+  For this model, we adopt the following
+definition:
+
+\specsec{Definition}:  A recursive competitive equilibrium\NFootnote{This
+is also often called a rational expectations equilibrium.} of
+the model with adjustment costs is a value function
+$v(y, Y)$, an optimal policy function
+$h(y, Y)$, and   a law of motion $H(Y)$ such that
+\medskip
+\noindent{\bf a.} Given $H,$ $v(y,Y)$ satisfies the firm's Bellman
+equation and $h(y,Y)$ is the optimal policy function.
+\medskip
+\noindent{\bf b.}  The law of motion $H$ satisfies $H(Y)= nh(Y/n,Y)$.
+
+\medskip
+ A recursive competitive equilibrium
+\index{recursive!competitive equilibrium}%
+equates the actual and perceived laws of motion \Ep{comp3}
+and \Ep{comp9a}.
+ The firm's optimum problem induces a mapping ${\cal M}$
+from a perceived law of motion for output $H$ to an actual
+law of motion ${\cal M}(H)$.  The mapping is summarized in equation
+\Ep{comp9a}.  The $H$ component of a  rational expectations equilibrium
+is a fixed point of the operator ${\cal M}$.
+
+This is a special case
+of a recursive competitive equilibrium, to be defined
+more generally in section  \use{sec:rce22}.
+   How might we find an equilibrium?  The mapping ${\cal M}$ is not a contraction and  there is no guarantee that direct iterations
+   on ${\cal M}$ will converge.\NFootnote{A literature that studies whether models populated  with agents who  learn can converge  to rational expectations
+   equilibria features iterations on a modification of the mapping ${\cal M}$ that can be approximated as
+   $\gamma {\cal M} + (1-\gamma)I$ where $I$ is the identity operator and $\gamma \in (0,1)$ is a relaxation parameter.
+     See Marcet and Sargent (1989) and
+   Evans and Honkapohja (2001) for statements and applications of this approach to establish conditions under which collections of adaptive agents who use least squares learning converge to a rational expectations equilibrium.  The Marcet-Sargent-Evans-Honkapohja approach provides foundations
+   for a method that Krusell and Smith (1998) use to approximation a rational expectations equilibrium of an incomplete-markets economy.
+   See chapter \use{incomplete}.\label{FT:MSEH}}
+   In fact, in many contexts, including the present one, there exist admissible parameter values for which divergence of iterations on ${\cal M}$
+   prevails.  The next subsection
+shows another  method that works when the equilibrium solves
+an associated planning problem.
+For convenience, we'll assume from now on   that the number of firms $n$ is one, while
+retaining the assumption of price-taking behavior.
+\auth{Honkapohja, Seppo}%
+\auth{Evans, George W.}%
+\auth{Sargent, Thomas J.}%
+\auth{Marcet, Albert}%
+
+\subsection{A planning problem}
+
+Our approach to computing an equilibrium is to seek to match the Euler equations
+of the market problem with those for a planning problem that can
+be posed as a single-agent dynamic programming problem.
+The optimal quantities from  the planning problem are then the
+recursive competitive equilibrium quantities, and the equilibrium
+price is a  shadow price in the planning problem.
+
+For convenience we set $n=1$.
+To construct a planning problem, we first compute
+the sum $S_t$ of  consumer and producer surplus at time $t$, defined as
+$$ S_t = S(Y_t, Y_{t+1}) = \int_0^{Y_t} (A_0 - A_1 x) d \, x
+      -.5 d (Y_{t+1} - Y_t)^2. \EQN comp10 $$
+The first term is the area under the demand curve.
+The planning problem is to choose a production
+plan to maximize
+$$   \sum_{t=0}^\infty \beta^t S(Y_t, Y_{t+1}) \EQN comp11 $$
+subject to an initial condition $Y_0$.
+The Bellman equation for the planning problem is
+$$ V(Y) = \max_{Y'}\left\{A_0  Y - {A_1 \over 2} Y^2 - .5 d (Y' - Y)^2
+     + \beta V(Y') \right\}. \EQN comp12 $$
+The Euler equation is
+$$ - d(Y' - Y) + \beta V'(Y') = 0. \EQN comp14 $$
+Applying the Benveniste-Scheinkman formula %\Ep{130}
+  gives
+$$ V'(Y) = A_0 - A_1 Y + d(Y' - Y) . \EQN comp15 $$
+Substituting this into equation \Ep{comp14} and rearranging gives
+$$ \beta A_0 + d Y_t - [\beta A_1 + d(1+ \beta)]Y_{t+1} + d \beta Y_{t+2} =0 .
+         \EQN comp16 $$
+
+Return to equation
+\Ep{comp7} and set $y_t = Y_t$ for all $t$. (Remember
+that we have set $n=1$. When $n \neq 1$ we have to adjust
+pieces of the argument for $n$.)
+Notice that with $y_t=Y_t$, equations \Ep{comp16} and \Ep{comp7} are identical.
+The Euler equation for the planning problem matches the second-order difference equation
+that we derived by first finding the Euler equation of the representative firm and substituting into
+it the expression $Y_t = n y_t$ that ``makes the representative firm representative''.  Thus, if
+ it is appropriate to apply  the same terminal conditions for these two difference equations, which it is,
+then we have verified that  a solution of the planning problem also is an equilibrium.
+Setting $y_t = Y_t$ in
+equation \Ep{comp7} amounts to dropping equation \Ep{comp3} and instead
+solving for the coefficients $H_0, H_1$ that make
+$y_t = Y_t$ true and that jointly solve equations
+\Ep{comp3} and \Ep{comp7}.
+
+It follows that for this example we can compute an equilibrium
+by forming the optimal linear regulator problem corresponding
+to the Bellman equation \Ep{comp12}.    The optimal policy
+function for this problem is the  law of motion $Y'=H(Y)$ that a firm faces within a rational
+expectations equilibrium.\NFootnote{Lucas and Prescott (1971) used the method of this section.  The method exploits
+ the
+connection between equilibrium and Pareto optimality expressed in
+the fundamental theorems of welfare economics. See Mas-Colell,
+Whinston, and Green (1995). \auth{Lucas, Robert E., Jr.}
+\auth{Prescott, Edward C.} \auth{Mas-Colell, Andreu}
+\auth{Whinston, Michael D.} \auth{Green, Jerry R.} } \auth{Mehra,
+Rajnish}\index{recursive!competitive equilibrium}
+\index{equilibrium!rational expectations}
+\index{equilibrium!recursive competitive}
+\section{Recursive competitive equilibrium}\label{sec:rce22}%
+The equilibrium concept of the previous section
+is widely used.  Following Prescott and Mehra (1980),
+it is useful to define the  equilibrium concept more  generally
+as a {\it recursive competitive equilibrium}.
+  Let $x$ be a vector of state variables under the control
+of a \idx{representative agent} and let $X$ be the vector of those
+same variables chosen by ``the market.''  Let $Z$ be a vector
+of other state variables chosen by ``nature,'' that is, determined
+outside the model.
+The representative agent's problem is
+ characterized by the Bellman equation
+$$ v(x, X, Z) = \max_u \{ R(x, X, Z, u) + \beta v(x', X', Z') \} \EQN repres1$$
+where $'$ denotes next period's value, and where the
+maximization is subject to the restrictions:
+$$ \EQNalign{ x' & = g(x, X, Z, u) \EQN repres2 \cr
+              X' & = G(X,Z)   \EQN repres3 \cr
+              Z' & = \zeta(Z) . \EQN repres4 \cr}$$
+Here $g$ describes the impact of the representative   agent's
+controls $u$ on his state $x'$; $G$ and $\zeta$ describe his beliefs about
+the evolution of the aggregate state.  The solution of the
+representative agent's    problem is a decision rule
+$$ u = h(x, X, Z).  \EQN solution $$
+
+ To make the representative agent representative, we impose
+$X = x$, but only ``after'' we have solved the agent's decision
+problem.   Substituting equation \Ep{solution} and $X = x_t$ into equation
+\Ep{repres2} gives the {\it actual} law of motion
+$$ X' = G_A (X, Z), \EQN actual $$
+where $G_A(X, Z) \equiv g[X, X, Z, h(X, X, Z)]$.
+We are now ready to propose a definition:
+
+\medskip
+
+\specsec{Definition:}  A {\it recursive competitive equilibrium}
+is a policy function $h$, an actual aggregate law of motion
+$G_A$, and a perceived aggregate
+law $G$ such that  (a)  given $G$, $h$ solves   the representative
+agent's optimization problem; and (b)  $h$ implies
+that $G_A = G$.
+
+
+\medskip
+This equilibrium concept is also sometimes called a {\it rational expectations
+equilibrium}.  The equilibrium concept
+makes $G$ an outcome.  The functions
+giving the  representative
+agent's expectations about the aggregate state variables
+ contribute no free parameters
+and are {\it outcomes} of the analysis.  There are no free parameters that characterize
+expectations.\NFootnote{This is the sense in which rational expectations models make
+expectations disappear.}
+%In  exercise {\it \the\chapternum.1\/},  you are asked to implement this equilibrium
+%concept.
+\index{expectations!disappearance of}
+
+
+\section{Equilibrium  human capital accumulation}
+
+As  an example of a recursive competitive equilibrium, we formulate what we  regard as  a schooling model of the type used by Sherwin Rosen.
+  \auth{Rosen, Sherwin}%
+  A household chooses an amount of
+labor to send to a school that takes four periods to produce an educated worker.  Time is a principal input into the schooling technology.
+\index{Rosen schooling model}%
+\subsection{Planning problem}
+
+A planner chooses a contingency plan for new entrants $n_t$ to maximize
+$$ E_0 \sum_{t=0}^\infty \beta^t \biggl\{ f_0 + (f_1 + \theta_t) N_t - {f_2 \over 2} N_t^2 - {d \over 2} n_t^2 \biggr\} $$
+subject to the laws of motion
+$$ \eqalign{ \theta_{t+1} & = \rho \theta_t + \sigma_\theta \epsilon_{t+1} \cr
+             N_{t+1} & = \delta N_t + n_{t-3} ,} \EQN sherwin2000 $$
+where $N_t$ is the stock of educated labor at time $t$, $n_t$ is the number of new entrants into school at time $t$,  $\delta \in (0,1)$ is one minus a depreciation rate,  $\theta_t$ is a technology shock, and $\epsilon_{t+1}$ is an i.i.d. random process distributed
+as ${\cal N}(0,1)$. The planner confronts initial conditions $\theta_0, N_0, n_{-1}, n_{-2}, n_{-3}$. Notice how \Ep{sherwin2000} incorporates a
+ four period time to build  stocks of labor.  The planner's problem can be formulated as a stochastic
+discounted optimal linear regulator problem, i.e., a linear-quadratic dynamic programming problem of the type studied in chapter \use{dplinear}.  We ask the reader to verify that it  suffices to take $ X_t = \bmatrix{\theta_t \cr N_{t+3}}$ as the state for the planner's problem.
+A solution of the planner's problem is then a law of motion $X_{t+1} = (A-BF)X_t + C \epsilon_{t+1}$ and a decision rule $n_t = -F X_t$.
+\index{time to build!Rosen schooling model}%
+
+For the purpose of defining a recursive competitive equilibrium, it is useful to note that it is also possible to define the state for the planner's problem
+more profligately as
+$\tilde X_t = \bmatrix{ \theta & N_t & n_{t-1} & n_{t-2} & n_{t-3} }'$ with associated decision rule $n_t = -\tilde F \tilde X_t$ and law of motion
+$$\tilde X_{t+1} = (\tilde A - \tilde B \tilde F) \tilde X_t + \tilde C \epsilon_{t+1}. \EQN sherwin2009 $$
+We can use this representation  to express  a shadow wage $ \tilde w_t = f_1 - f_2 N_t + \theta_t$ as $\tilde w_t = S_w \tilde X_t$.
+\subsection{Decentralization}
+
+A firm and a representative household are price takers in a recursive competitive equilibrium. The firm faces a competitive wage process
+$\{w_t\}_{t=0}^\infty$ as a price taker and chooses a contingency plan for $\{N_t\}_{t=0}^\infty$ to maximize
+$$ E_0 \sum_{t=0}^\infty \beta^t \biggl\{ f_0 + (f_1 + \theta_t) N_t - {f_2 \over 2} N_t^2 - w_t N_t \biggr\}. $$
+The first-order condition for the firm's problem is
+$$ w_t = f_1 - f_2 N_t + \theta_t ,  \EQN sherwin2001$$
+which we can regard as an inverse demand function for the stock of labor.
+
+
+A representative household chooses a contingency plan for $\{n_t, N_{t+4}\}_{t=0}^\infty$ to maximize
+$$ E_0 \sum_{t=0}^\infty \beta^t \biggl\{ w_t N_t - {d \over 2} n_t^2 \biggr\}  \EQN sherwin2004 $$
+subject to \Ep{sherwin2000} and initial conditions in the form of given values for $N_t$ for $t = 0, 1, 2, 3$.
+To deduce  first order  conditions for this problem, it is helpful first to notice that \Ep{sherwin2000} implies
+that for $j \geq 4$,
+$$ N_{t+j} = \delta^{j-3} N_{t+1} + \delta^{j-4} n_t + \delta^{j-3} n_{t+1} + \ldots \delta n_{t+j-5} + n_{t+j-4}, \EQN sherwin2002 $$
+so that
+$$ {\partial \sum_{j=0}^\infty \beta^j w_{t+j} N_{t+j} \over \partial n_t } = \beta^4 \sum_{j=0}^\infty (\beta \delta)^j w_{t+j+4} .$$
+It follows that the first-order conditions for maximizing \Ep{sherwin2004} subject to \Ep{sherwin2000} are
+$$ n_t = d^{-1} E_t \beta^4 \sum_{j=0}^\infty (\beta \delta)^j w_{t+j+4}, \quad t \geq 0 \EQN sherwin2005 $$
+We can regard \Ep{sherwin2005} as a supply curve for a flow of new entrants into the schooling technology. It expresses the supply of new entrants into
+school $n_t$
+as a linear function of the expected present value of wages.
+
+A rational expectations equilibrium is a stochastic process $\{w_t, N_t, n_t\}$ such that (a) given the $w_t$ process,
+$N_t, n_t$ solves the household's problem, and (b) given the $w_t$ process, $N_t$ solves the firms' problem.
+Evidently, a rational expectations equilibrium can also be characterized as a $\{w_t, N_t, n_t\}$ process
+that equates  demand for labor (equation   \Ep{sherwin2001}) to supply   of  labor (equations \Ep{sherwin2002} and \Ep{sherwin2005}).
+
+To formulate the firm's and household's problems  within a recursive competitive equilibrium, we can guess that the shadow wage $\tilde w_t$ mentioned above equals the
+competitive equilibrium wage.  We can then  confront the household with an exogenous
+wage governed by the stochastic process for $w_t$ governed
+by
+the state space representation
+$$ \eqalign{ \tilde X_{t+1} & = (\tilde A - \tilde B \tilde F) \tilde X_t + \tilde C \epsilon_{t+1} \cr
+                    w_t & = S_w \tilde X_t .} $$
+
+\section{Equilibrium occupational choice}
+
+As  another  example of a recursive competitive equilibrium, we formulate a modification of a  Rosen schooling model designed to focus on occupational choice.\NFootnote{For applications see Siow (1984) and Ryoo and Rosen (2004).}  Like the model in the previous section, this one
+focuses on the cost of acquiring human capital via a time-to-build technology.  Investment times  now differ across occupations.
+\auth{Siow, A.}
+\auth{Rosen, Sherwin}
+\index{occupational choice}%
+
+Output of a single good is produced via the following production function:
+$$ Y_t = f_0 + f_1 \bmatrix{U_t \cr S_t } - \bmatrix{U_t \cr S_t }' f_2 \bmatrix{U_t \cr S_t }
+\EQN sherwin1
+$$
+where $U_t$ is a stock of skilled labor and $S_t$ is a stock of unskilled labor, and $f_2$ is a positive semi-definite
+matrix parameterizing whether skilled and unskilled labor are complements or substitutes in production.    Stocks of the
+two types of labor evolve according to the laws of motion
+$$\eqalign{ U_{t+1} & = \delta_U U_t + n_{Ut} \cr
+            S_{t+1} & = \delta_S S_t + n_{St-2} } \EQN sherwin2 $$
+where   flows into the two types of skills are restricted by
+$$ n_{Ut } + n_{St} = n_t, \EQN sherwin3 $$
+where $n_t$ is an exogenous  flow of new entrants into the labor market governed by
+the  stochastic process
+$$ n_{t+1} = \mu_n (1-\rho) + \rho n_t + \sigma_n \epsilon_{t+1}  \EQN sherwin4 $$
+where $\epsilon_{t+1}$ is an i.i.d. scalar stochastic process with
+time $t+1$ component distributed as ${\cal N}(0,1)$.
+Equations \Ep{sherwin2}, \Ep{sherwin3}, \Ep{sherwin4} express a time-to-build or schooling  technology for
+converting new entrants $n_t$ into increments in  stocks of unskilled labor (this takes one period of
+ waiting) and of skilled labor (this takes three periods of  waiting).
+Stocks of skilled and unskilled labors depreciate, say through death or retirement, at the rates
+$(1-\delta_S), (1-\delta_U)$, respectively, where $\delta_S \in (0,1)$ and $\delta_U \in (0,1)$.
+ In addition,
+we assume that there is an output cost
+of ${e\over 2} n_{st}^2$ associated with  allocating new workers (or `students') to the skilled worker pool.
+
+
+\subsection{A planning problem}
+
+Let's start with a planning problem, then  construct a competitive equilibrium.
+Given initial conditions $(U_0, S_0, n_{S,-1}, n_{S,-2}, n_0)$, a planner chooses $n_{St}, n_{Ut}$ to maximize
+$$ E_0 \sum_{t=0}^\infty \beta^t \biggl\{ f_0 + f_1 \bmatrix{U_t \cr S_t } - .5 \bmatrix{U_t \cr S_t }' f_2 \bmatrix{U_t \cr S_t }
+    - {e \over 2} n_{St}^2  \biggr\} \EQN sherwin5
+$$ subject to \Ep{sherwin2}, \Ep{sherwin3}, \Ep{sherwin4}.  This  is a stochastic discounted optimal linear
+regulator problem.  Define the state
+as $ X_t = \bmatrix{U_t & S_t & 1 & n_{S,t-1} & n_{S,t-2} & n_t }$ and the control as $n_{St}$.  An optimal
+  decision rule has the form
+  $n_{St} = - F X_t$ and the law of motion of the state under the optimal decision is
+  $$ X_{t+1} = (A-BF) X_t + C \epsilon_{t+1}. \EQN sherwin5 $$
+
+Define shadow wages
+$$\bmatrix{\tilde w_{Ut} \cr \tilde w_{St}} = f_1 - f_2  \bmatrix{U_t \cr S_t } \equiv \bmatrix{S_U \cr S_S} X_t ,\EQN sherwin6 $$
+where $S_U$ and $S_S$ are the appropriate selector vectors.
+The expected present value of
+entering school to become an unskilled worker is evidently
+$$ E_t \beta \sum_{j=1}^\infty (\beta \delta_U)^{j-1} \tilde w_{U,t+j} = \beta  S_U (I - (A-BF)\beta \delta_U)^{-1} (A-BF)X_t $$
+and the expected present value of entering school at $t$  to become
+a skilled worker is
+$$ E_t \beta^3\sum_{j=3}^\infty (\beta \delta_S)^{j-3} \tilde w_{S,t+j} = \beta^3 S_S (I - (A-BF)\beta \delta_S)^{-1}(A-BF)^3 X_t.$$
+
+
+\subsection{Decentralization}
+
+We can decentralize the planning problem by finding a recursive competitive equilibrium whose allocation matches that
+associated with the planning problem.
+A competitive firm hires
+stocks of skilled and unskilled workers at competitive wages $w_{St}, w_{Ut}$     each period. Taking those wages as given,
+it chooses $S_t, U_t$ to maximize
+$$  E_0\sum_{t=0}^\infty \beta^t \biggl\{f_0 + f_1 \bmatrix{U_t \cr S_t } - .5  \bmatrix{U_t \cr S_t }' f_2 \bmatrix{U_t \cr S_t } - w_{Ut} U_t -
+w_{St} S_t \biggr\}.   \EQN sherwin6 $$
+Notice that the absence of intertemporal linkages in this problem makes it break into a sequence of static problems.  The firm doesn't
+have to know the law of motion for wages.
+The  firm  equates the marginal products of each type of labor to that type's wage.
+
+  A representative family   faces wages $\{w_{St}, w_{Ut}\}$  as a price taker and chooses contingency
+  plans for  $\{n_{St}, U_{t+1}, S_{t+1}\}_{t=0}^\infty $ to maximize
+$$ E_0 \sum_{t=0}^\infty \beta^t \biggl\{  w_{Ut} U_t + w_{st} S_t - {e \over 2} n_{St}^2 \biggr\}  \EQN sherwin7 $$
+subject to the perceived law of motion for $w_{Ut}, w_{St}$
+$$ \eqalign{ \bmatrix{ w_{Ut} \cr w_{St} } & = U_w \tilde X_t \cr
+              \tilde X_{t+1} & = \tilde A \tilde X_t + \tilde C \epsilon_{t+1} } \EQN sherwin8 $$
+and \Ep{sherwin2} and \Ep{sherwin3}.
+According to \Ep{sherwin7}, the family allocates $n_t$ between $n_{Ut}$ and $n_{St}$ to maximize
+the expected present value of earnings from both types of labor, minus the present value of `adjustment costs'
+${e \over 2} n_{St}^2$. The state vector confronting the representative family
+is $\bmatrix{U_t & S_t & \tilde X_t }$ where $\tilde X_t$ has dimension comparable to $X_t$; $\tilde A X + C \varepsilon$ is a perceived
+law of motion for $\tilde X$.  In a recursive competitive equilibrium, it will turn out that $\tilde A = A-BF$,
+where $A-BF$ is the optimal law of motion obtained from  the planning problem.
+
+\auth{Siow, A.}%
+\auth{Rosen, Sherwin}%
+In the spirit of   Siow (1984) and Sherwin Rosen, it is interesting to  focus on the  special case in which $e  = 0$.
+Here the competitive equilibrium
+features the outcome that
+$$ \beta E_t \sum_{j=1}^\infty (\beta \delta_U)^j w_{U,t+j} = E_t \beta^3 \sum_{j=3}^\infty (\beta \delta_S)^{j-3} w_{S,t+j}. \EQN sherwin9 $$
+This condition says that the family allocates new entrants to equate
+the present values of earnings across occupations, a calculation that  takes into account that it takes longer to train for some
+occupations than for others.
+The laws of motion of competitive equilibrium quantities adjust to equalize the present values
+of wages in the two occupations.
+
+
+\section{Markov perfect equilibrium}
+
+It is instructive to consider a dynamic model of duopoly.
+A  market has two firms. Each firm recognizes that its
+output decision will affect the aggregate output and therefore influence the
+market price. Thus, we drop the assumption of price-taking behavior.\NFootnote{One
+consequence of departing from the price-taking framework is that the market
+outcome will no longer maximize welfare, measured as the sum of consumer and
+producer surplus. See exercise {\it \the\chapternum.4\/} for the case of a monopoly.}
+The  one-period return
+function of firm $i$ is
+$$ R_{it} = p_t y_{it} - .5 d (y_{i t+1} - y_{it})^2.  \EQN game1 $$
+There is a demand curve
+$$ p_t = A_0 - A_1 (y_{1t} +  y_{2t}) .  \EQN game2 $$
+Substituting the demand curve into equation \Ep{game1} lets us express
+the return as
+$$ R_{it} = A_0 y_{it} - A_1 y_{it}^2 - A_1 y_{it}y_{-i,t}
+     - .5 d (y_{it+1} - y_{it})^2 , \EQN game3 $$
+where $y_{-i,t}$ denotes the output of the firm other than $i$.
+Firm $i$  chooses a decision rule that sets
+$y_{it+1}$ as a function of $(y_{it}, y_{-i,t})$  and that  maximizes
+$$ \sum_{t=0}^\infty \beta^t R_{it} .$$
+Temporarily assume that  the maximizing
+decision rule is $y_{it+1}  = f_i(y_{it}, y_{-i,t})$.
+
+
+Given the function $f_{-i}$, the Bellman equation
+of firm $i$ is
+$$ v_i(y_{it}, y_{-i,t}) = \max_{y_{it+1}} \left\{
+    R_{it} + \beta v_i(y_{it+1}, y_{-i,t+1}) \right\},  \EQN game4 $$
+%or
+%$$ v_i(y_{it}, y_{-i,t}) = \max_{y_{it+1}} \left\{ (A_0 y_{it} - A_1 y_{it}^2 - A_1 y_{it}y_{-i,t}
+%     - .5 d (y_{it+1} - y_{it})^2 ) + \beta v_i(y_{it+1}, y_{-i,t+1}) \right\},  $$
+where the maximization is subject to the perceived
+decision rule of the other firm
+$$ y_{-i,t+1} = f_{-i}(y_{-i,t}, y_{it}). \EQN game5 $$
+Note the cross-reference between the two problems for $i=1,2$.
+
+We now advance  the following definition:
+\medskip
+\specsec{Definition}:
+ A Markov perfect equilibrium is a  pair of  value
+functions $v_i$ and a pair of policy functions
+$f_i$ for $i=1,2$ such that
+\medskip
+\noindent{\bf a.} Given $f_{-i}$,$v_i$ satisfies
+the Bellman equation  \Ep{game4}.
+\medskip
+\noindent{\bf b.}  The policy function $f_i$ attains the right side
+of the Bellman equation \Ep{game4}.
+\medskip
+
+  The adjective Markov denotes that the equilibrium decision
+rules depend on the current values of the state variables
+$y_{it}$ only, not other parts of their histories.   Perfect means `complete', i.e., that
+the equilibrium is constructed by backward induction and therefore
+builds in optimizing behavior for each firm for all possible
+future states, including many that will  not be realized when we iterate
+ forward on the pair of equilibrium
+strategies $f_i$.
+
+\subsection{Computation}
+
+  If it exists, a Markov perfect equilibrium can be computed
+by iterating to convergence on the pair of Bellman equations
+\Ep{game4}.  In particular, let $v_i^j,f_i^j$ be the value function
+and policy function for firm $i$ at the $j$th iteration.  Then
+imagine constructing the iterates
+$$ v_i^{j+1}(y_{it}, y_{-i,t}) = \max_{y_{i,t+1}} \left\{
+    R_{it} + \beta v_i^{j}(y_{it+1}, y_{-i,t+1}) \right\}, \EQN game4 $$
+where the maximization is subject to
+$$ y_{-i,t+1} = f^j_{-i}(y_{-i,t}, y_{it}). \EQN game5 $$
+
+  In general, these iterations are difficult.\NFootnote{See Levhari and
+Mirman (1980) for how a Markov perfect equilibrium can be computed
+conveniently with logarithmic returns and Cobb-Douglas transition
+laws. Levhari and Mirman
+construct a model of fish and fishers.}
+In the next section, we describe how
+the calculations simplify for the case in which
+the return function is quadratic and the transition laws are linear.
+\index{Markov perfect equilibrium!fish and fishers}
+\auth{Mirman, Leonard J.}
+\auth{Levhari, David}\index{optimal linear regulator!dynamic game}
+\index{Markov perfect equilibrium!linear}
+\section{Linear Markov perfect equilibria}
+In this section, we show how the optimal linear regulator
+can be used to solve a model like that in the previous section.
+That model should be considered to be
+ an example of a dynamic game.  A dynamic  game consists
+of these objects: (a) a list of players; (b) a list of dates and
+actions available to each player at each date; and (c) payoffs
+for each player expressed as  functions of the actions taken
+by all players.
+
+  The optimal linear regulator is a good tool for formulating  and solving
+dynamic games.  The standard equilibrium
+concept---subgame perfection---in these games requires
+that each player's strategy be computed
+by backward induction.   This leads to an interrelated pair
+of Bellman equations. In linear quadratic dynamic games, these
+``stacked Bellman equations'' become ``stacked Riccati equations''
+with a tractable mathematical structure.
+\index{Bellman equation!stacked}
+\index{Riccati equation!stacked}
+\index{linear quadratic!dynamic games}
+
+We now consider the following two-player, linear quadratic {\it dynamic
+game}.  An $(n \times 1)$ state vector $x_t$ evolves according to a
+transition equation
+$$x_{t+1} = A_t x_t + B_{1t} u_{1t} + B_{2t} u_{2t}  \EQN orig-0$$
+where
+ $ u_{jt}$ is a $(k_j \times 1)$ vector of controls of
+player  $j$.  We start with a finite horizon formulation, where
+$t_0$ is the initial date and $t_1$ is the terminal date
+for the common horizon of the two players.
+Player $1$ maximizes
+$$ - \sum_{t=t_0}^{t_1 - 1}  \left( x_t^T R_1 x_t + u_{1t}^T Q_1 u_{1t} +
+u_{2t}^T S_1 u_{2t}\right) \EQN orig-1 $$
+where $R_1$ and $S_1$ are positive semidefinite and
+ $Q_1$ is positive definite.
+Player 2 maximizes
+$$ - \sum_{t=t_0}^{t_1 - 1} \left( x_t^T R_2 x_t + u_{2t}^T Q_2 u_{2t} +
+u_{1t}^T S_2 u_{1t} \right) \EQN orig-2 $$
+where $R_2$ and $S_2$ are positive semidefinite and $Q_2$ is positive definite.
+\index{Markov perfect equilibrium}
+
+We formulate a Markov perfect equilibrium as follows.  Player
+$j$ employs linear decision rules
+$$u_{jt} = - F_{jt}  x_t, \ \ t = t_0, \ldots, t_1 - 1$$
+where $F_{jt}$ is a $(k_j \times n)$ matrix.  Assume that  player $i$ knows
+$\{F_{-i,t}; t = t_0, \ldots, t_1 - 1 \}$.  Then player  1's problem is to
+maximize expression
+ \Ep{orig-1} subject to the known law of motion \Ep{orig-0}
+{\it and\/}
+the known control law $u_{2t} = - F_{2t} x_t$ of player 2.
+Symmetrically, player 2's problem is to maximize expression
+\Ep{orig-2} subject
+to equation \Ep{orig-0} and $u_{1t} = - F_{1t} x_t$. A Markov perfect
+equilibrium is a pair of
+sequences $\{F_{1t}, F_{2t};\, t = t_0, t_0 + 1 , \ldots,
+t_1 - 1 \}$ such that $\{F_{1t}\}$ solves player 1's problem, given
+$\{F_{2t}\}$, and $\{F_{2t}\}$ solves player 2's problem, given $\{F_{1t}\}$.
+We have restricted each player's strategy to depend
+only on $x_t$, and not on the {\it history} $h_t =\{(x_s, u_{1s}, u_{2s}),
+s = t_0, \ldots, t\}$.
+ This restriction on strategy spaces
+ accounts for the adjective
+``Markov'' in the phrase ``Markov perfect equilibrium.''
+
+Player 1's problem is to maximize
+$$ - \sum_{t=t_0}^{t_1 - 1}\Bigl\{ x_t^T (R_1 + F_{2t}^T S_1 F_{2t}) x_t
++ u_{1t}^T Q_1 u_{1t} \Bigr\} $$
+subject to
+$$x_{t+1} = (A_t- B_{2t} F_{2t}) x_t + B_{1t} u_{1t}. %% + \xi_{1t+1} .
+$$
+This is an \idx{optimal linear regulator} problem, and it can be solved
+by working backward. Evidently, player 2's problem is also an
+optimal linear regulator problem.
+
+
+The solution of player 1's problem is given by
+$$F_{1t} = ( B_{1t}^T P_{1t+1} B_{1t} + Q_1)^{-1}  B_{1t}^T P_{1t+1}
+(A_t - B_{2t} F_{2t}) \EQN orig-3$$
+$$t = t_0, t_0 + 1 , \ldots, t_1 - 1$$
+where $P_{1t}$ is the solution of the following matrix Riccati difference
+equation with terminal condition $P_{1t_{1}} = 0$:
+{ \ninepoint
+$$\eqalign{& \, P_{1t}
+ = (A_t - B_{2t} F_{2t})^T P_{1t+1} (A_t - B_{2t} F_{2t}) +
+ (R_1 +  F_{2t}^T S_1 F_{2t}) \cr
+ - &(A_t   - B_{2t} F_{2t})^T P_{1t+1} B_{1t} (B_{1t}^T P_{1t+1} B_{1t} +
+Q_1)^{-1} B_{1t}^T P_{1t+1} (A_t - B_{2t} F_{2t}).\cr} \EQN orig-4$$
+} % endninepoint
+The solution of player 2's problem is
+$$F_{2t} = (B_{2t}^T P_{2t+1} B_{2t} + Q_2)^{-1} B_{2t}^T P_{2t+1} (A_t -
+B_{1t} F_{1t}) \EQN orig-5$$
+where $P_{2t}$ solves the following matrix Riccati difference
+equation, with terminal condition $P_{2t_1} = 0$:
+$$\eqalign {P_{2t} &= (A_t - B_{1t} F_{1t})^T P_{2t+1} (A_t - B_{1t} F_{1t}) +
+(R_2 + F_{1t}^T S_2 F_{1t}) \cr
+&- (A_t - B_{1t} F_{1t})^T P_{2t+1} B_{2t} \cr & (B_{2t}^T P_{2t+1} B_{2t} +
+Q_2)^{-1} B_{2t}^T P_{2t+1} (A_t - B_{1t} F_{1t}).\cr} \EQN orig-6$$
+
+ The equilibrium sequences $\{F_{1t}, F_{2t}; t =
+t_0, t_0 + 1 , \ldots, t_1 - 1\}$ can be calculated from
+the pair of coupled Riccati difference equations \Ep{orig-4} and \Ep{orig-6}.
+In particular, we  use equations  \Ep{orig-3},
+\Ep{orig-4}, \Ep{orig-5}, and \Ep{orig-6} to ``work backward'' from time
+$t_1 - 1$.  Notice that given $P_{1t+1}$
+and $P_{2t+1}$, equations \Ep{orig-3} and \Ep{orig-5} are a system of
+$(k_2 \times n) + (k_1
+\times n)$ {\it linear\/} equations in the $(k_2 \times n) + (k_1 \times n)$
+unknowns in the matrices $F_{1t}$ and $F_{2t}$.
+
+ Notice how $j$'s control law $F_{jt}$ is a function of $\{F_{is},
+s \geq t, i \neq j \}$. Thus, agent $i$'s choice of $\{F_{it}; t = t_0, \ldots,
+t_1 - 1\}$ influences agent $j$'s choice of control laws. However, in the
+Markov perfect
+equilibrium of this game, each agent is assumed
+to ignore the influence that his choice exerts on the other agent's
+choice.\NFootnote{In an equilibrium of a {\it Stackelberg\/} or {\it dominant
+player\/} game, the timing of moves is so altered relative to the present game
+that one of the agents called the {\it leader\/} takes
+into account the influence that his choices exert on the other agent's
+choices. See chapter \use{stackel}.}
+
+  We often want to compute the solutions of such  games for
+infinite horizons, in the hope that the decision rules
+$F_{it}$ settle down to be time invariant as $t_1 \rightarrow +\infty$.
+In practice, we usually  fix $t_1$ and compute the equilibrium
+of an infinite horizon game by driving $t_0 \rightarrow - \infty$.   Judd
+followed that procedure in the
+following example.
+\auth{Judd, Kenneth L.}
+
+\subsection{An example}
+
+This section describes the Markov perfect equilibrium of an
+infinite horizon linear quadratic game proposed
+by Kenneth Judd (1990).
+\index{Markov perfect equilibrium!prices and inventory example}%
+  The equilibrium is computed by iterating to convergence on the
+pair of Riccati equations defined by the choice problems of
+two firms.
+  Each firm solves a linear quadratic optimization
+problem, taking as given and known the sequence of linear decision rules
+used by the other player.  The firms set prices and quantities of two
+goods interrelated through their demand curves.
+  There is no uncertainty.  Relevant variables are defined
+as follows:
+\smallskip
+\item{} $I_{it}$ = inventories of firm $i$ at beginning of $t$.
+\item{} $q_{it}$ = production of firm $i$ during period $t$.
+\item{} $p_{it}$ = price charged by firm $i$ during period $t$.
+\item{} $S_{it}$ = sales made by firm $i$ during period $t$.
+\item{} $E_{it}$ = costs of production of firm $i$ during period $t$.
+\item{}  $C_{it}$ = costs of carrying inventories for firm $i$ during $t$.
+\medskip
+\noindent The firms' cost functions are
+\smallskip
+\item{} $C_{it} = c_{i1} + c_{i2} I_{it} + .5 c_{i3} I_{it}^2$
+\item{} $E_{it} = e_{i1} + e_{i2}q_{it} + .5 e_{i3} q_{it}^2$
+\smallskip
+\noindent where $e_{ij},c_{ij}$ are positive scalars.
+
+\noindent Inventories obey the laws of motion
+$$ I_{i,t+1} = (1 - \delta)  I_{it} + q_{it} - S_{it} $$
+Demand is governed by the linear schedule
+$$S_t = d p_{it} + B$$
+where $S_t = \left[\matrix{S_{1t} & S_{2t}\cr}\right]'$,
+ $d$ is a $(2\times 2)$ negative definite matrix, and
+$B$ is a
+vector of constants.  Firm $i$ maximizes the undiscounted sum
+$$\lim_{T \to \infty}\ {1 \over T}\   \sum^T_{t=0}\   \left(
+p_{it} S_{it} - E_{it} - C_{it} \right) $$
+by choosing a decision rule for price and quantity of the form
+$$u_{it} = -F_i  x_t$$
+where $u_{it} =\left[ \matrix{p_{it} & q_{it}\cr}\right]'$,
+ and the state is $x_t=\left[\matrix{I_{1t} & I_{2t}\cr}\right]$.
+
+\mtlb{nnash.m}
+\mtlb{nash.m}
+In the web site for the book,
+we supply a Matlab program {\tt nnash.m} that
+computes a Markov perfect equilibrium of
+the linear quadratic dynamic game
+in which player $i$ maximizes
+$$ - \sum_{t=0}^\infty \{ x_t' r_i x_t + 2 x_t' w_i u_{it} +u_{it}' q_i
+  u_{it} + u_{jt}' s_i u_{jt} + 2 u_{jt}' m_i u_{it} \}$$
+subject to the law of motion
+$$x_{t+1} = a x_t + b_1 u_{1t}+b_2 u_{2t}$$
+and a control law $u_{jt}= -f_j x_t$ for the other player; here
+$a$ is $n \times n$; $b_1$ is $n \times k_1$; $b_2$ is $n \times k_2$;
+$r_1$ is $n\times n$; $r_2$ is $ n \times n$;
+$q_1$ is $k_1 \times k_1$; $q_2$ is $k_2 \times k_2$;
+$s_1$ is $k_2 \times k_2$; $s_2$ is $k_1 \times k_1$;
+$w_1$ is  $n \times k_1$;
+$w_2$ is $n \times k_2$;
+$m_1$ is $ k_2 \times k_1$; and  $m_2$ is $k_1 \times k_2$.
+The equilibrium of Judd's model can be computed by
+filling in the matrices appropriately.  A Matlab tutorial
+{\tt judd.m} uses {\tt nnash.m} to compute the equilibrium.
+\mtlb{judd.m}
+\mtlb{judd.m}
+\mtlb{nash.m}
+
+\section{Concluding remarks}
+
+  This chapter has introduced two
+equilibrium concepts and illustrated how dynamic programming
+algorithms are embedded in each.   For the linear models we have
+used as illustrations,  the dynamic programs become optimal
+linear regulators, making it tractable to compute equilibria
+even for large state spaces.
+We chose to define these equilibria concepts in
+partial equilibrium settings
+that are more natural for microeconomic applications than for
+macroeconomic ones.  In the next chapter, we
+use the recursive equilibrium concept to analyze
+a general equilibrium in an endowment economy. That setting
+serves as a natural starting point for addressing various
+macroeconomic issues.
+
+%describe a closely related equilibrium concept
+%widely used in macroeconomics.
+
+%\section{Exercises}
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+\medskip
+\noindent
+These problems aim to teach about (1) mapping problems into
+recursive forms, (2) different equilibrium concepts,
+and (3) using Matlab.  Computer programs
+are available from the web site for the book.\NFootnote{The
+web site is $<$www.tomsargent.com/source\_code/mitbook.zip$>$.} % $<$https://files.nyu.edu/ts43/public/books.html$>$.} %$<$http://homepages.nyu.edu/pub/\raise-4pt\hbox{\~{}}ts43/source\hbox{\_{}}code/mitbook.zip$>$.}
+
+\medskip
+\noindent {\it Exercise  \the\chapternum.1}\quad {\bf A competitive firm}
+\medskip
+\noindent A competitive  firm seeks to maximize
+ $$\sum_{t=0}^\infty \beta^t R_t \eqno(1) $$
+where $\beta \in (0,1)$, and time $t$ revenue $R_t$ is
+$$ R_t = p_t y_t - .5 d (y_{t+1} - y_t)^2, \quad d > 0, \eqno(2) $$
+where $p_t$ is the price of output, and $y_t$ is the time $t$ output
+of the firm.  Here $ .5 d (y_{t+1}- y_t)^2$ measures the firm's
+cost of adjusting its rate of   output.     The firm
+starts with a given initial level of output $y_0$.  The price lies
+on the market demand curve
+$$ p_t = A_0 - A_1 Y_t , A_0, A_1 > 0 \eqno(3)$$
+where $Y_t$ is the market level of output, which the firm
+takes as exogenous, and which the firm believes follows the law of motion
+$$ Y_{t+1} = H_0 + H_1 Y_{t}, \eqno(4) $$
+with $Y_0$ as a fixed initial condition.
+
+\medskip
+\noindent{\bf a.}  Formulate the Bellman equation for the firm's
+problem.
+\medskip
+\noindent{\bf b.} Formulate the firm's problem as a discounted
+optimal linear regulator problem, being careful
+to
+describe all of the  objects needed.
+What is the {\it state\/} for the firm's problem?
+
+\medskip
+\noindent{\bf c.}   Use the Matlab program {\tt olrp.m}
+to solve the firm's problem for the following parameter values:
+$A_0= 100, A_1=.05, \beta = .95, d=10, H_0 = 95.5$, and
+$H_1 = .95$. Express
+the solution of the firm's problem in the
+form
+$$ y_{t+1} = h_0 + h_1 y_t + h_2 Y_t,  \eqno(5) $$
+giving values for the $h_j$'s.
+\medskip
+\noindent{\bf d.}  If there were $n$ identical competitive
+firms all behaving according to  equation (5), what would  equation
+(5)  imply for the {\it actual} law of motion
+ (4) for the market supply $Y$?
+
+\medskip
+\noindent{\bf e.}   Formulate the  Euler equation for the firm's
+problem.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.2}  \quad {\bf Rational expectations}
+
+\medskip
+\noindent Now assume that  the firm in problem 1 is ``representative.''
+We implement this idea  by setting $n=1$.
+In equilibrium, we will require that $y_t = Y_t$, but we don't want
+to impose this condition at the stage that the firm is optimizing (because
+we want to retain  competitive behavior).   Define
+a rational expectations equilibrium to be a pair of numbers $H_0, H_1$
+such that if the representative firm solves   the problem ascribed
+to it in problem 1, then the firm's optimal behavior given by equation
+(5) implies that $y_t = Y_t \ \forall \ t \geq 0$.
+
+\medskip
+\noindent{\bf a.}   Use the program that you wrote for exercise {\it \the\chapternum.1\/}
+ to determine which if any  of the following pairs  $(H_0, H_1)$
+is a rational expectations equilibrium:
+(i) (94.0888, .9211); (ii)  (93.22, .9433), and (iii)  (95.08187459215024,
+ .95245906270392)?
+%(Answer: set (iii) which implies $(h_0, h_1, h_2) = (95.0819, 1, -.0475)$.
+
+\medskip
+\noindent{\bf b.} Describe an iterative algorithm that uses the program that you wrote for exercise {\it \the\chapternum.1\/}
+to compute a rational expectations equilibrium.
+(You are not being asked actually to use the algorithm you
+are suggesting.)
+
+\medskip
+\noindent{\it Exercise \the\chapternum.3} \quad{\bf Maximizing welfare}
+
+\medskip
+\noindent A planner seeks to maximize the welfare criterion
+$$ \sum_{t=0}^\infty \beta^t S_t , \eqno(1) $$
+where $S_t$ is ``consumer surplus plus producer surplus''
+defined to be
+ $$S_t = S(Y_t, Y_{t+1}) = \int_0^{Y_t} (A_0 - A_1 x) d \, x
+ - .5 d (Y_{t+1} - Y_t)^2 .$$
+
+\medskip
+\noindent{\bf a.}  Formulate the planner's  Bellman equation.
+
+\medskip
+\noindent{\bf b.}  Formulate the planner's problem as an optimal
+linear regulator, and, for the same parameter values in exercise \the\chapternum.1, solve it using
+the Matlab program {\tt olrp.m}.  Represent the solution
+in the form $Y_{t+1} = s_0 + s_1 Y_t$.
+\medskip
+\noindent{\bf c.}   Compare your answer  in  part b with
+your answer to part a of exercise {\it \the\chapternum.2\/}.
+
+\medskip
+\noindent{\it Exercise  \the\chapternum.4}  \quad {\bf Monopoly}
+\medskip
+\noindent A monopolist faces the industry demand curve (3)
+ and  chooses $ Y_t$ to maximize $ \sum_{t=0}^\infty
+\beta^t R_t$ where
+$R_t = p_t Y_t - .5 d(Y_{t+1} - Y_t)^2$ and where $Y_0$ is
+given.
+
+\medskip
+\noindent{\bf a.}  Formulate the firm's
+Bellman equation.
+
+\medskip
+\noindent{\bf b.}  For the parameter values listed in exercise {\it \the\chapternum.1\/},
+ formulate and solve the firm's problem using {\tt olrp.m}.
+
+\medskip
+\noindent{\bf c.}  Compare your answer in part b with the answer
+you obtained to part b of exercise {\it \the\chapternum.3\/}.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.5} \quad {\bf Duopoly}
+\medskip
+\noindent   An industry consists of two firms that  jointly  face
+the industry-wide inverse demand curve $ p_t = A_0 - A_1 Y_t  $, where now
+$Y_t = y_{1t} + y_{2t}$.  Firm $i=1,2$ maximizes
+$$ \sum_{t=0}^\infty \beta^t R_{it} \eqno(1) $$
+where $R_{it} = p_t y_{it} - .5d(y_{i,t+1} - y_{it})^2$.
+
+
+\medskip
+\noindent{\bf a.}  Define a Markov perfect equilibrium for
+this industry.
+\medskip
+\noindent{\bf b.}  Formulate the Bellman equation for each firm.
+\medskip
+\noindent{\bf c.}  Use the Matlab program {\tt nash.m} to compute
+an equilibrium, assuming the parameter values  listed in
+exercise {\it \the\chapternum.1\/}. \mtlb{nash.m}
+
+\medskip \auth{Laibson, David I.} \auth{Phelps, Edmund S.}
+\auth{Pollak, Robert A.} \auth{Gul, Faruk}
+\auth{Pesendorfer, Wolfgang}
+\index{self-control!Markov perfect equilibrium}
+\index{Markov perfect equilibrium!self-control}
+\index{Bellman equation!dynamic games}
+\noindent
+{\it Exercise \the\chapternum.6} \quad {\bf Self-control}
+
+\medskip\noindent
+This is a model of a human who  has time inconsistent preferences,
+ of a type proposed by Phelps and Pollak (1968) and used by
+Laibson (1994).\NFootnote{See Gul and Pesendorfer (2000) for
+a single-agent recursive
+representation of preferences  exhibiting temptation  and self-control.}
+The human lives from $t=0, \ldots, T$.  Think of the human as
+actually consisting of $T+1$  personalities, one for each period.
+Each personality is a distinct agent (i.e., a distinct utility
+function and constraint set).  Personality $T$ has preferences
+ordered by $u(c_T)$ and personality $t < T$
+has preferences that are ordered by
+$$ u(c_t) + \delta \sum_{j=1}^{T-t} \beta^j u(c_{t+j}), $$ %\EQN laib-1  $$
+where $u(\cdot)$ is a twice continuously differentiable,
+increasing, and strictly concave function of consumption of
+a single good; $\beta \in (0,1)$, and $\delta \in (0,1]$.  When
+$\delta <1$, preferences of the sequence of personalities
+are time inconsistent (that is, not recursive).
+At each $t$, let there be a savings technology described by
+$$ k_{t+1} + c_t \leq f(k_t), $$ %\EQN laib0 $$
+where $f$ is a production function with $f' >0, f''\leq 0$.
+\medskip
+\noindent{\bf a.} Define a Markov perfect equilibrium for the
+$T+1$ personalities.
+
+\medskip
+\noindent
+{\bf b.} Argue that the Markov perfect equilibrium can be computed
+by iterating on the following functional equations:
+$$ \EQNalign{ V_{j+1}(k) & = \max_{c} \left\{u(c) + \beta
+            \delta W_j(k') \right\}  \cr %\EQN laib1;a \cr
+          W_{j+1}(k) & = u[c_{j+1}(k)] + \beta W_j[f(k)- c_{j+1}(k)] \cr}$$
+          %\EQN laib2 \cr}$$
+where $c_{j+1}(k)$ is the maximizer of the right side of
+the first equation above  %\Ep{laib1;a}
+for $j+1$, starting from $W_0(k) = u[f(k)]$.
+Here $W_j(k)$ is the value of $u(c_{T-j}) + \beta u(c_{T-j+1}) +
+\ldots + \beta^{T-j} u(c_T)$, taking the decision
+rules $c_h(k)$ as given for $h=0, 1, \ldots, j$.
+
+\medskip
+\noindent
+{\bf c.}  State the optimization problem of the  time $0$
+person who is given the power to dictate the choices
+of all subsequent persons. Write the Bellman equations for
+this problem. The time $0$ person is said to have a commitment
+technology for ``self-control'' in this problem.
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.7} \quad {\bf Equilibrium search}
+\medskip
+\noindent An economy consists of a continuum of {\it ex ante\/} identical
+workers each of whom is either employed or unemployed.  A worker wants
+to maximize  the expected value of $\sum_{t=0}^\infty \beta^t y_t$ where $\beta \in (0,1)$
+and
+%
+%$$J_j(a,a') = \cases{ 1 &  if \ $g(a,s_j) = a'$ \cr
+%                      0 &  otherwise .} $$
+$$y_t = \cases{ w &  if \ employed \cr
+                      c(U) & if \ unemployed .} $$
+Each period,
+an unemployed worker draws one and only one offer to work (until fired)
+at a wage $w$ drawn from a c.d.f.\ $F(W) = {\rm Prob} (w \leq W)$
+where $F(0)=0, F(B) = 1$ for $B >0$.  Successive draws from $F$ are
+i.i.d.  If a worker accepts a job, he receives $w$ this period and enters
+the beginning of next period as `employed'.  At the beginning of each
+period, each such previously employed worker is exposed to a probability
+of $\lambda \in (0,1)$ of being fired; with probability $1-\lambda$ he is not fired and again
+receives the previously drawn $w$ as a wage.  If fired, the worker
+becomes newly unemployed and has the same opportunity as all other unemployed workers, i.e.,
+he draws an offer $w$ from c.d.f.\ $F$.  If an unemployed worker rejects that offer, he receives unemployment
+compensation $c(U) = c\bigl[ {\frac{1}{1+ \exp(-6U)}}- .5 \bigr] $ and enters next period unemployed.
+Here $U$ is the aggregate unemployment rate at the beginning of the period.  The unemployment
+rate tomorrow $U^*$ is related to the unemployment rate $U$ today by the law of motion
+$$ U^* = \lambda (1-U) + (1-\phi(U)) U ,$$
+where $\phi(U)$ is the fraction of unemployed workers who accept a wage offer this period.
+\medskip
+
+\noindent{\bf a.} Write a Bellman equation for an unemployed worker.
+\medskip
+
+\noindent{\bf b.} Describe the form of an unemployed worker's optimal decision rule.
+
+\medskip
+\noindent{\bf c.} Describe how $\phi(U)$ is
+implied by  a typical worker's optimal decision rule.
+
+\medskip
+\noindent{\bf d.}  Define a recursive competitive equilibrium for this environment.
+
+

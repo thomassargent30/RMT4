@@ -1,0 +1,2726 @@
+\input grafinp3
+%\input grafinput8
+\input psfig
+
+%\showchaptIDtrue
+%\def\@chaptID{19.}
+%\input gayejnl.txt
+%\input gayedef.txt
+\def\lege{\raise.3ex\hbox{$>$\kern-.75em\lower1ex\hbox{$<$}}}
+
+%\hbox{}
+\footnum=0
+\chapter{Foundations of Aggregate Labor Supply\label{macrolaborII}}
+
+%%\chapter{Macro labor II: From lotteries to careers\label{macrolaborII}}
+
+\section{Introduction}
+
+The  section \use{Empl_lottery} employment lotteries model   for years % of chapter \use{search2}
+served as the foundation of the high aggregate labor supply
+elasticity  that  generates big employment fluctuations   in   real business cycle models.
+  In the original version of his Nobel prize lecture, Prescott (2005a) highlighted the central role of employment
+lotteries  for real business cycle models when he asserted
+that ``Rogerson's aggregation result is every bit as important as
+the one giving rise to the aggregate production function.''
+But Prescott's enthusiasm for employment lotteries has  not been shared universally, especially by
+researchers who have studied labor market experiences of individual workers.  For example,
+Browning, Hansen, and Heckman (1999)  expressed  doubts about the employment lotteries model
+when they asserted  that ``the employment allocation
+mechanism strains credibility and is at odds with the micro
+evidence on individual employment histories.'' This chapter takes such criticisms of the employment lotteries
+ to heart by
+investigating how  the aggregate labor supply elasticity would be affected
+were we to replace employment lotteries and complete markets for consumption insurance
+with the incomplete markets arrangements that seem  more natural  to labor economists. This change reorients attention away from
+the fraction of its members that a representative family chooses to send to work at any moment, to  {\it career lengths} chosen by individual workers who self-insure
+by saving and dissaving.  We find that abandoning the employment lotteries coupled with
+complete consumption insurance claims trading assumed within many real business cycle models and replacing them with individual workers who self-insure by trading
+a risk-free bond does not by itself imperil that high aggregate labor supply elasticity championed by Prescott.  The labor supply elasticity
+depends on whether shocks and
+ government financed social security retirement schemes leave most workers on or off corners with respect to their retirement
+decisions, in a model of indivisible labor.
+\auth{Prescott, Edward C.}%
+\auth{Browning, Martin}
+\auth{Hansen, Lars P.}
+\auth{Heckman, James J.}
+
+During the last half decade, macroeconomists have mostly abandoned employment lotteries in favor of `time-averaging' and incomplete markets as an `aggregation' theory for aggregate labor supply.
+This is undoubtedly a positive development because now researchers who may differ about the size of the aggregate labor supply elasticity can at least talk in terms of a common framework and can focus on their disagreements about the proper quantitative settings for  a commonly agreed on set of
+ parameters and constraints.
+
+%In continuous time when the subjective discount rate is equal to
+%the market interest rate,
+To convey these ideas, we  build on an analysis of  Ljungqvist and Sargent (2007), who in a particular
+continuous time model  showed that
+the very same aggregate allocation and individual (expected) utilities
+that emerge from  a Rogerson-style  complete-market economy with employment lotteries
+are also attained in an incomplete-market economy without lotteries.
+In the Ljungqvist-Sargent setting, instead of trading  probabilities of working at any point in
+time, agents choose fractions of their lifetimes to devote
+to work and use a credit market to smooth consumption across
+episodes of work and times of retirement.\NFootnote{Larry Jones and Casey Mulligan anticipated aspects of this  equivalence
+result.
+In the context of indivisible consumption goods, in the original 1988 version of his paper,
+Jones (2008)
+showed  how timing could replace lotteries when there
+is no discounting. In the 2008 published version of his paper, he extended the analysis to cover
+ the case of discounting.
+In comparing an indivisible-labor complete-market model
+and a representative-agent model with divisible labor, Mulligan (2001)
+suggested that the elimination of employment lotteries and complete
+markets for consumption claims from the former model might not make
+much of a quantitative difference;
+``The smallest labor supply decision has an infinitesimal effect
+on lifetime consumption and the marginal utility of wealth in the
+[divisible-labor] model, and a small-but-larger-than-infinitesimal
+effect on the marginal utility of wealth in the [indivisible-labor]
+model -- as long as the effect on lifetime consumption is a small
+fraction of lifetime income {\it or} the marginal utility of wealth
+does not diminish too rapidly.'' However, as we shall learn  later in this chapter, these
+ qualifications vanish when time is continuous, as well as for infinitely-lived agents in discrete time. As a discussant of Ljungqvist and Sargent (2007), Prescott (2007) endorsed their
+incomplete markets, career length model as a model of  aggregate labor supply.
+In addition, he reduced his previous stress on the employment lotteries model by adding a new section, ``The life cycle and labor
+indivisibility,'' to the final  version of  his Nobel lecture published in America
+(Prescott 2006).}
+\auth{Prescott, Edward C.}%
+
+
+This chapter studies  how two camps of
+researchers, namely, those who champion high and low labor supply elasticities,
+respectively, both came to adopt the same theoretical framework.\NFootnote{This is the theme of Ljungqvist and Sargent (2011).}
+The first part  of the chapter revisits equivalence
+results between an employment lotteries model and a time-averaging
+model, then pursues various extensions to the time-averaging setup as a model of  career
+length determination. The second half of the chapter retraces the  steps that led  Chang and
+Kim's (2007) to discover a high labor supply elasticity in
+simulations of a Bewley with incomplete markets and indivisible
+labor. Chang and Kim's agents optimally alternate between periods of work and leisure
+(they `time average')   to  allocate consumption
+and leisure over their infinite lifespans. The chapter concludes by studying
+how Ljungqvist and Sargent's (2007) equivalence result in continuous
+time with finitely-lived agents extends to a deterministic version
+of Chang and Kim's (2007) discrete-time growth model inhabited by
+infinitely-lived agents.
+
+\auth{Chang, Yongsung}%
+\auth{Kim, Sun-Bin}%
+\auth{Ljungqvist, Lars}
+\auth{Sargent, Thomas J.}
+
+
+
+
+
+\section{Equivalent allocations}\label{sec:LSequi}%
+Following Ljungqvist and Sargent (2007), consider an agent who
+lives in continuous time with a deterministic
+lifespan of unit length, and lifetime preferences given by
+$$
+\int_0^1 e^{-\rho t} \left[u(c_t) - v(n_t) \right]\,dt\,,
+\EQN LSequi_utility
+$$
+where $c_t\geq 0$ and $n_t\in \{0,1\}$ are consumption and labor supply
+at time $t$, respectively, and $\rho$ is his subjective discount rate.
+That $n_t\in \{0,1\}$ asserts that labor
+supply is indivisible. The instantaneous utility function over
+consumption, $u(c)$, is strictly increasing, strictly concave, and
+twice continuously differentiable. Since labor is
+indivisible, we need  to specify only two points for the disutility
+of work $v(n)$, so we normalize $v(0)=0$ and let $v(1)=B > 0$.
+
+Until section \use{sec:ChangKim}, we  assume a given wage rate $w$ and a
+given interest rate $r=\rho$.
+
+
+
+\subsection{Choosing career length}\label{sec:LS_lifetime}%
+At each point in time, an agent can  work at a wage rate
+$w$ and can save or dissave at an interest rate $r$. An agent's asset
+holdings at time $t$ are denoted by $a_t$ and its time derivative
+by $\dot{a}_t$. Initial assets are assumed to be zero, $a_0=0$, and
+the budget constraint at time $t$ is
+$$
+\dot{a}_t = r a_t + w n_t - c_t\,,
+\EQN LSequi_bc
+$$
+with a terminal condition $a_1\geq 0$. This is a no-Ponzi scheme condition.
+
+To solve the agent's optimization problem, we formulate the
+current-value \idx{Hamiltonian}
+$$
+H_t = u(c_t) -B n_t + \lambda_t \left[ r a_t + w n_t - c_t \right]\,,
+\EQN LSequi_Hamilton
+$$
+where $\lambda_t$ is the multiplier on constraint \Ep{LSequi_bc}. It is called
+the costate variable associated with the state variable $a_t$.
+First-order conditions with respect to $c_t$ and $n_t$, respectively, are:
+$$\EQNalign{u'(c_t) - \lambda_t  &= 0\,,      \EQN LSequi_FOC;a \cr
+\noalign{\vskip.3cm}
+-B + \lambda_t w & \cases{
+   < 0 \hskip.5cm &if $n_t=0$;  \cr
+   = 0 \hskip.5cm &if indifferent to $n_t\in\{0,1\}$; \cr
+   > 0 \hskip.5cm &if $n_t=1$.  \cr } \EQN LSequi_FOC;b \cr
+}
+$$
+Furthermore, the costate variable obeys the differential equation
+$$
+\dot{\lambda}_t = \lambda_t \rho - {\partial H_t \over \partial a_t}
+                = \lambda_t[\rho -r] .
+\EQN LSequi_lambda
+$$
+
+
+When $r=\rho$, Ljungqvist and Sargent (2007) show that the solution
+to this optimization problem yields the same lifetime utility as if
+the agent  had access to employment lotteries and complete
+insurance markets (including consumption claims that are contingent
+on lottery outcomes). First, we note from equation \Ep{LSequi_lambda}
+that when $r=\rho$ the costate variable is constant over time  and
+hence, by equation \Ep{LSequi_FOC;a},
+the optimal consumption stream is constant over time,
+$c_t = \bar c$. Then after  invoking optimality condition
+\Ep{LSequi_FOC;b}, there are  three possible cases with respect
+to the agent's lifetime labor supply,
+$$
+-B + u'(\bar c) w \cases{
+   < 0 \hskip.5cm &{\it Case 1}: $n_t=0$ for all $t$;  \cr
+   = 0 \hskip.5cm &{\it Case 2}: indifference to $n_t\in\{0,1\}$ at any \cr
+                  &\hskip1.3cm particular instance in time;          \cr
+   > 0 \hskip.5cm &{\it Case 3}: $n_t=1$ for all $t$.  \cr }
+                                                  \EQN LSequi_labor
+$$
+These three cases stand as  analogues to the three cases in
+the  section
+\use{Empl_lottery}  static model with employment lotteries. % in  of chapter \use{search2}.
+The agent finds it
+optimal  never to work and always to work in the first and third case,
+respectively. The interesting case is the intermediate one in which
+the agent is indifferent between work and leisure at any particular
+instance in time. At such an interior solution for lifetime labor
+supply, optimality condition \Ep{LSequi_labor} at equality determines
+the optimal constant consumption stream,
+$$
+u'(\bar c) = {B \over w}\,. \EQN LSequi_cons
+$$
+Evidently, this is the counterpart to the consumption outcome
+in the  employment lottery model.
+When utility is  logarithmic in consumption,
+the optimal consumption level in
+expression \Ep{LSequi_cons} becomes
+$$
+\bar c = {w \over B}\,, \hskip1cm \hbox{\rm if   }
+u(c)=\log (c)\,.                            \EQN LSequi_conslog
+$$
+
+While the agent is indifferent between work and leisure at any
+particular instance in time,  he   cares about the integral of his work over his lifetime.  His lifetime labor
+supply is determined by the agent's present-value budget constraint
+at equality when financing the optimal constant consumption
+stream in expression \Ep{LSequi_cons}. The present-value budget
+constraint is obtained from budget constraint \Ep{LSequi_bc},
+and the initial and terminal conditions for asset holdings,
+$a_0=a_1=0$:
+$$
+w \int_0^1 e^{-rt} n_t\, dt = \bar c \int_0^1 e^{-rt} \, dt.
+\EQN LSequi_PVbc
+$$
+Thus, the optimal plan has the agent working a fraction of
+his lifetime, where the associated present value of labor income
+is given by expression \Ep{LSequi_PVbc}. Many  streams of lifetime labor supply
+ yield the same present value of labor income in expression
+\Ep{LSequi_PVbc}. The agent is indifferent among
+such alternative lifetime labor profiles because constancy of
+the associated present value of labor income implies constancy
+of the associated lifetime disutility of work in preference
+specification \Ep{LSequi_utility} when $\rho=r$. Hence, the
+agent is indeed indifferent about when he supplies his labor, as we
+also inferred from the second case of \Ep{LSequi_labor}.
+
+In subsequent sections \use{sec:LStaxsoc}--\use{sec:LSshocks},
+we will assume that $r=\rho=0$, i.e., no discounting.
+%we will not only assume equality of $\rho$ and $r$ but also that
+%they are equal to zero, i.e., no discounting.
+Under that assumption, the optimal fraction of a lifetime devoted to
+work, as given by present-value budget constraint \Ep{LSequi_PVbc},
+is the same regardless of when the agent supplies his labor,
+$$
+T \equiv \int_0^1 n_t\, dt = {\bar c \over w},        \EQN LSequi_career
+$$
+where $T$ denotes an agent's choice of career length. When
+utility is logarithmic in consumption, equations
+\Ep{LSequi_conslog} and \Ep{LSequi_career} determine the
+optimal career length at an interior solution,
+$$
+T ={1 \over B}\,,  \hskip1cm \hbox{\rm if   } u(c)=\log (c)\,;
+                                                   \EQN LSequi_careerlog
+$$
+where  for an interior
+solution we require  that $B \geq 1$.
+
+Next, we confirm that a corresponding employment lottery model
+yields the same (expected) lifetime utility to an agent and support
+the same set of aggregate allocations, i.e., the introduction of
+lotteries and complete consumption insurance does not matter in
+this economy.
+
+%We will also focus on interior solutions to lifetime
+%labor supply by assuming that the necessary parameter
+%restrictions are satisified. For example, when utility is logarithmic
+%in consumption, the parameter restriction is $B\geq 1$, and by
+%equations \Ep{LSequi_conslog} and \Ep{LSequi_career},
+%the optimal fraction of a lifetime devoted to work is
+%$$
+%\int_0^1 n_t\, dt = {1 \over B}\,, \hskip1cm \hbox{\rm if   }
+%u(c)=\log (c)\,.                                \EQN LSequi_careerlog
+%$$
+
+%But first, we establish an equivalence result for the economy of this
+%section. We show that the introduction of employment lotteries and
+%complete markets for consumption insurance do not matter. Both the
+%time averaging economy of this section and
+%the employment lotteries economy of the next section, yield the
+%same (expected) lifetime utility to an agent and support the same
+%set of aggregate allocations.
+
+
+
+
+
+
+
+\subsection{Employment lotteries}\label{sec:LS_lottery}%
+Consider a continuum $j \in [0,1]$ of ex ante identical agents like
+those in section \use{sec:LS_lifetime}. When markets are complete
+and there are employment lotteries to overcome the nonconvexity in
+labor supply, a decentralized market equilibrium is the solution to
+a planner problem, in which the planner weights are
+equal across all the ex ante identical agents. The planner chooses
+a consumption and employment allocation $c_{jt}\geq 0$,
+$n_{jt}\in\{0,1\}$ to maximize
+$$
+\int_0^1 \int_0^1 e^{-\rho t} \left[u(c_{jt}) - B n_{jt}
+                                               \right]\,dt\,dj
+\EQN LSequi_utility_family
+$$
+subject to
+$$
+\int_0^1 \int_0^1 e^{-r t} \Bigl[w n_{jt} - c_{jt}
+                                          \Bigr]\,dt\,dj \geq 0.
+\EQN LSequi_PVbc_family
+$$
+Here the planner can borrow and lend at the rate $r$
+and send agents to work to earn the wage $w$.
+
+The strict concavity of the utility function $u(\cdot)$
+and our assumption that $r=\rho$ imply that  the planner sets a constant
+consumption level across agents and across time,
+$c_{jt}=\bar c$ for all $j$ and $t$. The planner exposes each
+agent at time $t$ to a lottery that sends him to work with
+probability $\psi_t\in [0,1]$. The planner chooses $\bar c$
+and $\psi_t$ to maximize
+$$
+\int_0^1 e^{-\rho t} \left[u(\bar c) - B \psi_t \right]\,dt
+\EQN LSequi_utility2_family
+$$
+subject to
+$$
+\int_0^1 e^{-r t} \Bigl[w \psi_t - \bar c \Bigr]\,dt \geq 0\,.
+\EQN LSequi_PVbc2_family
+$$
+This problem resembles the `time averaging' problem of a
+single agent in section \use{sec:LS_lifetime}. At an
+interior solution, the optimal
+constant consumption stream is once again given by
+equation \Ep{LSequi_cons}, $u'(\bar c)=B/w$.
+A multitude of employment
+lotteries  can satisfy present-value budget constraint
+\Ep{LSequi_PVbc2_family} to finance the optimal consumption
+choice. Agents would be
+indifferent among  all of those alternative lottery designs.
+As before, identical present values of labor income for any
+two labor supply schemes imply identical (expected)
+lifetime disutilities of work for those two schemes since
+$\rho = r$.\NFootnote{For example, at the beginnning of
+time, the planner can randomize over a constant fraction
+of agents $\bar \psi$ who are assigned to work for every
+$t\in [0,1]$, and a fraction $1- \bar \psi$ who are asked to
+specialize in leisure, where $\bar \psi$ is chosen to satisfy
+the planner's intertemporal budget constraint
+\Ep{LSequi_PVbc2_family}. An alternative arrangement would be, at
+each time $t\in[0,1]$, the planner runs a lottery that sends
+a time invariant fraction $\bar \psi$ to work and a fraction
+$1- \bar \psi$ to leisure. Agents are indifferent between
+these alternative lottery designs since they yield the
+same expected lifetime disutility of work. \label{note:LS_lottery}}
+
+This argument suffices to  establish the  equivalence of
+aggregate allocations and expected utilities between the
+incomplete-market economy in section \use{sec:LS_lifetime}
+and the employment-lotteries, complete-market economy of the present section.
+An agent's optimal consumption is uniquely determined
+and identical across  the two economies. For a given
+present-value of aggregate consumption, the same
+aggregate present-value of labor income can be attained with
+a multitude of intertemporal allocations for the aggregate
+measure of employed agents. Each of those
+alternative aggregate allocations is associated with
+either an incomplete-market economy where individual agents
+engage in time averaging or a complete-market economy with one of a variety of appropriate
+ lottery designs. Since an
+agent's expected disutility of work is the same under the
+alternative implementations, it follows
+that an agent's expected utility is the same in the two
+economies.
+
+
+
+\section{Taxation and social security}\label{sec:LStaxsoc}%
+We study taxation and social security in a continuous-time
+overlapping generations model. At each instance in time, there
+is a constant measure of newborn ex ante identical agents like
+those in section \use{sec:LS_lifetime} entering the economy.
+Thus, the economy's population and age structure stay constant
+over time. Our focus is not on the determination of intertemporal
+prices in this overlapping generations environment with its
+possible dynamic inefficiencies (see chapter \use{ogmodels}),
+so we retain our small open economy assumption of an exogenously
+given interest rate, which also implies a given
+wage rate if the economy's production technology is constant
+returns to scale in labor and capital.\NFootnote{In the
+case of a constant-returns-to-scale Cobb-Douglas production
+function, equation \Ep{LS_CK_wr;b} shows how the interest rate
+in international capital markets determines the capital-labor
+ratio in a small open economy, which in turn determines the wage
+rate in \Ep{LS_CK_wr;a}.}
+
+We assume that utility is logarithmic in consumption,
+$u(c) = \log (c)$, and that there is no discounting, $r=\rho=0$.
+%and keep that assumption until section \use{sec:ChangKim}.
+The assumption of no discounting is inessential for most of
+our results, and where it matters we will take note. The analytical
+convenience is that the optimal career length is uniquely
+determined and does not depend on the timing of an agent's
+lifetime labor supply, as shown in expressions
+\Ep{LSequi_career} and \Ep{LSequi_careerlog}.
+
+
+%We let $T$ denote an agent's choice of career length. When
+%utility is logarithmic in consumption, equations
+%\Ep{LSequi_conslog} and \Ep{LSequi_career} determine the
+%optimal career length at an interior solution,
+%$$
+%T \equiv \int_0^1 n_t\, dt ={1 \over B} ,      \EQN LS_socsec_LF
+%$$
+%where the implicit parameter restriction for an interior
+%solution is that $B \geq 1$.
+
+As emphasized by Prescott (2005), if labor income is taxed
+and tax revenues are handed back lump sum to agents, a model
+with indivisible labor and employment lotteries exhibits a large
+labor supply elasticity. Under the equivalence result in
+section \use{sec:LSequi}, we follow Ljungqvist and Sargent (2007)
+and demonstrate that the same high labor supply elasticity arises
+in the incomplete-market model where career lengths rather
+than the odds of working in employment lotteries are
+shortened in response to such a tax system.
+
+In the spirit of  Ljungqvist and Sargent (2012), we offer a
+qualification to the high labor supply elasticity in a model of
+lifetime labor supply. When a government program such as social
+security is associated with a large implicit tax on working beyond an
+official retirement age, there might not be much of an effect of
+taxation on career length for those agents who could be at a corner
+solution, strictly preferring to retire at the official
+retirement age.
+
+
+
+\subsection{Taxation}\label{sec:LS_tax}%
+If labor income is taxed at rate $\tau\in [0,1)$ and tax revenues
+are not returned to agents as tranfers in any form, there would
+be no effect on labor supply, for the same reason that equilibrium
+career length \Ep{LSequi_careerlog} does not depend on the level of the
+wage $w$. The reason is that income and substitution effects cancel
+with variations in the net-of-tax wage rate under the assumption
+that preferences are consistent with balanced growth. But if instead
+all tax receipts are rebated lump sum to agents, the labor supply
+elasticity will be large.
+
+Let $x$ be the present value of lump-sum transfers that each agent
+receives over his lifetime, as determined by the government budget
+constraint
+$$
+\tau w T^\star  = x,                             \EQN LS_tax_govbc
+$$
+where $T^\star$ is the equilibrium career length. Note that given a
+zero interest rate and a lifetime of unit length, $x$ is  the
+instant-by-instant per capita lump-sum transfer that satisfies the
+government's static budget constraint \Ep{LS_tax_govbc} as well as
+the present value of total lump-sum transfers paid to an agent over
+his lifetime.
+
+As in section \use{sec:LS_lifetime}, an agent again chooses a unique
+constant consumption $\bar c$, and is indifferent among alternative labor
+supply paths that yield the particular present value of income that is
+required to finance his consumption choice. Under the present
+assumption of no discounting, all of those alternative labor supply
+paths have the same career length, i.e, the same fraction of an
+agent's lifetime devoted to work, $T = \int_0^1 n_t\, dt$. Hence,
+an agent's optimization problem becomes
+$$
+\max_{\bar c, T} \Bigl\{ \log(\bar c) - BT \Bigr\}   \EQN LS_tax_utility
+$$
+subject to
+$$\EQNalign{
+&\bar c \leq (1-\tau) w T + x,            \EQN LS_tax_bc   \cr
+&\bar c \geq 0,\;\; T\in[0,1].  \cr}
+$$
+Substitute budget constraint \Ep{LS_tax_bc} into the objective
+function of \Ep{LS_tax_utility}, then
+compute a first-order condition with respect to career length at
+an interior solution,
+$$
+{(1-\tau)w \over (1-\tau)wT + x}-B =0.    \EQN LS_tax_FOC
+$$
+Substituting \Ep{LS_tax_govbc} into first-order condition
+\Ep{LS_tax_FOC} shows that  equilibrium career length is
+$$
+T^\star(\tau) \equiv {1-\tau \over B}.    \EQN LS_tax_career
+$$
+We conclude that lifetime labor supply is highly elastic when labor
+is indivisible. According to expression \Ep{LS_tax_career}, the
+elasticity of lifetime labor supply with respect to the net-of-tax
+rate ($1-\tau$) is equal to one.
+
+The reader can verify that a model with employment lotteries yield
+the same equilibrium consumption and the same (expected) lifetime utility of
+an agent. For example, we can adopt the first example of a lottery design
+in footnote \use{note:LS_lottery}, where the planner for each cohort
+of newborn agents, administers
+a lifetime employment lottery once and for all at the beginning of
+life that assigns a fraction $\psi\in [0,1]$ of agents to work
+always and a fraction $1-\psi$ always to enjoy leisure. This planner
+problem is identical to the time averaging planning problem above, provided that we replace  the choice variable $T$ by $\psi$.
+
+
+
+\subsection{Social security}\label{sec:LSsocialsecurity}%
+Instead of returning  tax receipts lump sum to agents as in
+section~\use{sec:LS_tax}, we now assume that all revenues are
+used to finance a social security system in which
+agents are eligible to retire and collect benefits after an official
+retirement age $R$. All labor earnings are subject to a
+flat rate social security tax $\tau\in(0,1)$. Benefits {\it after}
+the agent's chosen retirement date $T$, which
+may or may not equal $R$, equal  a replacement rate $\rho$
+times a worker's average earnings, i.e., $\rho$ times the wage rate $w$.
+Agents who choose to retire after $R$  collect no  benefits
+until they actually retire.
+
+To construct an equilibrium, we set the two parameters $R$
+and $\tau$ of the social security system, and then solve residually for
+a replacement rate $\rho$ that is consistent with a balanced government
+budget. At an equilibrium career length $\tilde T$, the government
+budget constraint is
+$$
+\tau w \tilde T  = \left(1- \max\{R, \tilde T\} \right) \rho w,  \EQN LS_socsec_bc
+$$
+where the left side is tax revenues and the right side is social
+security benefits. The first (second) argument of the max operator
+presumes an equilibrium outcome in which workers retire before (after)
+the official retirement age.
+Note that the unit length of a lifetime implies that  an age interval
+corresponds  both to a fraction of an agent's lifetime and also to a
+fraction of the population within that age interval at any point in time.
+From budget constraint \Ep{LS_socsec_bc} we can solve for the
+replacement rate,
+$$
+\rho = {\tau \tilde T \over 1- \max\{R, \tilde T\}}\,.  \EQN LS_socsec_rho
+$$
+
+An agent's optimal career length solves
+$$
+\max_{T\in[0,1]} \Bigl\{ \log\Bigl[(1-\tau) w T + \rho w \,
+\min\{1-R,\, 1-T\} \Bigr] - BT \Bigr\},                     \EQN LS_socsec_max
+$$
+where we have substituted the agent's budget constraint into the
+utility function, and the arguments of the min operator appear in the
+same order as in the max operator of \Ep{LS_socsec_bc}, i.e., the
+first (second) argument refers to the case when the agent chooses to
+work shorter (longer) than the official retirement age.
+
+\vskip.5cm
+\noindent
+{\bf Case with $\tilde T \leq R$}
+\vskip.25cm
+
+\noindent
+In the case of an optimal career length $T \leq R$, the first-order condition
+of \Ep{LS_socsec_max} at an interior solution (with respect to $T\leq R$)
+becomes
+$$
+{(1-\tau) w \over (1-\tau) w T + \rho w (1-R)} - B = 0.   \EQN LS_socsec_FOC1
+$$
+By government budget balance in \Ep{LS_socsec_rho},
+$\rho=\tau \tilde T /(1-R)$, which can be substituted into
+\Ep{LS_socsec_FOC1} to yield an expression for equilibrium career length,
+$$
+\tilde T = {1-\tau \over B} \equiv T^{+}\!(\tau).   \EQN LS_socsec_T1
+$$
+
+
+\vskip.5cm
+\noindent
+{\bf Case with $\tilde T \geq R$}
+\vskip.25cm
+
+\noindent
+In the case of an optimal career length $T \geq R$, the first-order condition
+of \Ep{LS_socsec_max} at an interior solution (with respect to $T\geq R$) becomes
+$$
+{(1-\tau) w - \rho w \over (1-\tau) w T + \rho w (1-T)} - B \geq 0,
+                                                         \EQN LS_socsec_FOC2
+$$
+which holds with equality except under a binding corner solution with $T=1$.
+However, such a corner solution can be ruled out as an equilibrium outcome
+because government budget balance in \Ep{LS_socsec_rho} would imply
+that the replacement rate goes to infinity; hence, it must be optimal for
+a worker to retire prior to the end of his lifetime. After
+substituting $\rho=\tau \tilde T /(1-\tilde T)$ into the denominator of
+\Ep{LS_socsec_FOC2} at equality, we
+obtain an expression for equilibrium career length
+$$
+\tilde T = {1-\tau - \rho \over B}
+         = {1-  {\displaystyle \tau \over \displaystyle 1- \tilde T}  \over B},
+                                                         \EQN LS_socsec_T2a
+$$
+where the second equality follows when we also substitute out for the
+second appearance of $\rho$.
+
+Expression \Ep{LS_socsec_T2a} can be rearranged to become
+$$
+B \tilde T^2 - (1+B) \tilde T + 1-\tau =0.               \EQN LS_socsec_quadratic
+$$
+The smaller root of this quadratic equation determines the equilibrium
+career length:
+$$
+\tilde T = { 1+B - \sqrt{(1+B)^2 - 4B(1-\tau )} \over 2B }
+             \equiv T^{-}\!(\tau),                       \EQN LS_socsec_T2b
+$$
+where $\tilde T^{-}\!(0)=1/B$, and $T^{-}\!(\tau)$ decreases monotonically
+to zero as $\tau$ goes to one.\NFootnote{After setting $\tau=0$ in
+quadratic equation \Ep{LS_socsec_quadratic}, the two roots are
+$$\EQNalign{
+{ 1+B \pm \sqrt{1+2B+B^2-4B} \over 2B}
+&={1+B \pm \sqrt{(1-B)^2} \over 2B}                 \cr
+\noalign{\vskip.2cm}
+&= {1+B \pm \vert 1-B \vert \over 2B}
+={1+B \pm (B-1) \over 2B} = \left(1, {1 \over B}\right). \cr} $$
+%\cases{
+%   1/B; &  \cr
+%   1 ;  &  \cr}                                     \cr}
+%$$
+where we have invoked our parameter restriction $B \geq 1$ to
+evaluate the absolute value of $\vert 1-B \vert =B-1$. The smaller
+root constitutes the equilibrium career length since it agrees with
+the agent's choice in \Ep{LSequi_careerlog}.}
+
+From equation \Ep{LS_socsec_T1} that defines $T^{+}\!(\tau)$ and from
+equation \Ep{LS_socsec_T2a} that implicitly defines $T^{-}\!(\tau)$,
+it follows immediately that $T^{+}\!(\tau) > T^{-}\!(\tau)$
+for $\tau\in(0,1)$.
+We can now  state a proposition that describes how the retirement
+age $\tilde T$ chosen in equilibrium depends on
+the official social security retirement age.
+\medskip
+\medskip
+\noindent{\sc Proposition:} Given an official retirement age $R\in(0,1)$
+and a tax rate $\tau\in(0,1)$, the equilibrium career length
+$\tilde T(R,\tau)$ is unique and given by
+
+\medskip
+\item{  i) }  if $R \leq T^{-}\!(\tau)$, then $\tilde T(R,\tau) = T^{-}\!(\tau)$
+      (retire {\it after} the official retirement age);
+\item{ ii) }  if $R \geq T^{+}\!(\tau)$, then $\tilde T(R,\tau) = T^{+}\!(\tau)$
+      (retire {\it before} the official retirement age);
+\item{iii) }  otherwise, $\tilde T(R,\tau) = R$
+       (retire {\it at} the official retirement age).
+\medskip
+\medskip
+\noindent
+Given $R=0.6$, the solid curve in Figure \Fg{figLSsocsec} displays  equilibrium career
+length as a function of $\tau$. Within a range of tax rates
+between 16--40 percent,  equilibrium career length does not
+respond to changes in the tax rate because agents are at a corner solution and
+strictly prefer to retire at the official retirement age $R$. Away
+from that corner, career length is highly sensitive to the
+social security tax rate $\tau$ in Figure \Fg{figLSsocsec}.
+
+\midfigure{figLSsocsec}
+\centerline{\epsfxsize=3truein\epsffile{LS_socsec.ps}}
+\caption{Social security. Solid curve depicts equilibrium career
+length as a function of a social security tax rate $\tau$,
+given an official retirement age $R=0.6$. At low (high)
+tax rates, $\tau <0.16$ ($\tau > 0.40$), an agent retires after
+(before) the official retirement age, where the actual retirement
+age lies along the curve $T^-(\tau)$ ($T^+(\tau)$), given a
+disutility of work $B=1$.}
+\infiglist{figLSsocsec}
+\endfigure
+
+When an equilibrium has agents retiring {\it before} the official
+retirement age, $R > \tilde T = T^{+}\!(\tau)$, equilibrium career
+length \Ep{LS_socsec_T1} is identical to outcome \Ep{LS_tax_career}
+under the Prescott tax system. The reasons are that (a) under
+our assumption that average earnings alone determine the replacement
+rate without regard to career length,  agents regard their social
+security contributions purely as a tax and perceive no extra benefits
+accruing to them from paying it, while (b) the present value of future
+social security payments operates like a lump sum transfer when optimal
+career length falls short of the official retirement age. The
+sensitivity of career length to social security taxation is even
+larger in an equilibrium that has agents retiring {\it after}
+the official retirement age, $R < \tilde T = T^{-}\!(\tau)$,
+because the marginal decision about career length is then also
+distorted by the loss of benefits incurred from working beyond the
+official retirement age, as shown by the first equality in
+expression \Ep{LS_socsec_T2a}.
+
+
+
+\section{Earnings-experience profiles}\label{sec:LSprofile}%
+The equivalence of outcomes across models of employment lotteries and time
+averaging breaks down when  human
+capital can be accumulated. A human capital accumulation technology typically makes career choice  in effect
+induce another indivisibility that will be handled differently by our two types of models. %s the  `mother of all indivisibilities.'
+While an agent in a time
+averaging model will contemplate  when to terminate a career during which
+earnings have increased because of work experience or investments
+in human capital, the `invisible hand' in a complete-market
+economy with employment lotteries will preside over a dual labor
+market in which some agents specialize in work and others in
+leisure.
+ Here
+we adopt  a specification of  earnings-experience profiles  of
+Ljungqvist and Sargent (2012).\NFootnote{We defer an analysis of a Ben-Porath's (1967) human
+capital technology to section \use{sec:LSbenporath}.} An agent with past employment
+spells totaling $h_t = \int_0^t n_s \,ds$ has the opportunity
+to earn
+$$
+w_t = W\, h_t^\phi, \quad \quad W>0, \;\; \phi\in[0,1].  \EQN LSprofile_wage
+$$
+\auth{Ben-Porath, Yoram}%
+
+
+\subsection{Time averaging}
+
+Under the assumption of no discounting, an agent is indifferent
+about the timing of his labor supply, so we are free to assume
+that the agent frontloads work at the beginning of life. The
+present value of labor income for someone who works a fraction
+$T$ of his lifetime is
+$$
+\int_0^T W t^\phi \, d\, t = {W\,T^{\phi+1} \over \phi+1} \,.
+                                                \EQN LSprofile_PVlabor
+$$
+As before, since the subjective discount rate equals the market
+interest rate, an agent chooses a constant consumption stream
+$\bar c$. Hence, an agent's optimization problem becomes
+$$
+\max_{\bar c, T} \Bigl\{ \log(\bar c) - BT \Bigr\} \EQN LSprofile_utility
+$$
+subject to
+$$\EQNalign{
+&\bar c \leq {W\, T^{\phi+1} \over \phi+1}\,,        \EQN LSprofile_bc   \cr
+\noalign{\vskip.2cm}
+&\bar c \geq 0,\;\; T\in[0,1].  \cr}
+$$
+We substitute budget constraint \Ep{LSprofile_bc} into the objective
+function of \Ep{LSprofile_utility}, and
+compute a first-order condition with respect to career length at
+an interior solution,
+$$
+T = {\phi +1 \over B}\,;                         \EQN LSprofile_career
+$$
+where the implicit parameter restriction for an interior
+solution is that $B \geq \phi +1$.
+
+Because preferences are consistent with balanced growth, the
+optimal career length \Ep{LSprofile_career} does not depend on the
+earnings level parameter $W$. But evidently, career length does
+increase with the elasticity parameter $\phi$. The more elastic
+the earnings profile is to accumulated working time, the longer
+is an agent's career.
+
+
+\subsection{Employment lotteries}
+
+We make three modifications to the planner problem in section
+\use{sec:LS_lottery}. Besides our two specializations of zero
+discounting and that the instantaneous utility function over
+consumption is logarithmic, there are now agent-specific
+wage rates $w_{jt}$ with each agent's earnings increasing in
+his past experience as given by \Ep{LSprofile_wage}.
+
+Because an agent's earnings increase with his experience, it
+follows immediately that an optimal employment allocation has
+a fraction $\psi$ of agents to work always ($n_{jt}=1$ for all
+$t\in[0,1]$ for these unlucky people) and a fraction $1-\psi$
+always to enjoy leisure ($n_{jt}=0$ for all $t\in[0,1]$ for these
+lucky ones). Hence, the indeterminacy in lottery designs is now
+gone. An agent who works throughout his lifetime generates
+present-value labor income equal to $W/(\phi +1)$, as defined
+in \Ep{LSprofile_PVlabor}.
+
+As before, the planner chooses constant consumption $\bar c$
+across agents and across time. The planner's problem becomes
+$$
+\max_{\bar c, \psi} \Bigl\{ \log(\bar c) - B \psi \Bigr\}
+                                            \EQN LSprofile_utility_family
+$$
+subject to
+$$\EQNalign{
+&\bar c \leq \psi {W \over \phi+1}\,,        \EQN LSprofile_bc_family   \cr
+\noalign{\vskip.2cm}
+&\bar c \geq 0,\;\; \psi\in[0,1].  \cr}
+$$
+We substitute budget constraint \Ep{LSprofile_bc_family} into the
+objective function of \Ep{LSprofile_utility_family}, and
+compute a first-order condition with respect to the fraction of the
+population sent to work at an interior solution,
+$$
+\psi = {1 \over B}\,.                         \EQN LSprofile_fraction
+$$
+
+We conclude that agents in a complete-market economy with employment
+lotteries on average work less than agents who are left alone to `time average'
+in an  incomplete-market economy, as characterized by \Ep{LSprofile_career}.
+The latter agents confront a difficult choice between enjoying leisure
+and earning additional labor income at the peak of their lifetime
+earnings potential. This choice is not faced by  agents who
+follow the instructions of the planner who uses lotteries to convexify
+the indivisibility brought by careers. Of course, in the special
+($\phi=0$) case when work experience does not affect earnings, the
+aggregate labor supplies as well as the expected lifetime utilities
+are exactly the same across the two economies, as asserted in the equivalence
+result of section \use{sec:LSequi}.
+
+
+
+\subsection{Prescott tax and transfer scheme}
+
+It is instructive to revisit Prescott's tax analysis in
+section \use{sec:LS_tax} for the present environment with
+earnings-experience profiles. We invite the readers to verify
+that the equilibrium career length in the time averaging
+economy is then
+$$
+T^{\star} = {(1-\tau) (\phi +1) \over B },   \EQN LSprofile_tax_career
+$$
+and the employment-population fraction in the employment
+lotteries economy is
+$$
+\psi^{\star} = {(1-\tau) \over B }.          \EQN LSprofile_tax_family
+$$
+While the labor supplies in \Ep{LSprofile_tax_career} and
+\Ep{LSprofile_tax_family} differ, we note that the elasticity of
+the supply with respect to the net-of-tax rate ($1-\tau$) is the
+same and equal to one. This equality is another  reflection of  broad
+similarities that typically prevail across incomplete-market and complete-market economies
+with indivisible labor.  We shall encounter  another example  in section \use{sec:ChangKim} when we compare the
+aggregate labor supply  in a Bewley  incomplete markets
+economy with its complete-market counterpart.
+\auth{Prescott, Edward C.}%
+
+\subsection{No discounting now matters}
+
+Recall that under a flat earnings-experience profile ($\phi=0$)
+in section \use{sec:LS_lifetime}, an agent is indifferent about
+the multitude of labor supply paths that yield the same
+present-value of labor income in budget constraint
+\Ep{LSequi_PVbc}. The reason is that two alternative labor supply
+paths with the same present-value of labor income imply
+the same lifetime disutility of work when
+$\rho = r$. Note that for strictly positive discounting,
+$\rho =r >0$, a labor supply path that is tilted toward
+the future means that an agent will have to work for
+a longer period of time to generate the same present-value
+of labor income as compared to a labor supply path that
+is tilted toward the present. But that is acceptable to
+the agent since future disutilities of work are discounted
+at the same rate as labor earnings when the subjective
+discount rate is equal to the market discount rate.
+
+But if there is an upward-sloping earnings-experience profile
+($\phi >0$), an agent is no longer indifferent to the
+described variation in career length associated with the timing
+of lifetime labor supply. In particular, when $\rho = r>0$,
+an agent strictly prefers to shift his labor supply to the end
+of life because at a given lifetime disutility of work, working
+later in life would mean spending more total time working.
+That would push the worker further up the experience-earnings
+profile and thereby increase the present value of lifetime
+earnings.
+
+Features  not present in our model would attenuate
+ such a desire to postpone labor supply to the end
+of life, e.g., borrowing constraints that force an
+agent to finance consumption with current labor earnings,
+incomplete insurance markets that compel an agent to resolve
+career uncertainties earlier, and
+forecast declines in dexterity with advances in age.
+
+
+\section{Intensive margin}\label{sec:LSintensive}%
+Prescott et al.\ (2009) extend the analysis of Ljungqvist and
+Sargent (2007) in section \use{sec:LSequi} by introducing an
+intensive margin in labor supply, i.e., $n_t\in [0,1]$ is now a
+continuous rather than a discrete choice variable. However,
+to retain the central force of indivisible labor, they postulate
+a nonlinear mapping from $n_t$ to effective labor services, in particular, an
+increasing mapping that is first convex and then concave. For
+expositional simplicity, we let the effective labor services associated with
+$n_t$ be $(n_t - \underline{n})$ where $\underline{n}\in(0,1)$.
+As noted by Prescott et al.\ (2009) such a mapping can reflect
+ costs associated with getting set up in a job, learning about coworkers, and so on.
+ \auth{Prescott, Edward C.}%
+ \auth{Rogerson, Richard}%
+ \auth{Wallenius, Johanna}%
+\auth{Ljungqvist, Lars}%
+\auth{Sargent, Thomas J.}%
+
+The preferences are the same as those of Ljungqvist and Sargent (2007)
+in \Ep{LSequi_utility} but now with no discounting, $\rho = r = 0$.
+Under the present assumption that $n_t$ is a continuous
+choice variable, we need to make additional assumptions about the
+function $v(\cdot)$. The instantaneous disutility function over
+work, $v(n)$, is strictly increasing, strictly convex, and
+twice continuously differentiable.
+
+
+\subsection{Employment lotteries}\label{sec:LS_Prescott}%
+We begin by solving a complete-market economy with employment
+lotteries in a static model. To compute an equilibrium allocation, we posit that a planner chooses
+ consumption and employment $c_{j}\geq 0$,
+$n_{j}\in [0,1]$ for a continuum of agents $j\in[0,1]$ to maximize
+$$
+\int_0^1 \left[ u(c_{j}) - v(n_{j}) \right]\,dj
+                                         \EQN LSint_utility1_family
+$$
+subject to
+$$
+\int_0^1 c_{j} \, dj \leq w \int_0^1 \bigl[ n_j - \underline{n} \bigr]\,dj \,.
+\EQN LSint_bc1_family
+$$
+Strict concavity of $u(c)$ makes it optimal to assign
+the same consumption to each agent, $\bar c$. Likewise, because of
+strict convexity of $v(n)$, the planner asks for the same labor
+supply from each agent who is sent to work, $\bar n$. Conditional on
+working, the labor supply $\bar n > \underline{n}$ because
+it cannot be optimal to have agents incurring disutility of work
+without earning any income. For an agent $j$ who is not working,
+$n_j=0$.
+
+Given this characterization of an optimal allocation, the planner's
+optimization problem becomes
+$$
+\max_{\bar c, \bar n, \psi} \Bigl\{ u(\bar c) - \psi v(\bar n) \Bigr\}
+                                         \EQN LSint_utility2_family
+$$
+subject to
+$$\EQNalign{
+&\bar c \leq w \, (\bar n - \underline{n})\, \psi,
+                                             \EQN LSint_bc2_family   \cr
+&\bar c \geq 0,\;\;\bar n\in [0,1],\;\;  \psi\in[0,1],               \cr}
+$$
+where $\psi $ is the fraction of the population that the planner
+sends to work,  the same fraction $\psi$ is also the  probability of working in the employment
+lottery of the decentralized market economy.
+
+As emphasized by Prescott et al.\ (2009), the interesting case is
+the one where the solutions for $\psi$ and $\bar n$ are both
+interior. In this case, after substituting budget constraint
+\Ep{LSint_bc2_family} at equality into the objective function of
+\Ep{LSint_utility2_family}, we obtain the following first-order
+conditions with respect to $\psi$ and $\bar n$, respectively,
+$$
+\EQNalign{
+u'\Bigl( \psi\, w\, (\bar n - \underline{n}) \Bigr)\,
+          w\, (\bar n -\underline{n}) &= v(\bar n), \EQN LSint_FOC_family;a   \cr
+\noalign{\vskip.2cm}
+u'\Bigl( \psi\, w\, (\bar n - \underline{n}) \Bigr)\,
+          w\, \psi &= \psi \, v'(\bar n). \EQN LSint_FOC_family;b   \cr}
+$$
+Dividing these equations  gives
+$$
+v'(\bar n) = {v(\bar n) \over \bar n - \underline{n} }.  \EQN LSint_opt_family
+$$
+This condition for optimality states that the marginal cost to the
+planner to supply additional effective labor services should be
+equalized across  intensive and  extensive margins. The marginal
+disutility at the intensive margin is $v'(\bar n)$ when employed agents
+are asked to increase their hours worked, while the marginal
+cost at the extensive margin is $v(\bar n)/(\bar n -\underline{n})$,
+i.e., the {\it average} disutility per effective hour of an agent
+who is asked to switch from not working to working.
+
+Note that an employed agent's optimal labor supply $\bar n$ can
+be computed from \Ep{LSint_opt_family} and depends
+on neither $\bar c$ nor $\psi$, except for the supposition of
+an interior solution for $\psi$. Given a solution for $\bar n$,
+we can then use either \Ep{LSint_FOC_family;a} or
+\Ep{LSint_FOC_family;b} to solve for $\psi$.
+
+
+\subsection{Time averaging}
+
+We now turn to a time averaging economy. An agent's problem is
+similar to that in section \use{sec:LS_lifetime} but with the added
+intensive margin of Prescott et al.\ (2009) (and no discounting).
+An agent chooses lifetime consumption and employment $c_{t}\geq 0$,
+$n_{t}\in [0,1]$ for $t\in[0,1]$ to maximize
+$$
+\int_0^1 \left[ u(c_{t}) - v(n_{t}) \right]\,dt
+                                         \EQN LSint_utility1_lifetime
+$$
+subject to
+$$
+\int_0^1 c_{t} \, dt \leq w \int_0^1 \bigl[ n_t - \underline{n} \bigr]\,dt \,.
+                                         \EQN LSint_bc1_lifetime
+$$
+It is immediate that this problem is identical to the planner's
+problem in the static model of section \use{sec:LS_Prescott},  the
+only difference being that we now integrate across time rather than
+across agents. Hence, we can  reformulate the agent's
+optimization problem to become
+$$
+\max_{\bar c, \bar n, T} \Bigl\{ u(\bar c) - T v(\bar n) \Bigr\}
+                                         \EQN LSint_utility2_lifetime
+$$
+subject to
+$$\EQNalign{
+&\bar c \leq w \, (\bar n - \underline{n})\, T,
+                                             \EQN LSint_bc2_lifetime \cr
+&\bar c \geq 0,\;\;\bar n\in [0,1],\;\;  T\in[0,1],               \cr}
+$$
+where $T$ is the fraction of an agent's lifetime devoted to work, i.e.,
+his career length.
+
+
+\subsection{Prescott taxation}
+
+To examine effects of taxation where there are both  intensive and  extensive margins, we adapt
+the analysis in section \use{sec:LS_tax}. The government
+budget constraint becomes
+$$
+\tau \, w\, (\bar n -\underline{n})\, T^\star = x.  \EQN LSint_tax_govbc
+$$
+Under the assumption that utility is logarithmic in consumption, an
+agent's optimization problem becomes
+$$
+\max_{\bar c, \bar n, T} \Bigl\{ \log(\bar c) - T v(\bar n) \Bigr\}
+                                                    \EQN LSint_log_lifetime
+$$
+subject to
+$$\EQNalign{
+&\bar c \leq (1-\tau) w \, (\bar n - \underline{n})\, T +x,
+                                             \EQN LSint_tax_lifetimebc \cr
+&\bar c \geq 0,\;\;\bar n\in [0,1],\;\;  T\in[0,1].               \cr}
+$$
+Substitute budget constraint \Ep{LSint_tax_lifetimebc} into the
+objective function of \Ep{LSint_log_lifetime}, and
+compute the first-order conditions at interior solutions with respect
+to $T$ and $\bar n$, respectively,
+$$\EQNalign{
+{(1-\tau)\, w\, (\bar n -\underline{n}) \over
+ (1-\tau)\, w\, (\bar n -\underline{n})\, T + x} -v(\bar n) &=0,
+                                             \EQN LSint_FOC_tax;a   \cr
+\noalign{\vskip.2cm}
+{(1-\tau)\, w\, T \over
+ (1-\tau)\, w\, (\bar n -\underline{n})\, T + x} - T\,v'(\bar n) &=0.
+                                             \EQN LSint_FOC_tax;b   \cr}
+$$
+Dividing these equations gives
+$$
+v'(\bar n) = {v(\bar n) \over \bar n - \underline{n} }.  \EQN LSint_opt_tax
+$$
+This condition is the same as  expression
+\Ep{LSint_opt_family} when there is no taxation and hence the
+intensive margin is not affected by taxation. To compute the
+equilibrium career length, we substitute \Ep{LSint_tax_govbc} into
+first-order condition \Ep{LSint_FOC_tax;a},
+$$
+T^\star = {1-\tau \over v(\bar n)}.
+$$
+Along with Prescott et al.\ (2009), we conclude that the effects of taxation
+are the same as in Ljungqvist and Sargent (2007), i.e., all the
+adjustment of labor supply takes place along the extensive margin, and the
+elasticity of aggregate labor supply with respect to the net-of-tax
+rate ($1-\tau$) is equal to one.
+
+The reason that none of the adjustment takes place along the intensive
+margin is that any changes in labor when already working occur
+along an increasing marginal disutility of work, while
+adjustment along the extensive margin are made at a constant disutility
+of work by varying the fraction of one's lifetime devoted to
+work. The constancy of the latter terms of trade between working and
+not working was the essential ingredient of  the famous (or, depending on your viewpoint,
+infamous) high labor supply elasticity
+in models of employment lotteries when labor is indivisible.
+
+Rogerson and Wallenius (2009) break the constancy of the terms
+of trade between working and not working by adding a life cycle
+earnings profile to the present framework, but in contrast to section
+\use{sec:LSprofile}, they  take that earnings profile as exogenously given
+rather than having it be determined as a function of an agent's past work experience. In the
+Rogerson and Wallenius setup, two results
+follow immediately: (a) agents choose to work when their life cycle
+earnings profile is highest, namely, when it  exceeds an
+optimally chosen reservation level; and (b)
+labor supply $n_t$ at a point in time varies positively with the
+exogenous earnings level. Taxation in this augmented
+framework affects labor supply along both the intensive and extensive
+margins. While an increasing marginal disutility of work continues
+to frustrate adjustment along the intensive margin, there is now
+decreasing earnings when extending the career beyond the heights of the exogenous life cycle earnings profile, which
+then also frustrates adjustment along the extensive margin. The
+assumed curvatures of the disutility of work at the intensive
+margin and that of the exogenous lifecycle earnings
+profile determine how much  adjustment occurs
+along the intensive and extensive margins.
+
+
+
+\section{Ben-Porath human capital}\label{sec:LSbenporath}%
+We return to the assumption that labor is strictly indivisible,
+$n_t\in \{0,1\}$, and add a Ben-Porath human capital accumulation
+technology to the framework of section \use{sec:LSequi}. We take
+note of Ben-Porath's (1967, p.~361) observation that if the
+technology were to exhibit exact constant returns to scale, the
+marginal cost of additional units of human capital would be
+constant until all of the agent's current human capital
+is devoted to the effort of accumulating human capital and hence,
+the optimal rate of investment at any point in time would be
+either full specialization or no investment at all. Under our
+simplifying assumption of no depreciation of human capital,
+it follows that an agent would specialize and make all of
+his investment in human capital upfront. Acquiring human capital  can be
+thought of as formal education before starting to work.
+\auth{Ben-Porath, Yoram}%
+
+To represent the notion of specializing in human capital
+investments in a simple way, we assume
+that an agent has access to a technology
+that can instantaneously determine his human capital through
+the investment of $m\geq 0$ units of goods in himself, which
+produces a human capital level
+$$
+h = m^{\gamma},   \hskip1.5cm \gamma\in(0,1),   \EQN LSbenporath_tech
+$$
+and there is no depreciation of human capital.
+It follows trivially that it will be optimal for an agent to
+use that technology once and for all before starting to work.
+Under our assumption of a perfect credit market, an agent
+chooses investment goods $m$ that maximize his present
+value labor income, in conjunction with his choice of an
+optimal career length $T$.
+\auth{Guvenen, Fatih}
+\auth{Kuruscu, Burhanettin}
+\auth{Ozkan, Serdar}
+\auth{Manuelli, Rodolfo}
+\auth{Shin, Yongseok}
+
+Papers  by Guvenen et al.\ (2011) and Manuelli et al.\ (2012)
+that incorporate  Ben-Porath human capital
+technologies in life cycle models inspire our analysis. Those papers
+mainly focus on  tax dynamics driven,  not by the force in the Prescott tax
+system in section \use{sec:LS_tax}, but instead by wedges that distort
+an agent's investment in human capital.
+Guvenen et al.\ (2011) postulate progressive labor income taxation
+while Manuelli et al.\ (2012) assume that investments in human
+capital are not fully tax-deductible. In both cases, the central
+force is that the tax rate on returns to human capital is higher
+than the rate applied to  labor earnings foregone while
+investing in human capital, or the rate at which goods input
+to human capital can be deducted from an agent's tax liabilities.
+
+Following Manuelli et al.\ (2012), we assume a flat-rate tax
+$\tau \in (0,1)$ on labor income and that only a fraction
+$\epsilon \in [0,1]$ of goods input to human capital is
+tax-deductible. To isolate the key force at work in Manuelli et al.\ (2012)
+as well as in Guvenen et al.\ (2011), we assume no lump sum
+transfers of tax revenues to agents. However, at the end of the
+section, we will show how lump
+sum handovers remain as potent in suppressing the aggregate
+labor supply.\NFootnote{Given indivisible labor,
+Manuelli et al.\ (2012) disarm the
+potentially large effects of lump sum transfers of tax
+revenues by modelling social security systems with implicit
+tax wedges at an official retirement age, which gives rise to
+corner solutions in agents' career decisions as analyzed
+in section \use{sec:LSsocialsecurity}. In
+Guvenen et al.'s (2011) analysis of divisible labor as
+well as in their exploration of indivisible labor in
+an earlier working paper,
+the sensitivity of career length to lump sum transfers
+does not arise because they assume  an
+exogenous retirement age,  a common assumption in much  the
+overlapping generations literature.} % that effectively
+%avoids the challenge about the magnitude of the
+%elasticity of lifetime labor supply when adjustment
+%takes place at the extensive margin.}
+
+
+\subsection{Time averaging}\label{sec:LSbenporath_lifetime}%
+As mentioned, an agent will find it optimal to invest an amount $m$
+in the human capital technology before
+starting to work. Equality between the subjective discount rate
+and the market interest rate implies that the agent chooses a
+constant consumption stream $\bar c$, and that he is indifferent
+to the timing of his labor supply. Moreover, because we assume
+no discounting so that $\rho =r=0$, the optimal career length $T$ is
+unique and does not depend on the timing of the agent's labor
+supply. Under the postulated human capital technology
+\Ep{LSbenporath_tech} and described tax policy, an agent's
+optimization problem becomes
+$$
+\max_{\bar c, m, T} \Bigl\{ \log(\bar c) - BT \Bigr\}   \EQN LSbenporath_utility
+$$
+subject to
+$$\EQNalign{
+&\bar c   \leq (1-\tau) w \, m^{\gamma}\, T
+               - (1-\tau \epsilon ) m ,            \EQN LSbenporath_bc   \cr
+&\bar c \geq 0,\;\; m \geq 0, \;\; T\in[0,1].  \cr}
+$$
+
+We substitute budget constraint \Ep{LSbenporath_bc} into the
+objective function  \Ep{LSbenporath_utility}, and compute
+first-order conditions with respect to $m$ and, at an interior
+solution, $T$. After some manipulations, these first-order
+conditions with respect to $m$ and $T$, respectively,
+become
+$$\EQNalign{
+m^{1-\gamma} &= {\gamma (1-\tau) w \over 1-\tau \epsilon } T
+                                               \EQN LSbenporath_FOC;a \cr
+\noalign{\vskip.2cm}
+T &= {1 \over B} + {1-\tau \epsilon \over 1- \tau} \, {m^{1-\gamma} \over w}.
+                                               \EQN LSbenporath_FOC;b \cr}
+$$
+Substituting \Ep{LSbenporath_FOC;a} into \Ep{LSbenporath_FOC;b}
+yields
+$$
+T = {1 \over (1-\gamma) B},                    \EQN LSbenporath_career
+$$
+where the implicit parameter restriction for an interior solution is
+$(1- \gamma ) B \geq 1$.
+
+The optimally chosen career length in \Ep{LSbenporath_career} is
+invariant to taxation under our assumption that no tax revenues are
+handed back lump sum to agents. Any effect of taxation on the stock
+of human capital and hence the level of labor earnings, do not affect
+an agent's willingness to work since preferences are consistent with
+balanced growth, i.e.,  income and subsitution effects cancel. Given a constant career length in \Ep{LSbenporath_career}, it
+follows from expression \Ep{LSbenporath_FOC;a} that human capital
+investments would also be invariant to taxation if all these
+investments were tax-deductible, i.e., if $\epsilon =1$. But if
+$\epsilon < 1$, we see that human capital investments decline in
+the tax rate $\tau$ because human capital returns are taxed at a
+higher rate than the rate at which rate the goods input to human capital is
+tax-deductible.
+
+The severity of the tax distortion depends on the curvature parameter
+$\gamma$ of the human capital technology. For example, when human
+capital investments are not tax-deductible, $\epsilon =0$, we
+can solve for $m$ from equation \Ep{LSbenporath_FOC;a}, and
+compute an agent's human capital stock as given by \Ep{LSbenporath_tech}:
+$$
+h = \Bigl[ \gamma (1-\tau) w\, T\Bigr]^{\gamma \over 1-\gamma }.
+$$
+Thus, the elasticity of human capital, and for that matter, also
+labor earnings $whT$, with respect to net-of-tax rate $(1-\tau )$
+is equal to $\gamma / (1-\gamma )$, which becomes arbitrarily large
+as $\gamma$ approaches one. A high value of $\gamma$ is associated
+with strong output effects of taxation because of reasons similar to
+those in an `AK model' (output is linear in a single input, capital). The single input in our
+ human capital technology
+\Ep{LSbenporath_tech} is reproducible, and exhibits weak diminishing
+returns when $\gamma$ is close to one. Likewise, for a standard
+formulation of the Ben-Porath technology,
+both the input of purchased goods and the input of an agent's current
+human capital services are {\it de facto} reproducible, so similarities with
+an `AK model' arise if the human capital technology exhibits close to
+constant returns to scale (combined with the standard assumption of constant
+returns to scale in the goods technology that employs human and physical
+capital).
+
+
+
+\subsection{Employment lotteries}\label{sec:LSbenporath_family}%
+As in the case of an earnings-experience profile in
+section \use{sec:LSprofile}, the planner will optimally (and
+randomly) assign a fraction $\psi$ of agents to work their
+entire lives while a fraction $1-\psi$ will specialize in
+leisure. Needless to say, the planner will  invest only in
+ human capital for  agents who are sent work. Under the
+postulated human capital technology \Ep{LSbenporath_tech} and
+described tax policy, the planner's problem becomes
+$$
+\max_{\bar c, m, \psi} \Bigl\{ \log(\bar c) - B \psi \Bigr\}
+                                            \EQN LSbenporath_family
+$$
+subject to
+$$\EQNalign{
+&\bar c   \leq (1-\tau) w \, m^{\gamma}\, \psi
+     - (1-\tau \epsilon ) m \psi,  \EQN LSbenporath_bc_family   \cr
+&\bar c \geq 0,\;\; m \geq 0, \;\; \psi\in[0,1].  \cr}
+$$
+We substitute budget constraint \Ep{LSbenporath_bc_family} into the
+objective function  \Ep{LSbenporath_family}, and compute
+first-order conditions with respect to $m$ and, at an interior
+solution, $\psi$. After some manipulations, these first-order
+conditions with respect to $m$ and $\psi$, respectively,
+become
+$$\EQNalign{
+m^{1-\gamma} &= {\gamma (1-\tau) w \over 1-\tau \epsilon },
+                                     \EQN LSbenporath_FOC_family;a \cr
+\noalign{\vskip.2cm}
+\psi &= {1 \over B}\,.               \EQN LSbenporath_FOC_family;b \cr}
+$$
+
+As in the case of an earnings-experience profile, agents in the
+employment lotteries economy on average work less than do agents in
+the time-averaging economy: compare expression
+\Ep{LSbenporath_FOC_family;b} to that of \Ep{LSbenporath_career}. Agents in the time-averaging
+economy confront a difficult choice between enjoying leisure
+and earning additional labor income derived from their past investment
+in human capital. Once again, this difficult choice is not confronted by  agents in the employment lotteries economy where the planner
+randomly assigns a fraction $\psi$ of the population to work their
+entire lives, and thereby ensures an efficient use of all human
+capital. However, the difference in labor supply diminishes as
+$\gamma$ approaches zero.  In the limit ($\gamma =0$) when
+the technology can no longer be used to augment an agent's human
+capital, labor supplies are the same across the two economies and
+we are back to our equivalence result in section \use{sec:LSequi}.
+
+Given that agents who are sent to work in the employment
+lotteries economy work their entire lives, it is not surprising
+that the planner makes a larger human capital investment in
+each employed worker as compared to an agent's investment
+decision in the time averaging economy: compare expression
+\Ep{LSbenporath_FOC_family;a} to that of \Ep{LSbenporath_FOC;a}.
+After solving for the planner's choice of $m$ from
+\Ep{LSbenporath_FOC_family;a} and substituting into human
+capital technology \Ep{LSbenporath_tech}, the human capital
+stock per employed worker in the employment lotteries economy
+is
+$$
+h = \Bigl[ \gamma (1-\tau) w\Bigr]^{\gamma \over 1-\gamma }.
+$$
+Thus, the elasticities  of human capital and
+labor earnings $wh\psi $, with respect to net-of-tax rate $(1-\tau )$
+are the same as those in the time averaging economy and equal to
+$\gamma / (1-\gamma )$.
+
+
+
+
+\subsection{Prescott taxation}\label{sec:LSbenporath_tax}%
+We now add Prescott's assumption that tax revenues, net of
+any tax deductions on human capital investments, are returned
+lump sum to agents. Such handouts remain potent in suppressing the aggregate labor supply in the
+time averaging economy as well as in the employment lotteries
+economy.
+
+
+In the time averaging economy, we adapt the analysis of section
+\use{sec:LS_tax} as follows. The government budget constraint becomes
+$$
+\tau\,w\,h^{\star}\, T^{\star} - \tau\, \epsilon \, m^{\star} = x,
+                                        \EQN LSbenporath_govbc_prescott
+$$
+where $T^{\star}$, $h^{\star}$ and $m^{\star}$ are
+equilibrium values of career length, human capital stock,
+and agents' purchase of goods input to the human capital technology,
+respectively. An agent's budget constraint is augmented to include
+the lump sum transfer $x$,
+$$
+\bar c \leq (1-\tau) w \, m^{\gamma}\, T - (1-\tau \epsilon ) m + x.
+                                         \EQN LSbenporath_bc_prescott
+$$
+After substituting budget constraint \Ep{LSbenporath_bc_prescott}
+into the objective function  \Ep{LSbenporath_utility}, we can
+compute and verify that our earlier first-order condition
+\Ep{LSbenporath_FOC;a} with respect to $m$ is unchanged, i.e.,
+$$
+m^{1-\gamma} = {\gamma (1-\tau) w \over 1-\tau \epsilon } T.
+                                         \EQN LSbenporath_FOC_prescott
+$$
+However, the career length $T$ is no
+longer invariant to taxation. Specifically, after substituting
+goverment budget constraint \Ep{LSbenporath_govbc_prescott} into
+the agent's first-order condition with respect to $T$, at an interior
+solution, the result can be rearranged to read
+$$
+T = {1-\tau \over B} + {m^{1-\gamma } \over w},
+                                        \EQN LSbenporath_career_prescott
+$$
+into which we substitute expression \Ep{LSbenporath_FOC_prescott} to
+obtain
+$$
+T^{\star} = { 1-\tau \over \left[ 1 - \gamma\,
+    {\displaystyle 1-\tau \over \displaystyle 1 -\tau \epsilon } \right] B }\,.
+                                        \EQN LSbenporath_career2_prescott
+$$
+Since $\tau \in (0,1)$ and $\epsilon \in [0,1]$, the equilibrium career
+length is now shorter than it was in expression \Ep{LSbenporath_career} when
+tax revenues, net of any tax deductions on human capital investments,
+were not handed back lump sum to agents.
+
+For example, when investments in human capital are fully tax-deductible,
+$\epsilon = 1$, we disarm the key distortionary force that is
+the focus of Manuelli et al.\ (2012), i.e., the choice of goods
+input in expression \Ep{LSbenporath_career2_prescott} is no longer
+distorted by the differential tax treatment of investments into  and returns from human capital, but Prescott's tax distortion, arising from the
+lump sum handover of tax revenues to agents, is a forceful determinant
+of equilibrium career length \Ep{LSbenporath_career2_prescott},
+evaluated at $\epsilon =1$,
+$$
+T^{\star} \Big{\vert}_{\epsilon = 1}
+ = { 1-\tau \over (1-\gamma )B }\,.
+                                        \EQN LSbenporath_career3_prescott
+$$
+Hence, career length is no longer invariant to taxation when the
+government hands over tax revenues lump sum to agents; in particular,
+compare expression \Ep{LSbenporath_career3_prescott} to that in
+\Ep{LSbenporath_career}. And once again, the elasticity of aggregate
+labor supply with respect to the net-of-tax rate $(1-\tau )$ is equal
+to one. But now labor income declines further because of
+depressed investments in human capital, as determined by the goods input
+from expression \Ep{LSbenporath_FOC_prescott} that varies positively
+with career length.
+
+We leave it as an exercise to readers to derive the corresponding
+equilibrium outcomes in the employment lotteries model, by following
+the same steps as above. It can be verified that the planner's
+first-order condition with respect to $m$ remains the same as
+in expression \Ep{LSbenporath_FOC_family;a}, while steps
+analogous to those above, where government budget constraint is
+subtituted into the planner's first-order condition with respect
+to $\psi$, yield
+$$
+\psi^{\star} = {(1-\tau ) w m^{\gamma} - (1-\tau \epsilon ) m \over
+                (w m^{\gamma} - m)\, B } < {1 \over B}.
+                                        \EQN LSbenporath_family_prescott
+$$
+The strict inequality is implied by $\tau \in (0,1)$ and
+$\epsilon \in [0,1]$, and hence, the equilibrium fraction of
+population sent to work is smaller as compared to that found in
+section \use{sec:LSbenporath_family}, where  tax
+revenues were not handed back lump sum to agents, as given by
+\Ep{LSbenporath_FOC_family;b}. It is again instructive to
+consider the case when investments in human capital are fully
+tax-deductible, $\epsilon = 1$,
+$$
+\psi^{\star} \Big{\vert}_{\epsilon = 1}
+ = { 1-\tau \over B }\,,
+                                        \EQN LSbenporath_family2_prescott
+$$
+where the elasticity of aggregate labor supply with respect to the
+net-of-tax rate $(1-\tau )$ is again equal to one.
+
+
+
+
+\section{Earnings shocks}\label{sec:LSshocks}%
+Next we study how earnings shocks affect an agent's choice of
+career length. Following Ljungqvist and Sargent (2014), we
+study an unanticipated permanent earnings shock, which will enable
+us to highlight forces that will also be at work in richer
+environments. For additional analytical simplicity, we assume a flat
+earnings profile, no discounting, and that utility is logarithmic in
+consumption. The parameter restriction $B>1$ guarantees a strictly
+interior solution to lifetime labor supply (at least prior to
+the unanticipated earnings shock).
+\auth{Ljungqvist, Lars}%
+\auth{Sargent, Thomas J.}%
+
+As in our basic setup in section \use{sec:LS_lifetime}, an agent can
+choose to work at the wage rate $w$, and solves a deterministic
+lifetime labor supply problem. The optimal solution at an interior
+solution is the constant consumption level in
+expression \Ep{LSequi_conslog}, $\bar c = w / B$, and a career
+length that is given by expression \Ep{LSequi_careerlog}, $1 /B$.
+Since an agent is indifferent to the timing of his labor supply,
+we are free to assume that he starts to work at time
+$t_0 \in (0, \,1-1/B)$,
+and continues to work his entire optimally chosen
+career length, i.e., the agent is intent on retiring at age
+$$
+\bar R = t_0 + 1/B.                              \EQN shock_Rfirst
+$$
+An employed agent pays off debt and accumulates assets for retirement,
+with asset holdings at time $t \in [t_0, \bar R]$ as given by
+$$
+A(t) = \int_0^{t_0} - \bar c \, ds +
+      \int_{t_0}^t (w - \bar c)\, ds
+    = w (t-t_0 ) - {w  \over B} \,t,              \EQN shock_Afirst
+$$
+where we have invoked the optimal consumption level, $\bar c = w / B$.
+Before starting to work, an agent finances consumption by
+borrowing and hence, there is some date $\bar t \in (t_0, \bar R)$
+at which an employed has just repaid his debt, $A(\bar t)=0$, and
+starts to accumulate assets for retirement, where
+$$
+A(\bar t) = w (\bar t-t_0 ) - {w  \over B} \,\bar t = 0
+\hskip.5cm \Longrightarrow \hskip.5cm \bar t = {B \over B-1} t_0.
+                                                 \EQN shock_bar_t
+$$
+
+Consider an unanticipated mid-career earnings shock at time
+$\hat t \in[t_0, \bar R]$, when the wage rate unexpectedly
+jumps from $w$ to $\hat w$ for $t\in [\hat t, 1]$. Subject to
+the asset holdings $A(\hat t)$ that were accumulated under the
+old optimal plan, the shock prompts the agent to maximize the
+remainder of his lifetime utility,
+$$
+\int_{\hat t}^1 \Bigl[ \log (\hat c_t) - B \hat n_t \Bigr] dt
+$$
+by choosing new values $\hat c_t \geq 0$ and $\hat n_t \in \{0,1\}$
+of consumption and labor supply, respectively, for $t\in [\hat t, 1]$.
+The agent's revised optimal plan prescribes a constant consumption
+path over the interval $[\hat t, 1]$ and a new retirement
+age $\hat R\in [\hat t, 1]$.
+
+For the agent who after the unanticipated wage shock at $\hat t$
+chooses to work until $R \in[\hat t, 1]$, the sum of the
+financial assets already accumulated at time $\hat t$, $A(\hat t)$,
+and the present value of future labor income becomes
+$$
+A(\hat t) + \int_{\hat t}^R \hat w \, ds
+= w (\hat t-t_0 ) - {w  \over B} \,\hat t + \hat w (R -\hat t).
+                                                \EQN shock_Asecond
+$$
+This expression divided by $1-\hat t$ is then the constant
+consumption rate over the remaining lifetime $1-\hat t$,
+since the time $\hat t$ present value of financial plus
+nonfinancial wealth must equal the present value of consumption
+over the period $[\hat t, 1]$.
+
+The agent's optimal retirement age thus solves
+$$
+\max_{R\in [\hat t, 1]} \left\{ (1- \hat t)
+\log \left[
+{\displaystyle  w (\hat t-t_0 ) - {\displaystyle w  \over \displaystyle B}
+\,\hat t + \hat w (R -\hat t) \over \displaystyle  1- \hat t }\right]
+- B(R-\hat t) \right\}.
+$$
+The first-order condition for $R$ is
+$$
+{ \displaystyle (1-\hat t) \hat w \over \displaystyle
+w (\hat t-t_0 ) - {\displaystyle w  \over \displaystyle B}
+\,\hat t + \hat w (R -\hat t) }  - B \cases{
+   < 0, &corner solution $\hat R = \hat t$;  \cr
+   = 0, &interior solution $\hat R \in [\hat t, 1]$; \cr
+   > 0, &corner solution $\hat R = 1$;  \cr }
+                                                  \EQN shock_FOC
+$$
+where $\hat R$ is the optimal retirement age after the wage
+shock at time $\hat t$. At an interior solution to $\hat R$,
+first-order condition \Ep{shock_FOC} holds with equality,
+$$
+{ (1-\hat t) \over B} = {w \over \hat w} (\hat t-t_0 )
+- { w  \over \hat w} \, {1 \over B}\, \hat t + \hat R - \hat t.
+$$
+After adding $t_0$ to both sides of this equation, and
+using expression \Ep{shock_Rfirst} for the original
+retirement age, $\bar R = t_0 + 1/B$,
+the post-shock retirement age $\hat R$ at an interior solution
+relates to the original retirement age $\bar R$ in the following
+way:
+$$
+\hat R = \bar R + {\hat w - w \over \hat w}
+\left[ {B-1 \over B} \hat t - t_0 \right]
+= \bar R + {\hat w - w \over \hat w}\, (\hat t - \bar t)\, {B-1 \over B}\, ,
+                                                          \EQN shock_Rsecond
+$$
+where the second equality is obtained by using expression
+\Ep{shock_bar_t} to substitute out for $t_0$.
+
+
+Evidently, the sign of the revision $\hat R - \bar R$ to an
+unanticipated wage shock depends (i) on whether $\hat w > w$ or
+$\hat w < w$, and (ii) on whether $\hat t$ is greater than
+or smaller than $\bar t$, where $\bar t$ defined in
+\Ep{shock_bar_t} is the point in time when the
+asset holdings of an employed agent turns from being negative to
+being positive. In response to a {\it negative} earnings shock,
+$\hat w < w$, the agent reduces (increases) his lifetime labor
+supply if his time $\hat t$ asset holdings are positive (negative),
+i.e., if $A(\hat t)>0$ ($A(\hat t)<0$), which
+means that the shock occurs at a time $\hat t > \bar t$
+($\hat t < \bar t$). In contrast, in response to a {\it positive}
+wage shock, $\hat w > w$, the agent increases (decreases) her
+lifetime labor supply if her current asset holdings are positive
+(negative).
+
+These strong predictions based merely on the signs of the
+earnings shock and an agent's asset holdings, follow from the
+assumption that preferences are consistent with
+balanced growth. Ljungqvist and Sargent (2012) generalize the
+result to a larger class of such preferences and allow for
+the earnings-experience profile in section \use{sec:LSprofile}.
+
+
+\subsection{Interpretation of wealth and substitution effects}
+
+For an agent with positive asset holdings at $\hat t$, a {\it negative}
+wage shock means that returns to working fall relative to the marginal
+value of his wealth.  That induces the agent
+ to enjoy more leisure  because doing that has now become
+relatively less expensive. But with negative asset holdings at $\hat t$,
+a negative wage shock compels the agent to supply more labor both to pay off  time $\hat t$ debt and to  moderate the adverse effect of the shock on  his future consumption.
+
+With a {\it positive} wage shock, leisure becomes more expensive, causing the
+agent to substitute away  from leisure and toward consumption. This force makes  lifetime labor supply
+increase for an agent with positive wealth. But why does a positive
+wage shock lead to a {\it reduction} in life-time labor supply when time $\hat t$ assets are
+negative?
+
+In the case of a positive wage shock and negative time $\hat t$ assets,
+consider  a hypothetical  asset
+path that would have prevailed if the agent had enjoyed the higher wage
+rate $\hat w$
+from the beginning starting at $t=0$. Along that hypothetical path, the agent would have been even further
+in debt at $\hat t$ (since the optimal constant consumption level would have been
+equal to $\hat w /B$, as given by \Ep{LSequi_conslog}).
+So  at $\hat t$,  the
+agent actually finds himself {\it richer} at $\hat t$ than he would have  in our hypothetical  scenario.
+Because there
+is less debt to be repaid at $\hat t$,  the agent chooses to supply less
+labor than he would have in  the hypothetical scenario.
+In other words,  it is not optimal to
+make up for what would have been  past underconsumption relative to our hypothetical path, so the agent chooses instead to
+enjoy more leisure  because he has relatively less debt  at $\hat t$ than he would along the hypothetical path.
+
+
+
+\section{Time averaging in a Bewley model}\label{sec:ChangKim}%
+In a version of a Bewley model with incomplete markets
+(see chapter \use{incomplete}),
+Chang and Kim (2007) demonstrate how indivisible labor is
+associated with a high labor supply elasticity when the
+infinitely-lived agents engage in `time averaging,' i.e.,
+alternating between work and leisure. In such an
+incomplete-markets model, agents accumulate assets not only
+because of the standard precautionary motive to self-insure
+against productivity shocks, but also to finance  planned spells of leisure.
+\auth{Chang, Yongsung}%
+\auth{Kim, Sun-Bin}%
+
+We abstract from aggregate productivity shocks, but otherwise
+postulate the same neoclassical growth model (and its
+calibration) as that of Chang and Kim (2007). The economy is
+populated by a continuum (measure one) of agents who have
+identical preferences but experience different idiosyncratic
+productivity shocks. An agent's preference specification is
+similar to that of section \use{sec:LSequi} except  that
+now time is discrete, agents live forever, and there is uncertainty;
+$$
+E_0 \sum_{t=0}^\infty \beta^t \left[\log (c_t) - B n_t \right],
+\EQN LS_CK_utility
+$$
+where $E_t$ is the expectation operator conditional on information
+at time $t$, and $\beta\in(0,1)$ is the agent's subjective discount
+factor. An agent who works in period $t$ supplies $z_t$ efficiency
+units of labor where the idiosyncratic productivity
+level $z_t$ varies exogenously according to a stochastic
+process with a transition probability distribution function
+$\pi(z ' \vert z) = {\rm Prob}(z_{t+1}\leq z' \vert z_t=z)$,
+which has a unique unconditional stationary cumulative
+distribution function $G(z)$.\NFootnote{As compared to
+Chang and Kim (2007), we let our parameter $B$ in preference
+specification \Ep{LS_CK_utility} replace their
+composite of three parameters,
+$B \bar h^{1+1/\gamma}/(1+1/\gamma)$, since the separate
+identification of e.g.\ a curvature parameter $\gamma$ has no
+significance under the assumption of indivisible labor.
+Likewise, our normalization of time supplied when working,
+$n=1$, as compared to their separate parameter $\bar h$ also
+lacks significance as long as our disutility parameter $B$
+has the same value as their composite of three parameters, and
+so long as we properly scale the productivity shocks so that the
+implied processes for an agent's efficiency units of labor
+are the same.}
+
+The aggregate production function is Cobb-Douglas and exhibits
+constant returns to scale,
+$$  F(L_t,K_t) = L_t^\alpha K_t^{1-\alpha},
+$$
+where $L_t$ and $K_t$ are the aggregates of efficiency units
+of labor and of physical capital. Capital depreciates at rate
+$\delta$ each period.
+
+
+\subsection{Incomplete markets}
+
+A stationary equilibrium has a constant interest rate $r$
+and a constant wage rate $w$ per efficiency unit of labor.
+The state variables for an agent's problem are then his
+beginning-of-period assets $a$, before receiving interest
+earnings, and his productivity $z$. The agent's  value function
+ is
+$$
+V(a,z) = \max_{n, c, a'} \Bigl\{
+\log (c) - Bn + \beta \int V(a',z')\, d\pi(z'\vert z)\Bigr\},
+                                                     \EQN LS_CK_value
+$$
+subject to
+$$\EQNalign{
+& a' = (1+r) a + w z n - c,                      \EQN LS_CK_bc   \cr
+& n\in\{0,1\},\;\; c\geq 0,\;\; a' \geq \hat a ,\cr}
+$$
+where savings must satisfy a borrowing constraint, $a'\geq \hat a$.
+The solution to this problem includes a decision rule for labor supply,
+$n(a,z)$, consumption, $c(a,z)$, and asset holdings, $a'\!(a,z)$.
+
+
+After substituting budget constraint \Ep{LS_CK_bc} into the
+utility function in \Ep{LS_CK_value}, we take a first-order condition
+with respect to $a'$ and obtain an  Euler equation,
+$$
+{1 \over c(a,z)} = \beta \int V_1(a',z') \, d\pi(z'\vert z)
+= \beta (1+r) \int {1 \over c(a',z') } d\pi(z'\vert z),
+                                                     \EQN LS_CK_Euler
+$$
+into which we have substituted the decision rule for consumption,
+$c(a,z)$, and applied the Benveniste-Scheinkman formula
+$V_1(a',z')=(1+r)\,u'(c(a',z'))$.
+
+Firms' profit maximization ensures that
+$$\EQNalign{
+w&=F_1(L,K)=(1-\alpha)\left({K \over L}\right)^\alpha, \EQN LS_CK_wr;a \cr
+r&=F_2(L,K) - \delta =\alpha \left({K \over L}\right)^{\alpha-1} -\delta.
+                                                    \EQN LS_CK_wr;b    \cr}
+$$
+
+Associated with  a stationary equilibrium is a time-invariant distribution
+of agents across asset holdings and productivities, $J(a,z)$. The invariant
+distribution satisfies
+$$
+J(a^o,z^o) = \int_{a'\leq a^o, z'\leq z^o} \left\{
+\int {\bf I}\bigl(a'=a'\!(a,z)\bigr)\, d\pi(z'\vert z)\, dJ(a,z) \right\}
+da'\, dz',
+$$
+where ${\bf I}(\cdot)$ is an indicator function that equals 1 if its argument is true and 0 otherwise.% Note that the
+%distribution $J(a,z)$ appears on both sides of the expression,
+%that is, the equilibrium distribution of agents remain the same over
+%time when applying the endogenous and exogenous laws of motion for
+%the state variables $a$ and $z$.
+
+Markets for   labor, capital, and  goods clear:
+$$
+\EQNalign{
+L &= \int z n(a,z) \, dJ(a,z), \cr
+K &= \int a \, dJ(a,z), \cr
+F(L,K) + (1-\delta) K &= \int \Bigl\{ a'\!(a,z) + c(a,z) \Bigr\} dJ(a,z).
+\cr }
+$$
+
+
+
+\subsection{Complete markets}\label{sec:ChangKim_complete}%
+An allocation for an economy with complete markets solves an assignment problem that confronts a
+representative family with a continuum of family members. The family tells each
+member what to consume and when to work. When preferences
+are additively separable in consumption and leisure, optimal
+consumption is the same for everyone, regardless
+of work status. The family sends
+the most productive members to work. In particular,  the representative
+family sets a reservation productivity $z^\star$ such that members
+with productivities greater than or equal to $z^\star$  work
+while the others do not. The value function of the
+representative family satisfies
+$$
+V(a) = \max_{z^\star, c, a'} \Bigl\{
+\log (c) - B[1-G(z^\star)] + \beta V(a')\Bigr\},
+                                                     \EQN LS_CK_family
+$$ where the maximization is
+subject to
+$$\EQNalign{
+& a' = (1+r) a + w \int_{z^\star}^\infty z\, dG(z) - c,
+                                              \EQN LS_CK_family_bc \cr
+& c\geq 0,\;\; a' \geq \hat a .\cr}
+$$
+The representative family solves a deterministic
+problem because it has a continuum of members. The
+{\it ex ante\/} probability that a single member draws from a particular interval of
+productivities equals the {\it post\/} fraction of the family's members drawing from that interval.
+
+First-order
+conditions with respect to $c$, $a'$ and $z^\star$ at
+interior solutions are:
+$$
+\EQNalign{
+&{1 \over c} - \lambda = 0, \EQN LS_CK_familyFOC;a   \cr
+\noalign{\vskip.2cm}
+& - \lambda + \beta V'(a') = 0, \EQN LS_CK_familyFOC;b   \cr
+\noalign{\vskip.2cm}
+& B G'(z^{\star}) + \lambda w [-z^\star G'(z^\star)] = 0.
+                                   \EQN LS_CK_familyFOC;c  \cr}
+$$
+In a steady state, consumption is constant over time.
+Application of the Benveniste-Scheinkman formula gives
+$V'(a)=(1+r) u'(c)$, so it follows from
+first-order conditions \Ep{LS_CK_familyFOC;a} and
+\Ep{LS_CK_familyFOC;b} that
+$$
+1+r = {1 \over \beta} = 1-\delta +
+         \alpha \left({K \over L}\right)^{\alpha-1},  \EQN LS_CK_family_r
+$$
+where the second equality invokes profit-maximization
+condition \Ep{LS_CK_wr;b}. The optimal consumption level is
+obtained from conditions \Ep{LS_CK_familyFOC;a} and
+\Ep{LS_CK_familyFOC;c}:
+$$
+c =  { w z^\star \over B }.                          \EQN LS_CK_family_c
+$$
+The equilibrium capital stock  held by the representative
+family is $K=a=a'$, which together with expressions
+\Ep{LS_CK_family_r} and \Ep{LS_CK_family_c} can be substituted
+into budget constraint \Ep{LS_CK_family_bc}:
+$$
+K = {1 \over \beta } K + w \int_{z^\star}^\infty z\, dG(z)
+     - { w z^\star \over B }.                      \EQN LS_CK_family_bc2
+$$
+After dividing expression \Ep{LS_CK_family_bc2} by the integral
+in that expression, i.e., by the family's supply of efficiency
+units of labor, which in  equilibrium  equals $L$, we obtain
+$$
+{K \over L} = {1 \over \beta } {K \over L} + w
+     - { w z^\star \over B \int_{z^\star}^\infty z\, dG(z)}.
+                                                    \EQN LS_CK_family_bc3
+$$
+
+We can now solve for a stationary equilibrium in three steps. First, we use
+the second equality in expression \Ep{LS_CK_family_r} to determine
+the equilibrium capital-labor ratio, $K/L$, in terms of parameters.
+Next, given the capital-labor ratio, we can compute the wage rate
+from profit-maximization condition \Ep{LS_CK_wr;a}. Finally, with the
+capital-labor ratio and the wage rate in hand, expression
+\Ep{LS_CK_family_bc3} becomes one equation to be solved for the
+equilibrium value of the reservation productivity $z^\star$.
+
+
+
+
+
+\subsection{Simulations of Prescott taxation}
+
+We adopt the  calibration of Chang and Kim (2007)
+except that we shut down  aggregate productivity
+shocks. To highlight differences and similarities across our
+incomplete- and complete-market versions of the economy, we
+compute equilibrium outcomes under Prescott's tax and transfer
+scheme in section \use{sec:LS_tax}.
+\auth{Chang, Yongsung}%
+\auth{Kim, Sun-Bin}%
+
+\midfigure{figLSCKreswage}
+\centerline{\epsfxsize=3truein\epsffile{LS_CK_reswage.ps}}
+\caption{Reservation productivity as a function of asset
+holdings in the economy with incomplete markets (solid curves)
+and complete markets (dashed curves), respectively, where the
+lower (upper) curve refers to tax rate 0.30 (0.70).}
+\infiglist{figLLCKreswage}
+\endfigure
+
+
+For labor tax rates of 0.30 and 0.70, respectively,
+reservation productivities as functions of asset holdings are
+displayed in Figure \Fg{figLSCKreswage}. In the incomplete-market
+economy (solid curves), an agent's reservation productivity
+increases in his asset holdings.
+A high asset level means that, everything else equal, an agent
+is poised to enjoy one of his intermittent spells of leisure,
+which will result in asset decumulation and his ultimate return
+to work. For an agent with high assets to postpone such a desired
+spell of leisure, the agent must experience a relatively high
+productivity to be willing to continue to work for a while.
+As one would expect, the reservation productivities for the higher
+tax rate 0.70 lie well above those for the lower tax
+rate 0.30, since Prescott's tax and transfer scheme is very
+potent in suppressing agents' labor supply and causing them to
+choose more leisure. In the complete-market economy, the single
+productivity cutoff (dashed curve) is indicative of a
+privately efficient allocation. It is the most productive agents
+who work at any point in time.
+
+\midfigure{figLSCKprod}
+\centerline{\epsfxsize=3truein\epsffile{LS_CK_prod.ps}}
+\caption{Productivity distribution. The upper solid curve is the
+population productivity distribution, while the other two
+in descending order show the agents thereof who are employed in the
+incomplete-market economy given tax rate 0.30
+and 0.70, respectively. The corresponding masses of employed agents
+in the complete-market economy are the halves of the population
+distribution to the right of a vertical dashed line,
+where the left (right) dashed line refers to tax rate 0.30 (0.70).}
+\infiglist{figLSCKprod}
+\endfigure
+
+
+
+The top solid curve in Figure \Fg{figLSCKprod} depicts the
+stationary distribution of productivities in the population. A dashed
+vertical line is the productivity cutoff in the complete-market
+economy, where the left (right) one refers to tax rate 0.30 (0.70),
+i.e., the same reservation productivity as the corresponding dashed
+line in Figure \Fg{figLSCKreswage}. All agents with productivities
+to the right of the dashed line work in the complete-market economy,
+and hence, the area under that portion of the population
+distribution equals the employment-population ratio.
+In the incomplete-market economy, the endogenous stationary
+distribution of agents across both productivities and asset holdings,
+$J(a,z)$, together with the decision rule for whether or not to work,
+$n(a,z)$, determine how many agents are at work at different productivity
+levels. Those employed workers in the incomplete-market economy are
+depicted by the solid curves that lie weakly below the top population
+curve, which in descending order refer to tax rates
+0.30 and 0.70, respectively. As in the complete-market economy, virtually
+all agents with high productivities are working in the incomplete-market
+economy. But over a mid-range of productivities, there
+are significant differences between the two economies. On the one hand,
+ some agents in the incomplete-market do not work but would have been working in the complete-market economy. The reason
+is that because their asset holdings are relatively high,  their
+shadow value of additional wealth falls below the utility of leisure.
+On the other hand, other agents in the incomplete-market
+economy  work but would not have worked in the
+complete-market economy. These agents have low
+asset holdings and so feel compelled to work despite their low
+productivities.
+
+
+The work and asset decisions of individual agents in the incomplete-market
+economy determine the distribution of asset holdings, and the
+capital stock. For labor tax rates 0.30 and 0.70, respectively, the
+solid curves in Figure \Fg{figLSCKassets} depict the cumulative
+distribution function for asset holdings in the incomplete-market
+economy. At the high tax rate 0.70 (upper solid curve), asset holdings
+become concentrated at lower levels. As in the case of the elevated
+reservation productivities in
+Figure \Fg{figLSCKreswage}, taxation suppresses market
+activity in favor of leisure. In the complete-market economy, tax rate
+0.70 is associated with a similar large decline in per capita
+asset holdings, as depicted by the vertical dashed lines
+in Figure \Fg{figLSCKassets} where the left (right) one refers to
+tax rate 0.70 (0.30).
+
+
+\midfigure{figLSCKassets}
+\centerline{\epsfxsize=3truein\epsffile{LS_CK_assets.ps}}
+\caption{Asset distribution. The lower (upper) solid curve is the
+cumulative distribution function for asset holdings in the
+incomplete-market economy when the tax rate is 0.30
+(0.70). The right (left) vertical dashed line is the
+per capita asset holdings in the complete-market
+economy when the tax rate is 0.30 (0.70).}
+\infiglist{figLSCKassets}
+\endfigure
+
+
+From a production perspective, what matters is the capital stock
+relative to the aggregate supply of efficiency units of labor.
+In the complete-market economy, that capital-labor ratio
+is determined by steady-state relationship \Ep{LS_CK_family_r}
+which does not depend on the labor tax rate (but would have depended
+on any intertemporal tax wedge such as a tax on capital
+income). Since the wage rate is a function of the capital-labor
+ratio in \Ep{LS_CK_wr;a}, it follows in Figure \Fg{figLSCKwage}
+that the wage rate in the complete-market economy (dashed curve)
+is invariant to the labor tax rate. In contrast, the wage
+rate in the incomplete-market economy (solid curve) falls with
+the labor tax rate and lies above the wage rate of the
+complete-market economy. To understand the latter outcome,
+we recall that in a Bewley model like ours with infinitely-lived
+agents, the interest rate must fall below the subjective rate of
+discounting $\beta^{-1}$, which is the steady-state interest
+rate in the complete-market economy. Since the equilibrium interest
+rate is inversely related to the capital-labor ratio in expression
+\Ep{LS_CK_wr;b}, it follows immediately that the capital-labor
+ratio is higher in the incomplete-market economy, and therefore by
+expression \Ep{LS_CK_wr;a}, so is the wage rate.
+
+
+
+
+\midfigure{figLSCKwage}
+\centerline{\epsfxsize=3truein\epsffile{LS_CK_wage.ps}}
+\caption{Wage rate per efficiency unit of labor in the
+economy with incomplete markets (solid curve) and complete
+markets (dashed curve), as a function of the labor tax rate.}
+\infiglist{figLSCKwage}
+\endfigure
+
+
+
+
+\midfigure{figLSCKfrac}
+\centerline{\epsfxsize=3truein\epsffile{LS_CK_frac.ps}}
+\caption{Employment-population ratio in the
+economy with incomplete markets (solid line) and complete
+markets (dashed line), as a function of the labor tax rate.
+The dotted line represents the former economy with a less persistent productivity process.}
+\infiglist{figLSCKfrac}
+\endfigure
+
+
+Figure \Fg{figLSCKfrac} shows that the fraction of the population employed
+is higher in the incomplete-market economy than in the
+complete-market economy. As seen in
+Figure \Fg{figLSCKprod}, there are  those agents who work and those who
+do not work in the incomplete-market economy, but who would have done the opposite
+ if they instead had lived in the complete-market economy.
+Evidently, the  group of agents who work in the incomplete-market
+economy but would not have worked in the complete-market economy is larger.
+With no insurance markets, agents on average work more in order to
+accumulate precautionary savings in the event of low productivity in the
+future.\NFootnote{Marcet et al.\ (2007) conduct an analysis similar to that of
+Chang and Kim (2007) but where labor is divisible,
+$n_t \in [0,1]$, and the idiosyncratic productivity shock takes on only
+two values, $z_t \in \{0,1\}$. In addition to the precautionary savings
+effect that tends to increase the capital stock under uncertainty, they
+identify an ex post wealth effect on labor supply that can depress
+the aggregate hours of work as well as the capital stock in an
+incomplete-market economy. (See section \use{sec:self_insure_labor}.)}
+\auth{Marcet, Albert}%
+\auth{Obiols-Homs, Francesc}%
+\auth{Weil,  Philippe}%
+\auth{Zhu, Shenghao}%
+
+What makes the employment-population ratio to converge across
+the two economies at higher tax rates in Figure \Fg{figLSCKfrac}? A key
+reason is that Prescott's tax and transfer scheme  effectively
+ insures the agents by collecting  tax revenues and then returning them
+ lump sum as equal amounts to all agents. To  explore
+how precautionary savings drive the employment wedge
+between the incomplete- and complete-market economies at low tax rates,
+ consider the following perturbation of the idiosyncratic productivity
+process. Specifically, suppose that  agents face a transition
+probability distribution function
+$$
+\tilde \pi(z ' \vert z; \lambda) =
+(1-\lambda) \pi(z ' \vert z) + \lambda G(z'),   \EQN LSCK_tildeprob
+$$
+where $\lambda\in[0,1]$. For $\lambda=0$, the productivity process is
+the same as that of Chang and Kim (2007), while for $\lambda=1$,
+productivities are independent and identically distributed across agents
+and time, with realizations governed by the stationary unconditional
+distribution of Chang and Kim's process.
+Such perturbations do not affect equilibrium outcomes in the
+complete-market economy because they do not affect the constraints of the representative
+family. But  agents in the incomplete-market are now
+ex ante relieved when they do not have to bear as much of the risk
+associated with the persistence of Chang and Kim's productivity
+process. The dotted line in Figure \Fg{figLSCKfrac} shows equilibrium outcomes
+in the incomplete-market economy for $\lambda=0.1$, where employment is now closer
+to that of the complete-market economy.
+
+
+A striking feature of Figure \Fg{figLSCKfrac} is the high elasticity
+of aggregate labor supply to taxation in the complete-market as well
+as in the incomplete-market economy. This message is shared with the
+first part of this chapter when agents were finitely lived and
+at interior solutions with respect to their choices of career length.
+
+
+
+\section{L and S equivalence meets C and K's agents}
+
+Krusell et al.\ (2008) conjecture that the equivalence
+result of Ljungqvist and Sargent (2007) in continuous time described in section
+\use{sec:LSequi} extends to a deterministic version
+of Chang and Kim's (2007) discrete-time framework
+in section \use{sec:ChangKim}.  Remove  the productivity
+shocks and normalize an agent's efficiency units of labor to one
+in the latter framework ($z_t=1$ for all $t$). Then  Krusell et al.\ (2008)  show how agents choose the
+constant consumption stream in expression \Ep{LSequi_conslog},
+$\bar c= w/B$, when the steady-state interest rate is equal to the rate
+of subjective discounting, $1+r=1/\beta$. Krusell et al. (2008)
+indicate the existence of  stationary equilibrium in which  agents
+support that constant consumption stream by  alternating between spells of working  and enjoying leisure (`time averaging').
+ They argue that the
+aggregate allocation is the same as if markets had been complete and
+there had been employment lotteries.
+\auth{Krusell, Per}%
+\auth{Chang, Yongsung}%
+\auth{Kim, Sun-Bin}%
+%{Krusell, Per}%
+\auth{Mukoyama,  Toshihiko}
+\auth{Rogerson,  Richard}%
+\auth{Sahin, Ay\c sg\" ul}%
+
+\subsection{Guess the value function}
+
+Since we are removing the productivity shocks from the model of
+section \use{sec:ChangKim}, an agent's single state variable
+in a stationary equilibrium is his beginning-of-period asset level $a$,
+before receiving interest earnings.
+We guess, and will then verify, that an agent's value funcion $V(a)$ takes
+the form,
+$$
+V(a) = \cases{
+ { \displaystyle \log \left[ {\displaystyle 1-\beta \over \displaystyle \beta }
+     \, a + w \right] - B \over \displaystyle 1-\beta }
+                                      \hskip.5cm &if $a\leq \underline{a}$; \cr
+\noalign{\vskip.3cm}
+  { \displaystyle 1 \over \displaystyle 1-\beta }
+\left( \log \left[ {\displaystyle w \over \displaystyle B}\right] -1 \right)
+    + {\displaystyle B \over \displaystyle \beta w}\, a
+                        \hskip.5cm &if $a\in (\underline{a}, \bar a)$;    \cr
+   \noalign{\vskip.3cm}  \cr
+{ \displaystyle  \log \left[ {\displaystyle 1-\beta \over \displaystyle \beta }
+     \, a  \right]  \over \displaystyle  1-\beta }
+                                       \hskip.5cm &if $a\geq \bar a$. \cr }
+                                                  \EQN LS_CK_equi2_value
+$$
+
+To appreciate what motivates  our guess, we begin with  some
+observations. In a stationary equilibrium with
+$1+r=1/\beta$ and no uncertainty, an agent's intertemporal Euler
+equation \Ep{LS_CK_Euler} implies constant consumption over
+time.\NFootnote{Because of the equality between the market interest
+rate $1+r$ and the rate of subjective discounting $1/\beta$, any
+consumption path that varies over time can be improved upon by
+shifting consumption from periods of high to periods of low
+consumption. An agent's employment status does not matter since
+preference specification \Ep{LS_CK_utility} is additively
+separable in consumption and leisure.}
+Thus, any asset accumulation or decumulation by an agent can only
+be motivated by that agent's desire to engage in time averaging with
+respect to his labor supply. For an agent with assets in some range
+$(\underline{a}, \bar a)$, we shall  show that time averaging is
+indeed optimal because it  enables him to finance an
+optimal constant consumption level $\bar c= w/B$. But first we
+discuss our guess of the value function outside of this asset range.
+
+If an agent has too little (too much)  assets, he will choose to
+work forever (to never work) and to consume the highest affordable
+constant consumption level associated with that labor supply plan.
+Consider an agent whose beginning-of-period assets
+$a \leq \underline{a}$ are so low that if he works forever and
+consumes the highest affordable constant consumption, $w+ ra$, that
+consumption level will be less than or equal to $\bar c= w/B$.
+We can  verify later that such a poor agent will indeed choose
+to work forever and to consume $w+ra$ in each period.
+After invoking $r=(1/\beta)-1$, the critical asset limit $\underline{a}$
+is
+$$\EQNalign{
+w + {1-\beta \over \beta} \, \underline{a} \hskip.2cm &= \hskip.2cm
+{w \over B},  \cr
+\underline{a} \hskip.2cm &= \hskip.2cm {\beta w \over 1-\beta}
+[B^{-1} -1 ] .
+                                                          \EQN LS_CK_alow \cr}
+$$
+If $n_t=1$ and $c_t=w+ra$ for all $t$, preference specification
+\Ep{LS_CK_utility}  yields  lifetime utility  given by the
+conjectured value function \Ep{LS_CK_equi2_value} when
+$a\leq \underline{a}$.\NFootnote{Under the implicit but necessary
+parameter restriction for an equilibrium with time
+averaging, $B>1$, note that asset limit
+$\underline{a}$ in \Ep{LS_CK_alow} is negative, i.e., only
+agents who are initially indebted, $a<0$, could conceivably want
+to choose to work forever with constant consumption equal
+to $w + ra$.}
+
+Next, consider an agent whose beginning-of-period assets
+$a \geq \bar a$ are so high that if he never works and
+consumes the highest affordable constant consumption, $ra$, that
+consumption level will be greater than or equal to $\bar c= w/B$.
+We can later verify that such a rich agent will indeed choose
+ never to work and to consume $ra$ in each period.
+After invoking $r=(1/\beta)-1$, the critical asset limit $\bar a$ is
+$$\EQNalign{
+{1-\beta \over \beta} \, \bar a \hskip.2cm &= \hskip.2cm
+{w \over B},  \cr
+\bar a \hskip.2cm &= \hskip.2cm {\beta w \over 1-\beta} B^{-1}.
+                                                       \EQN LS_CK_ahigh \cr}
+$$
+If $n_t=0$ and $c_t=ra$ for all $t$, preference specification
+\Ep{LS_CK_utility} does yield  lifetime utility  given by the
+conjectured value function \Ep{LS_CK_equi2_value} when
+$a\geq \bar a$.
+
+To complete our guess about the value function,  draw a straight line
+between the end point $V(\underline{a})$ and the starting point
+$V(\bar a)$ for the  segments with $a \leq \underline{a}$
+and $a \geq \bar a$, respectively. This guess
+is motivated by the insight from section \use{sec:LSequi} that time
+averaging can under some conditions replace employment lotteries and
+ attain linear combinations in the space of utilities when employment
+is a discrete choice variable. The linear segment for the
+value function is  expressed in
+\Ep{LS_CK_equi2_value} when $a\in (\underline{a}, \bar a)$. Note that
+the slope with respect to assets, $B/(\beta w)$, is the same as the
+derivative at the end point of the preceding segment for the value function
+($a\leq \underline{a}$) as well as the derivative at the starting point
+of the succeeding segment for the value function ($a\geq \bar a$):
+$$
+\EQNalign{
+V'(a)\Big{\vert}_{a\uparrow \underline{a}}
+&= {\beta^{-1} \over {\displaystyle 1-\beta \over \displaystyle \beta }
+\, \underline{a} + w }  = { B \over \beta w}   \cr
+\noalign{\vskip.2cm}
+V'(a)\Big{\vert}_{a\downarrow \bar a}
+&= {1 \over (1-\beta) \bar a }
+ = { B \over \beta w},   \cr }
+$$
+where we have invoked expression \Ep{LS_CK_alow} and \Ep{LS_CK_ahigh}
+for $\underline{a}$ and $\bar a$, respectively.
+
+\subsection{Verify optimality of time averaging}
+
+Without productivity shocks, Bellman equation \Ep{LS_CK_value} can be
+simplified to
+$$\EQNalign{
+V(a) = \max \Biggl\{ &\max_{a'} \Bigl\{
+\log \bigl( (1+r)a + w -a' \bigr) - B + \beta V(a') \Bigr\} \;,  \cr
+                     &\max_{a'} \Bigl\{
+\log \bigl( (1+r)a -a' \bigr) + \beta V(a') \Bigr\}  \Biggr\},
+                                      \EQN LS_CK_equi2_value2  \cr}
+$$
+where the first max operator selects whether to work, and the
+budget constraints are substituted into the utility functions.
+Given our conjectured value function \Ep{LS_CK_equi2_value},
+we  solve the optimization problem on the right side of
+\Ep{LS_CK_equi2_value2} to verify that our conjectured value
+function $V(a)$ does indeed emerge on left side of
+\Ep{LS_CK_equi2_value2}.
+
+Note that the conjectured value function \Ep{LS_CK_equi2_value}
+is (weakly) concave so that
+the two inner optimization problems (one for working, another for not working) on the
+right side of \Ep{LS_CK_equi2_value2} are both concave programming problems. Moreover, since the conjectured value function is continuous and
+differentiable everywhere, we can solve each optimization problem (for
+working and for not working) one by one, using first-order conditions, and
+compare the values. Let $W(a,1)$ and $W(a,0)$ denote the value of working
+and not working, respectively, and hence, $V(a) = \max\{W(a,1),\, W(a,0)\}$.
+
+We start by verifying the conjectured value function for
+$a\in (\underline{a}, \bar a)$ when time averaging should be an optimal
+policy. First, conditional on working, take a first-order
+condition with respect to $a'$ in the first inner optimization problem on
+the right side of \Ep{LS_CK_equi2_value2}
+$$\EQNalign{
+{1 \over (1+r) a + w - a'} &= \beta V'(a'), \cr
+a' &= {1 \over \beta}a + w - {w \over B}.   \EQN LS_CK_a_work \cr}
+$$
+Here we have invoked the conjectured steady-state interest rate,
+$1+r= \beta^{-1}$, and proceeded as if $a'$ also falls in the
+range $(\underline{a}, \bar a)$ where the conjectured
+value function \Ep{LS_CK_equi2_value} has
+derivative $V'(a')=B/(\beta w)$. Since $a'$ exceeds $a$, it follows
+that $a$ must fall below some upper bound $a^{\star} < \bar a$
+in order for $a'\in (\underline{a}, \bar a)$, where that upper bound
+$a^{\star}$ is given by\NFootnote{Using expression \Ep{LS_CK_a_work}
+for $a'$, the upper bound $a^{\star}$ on asset level $a$ that ensures
+$a'\leq \bar a$, can be solved from
+$$
+{1 \over \beta}\,a^{\star} + w - {w \over B} = \bar a.
+$$
+Multiplying both sides by $\beta$, and subtracting and adding $\bar a$
+on the right side, yield
+$$
+a^{\star} + \beta w - {\beta w \over B} = \beta \bar a - \bar a + \bar a.
+$$
+After invoking expression \Ep{LS_CK_ahigh} for $\bar a$, we find that
+the last term on the left side is equal to the first two terms on the
+right side, and hence, we have arrived at the equality in
+\Ep{LS_CK_astarhigh}.}
+$$a^{\star} = \bar a - \beta w < \bar a.      \EQN LS_CK_astarhigh
+$$
+
+Given the optimal choice of $a'$ in expression \Ep{LS_CK_a_work},
+we can compute from the budget constraint that the implied consumption
+level is $c=w/B$. With choices of both $a'$ and $c$ in hand, we
+can compute the value of working,
+$$\EQNalign{
+W(a,1) &= \log (c) - B + \beta V(a')  \cr
+& = \log \left({w \over B}\right) - B
++ \beta \left\{ {1 \over 1-\beta}
+\left[ \log \left({w \over B} \right) -1 \right]
++ {B \over \beta w}
+\left[ {1 \over \beta} a + w -{w \over B} \right] \right\} \cr
+& = {1 \over 1-\beta} \left[ \log \left({w \over B}\right) - 1 \right]
++ {B \over \beta w} \, a = V(a),  \cr }
+$$
+and hence, we have confirmed that working yields
+a value equal to our conjectured value function when
+$a\in (\underline{a}, a^{\star})$, where the upper bound
+$a^{\star}$ ensures that $a'\in (\underline{a}, \bar a)$.
+
+
+Next, conditional on not working, the first-order
+condition with respect to $a'$ in the second inner optimization problem on
+the right side of \Ep{LS_CK_equi2_value2} is
+$$\EQNalign{
+{1 \over (1+r) a - a'} &= \beta V'(a'), \cr
+a' &= {1 \over \beta}a - {w \over B},   \EQN LS_CK_a_notwork \cr}
+$$
+where we have invoked the conjectured steady-state interest rate,
+$1+r= \beta^{-1}$, and proceeded as if $a'$ also falls in the
+range $(\underline{a}, \bar a)$ where the conjectured
+value function \Ep{LS_CK_equi2_value} has the
+derivative $V'(a')=B/(\beta w)$. Since $a'$ falls below $a$, it follows
+that $a$ must exceed some lower bound $a_{\star} > \underline{a}$ in
+order for $a'\in (\underline{a}, \bar a)$, where that
+lower bound $a_{\star}$ is given by\NFootnote{Using expression
+\Ep{LS_CK_a_notwork}
+for $a'$, the lower bound $a_{\star}$ on asset level $a$ that ensures
+$a'\geq \underline{a}$, can be solved from
+$$
+{1 \over \beta}\,a_{\star} - {w \over B} = \underline{a}.
+$$
+Multiplying both sides by $\beta$, and subtracting and adding $\underline{a}$
+on the right side, yield
+$$
+a_{\star} - {\beta w \over B} = \beta \underline{a} - \underline{a}
+                                                    + \underline{a}.
+$$
+After invoking expression \Ep{LS_CK_alow} for $\underline{a}$, we find that
+the first two terms on the right side is greater than the last term on
+the left side by an amount $\beta w$, and hence, we have arrived at the
+equality in \Ep{LS_CK_astarlow}.}
+$$a_{\star} = \underline{a} + \beta w > \underline{a}. \EQN LS_CK_astarlow
+$$
+
+Given the optimal choice of $a'$ in expression \Ep{LS_CK_a_notwork},
+we can compute from the budget constraint that the implied consumption
+level is $c=w/B$. With choices of both $a'$ and $c$ in hand, we
+can compute the value of not working to be
+$$\EQNalign{
+W(a,0) &= \log (c) + \beta V(a')  \cr
+& = \log \left({w \over B}\right)
++ \beta \left\{ {1 \over 1-\beta}
+\left[ \log \left({w \over B} \right) -1 \right]
++ {B \over \beta w}
+\left[ {1 \over \beta} a -{w \over B} \right] \right\} \cr
+& = {1 \over 1-\beta} \left[ \log \left({w \over B}\right) - 1 \right]
++ {B \over \beta w} \, a = V(a),  \cr }
+$$
+and hence, we have confirmed that not working yields
+a value equal to our conjectured value function when
+$a\in (a_{\star}, \bar a)$, where the lower bound
+$a_{\star}$ ensures that $a'\in (\underline{a}, \bar a)$.
+
+
+Following steps similar to above, we leave as an exercise for the
+reader to complete the verification of conjectured value function
+\Ep{LS_CK_equi2_value} (or consult the appendix
+of Krusell et al.\ (2008)). In
+particular, we can show that an agent with assets
+$a\in (\underline{a}, a_{\star})$ ($a\in (a^{\star}, \bar a)$)
+strictly prefers to work (not to work)
+so that his next period's assets $a'$ do not fall outside of the
+asset range $(\underline{a},\, \bar a)$. Thus, we conclude
+that agents with assets $a\in (\underline{a},\, \bar a)$ find
+it optimal to engage in time averaging, i.e., to alternate between
+work and leisure, to finance an optimal consumption level
+$\bar c= w/B$ with asset holdings fluctuating within the
+range $a\in (\underline{a},\, \bar a)$. Also, we can verify
+that an agent with assets $a\leq \underline{a}$
+($a\geq \bar a$) strictly prefers to work forever
+(never to work) and choose the highest affordable constant
+consumption of $c=w+ra$ ($c=ra$).
+
+Krusell et al.\ (2008) assume that
+$\beta > 0.5$, which is required for
+$a_{\star} < a^{\star}$.\NFootnote{To derive a parameter
+restriction that ensures $a_{\star} < a^{\star}$, we substitute
+expression \Ep{LS_CK_alow} and \Ep{LS_CK_ahigh}
+for $\underline{a}$ and $\bar a$, respectively, into
+expression \Ep{LS_CK_astarlow} and \Ep{LS_CK_astarhigh}
+for $a_{\star}$ and $a^{\star}$, respectively,
+$$
+a_{\star} = \underline{a} + \beta w
+          = {\beta w \over 1-\beta} [B^{-1} -1 ] + \beta w
+\;<\; {\beta w \over 1-\beta} B^{-1} - \beta w
+= \bar a - \beta w = a^{\star},
+$$
+which simplifies to $\beta > 0.5$.}
+Together with expressions \Ep{LS_CK_astarhigh} and
+\Ep{LS_CK_astarlow}, it then follows that
+$\underline{a} < a_{\star} < a^{\star} < \bar a$.
+Another implicit assumption of Krusell et al.\ (2008) is
+that the preference parameter for the disutility of work
+is high enough so that there exist interior solutions to an
+agent's lifetime labor supply problem. In our formulation, that
+parameter restriction is $B>1$.
+
+
+
+\subsection{Equivalence of time averaging and lotteries}
+
+Krusell et al.\ (2008) argue that there exists a stationary
+equilibrium for the incomplete-market economy where
+all agents engage in time averaging with assets in the range
+$(\underline{a}, \bar a)$, and the aggregate values of
+$K$ and $L$ are the same as in a corresponding
+complete-market economy with employment lotteries.
+
+We have already studied equilibrium outcomes in a more
+general version of the complete-market economy in section
+\use{sec:ChangKim_complete}. Under our present assumption
+that all agents have a constant productivity level
+that is normalized to one, equation \Ep{LS_CK_family_c}
+shows that the optimal consumption level is $c=w/B$, and
+the aggregate labor supply is given by the appropriate
+version of equation \Ep{LS_CK_family_bc3}:
+$$
+{K \over L} = {1 \over \beta } {K \over L} + w
+     - { w \over B L},
+                                                    \EQN LS_CK_equi2_family
+$$
+where once again the capital-labor ratio $K/L$ and the wage
+$w$ are determined by equations \Ep{LS_CK_family_r} and
+\Ep{LS_CK_wr;a}. Hence, we can solve for the aggregate labor
+supply $L$ from equation \Ep{LS_CK_equi2_family}.
+
+In the stationary equilibrium of the incomplete-market economy
+with time averaging,  agents are indifferent to
+alternative lifetime labor supply paths that yield equal  present values of labor income. In a competitive
+equilibrium, an `invisible hand'
+ arranges  agents' labor and
+savings decisions so that at every point in time, the aggregate
+labor supply and aggregate asset holdings equal the same
+constant aggregates $L$ and $K$ as those in  the complete-markets economy.
+An equilibrium interest equal
+to $1+r=1/\beta$ makes a constant
+consumption $\bar c=w/B$ be the optimal choice for the worker-consumer.
+
+
+\section{Two pillars for high elasticity at  extensive margin}
+The high labor supply elasticity at an interior
+solution for career length rests on two pillars -- indivisibilities
+in labor supply and time separable preferences. Labor supply
+indivisibilities cause workers
+to divide their lifetimes into parts  working and not working.
+Time-separable preferences make the  choice
+between those two parts occur at a constant per-period disutility of
+work, generating that  high elasticity of labor supply at an interior
+solution for career length, i.e., at an {\it extensive} margin.
+
+The labor-supply-indivisibility pillar is typically justified
+by  the observation  that workers' hours of work
+are mostly bunched at a few common values   with the `full-time'  value  predominating.
+Alternative assumptions about technologies and preferences can generate that
+outcome. Simple examples include a setup cost at work and
+a fixed disutility of work. The time-separable-preferences pillar
+is typically justified as doing a good job of approximating workers' wishes to rest and  refresh
+between periods.
+
+
+\section{No pillars  at intensive margin}
+No pillars have yet  been discovered that would
+imply a high labor supply elasticity at an {\it intensive}
+margin.
+%%The few examples
+Examples of utility functions that  generate  a high elasticity at an intensive
+margin have been constructed, but they  are very special and seem to rest on no general principles about preferences.
+We  illustrate the absence of pillars by studying  reasoning behind a
+claim by Rogerson and Wallenius (2013, hereafter RW)
+that ``based on existing estimates of the size of nonconvexities
+and measures of full-time work prior to retirement, it is hard
+to rationalize values of the IES [intertemporal elasticity of
+substitution for labor at the intensive margin] that are less
+than 0.75 [at the full-time work option].''
+\auth{Rogerson, Richard}%
+\auth{Wallenius, Johanna}%
+
+After documenting that  typical retirements seem to be abrupt
+transitions from full-time work $n_f$ to not working, RW
+argue that it is reasonable to assume that workers have an option to work
+part-time at $n_p$. They argue that because few workers are observed to exercise that option,
+the claim  in quotes that we have just cited follows.
+Thus, they write: ``In particular, consider the case in which there is one
+part-time option available, characterized by hours
+$n_p = 0.5\, n_f$, and that the wage per unit of time for
+this option'' relative to the full-time option  is
+$w_p/w_f \approx 0.75$. RW assume that the disutility of
+work is given by
+$$
+v^{\rm RW}(n) = \frac{1}{1-\frac{1}{\gamma}}
+                 \Bigl[1-(1-n)^{1-\frac{1}{\gamma}}\Bigr],
+                                                        \EQN RW_pref
+$$
+which exhibits a constant IES $\gamma$ for {\it leisure},
+and an IES for {\it labor} of $\gamma \,(1-n)/n$.
+We can show that  RW would have derived an even higher lower bound
+of 2.4 for the IES at the intensive margin if they had instead
+assumed the same  functional form with a constant IES  $\phi$ for
+{\it labor} that they  used in  Prescott et al.\ (2009), namely,
+$$
+v^{\rm P}(n) = n^{1+\frac{1}{\phi}}.      \EQN PRW_pref
+$$
+Since it seems that   \Ep{RW_pref} and \Ep{PRW_pref} both can work as
+disutility of work  functions that reinforce RW's claim, it is tempting to
+hope that there is a pillar for a high elasticity at the intensive margin operating here.
+Unfortunately,  that hope would be misplaced because it is easy to demonstrate
+that RW's claim is brittle and won't survive with other reasonable disutility of work
+functions.  To establish this, by simply  blending the two  RW disutility functions \Ep{RW_pref} and \Ep{PRW_pref} we can
+show that RW's analysis would instead show that the IES at the intensive margin can be made  arbitrarily
+low.
+
+
+
+\subsection{Special example of high elasticity at  intensive margin}
+
+In a time-averaging model with two work options, full-time work
+is preferred over part-time work if the lower average
+utility per unit of time under the latter is not sufficient to
+compensate for the lower part-time wage rate:
+$$
+\frac{v^{\rm i}(\epsilon^n \,n_f)}{\epsilon^n \,n_f} \biggl/
+\frac{v^{\rm i}(n_f)}{n_f}
+       \geq \frac{\epsilon^w w_f}{w_f},       \EQN part_vs_full
+$$
+%%for ${\rm i}={\rm RW}, {\rm P}, {\rm LS}$; and
+where $\epsilon^n$ and $\epsilon^w$ are the part-time
+fractions of the full-time hours of work ($\epsilon^n = n_p/n_f$)
+and wage rate ($\epsilon^w = w_p/w_f$), respectively.
+
+For preference specification \Ep{PRW_pref}, condition
+\Ep{part_vs_full} becomes
+$$
+\phi \geq \frac{\log (\epsilon^n)}{\log (\epsilon^w)}
+%%%\bigg|_{\epsilon^n=0.5, \epsilon^w=0.75} \approx 2.4,
+$$
+and hence, under RW's values $\epsilon^n = 0.5$ and
+$\epsilon^w=0.75$, the worker prefers the  full-time option over the
+part-time option whenever the IES $\phi$ for labor is greater than 2.4.
+ RW do not assume these preferences.  Instead, they assume \Ep{RW_pref}, for which
+%the same calculation
+condition \Ep{part_vs_full}
+yields a lower bound of 0.77 on the IES for labor at
+full-time work $n_f$, which supports RW's  claim quoted
+above.\NFootnote{While it is inconsequential
+for preference specification \Ep{PRW_pref},
+the specific value of $n_f\in (0,1)$ is central to RW's preference
+specification \Ep{RW_pref}. RW set $n_f = 0.385$, which they justify by
+observing that full-time work on an annual basis constitutes 2,000
+hours out of an assumed total discretionary time of 5,200 hours.}
+We depict that parameterization of \Ep{RW_pref}  as the solid line  in
+Figure \Fg{figRWLSdisutility}; in this figure we have normalized  the
+disutility of work  to be one at full-time work $n_f$.
+
+
+
+\midfigure{figRWLSdisutility}
+\centerline{\epsfxsize=3truein\epsffile{RW_LS_disutility.eps}}
+\caption{Disutility of work where the solid line depicts
+$v^{\rm RW}(\cdot)$ with IES for labor equal to 0.77 at $n_f$;
+and the dashed lines represent alternative parameterizations of
+$v^{\rm LS}(\cdot)$ with an IES at $n_f$ of around
+0.1, 0.2, 0.3, 0.4, 0.5, 0.6 and 0.7, respectively, when moving
+from left to right at the top of the figure.}
+\infiglist{figRWLSdisutility}
+\endfigure
+
+
+
+\subsection{Fragility of the special example}
+
+RW's finding that the IES for labor must be high to match
+observations depends sensitively on assuming utility function \Ep{RW_pref} or
+ \Ep{PRW_pref}.
+Ljungqvist and Sargent (2018) establish that sensitivity by  blending those two utility functions
+to get an  alternative one:
+$$
+v^{\rm LS}(n) = \mu_1 v^{\rm RW}(n) +
+                 \mu_2 v^{\rm P}( \max \{0,\, n-n_p \} ).
+                                                   \EQN LS_pref
+$$
+The utility function \Ep{LS_pref} augments the RW disutility of work,
+$v^{\rm RW}(n)$,
+with extra disutility for hours of work above $n_p$ measured
+by the Prescott et al.\ (2009)   disutility
+$v^{\rm P}( \max \{0,\, n-n_p \})$. Specifically, to parameterize
+the dashed-line utility functions in Figure \Fg{figRWLSdisutility},
+we can proceed as follows.
+We set a common preference parameter $\gamma$ in
+$v^{\rm RW}(\cdot)$ to be larger than the
+value deduced in the preceding subsection and select a weight
+$\mu_1$ that assures that $v^{\rm LS}(n_p) = 0.5 \cdot 0.75$.
+Each dashed line in the figure is constructed using a different value of $\phi$
+in $v^{\rm P}(\cdot)$ and an appropriately adjusted  weight
+$\mu_2$ that assures that $v^{\rm LS}(n_f) = 1$.\NFootnote{By setting
+$\gamma$ and $\mu_1$ as described in the text, we are assured that
+$\mu_1 v^{\rm RW}(n_f)<1$, which leaves room for a positive
+quantity $\mu_2 v^{\rm P}(n_f-n_p)>0$ to
+be part of $v^{\rm LS}(n_f)=1$. The
+weights $\mu_1$ and $\mu_2$ then satisfy
+\vskip-.3cm
+$$
+\mu_1 = \frac{0.5 \cdot 0.75}{v^{\rm RW}(n_p)}
+            \hskip1cm \hbox{\rm and} \hskip1cm
+\mu_2 = \frac{1 - \mu_1 v^{\rm RW}(n_f)}{v^{\rm P}(n_f - n_p) }.
+$$
+For the record, but without any particular significance,
+the dashed lines in Figure \Fg{figRWLSdisutility} are drawn
+for a parameter $\gamma$ that is twice as large as the
+one for the solid line (0.96 instead of 0.48), and the
+values of the parameter $\phi$ are set equal to
+0.14, 0.24, 0.33, 0.43, 0.53, 0.63 and 0.73, respectively,
+when moving across the dashed lines from left to right at the top
+of the figure.}
+
+%\vskip-.5cm}
+%For our specific dashed-line examples in Figure     ,
+%we set $\gamma$ such that the implied IES for labor
+%of $v^{\rm RW}(\cdot)$ at the full-time work option is
+%1.5, and $\phi\in\{.13, .23, .33, .43, .53, .63, .73\}$.}
+
+
+The utility functions in Figure \Fg{figRWLSdisutility} are
+normalized to be one at $n_f$; by construction, they attain
+the value $0.5 \cdot 0.75$ at $n_p$. Hence, a worker with any of
+those preferences would be indifferent between working full time
+or part time at an interior solution to career length. RW use
+that indifference to establish a lower bound on the IES for labor,
+given utility function $v^{\rm RW}(\cdot)$. Without relying on any
+other nonconvexity than the one used by RW, our alternative
+utility functions $v^{\rm LS}(\cdot)$ in
+Figure \Fg{figRWLSdisutility} demonstrate fragility
+of RW's conclusion that ``it is hard to rationalize values
+of the IES that are less than 0.75.'' To the contrary, Ljungqvist and Sargent (2018) showed that it is easy
+by simply blending preferences that were
+actually used by RW themselves in closely related
+contexts.\NFootnote{The reasoning behind our parameterization of
+the two components in $v^{\rm LS}$ is as
+follows. Regarding \Ep{RW_pref} with a constant IES $\gamma$ for
+leisure, we note that the IES for work, as given by
+$\gamma\, (1-n)/n$, asymptotes to infinity when hours of work
+goes to zero. Therefore, for some initial range of hours of work,
+the IES for labor will necessarily be high, and that heightened
+willingness to substitute intertemporally means that the disutility
+of work increases almost linearly over an initial range of hours
+of work. Thus, with a relatively high $\gamma$, our utility function
+\Ep{LS_pref} relies  on an initial extended nearly linear
+segment of $v^{\rm RW}$ that serves to suppress the attraction  of the part-time work option.
+In specification \Ep{PRW_pref} with a constant IES $\phi$ for work,
+a lower value of $\phi$ means an accelerated growth in disutility
+because at any level of supplied hours, less
+willingness to substitute  intertemporally necessarily shows up
+as a relatively larger increase in the disutility of work, i.e., in
+a more convex shape. Thus, with a low value of $\phi$, our
+utility function \Ep{LS_pref} unleashes that strong growth
+component $v^{\rm P}$ closer to $n_f$, eventually coming to
+dominate the curvature of our utility function; so the IES
+for labor at the full-time work option ends up being close to the
+assumed small value of $\phi$.}
+
+
+While utility functions \Ep{RW_pref} and \Ep{PRW_pref} are often
+used to estimate labor supply elasticities at intensive margins,
+the parametric specifications are best thought of as local
+approximations of the curvature at some
+observed hours of work. Instead, RW  chose to draw dramatic conclusions from
+the assumption of a globally constant IES for
+leisure. (They would have drawn even more dramatic ones if  they had assumed a globally
+constant IES for labor).
+%(or above with utility function \Ep{PRW_pref},
+% a globally constant IES for labor).
+In our judgement, drawing sweeping conclusions about the labor supply elasticity at the intensive margin
+from such a shaky extrapolation from a reasonable local  property of a utility function to a global one falls
+far short of providing the general economic forces provided by the two  pillars that support a high elasticity at the
+extensive margin.
+
+
+
+
+
+
+
+
+
+%Moving from the left to the right at the very top of the figure,
+%the dashed lines represent utility functions $v^{\rm LS}(n)$
+%with an IES for work at $n_f$ of around
+%0.1, 0.2, 0.3, 0.4, 0.5, 0.6 and 0.7, respectively.
+
+
+\section{Concluding remarks}
+
+A high aggregate labor supply elasticity hinges on a substantial
+fraction of agents being at an interior solution with respect to their lifetime labor supplies.
+ %that gives rise to
+%a high aggregate labor supply elasticity, and it is less important
+%whether or not there are employment lotteries and complete
+%insurance markets. This conclusion can be reached in models of
+This finding emerges  from models with
+finitely-lived agents who choose career length and also
+in Chang and Kim's (2007) model of infinitely-lived agents
+who engage in time averaging across periods of work and leisure.
+
+ When agents are finitely lived, two forces  can lower the labor supply
+elasticity: (1) government financed
+social security retirement schemes that leave agents at a corner
+solution with respect to their choices of career lengths,  and (2)  large adverse
+labor market shocks towards the end of working lives that
+prematurely terminate careers by pushing  the shadow value of additional labor earnings  below the utility
+of leisure in early retirement.
+
+
+It is an occasion to celebrate that two  camps of researchers,
+namely, those who have championed high and low labor supply elasticities,
+have come together in adopting the same theoretical
+framework.  Nevertheless, the serious division  between the two camps about quantitative magnitudes of labor supply elasticities
+ persists.
+But we see the emergence of agreement over a basic theoretical framework as
+ genuine progress relative
+to the earlier stalemate when proponents of employment
+lotteries used macroeconomic observations to build support for
+their aggregation theory, while opponents brought a different
+set of microeconomic observations to refute the employment lotteries
+allocation mechanism.\NFootnote{It would
+be a mistake to regard the abandonment  of a stand-in household with
+its employment lotteries as  unconditional surrender to
+the other tradition in macroeconomics of overlapping generations
+models that has commonly postulated incomplete markets. The reason is that earlier
+work in the overlapping generations tradition has often  postulated an exogenous retirement
+age, shutting down the key choice focused on in time-averaging models of career choice.  It is the possibility
+of interior solutions to lifetime labor supply in combination with
+indivisible labor that have led real business cycle researchers like
+ Prescott (2006) to embrace lifecycle models of labor supply.}
+
+To illustrate how far we have come, we revisit our own
+section \use{sec:lotteries_firms_households} reasoning, where we are concerned about an
+asymmetry between idle firms and idle workers in a particular
+model. While idle firms are truly indifferent about their operating status because
+operating firms are just breaking even without making any profits,
+``the aggregation theory behind the stand-in household has an
+additional aspect that is not present in the theory that
+aggregates over firms, namely, it says how consumption and
+leisure are smoothed across households with the help of
+an extensive set of contingent claim markets. This market
+arrangement and randomization device stands at the center
+of the employment lottery model. To us, it seems that they
+make the aggregation theory behind the stand-in household
+fundamentally different than the well-known aggregation
+theory for the firm side.'' Well, we now also can assert   that this
+difference is not important for those households who, being  at an interior
+solution for lifetime labor supply, are about to choose whether to supply  more of their indivisible labor
+by extending their careers  before  retiring.
+
+Having a diverse group of researchers focus on a common set of
+observations on lifetime labor supply within a common theoretical
+framework bodes well for the eventual arrival of what we hope will be the
+``labor supply elasticity accord'' foretold by Ljungqvist and
+Sargent (2011).
+
+
+
+
+
+
+

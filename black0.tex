@@ -1,0 +1,1143 @@
+%\eqnotracetrue
+%\pageno=3
+\footnum=0
+\chapter{Overview\label{overview}}%
+
+
+\section{Warning}
+
+This chapter provides a nontechnical summary of some themes of
+this book.
+We debated whether to put this chapter first or last.  A way to use this
+chapter is to read it twice, once before reading anything else in the book,
+then again after having mastered the techniques presented  in the rest of the book.
+That second time, this chapter will be easy and enjoyable reading,
+and it will remind you of connections that transcend a variety of apparently disparate
+topics.  But on first reading, this chapter will be difficult, partly because
+the discussion is mainly literary and therefore incomplete.  Measure
+what you have learned by comparing your understandings after those first
+and second readings.  Or just skip this chapter and read it after
+the others.
+
+\section{A common ancestor}
+
+Clues in our mitochondrial DNA tell  biologists that we  humans
+share a common ancestor called Eve who lived 100,000 years ago.
+All of macroeconomics too seems to have descended from a
+common source, Irving Fisher's and Milton Friedman's
+ consumption Euler
+equation, the cornerstone of
+ the permanent income theory of consumption.
+Modern macroeconomics records the fruits and frustrations of a long
+love-hate affair with the permanent income mechanism. As a way of
+summarizing some important themes in our book, we briefly
+chronicle some  of the high and low points of this long affair.
+
+
+\section{The savings problem}
+A consumer  wants to maximize
+$$E_0 \sum_{t=0}^\infty \beta^t u(c_t) \EQN sintro2 $$
+where $\beta \in (0,1)$, $u$ is a twice continuously
+differentiable, increasing, strictly concave utility function, and
+$E_0$ denotes a mathematical expectation conditioned on time $0$
+information. The consumer faces a sequence of budget
+constraints\NFootnote{We use a different notation in chapter
+\use{selfinsure}: $A_t$ here conforms to $-b_t$ in chapter \use{selfinsure}.}
+$$ A_{t+1} = R_{t+1} (A_t  + y_t -c_t) \EQN sintro3 $$
+for $t\geq 0$,
+where $A_{t+1} \geq \underline A$ is the consumer's holdings of an asset at the beginning
+of period $t+1$, $\underline A$ is a lower bound on asset holdings,
+ $y_t$ is a random endowment sequence, $c_t$ is consumption
+of a single good, and $R_{t+1}$ is the gross rate of return on the asset
+between $t$ and $t+1$.  In the general version of the problem,
+both $R_{t+1}$ and $y_t$ can be random,  though  special cases of the
+problem restrict $R_{t+1}$ further.
+  A first-order necessary condition for this problem is
+$$ \beta  E_t R_{t+1} {u'(c_{t+1}) \over u'(c_t)} \leq 1, \quad
+=  \  {\rm if} \ A_{t+1} > \underline A. \EQN sintro1 $$
+This Euler inequality recurs as either the cornerstone or the
+straw man in many theories
+contained in this book.
+
+Different modeling choices
+put \Ep{sintro1} to work in different ways. One
+ can restrict $u, \beta$, the return process
+ $R_{t+1}$, the lower bound on assets $\underline A$,
+ the income process $y_t$, and   the consumption
+process $c_t$ in various ways.
+By making alternative choices about restrictions
+to impose on subsets of these objects, macroeconomists have constructed
+theories  about consumption, asset prices, and the distribution of
+wealth.  Alternative versions of equation \Ep{sintro1} also underlie Chamley's (1986)
+ and Judd's (1985b)
+ striking
+results about eventually not taxing capital.
+
+\subsection{Linear quadratic permanent income theory}
+
+  To obtain a version of the permanent income theory  of
+Friedman (1955) and Hall (1978), set $R_{t+1} =R$, impose
+$R=\beta^{-1}$, assume the quadratic utility function
+$u(c_t)=-(c_t-\gamma)^2$, and allow consumption $c_t$ to
+be negative. We also allow
+%%that $u $ is quadratic so that $u'$ is linear.
+%%Allow
+$\{y_t\}$ to be an arbitrary  stationary
+process, and dispense with the lower bound $\underline A$.
+ The Euler inequality \Ep{sintro1} then implies that consumption is
+a martingale:
+$$ E_t c_{t+1} = c_t.  \EQN sintro4 $$
+Subject to a boundary condition  that\NFootnote{The motivation for
+using this boundary condition instead of a lower bound $\underline
+A$ on asset holdings is that there is no ``natural'' lower bound on
+asset holdings when consumption is permitted to be negative.
+%%, as it is when $u$ is quadratic in $c$.
+Chapters \use{recurge} and \use{incomplete}
+ discuss  what are called ``natural  borrowing limits,''
+the lowest possible appropriate values of $\underline A$ in the case
+that $c$ is nonnegative.}
+ $E_0 \sum_{t=0}^\infty \beta^t A_t^2 <\infty$,
+equation \Ep{sintro4} and  the budget constraints \Ep{sintro3} can be solved
+to yield
+$$ c_t = \left[{r \over 1+r}\right]
+\left[E_t \sum_{j=0}^\infty
+ \left({1 \over 1+r}\right)^j y_{t+j} + A_t \right]
+\EQN sintro5 $$
+where $1+r = R$.  Equation \Ep{sintro5}
+expresses consumption as a fixed marginal propensity to consume
+${r \over 1+r}$ that is applied to the sum of human wealth -- namely
+$\left[E_t \sum_{j=0}^\infty
+ \left({1 \over 1+r}\right)^j y_{t+j}\right] $ -- and
+ financial wealth, $A)t$.
+This equation has the following notable features:
+(1) consumption is smoothed on average across time: current
+consumption depends only on the expected present value of nonfinancial
+income;
+(2)  feature (1) opens the way to Ricardian equivalence: redistributions
+of lump-sum taxes over time that leave  the expected present value of
+nonfinancial income unaltered do not affect consumption;
+(3) there is certainty equivalence: increases in the conditional variances
+of future incomes about  their forecast values do not affect consumption
+(though they do diminish the consumer's utility);
+(4) a by-product of certainty equivalence is that   the marginal propensities
+to consume out of financial and nonfinancial wealth are equal.
+
+
+\auth{Ligon, Ethan} \auth{Blundell, Richard}
+\auth{Preston, Ian}%
+This theory continues to be a workhorse in much
+good applied  work (see Ligon (1998)
+and  Blundell and
+Preston (1999) for creative applications).
+Chapter \use{dplinear} describes  conditions under which
+certainty equivalence prevails, while chapters \use{timeseries} and \use{dplinear}
+  also describe the structure of the cross-equation
+restrictions   that the hypothesis of rational expectations imposes and that
+ empirical studies
+heavily exploit.
+
+
+
+
+
+
+
+\subsection{Precautionary saving}\label{sec:intro_precautionary}%
+A literature on ``the  savings problem'' or ``precautionary saving''
+investigates the consequences of altering the assumption in the
+linear quadratic permanent income theory that $u$
+is quadratic, an assumption that makes   the marginal utility of consumption
+become  negative for large enough $c$. Rather than assuming that
+$u$ is quadratic, the literature on the savings problem
+assumes that $u$ is increasing and strictly
+concave.  This assumption keeps the marginal utility of
+consumption above zero.   We retain other features of the
+linear quadratic model ($\beta R=1$, $\{y_t\}$ is a stationary
+process), but now impose a borrowing limit $A_t \geq \underline
+a$.
+
+With these assumptions, something amazing occurs:   Euler
+inequality \Ep{sintro1} implies that the marginal  utility of
+consumption is a {\it nonnegative\/}
+supermartingale.\NFootnote{See chapter \use{selfinsure}. The situation
+is simplest in the case that the $y_t$ process is i.i.d. so that
+the value function can be expressed as a function of level $y_t +
+A_t$ alone: $V(A+y)$.  Applying the Benveniste-Scheinkman formula
+from chapter \use{dynamicdp1} shows
+ that $V'(A+y)=u'(c)$, which implies  that when $\beta
+R=1$, \Ep{sintro1} becomes $E_t V'(A_{t+1}+y_{t+1}) \leq
+V'(A_t+y_t)$,
+ which states that
+the derivative of the value function is a nonnegative supermartingale.
+%which shows that where $V(a)$ is the value function for the saving
+%problem  with an i.i.d.\  endowment, condition \Ep{sintro1}
+%implies that $V'(a)$ is a nonnegative martingale,
+That in turn implies
+that $A$ almost surely diverges  to $+\infty$.} That gives the
+model the striking implication that $c_t \rightarrow_{as} +\infty$
+and $A_t \rightarrow_{as} +\infty$, where $\rightarrow_{as}$ means
+almost sure convergence. Consumption and wealth will fluctuate
+randomly in response to income fluctuations, but so long as
+randomness in income continues,
+ they will drift upward over time without bound.
+  If
+randomness eventually expires in the tail of the income
+ process, then both consumption
+and income  converge.  But even
+small perpetual random fluctuations
+in income are enough to cause both consumption and assets to diverge
+to $+\infty$.   This  response
+of the optimal consumption
+plan to randomness is required by the Euler equation \Ep{sintro1} and
+is called precautionary savings.
+By keeping the marginal utility of consumption positive,
+precautionary savings models arrest the  certainty equivalence  that prevails
+in the linear quadratic permanent income model.
+Chapter \use{selfinsure} studies the savings problem in depth and struggles
+to understand the workings of the powerful martingale convergence theorem.
+The supermartingale convergence theorem also plays an important role in the model
+insurance with private information in chapter \use{socialinsurance}.
+
+\subsection{Complete markets, insurance, and the distribution of wealth}\label{sec:intro_complete}%
+To build a model of the distribution of wealth, we consider a setting
+with many consumers.
+  To start, imagine a large number of {\it ex ante\/}
+identical consumers with preferences \Ep{sintro2} who are allowed
+to share their income risk by trading one-period contingent
+claims.  For simplicity, assume that the saving possibility
+represented by the budget constraint \Ep{sintro3} is no longer available\NFootnote{It
+can be shown that even if it were available, people would not want
+to use it.} but that it is replaced by access to an extensive set
+of insurance markets. Assume that household $i$ has an income
+process $y_t^i = g_i(s_t)$ where $s_t$ is a state vector governed
+by a Markov process with transition density $\pi(s'|s)$, where $s$ and $s'$
+are elements of a common state space ${\bf S}$.    (See
+chapters \use{timeseries} and \use{recurge} for  material about Markov
+chains and their uses in equilibrium models.) Each period every household can trade
+one-period state-contingent claims to consumption next period.
+Let $Q(s'|s)$ be the price of one unit of consumption next period
+in state $s'$ when the state this period is $s$. When household
+$i$ has the opportunity to trade such state-contingent securities,
+its first-order conditions for maximizing \Ep{sintro2} are
+$$ Q(s_{t+1}|s_t)  = \beta {u'(c^i_{t+1}(s_{t+1}))\over u'(c^i_t(s_t)) }
+     \pi(s_{t+1}|s_t) .
+  \EQN sintro15 $$
+Notice that $\int_{s_{t+1}} Q(s_{t+1} | s_t) d s_{t+1}$
+is the price of a risk-free claim on consumption one period ahead: it is
+thus the reciprocal of the gross risk-free interest rate $R$. Therefore, if we sum
+both sides of \Ep{sintro15} over $s_{t+1}$, we obtain our standard
+consumption Euler condition \Ep{sintro1}  at
+equality.\NFootnote{That the asset is risk-free becomes manifested
+in $R_{t+1}$ being a function of $s_t$, so that it is known at
+$t$.} Thus, the complete markets equation \Ep{sintro15} is
+consistent with our complete markets Euler equation \Ep{sintro1}, but \Ep{sintro15}
+imposes more. We will exploit
+this fact extensively in chapter \use{optax}.
+
+
+ In a widely studied special case, there is no aggregate risk, so
+that $\int_{i}  y_t^i d \, i  = \int_i g_i(s_t) d \, i = {\rm constant}$.
+In that case, it can be shown that the competitive equilibrium
+state-contingent prices become
+$$ Q(s_{t+1} | s_t) = \beta \pi(s_{t+1} | s_t) .  \EQN sintro16 $$
+This, in turn, implies that the risk-free
+gross rate of return $R$ is $\beta^{-1}$.\NFootnote{This follows because the
+price of a risk-free claim to consumption tomorrow at date $t$ in state $s_t$ is  $\sum_{s_{t+1}} Q(s_{t+1} | s_t )
+= \beta \sum_{s_{t+1}} \pi(s_{t+1} | s_t) = \beta.$}
+If we substitute \Ep{sintro16} into \Ep{sintro15}, we discover that
+$c^i_{t+1}(s_{t+1}) = c^i_t(s_t)$ for all $(s_{t+1}, s_t)$.
+ Thus, the consumption
+of consumer $i$ is constant across time and across states of nature
+$s$, so that in equilibrium, all
+idiosyncratic risk is insured away.
+   Higher present-value-of-endowment consumers will have permanently higher
+consumption than lower present-value-of-endowment consumers, so that there
+is a nondegenerate cross-section distribution of wealth and consumption.
+In this model, the cross-section distributions of wealth and consumption
+replicate themselves over time, and furthermore each individual forever
+occupies the same position in that distribution.
+
+\auth{Quadrini, V.}\auth{R\'\i os-Rull, J.V.} \auth{Perri,Fabrizio}\auth{Krueger, Dirk}%
+\auth{Davies, James B.}\auth{Shorrocks, Anthony F.}\auth{Rodriquez, S.B.}%
+\auth{Diaz-Gim\' enez, J.}%
+  A model that has the cross-section distribution  of wealth and consumption
+being time invariant is not a bad approximation to the data.
+But there is ample evidence that individual
+households' positions {\it within\/} the distribution of wealth move over
+ time.\NFootnote{See D\'\i az-Gim\' enez, Quadrini and  R\'\i os-Rull (1997);
+Krueger and Perri (2004, 2006); Rodriguez, D\'\i az-Gim\' enez,  Quadrini
+and  R\'\i os-Rull (2002); and Davies and  Shorrocks (2000).} Several models
+described in this book alter consumers' trading opportunities in
+ways designed
+ to frustrate risk sharing enough to cause individuals' position
+in the  distribution of wealth to change with luck and enterprise.
+One class that emphasizes luck is the set of incomplete markets
+models started by  Truman Bewley. It eliminates the household's
+access to almost all markets and returns it to the environment of
+the precautionary savings model.
+
+\subsection{Bewley models}
+
+At first glance,
+the precautionary savings model with $\beta R=1$ seems like
+a bad starting point
+for building a theory
+that aspires to explain a situation in which cross-section distributions
+of consumption and wealth are constant over time even as individuals
+experience random fluctuations within that distribution.
+  A panel of households described by the precautionary savings model with
+$\beta R =1$ would  have cross-section distributions  of wealth
+and consumption that march upward and never settle down. What
+have come to be called Bewley models are constructed by lowering
+the interest rate $R$ to allow those cross-section distributions
+to settle down.\NFootnote{It is worth thinking about the sources of the following differences.  In  the complete markets model sketched in subsection
+\use{sec:intro_complete},  an {\it equilibrium\/} risk-free gross interest rate $R$ satisfies
+$R \beta=1$ and  each consumer completely smooths consumption across both states and time, so that the
+distribution of consumption trivially converges. The precautionary savings model of section \use{sec:intro_precautionary}
+{\it assumes\/} that $R \beta =1$ and derives the outcome that each consumer's consumption and financial wealth both diverge toward
+$+ \infty$. Why can $\beta R =1$ be compatible with non-exploding individual consumption and wealth levels in the complete markets model
+of subsection \use{sec:intro_complete}, but not in the precautionary savings model of subsection \use{sec:intro_precautionary}?}
+ Bewley models are arranged so that the cross
+section distributions of consumption, wealth, and income are
+constant over time and so that  the asymptotic stationary
+distributions of consumption, wealth, and income for an individual
+consumer across time equal the corresponding cross-section
+distributions across people.
+ A Bewley model can thus
+be thought of as starting with a continuum of consumers operating according to the
+precautionary savings model with $\beta R=1$ and its diverging
+individual asset process. We then lower the interest rate enough
+to make assets converge to a distribution whose cross-section
+average clears  a market for a risk-free asset.   Different
+versions of Bewley  models are distinguished by what the risk-free
+asset is. In some versions it is a consumption loan from one
+consumer to another; in others it is fiat money; in others it can
+be either consumption loans or fiat money; and in yet others it is
+claims on physical capital.  Chapter \use{incomplete} studies
+these alternative interpretations of the risk-free asset.
+
+
+
+
+\topfigure{chap0pic1}
+\centerline{\epsfxsize=3.5true in\epsffile{Bewley_chap1.eps}}
+\caption{Mean of time series average of household consumption
+as function of risk-free gross interest rate $R$.}
+\infiglist{chap01}
+\endfigure
+
+As a function of a constant gross interest rate $R$,
+Figure \Fg{chap0pic1}
+plots the time series average of asset holdings for an
+individual consumer.  At $R=\beta^{-1}$, the time series mean
+of the individual's assets diverges, so that $E a(R)$ is infinite.
+ For $R < \beta^{-1}$, the mean exists.  We require that a continuum
+of {\it ex ante\/} identical but {\it ex post\/}
+ different consumers share the same
+time series average $E a(R)$ and also that the distribution of
+$a$ over time for a given agent equals the distribution of $A_{t+1}$ at a point in time across
+agents.  If the
+asset in question is a pure consumption loan, we require
+as an equilibrium condition that $E a(R) =0$, so that
+borrowing equals lending. If the asset is fiat money, then
+we require that $E a(R) = {M \over p}$, where $M$ is a fixed stock of fiat
+money and $p$ is the price level.
+
+Thus, a Bewley model lowers the interest rate $R$
+enough to offset the precautionary savings force that with $\beta R=1$ propels
+assets upward
+in the savings problem.
+  Precautionary saving remains an important force in Bewley
+models: an increase in the volatility of income generally pushes
+the $E a(R)$ curve to the right, driving the equilibrium $R$ downward.
+
+
+
+
+
+
+\subsection{History dependence in standard consumption models}
+
+Individuals' positions in the wealth distribution
+are frozen in  the complete markets model,    but not
+in the Bewley model, reflecting the absence or presence, respectively,
+ of {\it history dependence\/} in
+ equilibrium allocation rules for consumption.
+   The preceding version of the complete markets model
+erases history dependence, while the savings problem model and the
+Bewley model do not.
+
+
+History dependence is present in these models in an easy to handle
+recursive way because the household's asset level completely
+encodes the history of endowment realizations that it has
+experienced.  We want a way of representing history dependence
+more generally in contexts where a stock of assets does not
+suffice to summarize history. History dependence can be
+troublesome because without a convenient low-dimensional state
+variable to encode history, it  requires that there be a separate
+decision rule for each date that expresses the time $t$ decision
+as a function of the history at time $t$, an object with a number
+of arguments that grows exponentially with $t$. As analysts, we have a strong
+incentive to find a low-dimensional state variable. Fortunately, economists have
+made tremendous strides in handling history dependence with
+recursive methods that summarize a history with
+a single number and that permit compact time-invariant expressions for
+decision rules. We shall discuss history dependence later in this
+chapter and will encounter many such examples in chapters
+\use{stackel} through \use{wldtrade}.
+% \use{credible},  \use{socialinsurance}, and
+%\use{socialinsurance2}.
+
+
+
+\subsection{Growth theory}
+  Equation \Ep{sintro1} is also a key ingredient of growth theory
+(see chapters \use{linappro} and \use{growth}). In the  one-sector
+ growth
+model, a representative  household solves a version of  the savings problem
+in which
+the single asset is interpreted as a claim on the return from a
+physical capital stock $K$ that enters a  constant returns to
+scale production function $F(K,L)$,  where $L$ is labor input.
+When returns to capital are tax free, the theory equates the
+gross rate of return $R_{t+1}$ to the gross marginal product of
+capital net of depreciation, namely,   $F_{k,t+1} +(1-\delta)$, where
+$F_k(k,t+1)$ is the marginal product of capital
+ and $\delta$ is a
+depreciation  rate. Suppose that we add leisure to the utility
+function, so that we replace $u(c)$ with the more
+general one-period utility function
+$U(c,\ell)$, where $\ell$ is the household's leisure.
+Then the appropriate version of the consumption Euler
+condition  \Ep{sintro1} at equality becomes
+$$ U_c(t) = \beta U_c(t+1) [F_k(t+1) + (1-\delta) ]. \EQN sintro40 $$
+The constant returns to scale property implies that
+$F_k(K,N) = f'(k)$, where $k=K/N$ and $F(K,N)=N f(K/N)$.
+If there exists a steady state in which $k$ and $c$ are constant over time,
+then equation \Ep{sintro40} implies that
+it must satisfy
+$$   \rho + \delta = f'(k)  \EQN sintro41 $$
+where $\beta^{-1} \equiv (1+\rho)$. The value of $k$ that solves this equation
+is called the ``augmented Golden rule'' steady-state level of the capital-labor
+ratio. This celebrated equation shows how technology (in the form of
+$f$ and $\delta$) and time preference (in the form of $\beta$) are the
+determinants of the steady-state level of capital when income from
+capital is not taxed.  However,  if income from capital is
+taxed at the flat rate marginal
+rate $\tau_{k,t+1}$,
+then the Euler equation \Ep{sintro40} becomes modified
+$$ U_c(t) = \beta U_c(t+1) [F_k(t+1) (1-\tau_{k,t+1})
+ + (1-\delta) ].  \EQN sintro42 $$
+If the flat rate tax on capital is constant and if a steady-state
+$k$ exists, it must satisfy
+$$ \rho + \delta = (1-\tau_k) f'(k) . \EQN sintro45 $$
+This equation shows how taxing capital diminishes the steady-state
+capital labor ratio.   See chapter \use{linappro} for an extensive
+analysis of the one-sector growth model when the government levies
+time-varying flat rate taxes on  consumption, capital, and labor,
+as well as offering an investment tax credit.
+
+
+\subsection{Limiting results from dynamic optimal taxation}
+Equations \Ep{sintro41} and \Ep{sintro45} are central to the
+dynamic theory of optimal taxes. Chamley (1986) and Judd (1985b)
+\auth{Judd, Kenneth L.}\auth{Chamley, Christophe}%
+forced the
+government to finance an exogenous stream of government purchases,
+gave it the capacity to levy time-varying flat rate taxes on labor
+and capital at different rates, formulated an optimal taxation
+problem (a so-called Ramsey problem), and studied the possible
+limiting behavior of the optimal taxes. Two Euler  equations play
+a decisive role in determining the limiting tax rate on capital in
+a nonstochastic economy:  the household's Euler equation
+\Ep{sintro42}, and  a similar consumption Euler equation for the
+Ramsey planner that takes the form
+$$ W_c(t) = \beta W_c(t+1) [F_k(t+1) + (1-\delta) ]\EQN sintro43 $$
+where
+$$ W(c_t, \ell_t) = U(c_t,\ell_t) + \Phi[U_c(t) c_t - U_\ell(t) (1-\ell_t) ]
+  \EQN sintro44 $$
+and where $\Phi$ is a Lagrange multiplier on the government's
+intertemporal budget constraint. As Jones, Manuelli, and Rossi
+(1997) emphasize,\auth{Jones, Larry E.}\auth{Manuelli, Rodolfo}
+\auth{Rossi, Peter E.}%
+ if the function $W(c,\ell)$ is simply viewed
+as a peculiar utility function, then what is called the primal
+version of the Ramsey problem can    be viewed as an ordinary
+optimal growth problem with period utility function $W$ instead of
+$U$.\NFootnote{\label{fnt:conflict1}Notice that so long as $\Phi   >0$ (which occurs
+whenever taxes are necessary), the objective in the primal version
+of the Ramsey problem disagrees with the preferences of the
+household over $(c,\ell)$ allocations. This conflict is the source
+of a time-inconsistency problem in the Ramsey problem with
+capital.}
+
+
+In a Ramsey allocation, taxes must be such that {\it both\/}
+\Ep{sintro40} and \Ep{sintro43} always hold, among other equations.
+Judd and Chamley note the following implication of the two
+Euler equations \Ep{sintro40}  and \Ep{sintro43}.
+If the government expenditure sequence converges and if
+a steady state exists in which $c_t, \ell_t, k_t, \tau_{kt}$ all converge,
+then it must be true that \Ep{sintro41} holds {\it in addition\/}
+ to  \Ep{sintro45}.
+But both of these conditions can prevail only
+if $\tau_k =0$.   Thus, the steady-state properties of two versions of our consumption
+Euler  equation \Ep{sintro1} underlie Chamley and Judd's remarkable result
+that asymptotically it is optimal not to tax capital.
+
+  In stochastic versions of dynamic optimal taxation problems, we shall glean
+additional insights  from
+\Ep{sintro1} as embedded  in the asset-pricing
+equations \Ep{sintro7a} and \Ep{sintro8a}.
+  In optimal taxation problems,
+the government has the ability to manipulate asset prices through its
+influence on the equilibrium consumption  allocation that
+contributes to  the stochastic discount factor  $m_{t+1,t}$ defined in equation \Ep{sintro7a} below.
+The Ramsey government seeks a way wisely
+to use its power to
+revalue its existing debt by altering state-history
+prices. To appreciate what the Ramsey government is doing, it helps to know
+the theory of asset pricing.
+
+
+\auth{Lucas, Robert E., Jr.} \auth{Breeden, Douglas T.}
+
+\subsection{Asset pricing}
+ The dynamic asset  pricing theory of Breeden (1979)  and Lucas (1978)
+also starts with \Ep{sintro1}, but alters what is fixed and what is
+free.  The Breeden-Lucas
+ theory is silent about the endowment process $\{y_{t}\}$ and sweeps
+it into the background. It
+fixes a function $u$ and a discount factor $\beta$,
+and takes a consumption process $\{c_t\}$ as given.  In particular,
+assume that $c_t = g(X_t)$, where $X_t$ is a Markov process with
+transition c.d.f.\ $F(X'|X)$.  Given these inputs, the theory is assigned the task of
+restricting the rate
+of return on an asset, defined by Lucas as a
+claim on the consumption endowment:
+$$ R_{t+1} = {p_{t+1}    + c_{t+1} \over p_t}$$
+where $p_t$ is the price of the asset.  The Euler inequality
+\Ep{sintro1} becomes
+$$ E_t \beta {u'(c_{t+1}) \over u'(c_t)}\left({p_{t+1} + c_{t+1}
+     \over p_t}\right)  =1. \EQN sintro6 $$
+This equation can be solved for a pricing function
+$p_t =p(X_t)$. In particular, if we substitute $p(X_t)$ into
+\Ep{sintro6}, we get Lucas's functional equation for
+$p(X)$.
+
+\subsection{Multiple assets}
+
+If the consumer has access to several assets,
+ a version of \Ep{sintro1} holds for each
+asset:
+$$ E_t \beta {u'(c_{t+1}) \over u'(c_t)} R_{j,t+1} =1  \EQN sintro7 $$
+where $R_{j,t+1}$ is the gross rate of return on asset $j$.
+Given a utility function $u$, a discount factor $\beta$,
+and the hypothesis of rational expectations (which allows the researcher
+to use empirical projections as counterparts of the  theoretical projections
+$E_t$),
+equations \Ep{sintro7} put extensive restrictions across the moments
+of a vector time series for $[c_t, R_{1,t+1}, \ldots, R_{J,t+1}]$.
+ A key finding of the literature (e.g., Hansen and Singleton, 1983)
+ is that for $u$'s with plausible
+curvature,\NFootnote{Chapter \use{assetpricing2} describes Pratt's (1964)
+mental
+experiment for deducing plausible  curvature.}
+consumption is too smooth for $\{c_t, R_{j,t+1}\}$ to satisfy
+equation \Ep{sintro7}, where $c_t$ is measured as aggregate
+consumption.
+
+Lars Hansen and others have elegantly organized this evidence as follows.
+Define the stochastic discount factor $$m_{t+1,t}  = \beta {u'(c_{t+1} )
+\over u'(c_t)} \EQN sintro7a $$
+ and write \Ep{sintro7} as
+  $$ E_t m_{t+1,t} R_{j,t+1}  = 1 . \EQN sintro8 $$
+Represent the gross rate of return as
+$$ R_{j,t+1} = {o_{t+1} \over q_t } $$
+where $o_{t+1}$ is a one-period payout on the asset and $q_t$ is
+the price of the asset at time $t$.  Then \Ep{sintro8} can be expressed
+as
+$$ q_t = E_t m_{t+1,t} o_{t+1}. \EQN sintro8a $$
+The structure of \Ep{sintro8a} justifies calling $m_{t+1,t}$
+a stochastic discount factor: to determine the price of an
+asset, multiply the random payoff for each state by the discount factor
+for that state, then add over states by taking a conditional expectation.
+Applying the definition of a conditional covariance and a Cauchy-Schwartz
+inequality to this equation implies
+$$ {q_t \over E_t m_{t+1,t}} \geq E_t o_{t+1} -
+  {\sigma_t(m_{t+1,t}) \over  E_t m_{t+1,t}} \sigma_t(o_{t+1}) \EQN sintro9 $$
+where $\sigma_t(y_{t+1})$ denotes  the conditional standard deviation of
+$y_{t+1}$.
+Setting $o_{t+1}=1$ in \Ep{sintro8a} shows that $E_t m_{t+1,t}$ must be
+the time $t$
+price of a risk-free one-period security.   Inequality
+\Ep{sintro9} bounds the ratio of the price of a risky security $q_t$
+to the price of a risk-free security $E_t m_{t+1,1}$ by the right side,
+which equals the expected
+payout on that risky asset {\it minus\/} its conditional
+standard deviation $\sigma_t(o_{t+1})$ {\it times\/}
+ a ``market price of risk''
+ ${\sigma_t(m_{t+1,t}) /  E_t
+  m_{t+1,t}}$.
+   %An efficient portfolio attains this bound.
+By using data only on payouts $o_{t+1}$ and prices $q_t$,
+inequality \Ep{sintro9} has been used to estimate the market price
+of risk without restricting how  $m_{t+1,t}$  relates
+to consumption.
+If we take these atheoretical  estimates of
+ ${\sigma_t(m_{t+1,t}) /  E_t
+  m_{t+1,t}}$
+ and compare them with the theoretical
+values of
+ ${\sigma_t(m_{t+1,t}) /  E_t
+  m_{t+1,t}}$ that we get
+with a
+plausible curvature for $u$, and
+by imposing $\hat m_{t+1,t} = \beta {u'(c_{t+1})\over u'(c_t)}$ for aggregate
+consumption,
+ we find that the theoretical
+$\hat m$ has far too little volatility to account for the
+atheoretical estimates of the conditional coefficient of variation
+of $m_{t+1,t}$.    As we discuss extensively in chapter \use{assetpricing2},
+this outcome reflects the fact that aggregate consumption is too
+smooth to account for atheoretical estimates of the market price of risk.
+
+
+  There have been two broad types of response to the empirical challenge.
+The first retains \Ep{sintro8} but abandons \Ep{sintro7a} and instead
+ adopts
+a statistical  model for $m_{t+1,t}$. Even without the link that
+equation \Ep{sintro7a} provides to consumption, equation
+\Ep{sintro8} imposes restrictions across  asset returns and
+$m_{t+1,t}$ that can be used to identify the $m_{t+1,t}$ process.
+Equation \Ep{sintro8} contains no-arbitrage conditions   that
+restrict the joint behavior of returns. This has been a fruitful
+approach in the affine  term structure literature (see Backus and
+Zin  (1993), Piazzesi (2000), and Ang and Piazzesi
+(2003)).\NFootnote{Affine term structure models generalize earlier
+models that implemented rational expectations versions of the
+expectations theory of the term structure of interest rates. See
+Campbell and Shiller (1991), Hansen and Sargent (1991), and
+Sargent (1979).} \auth{Campbell, John Y.} \auth{Piazzesi, Monika}
+\auth{Ang, Andrew} \auth{Hansen, Lars P.} \auth{Zin, Stanley E.}
+\auth{Backus, David K.}
+
+  Another approach has been to disaggregate and
+to  write the household-$i$ version of \Ep{sintro1}:
+$$ \beta  E_t R_{t+1} {u'(c_{i,t+1}) \over u'(c_{it})} \leq 1, \quad
+= \  \ {\rm if} \  A_{i,t+1} > \underline A_i. \EQN sintro10 $$ If at
+time $t$, a subset of households are on the corner, \Ep{sintro10}
+will hold with equality only for another  subset  of households.
+Households in the second set price assets.\NFootnote{David
+Runkle (1991) and Gregory Mankiw and Steven Zeldes (1991)
+  checked \Ep{sintro10}
+for subsets of agents.} \auth{Mankiw, Gregory} \auth{Zeldes,
+Stephen P.}\auth{Runkle, David}
+
+Chapter \use{socialinsurance2} describes a model of Harald Zhang
+(1997) and Alvarez and Jermann (2000, 2001).  The model introduces
+participation (collateral) constraints and shocks in a way that
+makes a changing subset of agents $i$  satisfy \Ep{sintro10}.
+ Zhang and Alvarez and Jermann formulate
+these models by adding participation constraints to the recursive
+formulation of the consumption problem based on \Ep{sintro22}.
+Next we briefly describe the structure of these models and their
+attitude toward our theme equation,  the consumption Euler
+equation \Ep{sintro1}.  The idea of Zhang and Alvarez and Jermann
+was to  meet the empirical asset pricing  challenges by disrupting
+\Ep{sintro1}.   As we shall see, that requires  eliminating some
+of the assets that some of the households can trade. These
+advanced models exploit a convenient method for representing and
+manipulating history dependence. \auth{Zhang, Harold}
+\auth{Alvarez, Fernando} \auth{Jermann, Urban}
+
+
+
+\section{Recursive methods}
+ The pervasiveness  of the consumption Euler inequality will be a
+significant substantive theme of this book. We now turn to a
+methodological theme, the imperialism of  the recursive method
+called dynamic programming.
+
+The notion that underlies dynamic programming
+is a finite-dimensional object called the
+{\it state\/} that,
+from the point of view of current and future payoffs,
+ completely summarizes the current situation
+of a decision maker.
+If an optimum problem has a low-dimensional state vector,
+immense simplifications follow.  A recurring theme of modern macroeconomics
+and of this book is that
+finding an appropriate state vector is an art.
+
+To illustrate the idea of the state in  a simple setting,
+  return to the savings problem and assume that the
+consumer's endowment process is a time-invariant function
+of a state $s_t$ that follows a Markov process with time-invariant one-period
+transition density $\pi(s'|s)$ and initial  density $\pi_0(s)$,
+ so that $y_t = y(s_t)$.
+To begin, recall the description
+\Ep{sintro5}
+of consumption
+that prevails
+ in the special linear quadratic version of the savings problem. Under our
+present assumption that $y_t$ is a time-invariant function of the Markov
+state, \Ep{sintro5} and the household's budget constraint imply
+the following representation of the household's decision rule:
+$$\EQNalign{ c_t & =   f(A_t, s_t) \EQN sintro21;a \cr
+             A_{t+1} & =  g( A_t, s_t) . \EQN sintro21;b \cr} $$
+Equation \Ep{sintro21;a} represents consumption  as a
+time-invariant function of a state vector $(A_t, s_t)$.  The Markov
+component $s_t$ appears in
+\Ep{sintro21;a} because it contains all of the information
+that is useful in forecasting future endowments (for the linear quadratic
+model, \Ep{sintro5} reveals the household's incentive to forecast future
+incomes),  and the asset level $A_t$ summarizes the individual's current financial
+wealth. The $s$ component is assumed to be
+exogenous to the   household's decisions
+and has a stochastic motion governed by $\pi(s'|s)$.
+But the future path of $A$ is chosen by the household and is described
+by \Ep{sintro21;b}. The system formed by \Ep{sintro21} and the Markov
+transition density $\pi(s'|s)$ is said to be {\it recursive\/}
+ because
+it expresses a current decision $c_t$ as a function  of the state and tells how
+to update  the state.
+By iterating \Ep{sintro21;b},
+notice that $A_{t+1}$ can be expressed as a function of
+the history  $[s_t, s_{t-1}, \ldots,
+s_0]$
+and $A_0$. The endogenous state variable financial wealth thus
+encodes all payoff-relevant aspects of the history of the
+exogenous component of the state $s_t$.
+
+  Define the   value function $V(A_0,s_0)$ as the optimum value
+of the savings problem starting from initial state $(A_0, s_0)$.
+The value function $V$ satisfies the following functional
+equation, known as a Bellman equation:
+$$ V(A,s) = \max_{c,A'}\left\{ u(c) + \beta E[ V(A',s') |s] \right\}
+  \EQN sintro50 $$
+where the maximization is subject to
+$A' = R(A+y-c)$ and $y = y(s)$.
+Associated with a  solution $V(A,s)$ of the Bellman equation is
+the pair of policy functions
+$$\EQNalign{ c & = f(A,s) \EQN sintro51;a \cr
+   A' & = g(A,s) \EQN sintro51;b \cr} $$
+from \Ep{sintro21}.
+The {\it ex ante\/} value  (i.e., the value of
+\Ep{sintro2} before $s_0$ is drawn)
+of the savings problem
+is then
+$$ v(A_0) = \sum_{s} V(A_0,s) \pi_0(s) . \EQN sintro52 $$
+We shall make ample use of the {\it ex ante\/} value function.
+
+
+
+
+
+\subsection{Dynamic programming and the Lucas Critique}
+Dynamic programming is now recognized as
+a powerful method for studying private
+agents' decisions and also the decisions
+of a government that wants to design an optimal
+policy in the face of constraints imposed on it by private agents'
+best responses to that government policy.  But it has taken
+a long time for the power of dynamic programming to be realized
+for government policy design problems.
+
+Dynamic programming had been applied since the late 1950s
+to  design government decision rules
+to control an economy whose transition laws included
+rules that described the decisions of private agents.
+ In  1976 Robert E. Lucas, Jr.,\ published his now famous critique of
+dynamic-programming-based econometric
+policy evaluation procedures.
+ The heart of Lucas's critique was
+the implication for government policy evaluation of
+a basic property that pertains to any optimal decision rule
+for private agents with a form
+ \Ep{sintro51} that attains a Bellman equation like \Ep{sintro50}.
+The property is that the optimal decision rules $(f,g)$ depend on
+the transition density $\pi(s'|s)$ for the exogenous component of
+the state $s$. As a consequence, any widely understood government
+policy that alters the law of motion for a state variable like
+$s$ that appears in private agents' decision rules should alter
+those private decision rules.    (In the applications that Lucas
+had in mind, the $s$ in private agents' decision problems included
+variables useful for predicting tax rates, the money supply, and
+the aggregate price level.)  Therefore, Lucas asserted that
+econometric policy
+evaluation procedures that assumed that private agents' decision
+rules are fixed in the face of alterations in government policy
+are flawed.\NFootnote{They were flawed because they assumed ``no
+response'' when they should have assumed ``best response'' of private
+agents' decision rules to government decision rules.}
+ Most econometric policy evaluation procedures at the time
+were vulnerable to Lucas's criticism.
+ To construct valid policy evaluation procedures,
+ Lucas advocated building new models that
+would attribute rational expectations to decision makers.\NFootnote{That
+is, he wanted private decision rules to solve dynamic programming
+problems with the correct transition density $\pi$ for $s$.}
+Lucas's discussant Robert Gordon predicted that after that ambitious
+task had been accomplished, we could then use dynamic programming
+to compute optimal policies, i.e., to solve Ramsey problems.
+
+
+\subsection{Dynamic programming  challenged}
+But Edward C.
+ Prescott's 1977 paper
+entitled ``Should Control  Theory Be Used for Economic Stabilization?''
+asserted that Gordon was too optimistic.
+Prescott
+claimed that in his 1977 JPE paper with
+Kydland he had proved that
+it was ``logically impossible'' to use dynamic programming to  find
+optimal government policies in settings where  private traders
+face genuinely dynamic problems.  Prescott
+said that  dynamic programming was inapplicable to government policy
+design problems because the structure of 
+best responses of {\it current private decisions\/} to {\it future\/}
+government policies prevents the government policy design problem from
+being recursive (a
+manifestation of the time inconsistency of optimal government plans).
+The optimal government plan would therefore require a  government
+commitment technology, and the government policy
+must take the form of a sequence of history-dependent
+decision rules that could not be expressed as a function
+of natural state variables.
+
+\subsection{Imperialistic response of dynamic   programming}
+
+Much of the subsequent history of macroeconomics
+belies
+Prescott's claim of ``logical impossibility.''
+  More and more problems that smart
+people like Prescott in 1977 thought could not be attacked
+with dynamic programming {\it can\/} now   be solved with
+dynamic programming.
+Prescott didn't put it this way in 1977, but today we would:
+in 1977 we lacked a way to handle history dependence
+ within  a dynamic programming framework.
+Finding a recursive way to
+handle history dependence  is a major achievement of the past 35 years
+and an important methodological theme of this book that opens
+the way to a variety of important applications.
+
+We shall encounter important traces of
+the fascinating history of this topic in various chapters.  Important
+contributors to the task of overcoming Prescott's challenge seemed to work in isolation
+from one another, being unaware of the complementary approaches
+being followed elsewhere. Important contributors included
+ Shavell and Weiss (1979);
+Kydland and Prescott (1980); Miller and Salmon (1985); Pearlman;
+Currie and Levine (1985); Pearlman (1992), and Hansen, Epple, and
+Roberds (1985). These researchers achieved truly independent
+discoveries of the same important idea. \auth{Salmon, Mark}
+\auth{Miller, Marcus} \auth{Pearlman, J. G.}\auth{Levine, P.L.}
+\auth{Currie, D.A.}\auth{Weiss, Laurence}\auth{Shavell, Stephen}
+\auth{Kydland, Finn E.}\auth{Prescott, Edward C.}\auth{Hansen,
+Lars P.} \auth{Roberds, William}
+
+As we discuss in detail in chapter \use{stackel},
+one important approach   amounted to putting a government  costate vector
+on the costate  equations of the private decision makers,
+then proceeding as usual to use optimal control for the government's
+problem.
+(A costate equation
+is a version of an Euler equation.)
+ Solved forward, the costate equation
+depicts the dependence of private  decisions on forecasts
+of future government policies that Prescott was worried about.
+The key idea in this approach  was to formulate
+the government's problem by taking the costate
+equations of the private sector as additional {\it constraints\/}
+on the government's problem. These  amount to promise-keeping
+constraints (they are cast in terms of derivatives of value functions,
+ not value functions themselves, because costate vectors are
+gradients of value functions). After adding the  costate equations
+of the  private sector (the ``followers'') to the transition
+law of the government (the  ``leader''), one could then solve
+the government's problem by using dynamic programming as usual.
+One simply writes down a Bellman equation for the  government
+planner taking the private sector costate variables as
+pseudo-state variables. Then it is   almost business as
+usual (Gordon was correct!). We say ``almost'' because     after the
+Bellman equation is solved, there is one more step: to pick the
+initial value of the private sector's costate.  To maximize the government's
+criterion, this initial
+condition should be set to  zero because initially there are no
+promises to keep. The government's optimal decision   is a
+function of the natural state variable {\it and\/} the costate
+variables.
+   The date $t$
+ costate variables encode history and record the ``cost'' to the
+government at $t$ of confirming the   private sector's  prior expectations
+about the government's time $t$ decisions, expectations
+that were embedded in the private sector's  decisions before $t$.
+The solution is time inconsistent (the government would  always like to
+reinitialize the time $t$ multiplier to zero and thereby discard
+past promises, but that is ruled out by the assumption that the
+government is committed to follow the optimal plan).
+See chapter \use{stackel} for  many technical details, computer programs,
+ and an application.
+
+\subsection{History dependence and ``dynamic programming squared''}
+ Rather than pursue the ``costate on the costate'' approach further,
+we now turn  to a closely related approach that we illustrate in a
+dynamic contract design problem. While superficially
+different from the government policy design problem, the contract problem
+  has
+many features in common with it.   What is again needed is a recursive way
+to encode history dependence.   Rather than use costate variables,
+we move up a derivative and work with promised values. This leads
+to value functions appearing inside value functions or
+``dynamic programming squared.''
+
+Define the  history $s^t$ of the Markov state
+by $s^t = [s_t, s_{t-1}, \ldots, s_0]$ and let $\pi_t(s^t)$ be the
+density over histories induced by $\pi, \pi_0$.
+Define a consumption allocation  rule
+as a sequence of functions, the time component of which maps
+$s^t$ into a choice of time $t$ consumption, $c_t = \sigma_t(s^t)$, for
+$t \geq 0$.
+Let $c= \{\sigma_t(s^t)\}_{t=0}^\infty$.
+Define the ({\it ex ante\/}) value associated with  an allocation
+rule as
+$$v(c) = \sum_{t=0}^\infty \sum_{s^t} \beta^t u(\sigma_t(s^t)) \pi_t(s^t).
+\EQN sintro60 $$
+For each possible realization of the period zero state $\overline s_0$,
+there is a {\it continuation history\/} $s^t|_{\overline s_0}$.
+The observation that a continuation history is itself a complete history
+is our first hint that a recursive formulation is
+possible.\NFootnote{See chapters \use{recurge} and \use {credible}
+for discussions of the recursive structure of histories.}
+For each possible realization of the first period $s_0$,
+ a consumption allocation rule implies a one-period  {\it continuation
+consumption rule\/} $c|_{\overline s_0}$. A continuation consumption
+rule is itself a consumption rule that maps histories into
+time series of consumption.
+ The one-period continuation history
+treats the time $t+1$ component of the original history  evaluated
+at $\overline s_0$ as the time $t$
+component of the continuation history.
+ The period $t$  consumption of the
+one-period continuation consumption allocation conforms to the
+time $t+1$ component of original consumption allocation evaluated
+at $\overline s_0$.
+The time and state separability of \Ep{sintro60} then allow us to
+represent $v(c)$ recursively
+as
+$$ v(c) = \sum_{s_0} [ u(c_0(s_0) )+ \beta v(c|_{s_0})]\pi_0(s_0) ,
+  \EQN sintro61 $$
+where $v(c|_{s_0})$ is the value of the continuation allocation.
+We call $v(c|_{s_0})$ the continuation value.
+In a special case
+that successive components of $s_t$ are i.i.d.\ and have a discrete
+distribution,
+we can write \Ep{sintro61} as
+$$ v = \sum_s [u(c_s) + \beta w_s ] \Pi_s, \EQN sintro22 $$
+where $\Pi_s = {\rm Prob}(y_t = \overline y_s)$ and
+$[\overline y_1 < \overline y_2  \cdots < \overline y_S]$
+is a grid on which the endowment resides,
+ $c_s$ is
+consumption in state $s$ given $v$, and $w_s$ is the continuation
+value in state $s$ given $v$.
+Here we use $v$ in \Ep{sintro22} to denote what was $v(c)$ in \Ep{sintro61}
+and $w_s$ to denote what was $v(c|_s)$ in \Ep{sintro61}.
+%The qualification `given $v$' is very important because in this
+%notation $v$ encodes all
+%history dependence.
+
+So far this has all been for an arbitrary consumption plan.
+Evidently, the {\it ex ante\/}
+value $v$ attained by an {\it optimal\/} consumption program must
+satisfy
+$$ v = \max_{\{{c_s, w_s}\}_{s=1}^S} \sum_s [u(c_s) + \beta w_s ] \Pi_s
+\EQN sintro23 $$ where the maximization is subject to constraints
+that summarize the individual's opportunities to trade current
+state-contingent consumption $c_s$ against future state-contingent
+continuation values $w_s$. In these problems, the value of $v$ is
+an outcome that depends, in the savings problem for example, on
+the household's initial level of assets. In fact, for the savings
+problem with i.i.d.\ endowment shocks, the outcome is that $v$ is
+a monotone function of $A$. This monotonicity allows the following
+remarkable representation. After solving for the optimal plan, use
+the monotone transformation to let $v$ replace $A$ as a state
+variable and represent the optimal decision rule in the form
+$$\EQNalign{ c_s & =   f(v,s) \EQN sintro24;a \cr
+             w_s & =  g(v,s) . \EQN sintro24;b \cr} $$
+%which are of the form \Ep{sintro21} with the state $s$ indexing the endowment
+%$y$, the initial promised $v$ taking the role of $A$, and
+%$w_s$ being the continuation value, i.e., next period's value of $A$.
+
+The promised value $v$ (a forward-looking variable if there ever was one)
+ is also the variable that
+functions as an index of history  in \Ep{sintro24}.  Equation
+\Ep{sintro24;b}  reminds us that   $v$ is a  ``backward looking'' variable
+that registers the cumulative impact of past   states $s_t$.
+The definition of $v$ as a promised value,  for example in
+\Ep{sintro23}, tells us that $v$ is also a forward-looking variable
+that encodes expectations (promises)  about future consumption.
+
+
+
+\subsection{Dynamic principal-agent problems}
+The right side of  \Ep{sintro23} tells the terms on which
+the  household is willing
+to trade
+current utility for continuation utility.
+Models that confront enforcement and information problems use the
+trade-off identified by \Ep{sintro23} to design intertemporal
+consumption plans that optimally balance risk sharing  and intertemporal
+consumption smoothing against the need to offer correct incentives.
+Next we turn to such models.
+
+
+
+We remove the household from the market and hand it over to a
+planner or principal who offers the household a contract that the
+planner designs to deliver an {\it ex ante\/} promised value $v$
+subject to enforcement or information constraints.\NFootnote{Here
+we are sticking close to two models of Thomas and Worrall (1988,
+1990).} Now $v$ becomes a state variable that occurs in the {\it
+planner's\/} value function. We assume that the only way the
+household can transfer his endowment over time is to deal with the
+planner.  The saving or borrowing technology \Ep{sintro3} is no
+longer available to the agent, though it might be to the planner.
+We continue to consider the i.i.d.\  case mentioned above. Let
+$P(v)$ be the {\it ex ante\/} optimal value of the planner's
+problem. The presence of a value function (for the agents) as an
+argument of the value function of the principal causes us
+sometimes to  speak of ``dynamic programming squared.''
+\index{dynamic programming!squared}%
+ The planner
+``earns'' $y_t - c_t$ from the agent at time $t$ by commandeering
+the agent's endowment but returning consumption $c_t$. The value
+function  $P(v)$ for a planner who must deliver promised value
+$v$  satisfies
+$$ P(v) = \max_{\{c_s, w_s\}_{s=1}^S} [\overline y_s - c_s + \beta P(w_s) ] \Pi_s,
+\EQN sintro70 $$
+where the maximization is subject to the promise-keeping
+constraint \Ep{sintro22} and some other constraints that depend on
+details of the problem, as we indicate shortly.  The other
+constraints are context-specific
+incentive-compatibility constraints
+%%manifestations of \Ep{sintro23}
+and describe the best response
+of the agent to the arrangement offered by the principal.
+Condition \Ep{sintro22} is a {\it promise-keeping\/} constraint.
+The planner is constrained to provide a vector of $\{c_s, w_s  \}_{s=1}^S$
+that delivers the value $v$.
+
+We briefly describe two
+types of contract design problems and the constraints
+that confront the planner because of the opportunities
+that the environment grants the agent.
+
+
+
+%\subsection{Sacrificing smooth consumption for incentives}
+
+
+
+To model  the problem
+of enforcement without an information problem, assume that while the
+planner can observe $y_t$ each period, the household always has the
+option of consuming its endowment $y_t$ and receiving an {\it ex ante\/}
+ continuation
+value $v_{\rm aut}$ with which to enter the next period, where  $v_{\rm aut}$
+is the {\it ex ante\/} value the consumer receives by always consuming
+his endowment.  The consumer's freedom  to walk away induces the planner
+to structure the insurance contract so that   it is never in the
+household's interest to defect from the contract (the contract must be ``self-enforcing'').
+A self-enforcing contract
+requires that the following participation constraints be satisfied:
+$$ u(c_s) + \beta w_s \geq u(\overline y_s) + \beta v_{\rm aut}
+  \quad \forall s.  \EQN sintro30 $$
+A self-enforcing  contract provides imperfect insurance when
+occasionally  some of these participation constraints are binding.
+When they are binding, the planner sacrifices consumption smoothing
+in the interest of
+providing incentives for the contract to be self-enforcing.
+
+An alternative specification eliminates
+the enforcement problem by assuming
+that once the household enters the contract, it does not have the option
+ to walk away.
+A planner wants to supply insurance to the household in the most efficient
+way, but now the planner cannot observe the household's endowment.
+The planner must trust the household to report its endowment.  It is assumed
+that the household will truthfully report its endowment only if
+it wants to.
+This leads the planner
+to add to the promise-keeping constraint \Ep{sintro22} the
+ following truth-telling constraints:
+%%$$  u(c_s) + \beta w_s \geq u(c_\tau) + \beta w_\tau
+%% \quad \forall (s,\tau). \EQN sintro31 $$
+$$  u(c_s) + \beta w_s \geq u(\overline y_s - \overline y_\tau + c_\tau) + \beta w_\tau
+ \quad \forall (s,\tau), \EQN sintro31 $$
+where constraint \Ep{sintro31} pertains to a situation when the household's
+true endowment is $\overline y_s$ but the household considers
+to falsely report that the endowment instead is $\overline y_\tau$.
+The left  and right  sides of \Ep{sintro31} are the utility
+of telling the truth and lying, respectively. If the household
+(falsely) reports $\overline y_\tau$, the planner awards the household
+a net transfer $c_\tau-\overline y_\tau$ and a continuation value
+$w_\tau$.
+If \Ep{sintro31} holds for all $\tau$, the household will always choose to report
+the true state $s$.
+
+As we shall see in chapters \use{socialinsurance} and \use{socialinsurance2},
+the planner elicits truthful reporting by manipulating
+how continuation values vary with the reported state.   Households
+that report a low income today might receive a transfer today, but
+they suffer an adverse  consequence by getting a diminished continuation
+value starting tomorrow.  The planner structures this
+menu of choices so that only
+low-endowment households, those that badly want a transfer today, are willing
+to accept the diminished continuation value that  is the consequence
+of reporting that low income today.
+
+
+At this point, a supermartingale convergence theorem raises its ugly head
+again.  But this time     it propels consumption and continuation utility
+{\it downward\/}.  The super martingale result leads to what
+some people have termed the ``immiseration'' property of models in which
+dynamic contracts are used to deliver  incentives to reveal
+information.
+
+To enhance our appreciation for  the immiseration result, %  -- or put differently, to disrupt
+%the planner's ability to solicit information by manipulating future values --
+we now touch on another aspect of
+macroeconomic's love-hate affair  with the Euler inequality \Ep{sintro1}.
+    In both of the  incentive models just described, one with an enforcement
+problem, the other with an information problem, it is
+ important that the household
+not have access to a good risk-free investment technology like
+that represented in the constraint \Ep{sintro3} that makes
+\Ep{sintro1} the appropriate first-order condition in the savings
+problem. Indeed, especially in the model with limited information,
+the  planner makes ample use of his ability to reallocate
+consumption intertemporally in ways that can violate \Ep{sintro3}
+in order to elicit accurate information from the household. In
+chapter \use{socialinsurance}, we shall follow Cole and
+Kocherlakota (2001) by allowing the household   to save (but not
+to {\it dissave\/}) a risk-free  asset that bears fixed gross
+interest rate $R =\beta^{-1}$.   The Euler inequality  comes back
+into play  and alters the character of the insurance arrangement
+so  that outcomes resemble ones that occur in a Bewley model,
+provided that the debt limit in the Bewley model is chosen
+appropriately. \auth{Cole, Harold L.}\auth{Kocherlakota, Narayana R.}
+
+\vskip-.2cm
+\subsection{More applications}
+We shall study many more  applications of dynamic programming
+and dynamic programming squared, including models of search in labor
+markets,  reputation and credible
+public policy, gradualism in trade policy, unemployment insurance,
+and monetary economies.  It is time to get to work
+seriously studying the mathematical and economic tools
+that we need to   approach these exciting topics.  Let us begin.
+
+\eqnotracefalse

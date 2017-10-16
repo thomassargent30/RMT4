@@ -1,0 +1,1437 @@
+
+\input grafinp3
+%\input grafinput8
+\input psfig
+%\eqnotracetrue
+%\input epsf.tex
+%\showchaptIDtrue
+%\def\@chaptID{4.}
+
+\hbox{}
+
+\def\toone{{t+1}}
+\def\ttwo{{t+2}}
+\def\tthree{{t+3}}
+\def\Tone{{T+1}}
+\def\TTT{{T-1}}
+\def\rtr{{\rm tr}}
+\def\be{{\beta}}
+\def\eps{{\epsilon}}
+\footnum=0
+\index{optimal linear regulator}
+
+\chapter{Linear Quadratic Dynamic Programming\label{dplinear}}
+
+\section{Introduction}
+
+This chapter describes the class of dynamic programming
+problems in which the return function  is quadratic and
+the transition function is linear.  This specification
+leads to the widely used optimal linear regulator problem,
+for which the Bellman equation can
+be solved quickly   using linear algebra.
+  We consider the special case in which the
+return function  and transition function  are both time
+invariant, though the mathematics is almost identical when they are
+permitted to be deterministic functions of time.
+\index{dynamic programming!linear quadratic}%
+\index{linear quadratic!dynamic programming}
+
+After studying a recursive formulation and the associated Bellman equation,
+in section \use{lagrangianformulation} we analyze a Lagrangian formulation that provides
+useful insights about  how Lagrange multipliers on transition laws relate to
+ gradients of  value functions.  These insights help us in chapter \use{stackel}
+when we study how the methods of this chapter apply to problems in which  a Stackelberg leader chooses a sequence of actions
+ to manipulate
+future  decisions of a collection agents whose decisions depend on forecasts of the leader's decisions.
+In that chapter, we shall get a sharp characterization of the time inconsistency of a Stackelberg plan.
+
+  In section \use{sec:Kalmanch4} we tell how the Kalman  filtering problem from chapter \use{timeseries}
+relates to the linear-quadratic dynamic programming problem.  Suitably reinterpreted,
+formulas that solve the optimal linear regulator are
+the Kalman filter.
+\index{Kalman filter!and optimal linear regulator}%
+
+
+\section{The optimal linear regulator problem}
+
+ The undiscounted optimal linear regulator problem
+is to maximize over choice of $\{u_t\}_{t=0}^\infty$ the criterion
+$$ - \sum_{t=0}^\infty \{x'_t Rx_t+u'_tQu_t\},\EQN 141$$
+subject to $x_{\toone}=Ax_t+Bu_t$, $x_0$ given.  Here $x_t$ is an
+$(n\times 1)$ vector of state variables, $u_t$ is a $(k\times 1)$
+vector of controls, $R$ is a positive semidefinite symmetric matrix,
+$Q$ is a positive definite symmetric matrix, $A$ is an $(n\times n)$
+matrix, and $B$ is an $(n\times k)$ matrix.
+
+We guess that the
+value function is quadratic, $V(x)= - x'Px$, where $P$ is a positive
+semidefinite symmetric matrix.
+Using the transition law to eliminate next period's state, the Bellman
+equation becomes
+$$ - x'Px=\max_u \{- x' Rx-u'Qu-(Ax+Bu)' P(Ax+Bu)\}.\EQN 142$$
+The first-order necessary condition for the maximum problem on the
+right side of equation \Ep{142} is\NFootnote{We use the following rules for
+differentiating quadratic and bilinear matrix forms:
+${\partial x' A x \over \partial x} = (A + A') x;
+{\partial y' B z \over \partial y} = B z, {\partial
+y' B z \over \partial z} = B' y$. See appendix \use{appendixLQA} of this chapter.}
+$$(Q+B'PB)u=-B'PAx,\EQN 143$$
+which implies the feedback rule for $u$:
+$$u=-(Q+B'PB)^{-1} B'PAx\EQN 144$$
+or
+$u=-Fx,$
+where $$F=(Q+B'PB)^{-1}B'PA. \EQN 145$$
+  Substituting the optimizer \Ep{144} into
+the right side of equation \Ep{142} and rearranging gives
+$$P=R+A'PA-A'PB(Q+B'PB)^{-1} B'PA.\EQN 146$$
+Equation \Ep{146} is called the {\it algebraic matrix Riccati} equation.
+It expresses the matrix $P$ as an implicit function of the matrices
+$R,Q,A,B$.  Solving this equation for $P$ requires
+a computer whenever $P$ is larger than a $2 \times 2$ matrix.
+\index{Riccati equation! algebraic}
+
+In exercise {\it \the\chapternum.1\/}, you are asked to derive the Riccati
+equation for the case where the return function is
+modified to
+$$ -(  x_t' R x_t + u_t' Q u_t  + 2 u_t' H x_t) .$$
+
+
+\auth{Bertsekas, Dimitri}%
+\auth{Sargent, Thomas J.}%
+\subsection{Value function iteration}
+  Under particular conditions to be discussed in section \use{sec:ch4stable} about  stability,
+equation \Ep{146} has a unique positive
+semidefinite solution that is approached in the limit as $j\to\infty$ by
+iterations on the matrix Riccati difference equation\NFootnote{If
+the eigenvalues of $A$ are bounded in modulus below unity, this result
+obtains, but much weaker conditions suffice.  See
+Bertsekas (1976, chap. 4) and Sargent (1980).}
+$$P_{j+1}=R+A'P_j A-A'P_jB(Q+B'P_jB)^{-1} B'P_jA,\EQN 147;a$$
+starting from $P_0=0$.
+The policy function  associated with $P_{j}$ is
+$$F_{j+1} =(Q+B'P_j B)^{-1}B'P_j A. \EQN 147;b$$
+ Equation \Ep{147} is derived much like equation \Ep{146}
+except that one starts from the iterative version of the Bellman
+equation  rather than from the asymptotic version.
+
+\subsection{Discounted linear regulator problem}
+
+The discounted optimal linear
+regulator problem is to maximize
+$$- \sum_{t=0}^\infty \be^t \{x'_t Rx_t+u'_tQu_t\},\qquad 0<\be<1,\EQN 148$$
+subject to $x_{\toone}=Ax_t+Bu_t,x_0$ given. This problem
+leads to the following matrix Riccati difference
+equation modified for discounting:
+$$P_{j+1} =R+\be A'P_jA-\be^2A'P_jB(Q+\be B'P_jB)^{-1} B'P_jA.\EQN 149$$
+The algebraic matrix Riccati equation is modified correspondingly.  The value
+function for the infinite horizon problem is  $V(x_0)= - x'_0Px_0$, where
+$P$ is the limiting value of $P_j$ resulting from iterations on equation
+\Ep{149} starting
+from $P_0=0$.  The optimal policy is $u_t=-Fx_t$, where $F=\be (Q+\be
+B'PB)^{-1} B'PA$.
+
+  The Matlab program {\tt olrp.m} solves the discounted
+optimal linear regulator problem.  Matlab has a variety
+of other programs that solve both discrete- and continuous-time
+ versions of undiscounted
+optimal linear regulator problems.
+%The program {\tt policyi.m}
+%solves the undiscounted optimal linear regulator problem using
+%policy iteration, which we study next.
+\mtlb{policyi.m}
+\mtlb{olrp.m}
+\subsection{Policy improvement algorithm}
+
+The \idx{policy improvement algorithm}  can be applied to solve the
+discounted optimal
+linear regulator problem. We discussed aspects of this algorithm earlier in section \use{sec:Howard1}.
+  Starting from an initial $F_0$ for
+which the eigenvalues of $A - B F_0$ are less than
+$1/\sqrt\beta$ in modulus, the algorithm iterates on the
+two equations
+$$\EQNalign{
+   P_{j} &= R + F_j' Q F_j + \beta ( A - B F_j)' P_j (A - B F_j)
+      \EQN policyi1 \cr
+   F_{j+1} &= \beta (Q + \beta B' P_j B )^{-1} B' P_j A .
+     \EQN policyi2  \cr  }$$
+The first equation pins down the matrix for the quadratic form in the  value function associated with using a fixed rule $F_j$ forever.
+The second equation gives the matrix for the  optimal first-period decision rule for a two-period problem with
+second-period  value function $- x^{* \prime} P_j x^*$ where $x^*$ is the second-period state.
+The first equation is an example of a {\it discrete Lyapunov\/}
+or {\it Sylvester\/} equation,
+ \index{Lyapunov equation}
+which is to be solved for the matrix $P_j$ that determines the
+value $ - x_t' P_j x_t$ that is associated with following policy $F_j$
+forever.  The solution of this equation can be represented
+in the form
+$$ P_j = \sum_{k=0}^\infty \beta^k (A-BF_j)^{'k} (R + F_j' Q F_j)
+                                (A - B F_j)^k.  $$
+If the eigenvalues of the matrix $A - B F_j$ are bounded
+in modulus by $1/\sqrt\beta$, then a solution of this equation exists.
+There are several methods available for solving this equation.\NFootnote{The
+Matlab programs {\tt dlyap.m} and {\tt doublej.m}
+ solve discrete Lyapunov equations.
+See Anderson, Hansen, McGrattan, and Sargent (1996).}
+The Matlab program {\tt policyi.m}
+solves the undiscounted optimal linear regulator problem using
+policy iteration.
+\mtlb{policyi.m}%
+  This algorithm is typically much faster than the algorithm that
+iterates on the matrix \idx{Riccati equation}.  Later we shall present
+a third method for solving for $P$ that rests on the
+link between $P$ and shadow prices for the state
+vector.\auth{Hansen, Lars P.}  \auth{McGrattan, Ellen R.} \auth{Anderson, Evan W.}
+\index{doubling algorithms}
+\index{Lyapunov equation}
+\mtlb{dlyap.m}
+\mtlb{doublej.m}
+\index{optimal linear regulator}
+
+\section{The stochastic optimal linear regulator problem}
+
+The stochastic discounted linear optimal regulator problem is to
+choose a decision rule for $u_t$ to
+maximize
+$$ - E_0\sum_{t=0}^\infty \be^t \{x'_t Rx_t+u'_tQu_t\},\qquad
+0<\be<1,\EQN 158$$
+subject to $x_0$ given, and the law of motion
+$$x_{\toone} =Ax_t+Bu_t+ C \eps_{\toone},\qquad t\ge 0,\EQN 159$$
+where $\eps_{\toone}$ is an $(n\times 1)$ vector of random variables that is
+independently and identically distributed according to the normal
+distribution with mean vector zero and covariance matrix
+$$E\eps_t\eps'_t= I .\EQN 160$$
+(See Kwakernaak and Sivan, 1972, for an extensive study of the continuous-time
+version of this problem; also see Chow, 1981.)  %The matrices $R,Q,A$, and $B$
+%obey the assumption that we have described.
+\auth{Kwakernaak, Huibert}  \auth{Sivan, Raphael}  \auth{Chow, Gregory}
+
+The value function for this problem is
+$$v(x)= - x'Px-d,\EQN 161$$
+where $P$ is the unique positive semidefinite solution of the discounted
+algebraic matrix Riccati equation corresponding to equation \Ep{149}.
+As before, it is the limit
+of iterations on equation
+\Ep{149} starting from $P_0=0$. The scalar $d$ is given by
+$$d=\be(1-\be)^{-1} {\rm trace} ( P C C') .  \EQN 162$$
+  Furthermore, the optimal policy
+continues to be given by $u_t=-Fx_t$, where
+$$F=\be (Q+\be B'P'B)^{-1} B'PA.\EQN 163$$
+A notable feature of this solution is: %that the feedback rule \Ep{163} is
+%identical with the rule for the corresponding nonstochastic linear optimal
+%regulator problem.  This outcome is the {\it certainty equivalence}
+%principle.
+\index{certainty equivalence!proof}
+\tag{certequiv}{\the\pageno}%
+\medskip
+\noindent{\sc Certainty Equivalence Principle:} The  decision rule  \Ep{163}  that
+solves the stochastic optimal linear regulator problem is
+identical with the decision rule for the corresponding
+nonstochastic linear optimal regulator problem.
+\medskip
+\noindent{\sc Proof:}
+Substitute guess \Ep{161} into
+the Bellman equation to obtain
+$$ v(x) = \max_u \left\{- x' Rx-u' Qu-\be E [(Ax+Bu+ C \eps)'
+ P(Ax+Bu+ C \eps)]-\be d \right\} ,$$
+where $\eps$ is the realization of $\eps_{\toone}$ when $x_t=x$ and where
+$E\eps|x=0$.
+The
+preceding equation implies
+$$\eqalign{ v(x)=&\max_u\left\{ -  x' Rx-u' Qu-\be E\left\{ x'A'PAx+x'
+A'PBu\right.\right.\cr
+&+ x'A'P C \eps+ u'B'PAx+u'B'PBu+u'B'P C \eps\cr
+&\left.\left. + \ \eps' C'
+ PAx+\eps' C' PBu+\eps' C' P C \eps\right\} -\be d\right\}.\cr}$$
+Evaluating the expectations inside the braces and using $E\eps|x=0$ gives
+$$\eqalign{ v(x) =&\max_u - \left\{  x' Rx+u'Qu+ \beta x' A' P A x +
+ \be  2x'A'PBu\right.\cr
+&\left.+ \ \be u'B'PBu+\be E\eps'C' P C \eps\right\}-\be d  . \cr}$$
+The first-order condition for $u$ is
+$$(Q+\be B'PB)u=-\be B'PAx,$$
+which implies equation \Ep{163}.
+Using $E\eps'C' P C \eps= {\rm trace} (P C C)'$,
+substituting equation
+\Ep{163} into the preceding expression
+for $v(x)$, and using equation \Ep{161} gives
+$$P=R+\be A'PA-\be^2 A'PB(Q+\be B'PB)^{-1} B'PA,$$
+and
+$$d=\be(1-\be)^{-1} {\rm trace} ( P C C'). \quad \qed $$
+
+\subsection{Discussion of certainty equivalence}
+
+The  remarkable thing  is that, although through $d$ the
+objective function \Ep{160} depends on $CC'$,
+ the optimal decision rule $u_t=-Fx_t$ is independent of
+$CC'$.  This is the message of  equation
+\Ep{163} and the discounted algebraic Riccati
+equation for $P$, which are identical with the formulas derived earlier under
+certainty.  In other words, the optimal decision rule $u_t=h(x_t)$
+is independent of the problem's
+noise statistics.\NFootnote{Therefore, in linear quadratic
+versions of the optimum savings problem, there are no
+precautionary savings. Compare outcomes from  section \use{sec:LQmodel} of chapter \use{timeseries} and   chapters \use{selfinsure} and \use{incomplete}.} The
+certainty
+equivalence principle is a special property of the
+optimal linear regulator problem and comes from the quadratic
+objective function, the linear transition equation,
+and the property $E (\eps_{t+1}  | x_t) =0$.
+  Certainty
+equivalence does not characterize stochastic control problems generally.
+\index{certainty equivalence}
+
+ % For the remainder of this chapter, we return to the nonstochastic
+%optimal linear regulator, remembering the stochastic
+%counterpart.
+
+\section{Shadow prices in the linear regulator}
+
+For several purposes,\NFootnote{In a planning problem in a linear quadratic economy,  the gradient of the value function
+has information from which competitive equilibrium prices can be coaxed.
+See Hansen and Sargent (2013).}
+it is helpful to interpret the
+gradient $ - 2 P x_t$ of the value function $- x_t' P x_t$ as
+a shadow price or Lagrange multiplier.  Thus, associate
+with the Bellman equation the Lagrangian
+\index{shadow price}
+\index{Lagrange multiplier}
+$$\eqalign{ - x_t^\prime P x_t = V(x_t)
+ &= \min_{\mu_{t+1}} \max_{u_t, x_{t+1}} -
+\biggl\{ x^\prime_t R x_t + u^\prime_t Q u_t + x^\prime_{t+1}
+   P x_{t+1}\cr
+&+ 2 \mu^\prime_{t+1} [A x_t + B u_t - x_{t+1}]\biggr\},\cr}$$
+where $2 \mu_{t+1}$ is a vector of Lagrange multipliers.
+The first-order necessary conditions for an optimum with respect to
+$u_t$ and $x_{t+1}$ are
+$$\eqalign{2 Q u_t + 2B^\prime \mu_{t+1} &= 0\cr
+2Px_{t+1} - 2\mu_{t+1} &= 0.\cr} \EQN{no label 1}$$
+Using the transition law and rearranging gives the usual formula
+for the optimal decision rule, namely,
+ $u_t = - (Q + B^\prime P B)^{-1} B^\prime PA x_t$.
+  Notice that by \Ep{no label 1}, the shadow
+price vector satisfies $\mu_{t+1} = P x_{t+1}$.
+
+In section \use{lagrangianformulation}, we shall  describe a computational strategy
+that solves for $P$ by directly finding the optimal  multiplier process
+$\{\mu_t\}$ and representing it as $\mu_t = P x_t$.  This
+strategy exploits the {\it stability} properties of optimal
+solutions of the linear regulator problem, which we now briefly
+take up.  \index{stability properties}
+%\vfil\eject
+\subsection{Stability}\label{sec:ch4stable}%
+After substituting the optimal control $u_t=-Fx_t$ into the
+law of motion $x_{\toone}=Ax_t+Bu_t$, we obtain the optimal
+``closed-loop system'' $x_{\toone}=(A-BF)x_t$.  This difference
+equation governs the evolution of $x_t$ under the optimal
+control.  The system is said to be {\it stable\/} if $\lim_{t\to\infty}
+x_t=0$ starting from any initial $x_0\in R^n$.  Assume that the
+\idx{eigenvalue}s of $(A-BF)$ are distinct, and use the eigenvalue
+decomposition $(A-BF)=D\La D^{-1}$ where the columns of $D$
+are the eigenvectors of $(A-BF)$ and $\La$ is a diagonal
+matrix of eigenvalues of $(A-BF)$.   Write the ``closed-loop'' equation
+as $x_{\toone}=D\La D^{-1} x_t$.  The solution of this difference
+equation for $t>0$ is readily verified by repeated substitution
+to be $x_t=D\La^t D^{-1} x_0$.  Evidently, the system is stable
+for all $x_0\in R^n$ if and only if the eigenvalues  of $(A-BF)$
+are all strictly less than unity in
+absolute value.  When this condition is met, $(A-BF)$ is said
+to be a ``stable matrix.''\NFootnote{It is possible to
+amend the statements about stability in this section to
+permit $A-BF$ to have a single unit eigenvalue associated with
+a constant in the state vector.  See chapter \use{timeseries} for examples.}
+\index{stable matrix}
+
+A vast
+literature is devoted to characterizing the conditions on $A,B,R$, and $Q$
+that imply that $F$ is such that the optimal closed-loop system matrix $(A-BF)$ is stable.  These
+conditions are surveyed by Anderson, Hansen,
+McGrattan, and Sargent (1996) and can be briefly described
+here for the undiscounted case $\be=1$.  Roughly speaking,
+ the conditions on
+$A,B,R$, and $Q$ are as follows:  First, $A$
+and $B$ must be such that it is {\it possible\/} to pick a control law
+$u_t=-Fx_t$ that drives $x_t$ to zero eventually, starting from any $x_0\in
+R^n$ [``the pair $(A,B)$ must be stabilizable''].  Second, the matrix $R$ must
+be such that it is {\it desirable\/} to drive $x_t$ to zero as
+$t\to\infty$.
+
+It would take us too far afield to go deeply into this body of
+theory, but we can give a flavor of  the results by considering
+the following special  assumptions and
+their implications. Similar results can obtain under weaker conditions relevant for
+economic problems.\NFootnote{See Kwakernaak and Sivan (1972) and
+Anderson, Hansen, McGrattan, and Sargent (1996) for much weaker conditions.} \auth{Sargent,
+Thomas J.}  \auth{Kwakernaak, Huibert}  \auth{Sivan, Raphael}
+\auth{Anderson, Evan W.} \auth{McGrattan, Ellen R.} \auth{Hansen,
+Lars P.} \specsec{Assumption A.1:}  The matrix $R$ is positive
+definite.
+\medskip
+There immediately follows:
+
+\medskip\noindent
+{\sc Proposition 1:}  Under assumption A.1, if a solution to the
+undiscounted regulator exists, it satisfies $\lim_{t\to\infty} x_t = 0$.
+
+\medskip\noindent
+{\sc Proof:}  If $x_t \not\to 0$, then $\sum^\infty_{t=0} x_t^\prime R x_t
+\to \infty$.\qed
+
+\medskip\noindent{\sc Assumption A.2:}  The matrix $R$ is positive semidefinite.
+
+\medskip\noindent
+ Under assumption A.2, $R$ is similar to a triangular matrix $R^\ast$:
+$$R=T^\prime\ \pmatrix{R^\ast_{11} & 0\cr 0 & 0\cr}\ T$$
+where $R^\ast_{11}$ is positive definite and $T$ is nonsingular.
+Notice that
+$x^\prime_t R x_t = x^\ast_{1t} R^\ast_{11} x^\ast_{1t}$
+where $x^\ast_t = T x_t = \pmatrix{T_1\cr T_2\cr} x_t =
+\pmatrix{x^\ast_{1t}\cr x^\ast_{2t}\cr}$.
+Let
+$x^\ast_{1t} \equiv T_1 x_t$.
+These calculations support:
+
+\medskip\noindent
+{\sc Proposition 2:}  Suppose that a solution to the optimal linear
+regulator exists under assumption A.2.
+Then
+$\lim_{t\to\infty} x^\ast_{1t}=  0.$
+\medskip
+The following definition is used in control theory:
+
+\medskip
+\index{stabilizable}%
+\noindent{\sc Definition:}  The pair $(A,B)$ is said to be {\it stabilizable\/}
+if there exists a matrix $F$ for which $(A-BF)$ is a stable matrix.
+\medskip
+The following indicates the flavor of  a variety of stability theorems from
+control theory:\NFootnote{These
+ conditions are discussed under the subjects of controllability,
+stabilizability, reconstructability, and detectability in the literature on
+linear optimal control.  (For continuous-time linear system, these concepts are
+described by Kwakernaak and Sivan, 1972; for discrete-time systems, see
+Sargent, 1980.)  These conditions subsume and generalize the transversality conditions
+used in the discrete-time calculus of variations (see Sargent, 1987a).
+  That is,
+the case when $(A-BF)$ is stable corresponds to the situation in which it is
+optimal to solve ``stable roots backward and unstable roots forward.'' See
+Sargent (1987a, chap. 9). Hansen and Sargent (1981)
+ describe the relationship
+between Euler equation methods and dynamic programming for a class of linear
+optimal control systems.  Also see Chow (1981).}$^,$\NFootnote{The conditions
+under which $(A-BF)$ is stable are also the conditions under
+which $x_t$ converges to a unique stationary distribution in the stochastic
+version of the linear regulator problem.}
+\auth{Hansen, Lars P.}  \auth{Chow, Gregory}
+
+\medskip
+\noindent{\sc Theorem:}  If $(A,B)$ is stabilizable and $R$ is positive definite,
+then under the optimal  rule $F$, $(A-BF)$ is a stable matrix.
+\medskip
+In the next section, we assume that $A, B, Q, R$ satisfy
+conditions  sufficient to invoke such a stability proposition, and
+we use that assumption to justify a solution method that
+solves the undiscounted linear regulator by searching among the
+many solutions of the {\it Euler equations}
+for a stable solution.
+\index{Euler equation}
+\index{duality}
+\section{A Lagrangian formulation}\label{lagrangianformulation}%
+This section describes a Lagrangian formulation of the
+\idx{optimal linear regulator}.\NFootnote{Such formulations
+are recommended by Chow (1997) and
+Anderson, Hansen, McGrattan, and Sargent (1996).}
+Besides being
+useful computationally, this formulation carries
+insights about  connections  between
+stability and optimality and also
+opens the way to constructing solutions of dynamic systems
+ not coming directly from an  intertemporal optimization
+ problem.\NFootnote{Blanchard and Kahn (1980); Whiteman (1983);
+Hansen, Epple, and Roberds (1985); and
+Anderson, Hansen, McGrattan and Sargent (1996) use and extend such methods.}
+The formulation is also the basis for constructing fast algorithms for solving Riccati equations.
+\auth{Blanchard, Olivier J.} \auth{Kahn, Charles}
+\auth{Roberds, William}
+\auth{Whiteman, Charles}
+\auth{Epple, Dennis}
+\auth{Hansen, Lars P.}
+
+For the undiscounted optimal linear regulator problem, form the Lagrangian
+$$\eqalign{{\cal L} &= - \sum^\infty_{t=0} \biggl\{ x^\prime_t R x_t +
+u_t^\prime Q u_t\cr
+&+ 2 \mu^\prime_{t+1} [A x_t + B u_t - x_{t+1}]\biggr\}.\cr} \EQN Lagr101 $$
+First-order conditions for maximization with respect
+to $\{u_t,x_{t+1}\}_{t=0}^\infty$ are
+$$\eqalign{2 Q u_t &+ 2B^\prime \mu_{t+1} = 0\cr \mu_t &= R x_t + A^\prime \mu_{t+1}\ ,\ t\geq 1.\cr}\EQN c$$
+Define $\mu_0$ to be the vector of shadow prices of $x_0$ and apply an envelope condition to
+\Ep{Lagr101} to  deduce that
+$$ \mu_0 = R x_0 + A' \mu_1 ,$$
+which is a time $t=0 $ counterpart to the second equation of system  \Ep{Lagr101}.
+Recall from the second equation of \Ep{no label 1} that $\mu_{t+1} = P x_{t+1}$, where
+$P$ is the matrix that solves the algebraic Riccati equation.  Thus, $\mu_{t}$ is
+ the gradient of the value function.
+ The Lagrange multiplier vector $\mu_{t}$ is often called
+the {\it costate} vector corresponding to the state vector $x_t$. \index{costate vector}%
+Solve the first equation of \Ep{c} for $u_t$ in terms of $\mu_{t+1}$; substitute
+into the law of motion $x_{t+1} = A x_t + B u_t$; arrange the resulting
+equation and the second equation of \Ep{c} into the form
+$$L\ \pmatrix{x_{t+1}\cr \mu_{t+1}\cr}\ = \ N\ \pmatrix{x_t\cr \mu_t\cr}\
+,\ t \geq 0,$$
+where
+$$L = \ \pmatrix{I & BQ^{-1} B^\prime \cr 0 & A^\prime\cr}, N = \
+\pmatrix{A & 0\cr -R & I\cr}.$$
+When $L$ is of full rank (i.e., when $A$ is of full rank), we can write
+this system as
+$$\pmatrix{x_{t+1}\cr \mu_{t+1}\cr}\ = M\ \pmatrix{x_t\cr\mu_t\cr}\EQN a$$
+where
+$$M\equiv L^{-1} N = \pmatrix{A+B Q^{-1} B^\prime A^{\prime-1}R &
+-B Q^{-1} B^\prime A^{\prime-1}\cr -A^{\prime -1} R & A^{\prime -1}\cr} .\EQN Mdef $$
+
+We seek to solve the difference equation system \Ep{a} for a sequence $\{x_t\}_{t=0}^\infty$
+that satisfies the initial condition for $x_0$ and a terminal condition
+$\lim_{t \rightarrow +\infty} x_t =0$ that expresses our wish for a {\it stable} solution.
+We inherit our wish for stability of the $\{x_t\}$ sequence from a desire to maximize
+$-\sum_{t=0}^\infty \bigl[ x_t ' R x_t + u_t' Q u_t \bigr]$, which requires that $x_t' R x_t$ converge to
+zero.
+
+To proceed, we study  properties of the $(2n \times 2n)$ matrix $M$.  It is helpful to introduce
+a $(2n \times 2n)$ matrix
+$$ J= \pmatrix{0 & -I_n\cr I_n & 0\cr}.$$
+The rank of $J$ is $2n$.
+
+\medskip\noindent{\sc Definition:}  A matrix $M$ is called {\it symplectic} if
+$$ MJM^\prime = J. \EQN e$$
+\index{symplectic matrix}
+
+%\beginleftbox  Tom, no equation d \endleftbox
+
+\noindent
+It can be verified directly that $M$ in equation
+\Ep{Mdef} is symplectic.
+
+ It
+follows from equation
+ \Ep{e} and from the fact   $J^{-1} = J^\prime = -J$ that for any symplectic
+matrix $M$,
+$$M^\prime = J^{-1} M^{-1} J.\EQN f$$
+Equation \Ep{f} states that $M^\prime$ is related to the inverse of $M$
+by a similarity transformation.  For square matrices, recall that  (a)
+similar matrices share eigenvalues; (b) the eigenvalues of the inverse of
+a matrix are the inverses of the eigenvalues of the matrix; and (c)
+a matrix and its transpose have the same eigenvalues.
+  It then follows from equation \Ep{f} that
+the eigenvalues of $M$ occur in reciprocal pairs:  if $\lambda$ is an
+eigenvalue of $M$, so is $\lambda^{-1}$.
+
+\index{reciprocal pairs!of eigenvalues}
+
+Write equation \Ep{a} as
+$$y_{t+1} = M y_t\EQN h$$
+where $y_t = \pmatrix{x_t\cr \mu_t\cr}$.  Consider the following
+triangularization of $M$
+$$V^{-1} M V= \pmatrix{W_{11} & W_{12} \cr 0 & W_{22}\cr}$$
+where each block on the right side is $(n\times n)$, where $V$ is
+nonsingular, and where $W_{22}$ has all its eigenvalues exceeding $1$ in modulus
+and $W_{11}$ has all of its eigenvalues less than $1$ in modulus.  The
+{\it Schur decomposition\/} and the {\it eigenvalue decomposition\/}
+are two  such decompositions.\NFootnote{Evan Anderson's
+Matlab program {\tt schurg.m} attains a convenient Schur decomposition
+and is very useful for solving linear models  with distortions.
+See McGrattan (1994) for  examples
+of distorted economies whose equilibria can be computed using a Schur decomposition.}
+\index{Schur decomposition}%
+\index{eigenvalue!decomposition}%
+\mtlb{schurg.m}%
+Write equation \Ep{h} as
+$$y_{t+1} = V W V^{-1} y_t. \EQN k$$
+The solution of equation \Ep{k} for arbitrary initial condition $y_0$ is
+evidently
+$$y_{t} = V \left[\matrix{W^t_{11} & W_{12,t}\cr 0 & W^t_{22}\cr}\right]
+\ V^{-1} y_0 \EQN l$$
+where $W_{12,t} = W_{12}$ for $t=1$ and  for $t \geq 2$ obeys the recursion
+$$W_{12, t} = W^{t-1}_{11} W_{12,t-1} + W_{12,t-1} W^{t-1}_{22}$$
+%subject to the initial condition $W_{12,1}=W_{12}$
+and where $W^t_{ii}$ is $W_{ii}$ raised to the $t$th  power.
+
+Write equation \Ep{l} as
+$$\pmatrix{y^\ast_{1t}\cr y^\ast_{2t}\cr}\ =\ \left[\matrix{W^t_{11} &
+W_{12, t}\cr 0 & W^t_{22}\cr}\right]\quad \pmatrix{y^\ast_{10}\cr
+y^\ast_{20}\cr}$$
+where $y^\ast_t = V^{-1} y_t$, and in particular where
+$$y^\ast_{2t} = V^{21} x_t + V^{22} \mu_t, \EQN m$$
+and where $V^{ij}$ denotes the $(i,j)$ piece of
+the partitioned $V^{-1}$ matrix.
+
+Because $W_{22}$ is an unstable matrix, unless $y^\ast_{20} = 0$,
+$y^\ast_t$ will diverge.
+Let $V^{ij}$ denote the $(i,j)$ piece of
+the partitioned $V^{-1}$ matrix.
+ To attain stability, we must impose
+$y^\ast_{20} =0$,
+which from equation \Ep{m} implies
+$$V^{21} x_0 + V^{22} \mu_0 = 0$$
+or
+$$\mu_0 = - (V^{22})^{-1} V^{21} x_0.$$ This equation replicates itself over
+time in the sense that it implies
+$$\mu_t = - (V^{22})^{-1} V^{21} x_t. \EQN invarsub1 $$
+But notice that because $(V^{21}\ V^{22})$ is the second row block of
+the inverse of $V$,
+$$(V^{21} \ V^{22})\quad \pmatrix{V_{11}\cr V_{21}\cr} = 0$$
+which implies
+$$V^{21} V_{11} + V^{22} V_{21} = 0.$$
+Therefore,
+$$-(V^{22})^{-1} V^{21} = V_{21} V^{-1}_{11}.$$
+So we can write
+$$\mu_0 = V_{21} V_{11}^{-1} x_0 \EQN invarsub2 $$
+and
+$$\mu_t = V_{21} V^{-1}_{11} x_t.$$
+%
+However, we know from equations \Ep{nolabel1} that $\mu_t = P x_t$,
+where $P$ occurs in the matrix that solves the \idx{Riccati equation}
+\Ep{146}. Thus, the preceding argument establishes that
+$$ P = V_{21} V_{11}^{-1}. \EQN easyricatti $$
+This formula provides us with an alternative, and typically computationally very
+efficient, way of computing the matrix $P$.
+
+   This same method can be applied to compute the solution of
+any system of the form \Ep{a} if a solution exists, even
+if the eigenvalues of $M$ fail to occur in reciprocal pairs.  The method
+will typically work so long as the eigenvalues of $M$ split   half
+inside and half outside the unit circle.\NFootnote{See Whiteman (1983);
+Blanchard and Kahn (1980); and Anderson, Hansen, McGrattan,
+and Sargent (1996) for applications and developments of these methods.}
+Systems in which  eigenvalues (properly adjusted for discounting) fail
+to occur in reciprocal pairs arise when the system being solved
+is an equilibrium of a model in which there are distortions that
+prevent there being any optimum problem that the equilibrium
+solves.  See Woodford (1999)  for an application of
+such methods to solve for linear approximations
+of equilibria of a monetary model with distortions.  See chapter \use{linappro} for some applications
+to an economy with distorting taxes.
+\auth{Whiteman, Charles}  \auth{Blanchard, Olivier J.}  \auth{Kahn, Charles}
+\auth{Anderson, Evan W.}  \auth{Hansen, Lars P.}  \auth{McGrattan, Ellen R.}
+\auth{Woodford, Michael}
+%{\bf Mention inverse optimum problem.}
+
+\section{The Kalman filter again}\label{sec:Kalmanch4}%
+  Suitably reinterpreted, the same recursion \Ep{147}  that solves the optimal
+linear regulator also determines the celebrated {\it Kalman filter} that we derived in section
+\use{sec:Kalman100}
+of chapter \use{timeseries}.
+\index{Kalman filter}%
+\index{filter!linear}%
+Recall that the Kalman filter is a recursive algorithm
+for computing  the mathematical expectation $E[ x_t \vert  y_{t-1}, \ldots,
+y_0]$ of a hidden state  vector $x_t$, conditional on observing
+a history $y_t, \ldots, y_0$ of a vector of noisy signals  on the
+hidden state.   The Kalman filter can be used to formulate or
+simplify a variety of signal-extraction and prediction
+problems in economics.
+\tag{KfilterLQ}{\the\pageno}%
+
+We briefly remind the reader that the setting for the Kalman filter is the following linear
+state-space  system.\NFootnote{We derived the Kalman filter as a
+recursive  application of population  regression in chapter
+\use{timeseries}, page \use{Kfilterchap1}.
+\tag{Kfilterchap2}.} Given $x_0 \sim {\cal N}(\hat x_0,
+\Sigma_0)$, let
+$$\EQNalign{ x_{t+1} & = A x_t + C w_{t+1} \EQN kalman1;a \cr
+             y_t &  = G x_t + v_t \EQN kalman1;b\cr}  $$
+where $x_t$ is an $(n \times 1)$ state vector, $w_t$ is
+an i.i.d.\ sequence Gaussian vector with  $E w_t w_t' = I$, and
+$v_t$ is an i.i.d.\ Gaussian vector orthogonal to $w_s$ for
+all $t,s$ with $E v_t v_t' = R$; and $A, C$, and $G$ are
+matrices conformable to the vectors they multiply.  Assume
+that the initial condition $x_0$ is  unobserved but
+is known to have a Gaussian distribution with
+mean $\hat x_0$ and covariance matrix $\Sigma_0$.   At time
+$t$, the history of observations $y^t \equiv [y_t, \ldots, y_0]$
+ is available to estimate the location of
+$x_t$ and the location of $x_{t+1}$.  The \idx{Kalman filter}
+is a recursive algorithm for computing
+$\hat x_{t+1} = E[ x_{t+1} \vert y^t]$.
+The algorithm is
+$$ \eqalign{\hat x_{t+1} & = (A - K_t G) \hat x_t + K_t y_t \cr}
+ \EQN kalman2 $$
+where
+$$\EQNalign{K_t & =  A \Sigma_t G'(G \Sigma_t G' + R )^{-1} \EQN kalman3;a\cr
+            \Sigma_{t+1} & = A \Sigma_t A' + C C' -
+              A \Sigma_t G' (G \Sigma_t G' + R)^{-1} G \Sigma_t A .
+                  \EQN kalman3;b \cr}
+                     $$
+Here $\Sigma_t = E (x_t - \hat x_t)(x_t - \hat x_t)'$,  and
+$K_t$ is called the {\it Kalman gain\/}.  \index{Kalman gain}%
+  Sometimes the Kalman
+filter is written in terms of the ``innovation representation''
+$$ \EQNalign{  \hat x_{t+1} &= A \hat x_t + K_t a_t \EQN kalman4;a \cr
+                  y_t & = G \hat  x_t + a_t \EQN kalman4;b \cr}   $$
+where $a_t \equiv y_t - G \hat x_t \equiv y_t - E[y_t \vert y^{t-1}]$.
+The random vector $a_t$ is called
+the \index{innovation!in time series representation}
+  {\it innovation} in $y_t$, being the part of
+$y_t$ that cannot be forecast linearly from its own past.
+  Subtracting  equation \Ep{kalman4;b} from
+\Ep{kalman1;b} gives $a_t = G (x_t - \hat x_t) + v_t$;  multiplying
+each side by its own transpose and taking expectations gives
+  the following formula  for the innovation covariance matrix:
+$$ E a_t a_t'  = G \Sigma_t G' + R . \EQN kalman5 $$
+
+
+
+Equations
+ \Ep{kalman3} display extensive similarities to equations
+ \Ep{147}, the recursions for the optimal
+linear regulator.  Indeed, the mathematical structures are identical when viewed properly.
+Note that equation \Ep{kalman3;b} is
+a Riccati equation.   With the judicious use
+of matrix transposition and reversal of time, the two systems of equations
+\Ep{kalman3} and \Ep{147}
+can be made to match.\NFootnote{See Hansen and Sargent (ch.~4, 2008) for an account of how the LQ dynamic programming problem
+  and the Kalman filter are connected through duality.  That chapter formulates the Kalman filtering problem in terms of a Lagrangian,
+  then judiciously transforms the first-order conditions into an associated optimal linear regulator.} %In Appendix \use{lincontrol} on dual filtering
+%and control (see Technical Appendixes), we compare
+%versions of these equations and describe the concept of
+%duality that links them.   Appendix \use{lincontrol} also contains
+%a formal derivation of the Kalman filter.
+% {\bf Lars XXXX: i propose to remove appendix B from the technical appendixes because we have covered the material enough in chapter 2 now.
+See chapter \use{timeseries}, especially section \use{Kfilterapplications}, for some applications of the Kalman filter.\NFootnote{The
+Matlab program {\tt kfilter.m}
+computes the Kalman filter. Matlab has several
+ programs that compute the Kalman filter for
+discrete time  and continuous time models.}
+\mtlb{kfilter.m}
+\auth{Hansen, Lars P.}%
+\auth{Sargent, Thomas J.}%
+\index{Kalman filter!dual to linear regulator}
+
+
+
+
+\section{Concluding remarks}
+
+In exchange for their restrictions,
+ the linear quadratic dynamic optimization problems of
+this chapter acquire  tractability.     The Bellman
+equation leads to Riccati difference  equations that
+are so  easy to solve numerically that the curse of
+dimensionality loses most of its force.  It is easy
+to solve linear quadratic control or filtering with many state variables.
+That it is difficult to solve  those problems otherwise is why
+linear quadratic approximations are widely used.
+% We describe
+% those approximations in Appendix \use{appendixLQB} to this chapter.
+
+  In chapter \use{recurpe}, we go beyond the single-agent optimization
+problems of this chapter  to study
+systems with multiple  agents who simultaneously solve
+linear quadratic dynamic programming problems, with the decision rules of some agents influencing transition
+   laws of variables appearing in other agents' decision problems.  We introduce two related equilibrium concepts
+   to reconcile different agents' decisions.
+
+\appendix{A}{Matrix formulas}\label{appendixLQA}
+Let $(z,x,a)$ each be $n\times 1$ vectors, $A,C,D$, and $V$
+each be $(n\times n)$ matrices, $B$ an $(m\times n)$ matrix, and $y$
+an $(m\times 1)$ vector.  Then
+$ {\partial a^\prime x\over \partial x} = a,
+{\partial x^\prime A x\over \partial x} = (A + A^\prime) x,
+{\partial^2 (x^\prime Ax)\over \partial x \partial x^\prime}=
+(A+A^\prime),
+{\partial x^\prime Ax\over \partial A} = x x^\prime,
+{\partial y^\prime Bz\over \partial y} = Bz,
+{\partial y^\prime Bz\over \partial z} = B^\prime y,
+{\partial y^\prime Bz\over \partial B} = y z^\prime.$
+
+The equation
+$$A^\prime V A + C = V$$
+to be solved for $V$ is called a {\it discrete Lyapunov equation}, and
+its generalization
+$$A^\prime V D + C = V$$
+is called the discrete {\it Sylvester equation}.
+The discrete Sylvester equation
+\index{Sylvester equation!discrete Lyapunov equation}%
+ has a unique solution
+if and only if the eigenvalues $\{\lambda_i\}$
+of $A$ and $\{\delta_j\}$ of $D$ satisfy the condition
+$\lambda_i \delta_j \not=  1 \ \forall \ i, \ j.$
+
+%
+% \index{linear quadratic!approximations}
+% \auth{King, Robert G.}
+% \auth{Rebelo, Sergio}
+% \auth{Plosser, Charles I.}
+% \auth{Kydland, Finn E.}
+% \auth{Prescott, Edward C.}
+% \appendix{B}{Linear quadratic approximations}\label{appendixLQB}
+% This appendix describes an important use of the optimal
+% linear regulator: to approximate the solution of more complicated
+% dynamic programs.\NFootnote{Kydland and Prescott (1982) used such
+% a method, and so do many of their followers in the
+% real business cycle literature. See King, Plosser, and Rebelo (1988) for
+% related methods of real business cycle models.}
+% Optimal linear regulator problems \index{optimal linear regulator}%
+% are often used to approximate problems of the following form: maximize
+% over $\{u_t\}^\infty_{t=0}$
+% $$E_0 \sum^\infty_{t=0} \beta^t r(z_t) \EQN 1$$
+%
+% %\beginleftbox  Tom, this is where the w's begin.  were they supposed
+% %to be omegas?  \endleftbox
+%
+% $$x_{t+1} = A x_t + B u_t + C w_{t+1} \EQN 2$$
+% where $\{w_{t+1}\}$ is a vector of i.i.d.\ random
+% disturbances with mean zero and finite variance,  and $r(z_t)$ is a
+% concave and twice continuously differentiable function of
+% $z_t \equiv \pmatrix{x_t\cr u_t\cr}$.  All nonlinearities in the
+% original problem are absorbed into the composite function $r(z_t)$.
+%
+% \auth{Brock, William A.}  \auth{Mirman, Leonard J.}
+% \subsection{An example: the stochastic growth model}
+% Take a parametric version of Brock and Mirman's stochastic
+% growth model, whose social planner chooses a policy
+% for $\{c_t, a_{t+1}\}_{t=0}^\infty$ to maximize
+% $$E_0 \sum^\infty_{t=0} \beta^t \ln c_t$$
+% where
+% $$\eqalign{c_t + i_t &= A a^\alpha_t \theta_t \cr
+% a_{t+1} &= (1-\delta) a_t + i_t\cr
+% \ln \theta_{t+1} &= \rho \ln \theta_t + w_{t+1}\cr}$$
+% where $\{w_{t+1}\}$ is an i.i.d.\ stochastic process
+% with mean zero and finite variance, $\theta_t$ is a
+% technology shock, and $\tilde \theta_t \equiv \ln \theta_t$.
+%   To get this problem
+% into the form \Ep{1}--\Ep{2}, take $x_t = \pmatrix{a_t\cr \tilde
+% \theta_t\cr}$, $u_t = i_t$,
+% %\beginleftbox  Tom is this a displayed equation or text?  \endleftbox
+% and $r (z_t) = \ln (A a^\alpha_t \exp \tilde \theta_t - i_t)$,
+% and we write the laws of motion as
+% $$\pmatrix{1\cr a_{t+1}\cr \tilde\theta_{t+1}\cr}\ = \ \pmatrix{1 & 0 & 0\cr
+% 0 & (1-\delta) & 0\cr 0 & 0 & \rho\cr}\ \pmatrix{1\cr a_t\cr \tilde\theta_t\cr}
+% \ + \ \pmatrix{0\cr 1\cr 0\cr}\ i_t\ + \ \pmatrix{0\cr 0\cr 1\cr}\ w_{t+1}$$
+% where it is convenient to add the constant 1 as the first component
+% of the state vector.
+%
+% \subsection{Kydland and Prescott's method}
+%
+% We want to replace $r(z_t)$ by a quadratic $z^\prime_t M z_t$.  We
+% choose a point $\bar z$ and approximate with the first two terms of a
+% Taylor series:\NFootnote{This setup is taken from McGrattan (1994) and
+% Anderson, Hansen, McGrattan, and Sargent (1996).}
+% $$\eqalign{\hat r(z) &= r(\bar z) + (z-\bar z)^\prime
+% {\partial r\over \partial z}\cr
+% &+ {1\over 2} (z-\bar z)^\prime {\partial^2 r\over
+% \partial z\partial z^\prime} \ (z-\bar z).\cr} \EQN 3 $$
+% If the state $x_t$ is $n\times 1$ and  the control $u_t$ is $k\times 1$,
+% then the vector $z_t$ is $(n+k)\times 1$.  Let
+% $e$ be the $(n+k)\times 1$ vector with 0's everywhere except for a 1 in
+% the row corresponding to the location of the constant unity in the state
+% vector, so that $1\equiv e^\prime z_t$ for all $t$.
+%
+% %\beginleftbox  couldn't read this ?? \endleftbox
+%
+% Repeatedly using $z^\prime e = e^\prime z = 1$, we can express equation
+% \Ep{3}
+% as
+% $$\hat r (z) = z^\prime M z, $$
+% where
+% $$\eqalign{M =& e \left[r(\bar z) - \left({\partial r\over
+% \partial z}\right)^\prime
+% \bar z + {1\over 2} \bar z^\prime
+%  {\partial^2 r\over \partial z\partial z^\prime}\ \bar z\right] e^\prime
+%     \cr
+% \noalign{\smallskip}
+% &+{1\over 2} \left( {\partial r\over \partial z} e^\prime - e \bar z^\prime
+% {\partial^2 r\over \partial z\partial z^\prime} - {\partial^2 r\over
+% \partial z\partial z^\prime} \bar z e^\prime + e {\partial r \over
+%   \partial z}^\prime \right)\cr
+% \noalign{\smallskip}
+% &+ {1\over 2} \left({\partial^2 r \over \partial z\partial z^\prime}\right)\cr}$$
+% where the partial derivatives are evaluated at $\bar z$.
+% Partition $M$, so that
+% $$\eqalign{z^\prime M z &\equiv \pmatrix{x\cr u\cr}^\prime \
+% \pmatrix{M_{11} & M_{12} \cr M_{21} & M_{22}\cr} \ \pmatrix{x\cr u\cr} \cr
+% &= \pmatrix{x\cr u\cr}^\prime \pmatrix{R & W\cr W^\prime & Q\cr}\
+%    \pmatrix{x\cr u\cr}. \cr}$$
+%
+%
+%
+% %$$\eqalign{M =& e \Bigl[r(\bar z) - \Bigl({\partial r\over
+% %\partial z}\Bigr)^\prime
+% %\bar z + {1\over 2} \bar z^\prime
+%  %{\partial^2 r\over \partial z\partial z^\prime}\ \bar z\Bigr] e^\prime
+% %    \cr
+% %\noalign{\smallskip}
+% %&+{1\over 2} \Bigl( {\partial r\over \partial z} e^\prime - e \bar z^\prime
+% %{\partial^2 r\over \partial z\partial z^\prime} - {\partial^2 r\over
+% %\partial z\partial z^\prime} \bar z e^\prime + e {\partial r \over
+% %  \partial z}^\prime \Bigr)\cr
+% %\noalign{\smallskip}
+% %&+ {1\over 2} \Bigl({\partial^2 r \over \partial z\partial z^\prime}\Bigr)\cr}$$
+% %where the partial derivatives are evaluated at $\bar z$.
+% %Partition $M$, so that
+% %$$\eqalign{z^\prime M z &\equiv \pmatrix{x\cr u\cr}^\prime \
+% %\pmatrix{M_{11} & M_{12} \cr M_{21} & M_{22}\cr} \ \pmatrix{x\cr u\cr} \cr
+% %&= \pmatrix{x\cr u\cr}^\prime \pmatrix{R & W\cr W^\prime & Q\cr}\
+% %   \pmatrix{x\cr u\cr}. \cr}$$
+% %
+%
+% \subsection{Determination of $\bar z$}
+%
+% Usually, the point $\bar z$ is chosen as the (optimal) stationary
+% state of the {\it nonstochastic\/} version of the original nonlinear model:
+% $$\eqalign{\sum^\infty_{t=0} \beta^t & r (z_t)\cr
+% x_{t+1} &= A x_t + B u_t .\cr}$$
+% This stationary point is obtained in these steps:
+% \medskip
+%
+% \itemitem{1.}  Find the Euler equations.
+% \itemitem{2.}  Substitute $z_{t+1} = z_t \equiv \bar z$ into the
+% Euler equations and transition laws, and solve the resulting
+% system of nonlinear equations for $\bar z$.  This purpose
+%  can be accomplished,
+% for example, by using the nonlinear equation solver {\tt fsolve.m}
+% in Matlab.
+%
+% \mtlb{fsolve.m}
+% \vfil\eject
+%
+% \subsection{Log linear approximation}
+%
+% For some problems, Christiano (1990) has advocated a \idx{quadratic approximation}
+% in logarithms.  We illustrate his idea with the stochastic growth example.
+% Define
+% $$\tilde a_t = \log a_t \ ,\ \tilde \theta_t =\log \theta_t.$$
+% Christiano's strategy is to take $\tilde a_t, \tilde\theta_t$ as the components
+% of the state and write the law of motion as
+% $$\eqalign{\pmatrix{1\cr \tilde a_{t+1}\cr \tilde\theta_{t+1}\cr}  &=\
+% \pmatrix{1 & 0 & 0\cr 0 & 0 & 0\cr 0 & 0 &\rho\cr}\ \pmatrix{1\cr \tilde a_t\cr
+% \tilde\theta_t\cr}   \cr
+%  &+ \pmatrix{0 \cr 1\cr 0\cr}\ u_t \quad + \pmatrix{0\cr 0\cr 1\cr} w_{t+1}
+% \cr}$$
+% where the control $u_t$ is $\tilde a_{t+1}$. \auth{Christiano, Lawrence J.}%
+%
+% Express consumption as
+% $$c_t = A(\exp \tilde a_t)^\alpha (\exp \tilde\theta_t) + (1-\delta)
+% \exp \tilde a_t - \exp \tilde a_{t+1}.$$
+% Substitute this expression into $\ln c_t \,  \equiv r (z_t)$, and
+% proceed as before to obtain the second-order Taylor series approximation
+% about $\bar z$.
+%
+% \subsection{Trend removal}
+%
+% It is conventional in the real business cycle literature to specify the
+% law of motion for the technology shock $\theta_t$ by
+% $$\tilde\theta_t = \log \left( {\theta_t\over \gamma^t}\right), \
+% \gamma > 1$$
+%
+%
+% $$\tilde\theta_{t+1} = \rho \tilde
+%  \theta_t + w_{t+1}, \qquad \vert \rho \vert < 1.
+% $$
+% This inspires us to write the law of motion for capital as
+% $$\gamma {a_{t+1}\over \gamma^{t+1}} = (1-\delta) {a_t\over \gamma^t} +
+% {i_t\over \gamma^t}$$
+% or
+% $$\gamma \exp \tilde a_{t+1} = (1-\delta) \exp \tilde a_t +
+% \exp(\tilde i_t)
+% $$
+% where
+% $\tilde a_t \equiv \log \Bigl({a_t\over\gamma^t}\Bigr),
+% \tilde i_t = \log \Bigl({i_t \over \gamma_t}\Bigr)$.
+% By studying the Euler equations for a model with a growing
+% technology shock $(\gamma > 1)$, we can show that there exists
+% a steady state for $\tilde a_t$, but not for $a_t$.
+%  Researchers often construct linear quadratic approximations
+% around the nonstochastic steady state of $\tilde a$.
+
+
+%\section{Exercises}
+
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+\eqnum=0
+\noindent{\it Exercise \the\chapternum.1}  \quad Consider the
+modified version of the optimal linear regulator problem where the
+objective is to maximize
+$$-  \sum_{t=0}^\infty \beta^t \left\{ x_t' R x_t + u_t' Q u_t
+    + 2 u_t' H x_t \right\}$$
+subject to the law of motion:
+$$ x_{t+1} = A x_t + B u_t .$$
+Here $x_t$ is an $n \times 1$ state vector, $u_t$ is a $k \times 1$
+vector of controls, and $x_0$ is a given initial condition.   The matrices
+$R, Q$ are positive definite and symmetric.
+ The
+maximization is with respect to sequences $\{u_t, x_t\}_{t=0}^\infty$.
+\medskip
+\noindent {\bf a.} Show  that the optimal policy has the form
+$$ u_t = - (Q + \beta B'P B)^{-1} (\beta B' P A + H) x_t,$$
+where $P$ solves the
+algebraic matrix Riccati equation
+$$ P = R + \beta A' P A - (\beta A' P B + H')
+       (Q+\beta B'PB)^{-1} (\beta B' P A + H) . \eqno(1) $$ %\EQN ricccross $$
+\medskip
+\noindent{\bf b.}  Write a Matlab program to solve equation (1) % \Ep{ricccross}
+by iterating on $P$ starting from $P$ being a matrix of zeros.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.2} \quad  Verify that equations
+ \Ep{policyi1} and \Ep{policyi2}
+implement the policy improvement algorithm for the discounted
+linear regulator problem.
+
+\medskip
+\noindent {\it Exercise \the\chapternum.3} \quad  A household chooses $\{c_t, a_{t+1}\}_{t=0}^\infty$ to maximize
+$$ - \sum_{t=0}^\infty \beta^t \left\{(c_t - b)^2 + \gamma i_t^2
+  \right\} $$
+subject to
+$$\EQNalign{ c_t + i_t & = r a_t + y_t \cr % \EQN tran1;a \cr
+             a_{t+1} & = a_t + i_t \cr % \EQN tran1;b \cr
+            y_{t+1} & = \rho_1 y_t + \rho_2 y_{t-1}. \cr} $$ %\EQN tran1;c \cr} $$
+Here $c_t, i_t, a_t, y_t$ are the household's consumption,
+investment, asset holdings, and exogenous labor income at $t$;
+while $b > 0, \gamma > 0, r>0, \beta \in (0,1)$, and
+$\rho_1, \rho_2$ are parameters, and $a_0, y_{0}, y_{-1}$ are initial conditions.
+Assume that $\rho_1, \rho_2$ are such that $(1 -\rho_1 z - \rho_2 z^2) = 0$
+implies $\vert z \vert > 1$.
+\medskip
+\noindent{\bf a.}  Map this problem into an optimal linear regulator
+problem.
+\medskip
+\noindent {\bf b.}
+For parameter values $[\beta, (1+r), b, \gamma, \rho_1,
+\rho_2] = (.95, .95^{-1}, 30, 1, 1.2, -.3)$, compute the household's
+optimal policy function using your Matlab program from exercise {\it \the\chapternum.1\/}.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.4} \quad   Modify exercise {\it \the\chapternum.3\/} by assuming that the household
+seeks to maximize
+$$ - \sum_{t=0}^\infty \beta^t \left\{(s_t - b)^2 + \gamma i_t^2 \right\}$$
+Here $s_t$  measures consumption services that are produced
+by durables or habits according to
+$$\EQNalign{s_t & = \lambda  h_{t} + \pi c_t  \cr % \EQN habit1;a \cr
+            h_{t+1} & = \delta h_{t} + \theta c_t \cr} % \EQN habit1;b \cr}
+$$
+where $h_t$ is the stock of the durable good or habit,
+$(\lambda, \pi, \delta, \theta)$ are  parameters, and
+$h_{0}$ is an initial condition.
+
+\medskip
+\noindent{\bf a.}  Map this problem into a linear regulator problem.
+\medskip
+\noindent{\bf b.}  For   the same parameter values   as in
+exercise {\it \the\chapternum.3\/} and
+$(\lambda, \pi, \delta, \theta) = (1, .05, .95, 1)$, compute
+the optimal policy for the household.
+
+\medskip
+\noindent{\bf c.}  For the same parameter values as in exercise {\it \the\chapternum.3\/}
+and
+$(\lambda, \pi, \delta, \theta) = (-1, 1, .95, 1)$, compute
+the optimal policy.
+\medskip
+\noindent{\bf d.}\
+ Interpret the parameter settings
+in part b as capturing a  model   of durable consumption goods, and
+the settings in part c as giving a model of habit persistence.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.5}  \quad A household's labor income follows the
+stochastic process
+$$ y_{t+1} = \rho_1 y_t +  \rho_2 y_{t-1} + w_{t+1} + \gamma w_t, $$
+where $w_{t+1}$ is a
+ Gaussian martingale difference sequence
+with unit variance.    Calculate
+$$ E \sum_{j=0}^\infty \beta^j [y_{t+j} \vert  y^t, w^t],  \eqno(1) $$ %\EQN expect $$
+where $y^t, w^t$ denotes the history of $y,w$
+ up to $t$.
+\medskip\noindent{\bf a.} Write a Matlab program to compute expression
+(1). %\Ep{expect}.
+\medskip
+\noindent{\bf b.}  Use your program to evaluate expression  (1) % \Ep{expect}
+for the parameter values
+$( \beta, \rho_1, \rho_2, \gamma) = (.95, 1.2, -.4, .5)$.
+
+
+
+
+\medskip\noindent
+{\it Exercise  \the\chapternum.6} \quad {\bf Finding the state is an art}
+
+\medskip\noindent
+\noindent For $t \geq 0$, the endowment for a one-good economy  $d_t$ is governed by the second order stochastic difference equation
+$$ d_{t+1} = \rho_0 + \rho_1 d_t + \rho_2 d_{t-1} + \sigma_d \epsilon_{t+1} $$
+where $\epsilon_{t+1}$ is an i.i.d.\ process and $\epsilon_{t+1} \sim {\cal N}(0,1)$, $\rho_0, \rho_1$, and  $\rho_2$ are scalars, and $d_0, d_1$ are given initial conditions.
+  A {\it stochastic discount factor}
+is given by $s_t = \beta^t (b_0- b_1 d_t)$, where $b_0$ is a positive  scalar, $b_1 \geq 0$, and $\beta \in (0,1)$.   The value of the endowment at time $0$ is defined to be
+$$ v_0 = E_0 \sum_{t=0}^\infty s_t d_t  \leqno(1) $$
+and $E_0$ is the mathematical expectation operator conditioned on $d_0, d_{-1}$.
+
+\medskip
+\noindent{\bf a.}  Assume that $v_0$ in equation (1) is finite.  Carefully describe a recursive algorithm for computing
+$v_0$.
+
+\medskip
+\noindent{\bf b.}   Describe conditions on $\beta, \rho_1, \rho_2$ that are sufficient to make  $v_0$  finite.
+
+\medskip\noindent
+{\it Exercise  \the\chapternum.7} \quad {\bf Dynamic Laffer curves}
+
+\medskip\noindent
+The demand for currency in a small country
+is described by
+$$ M_t / p_t = \gamma_1 - \gamma_2 p_{t+1}/p_t  , \leqno(1) $$
+where $\gamma_1 > \gamma_2 > 0$, $M_t$ is the stock of currency
+held by the public at the end of period $t$, and $p_t$ is the
+price level at time $t$.  There is no randomness in the country,
+so that there is perfect foresight.  Equation (1) is a Cagan-like
+demand function for currency, expressing real balances as
+an inverse function of the expected gross rate of inflation.
+
+   Speaking of Cagan, the government is running
+a permanent real  deficit of $g$ per period, measured in goods,
+all of which it finances by currency creation.  The government's
+budget constraint at $t$ is
+$$ (M_t - M_{t-1})/p_t = g ,\leqno(2)  $$
+where the left side is the real value of the new currency
+printed at time $t$.  The economy starts at time $t=0$,
+with the initial level of nominal currency stock $M_{-1}=100$ being
+given.
+
+   For this model, define an {\it equilibrium} as a  pair of
+{\it positive}   sequences
+$\{ p_t > 0, M_t > 0 \}_{t=0}^\infty$ that satisfy equations
+(1) and (2) (portfolio balance and the government budget constraint,
+respectively) for $t \geq 0$, and the initial condition assigned for
+$M_{-1}$.
+    \medskip
+
+\noindent{\bf a.} Let $\gamma_1 =100, \gamma_2 = 50, g = .05$.
+Write a computer program to compute  equilibria for this economy.
+Describe your approach and display the program.
+
+\smallskip
+
+\noindent{\bf b.}  Argue that there exists a continuum of
+equilibria. Find the {\it lowest} value of the initial price level
+$p_0$ for which there exists an equilibrium.  ({\it Hint
+1:}  Notice the positivity condition that is part of the
+definition of equilibrium. {\it Hint  2:} Try using the
+general approach to solving difference equations described in
+section \use{lagrangianformulation}.)
+
+\noindent{\bf c.}  Show that for all of these equilibria except
+the one that is associated with the minimal $p_0$ that you
+calculated in part b, the gross inflation rate and the gross money
+creation rate both eventually converge to the {\it same} value.
+Compute this value.
+
+\smallskip
+\noindent{\bf d.}  Show that there is a unique equilibrium with a
+lower inflation rate than the one that you computed in part b.
+Compute this inflation rate.
+%  Find the initial value of the price level
+%in the equilibrium that is associated with this inflation rate.
+
+\smallskip
+\noindent{\bf e.}  Increase the level of $g$ to $.075$.  Compare
+the
+ (eventual or asymptotic) inflation rate that you computed
+in part b and the  inflation rate that you computed in part c.
+Are your results consistent with the view that ``larger permanent deficits
+cause larger inflation rates''?
+
+\smallskip
+\noindent{\bf f.}  Discuss your results from the standpoint of the
+Laffer curve.
+
+\smallskip
+\noindent{\it Hint:} A Matlab program {\tt dlqrmon.m} performs the calculations.
+It is available from the web site for the book.
+\medskip
+
+\noindent{\it Exercise \the\chapternum.8}  \quad
+  A government faces an  exogenous stream of
+government expenditures $\{g_t\}$ that it must finance. Total
+government expenditures at $t$ consist of two components:
+$$ g_t = g_{Tt} + g_{Pt} \leqno(1) $$
+where $g_{Tt}$ is transitory expenditures and $g_{Pt}$ is
+permanent expenditures.  At the beginning of period $t$, the
+government observes the history up to $t$ of both $g_{Tt}$ and
+$g_{Pt}$.  Further, it knows the stochastic laws of motion of
+both, namely,
+$$ \eqalign{ g_{Pt+1} &= g_{Pt} + c_1 \epsilon_{1,t+1} \cr
+             g_{Tt+1} & = (1 -\rho) \mu_T + \rho g_{Tt} + c_2
+             \epsilon_{2t+1} \cr } \leqno(2) $$
+where $\epsilon_{t+1} = \left[\matrix{\epsilon_{1t+1} \cr
+\epsilon_{2t+1} \cr}\right]$ is an i.i.d.\ Gaussian vector process
+with mean zero and identity covariance matrix.  The government
+finances its budget with a distorting taxes. If it collects $T_t$
+total revenues at $t$, it bears a dead weight loss of $W(T_t)$
+where $W(T) = w_1 T_t + .5 w_2 T_t^2 $, where $w_1 , w_2 > 0$. The
+government's loss functional is
+$$ E \sum_{t=0}^\infty \beta^t W(T_t), \quad \beta \in (0,1). \leqno (3) $$
+The government can purchase or issue one-period risk-free loans at
+a constant price $q$. Therefore, it faces a sequence of budget
+constraints
+$$ g_t + q b_{t+1} = T_t + b_t, \leqno(4)  $$
+where $q^{-1}$ is the gross rate of return on one-period risk-free
+government loans.  Assume that $b_0 = 0$.  The government also
+faces the terminal value condition
+$$ \lim_{t \rightarrow +\infty} \beta^t W'(T_t) b_{t+1} = 0 ,$$
+which prevents it from running a Ponzi scheme. The government
+wants to design a tax collection strategy expressing $T_t$ as a
+function of the history of $g_{Tt}, g_{Pt}, b_t$ that {\it
+minimizes\/} (3) subject to (1), (2), and (4).
+
+\medskip
+\noindent {\bf a.}  Formulate the government's problem as a
+dynamic programming problem.  Please carefully define the state
+and control for this problem.  Write the Bellman equation in as
+much detail as you can.  Tell a computational strategy for solving
+the Bellman equation. Tell the forms of the optimal value function
+and the optimal decision rule.
+
+\medskip \noindent
+{\bf b.} \ Using objects that you computed in part {\bf a}, please state
+the form of the law of motion for the joint process of $g_{Tt},
+g_{Pt}, T_t, b_{t+1}$ under the optimal government policy.
+\medskip
+\noindent{\bf Some background:}  Assume now that the optimal tax
+rule that you computed above has been in place for a very long
+time.  A macroeconomist who is studying the  economy observes time
+series on $g_t, T_t$, but {\it not\/} on  $b_t$ or the breakdown
+of $g_t$ into its components $g_{Tt}, g_{Pt}$. The macroeconomist
+has a very long time series for $[g_t, T_t]$ and proceeds to
+compute a {\it vector autoregression\/} for this vector.
+\medskip
+\noindent{\bf c.}  Define a population vector autoregression for
+the $[g_t, T_t]$ process. (Feel free to assume that lag lengths
+are infinite if this simplifies your answer.)
+\medskip
+\noindent{\bf d.}  Please tell precisely how the vector
+autoregression for $[g_t, T_t]$ depends on the parameters $[\rho,
+\beta, \mu, q, w_1, w_2, c_1, c_2]$ that determine the joint
+$[g_t, T_t]$ process according to the economic theory you used in
+part a.
+\medskip
+\noindent{\bf e.} \  Now suppose that in addition to his
+observations on $[T_t, g_t$], the economist gets an error-ridden
+time series on government debt $b_t$:
+$$ \tilde b_t = b_t + c_3 w_{3t+1} $$
+where $w_{3t+1}$ is an i.i.d.\ scalar Gaussian process with mean
+zero and unit variance that is orthogonal to $w_{is+1}$ for
+$i=1,2$ for all $s$ and $t$. Please tell how the vector
+autoregression for $[g_t, T_t, \tilde b_t]$ is related to the
+parameters $[\rho, \beta, \mu, q, w_1, w_2, c_1, c_2, c_3]$. Is
+there any way to  use the vector autoregression to make inferences
+about those parameters?
+
+
+
+
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.9}  \quad
+\medskip
+
+\noindent   A planner chooses a contingency plan for
+$\{c_t, k_{t+1}\}_{t=0}^\infty$ to maximize
+$$ - .5 E_0 \sum_{t=0}^\infty \beta^t [(c_t - b_t)^2 + e i_t^2 ] $$
+subject to the technology
+$$ \eqalign{ c_t + i_t & = \gamma k_t + d_t \cr
+             k_{t+1} & = (1-\delta) k_t + i_t, \cr } $$
+the laws of motion for the exogenous shock processes
+$$ \eqalign{ b_{t+1} & =  \mu_b (1- \rho_b) + \rho_b b_t + \sigma_b \epsilon_{b,t+1} \cr
+             d_{t+1} & = \mu_d (1-\rho_d) + \rho_d d_t + \sigma_d \epsilon_{d,t+1}, \cr }$$
+and given initial conditions $k_0, b_0, d_0$.
+Here $k_t$ is physical capital, $c_t$ is  consumption, $b_t$ is a scalar stochastic  process for
+bliss consumption, and $d_t$ is an exogenous endowment process,  $\beta \in (0,1)$, $e >0$, $\delta \in (0,1)$,  $\rho_b \in (0,1)$, $\rho_d \in (0,1)$, and the adjustment cost parameter
+$e >0$.  Also, $\left[ \matrix{ \epsilon_{b,t+1} \cr \epsilon_{d,t+1}\cr}\right]$ is an i.i.d.\ process
+that is distributed $ \sim {\cal N}(0, I)$. We assume that $\beta \gamma (1-\delta)=1$, a condition that Hall and Friedman imposed to form  permanent income models of consumption.  For convenience, group all parameters
+into the vector
+$$ \theta = \left[\matrix{ \beta &
+                    \delta &
+                    \gamma &
+                    e &
+                    \mu_b &
+                    \mu_d &
+                   \rho_b &
+                   \rho_d  &
+                   \sigma_b &
+                   \sigma_d \cr} \right]. $$
+
+\medskip
+\noindent
+{\bf Part I.}  Assume that the planner knows all parameters of the model.  At time $t$, the planner
+observes the history of $d_s, b_s, k_s$ for $s \leq t$.
+
+\medskip
+\noindent {\bf a.}  Formulate the planning problem as a discounted dynamic programming problem.
+\medskip
+\noindent {\bf b.}  Use  the Bellman equation for the planning problem to describe the effects on the decision rule for $c_t$
+and $k_{t+1}$ of an increase in $\sigma_b$.  Tell the effects of an increase in $\sigma_d$.
+\medskip
+
+\noindent {\bf c.}  Describe an algorithm to solve the Bellman equation.
+\medskip
+
+\noindent {\bf Part II.}
+An econometrician observes a time series $\{c_t, i_t\}_{t=0}^T$ for the economy described in part I. (This economy is either a socialist economy with a benevolent planner or a competitive economy with complete
+markets.)   The
+econometrician does not observe $b_t, d_t, k_t$ for any $t$ but believes that
+$$ \left[\matrix{ k_0 \cr
+                  b_0 \cr
+                  d_0 \cr}\right] \sim {\cal N}(\mu_0, \Sigma_0) .$$
+The econometrician knows the value of $\beta$ but not  the remaining parameters
+in $\theta$.
+\medskip
+\noindent {\bf a.} Describe as completely as you can how the econometrician can form maximum likelihood
+estimates of the remaining parameters in $\theta$ given his sample $\{c_t, i_t\}_{t=0}^T$.  If possible,
+find a recursive representation of the likelihood function.
+
+\medskip
+\noindent {\bf b.}  Suppose that the econometrician has a Bayesian prior distribution over the
+unknown parameters in $\theta$.  Please describe an algorithm for constructing the Bayesian posterior
+distribution for these parameters.
+
+
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.10}  \quad
+\medskip
+\noindent A consumer values consumption, asset streams $\{c_t, k_{t+1}\}_{t=0}^\infty$ according to
+$$ -.5 E_0 \sum_{t=0}^\infty \beta^t (c_t - b)^2 \leqno(1) $$ where $\beta \in (0,1)$ and
+$$\eqalign{ k_{t+1} & = R( k_t + y_t - c_t ) \cr
+             y_{t+1} & = \mu_y(1-\rho_1 - \rho_2) + \rho_1 y_t + \rho_2 y_{t-1} + \sigma_y \epsilon_{t+1} \cr
+             c_t & = \alpha y_t + (R-1) k_t, \ \ \alpha \in (0,1) \cr } $$
+and $k_0, y_0, y_{-1}$ are given initial conditions, and $\epsilon_{t+1}$ is an i.i.d. shock with
+$\epsilon_{t+1} \sim {\cal N}(0,1)$.
+\medskip
+\noindent {\bf a.} Tell how to compute the value of the objective function (1) under the prescribed
+decision rule for $c_t$. In particular, write a Bellman equation and get as far as you can in solving it.
+\medskip
+\noindent {\bf b.}  Tell how to use the Howard policy improvement algorithm to get a better decision rule.
+
+
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.11} \quad {\bf Firm level adjustment costs}
+\medskip
+\noindent
+A competitive firms sells  output $y_t$ at price $p_t$
+and chooses a production plan to maximize
+$$ \sum_{t=0}^\infty \beta^t R_t \leqno(1) $$
+where
+$$ R_t = p_t y_t - .5 d (y_{t+1} - y_t )^2 \leqno(2) $$
+subject to $y_0$ being a given initial condition.  Here
+$\beta \in (0,1)$ is a discount factor, and $d >0$ measures
+a cost of adjusting the rate of output.  The firm is a
+price taker.  The price $p_t$ lies on the demand curve
+$$ p_t = A_0 - A_1 Y_t \leqno(3) $$
+where $A_0 >0, A_1 > 0 $ and $Y_t$ is the market-wide level of
+output, being the sum of output of $n$ identical firms.
+The firm believes that market-wide output
+follows the law of motion
+$$ Y_{t+1} = H_0 + H_1 Y_t  \leqno(4) $$
+where $Y_0$ is a known initial condition.
+The firm observes $Y_t$ and $y_t$ at time $t$ when it chooses
+$y_{t+1}$.
+
+\medskip
+\noindent{\bf a.}  Formulate a Bellman equation for the firm.
+\medskip
+\noindent{\bf b.}  For parameter values $\beta=.95, d=2, A_0 = 100, A_1 = 1, H_0 = 200, H_1 =.8$,
+compute the firm's optimal value function and optimal decision rule.
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.12} \quad {\bf Firm level adjustment cost, II}
+\medskip
+\noindent
+A competitive firms sells  output $y_t$ at price $p_t$
+and chooses a production plan to maximize
+$$ E_0  \sum_{t=0}^\infty \beta^t R_t \leqno(1) $$
+where $E_0$ denotes a mathematical expectation conditional on time $0$ information,
+$$ R_t = p_t y_t - .5 d (y_{t+1} - y_t )^2 \leqno(2) $$
+subject to $y_0$ being a given initial condition.  Here
+$\beta \in (0,1)$ is a discount factor, and $d >0$ measures
+a cost of adjusting the rate of output.  The firm is a
+price taker.  The price $p_t$ lies on the demand curve
+$$ p_t = A_0 - A_1 Y_t + u_t  \leqno(3) $$
+where $A_0 >0, A_1 > 0 $ and $Y_t$ is the market-wide level of
+output, being the sum of output of $n$ identical firms. In (3), $u_t$ is a demand shock that follows the
+first-order autoregressive process
+$$ u_{t+1} = \rho u_t + \sigma_u \epsilon_{t+1} \leqno (4) $$
+where $\epsilon_{t+1}$ is an i.i.d.\ scalar process with $\epsilon_{t+1} \sim {\cal N}(0,1)$ and $| \rho | < 1$.
+The firm believes that market-wide output
+follows the law of motion
+$$ Y_{t+1} = H_0 + H_1 Y_t + H_2 u_t   \leqno(5) $$
+where $Y_0$ is a known initial condition.
+The firm observes $ P_t, Y_t$, and $y_t$ at time $t$ when it chooses
+$y_{t+1}$.
+
+\medskip
+\noindent{\bf a.}  Formulate a Bellman equation for the firm.
+\medskip
+\noindent{\bf b.}  For parameter values $\beta=.95, d=2, A_0 = 100, A_1 = 1, H_0 = 200, H_1 =.8, H_2 =2, \rho=.9, \sigma_u =.05$,
+compute the firm's optimal value function and optimal decision rule.
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.13} \quad {\bf Permanent income model}
+\medskip
+\noindent
+A household chooses a process $\{c_t, a_{t+1}\}_{t=0}^\infty $ to maximize
+$$ E_0 \sum_{t=0}^\infty \beta^t \{ -.5 (c_t -b)^2 - .5 \epsilon a_t^2  \}, \quad \beta \in (0,1)  $$
+subject to
+$$ \eqalign{ a_{t+1} + c_t & = R a_t + y_t \cr
+            y_{t+1} & = (1-\rho_1 - \rho_2) + \rho_1  y_t + \rho_2 y_{t-1} + \sigma_y \epsilon_{t+1} }$$
+where $c_t$ is consumption, $b >0$ is a bliss level of consumption, $a_t$ is financial assets at the beginning of $t$, $R = \beta^{-1}$ is the gross rate of return
+on assets held from $t$ to $t+1$, and $\epsilon_{t+1}$ is an i.i.d.\ scalar process with $\epsilon_{t+}] \sim {\cal N}(0,1)$.
+The household faces known initial conditions $a_0, y_0, y_{-1}$.
+
+\medskip
+\noindent{\bf a.}  Write a Bellman equation for the household's problem.
+\medskip
+\noindent{\bf b.}  Compute the household's value function and optimal decision rule for the following parameter values:
+$b=1000, \beta = .95, R = \beta^{-1}, \rho_1 = 1.2, \rho_2 = -.4, \sigma_y = .05, \epsilon=.000001$.
+\medskip
+\noindent{\bf c.} Compute the eigenvalues of $A-BF$.
+
+\medskip
+\noindent{\bf d.} Compute the household's value function and optimal decision rule for the following parameter values:
+$b=1000, \beta = .95, R = \beta^{-1}, \rho_1 = 1.2, \rho_2 = -.4, \sigma_y = .05, \epsilon=0$.
+Compare what you obtain with your answers in part {\bf b}.
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.14} \quad {\bf Permanent income model again}
+\medskip
+\noindent
+A household chooses a process $\{c_t, a_{t+1}\}_{t=0}^\infty $ to maximize
+$$ E_0 \sum_{t=0}^\infty \beta^t \{ -.5 (c_t -b)^2 - .5 \epsilon a_t^2 \}, \quad \beta \in (0,1)  $$
+subject to
+$$ \eqalign{ a_{t+1} + c_t & = R a_t + y_t \cr
+            y_{t+1} & = (1-\rho_1 - \rho_2) + \rho_1  y_t + \rho_2 y_{t-3} + \sigma_y \epsilon_{t+1} }$$
+where $c_t$ is consumption, $b >0$ is a bliss level of consumption, $a_t$ is financial assets at the beginning of $t$, $R = \beta^{-1}$ is the gross rate of return
+on assets held from $t$ to $t+1$, and $\epsilon_{t+1}$ is an i.i.d.\ scalar process with $\epsilon_{t+1} \sim {\cal N}(0,1)$.
+The household faces known initial conditions $a_0, y_0, y_{-1}, y_{-2},  y_{-3}$.
+
+\medskip
+\noindent{\bf a.}  Write a Bellman equation for the household's problem.
+\medskip
+\noindent{\bf b.}  Compute the household's value function and optimal decision rule for the following parameter values:
+$b=1000, \beta = .95, R = \beta^{-1}, \rho_1 = .55, \rho_2 = .3, \sigma_y = .05, \epsilon=.000001$.
+\medskip
+\noindent{\bf c.} Compute the eigenvalues of $A-BF$.
+
+\medskip
+\noindent{\bf d.} Compute the household's value function and optimal decision rule for the following parameter values:
+$b=1000, \beta = .95, R = \beta^{-1}, \rho_1 = .55, \rho_2 = .3, \sigma_y = .05, \epsilon=0$.
+Compare what you obtain with your answers in part {\bf b}.
+
+

@@ -1,0 +1,296 @@
+%% file: index.tex - creating an index - TeXsis 2.18
+% @(#) $Id: index.tex,v 18.0 2000/05/16 22:37:11 myers Exp $
+%======================================================================*
+%  index.tex  --  Macros for creating an index using MakeIndex
+%
+%  Use \index{key} or \idx{word} to make an entry in the index file
+%  [\idx{word} is more or less the same as ``word\index{word}''].
+%  At the end of the job the file \jobname.idx is the raw index file, 
+%  ready to be fed into the MakeIndex program to create the index.  
+%  The MakeIndex output file \jobname.ind is then fed back through TeX with
+%  the output formatting macros below to print the final formatted index.
+%
+%  To process the index file with MakeIndex the command is simply
+%
+%       makeindex  jobname.idx
+%
+%  You can leave off the .idx extension for the raw file and makeindex
+%  will assume it.  This will produce the processed index file, called
+%  \jobname.ind.  To print the index you can either include it in 
+%  another pass of the full document with ``\input \jobname.ind'' or
+%  print it separately by adding ``\input index'' to the begining of the 
+%  \jobname.ind file and running it through TeX.
+%
+%  If you set \markindextrue then indexed words selected with \idx
+%  will appear in the printed output inside a ruled box.  This is
+%  useful for draft copies when you are putting together the index,
+%  but obviously you do not want to use it in a final copy.
+%  The box does not interfere with or change the line spacing.
+%
+%  These macros are completely compatible with Plain TeX, although
+%  they can also be used with TeXsis (some of the macros used below
+%  are a part of TeXsis). Note however that these macros support output 
+%  from MakeIndex in it's default LaTeX mode.  You don't need a separate
+%  style file for MakeIndex!
+%
+%  For more information about how to make full use of MakeIndex read
+%  the man page for makeindex(1) and/or the paper ``Index Preparation 
+%  and Processing'' by Pehong Chen and Michale A. Harrison, 
+%  Software: Practice and Experience, Vol 19, No. 9, Sep. 1988, pp. 897-915  
+%  (a copy is available at ftp://ftp.texsis.org/texsis/index/index.tex )
+%
+%  It is possible to make more than one index by creating a few extra
+%  macros based on the ones below.  See the documentation at the end
+%  of this file for details.
+%
+%======================================================================*
+% (C) Copyright 1992, 1999, 2000 by Eric Myers and Frank Paige.
+% This file is a part of TeXsis.  Distribution and/or modifications
+% are allowed under the terms of the LaTeX Project Public License (LPPL).
+% See the file COPYING or ftp://ftp.texsis.org/texsis/LPPL
+%======================================================================*
+\message{- indexing macros}
+\catcode`@=11                           % @ is a letter here to hide workings
+
+\newif\ifmarkindex \markindexfalse      % put proof marks in text?
+\newif\ifmakeindex \makeindextrue       % set false to suppress .idx output
+
+%---------------------------*
+% Index Entries:
+%
+% \idx{word} is the quickest way to make an index entry.
+% The word is put in the text and an index entry is made at the
+% same time.  It is the same as typing ``word\index{word}''.
+% If \markintdextrue is selected the word appears in the text with a 
+% box around it so you know it has been included in the index.
+
+
+\def\idx#1{% include a word in the index output file
+   #1\index{#1}%                        % put word in text and \index it
+   \ifmarkindex                         % proof marks?
+     \llap{\lower\jot\vbox to 0pt{\vss  % box it
+        \tightboxit{\loosebox{\phantom{#1}}}}\hskip-\jot}%
+   \fi}                                  % put a ruled box around word
+
+
+% \index{key} makes an index entry for the given key.
+% Since MakeIndex can use special characters like @ | ! and " in the key
+% we must make sure that they are printed correctly to the raw index file.
+
+\def\index{%  make an index entry for a given key
+   \begingroup                  % turn MakeIndex special characters to letters
+     \catcode`@=11 \catcode`"=11 \catcode`!=11 \catcode`|=11 \catcode`-=11 
+    \@index}
+
+\def\@index#1{%  get the index entry and write it to the file
+   \endgroup                    % special characters back to before
+     \ifmakeindex               % .idx file output enabled?
+       \indexwrite\indexout{\indexentry{#1}}% write entry to file
+     \fi}
+
+
+% \loosebox put a loose  box around a box.
+% \tightboxit draws a rule box around the box #1 without any added space
+
+\def\loosebox#1{%
+    \vbox{\vskip\jot
+        \hbox{\hskip\jot #1\hskip\jot}%
+        \vskip\jot}}
+
+\def\tightboxit#1{\vbox{\hrule\hbox{\vrule\vbox{#1}\vrule}\hrule}}
+
+%---------------------------*
+% Index Formatting (printing the processed index file) 
+
+
+% The index is begun by \theindex or \begin{theindex} and ended
+% with \endtheindex or \end{theindex}
+
+
+\def\theindex{%  begin a formatted index
+   \begingroup
+     \parskip = 0pt                     % no extra space between items
+     \def\item{\indexitem{0pt}}%        % level 0 item separator
+     \def\subitem{\indexitem{20pt}}%    % level 1 item separator
+     \def\subsubitem{\indexitem{30pt}}% % level 2 item separator
+     \def\indexspace{\medskip}%         % intergroup vertical space
+     \def\setcounter##1##2{\global\csname ##1no\endcsname=##2}% to set page counter
+     \def\bold##1{{\bf ##1}}%           % boldface for |bold
+     \def\italic##1{{\it ##1}}%         % italics for |italic
+     \def\slanted##1{{\sl ##1}}%        % slanted for |slanted
+     \def\see##1##2{{\it see} ##1}%     % italics for |see
+     \def\seealso##1{{\it see also}##1}%% italics for |seealso
+     \def\also##1{{\it see also}##1}%   % italics for |also
+   }
+
+\def\indexitem#1{%  how to make an entry for an item in the index
+     \vskip 0pt                         % force vertical mode
+     \hangindent=30pt\hangafter=1       % hanging indent for extra lines
+     \noindent\hskip #1}                % level N item separator
+
+\def\endtheindex{%  end a formatted index
+   \endgroup}
+
+
+% If you don't have MakeIndex you can still make a sorted index.
+% (Even though it may not look as good.  If you are really going to
+% do it right, do get MakeIndex).  The Unix sort(1) command or a similar
+% program can be used to sort the \jobname.idx file.  You can then
+% edit the file to collect all the page numbers for a key into 
+% one \indexentry, like ``\indexentry{foo}{29,47-48}'' , and \indexentry
+% will format the items as best it can. 
+
+
+\def\indexentry#1#2{%  prints an index entry (from the raw file)
+     \indexitem{0pt}#1, #2}             % keyword, page number
+
+
+%-------------------------*
+% Simple \begin .. \end support (like in LaTeX):  There is a conspiracy
+% to preserve job security for typists by making sure one has to 
+% type \begin{thing} and \end{thing} everywhere.  In TeXsis it's just
+% \thing and \endthing, so here we just make \begin{thing} become \thing
+% and \end{thing} become \endthing.  Then we can use MakeIndex in it's
+% default mode, even though that is for LaTeX.
+% Note: we don't check that you begin and end the same thing.  After all,
+% you might want to say \begin{midfigure} followed by \end{figure}.
+
+
+\def\begin#1{%  \begin{foo} just becomes \foo
+   \begingroup                  % changes to \end are temporary
+     \let\end=\endbegin         % now \end will end the \begin
+     \expandafter\ifx\csname #1\endcsname\relax\relax % is \thing defined?
+        \def\next{\beginerror{#1}}% NO: flag an error
+     \else                      %
+        \def\next{\csname #1\endcsname}% YES: just invoke it
+     \fi\next}
+
+\def\endbegin#1{%  \end{foo} just becomes \endfoo
+   \endgroup                    % now \end goes back to normal
+   \expandafter\ifx\csname end#1\endcsname\relax\relax % is \endthing defined?
+      \def\next{\begingroup\beginerror{end#1}}% % NO: flag an error
+   \else                        %
+      \def\next{\csname end#1\endcsname}% YES: just invoke it
+   \fi\next}
+
+
+\newhelp\beginhelp{begin: 
+    The \string\begin\space or \string\end\space marked above is for a^^M% 
+    non-existant environment.  Check for spelling errors and such.}
+
+
+\def\beginerror#1{% \begin{foo} or \end{foo} fail if no \foo or \endfoo
+   \endgroup                    % make sure \end is back to normal
+   \errhelp=\beginhelp          % longer help message
+   \newlinechar=`\^^M           % ^^M is line break
+   \errmessage{Undefined environment for \string\begin\space or \string\end}}
+
+
+%---------------------------*
+% Index file output:  
+%
+
+\newwrite\indexout              % raw index output file
+
+
+% \indexinit will only get called once.  It opens the output file,
+% write an identifying comment to it, and then undefines itself.
+
+\def\indexinit{%                     open and initialize raw index file
+  \immediate\openout\indexout=\jobname.idx % open file as \jobname.idx
+  \immediate\write\indexout{\@comment Raw index file ``\jobname.idx''}%
+  \immediate\write\indexout{\@comment ====================================}%
+  \gdef\indexinit{\relax}}      % so we initialize only once
+
+%  \@comment is for writing % to a file.  It expands to '% '.
+     
+{\catcode`\%=11 \gdef\@comment{% }}
+
+
+% \indexwrite  writes an entry to the raw index file named by #1. Argument
+% #2 is the \indexentry{foo}, so it is not expanded (which is why this is so 
+% complicated), while \@indexpage is the page number, which *is* expanded.
+
+\def\indexwrite#1#2{%           % write entry to raw index file
+   \indexinit                   % open output file if not already
+   \def\@finwrite{\write#1}%    % to write to index output file (#1)
+   \begingroup                  % begin collecting tokens on stack
+    \aftergroup\@finwrite       % put \write\indexout on stack
+    \aftergroup{\relax          % put { on stack
+    \@stackNX#2\@endstack       % puts \noexpand\token... on stack 
+    \aftergroup\@indexpage      % expanded {enclosed} page number
+    \aftergroup}\relax          % put } on stack
+   \endgroup}                   % now dump from stack to \write
+
+\def\@indexpage{{\folio}}       % to get the {enclosed} page number 
+
+% Saying \@stackNX <stuff>\@endstack will take all the tokens
+% in <stuff> and put them on the stack, with every control sequence
+% prefaced by \noexpand.  \indexwrite uses this for unexpanded write.
+
+\def\@stackNX{\futurelet\next\@stackswitch} 
+
+\def\@stackswitch{%        decides what to do with various types of tokens
+    \ifx\next\@endstack\relax           % if \@endstack then we'll quit
+    \else\ifcat\noexpand\next\@stoken   % if token is a space,
+        \aftergroup\space\let\next=\@eatnext%   write \space and eat token
+    \else\ifcat\noexpand\next\bgroup    % if token is \bgroup
+        \aftergroup{\let\next=\@eatnext %   write { and eat it
+    \else\ifcat\noexpand\next\egroup    % if token is \egroup
+        \aftergroup}\let\next=\@eatnext %   write a } and eat it
+    \else                               % otherwize
+        \let\next=\@stacktoken          %   just copy to the stack with \NX
+     \fi\fi\fi\fi                       % end all \if's
+     \next}                             % do it to the token
+
+\def\\{\global\let\@stoken= }\\ 
+
+% \@eatnext ignores the \next token and goes on to the 
+%  one following in the argument list
+
+\def\@eatnext{\afterassignment\@stackNX\let\next= } 
+
+% \@stacktoken copies one token to the stack with \aftergroup,
+%  then calls \@stackNX to get the one following.
+
+\long\def\@stacktoken#1{% write token to stack, unexpanded    
+    \ifcat\noexpand#1\relax             % if token is a control sequence
+        \aftergroup\noexpand            %   preface with \noexpand
+    \else\ifcat\noexpand#1\noexpand~\relax % if token is an active character
+        \aftergroup\noexpand            %   preface with \noexpand
+    \fi\fi                              %
+    \aftergroup#1\relax                 % put the next token on the list
+    \@stackNX}                          % do next token from argument...
+
+\def\@endstack\@endstack{}              % just marks the end of token list
+
+\catcode`@=12                           % @ goes back to \other, not a letter
+
+%---------------------------*
+% MULTIPLE INDICES:  
+%  
+% If you want more than one index I can't guess how you will want to
+% use them, so all I can do is tell you how to use the macros above to
+% create another (or several other) additional indices:
+%
+% 1) Create another output file and open it, with something like:
+%
+%       \newwrite\otherindexout   
+%       \immediate\openout\otherindexout=other.idx
+%
+% 2) Define a macro to make the entry to the second index, following 
+%    the pattern of \index and \@index above, but using the other index
+%    file (but don't use @ in a macro name).  For example:
+%
+%       \def\OtherIndex{\begingroup     % special characters letters
+%           \catcode`@=11 \catcode`"=11 \catcode`!=11 \catcode`|=11
+%               \catcode`-=11  
+%           \Oindex}
+%
+%       \def\Oindex#1{\endgroup    % special characters return
+%              \indexwrite\otherindexout{\indexentry{#1}}}
+%
+%    Then saying \OtherIndex{word} will make an entry into the alternate
+%    index for ``word''.
+%
+%>>> EOF index.tex <<<

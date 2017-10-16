@@ -1,0 +1,1445 @@
+
+\input grafinp3
+%\input grafinput8
+\input psfig
+
+\showchaptIDtrue
+\def\@chaptID{11.}
+
+%\eqnotracetrue
+
+%\hbox{}
+
+\def\toone{{t+1}}
+\def\ttwo{{t+2}}
+\def\tthree{{t+3}}
+\def\Tone{{T+1}}
+\def\TTT{{T-1}}
+\def\rtr{{\rm tr}}
+\footnum=0
+\chapter{Economic Growth\label{growth}}
+
+\section{Introduction}
+
+This chapter describes basic nonstochastic models of sustained
+economic growth.   We begin by describing a
+ benchmark exogenous  growth model where sustained growth
+is driven by exogenous growth in labor productivity.
+Then we turn our attention to several   endogenous growth
+ models where sustained growth of labor   productivity
+is somehow {\it chosen\/} by the households in the economy.
+We describe several models that differ in whether the
+equilibrium market economy matches what a benevolent planner
+would choose.   Where the market outcome doesn't match
+the planner's outcome, there can be room   for welfare-improving
+government interventions. The objective of the chapter is to
+shed light on the mechanisms at work in different models.
+We try to facilitate comparison by using the same production
+function for most of our discussion while changing the meaning
+of one of its arguments.
+
+Paul Romer's
+\auth{Romer, Paul M.}%
+work has been an impetus to the revived interest
+in the theory of economic growth. In the spirit of Arrow's (1962)
+\auth{Arrow, Kenneth J.}%
+model of learning by doing, Romer (1986) presents an endogenous
+growth model where the accumulation of capital (or knowledge) is
+associated with a positive externality on the available technology.
+The aggregate of all agents' holdings of capital
+is positively related to the level of technology, which
+in turn interacts with individual agents' savings decisions
+and thereby determines the economy's growth rate.
+Thus, the households in this economy are {\it choosing\/} how
+fast the economy is growing, but they do so in an unintentional way.
+The competitive equilibrium growth rate falls short of the
+socially optimal one.
+
+Another approach to generating endogenous growth is to assume
+that all production factors are reproducible. Following Uzawa (1965),
+\auth{Uzawa, Hirofumi}%
+Lucas (1988)
+\auth{Lucas, Robert E., Jr.}%
+formulates a model with accumulation of both physical
+and human capital. The joint accumulation of all inputs
+ensures that growth will not come to a halt
+even though each individual factor in the final-good
+production function is subject to
+diminishing returns. In the absence of externalities,
+the growth rate in the competitive equilibrium
+coincides in this model with the social optimum.
+
+Romer (1987) constructs a model where agents can choose to engage
+in research that produces technological improvements.
+Each invention represents a technology for
+producing a new type of intermediate input that can be used in
+the production of final goods without affecting the marginal product
+of existing intermediate inputs. The introduction of new inputs
+enables the economy to experience sustained growth even though each
+intermediate
+input taken separately is subject to diminishing returns.
+In a decentralized equilibrium, private agents will expend
+resources on research  only if they are granted property rights over
+their inventions. Under the assumption of infinitely lived patents,
+Romer solves for a monopolistically competitive equilibrium that
+exhibits the classic tension between static and dynamic
+efficiency. Patents and the associated market power are necessary for
+there to be research and new inventions in a decentralized equilibrium,
+while the efficient production of existing intermediate inputs would
+require marginal-cost pricing, that is, the abolition of granted
+patents. The monopolistically competitive equilibrium is characterized
+by a smaller
+supply of each intermediate input and a lower growth rate than would be
+socially optimal.
+
+Finally, we revisit the question of when nonreproducible factors may not
+pose an obstacle to growth. Rebelo (1991)
+\auth{Rebelo, Sergio}%
+shows that even if there are nonreproducible factors in fixed supply in
+a neoclassical growth model, sustained growth is possible if there is
+a ``core'' of capital goods that is produced without the direct or
+indirect use of the nonreproducible factors.  Because of
+the ever-increasing relative scarcity of a nonreproducible factor,
+Rebelo finds that its price increases over time relative to a
+reproducible factor.
+Romer (1990) assumes that research requires the input of labor
+and not only goods as in his earlier model (1987). Now, if labor is in fixed
+supply and workers' innate productivity is constant, it follows immediately
+that growth must asymptotically come to an halt.  To make sustained growth
+feasible, we can take a cue from our earlier discussion.
+One modeling strategy would be to introduce an externality that enhances
+researchers' productivity, and an alternative approach would be to assume
+that researchers can accumulate human capital. Romer adopts the first type
+of assumption, and we find it instructive to focus
+on its role in overcoming a barrier to growth that nonreproducible labor
+would otherwise pose.
+
+\section{The economy}
+
+The economy has a constant population of a large number of identical
+agents who order consumption streams $\{c_t\}_{t=0}^\infty$ according to
+$$ \sum_{t=0}^\infty \beta^t u(c_t), \  {\rm with} \ \ \beta\in(0,1)
+\;\;{\rm and}\;\; u(c)={c^{1-\sigma} -1 \over 1-\sigma} \;\;\; {\rm for}\;\;
+\sigma\in[0, \infty), \EQN grow1 $$
+and $\sigma=1$ is taken to be logarithmic utility.\NFootnote{By virtue of
+L'H\^opital's rule, the limit of
+$(c^{1-\sigma} -1)/(1-\sigma)$ is $\log(c)$ as $\sigma$ goes to $1$.}
+Lowercase letters for quantities, such as $c_t$ for consumption, are
+used to denote individual variables, and  uppercase letters stand
+for aggregate quantities.
+
+For most part of our discussion of economic growth, the production
+function takes the form
+$$
+F(K_t,X_t) \,=\, X_t f(\hat K_t), \quad {\rm where} \;
+                               \hat K_t\equiv {K_t \over X_t}. \EQN grow2
+$$
+That is, the production function $F(K,X)$ exhibits constant returns
+to scale in its two arguments, which
+via \idx{Euler's theorem} on linearly homogeneous functions implies
+$$ F(K,X) = F_1(K,X) K + F_2(K,X) X,           \EQN grow3
+$$
+where $F_i(K,X)$ is the derivative with respect to the $i$th argument
+(and $F_{ii}(K,X)$ will be used to denote the second derivative with
+respect to the $i$th argument). The input $K_t$ is physical capital with
+a rate of depreciation equal to $\delta$. New capital can be created by
+transforming one unit of output into one unit of capital.
+Past investments are reversible. It follows that the relative price of capital
+in terms of the consumption good must always be equal to $1$. The
+second argument $X_t$ captures the contribution of labor.
+Its precise meaning will differ among the various setups that we
+will examine.
+
+We assume that the production function satisfies standard assumptions
+of positive but diminishing marginal products,
+$$
+F_i(K,X)>0, \quad F_{ii}(K,X)<0, \quad {\rm for}\; i=1,2;
+$$
+and the \idx{Inada condition}s,
+$$\EQNalign{
+\lim_{K\to 0}F_1(K,X) \,&=\, \lim_{X\to 0}F_2(K,X) =\infty, \cr
+\lim_{K\to \infty}F_1(K,X) \,&=\, \lim_{X\to \infty}F_2(K,X) =0, \cr}
+$$
+which imply
+$$
+\lim_{\hat K\to 0}f'(\hat K) = \infty,\quad
+\lim_{\hat K\to \infty}f'(\hat K) =0.                       \EQN grow_inada
+$$
+We will also make use of the mathematical fact that a linearly homogeneous
+function $F(K,X)$ has first derivatives $F_i(K,X)$ homogeneous of degree 0;
+thus, the first derivatives are only functions of the ratio $\hat K$. In
+particular, we have
+$$\EQNalign{
+&F_1(K,X) = {\partial \, X f\left({K / X}\right) \over \partial \, K }
+         = f'(\hat K),                                  \EQN grow4;a   \cr
+\noalign{\vskip.3cm}
+&F_2(K,X) = {\partial \, X f\left({K / X}\right) \over \partial \, X }
+         = f(\hat K) - f'(\hat K) \hat K.                \EQN grow4;b  \cr}
+$$
+
+\subsection{Balanced growth path}
+
+We seek additional technological assumptions to
+generate market outcomes with steady-state growth of consumption at a
+constant rate $1+\mu=c_{t+1}/c_t$. The literature uses the term
+``\idx{balanced growth path}'' to denote a situation
+where all endogenous variables grow at constant (but possibly different)
+rates. Along such a steady-state growth path (and
+during any transition toward the steady state), the return to
+physical capital must be such that households are willing to hold the
+economy's capital stock.
+
+In a competitive equilibrium where firms
+rent capital from the agents, the rental payment $r_t$ is equal to the
+marginal product of capital,
+$$
+r_t = F_1(K_t,X_t) = f'(\hat K_t).                             \EQN grow_r
+$$
+Households
+maximize utility given by equation \Ep{grow1} subject to the sequence of
+ budget constraints
+$$
+c_t + k_{t+1} = r_t k_t + (1-\delta) k_t + \chi_t,         \EQN grow_bc
+$$
+where $\chi_t$ stands for labor-related budget terms. The
+first-order condition with respect to $k_{t+1}$ is
+$$
+u'(c_t) = \beta u'(c_{t+1})\, (r_{t+1} + 1 - \delta).        \EQN grow_foc
+$$
+After using equations \Ep{grow1} and \Ep{grow_r} in equation \Ep{grow_foc}, we arrive
+at the following equilibrium condition:
+$$
+\left({c_{t+1} \over c_t}\right)^\sigma \,=\, \beta [f'(\hat K_{t+1}) +1 - \delta].
+                                                            \EQN growth
+$$
+We see that a constant consumption growth rate on the left  side is
+sustained in an equilibrium
+by a constant rate of return on the right  side. It was
+also for this reason that we chose the class of utility functions in
+equation \Ep{grow1} that exhibits a
+constant \idx{intertemporal elasticity of substitution}.
+These preferences allow for
+balanced growth paths.\NFootnote{To ensure well-defined maximization
+problems, a maintained assumption throughout the
+chapter is that parameters are such that any derived consumption
+growth rate $1+\mu$ yields finite lifetime utility; i.e., the
+implicit restriction on parameter values is that
+$\beta (1+\mu)^{1-\sigma}<1$. To see that this condition is needed,
+substitute the consumption
+sequence $\{c_t\}_{t=0}^\infty =\{(1+\mu)^t c_0\}_{t=0}^\infty$
+into equation \Ep{grow1}.}
+
+Equation \Ep{growth} makes clear that capital accumulation alone cannot sustain
+steady-state consumption growth when the labor input $X_t$ is constant over time,
+$X_t=L$. Given the second Inada condition in equations
+ \Ep{grow_inada}, the limit
+of the right  side of equation \Ep{growth} is $\beta(1-\delta)$
+when $\hat K$ approaches
+infinity. The steady state with a constant labor input must therefore
+be a constant consumption level and a capital-labor ratio $\hat K^{\star}$ given by
+$$
+f'(\hat K^{\star}) = \beta^{-1} - (1-\delta).                   \EQN growth_0
+$$
+In chapter \use{dplinear}
+ we derived a closed-form solution for the transition dynamics
+toward such a steady state in the case of logarithmic utility, a Cobb-Douglas
+production function, and $\delta=1$.
+
+\index{growth!exogenous}
+\section{Exogenous growth}
+
+As in Solow's (1956) classic article,
+the simplest way to ensure steady-state consumption growth is to
+postulate exogenous labor-augmenting technological change at the constant
+rate $1+\mu\geq 1$,
+$$
+X_t = A_t L, \qquad {\rm with}\;\; A_{t} = (1+\mu) A_{t-1},
+$$
+where $L$ is a fixed stock of labor.
+Our conjecture is then that both consumption and physical capital will
+grow at that same rate $1+\mu$ along a balanced growth path. The same
+growth rate of $K_t$ and $A_t$ implies
+that the ratio $\hat K$ and therefore the marginal product of capital
+remain constant in the steady state. A time-invariant rate of return is in
+turn consistent with households
+choosing a constant growth rate of consumption,
+given the assumption of isoelastic preferences.
+
+Evaluating equation
+ \Ep{growth} at a steady state, the optimal ratio $\hat K^{\star}$ is
+given by
+$$
+\left(1+\mu\right)^\sigma \,=\, \beta [f'(\hat K^{\star}) +1 - \delta].
+                                                            \EQN growth_1
+$$
+While the steady-state consumption growth rate is exogenously
+given by $1+\mu$, the endogenous steady-state ratio $\hat K^{\star}$
+is such that the implied rate of return on capital induces the agents to
+choose a consumption growth rate of $1+\mu$. As can be seen,
+a higher degree of patience (a larger $\beta$), a higher willingness
+intertemporally to substitute (a lower $\sigma$), and a more durable
+capital stock (a lower $\delta$) each
+yield a higher ratio $\hat K^{\star}$, and
+therefore more output (and consumption) at a point in time, but the
+growth rate remains fixed at the rate of exogenous labor-augmenting
+technological change.
+It is straightforward to verify that the competitive equilibrium
+outcome is Pareto optimal, since the private return to capital
+coincides with the social return.
+
+Physical capital is compensated according to equation \Ep{grow_r}, and labor
+is also paid its marginal product in a competitive equilibrium,
+$$
+w_t = F_2(K_t,X_t) \, {{\rm d}\, X_t \over {\rm d}\,L\hfill}
+    = F_2(K_t,X_t) \, A_t.                                     \EQN grow_w
+$$
+So, by equation \Ep{grow3}, we have
+$$
+r_t K_t + w_t L = F(K_t,A_t L).
+$$
+Factor payments are equal to total production, which is the
+standard result of a competitive equilibrium with
+constant-returns-to-scale technologies. However, it is interesting to
+note that if $A_t$ were a separate production factor, there could not
+exist a competitive equilibrium, since factor payments based on marginal
+products would exceed total production. In other words, the dilemma
+would then be that the production function
+$F(K_t,A_t L)$ exhibits increasing returns to
+scale in the three ``inputs'' $K_t$, $A_t$, and $L$, which is not
+compatible with the existence of a competitive equilibrium. This
+problem is to be kept in mind as we now turn to one
+way to endogenize economic growth.
+\index{growth!externality}
+
+\section{Externality from spillovers}
+
+Inspired by Arrow's (1962)
+\auth{Arrow, Kenneth J.}%
+paper on learning by doing, Romer (1986)
+\auth{Romer, Paul M.}%
+suggests that economic growth can be endogenized by assuming that
+technology grows because of aggregate spillovers coming from
+firms' production activities. The
+problem alluded to in the previous section, that a competitive
+equilibrium fails to exist in the presence of increasing returns
+to scale, is avoided by letting technological advancement be
+external to firms.\NFootnote{Arrow (1962) focuses on learning from
+experience that is assumed to get embodied in capital goods,
+while Romer (1986) postulates spillover effects of
+firms' investments in knowledge.
+In both analyses, the productivity of a given firm is a function
+of an aggregate state variable, either the economy's stock of
+physical capital or stock of knowledge.}
+As an illustration, we assume that firms
+face a fixed  labor productivity that is proportional to the current
+economy-wide average of physical capital per worker.\NFootnote{This
+specific formulation of spillovers is analyzed in a rarely cited
+paper by Frankel (1962).}
+In particular,
+$$
+X_t = \bar K_t L, \qquad {\rm where}\;\; \bar K_{t} = {K_t \over L}.
+$$
+The competitive rental rate of capital is still given by equation
+ \Ep{grow_r},
+but we now trivially have $\hat K_t=1$, so equilibrium condition \Ep{growth}
+becomes
+$$
+\left({c_{t+1} \over c_t}\right)^\sigma \,=\, \beta [f'(1) +1 - \delta].
+                                                            \EQN growth_2
+$$
+Note first that this economy has no transition
+dynamics toward a steady state. Regardless of the initial capital stock,
+equation \Ep{growth_2} determines a time-invariant growth rate. To
+ensure a positive growth rate, we require the parameter restriction
+$\beta [f'(1) +1 - \delta]\geq 1$. A second critical property of the
+model is that the economy's growth rate
+is now a function of preference and technology parameters.
+
+The competitive equilibrium is no  longer Pareto optimal, since the
+private return on capital falls short of the social rate of return,
+with the latter return given by
+$$
+{{\rm d}\, F\left(K_t, {\displaystyle K_t \over \displaystyle L} L \right)
+                          \over {\rm d}\, K_t}
+= F_1(K_t,K_t) + F_2(K_t,K_t) = f(1),                      \EQN grow_sp
+$$
+where the last equality follows from equations
+ \Ep{grow4}. This higher social rate of
+return enters a planner's first-order condition, which then
+also implies a higher optimal consumption growth rate,
+$$
+\left({c_{t+1} \over c_t}\right)^\sigma \,=\, \beta [f(1) +1 - \delta].
+                                                            \EQN growth_2sp
+$$
+
+Let us reconsider the suboptimality of the decentralized
+competitive equilibrium. Since the agents and the planner share
+the same objective of maximizing utility, we are left with
+exploring differences in their constraints. For a given sequence of
+the spillover $\{\bar K_t\}_{t=0}^\infty$,
+the production function $F(k_t,\bar K_t l_t)$
+exhibits constant returns to scale in $k_t$ and $l_t$. So, once again,
+factor payments in a competitive equilibrium will be equal to total
+output, and optimal firm size is indeterminate. Therefore, we can
+consider a representative agent with one unit of labor endowment who
+runs his own production technology, taking the spillover effect as given. His
+resource constraint becomes
+$$
+c_t + k_{t+1} = F(k_t,\bar K_t) + (1-\delta) k_t
+              = \bar K_t f\left({k_t\over\bar K_t}\right) + (1-\delta) k_t,
+$$
+and the private gross rate of return on capital is equal to
+$f'(k_t/\bar K_t) +1-\delta$.
+After invoking the equilibrium condition $k_t=\bar K_t$, we arrive at
+the competitive equilibrium return on capital $f'(1) +1-\delta$ that
+appears in equation \Ep{growth_2}. In contrast, the
+planner maximizes utility subject to a resource constraint where
+the spillover effect is internalized,
+$$
+C_t + K_{t+1} = F\left(K_t, {K_t \over L} L\right) + (1-\delta) K_t
+              = [f(1) + 1 - \delta] K_t.
+$$
+%\vfill\eject
+\index{growth!reproducible factors}
+\section{All factors reproducible}
+\subsection{One-sector model}
+An alternative approach to generating endogenous growth is to assume that
+all factors of production are producible. Remaining within a one-sector
+economy, we now assume that human capital $X_t$ can be produced in the
+same way as physical capital but rates of depreciation might differ. Let
+$\delta_X$ and $\delta_K$ be the rates of depreciation of human capital
+and physical capital, respectively.
+
+The competitive equilibrium wage is equal to the marginal product of human
+capital
+$$
+w_t = F_2(K_t,X_t).                                            \EQN grow_w2
+$$
+Households maximize utility subject to budget constraint \Ep{grow_bc} where
+the term $\chi_t$ is now given by
+$$
+\chi_t = w_t x_t + (1-\delta_X) x_t - x_{t+1}.
+$$
+The first-order condition with respect to human capital becomes
+$$
+u'(c_t) = \beta u'(c_{t+1})\, (w_{t+1} + 1 - \delta_X).        \EQN grow_foc2
+$$
+Since both equations
+ \Ep{grow_foc} and \Ep{grow_foc2} must hold, the rates of return
+on the two assets have to obey
+$$
+F_1(K_{t+1},X_{t+1}) - \delta_K = F_2(K_{t+1},X_{t+1}) - \delta_X,
+$$
+and after invoking equations \Ep{grow4},
+$$
+f(\hat K_{t+1}) - (1+\hat K_{t+1}) f'(\hat K_{t+1}) \;=\; \delta_X -\delta_K,
+                                                               \EQN grow6
+$$
+which uniquely determines a time-invariant competitive equilibrium ratio
+$\hat K^{\star}$, as
+a function solely of depreciation rates and parameters of the production
+function.\NFootnote{The left side of equation
+ \Ep{grow6} is strictly increasing, since
+the derivative with respect to $\hat K$ is $-(1 +\hat K) f''(\hat K)>0$.
+ Thus, there can only be one solution to equation \Ep{grow6} and existence
+is guaranteed because the left  side ranges from minus infinity to
+plus infinity.  The limit of the left  side when $\hat K$ approaches
+zero is
+$f(0) -\lim_{\hat K\to 0}f'(\hat K)$, which is equal to minus infinity by
+equations \Ep{grow_inada} and the fact that $f(0)=0$.  (Barro and
+Sala-i-Martin (1995)
+\auth{Barro, Robert J.}\auth{Sala-i-Martin, Xavier}%
+show that the Inada conditions and constant returns to scale imply that all
+production factors are essential, i.e., $f(0)=0$.) To establish that the
+left side of equation \Ep{grow6} approaches plus infinity when $\hat K$ goes
+to infinity, we can define the function $g$ as $F(K,X)=K g(\hat X)$
+where $\hat X\equiv X/K$ and derive an alternative expression for the
+left  side of equation \Ep{grow6}, $(1+\hat X) g'(\hat X) - g(\hat X)$,
+for which we take the limit when $\hat X$ goes to zero.}
+
+After solving for $f'(\hat K^{\star})$ from equation \Ep{grow6} and
+substituting into equation \Ep{growth}, we arrive at an expression for the
+equilibrium growth rate
+$$
+\left({c_{t+1} \over c_t}\right)^\sigma \,=\,
+      \beta \left[{f(\hat K^{\star}) \over 1+\hat K^{\star}}  +1
+        - {\delta_X + \hat K^{\star} \delta_K \over 1+ \hat K^{\star}} \right].
+                                                            \EQN growth_3
+$$
+As in the previous model with an externality, the economy here is
+void of any transition dynamics toward a steady state.
+But this implication  now critically hinges on investments being
+reversible so that the initial stocks of physical capital and
+human capital are inconsequential. In contrast to the previous model,
+the present competitive equilibrium is Pareto optimal because there is
+no longer any discrepancy between private and
+social rates of return.\NFootnote{It is instructive to compare the present
+model with two producible factors, $F(K,X)$, to the previous setup
+with one producible factor and an externality, $\tilde F(K,X)$ with
+$X=\bar K L$.
+Suppose the present technology is such that $\hat K^{\star}=1$ and
+$\delta_K=\delta_X$, and the two different setups are equally
+productive;
+i.e., we assume that $F(K,X)=\tilde F(2K,2X)$, which implies
+$f(\hat K)=2\tilde f(\hat K)$. We can then verify that the present
+competitive equilibrium growth rate in equation \Ep{growth_3} is the same as the
+planner's solution for the previous setup in equation \Ep{growth_2sp}.}
+
+The problem of optimal taxation with commitment (see chapter \use{optax}) is
+studied for this model of endogenous growth by Jones, Manuelli, and
+Rossi (1993),
+ who adopt the assumption of irreversible investments.
+\auth{Jones, Larry E.} \auth{Manuelli, Rodolfo} \auth{Rossi, Peter E.}
+\subsection{Two-sector model}
+
+Following Uzawa (1965),
+\auth{Uzawa, Hirofumi}%
+ Lucas (1988)
+\auth{Lucas, Robert E., Jr.}%
+explores endogenous growth in a two-sector model with all factors
+being producible. The resource constraint in the goods sector is
+$$
+C_t + K_{t+1} = K_t^\alpha (\phi_t X_t)^{1-\alpha} + (1-\delta) K_t,
+                                                        \EQN grow_two;a
+$$
+and the linear technology for accumulating additional \idx{human capital} is
+$$
+X_{t+1} - X_t = A (1-\phi_t) X_t,                       \EQN grow_two;b
+$$
+where $\phi_t\in[0,1]$ is the fraction of human capital employed in the
+goods sector, and $(1-\phi_t)$ is devoted to human capital accumulation.
+(Lucas provides an alternative interpretation that we will discuss
+later.)
+
+We seek a balanced growth path where consumption, physical capital, and
+human capital grow at constant rates (but not necessarily the same ones) and
+the fraction $\phi$ stays constant over time. Let $1+\mu$ be the growth
+rate of consumption, and equilibrium condition \Ep{growth} becomes
+$$
+\left( 1+\mu \right)^\sigma \,=\, \beta \left(\alpha K_{t}^{\alpha-1}
+               \left[\phi X_{t}\right]^{1-\alpha} +1 - \delta \right).
+                                                            \EQN growth_4
+$$
+That is, along the balanced growth path, the marginal product of physical
+capital must be constant. With the assumed Cobb-Douglas technology, the
+marginal product of capital is proportional to the average product, so
+that by  dividing equation
+\Ep{grow_two;a} through by $K_t$ and applying equation \Ep{growth_4}
+we obtain
+$$
+{C_t \over K_t} + {K_{t+1} \over K_t} =
+{(1+\mu)^\sigma \beta^{-1} - (1-\alpha)(1-\delta) \over \alpha}. \EQN grow7
+$$
+By definition of a balanced growth path, $K_{t+1}/K_t$ is constant, so
+equation \Ep{grow7} implies that $C_t/K_t$ is constant; that is, the
+capital stock must grow at the same rate as consumption.
+
+Substituting $K_t=(1+\mu)K_{t-1}$ into equation \Ep{growth_4},
+$$
+\left( 1+\mu \right)^\sigma - \beta (1 - \delta) =
+       \beta \alpha \left[(1+\mu)K_{t-1}\right]^{\alpha-1}
+               \left[\phi X_{t}\right]^{1-\alpha},
+$$
+and dividing by the similarly rearranged equation
+\Ep{growth_4} for period $t-1$, we
+arrive at
+$$
+1=(1+\mu)^{\alpha-1} \left[{X_t \over X_{t-1}}\right]^{1-\alpha},
+$$
+which directly implies that human capital must also grow at the rate
+$1+\mu$ along a balanced growth path. Moreover, by equation \Ep{grow_two;b},
+the growth rate is
+$$
+1+\mu = 1 + A(1-\phi),                                    \EQN growth_4A
+$$
+so it remains to determine the steady-state value of $\phi$.
+
+The equilibrium value of $\phi$ has to be such that a unit of human capital
+receives the same factor payment in both sectors; that is,
+ the marginal products
+of human capital must be the same,
+$$
+p_t A = (1-\alpha) K_t^\alpha \left[\phi X_t\right]^{-\alpha},
+$$
+where $p_t$ is the relative price of human capital in terms of the composite
+consumption/capital good. Since the ratio $K_t/X_t$ is constant along a
+balanced growth path, it follows that the price $p_t$ must also be constant
+over time. Finally, the remaining equilibrium condition is that the rates of
+return on human and physical capital be equal,
+$$
+{p_{t}(1+A) \over p_{t-1}} = \alpha K_{t}^{\alpha-1}
+               \left[\phi X_{t}\right]^{1-\alpha} +1 - \delta ,
+$$
+and after invoking a constant steady-state price of human capital and
+equilibrium condition \Ep{growth_4}, we obtain
+$$
+1+\mu = [\beta (1+A)]^{1/\sigma}.                            \EQN growth_4B
+$$
+Thus, the growth rate is positive as long as $\beta (1+A)\geq 1$,
+but feasibility requires also that solution \Ep{growth_4B} fall below
+$1+A$, which is the maximum growth rate of human capital in equation
+\Ep{grow_two;b}.
+This parameter restriction, $[\beta (1+A)]^{1/\sigma} < (1+A)$,
+also ensures that the growth rate in
+equation \Ep{growth_4B} yields finite lifetime utility.
+
+As in the one-sector model, there is no discrepancy between private and
+social rates of return, so the competitive equilibrium is Pareto optimal.
+Lucas (1988) does allow for an externality (in the spirit of our earlier
+section) where the economy-wide average
+of human capital per worker enters the production function in the goods
+sector, but, as he notes, the externality is not
+needed to generate endogenous growth.
+
+Lucas provides an alternative interpretation of the technologies
+in equations \Ep{grow_two}. Each worker is assumed to be endowed with one unit of
+time. The time spent in the goods sector is denoted $\phi_t$, which is
+multiplied by the
+agent's human capital $x_t$ to arrive at the efficiency units of
+labor supplied.
+The remaining time is spent in the education sector
+with a constant marginal
+productivity of $A x_t$ additional units of human capital acquired.
+Even though Lucas's interpretation does introduce a
+nonreproducible factor in the form of a time endowment, the multiplicative
+specification makes the model identical to an economy with only
+two factors that are both reproducible. One section ahead we will study a
+setup with a nonreproducible factor that has some nontrivial implications.
+
+\index{growth!research and monopolistic competition}
+\index{monopolistic competition}
+\section{Research and monopolistic competition}
+Building on Dixit and Stiglitz's (1977)
+\auth{Dixit, Avinash K.}\auth{Stiglitz, Joseph E.}%
+formulation of the demand for
+differentiated goods and the extension to differentiated inputs in
+production by Ethier (1982),
+\auth{Ethier, Wilfred J.}%
+Romer (1987)
+\auth{Romer, Paul M.}%
+studied an economy with an aggregate resource constraint of the following type:
+$$
+C_t + \int_0^{A_{t+1}} Z_{t+1}(i) \, {\rm d}i + (A_{t+1}-A_t) \kappa =
+L^{1-\alpha} \, \int_{0}^{A_t} Z_t (i)^\alpha \, {\rm d}i,     \EQN grow8
+$$
+where one unit of the intermediate input $Z_{t+1}(i)$ can be produced from
+one unit of output at time $t$, and $Z_{t+1}(i)$ is used in production in
+the following period $t+1$. The continuous range of inputs at time $t$,
+$i\in [0, A_t]$, can be augmented for next period's production function at
+the constant marginal cost $\kappa$.
+
+In the allocations that we are about to study, the quantity of an intermediate
+input will be the same across all existing types, $Z_t(i)=Z_t$ for
+$i\in [0, A_t]$. The resource constraint \Ep{grow8} can then be written as
+$$
+C_t + A_{t+1} Z_{t+1} + (A_{t+1}-A_t) \kappa =
+L^{1-\alpha} \, A_t Z_t^\alpha.                                \EQN grow8a
+$$
+If $A_t$ were constant over time, say, let $A_t=1$ for all $t$, we would
+just have a parametric example of an economy yielding a no-growth steady
+state given by equation \Ep{growth_0} with $\delta=1$. Hence, growth can only be
+sustained
+by allocating resources to a continuous expansion of the range of inputs.
+But this approach poses a barrier to the existence of
+a competitive equilibrium, since
+the production relationship $L^{1-\alpha} \, A_t Z_{t}^\alpha$ exhibits
+increasing returns to scale in its three ``inputs.'' Following Judd's (1985a)
+\auth{Judd, Kenneth L.}%
+treatment of patents in a dynamic setting of Dixit and Stiglitz's (1977)
+model of monopolistic competition, Romer (1987) assumes that an inventor
+of a new intermediate input obtains an infinitely lived patent on
+that design. As the sole supplier of an input, the inventor can recoup the
+investment cost $\kappa$ by setting a price of the input above its marginal
+cost.
+%\vfill\eject
+
+\subsection{Monopolistic competition outcome}
+The final-goods sector is still assumed to be characterized by perfect
+competition because it exhibits constant returns to scale in the
+labor input $L$ and the existing continuous range of intermediate inputs $Z_t(i)$.
+Thus, a competitive outcome prescribes that each input is paid its
+marginal product,
+$$\EQNalign{
+w_t &= (1-\alpha) L^{-\alpha} \,
+        \int_{0}^{A_t} Z_{t}(i)^\alpha \, {\rm d}i,     \EQN grow_wR \cr
+p_t(i) &= \alpha L^{1-\alpha} \, Z_{t}(i)^{\alpha-1},     \EQN grow_pR \cr}
+$$
+where $p_t(i)$ is the price of intermediate input $i$ at time $t$ in
+terms of the final good.
+
+
+Let $1+R_m$ be the steady-state interest rate along the balanced growth
+path that we are seeking. In order to find the equilibrium invention rate
+of new inputs, we first compute the profits from producing and selling
+an existing input $i$. The profit at time $t$ is equal to
+$$
+\pi_t(i) = \left[p_t(i) - (1+R_m)\right]Z_t(i),          \EQN grow_profit
+$$
+where the cost of supplying one unit of the input $i$ is one unit of
+the final good acquired in the previous period; that is, the cost is the
+intertemporal price $1+R_m$. The first-order condition of maximizing
+the profit in
+equation \Ep{grow_profit} is the familiar expression that the monopoly price
+$p_t(i)$ should be set as a markup above marginal cost, $1+R_m$,
+and the markup is inversely related to the absolute value of the
+demand elasticity of input $i$,
+$|\epsilon_t(i)|$:
+$$\EQNalign{
+p_t(i) &= {1+R_m \over 1+ \epsilon_t(i)^{-1}},
+                                                          \EQN grow_markup \cr
+\noalign{\vskip.3cm}
+\epsilon_t(i) &= \left[{{\rm \partial}\, p_t(i) \over {\rm \partial}\, Z_t(i)}
+                {Z_t(i) \over p_t(i)} \right]^{-1} <0.                  \cr}
+$$
+The constant marginal cost, $1+R_m$, and
+the constant-elasticity demand curve \Ep{grow_pR},
+$\epsilon_t(i) = -(1-\alpha)^{-1}$,
+yield a time-invariant monopoly price, which, substituted into
+demand curve \Ep{grow_pR}, results in a time-invariant equilibrium
+quantity of input $i$:
+$$\EQNalign{
+p_t(i) &= {1+R_m \over \alpha},                        \EQN grow9;a   \cr
+\noalign{\vskip.3cm}
+Z_t(i) &= \left( {\alpha^2 \over 1+R_m} \right)^{1/(1-\alpha)} L \equiv Z_m .
+                                                       \EQN grow9;b   \cr}
+$$
+By substituting equation \Ep{grow9} into equation
+ \Ep{grow_profit}, we obtain an input
+producer's steady-state profit flow,
+$$
+\pi_t(i)= (1-\alpha) \alpha^{1/(1-\alpha)}
+\left( {\alpha \over 1+R_m} \right)^{\alpha /(1-\alpha)} L \equiv \Omega_m(R_m) .
+                                                            \EQN grow_profit2
+$$
+
+In an equilibrium with free entry,
+the cost $\kappa$ of inventing a new input must be equal
+to the discounted stream of future profits associated with being the sole
+supplier of that input,
+$$
+\sum_{t=1}^\infty (1+R_m)^{-t} \, \Omega_m(R_m) = {\Omega_m(R_m) \over R_m};
+                                                            \EQN grow_PVprofit
+$$
+that is,
+$$
+R_m \kappa = \Omega_m(R_m).                                 \EQN grow10
+$$
+The profit function $\Omega_m(R)$ is positive, strictly decreasing in $R$,
+and convex, as depicted in Figure \Fg{growth1f}. It follows that there
+exists a unique intersection between $\Omega(R)$ and $R \kappa$ that
+determines $R_m$. Using the corresponding version of equilibrium condition
+\Ep{growth}, the computed interest rate $R_m$ characterizes a balanced growth
+path with
+$$
+\left({c_{t+1} \over c_t}\right)^\sigma = \beta (1+R_m), \EQN grow11
+$$
+as long as $1+R_m\geq \beta^{-1}$; that is, the technology must be
+sufficiently productive relative to the agents' degree of
+impatience.\NFootnote{If the computed value $1+R_m$ falls short of $\beta^{-1}$,
+the technology
+does not present sufficient private incentives for new inventions, so
+the range of intermediate inputs stays constant over time, and the
+equilibrium interest rate equals $\beta^{-1}$.}
+It is straightforward to verify that the range of inputs must grow at
+the same rate as consumption in a steady state. After substituting the constant
+quantity $Z_m$ into resource constraint \Ep{grow8a} and dividing by $A_t$,
+we see that a constant $A_{t+1}/A_t$ implies that $C_t/A_t$ stays constant;
+that is, the range of inputs must grow at the same rate as consumption.
+
+%%%%%%%%%%%%%%
+%\grafone{grow1.ps,height=2.5in}{{\bf Figure 11.1} Interest rates in
+%a version of Romer's (1987) model of research and monopolistic competition.
+%The dotted line is the linear relationship $\kappa R$, while the solid and
+%dashed curves depict $\Omega_m(R)$ and $\Omega_s(R)$, respectively. The
+%intersection between $\kappa R$ and $\Omega_m(R)$ [$\Omega_s(R)$] determines
+%the interest rate along a balanced growth path for the laissez-faire
+%economy (planner allocation), as long as
+%$R\geq \beta^{-1}-1$. The parameterization is $\alpha=0.9$,
+%$\kappa=0.3$, and $L=1$.}
+%%%%%%%%%%%%%%%%%%%
+
+\midfigure{growth1f}
+\centerline{\epsfxsize=3truein\epsffile{grow1.ps}}
+\caption{Interest rates in a version of Romer's (1987) model of research and
+monopolistic competition.  The dotted line is the linear relationship $\kappa R$,
+while the solid and dashed curves depict $\Omega_m(R)$ and $\Omega_s(R)$,
+respectively. The intersection between $\kappa R$ and $\Omega_m(R)$ [$\Omega_s(R)$]
+determines the interest rate along a balanced growth path for the laissez-faire
+economy (planner allocation), as long as $R\geq \beta^{-1}-1$.  The
+parameterization is $\alpha=0.9$, $\kappa=0.3$, and $L=1$.}
+\infiglist{grow1f}
+\endfigure
+
+\medskip
+
+Note that the solution to equation \Ep{grow10} exhibits positive
+\idx{scale effects} where a larger labor force $L$ implies a higher
+interest rate and therefore a higher growth rate in equation
+\Ep{grow11}. The reason is that a larger economy enables input
+producers to profit from a larger sales volume in equation \Ep{grow9;b},
+which spurs more inventions until the discounted stream of profits
+of an input is driven down to the invention cost $\kappa$ by means of
+the higher equilibrium interest rate. In other words, it is less
+costly for a larger economy to expand its range of inputs because
+the cost of an additional input is smaller in per capita terms.
+
+\subsection{Planner solution}
+Let $1+R_s$ be the social rate of interest along an optimal balanced
+growth path. We analyze the planner problem in two steps.
+First, we establish that the socially optimal supply of an input $i$ is
+the same across all existing inputs and constant over time.
+Second, we derive $1+R_s$ and the implied optimal growth rate of
+consumption.
+
+For a given social interest rate $1+R_s$ and a range of inputs $[0,A_t]$,
+the planner would choose the quantities of intermediate inputs that
+maximize
+$$
+L^{1-\alpha} \, \int_{0}^{A_t} Z_{t}(i)^\alpha \, {\rm d}i
+- (1+R_s) \,  \int_{0}^{A_t} Z_{t}(i) \, {\rm d}i,
+$$
+with the following first-order condition with respect to $Z_t(i)$:
+$$
+Z_t(i) = \left( {\alpha \over 1+R_s} \right)^{1/(1-\alpha)} L \equiv Z_s.
+                                                       \EQN grow12
+$$
+Thus, the quantity of an intermediate input is the same across all
+inputs and constant over time. Hence, the planner's problem is
+simplified to one where utility function \Ep{grow1}
+is maximized subject to resource constraint \Ep{grow8a} with quantities
+of intermediate inputs given by equation \Ep{grow12}. The first-order
+condition with respect to $A_{t+1}$ is then
+$$
+\left({c_{t+1} \over c_t}\right)^\sigma =
+          \beta { L^{1-\alpha} Z_s^\alpha + \kappa
+          \over Z_s + \kappa } = \beta (1+R_s),            \EQN grow13
+$$
+where the last equality merely invokes the definition of $1+R_s$
+as the social marginal rate of
+intertemporal substitution,  $\beta^{-1}(c_{t+1}/c_t)^\sigma$.
+After substituting equation
+\Ep{grow 12} into equation \Ep{grow13} and rearranging the
+last equality, we obtain
+$$
+R_s \kappa = (1-\alpha)
+\left( {\alpha \over 1+R_s} \right)^{\alpha /(1-\alpha)} L \equiv \Omega_s(R_s) .
+                                                            \EQN grow14
+$$
+The solution to this equation, $1+R_s$, is depicted in Figure \Fg{growth1f}, and
+existence is guaranteed in the same way as in the case of $1+R_m$.
+
+We conclude that the social rate of return $1+R_s$ and
+therefore the optimal growth rate exceed the laissez-faire
+outcome, since the function $\Omega_s(R)$ lies above the function
+$\Omega_m(R)$,
+$$
+\Omega_m(R) = \alpha^{1/(1-\alpha)} \Omega_s(R).           \EQN grow15
+$$
+We can also show that the laissez-faire supply of an input falls
+short of the socially optimal one:
+$$
+Z_m < Z_s \qquad \Longleftrightarrow \qquad \alpha {1+R_s \over 1+R_m} <
+1. \EQN grow16
+$$
+To establish condition \Ep{grow16}, divide equation \Ep{grow9;b} by equation \Ep{grow12}.
+%  Lars: I used the simplified argument. OK?
+%To establish that the interest rates satisfy that last inequality,
+%divide \Ep{grow10} by \Ep{grow14} and utilize \Ep{grow15},
+%$$
+%{R_m \over R_s} =
+%\alpha^{1/(1-\alpha)} { \Omega_s(R_m) \over \Omega_s(R_s)} =
+%\alpha^{1/(1-\alpha)} \left({ 1+R_s \over 1+R_m}\right)^{\alpha/(1-\alpha)}.
+%$$
+%Since $R_m<R_s$, it follows that
+%$$
+%{1+R_m \over 1+R_s} >
+%\alpha^{1/(1-\alpha)} \left[{ 1+R_s \over 1+R_m}\right]^{\alpha/(1-\alpha)},
+%$$
+%which after rearrangement yields \Ep{grow16}.
+ Thus, the laissez-faire equilibrium
+is characterized by a smaller supply of each intermediate input
+and a lower growth rate than would be socially optimal. These
+inefficiencies reflect the fact that suppliers of intermediate inputs do not
+internalize the full contribution of their inventions, and so their
+monopolistic pricing results in less than socially efficient quantities
+of inputs.
+\index{growth!nonreproducible factors}
+
+
+\section{Growth in spite of nonreproducible factors}
+
+\subsection{``Core'' of capital goods produced without nonreproducible inputs}
+It is not necessary that all factors be producible in order to experience
+sustained growth through factor accumulation in the neoclassical framework.
+Instead, Rebelo (1991)
+\auth{Rebelo, Sergio}%
+shows that the critical requirement for perpetual
+growth is the existence of a ``core'' of capital goods that is produced
+with constant returns technologies and without the direct or indirect use
+of nonreproducible factors. Here we will study the simplest version of
+his model with a single capital good that is produced without any input
+of the economy's constant labor endowment. Jones and Manuelli (1990)
+\auth{Jones, Larry E.}\auth{Manuelli, Rodolfo}%
+provide a general discussion of convex models of economic growth
+and highlight the crucial feature that the rate of return to
+accumulated capital must remain bounded above the inverse of the
+subjective discount factor in spite of any nonreproducible factors
+in production.
+
+Rebelo (1991) analyzes the competitive equilibrium for the following technology:
+$$\EQNalign{
+C_t     &= L^{1-\alpha} \, \left(\phi_t K_t\right)^\alpha ,  \EQN grow17;a \cr
+I_t     &= A (1-\phi_t) K_t,                                   \EQN grow17;b \cr
+K_{t+1} &= (1-\delta) K_t + I_t,                               \EQN grow17;c \cr}
+$$
+where $\phi_t\in[0,1]$ is the fraction of capital employed in the consumption
+goods sector and $(1-\phi_t)$ is employed in the linear technology producing
+investment goods $I_t$. In a competitive equilibrium, the rental price of
+capital $r_t$ (in terms of consumption goods)
+is equal to the marginal product of capital, which then has to be the same
+across the two sectors (as long as they both are operating):
+$$
+r_t = \alpha L^{1-\alpha} \, \left(\phi_t K_t\right)^{\alpha-1} = p_t A, \EQN grow18
+$$
+where $p_t$ is the relative price of capital in terms of consumption goods.
+
+Along a steady-state growth path with a constant $\phi$, we can compute the
+growth rate of capital by substituting equation
+ \Ep{grow17;b} into equation \Ep{grow17;c} and
+dividing by $K_t$,
+$$
+{K_{t+1} \over K_t} = (1-\delta) + A(1-\phi) \equiv 1+\rho(\phi).  \EQN grow19
+$$
+Given the growth rate of capital, $1+\rho(\phi)$, it is straightforward to
+compute other rates of change:
+$$\EQNalign{
+{p_{t+1} \over p_t} &= [1+\rho(\phi)]^{\alpha-1},               \EQN grow20;a \cr
+\noalign{\vskip.3cm}
+{C_{t+1} \over C_t} &= {p_{t+1}I_{t+1} \over p_t I_t}
+= {p_{t+1}K_{t+1} \over p_t K_t} = [1+\rho(\phi)]^\alpha.     \EQN grow20;b \cr}
+$$
+Since the values of investment goods and the capital stock in terms of
+consumption goods grow at the same rate as consumption,
+$[1+\rho(\phi)]^\alpha$, this common rate is also
+the steady-state growth rate of the economy's net income, measured as
+$C_t + p_t I_t - \delta p_t K_t$.
+
+Agents maximize utility given by condition \Ep{grow1} subject to budget constraint
+\Ep{grow_bc} modified to incorporate the relative price $p_t$,
+$$
+c_t + p_t k_{t+1} = r_t k_t + (1-\delta) p_t k_t + \chi_t.         \EQN grow_21
+$$
+The first-order condition with respect to capital is
+$$
+\left( {c_{t+1} \over c_t} \right)^\sigma
+      = \beta {(1-\delta)p_{t+1} + r_{t+1} \over p_t}.             \EQN grow22
+$$
+After substituting $r_{t+1}=p_{t+1}A$ from equation \Ep{grow18}
+and steady-state rates of change from equation \Ep{grow20} into equation
+\Ep{grow22}, we arrive at the following equilibrium condition:
+$$
+\left[1+\rho(\phi)\right]^{1-\alpha (1-\sigma)} = \beta (1-\delta +A). \EQN growth_5
+$$
+Thus, the growth rate of capital and therefore the growth rate of consumption
+are positive as long as
+$$
+\beta (1-\delta +A)\geq 1.                                          \EQN grow23;a
+$$
+Moreover, the maintained
+assumption of this chapter that parameters are such that derived growth rates
+yield finite lifetime utility, $\beta (c_{t+1}/c_t)^{1-\sigma} <1$, imposes
+here the parameter restriction
+$\beta[\beta(1-\delta +A)]^{\alpha (1-\sigma)/[1-\alpha (1-\sigma)]}<1$, which
+can be simplified to read
+$$
+\beta (1-\delta +A)^{\alpha (1-\sigma)}<1.                        \EQN grow23;b
+$$
+Given that conditions \Ep{grow23} are satisfied, there is a unique equilibrium
+value of $\phi$ because the left side of equation \Ep{growth_5} is
+monotonically decreasing in $\phi\in[0,1]$ and it is strictly greater (smaller)
+than the right side for $\phi=0$ ($\phi=1$). The outcome is socially
+efficient because private and social rates of return are the same as in the
+previous models with all factors reproducible.
+\index{growth!research and monopolistic competition}
+\index{growth!externality}
+\subsection{Research labor enjoying an externality}
+Romer's (1987)
+\auth{Romer, Paul M.}%
+ model includes labor as a fixed nonreproducible factor,
+but similar to the last section, an important assumption is that this
+nonreproducible factor is not used in the production of inventions that
+expand the input variety (which constitutes a kind of reproducible
+capital in that model).  In his sequel, Romer (1990) assumes that
+the input variety $A_t$ is expanded through the effort of researchers
+rather than the resource cost $\kappa$ in terms of final goods.  Suppose
+that we specify this new invention technology as
+$$
+A_{t+1} - A_t = \eta (1-\phi_t) L,
+$$
+where $(1-\phi_t)$ is the fraction of the labor force employed in the research
+sector (and $\phi_t$ is working in the final-goods sector). After dividing by
+$A_t$, it becomes clear that this formulation cannot support sustained growth,
+since new inventions bounded from above by $\eta L$ must become a smaller
+fraction of any growing range $A_t$. Romer solves this problem by assuming
+that researchers' productivity grows with the range of inputs (i.e., an
+externality as discussed previously):
+$$
+A_{t+1} - A_t = \eta A_t (1-\phi_t) L,
+$$
+so the growth rate of $A_t$ is
+$$
+{A_{t+1} \over A_t} = 1 + \eta (1-\phi_t) L.                   \EQN grow24
+$$
+
+When seeking a balanced growth path with a constant $\phi$, we can use
+the earlier derivations, since the optimization problem of
+monopolistic input producers is the same as before.
+After replacing $L$ in
+equations
+\Ep{grow9;b} and \Ep{grow_profit2} by $\phi L$, the steady-state supply
+of an input and the profit flow of an input producer are
+$$\EQNalign{
+Z_m &= \left( {\alpha^2 \over 1+R_m} \right)^{1/(1-\alpha)} \phi L, \EQN grow25;a  \cr
+\noalign{\vskip.3cm}
+\Omega_m(R_m) &= (1-\alpha) \alpha^{1/(1-\alpha)}
+\left( {\alpha \over 1+R_m} \right)^{\alpha /(1-\alpha)} \phi L.    \EQN grow25;b  \cr}
+$$
+
+In an equilibrium, agents must be indifferent between earning the wage in the
+final-goods sector equal to the marginal product of labor and being a researcher
+who expands the range of inputs by $\eta A_t$ and receives the associated
+discounted stream of profits in equation \Ep{grow_PVprofit}:
+$$
+(1-\alpha) \left(\phi L\right)^{-\alpha} A_t Z_m^\alpha
+           = \eta A_t {\Omega_m(R_m) \over R_m}.
+$$
+The substitution of equation \Ep{grow25} into this expression yields
+$$
+\phi = {R_m \over \alpha \eta L},                                    \EQN grow26
+$$
+which, used in equation
+\Ep{grow24}, determines the growth rate of the input range,
+$$
+{A_{t+1} \over A_t} = 1 + \eta L - {R_m \over \alpha}.                 \EQN grow27
+$$
+Thus, the maximum feasible growth rate in equation \Ep{grow24}, that is,
+ $1+\eta L$ with $\phi=0$,
+requires an interest rate $R_m=0$,
+ while the growth vanishes as $R_m$ approaches
+$\alpha \eta L$.
+
+As previously, we can show that both consumption and the input range must
+grow at the same rate along a balanced growth path. It then remains to determine
+which consumption growth rate given by equation
+ \Ep{grow27}, is supported by
+Euler equation \Ep{grow11}:
+$$
+1 + \eta L - {R_m \over \alpha} = \left[\beta (1+R_m)\right]^{1/\sigma}. \EQN grow28
+$$
+The left side of equation \Ep{grow28} is monotonically decreasing
+in $R_m$, and the right side is increasing.
+It is also trivially true that the left  side is strictly greater than the
+right  side for $R_m=0$. Thus, a unique solution exists as long as the
+technology is sufficiently productive, in the sense that
+$\beta(1+\alpha\eta L)>1$. This parameter restriction
+ensures that the left side of equation \Ep{grow28} is
+strictly less than the right side
+at the interest rate $R_m=\alpha \eta L$ corresponding to a situation with
+zero growth, since no labor is allocated to the research sector, $\phi=1$.
+
+Equation \Ep{grow28} shows that this alternative model of research shares the
+scale implications described earlier; that is,
+ a larger economy in terms of $L$ has
+a higher equilibrium interest rate and therefore a higher growth rate. It
+can also be shown that the laissez-faire outcome continues to produce a smaller
+quantity of each input and to yield a lower growth rate than what is socially optimal.
+An additional source of underinvestment is now that agents who invent new inputs
+do not take into account that their inventions will increase the productivity
+of all future researchers.
+
+
+
+
+\section{Concluding remarks}
+
+This chapter has focused on the mechanical workings of endogenous
+growth models, with only limited reference to the motivation behind
+assumptions.
+For example, we have examined how externalities
+might enter models to overcome the onset of diminishing returns from
+nonreproducible factors without referring too much to the authors'
+interpretation of those externalities. The formalism of
+models is of course silent on why the assumptions are made, but
+the conceptual ideas behind the models contain valuable insights.
+In the last setup, Paul Romer
+argues that input designs represent excludable factors
+in the monopolists' production of inputs but the input variety $A$ is
+also an aggregate stock of knowledge that enters as
+a nonexcludable factor in the production
+of new inventions. That is, the patent holder of an input type
+has the sole right to produce and sell that particular input, but she
+cannot stop inventors from studying the input design and learning
+knowledge that helps to invent new inputs.
+This multiple use of an input design hints at the nonrival nature
+of ideas and technology (i.e., a nonrival object has the property that
+its use by one person in no way limits its use by another).
+Romer (1990, p. S75) emphasizes this fundamental nature of technology
+and its implication; ``If a nonrival good has productive value, then
+output cannot be a constant-returns-to-scale function of all its
+inputs taken together. The standard replication argument used to
+justify homogeneity of degree one does not apply because it is not
+necessary to replicate nonrival inputs.'' Thus, an endogenous
+growth model that is driven by technological change must be
+one where the advancement enters the economy as an externality or the
+assumption of perfect competition must be abandoned. Besides
+technological change, an alternative approach in the endogenous
+growth literature is to assume that all production factors are
+reproducible, or that there is a ``core'' of capital goods produced without
+the direct or indirect use of nonreproducible factors.
+
+As we have seen,
+much of the effort in the endogenous growth literature is geared toward finding
+the proper technology specification. Even though growth is an endogenous outcome
+in these models, its manifestation  ultimately hinges on technology assumptions.
+In the case of the last setup, as pointed out by Romer (1990, p. S84),
+\auth{Romer, Paul M.}%
+``Linearity in $A$ is what makes unbounded growth possible, and in this sense,
+unbounded growth is more like an assumption than a result of the model.''
+It follows that various implications of the analyses stand and fall with the
+assumptions on technology. For example, the preceding
+model of research and monopolistic
+competition implies that the laissez-faire economy grows at a slower rate
+than the social optimum, but Benassy (1998)
+\auth{Benassy, Jean-Pascal}%
+ shows how this result can be overturned
+if the production function for final goods on the right side
+of equation
+\Ep{grow8} is multiplied by the input range raised to some power $\nu$,
+$A_t^\nu$. It then becomes possible that the laissez-faire growth rate exceeds
+the socially optimal rate because the new production function disentangles input
+producers' market power, determined by the parameter $\alpha$, and the economy's
+returns to specialization, which is here also related to the parameter $\nu$.
+
+\auth{Segerstrom, Paul S.} \auth{Anant, T.C.A.} \auth{Dinopoulos, Elias}
+\auth{Grossman, Gene M.} \auth{Helpman, Elhanan} \auth{Aghion, Philippe}
+\auth{Howitt, Peter}
+Segerstrom, Anant, and Dinopoulos (1990), Grossman and Helpman (1991), and
+Aghion and Howitt (1992)
+provide early attempts to explore endogenous growth arising from technologies
+that allow for product improvements and therefore product obsolescence.
+These models open the possibility that the laissez-faire growth rate is
+excessive because of a {\it business-stealing\/} effect, where agents fail to
+internalize the fact that their inventions exert a negative effect on incumbent
+producers. As in the models of research by Romer (1987, 1990)
+\auth{Romer, Paul M.}%
+ covered in this chapter, these other technologies exhibit scale effects, so
+that increases in the resources devoted to research imply faster economic growth.
+Charles  Jones (1995), Young (1998), and Segerstrom (1998) criticize this feature
+and propose assumptions on technology that do not give rise to scale effects.
+\auth{Jones, Charles I.} \auth{Young, Alwyn} \auth{Segerstrom, Paul S.}
+
+%\section{Exercises}
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+\noindent{\it Exercise \the\chapternum.1} \quad {\bf Government spending and investment},
+donated by Rodolfo Manuelli
+\medskip\noindent
+Consider the following economy. There is a representative agent
+who has preferences given by
+$$ \sum_{t=0}^\infty \beta^t u(c_t), $$
+where the function $u$ is differentiable, increasing, and strictly
+concave.  The technology in this economy is given by
+$$ \eqalign{& c_t + x_t + g_t \leq f(k_t, g_t),    \cr
+   & k_{t+1} \leq (1-\delta)k_t + x_t, \cr
+   & (c_t, k_{t+1}, x_t) \geq (0, 0, 0), \cr}  $$
+and the initial condition $k_0 > 0$, given. Here
+$k_t$ and $g_t$ are capital per worker and government spending per worker.
+  The function $f$ is
+assumed to be strictly concave, increasing in each argument,
+twice differentiable,
+and such that the partial derivative with respect to both arguments converge
+to zero as the quantity of them grows without bound.
+\medskip
+
+\noindent{\bf a.} Describe a set of equations that
+characterize an interior solution to the planner's
+problem when the planner can choose the
+sequence of government spending.
+\medskip
+
+\noindent{\bf b.} Describe the steady state for the ``general'' specification
+of this economy.  If necessary, make assumptions to guarantee
+that such a steady state exists.
+\medskip
+
+\noindent{\bf c.} Go as far as you can describing how the steady-state
+levels of capital per worker and government spending per worker change
+as a function of the discount factor.
+\medskip
+
+\noindent{\bf d.} Assume that the technology level can vary.  More precisely,
+assume that the production function is given by
+ $f(k,g,z) = zk^\alpha g^\eta$, where $0<\alpha<1$, $0<\eta<1$, and
+$\alpha+\eta<1$.  Go as far as you can describing how the investment/GDP
+ ratio and the government spending/GDP ratio vary with the technology level
+$z$ at the steady state.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.2}  \quad {\bf Productivity and employment}, donated
+by Rodolfo Manuelli
+\medskip\noindent
+Consider a basic growth  economy with one modification.
+Instead of assuming that the labor supply is fixed at $1$, we
+include leisure in the utility function. %% as well as in the production function.
+To simplify, we consider the total endowment of time to be $1$.
+  With this modification, preferences and technology are given by
+\medskip
+$$
+ \sum_{t=0}^\infty \beta^t u(c_t, 1-n_t) , $$
+$$c_t + x_t + g_t \leq zf(k_t, n_t),  $$
+$$k_{t+1} \leq (1-\delta)k_t + x_t. $$
+\medskip\noindent
+In this setting, $n_t$ is the number of hours worked by
+the representative household at time $t$.  The rest of
+the time, $1-n_t$, is consumed as leisure.  The
+functions $u$ and $f$ are assumed to be strictly increasing in
+each argument, concave, and twice differentiable.  In addition,
+$f$ is such that the marginal product of capital converges to
+zero as the capital stock goes to infinity for any given value of labor, $n$.
+\medskip
+
+\noindent{\bf a.} Describe the steady state of this economy.  If necessary,
+make additional assumptions to guarantee that it exists and is unique.
+If you make additional assumptions, go as far as you can giving an
+economic interpretation of them.
+\medskip
+
+\noindent{\bf b.} Assume that $f(k,n) = k^\alpha n^{1-\alpha}$
+and {\ninepoint $u(c,1-n) = [c^\mu (1-n)^{1-\mu}]^{1-\sigma}/(1-\sigma)$.}
+%endninepoint
+What is the effect of changes in the technology (say increases in $z$)
+on employment and output per capita?
+\medskip
+
+\noindent{\bf c.} Consider next an increase in $g$.  Are there
+conditions under which an increase in $g$ will result in an
+increase in the steady-state $k/n$ ratio?  How about an increase
+in the steady-state level of output per capita?  Go as far as you
+can giving an economic interpretation of these conditions.  (Try to
+do this for general $f(k,n)$ functions with the appropriate
+convexity assumptions, but if this proves too hard, use the
+Cobb-Douglas specification.)
+
+\medskip
+\noindent{\it Exercise  \the\chapternum.3} \quad {\bf Vintage capital and cycles},
+ donated by Rodolfo Manuelli
+\medskip\noindent
+Consider a standard one-sector optimal growth model with only one
+difference:
+If $k_{t+1}$ new units of capital are built at time $t$, these units remain
+fully productive (i.e., they do not depreciate) until time $t+2$, at which
+point they disappear.  Thus, the technology is given by
+$$ c_t + k_{t+1} \leq zf(k_t + k_{t-1}). $$
+
+\noindent{\bf a.} Formulate the optimal growth problem.
+\medskip
+
+\noindent{\bf b.} Show that, under standard conditions, a steady
+state exists and is unique.
+\medskip
+
+\noindent{\bf c.} A researcher claims that with the unusual depreciation
+pattern, it is possible that the economy displays cycles.  By
+this he means that, instead of a steady state, the economy will
+converge to a period two sequence like
+($c^o, c^e, c^o, c^e, \ldots$) and
+ ($k^o, k^e, k^o, k^e, \ldots$), where $c^o$ ($k^o$)
+ indicates consumption (investment) in odd periods, and $c^e$ ($k^e$)
+ indicates consumption (investment) in even periods.
+Go as far as you can determining whether this can happen.
+  If it is possible, try to provide an example.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.4}\quad {\bf Excess capacity}, donated by
+Rodolfo Manuelli
+
+\medskip\noindent
+In the standard growth model,
+ there is no room for varying the rate of utilization of capital.
+  In this problem, you will explore how the nature of the solution is changed
+ when variable rates of capital utilization are allowed.
+\medskip
+\noindent
+As in the standard model, there is a representative agent with
+preferences given by
+$$\sum_{t=0}^\infty \beta^t u(c_t),   \quad 0 < \beta < 1.$$
+It is assumed that $u$ is strictly increasing, concave, and twice
+differentiable.  Output depends on the actual number of machines used at
+ time $t$, $\kappa_t$.  Thus, the aggregate resource constraint is
+$$c_t + x_t \leq zf(\kappa_t),$$
+where the function $f$ is strictly increasing,
+ concave, and twice differentiable.  In addition, $f$ is
+such that the marginal product of capital converges to zero
+ as the stock goes to infinity.
+Capital that is not used does not depreciate.  Thus, capital
+accumulation satisfies
+$$k_{t+1} \leq (1-\delta)\kappa_t + (k_t - \kappa_t) + x_t,$$
+where we require that the number of machines used, $\kappa_t$,
+is no greater than the number of machines available, $k_t$, or
+$k_t \geq \kappa_t$.
+This specification captures the idea that if some machines are
+not used, $k_t - \kappa_t>0$, %% in our notation,
+they do not depreciate.
+\medskip
+
+\noindent{\bf a.} Describe the planner's problem and analyze, as
+thoroughly as you can, the first-order conditions.  Discuss your results.
+\medskip
+
+\noindent{\bf b.} Describe the steady state of this economy.  If necessary,
+make additional assumptions to guarantee that it exists and is unique.  If
+you make additional assumptions, go as far as you can giving an economic
+interpretation of them.
+\medskip
+
+\noindent{\bf c.} What is the optimal level of capacity utilization in
+this economy in the steady state?
+\medskip
+
+\noindent{\bf d.} Is this model consistent with the view that cross-country
+ differences in output per capita are associated with
+differences in capacity utilization?
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.5 } \quad  {\bf Heterogeneity and growth}, donated
+by Rodolfo Manuelli
+\medskip
+\noindent
+Consider an economy populated by a large number of households indexed by $i$.
+The utility function of household $i$ is
+$$ \sum_{t=0}^\infty \beta^t u_i(c_{it}),  $$
+where $0<\beta<1$, and $u_i$ is differentiable, increasing and strictly concave.
+Note that although we allow the utility function to be ``household specific,''
+all households share the same discount factor.  All households are endowed with
+one unit of labor that is supplied inelastically.
+
+\medskip
+Assume that in this economy capital markets are perfect and that households start
+with initial capital given by $k_{i0}>0$.  Let total capital in the economy at
+time $t$ be denoted $k_t$ and assume that total labor is normalized to $1$.
+\medskip
+Assume that there is a large number of firms that produce output using capital
+and labor.  Each firm has a production function given by $F(k,n)$ which is
+increasing, differentiable, concave, and homogeneous of degree $1$.  Firms
+maximize the present discounted value of profits.  Assume that initial
+ownership of firms is uniformly distributed across households.
+\medskip
+
+\noindent{\bf a.} Define a competitive equilibrium.
+\medskip
+
+\noindent{\bf b.} Discuss (i) and (ii) and justify your answer.  Be as formal as you can.
+\medskip
+\item{(i)} Economist A argues that the steady state of this economy
+is unique and independent of the $u_i$ functions, while B says that without
+knowledge of the $u_i$ functions it is impossible to calculate the steady-state
+interest rate.
+\medskip
+\item{(ii)}  Economist A says that if $k_0$ is the steady-state aggregate
+stock of capital, then the pattern of ``consumption inequality'' will mirror
+exactly the pattern of ``initial capital inequality'' (i.e., $k_{i0}$), even
+though capital markets are perfect.  Economist B argues that for all $k_0$,
+in the long run, per capita consumption will be the same for all households.
+\medskip
+
+
+\medskip
+
+\noindent{\bf c.} Assume that the economy is at the steady state.  Describe the
+effects of the following three policies.
+\medskip
+
+\item{(i)}   At time zero, capital is redistributed across households
+(i.e., some people must surrender capital %get taxed
+and others get their capital).
+\medskip
+
+\item{(ii)}  Half of the households are required to pay a lump-sum tax.
+The proceeds of the tax are used to finance a transfer program to the other
+half of the population.
+\medskip
+
+\item{(iii)} Two-thirds of the households are required to pay a lump-sum tax.
+The proceeds of the tax are used to finance the purchase of a public good,
+say $g$, which does not enter in either preferences or technology.
+%\vfil\eject
+\medskip
+\noindent{\it Exercise \the\chapternum.6} \quad {\bf Taxes and growth},
+ donated by Rodolfo Manuelli
+
+\medskip
+\noindent
+Consider a simple two-planner economy.  The first planner picks ``tax rates,''
+$\tau_t$,
+%(we denote the tax rate by $\tau$)
+and makes transfers to the representative
+agent, $v_t$.
+% (which we denote $v_t$).
+The second planner takes the tax rates and
+the transfers as given.  That is, even though we know the connection between
+tax rates and transfers, the second planner does not, he or she takes the sequence
+of tax rates and transfers as given and beyond his or her control when solving for
+the optimal allocation.  Thus, the problem faced by the second planner (the only
+one we will analyze for now) is
+$$ \max \sum_{t=0}^\infty \beta^t u(c_t)  $$
+subject to
+$$\eqalign{& c_t + x_t + g_t - v_t \leq (1-\tau_t) f(k_t), \cr
+& k_{t+1} \leq (1-\delta)k_t + x_t,  \cr
+& (c_t, k_{t+1}, x_t) \geq (0,0,0),  \cr}  $$
+and the initial condition $k_0>0$, given.
+The functions $u$ and $f$ are assumed to be strictly increasing,
+concave, and twice differentiable.  In addition,
+$f$ is such that the marginal product of capital converges to
+zero as the capital stock goes to infinity.
+
+%The functions $u$ and $f$ have the same properties as in the general problem
+%described in secction 3 (problem (P.1)).
+\medskip
+
+\noindent{\bf a.} Assume that $0<\tau_t = \tau<1$, that is, the tax rate is constant.
+Assume that $v_t = \tau f(k_t)$ (remember that we know this,
+but the planner takes
+$v_t$ as given at the time he or she maximizes).  Show that there exists a steady
+state, and that for any initial condition $k_0>0$ the economy converges to the
+steady state.
+\medskip
+
+\noindent{\bf b.} Assume now that the economy has reached
+the steady state you analyzed
+in a.  The first planner decides to change the tax
+rate to $0<\tau' < \tau$.
+(Of course, the first planner and we know that this
+ will result in a change in
+$v_t$; however, the second planner, the one that maximizes,
+acts as if $v_t$
+is a given sequence that
+is independent of his or her decisions.)  Describe the new
+steady state as well as the dynamic path followed by the economy to reach this new
+steady state.  Be as precise as you can about consumption, investment and output.
+\medskip
+
+\noindent{\bf c.} Consider now a competitive economy in which households, but not firms,
+pay income tax at rate $\tau_t$ on both labor and capital
+income.  In addition, each household receives a transfer, $v_t$, that it takes
+to be given and independent of its own actions.  Let the aggregate per capita
+capital stock be $k_t$.  Then, balanced budget on the part of the government
+implies $v_t = \tau_t(r_t k_t + w_t, n_t)$, where $r_t$ and $w_t$ are the
+rental prices of capital and labor, respectively.  Assume that the production
+function is $F(k,n)$, with $F$ homogeneous of degree $1$, concave, and ``nice.''
+Go as far as you can describing the impact of the change described in b on
+the equilibrium interest rate.

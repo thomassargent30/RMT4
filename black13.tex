@@ -1,0 +1,1224 @@
+
+\input grafinp3
+%\input grafinput8
+\input psfig
+%\eqnotracetrue
+
+%\showchaptIDtrue
+%\def\@chaptID{13.}
+
+%\eqnotracetrue
+
+\def\toone{{t+1}}
+\def\ttwo{{t+2}}
+\def\tthree{{t+3}}
+\def\Tone{{T+1}}
+\def\TTT{{T-1}}
+\def\rtr{{\rm tr}}
+\footnum=0
+\chapter{Self-Insurance\label{selfinsure}}
+
+\section{Introduction}
+
+  This chapter describes a version of what is sometimes
+called a savings problem (e.g., Chamberlain and Wilson, 2000).
+A consumer wants to maximize the expected discounted sum of a
+concave function of one-period consumption rates, as in
+chapter \use{recurge}.  However, the consumer is cut off from
+all insurance markets and almost all asset markets.  The
+consumer can  purchase only nonnegative amounts of a single
+risk-free asset.   The absence of insurance opportunities
+induces the consumer to use variations over time in his asset holdings to acquire
+``self-insurance.''
+\auth{Chamberlain, Gary} \auth{Wilson, Charles}  \index{optimal savings problem}
+
+  This model is interesting to us partly as a benchmark to compare
+with the complete markets model of  chapter \use{recurge} and some of the
+recursive contracts models of chapters \use{socialinsurance} and \use{socialinsurance2}, where
+information and enforcement problems restrict allocations relative to
+chapter \use{recurge}, but nevertheless permit more insurance than is
+allowed in this chapter.  A version of the single-agent model
+of this chapter will also be an  important component of the incomplete
+markets models  of chapter \use{incomplete}.  Finally, the chapter
+provides our first encounter with the powerful supermartingale convergence theorem.
+
+To highlight the effects of uncertainty and borrowing constraints, we shall
+study versions of the savings problem under alternative assumptions about the
+stringency of the borrowing constraint and  about
+whether the household's endowment stream is known or uncertain.
+
+\section{The consumer's environment}
+
+  An agent orders consumption streams according to
+$$ E_0 \sum_{t=0}^\infty \beta^t u(c_t), \EQN selfobj$$
+where $\beta \in (0,1)$, and $u(c)$ is a strictly increasing, strictly concave,
+twice continuously differentiable function of the consumption
+of a single good $c$.  The agent is endowed with
+ an infinite random sequence $\{y_t\}_{t=0}^\infty$ of the good.
+Each period, the endowment takes one of a finite
+number of values, indexed by $s \in {\bf S}$. In particular,
+the set of possible endowments is
+$\overline y_1 < \overline y_2 < \cdots < \overline y_S$.
+Elements of the sequence of endowments are independently and identically
+distributed with ${\rm Prob} (y = \overline y_s) = \Pi_s, \Pi_s \geq 0$,
+and $\sum_{s \in {\bf S}} \Pi_s = 1$.
+ There are no
+insurance markets.
+
+ The
+agent can hold nonnegative   amounts of a single risk-free
+asset that has a  net rate of return $r$, where $(1+r) \beta =   1$.
+ Let $a_t \geq 0$ be the agent's assets at the beginning
+of period $t$, including the current realization of the income
+process.
+(Later we shall use an alternative  notation by
+defining $b_t = - a_t + y_t$ as the {\it debt\/} of the consumer at the
+beginning of period $t$, {\it excluding\/} the time $t$ endowment.)
+ We assume that $a_0 =y_0$ is drawn from the
+time-invariant endowment  distribution $\{\Pi_s\}$.
+(This is equivalent to assuming that $b_0=0$ in the alternative notation.)
+  The agent faces the sequence of budget constraints
+$$
+a_{t+1} = (1+r) (a_t - c_t) + y_{t+1} \,,                    \EQN self_bc
+$$
+where $0 \leq c_t \leq a_t$,  with $a_{0}$  given.
+That $c_t \leq a_t$ expresses the constraint that holdings
+of the asset at the end of the period
+(which evidently  equal ${a_{t+1} - y_{t+1} \over 1+r})$
+%(which equal
+%$a_t - y_t$)
+ must    be nonnegative.  The very important constraint $c_t \geq 0$
+is either imposed
+or comes from an Inada condition $\lim_{c \downarrow  0} u'(c) =
++\infty$.
+
+The Bellman equation for an agent with $a>0$ is
+\offparens
+$$\EQNalign{
+V(a) \;=\;& \max_{c} \, \left\{ u(c) \,+\, \sum_{s=1}^S
+           \beta \, \Pi_s V\Bigl[(1+r)(a-c) + \overline y_s \Bigr] \right\} \hskip1cm \
+             \EQN self_V \cr
+          & \hbox{\rm subject to} \ \qquad 0\leq c\leq a\,,                     \cr}
+$$
+\autoparens
+where $\overline y_s$ is the income realization in state $s\in {\bf S}$.
+The value function $V(a)$ inherits some properties from $u(c)$;
+in particular, $V(a)$ is increasing, strictly concave, and differentiable.
+
+ \index{self-insurance}
+``Self-insurance'' occurs when the agent uses savings to insure
+himself against income fluctuations. On the one hand, in response
+to low income realizations, an agent can draw down his savings and
+avoid temporary large drops in consumption. On the other hand, the
+agent can partly save high income realizations in anticipation of
+poor outcomes in the future. We are interested in the long-run
+properties of an optimal ``self-insurance'' scheme. Will the
+agent's future consumption settle down around some level $\bar
+c$?\NFootnote{As will occur in the model of social insurance
+without commitment, to be analyzed in chapter
+\use{socialinsurance}.}  Or will the agent eventually become
+ impoverished?\NFootnote{As
+in the case of social insurance with asymmetric information,
+to be analyzed in chapter \use{socialinsurance}.} Following
+the analysis of Chamberlain and Wilson (2000) and Sotomayor (1984),
+we will show that neither of these outcomes occurs: consumption will diverge
+to infinity!\auth{Chamberlain, Gary} \auth{Wilson, Charles}
+\auth{Sotomayor, Marilda A. de Oliveira}
+
+Before analyzing it under uncertainty, we'll briefly consider the savings
+problem under a certain endowment sequence.  With a nonrandom endowment that
+does not grow perpetually, consumption {\it does\/} converge.
+
+\section{Nonstochastic endowment}
+
+Without uncertainty, the question of insurance is moot.
+However, it is instructive to study the optimal consumption decisions
+of an agent with an uneven income stream who faces a borrowing constraint.
+We break our analysis of the nonstochastic case into two parts,
+depending on the stringency of the borrowing constraint.  We begin with
+the least stringent possible borrowing constraint, namely, the natural
+borrowing constraint on one-period Arrow securities, which are
+risk free in the current context.  After that, we'll arbitrarily
+tighten  the borrowing constraint to arrive at the no-borrowing
+condition $a_{t+1} \geq y_{t+1}$
+imposed in the statement of the problem in the previous section.
+With the natural borrowing constraint, the outcome is that the agent completely
+smooths consumption, having a constant consumption rate over time.  With the more
+stringent no-borrowing constraint, in general the outcome will be different.  Here consumption
+will be a monotonic increasing sequence with jumps in consumption at times when the no-borrowing constraint binds.
+
+  For convenience, we temporarily use our alternative notation.  We
+let $b_t$ be the   amount of one-period {\it debt\/} that
+the consumer {\it owes\/} at time $t$;
+$b_t$ is related to $a_t$ by
+$$ a_t = - b_t + y_t ,$$
+with $b_0 = 0$.
+Here $-b_t$ is the consumer's asset position {\it before\/} the realization
+of his  time $t$ endowment.
+In this notation, the time $t$ budget constraint
+ \Ep{self_bc} becomes
+$$ c_t + b_t \leq \beta b_{t+1} + y_t \EQN self_bc1 $$
+where in terms of $b_{t+1}$, we would express
+a no-borrowing constraint ($a_{t+1}  \geq y_{t+1}$)
+as $$b_{t+1} \leq 0. \EQN noborr $$
+
+The no-borrowing constraint \Ep{noborr} is evidently more  stringent
+than the natural borrowing constraint on one-period Arrow securities
+that we imposed in chapter \use{recurge}.
+Under an Inada condition on  $u(c)$ at $c=0$,  or alternatively when
+$c_t \geq 0$ is imposed,
+the natural borrowing constraint in this nonstochastic
+case is found by
+solving \Ep{self_bc1} forward with $c_t \equiv 0$:
+$$ b_t  \leq \sum_{j=0}^\infty \beta^j y_{t+j} \equiv \overline b_t .
+\EQN borrowcon $$
+The right side is the present value of the endowment, which is the maximal amount that  it is feasible
+to  repay at time $t$
+when $c_t \geq 0$.
+
+Solve \Ep{self_bc1}  forward and impose the initial condition $b_0=0$
+and the terminal condition $ \lim_{T \rightarrow \infty} \beta^{T+1} b_{T+1} = 0 $ to get
+$$  \sum_{t=0}^\infty \beta^t c_t \leq
+ \sum_{t=0}^\infty \beta^t y_t .
+\EQN constraint0 $$
+When $c_t \geq 0$,
+under the natural borrowing constraints, this
+is the only restriction that the budget constraints \Ep{self_bc1}
+impose on the $\{c_t\}$ sequence.
+   The first-order necessary conditions  for  maximizing
+\Ep{selfobj} subject to \Ep{constraint0} are
+$$ u'(c_t) \geq u'(c_{t+1}), \quad = \ {\rm if} \ b_{t+1} < \overline b_{t+1}, \ \ t \geq 0.
+\EQN lfonc3 $$
+It is possible to satisfy these first-order conditions
+by setting $c_t = \overline c$ for all $t \geq 0$, where $\overline c$
+is the constant consumption level chosen to satisfy  \Ep{constraint0}
+at equality:
+$$ { \overline c \over 1 - \beta} = \sum_{t=0}^\infty \beta^t
+  y_{t} .   \EQN consflat $$
+At equality, the sequence of budget constraints \Ep{self_bc1} implies
+that debt $b_t$ satisfies the following equation:
+$$ \sum_{j=0}^\infty \beta^j c_{t+j} + b_t = \sum_{j=0}^\infty \beta^j y_{t+j}.   \EQN debt_eqn_2 $$
+Under the particular consumption-smoothing policy \Ep{consflat}, $b_t$ is given by
+$$\EQNalign{
+b_t = \beta^{-t} \sum_{j=0}^{t-1} \beta^j \left(\overline c -y_j\right)
+    &= \beta^{-t} \left({\overline c \over 1-\beta} - {\beta^t \overline c \over 1-\beta}
+       - \sum_{j=0}^{t-1} \beta^j y_j \right)  \cr
+    &=
+\sum_{j=0}^\infty \beta^j y_{t+j} - {\overline c \over 1 - \beta} }$$
+where the last equality invokes \Ep{consflat}. This expression for $b_t$
+is evidently less than or equal to $\overline b_t$ for all
+$t \geq 0$.
+Thus, under the natural borrowing constraints,
+we have constant consumption for $t \geq 0$, i.e., perfect consumption
+smoothing over time.
+
+The natural debt limits allow $b_t$ to be positive, provided that
+it is not too large. Next we shall study the more severe ad hoc
+debt limit that requires $- b_t \geq 0$, so that the consumer can
+{\it lend\/}, but not borrow.  This restriction will limit consumption smoothing
+for households whose incomes are growing, and  who therefore are
+naturally borrowers.\NFootnote{See exercise {\it \the\chapternum.1\/} for how income growth
+and shrinkage impinge on consumption in the presence of an ad hoc
+borrowing constraint.}
+
+\subsection{An ad hoc borrowing constraint: nonnegative assets}\label{sec:ad_hoc_borrowing}%
+We continue to assume a known endowment sequence but
+ now impose a no-borrowing constraint
+$(1+r)^{-1} b_{t+1}  \leq 0  \
+ \forall t \geq 0$.  To facilitate the transition to our subsequent
+analysis of the problem under uncertainty, we work in terms of a
+definition of assets that include this period's income, $a_t =
+-b_t+y_t$.\NFootnote{When $\{y_t\}$ is an i.i.d.\ process, working with
+$a_t$ rather than $b_t$  makes it possible to formulate the
+consumer's Bellman equation in terms of the single state variable
+$a_t$, rather than the pair $b_t, y_t$. We'll exploit this idea
+again in chapter \use{incomplete}.} Let $(c_t^*, a_t^*)$ denote an
+optimal path. First-order necessary conditions for an optimum are
+$$ u'(c_t^*) \geq u'(c_{t+1}^*),  \quad = \ {\rm if} \ c_t^* < a_t^*
+ \EQN lfonc2 $$
+for $t\geq 0$.
+Along an optimal path for $t \geq 1$, it must be true that either
+\medskip
+\itemitem{(a) } $c^*_{t-1} = c^*_t$; or
+\itemitem{(b) } $c^*_{t-1} < c^*_t$ and $c^*_{t-1} = a^*_{t-1}$,
+and hence $a^*_{t} = y_t$.
+\medskip
+\noindent
+Condition (b) states that the no-borrowing constraint binds only when
+the consumer desires to shift consumption from the future to the present.
+He will desire to do that only when his endowment is
+growing.
+
+According to conditions a and b, $c_{t-1}$ can never exceed $c_t$.
+The reason is that a declining consumption sequence can be
+improved by cutting a marginal unit of
+consumption at time $t-1$ with a utility loss of $u'(c_{t-1})$
+and increasing consumption at time $t$ by the saving plus
+interest with a discounted utility gain of
+$\beta (1+r) u'(c_t) = u'(c_t) >  u'(c_{t-1})$, where the
+inequality follows from the strict concavity of $u(c)$ and
+$c_{t-1}>c_t$. A symmetric argument rules out
+$c_{t-1}<c_t$ as long as the nonnegativity constraint on savings
+is not binding; that is, an agent would choose to cut his savings
+to make $c_{t-1}$ equal to $c_t$ as in condition a. Therefore,
+consumption increases from one period to another as in condition b
+only for a constrained agent with zero savings,
+$a^*_{t-1}-c^*_{t-1}=0$. It follows that next period's assets
+are then equal to next period's income, $a^*_t = y_t$.
+
+Solving the
+budget constraint \Ep{self_bc} at equality
+forward for $a_t$ and rearranging gives
+$$ \sum_{j=0}^\infty \beta^j c_{t+j} = a_t + \sum_{j=1}^\infty
+  \beta^j y_{t+j}.   \EQN lbudget5 $$
+At dates $t\geq 1$ for which $a_t = y_t$,  so that the no-borrowing constraint
+was binding at time $t-1$,  \Ep{lbudget5} becomes
+$$\sum_{j=0}^\infty \beta^j c_{t+j} = \sum_{j=0}^\infty \beta^j y_{t+j}.
+\EQN lbudget6 $$
+Equations \Ep{lbudget5} and \Ep{lbudget6} contain important information
+about the  optimal solution.
+Equation \Ep{lbudget5} holds for all dates  $t \geq 1$  at which
+the consumer arrives
+with positive net assets $a_t - y_t >0$.  Equation
+\Ep{lbudget6} holds for those dates $t$ at which net assets
+or savings
+$a_t - y_t$
+are zero, i.e., when the no-borrowing constraint was
+binding at $t-1$.   If the no-borrowing constraint is binding
+only finitely often, then after the {\it last\/} date $\overline t -1$
+at which it was binding, \Ep{lbudget6} and the Euler equation
+\Ep{lfonc2} imply that consumption will thereafter be constant
+at a rate $\tilde c$ that satisfies
+${\tilde c \over 1 -\beta } = \sum_{j=0}^\infty \beta^j
+y_{{\overline t}+j}.$
+
+In more detail,
+suppose that an agent arrives in period $t$ with zero savings and
+knows that the borrowing constraint will never bind again. He
+would then find it optimal to choose the highest sustainable
+{\it constant\/} consumption.  This is given by the annuity return on
+the present value of the tail of the income process starting from period $t$,
+$$
+x_t\;\equiv\; {r \over 1+r} \sum_{j=t}^\infty (1+r)^{t-j} y_{j}\,.
+\EQN self_x $$
+In the optimization problem under certainty, the
+impact of the borrowing
+constraint will not vanish until the date at which
+the annuity return on  the present value of the tail (or remainder) of the
+income process is maximized. We state this in the following proposition.
+
+\medskip
+\noindent{\sc Proposition 1:} Given a borrowing constraint and a nonstochastic
+endowment stream, the limit of
+the nondecreasing optimal consumption path is
+$$
+\bar c \;\equiv\; \lim_{t \rightarrow \infty} c^*_t
+\;=\; \sup_t x_t \;\equiv\;\bar x \,.              \EQN self_barc
+$$
+\medskip
+\noindent{\sc Proof:}
+We will first show that $\bar c \leq \bar x$. Suppose to the contrary
+that $\bar c > \bar x$. Then conditions a and b imply that
+there is a $t$ such that $a^*_t=y_t$ and $c^*_{j}>x_t$ for all
+$j\geq t$. Therefore, there is a $\tau$ sufficiently large that
+$$
+\offparens
+0 \;<\; \sum_{j=t}^\tau (1+r)^{t-j}
+\bigl(c^*_{j} \,-\, y_{j} \bigr) \;=\;
+(1+r)^{t-\tau} \bigl( c^*_{\tau} \,-\, a^*_{\tau} \bigr)\,,
+$$
+\autoparens
+where the equality uses $a^*_t=y_t$ and successive iterations on
+budget constraint \Ep{self_bc}. The implication that
+$c^*_{\tau} > a^*_{\tau}$
+constitutes a contradiction because it violates the constraint that
+savings are nonnegative in optimization problem \Ep{self_V}.
+
+To show that $\bar c \geq \bar x$, suppose to the contrary that
+$\bar c < \bar x$. Then there is an $x_t$ such that $c^*_{j} < x_t$
+for all $j \geq t$, and hence
+$$ \eqalign{
+ & \sum_{j=t}^\infty (1+r)^{t-j} c^*_{j} \;<\;
+\sum_{j=t}^{\infty} (1+r)^{t-j} x_{t} \;=\;
+\sum_{j=t}^{\infty} (1+r)^{t-j} y_{j} \cr &  \;\leq\;
+a^*_t \,+\, \sum_{j=t+1}^\infty (1+r)^{t-j} y_{j} \,, \cr}
+$$
+where the last weak inequality uses $a^*_t \geq y_t$.
+Therefore, there is an $\epsilon > 0$ and $\hat \tau > t$ such
+that for all $\tau > \hat \tau$,
+$$
+\sum_{j=t}^\tau (1+r)^{t-j} c^*_{j} \;<\;
+a^*_t \,+\, \sum_{j=t+1}^{\tau} (1+r)^{t-j} y_{j} \,-\, \epsilon \,,
+$$
+and after invoking budget constraint \Ep{self_bc} repeatedly,
+$$
+(1+r)^{t-\tau} c^*_{\tau} \;<\;
+(1+r)^{t-\tau} a^*_{\tau} \,-\, \epsilon \,,
+$$
+or, equivalently,
+$$
+ c^*_{\tau} \;<\; a^*_{\tau} \,-\, (1+r)^{\tau -t} \epsilon \,.
+$$
+We can then construct an alternative feasible consumption sequence
+$\{c^{\epsilon}_j\}$ such that $c^{\epsilon}_j=c^*_j$ for $j \not= \hat \tau$
+and $c^{\epsilon}_j=c^*_j + \epsilon$ for $j=\hat \tau$. The fact
+that this alternative sequence yields higher utility establishes the
+contradiction. \qed
+\medskip
+
+  More generally, we know that at each date $t\geq 1 $
+for which the no-borrowing
+constraint is binding at date $t-1$, consumption will increase to   satisfy
+\Ep{lbudget6}.   The time series of consumption will thus be a
+discrete time
+step function whose jump dates $\overline t$
+ coincide with the dates at which
+$x_t$ attains new highs:
+$$ \overline t = \{t: x_t > x_s, s <  t\}. $$
+If there is a finite last date $\overline t$,
+optimal consumption is a monotone bounded sequence that converges to a
+finite limit.
+
+
+In summary, we  have shown that under certainty, the optimal consumption
+sequence converges to a finite limit as long  as the discounted value
+of future income is bounded across all starting dates $t$.
+Surprisingly enough, that result is
+overturned when there is uncertainty. But first, consider a simple example of
+a nonstochastic endowment process.
+
+\subsection{Example: periodic endowment process}
+
+Suppose that the endowment oscillates between one unit of the consumption good in even periods
+and zero units in odd periods. The annuity return on this
+endowment process is equal to
+$$ \EQNalign{ x_t \Big|_{t\ {\rm even}} &=
+    {r \over 1+r} \sum_{j=0}^\infty (1+r)^{-2j}
+   = ( 1 -\beta) \sum_{j=0}^\infty \beta^{2j}
+                      = {1 \over 1 + \beta }\,,  \hskip1cm \ \EQN self_exev;a \cr
+x_t \Big|_{t\ {\rm odd}} &=
+    {1 \over 1+r} \, x_t \Big|_{t\ {\rm even}}
+   = { \beta \over 1 + \beta}\,.
+ \EQN self_exev;b \cr}
+$$
+According to Proposition 1, the limit of the optimal consumption path
+is then $\bar c = (1+\beta)^{-1}$. That is, as soon as the agent
+reaches the first even period in life, he sets consumption equal
+to $\bar c$ forevermore. The associated
+beginning-of-period assets $a_t$ fluctuates between
+$(1+\beta)^{-1}$ and 1.
+
+The exercises at the end of this chapter contain more
+examples.
+
+\section{Quadratic preferences}
+
+It is useful briefly to consider the linear quadratic permanent
+income model as a benchmark for the results to come.  Assume as
+before that $\beta(1+r)=1$ and that the household's budget
+constraint at $t$ is \Ep{self_bc1}. Rather than the no-borrowing
+constraint \Ep{noborr}, we impose that\NFootnote{The natural borrowing
+limit assumes that consumption is nonnegative, while the model with
+quadratic preferences permits consumption to be negative.  When
+consumption can be negative, there seems to be no natural lower
+bound to the amount of debt that could be repaid, since more
+payments can always be wrung out of the consumer.  Thus, with
+quadratic preferences and the associated possibility of negative consumption, we have to rethink the sense of a borrowing
+constraint.  The restriction \Ep{borrowlimit2} allows negative
+consumption but limits the rate at which debt is allowed to grow in
+a way designed to rule out a  Ponzi scheme that would have the consumer
+always consume bliss consumption by accumulating debt without
+limit.}
+ $$E_0\left( \lim_{t\rightarrow \infty}
+ \beta^t b_t^2   \right)
+= 0. \EQN borrowlimit2 $$  This constrains
+the asymptotic rate at which debt can grow.
+Subject to this constraint, solving \Ep{self_bc1}
+forward yields
+$$ b_t = \sum_{j=0}^\infty \beta^j (y_{t+j} - c_{t+j}).
+\EQN fr1 $$
+
+ We alter the preference specification
+above to make $u(c_t) $ a quadratic function
+$-.5 (c_t - \gamma)^2$, where $\gamma >0$ is a bliss
+consumption level. Marginal utility is
+linear in consumption: $u'(c) = \gamma - c$.
+We put no bounds on $c$; in particular, we allow
+consumption to be negative.  We allow $\{y_t\}$
+to be an arbitrary stationary stochastic process.
+
+The weakness of constraint
+\Ep{borrowlimit2} allows the household's first-order
+condition to prevail with equality at all $t \geq 0$:
+$u'(c_t) = E_t u'(c_{t+1})$.  The linearity of
+marginal utility in turn implies
+$$ E_t c_{t+1} = c_t,   \EQN mmart $$
+which states that $c_t$ is a martingale.
+Combining \Ep{mmart} with \Ep{fr1} and taking
+expectations  conditional on time $t$ information
+gives
+$ b_t = E_t \sum_{j=0}^\infty \beta^j y_{t+j}
+  - {1 \over 1-\beta} c_t $
+or
+$$ c_t = {r \over 1+r} \left[-b_t +
+E_t \sum_{j=0}^\infty \left({1 \over 1+r}\right)^j y_{t+j} \right].
+\EQN fr2 $$
+Equation  \Ep{fr2} is a version of the permanent
+income hypothesis and tells the consumer to set
+his current consumption equal to the annuity return on his nonhuman ($-b_t$) and
+human   wealth
+($E_t \sum_{j=0}^\infty \left({1 \over 1+r}\right)^j y_{t+j}
+$).   We can substitute this consumption
+rule into \Ep{self_bc1} and rearrange to get
+$$ b_{t+1} = b_t + r E_t \sum_{j=0}^\infty
+  \left({1 \over 1+r}\right)^j y_{t+j}  -(1+r)y_t. \EQN fr3 $$
+Equations \Ep{fr2} and \Ep{fr3}  imply that
+under the optimal  policy,
+$c_t, b_t$ both have unit roots and that
+they are cointegrated.\NFootnote{See section \use{sec:LQmodel}, especially page \use{cointegrationtag}.}
+  \index{cointegration}%
+If we define permanent income at $t$ as
+$ y_{pt} \equiv {\frac{r}{1+r}} E_t \sum_{j=0}^\infty (1+r)^{-j} y_{t+j}$, then \Ep{fr3}
+can be represented as
+$$
+b_{t+1} = b_t + (1+r)[y_{pt} - y_t ] \EQN fr33, $$
+which states that the time $t$ increment in the  consumer's debt equals $(1+r)$ times the difference between his time $t$ permanent income and his current income.
+
+
+  Consumption rule \Ep{fr2} has the remarkable  feature
+of \idx{certainty equivalence}:  consumption $c_t$ depends only
+on the first moment of the discounted value of the endowment
+sequence.  In particular, the conditional variance  of the present
+value of the endowment does
+not matter.\NFootnote{This property of the consumption rule reflects
+the workings of the type of certainty equivalence that we
+discussed in chapter \use{dplinear}.} Under rule \Ep{fr2},
+consumption is a martingale and the consumer's assets
+$b_t$ are a unit root process.  Neither consumption nor
+assets converge, though at each point in time, the consumer
+expects his consumption not to drift in its average value.
+
+The next section shows that
+these outcomes  change dramatically when we alter
+the specification of the utility function to rule out
+negative consumption.
+
+\section{Stochastic endowment process: i.i.d.\ case}
+
+With uncertain endowments, the first-order condition for the
+optimization problem  \Ep{self_V} is
+\offparens
+$$
+u'(c) \;\geq\; \sum_{s=1}^S \beta (1+r) \Pi_s
+            V'\Bigl[(1+r)(a-c) + \overline y_s \Bigr]\,,              \EQN self_foc1
+$$
+\autoparens
+with equality if the nonnegativity constraint on savings is
+not binding. The \idx{Benveniste-Scheinkman formula} implies $u'(c)=V'(a)$,
+so the first-order condition can also be written as
+$$
+V'(a) \;\geq\; \sum_{s=1}^S \beta (1+r) \Pi_s
+            V'(a^\prime_s)\,,                             \EQN self_foc2
+$$
+where $a^\prime_s$ is next period's assets if today's income shock
+is $\overline y_s$. (Recall again that $V(a)$ is increasing, strictly concave, and differentiable.)
+ Since $\beta^{-1}=(1+r)$, $V'(a)$ is a nonnegative
+supermartingale.
+By a theorem of Doob (1953, p. 324),\NFootnote{See the appendix
+of this chapter for a statement of the theorem.}
+$V'(a)$ must then converge almost surely.\NFootnote{See footnote \use{ftsupermart} on page \use{supermart_first} for an earlier encounter with
+this force.} Here is how to think about this result.  Think about generating a   realization of the entire endowment sequence $\{y_t\}$ via a computer simulation.
+  For each such sample realization of $\{y_t\}$, the sequence  $\{V'(a_t)\}$ converges to a particular number $\lim_{t\rightarrow \infty} V'(a_t)$.
+  The particular number converged to can vary across realizations, possibly tracing out a nontrivial limiting distribution of $V'(a)$.
+  But in our case, the distribution of the limiting value of $V'(a)$ turns out to be degenerate and concentrated at a single value.
+\index{supermartingale convergence theorem}%
+\index{martingale!convergence theorem}%
+In particular, the limiting value of $V'(a)$ must be zero because of the following
+argument. % Suppose to the contrary that $V'(a)$ converges    for some realization
+%to a strictly positive limit. That implies that $a$ converges
+%to a finite positive value. But this implication is
+%immediately contradicted when we take into account the budget constraint \Ep{self_bc} together with  properties of  the optimal policy
+%function, which makes  $c$ an increasing  function of $a$:
+%%here assets are equal to the value of the past period's savings
+%%including interest, and a stochastic income $y_s$.
+%randomness
+%of $y$ and therefore of $c$ contradicts a finite limit for $a$. Instead,
+%$V'(a)$ must converge to zero, implying that assets diverge
+%to infinity.
+%(We return to this result in
+%chapter \use{incomplete}.)   %% on incomplete market models.)
+Suppose to the contrary that $V'(a)$ converges to a strictly positive limit. That  implies that $a$ converges to a finite positive value. But this implication is  contradicted by budget constraint \Ep{self_bc}, %(13.2)
+ which states that  assets are equal to the value of the past period's savings including interest plus a stochastic income $y_s$. The random nature of $y_s$ contradicts a finite limit for $a$. Instead, $V'(a)$
+  must converge to zero, implying that assets converge to infinity. (We return to this result in
+chapter \use{incomplete}.)
+
+Although assets diverge to infinity, they do not increase
+monotonically. Since assets are used for self-insurance,
+ {\it low\/} income realizations are associated with
+{\it reductions\/} in assets.
+To show this outcome,
+ suppose to the contrary that even the lowest income realization
+$\overline y_1$ is associated with nondecreasing assets; that is,
+$(1+r)(a-c)+\overline y_1 \geq a$. Then we have
+\offparens
+$$\EQNalign{
+V'\Bigl[(1+r)(a-c) + \overline y_1 \Bigr] &\;\leq\;
+V'(a) \cr
+&\;=\; \sum_{s=1}^S \Pi_s
+V'\Bigl[(1+r)(a-c) + \overline y_s \Bigr] \,, \hskip1cm \      \EQN self_contradict \cr}
+$$
+\autoparens
+where the last equality  is first-order condition \Ep{self_foc2}
+when the nonnegativity constraint on savings is not binding and when
+$\beta^{-1}=(1+r)$.
+Since $V'[(1+r)(a-c) + \overline y_s ] \leq
+V'[(1+r)(a-c) + \overline y_1 ]$ for all $s\in {\bf S}$, expression
+\Ep{self_contradict} implies that the derivatives of $V$ evaluated
+at different asset values are equal to each other, an implication
+that is contradicted by the strict concavity of $V$.
+
+The fact that assets diverge to infinity means that the individual's
+consumption also diverges to infinity. After invoking the
+\idx{Benveniste-Scheinkman formula}, first-order condition \Ep{self_foc1}
+can be rewritten as
+$$
+u'(c) \;\geq\; \sum_{s=1}^S \beta (1+r) \Pi_s u'(c^\prime_s)
+      \;=\; \sum_{s=1}^S  \Pi_s u'(c^\prime_s)\,,           \EQN self_foc3
+$$
+where $c^\prime_s$ is next period's consumption if the income
+shock is $\overline y_s$, and the last equality uses $(1+r)=\beta^{-1}$.
+It is important to recognize that the individual will never find
+it optimal to choose a time-invariant consumption level for the
+indefinite future. Suppose to the contrary that the individual
+at time $t$ were to choose a constant consumption level for all
+future periods. The maximum constant consumption level that would
+be sustainable under all conceivable future income realizations
+is the annuity return on  his current assets $a_t$ and a stream of
+future incomes all equal to the lowest income realization. But
+whenever there is a future period with a higher income realization,
+we can use an argument similar to our section \use{sec:ad_hoc_borrowing} construction of the sequence
+$\{c^\epsilon_j\}$ in the case of certainty to show that
+the initial time-invariant consumption level does not maximize
+the agent's utility. It follows that future consumption
+will vary with income realizations and  that consumption cannot
+converge to a finite limit with an i.i.d.\ endowment process.
+Hence, from  the martingale convergence
+theorem, the nonnegative supermartingale $u'(c)$ in \Ep{self_foc3}
+must converge to zero, since any strictly positive limit would
+imply that consumption
+converges to a finite limit, which cannot be.
+
+
+
+
+\section{Stochastic endowment process: general case}
+
+The result that consumption diverges to infinity with an i.i.d.\
+endowment process is extended by
+Chamberlain and Wilson (2000) to an arbitrary stationary
+stochastic endowment
+process that is sufficiently stochastic. Let $I_t$ denote the information
+set at time $t$. Then the general version of first-order condition
+\Ep{self_foc3} becomes
+\offparens
+$$
+u'(c_t) \;\geq\; E\Bigl[u'(c_{t+1}) \Big| I_t\Bigr],           \EQN self_foc4
+$$
+\autoparens
+where $E(\cdot|I_t)$ is the expectation operator conditioned upon
+information set $I_t$. Assuming a bounded utility function,
+Chamberlain and Wilson prove the following result, where $x_t$ is defined
+in \Ep{self_x}:
+
+\medskip
+\noindent{\sc Proposition 2:}
+If there is an $\epsilon >0$ such that for any $\alpha\in {\bbR}^+$
+\offparens
+$$
+P\Bigl( \alpha \leq x_t \leq \alpha + \epsilon \Big| I_t \Bigl) < 1- \epsilon$$
+for all $I_t$ and $t\geq0$, then $P(\lim_{t\to\infty} c_t = \infty)=1$.
+\medskip
+
+Without providing a proof here, it is useful to make a connection to
+the nonstochastic case in Proposition 1. Under certainty, the limiting
+value of the consumption path is given by the highest annuity return on  the
+endowment process across all starting dates $t$; $\bar c = \sup_t x_t$.
+Under uncertainty, Proposition 2 says that the consumption path will
+never converge to any finite limit if the annuity return on  the endowment
+process is sufficiently stochastic. Instead, the optimal consumption path
+will  converge to infinity. This stark difference between the case of
+certainty and uncertainty is quite remarkable.\NFootnote{In exercise
+{\it \the\chapternum.3,\/} you will be asked to prove that the divergence of consumption
+to $+\infty$ also occurs under a stochastic counterpart to the
+natural borrowing limits. These are less  stringent than the no-borrowing
+condition.}
+
+\section{Intuition}
+
+Imagine that you perturb any constant endowment stream by adding the slightest
+i.i.d.\ component.  Our two propositions then say that  the optimal consumption
+path changes from being a constant to becoming a stochastic process
+that goes to infinity.  Beyond appealing to martingale convergence theorems,
+ Chamberlain and Wilson (2000, p.\ 381) comment on the difficulty
+of developing economic intuition for this startling finding:
+
+{\narrower\smallskip\noindent
+Unfortunately, the line of argument used in the proof does not provide
+a very convincing economic explanation. Clearly the strict concavity
+of the utility function must play a role. (The result does not hold if,
+for instance, $u$ is a linear function over a sufficiently large domain
+and $(x_t)$ is bounded.) But to simply attribute the result to risk
+aversion on the grounds that uncertain future returns will cause
+risk-averse consumers to save more, given any initial asset level, is
+not a completely satisfactory explanation either. In fact, it is a bit
+misleading. First, that argument only explains why expected accumulated
+assets would tend to be larger in the limit. It does not really explain
+why consumption should grow without bound. Second, over any finite time
+horizon, the argument is not even necessarily correct. \smallskip}
+
+\noindent
+Given a finite horizon, Chamberlain and Wilson proceed to discuss
+how mean-preserving spreads of future income leave current consumption
+unaffected when the agent's utility function is quadratic over a
+sufficiently large domain.
+
+
+We believe that the economic intuition is to be found in the strict
+concavity of the utility function {\it and} the assumption that the marginal
+utility of consumption must remain positive for any arbitrarily high
+consumption level. This rules out quadratic utility,
+for example.  To advance this explanation, we first focus on
+utility functions whose marginal utility of consumption is
+strictly convex, i.e., $u'''>0$ if the function is thrice differentiable.
+Then, Jensen's
+inequality implies $\sum_s \Pi_s u'(c_s) >u'( \sum_s \Pi_s c_s)$;
+first-order condition \Ep{self_foc3} then implies
+$$
+c \;<\; \sum_{s=1}^S  \Pi_s c^\prime_s\,,          \EQN self_cons
+$$
+where the strict inequality follows from our earlier argument
+that future consumption levels will not be constant but will
+vary with income realizations.
+In other words, when the marginal utility of consumption is strictly
+convex, a given absolute
+decline in consumption is not only more costly in utility than a
+gain from an identical absolute increase in consumption, but the former
+is also associated with a larger rise in {\it marginal\/} utility as compared
+to the drop in {\it marginal\/} utility of the latter.
+To set
+today's marginal utility of consumption equal to next period's
+expected marginal utility of consumption, the consumer
+must therefore balance future states with expected declines in
+consumption against  appropriately
+higher expected increases in consumption
+for other states. Of course, when next period arrives  and the
+consumer chooses optimal consumption
+(which is then on average higher than
+last period's consumption), the same argument applies again.
+That is, the process exhibits a ``ratchet effect'' by which consumption
+tends toward ever higher levels. Moreover, this on-average increasing
+consumption sequence cannot converge to a finite limit because of
+our earlier argument based on an agent's desire to exhaust all
+his resources while respecting his budget constraint.
+
+ This argument for the optimality of unbounded consumption growth
+applies to utility functions whose marginal utility of consumption is
+strictly convex. But even utility functions that do not have convex marginal
+utility globally  must ultimately conform to a similar condition over
+long enough intervals of the positive real line, because otherwise
+those utility functions would eventually violate the assumptions of a
+strictly positive, strictly diminishing marginal utility
+of consumption, $u'>0$ and $u''<0$. Chamberlain and Wilson's
+reference to a quadratic utility function illustrates the problem
+of how otherwise the marginal utility of consumption will  turn negative
+at large consumption levels. Thus,
+our understanding of the remarkable result in Proposition 2 is
+aided by considering the inexorable ratchet effect on consumption
+implied by the first-order condition for the agent's
+optimal intertemporal choice.
+
+
+\section{Endogenous labor supply}\label{sec:self_insure_labor}%
+Contributions by
+Marcet, Obiols-Homs, and Weil (2007) and Zhu (2009) studied how  adding an endogenous labor supply
+decision would affect outcomes in the presence of a  precautionary savings motive.  A key
+insight is that a wealth effect on labor
+supply can instruct an infinitely lived household to accumulate sufficient wealth to retire  and
+thereby isolate itself thereafter from non-financial income risk.  That force can allow both assets and consumption to converge
+while work converges to zero.   The Marcet, Obiols-Homs, and Weil (2007) and Zhu (2009) work provides valuable additional intuition
+about the structure of the divergence of assets and consumption in the Chamberlain-Wilson model.
+
+\auth{Marcet, Albert}%
+\auth{Obiols-Homs, Francesc}%
+\auth{Weil,  Philippe}%
+\auth{Zhu, Shenghao}%
+At each date $t \geq 0$, a household chooses $c_t \geq 0$ and
+$h_t \in [0, 1]$, where $c_t$ is the consumption of a single good and
+$h_t$ is leisure.
+The household orders a stochastic process $\{c_t, h_t\}_{t=0}^\infty$ according to
+the utility functional
+$$ E_0 \sum_{t=0}^\infty \beta^t u(c_t, h_t), \quad 0 < \beta < +\infty . \EQN CWM_1 $$
+Following Zhu (2009), we adopt the assumptions that
+$u(c,h)$ is  (A1), twice continuously differentiable; (A2) strictly increasing and strictly concave in $c$ and $h$,
+ $\lim_{c \rightarrow 0} u_1(c,h) = +\infty \forall h \in [0,1]$, and
+ $\lim_{h \rightarrow 0} u_2(c,h) = + \infty \forall c \geq 0$; and
+ (A3) $u(c,h) \in [0, M], M >0$.
+
+
+The consumer can hold nonnegative amounts of a single asset that bears a constant
+net rate of interest $r > 0$. We assume that $\beta R =1$, where $R = (1+r)$.
+The consumer receives labor income $(1-h_t) e_t w$ at time $t$,
+where $w$ is a fixed wage and $e_t$ is the  time $t$ realization of
+a productivity shock.  The productivity or labor efficiency shock $e_t$ follows
+a discrete state Markov process on the state space $E = \bmatrix{\bar e_1 & \ldots & \bar e_n}$ where $[0 < \bar e_1 < \cdots < \bar e_n] $;
+ the transition density $\pi(e' | e)$ satisfies $\sum_{e'} \pi(e'|e ) = 1, \pi(e' | e) >0 \ \forall \ (e, e') \in E \times E$.
+The consumer's time $t$ budget constraint is $ c_t + A_{t+1} = R A_t + (1-h_t) e_t w $
+or
+$$ c_t +  h_t e_t w =  R A_t + e_t w - A_{t+1}.  \EQN CWM_budget2 $$
+We regard the left side as the consumer's total time $t$ expenditures on consumption and leisure.
+
+The household chooses $\{c_t, h_t,  A_{t+1}\}_{t=0}^\infty$ to maximize \Ep{CWM_1} subject to $A_0 \geq 0$ given,
+\Ep{CWM_budget2} for all $t \geq 0$, and the information assumption that  $A_t, e_t$ are known at time $t$.
+\auth{Foley, Duncan K.}%
+\auth{Hellwig, Martin F.}%
+Following Foley and Hellwig (1975) and Zhu (2009), we solve the problem in two steps. Step 1 solves an intratemporal
+problem and step 2 solves an intertemporal problem.
+\medskip
+\noindent{\bf Step 1:} Form the indirect utility function $J(Y,e)$ defined as
+$$ J(Y,e) = \max_{c,h} u(c,h) \EQN Jindirect $$
+subject to
+$$ c + h e w = Y, \quad 0 \leq h \leq 1, c \geq 0 . \EQN Jconstraint $$
+Here $Y= R A + we - A'$ stands for total current  expenditures on consumption an leisure.
+The first-order necessary condition for the problem on the right side of \Ep{Jindirect} is
+$$ {\frac{u_2(c,h)}{u_1(c,h)}} \geq e w , \quad = {\rm if \ } h < 1 . \EQN Jfonc $$
+The right side of \Ep{Jindirect} is attained by policy functions $c=c(Y,e), h=h(Y,e)$.
+Under assumptions A1-A3, Zhu (2009) shows that  the indirect utility function
+$J(Y,e)$  is bounded; strictly increasing and strictly concave in $Y$; and
+continuously differentiable in $Y$ with
+$$ J_1(Y, e) = u_1(c(Y,e),h(Y,e))  \quad \forall Y \in (0, +\infty) . \EQN JYderiv $$
+
+\medskip
+\noindent{\bf Step 2:}  Solve the intertemporal maximization problem
+$$ V(A_0, e_0) = \max_{Y_t \geq 0} E_0 \sum_{t=0}^\infty \beta^t J(Y_t, e_t) \EQN CWM_intertemporal $$
+subject to the sequence of constraints
+$$ Y_t + A_{t+1} = R A_t + e_t w, \quad t \geq 0 \EQN Vconstraint_intertemporal $$
+and given $A_0 \geq 0$. The  Bellman equation  associated with this problem is
+$$ V(A,e) = \max_{A' \in \Gamma(A,e)} \Bigl\{ J(RA + ew - A', e) + \beta E \bigl[ V(A',e') | e \bigr] \Bigr\} \EQN Bellman_CWM $$
+where
+$$ \Gamma(A,e) = \{ A' : 0 \leq A' \leq RA + e w \} .$$
+An optimum policy $Y = Y(A,e)$ and the implied  $A'= A(A,e)$ attain
+$$V(A,e) = J(Y(A,e),e) + \beta \sum_{e'} V\bigl(A(A,e),e'\bigr) \pi(e'|e) .$$
+Under assumptions A1-A3, Zhu shows that $V(A,e)$ is continuous, strictly increasing,  strictly concave in $A$,   continuously differentiable,
+and that
+$$ V_1(A,e) = R J_1(Y(A,e),e) \quad \forall A \in [0,+\infty] \EQN VA_deriv .$$
+Zhu shows that $A(A,e)$ is continuous and weakly increasing in $A$ and that $Y(A,e)$ is strictly increasing in $A$.
+Furthermore, the Inada conditions A2 imply that
+$\lim_{Y \rightarrow 0} J_1(Y, e) = +\infty \ \forall e \in E$. Assembling earlier results also tells us
+that
+$$ V_1(A, h) = R J_1(A,e) = R u_1(c,h). \EQN V_1_formula $$
+
+
+\medskip
+\noindent{\bf Outcome with endogenous labor supply:}
+The first-order necessary condition for asset choice is
+$$ V_1(A,e) \geq \beta R E [ V_1(A',e') |e ], \quad = {\rm if} \ A' > 0 . \EQN supermart_zhu$$
+We assume that $\beta R =1 $ as we have done throughout this chapter. When $\beta R =1$,
+inequality \Ep{supermart_zhu} asserts that $V_1(A,h)$ and therefore $u_1(c,h)$ is a
+nonnegative supermartingale.  Applying Doob's supermartingale convergence theorem  implies that
+$\lim_{t\rightarrow +\infty} V_1(A_t, e_t) =\lim_{t \rightarrow +\infty} R u_1(c_t, h_t)  $ exists and is almost surely finite.
+This result leaves open two possibilities: Either
+
+\medskip
+\noindent{\bf 1.} $V_1(A_t, e_t) = R u_1(c_t, h_t) \rightarrow 0$ while $h_t$ remains uniformly bounded away from  one infinitely often with the
+outcomes that
+$\lim_{t\rightarrow \infty } A_t = +\infty $ and $\lim_{t\rightarrow \infty} c_t = + \infty$; or
+\medskip
+\noindent{\bf 2.}  $h_t \rightarrow 1 , A_t \rightarrow \bar A, c_t \rightarrow r \bar A$ almost surely.
+\medskip
+
+Case 1 is a version of our earlier result with exogenous and perpetually random non-financial income.  Here  a precautionary savings motive
+causes assets and consumption both to diverge to $+\infty$.  The possibility of case 2 inspired
+Marcet, Obiols-Homs, and Weil (2007) and Zhu (2009) to make  the labor supply decision  endogenous. What drives case 2 is a wealth effect that causes the household eventually
+to withdraw all labor from the market and thereafter consume leisure 100\% of his time. That shuts down his effective exposure to the random labor productivity process and  extinguishes subsequent randomness in his income process.
+
+Whether case 1 or 2 prevails depends on the shape of the consumer's utility function $u(c,h)$.  Zhu (2009)
+considers the following two assumptions that tilt things toward case 2. Assumption A4 asserts
+that $u_{12} u_1 - u_{11}u_2 >0 $ and $u_{12} u_2 - u_{22} u_1 >0$.  This assumption makes
+$c$ and $h$ both be normal goods, and also implies that ${\frac{u_2}{u_1}}$ is {\it increasing} in $c$ and {\it decreasing} in $h$. It also
+implies that $c(Y,e)$ and $h(Y,e)$ are both increasing in $Y$.  Zhu also makes the stronger assumption
+A4' that $u_{12} >0$, which makes $c$ and $h$ be complements and implies A4.
+Zhu (2009) establishes  the following:
+
+\medskip
+\noindent {\sc Proposition:}   Under assumptions A1-A4', (a) $c(A,Y)$ and $h(A,Y)$ are both continuous and increasing in $A$;
+(b) $h(A,e)=1 \quad \forall e$ when $A$ is sufficiently large.
+\medskip
+
+\noindent Zhu shows how this proposition is the heart of an argument that generates sufficient conditions for case 2 to prevail. In this way,
+he constructs circumstances that disarm the divergence outcomes of Chamberlain and Wilson.\NFootnote{Zhu also provides
+examples of preferences that push things toward case 1.  An example is  preferences of a type used by
+Greenwood, Hercowitz, and Huffman (1988): $u(c,h) = U(c-G(1-h))$, where $U' >0, U'' < 0, G' >0, G'' >0$ with $U$ bounded above.  Here
+the marginal rate of substitution between $c$ and $h$ depends only on $h$ and labor supplied is independent of the intertemporal consumption-savings
+choice.}
+\auth{Greenwood, Jeremy}%
+\auth{Hercowitz, Zvi}%
+\auth{Huffman, Gregory W.}%
+
+
+\section{Concluding remarks}
+
+  This chapter has maintained the assumption that $\beta (1+r) =1$,
+which is a very important ingredient in delivering the divergence
+toward infinity of the agent's asset and consumption level.
+  Chamberlain and Wilson (1984)
+study a much more general version of the model where they relax this condition.
+\auth{Chamberlain, Gary} \auth{Wilson, Charles}
+
+To build
+some incomplete markets models, chapter \use{incomplete} will put together continua of agents
+facing generalizations of the savings problems.  The models of that chapter will
+determine the interest rate $1+r$ as an equilibrium object. In
+these models, to define a stationary equilibrium, we want the
+sequence of distributions of each agent's asset holdings to
+converge to a well-defined invariant distribution with finite
+first and second moments.  For there to exist a stationary
+equilibrium without aggregate uncertainty, the findings of the
+present chapter would lead us to anticipate that the equilibrium
+interest rate in those models must fall short of $\beta^{-1}$. In
+a production economy with physical capital, that result implies
+that the marginal product of capital will be less than the one
+that would prevail in a complete markets world when the stationary
+interest rate would be given by $\beta^{-1}$. In other words, an
+incomplete markets economy is characterized by an overaccumulation
+of capital that drives the interest rate below $\beta^{-1}$, which
+serves to choke off  the desire to accumulate an infinite amount of
+assets that agents would have had  if the interest rate had been equal
+to $\beta^{-1}$.
+
+Chapters \use{socialinsurance} and \use{socialinsurance2} will consider several models in
+which the condition $\beta (1+r)=1$ is maintained. There the assumption
+will be that a social planner has access to risk-free loans outside
+the economy and seeks to maximize agents' welfare subject to enforcement
+and/or information problems.  The environment is once again assumed to be
+stationary without aggregate uncertainty, so in the absence of enforcement
+and information problems the social planner would just redistribute the
+economy's resources in each period without any intertemporal trade
+with the outside world.  But when agents are free to leave the economy
+with their endowment streams and forever live in autarky, optimality
+ prescribes that the  planner amass sufficient outside claims
+so that each agent is granted a constant consumption stream in the limit, at
+a level that weakly dominates autarky for all realizations of an agent's
+endowment.  In the case of asymmetric information,  where the  planner
+can  induce agents to tell the truth only by manipulating promises of future
+utilities, we obtain a conclusion that is diametrically opposite to the
+self-insurance outcome of the present chapter.  Instead of consumption
+approaching infinity in the limit, the optimal solution has all agents'
+consumption approaching its lower bound.
+
+\appendix{A}{Supermartingale convergence theorem}\label{app:Ach16}%
+This appendix states the supermartingale convergence theorem.
+Let the elements of the 3-tuple
+$(\Omega,  {\cal F}, P)$ denote a sample space, a collection
+of events, and a probability measure, respectively.
+Let $t \in T$ index time, where $T$ denotes the nonnegative
+integers.
+Let ${\cal F}_t$ denote an increasing sequence of $\sigma$-fields
+of ${\cal F}$ sets.
+Suppose that
+\medskip
+\noindent(i)  $Z_t$ is measurable with respect to ${\cal F}_t$;
+\medskip
+\noindent(ii)  $E | Z_t   | < + \infty $;
+\medskip
+\noindent(iii) $ E(Z_t | {\cal F}_s) = Z_s$ almost surely for
+all $s < t; s, t \in T$.
+\medskip
+\noindent Then $\{Z_t, t \in T\}$ is said to be a {\it martingale\/} with
+respect to ${\cal F}_t$.
+ If (iii) is replaced by
+$E(Z_t | {\cal F}_s ) \geq Z_s$ almost surely, then
+$\{Z_t\}$ is said to be a {\it submartingale\/}.
+ If (iii) is replaced by
+$E(Z_t | {\cal F}_s ) \leq Z_s$ almost surely, then
+$\{Z_t\}$ is said to be a {\it supermartingale\/}.
+
+\medskip
+We have the following important theorem.
+\medskip
+\noindent{\sc Supermartingale Convergence Theorem:}  Let
+$\{Z_t,   {\cal F}_t\}$ be a nonnegative supermartingale.
+%%% with $|Z_t|$ bounded.
+Then there exists a random variable
+$Z$ such that $\lim Z_t = Z$ almost surely and
+$E |Z| < + \infty$, i.e., $Z_t$ converges almost surely
+to a finite limit.
+%%% $E |Z| \leq \lim  {\rm inf}_{t \rightarrow \infty}  E |Z_t| < + \infty$.
+
+
+
+
+%\section{Exercises}
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+
+\noindent{\it Exercise  \the\chapternum.1} \quad
+ A consumer has preferences over sequences of a single
+consumption good that are ordered by
+$\sum_{t=0}^\infty \beta^t u(c_t)$, where $\beta \in (0,1)$ and
+$u(\cdot)$ is strictly increasing, twice continuously differentiable,
+strictly concave, and satisfies the Inada condition
+$\lim_{c \downarrow 0} u'(c) = +\infty$. The one good is not storable.
+   The consumer
+has an endowment sequence of the one good $y_t = \lambda^t, t \geq 0$,
+where $|\lambda \beta | < 1$.    The consumer can borrow
+or lend at a constant and exogenous risk-free net interest rate of
+$r$ that satisfies $(1+r)\beta =1$.   The consumer's budget constraint
+at time $t$ is
+$$ b_t + c_t \leq y_t + (1+r)^{-1} b_{t+1} $$
+for all $t \geq 0$, where $b_t$ is the {\it debt\/} (if positive) or
+{\it assets\/} (if negative)  due at $t$,
+and the consumer has initial debt $b_0=0$.
+
+\medskip
+\noindent {\bf Part   I.}  In this part, assume that the consumer is subject to
+the ad hoc borrowing constraint $b_t \leq 0 \ \forall t \geq 1$.
+Thus, the consumer can lend but not borrow.
+
+\medskip
+\noindent {\bf a.}
+Assume that $\lambda < 1$.  Compute the household's optimal plan for
+$\{c_t,  b_{t+1}\}_{t=0}^\infty$.
+\medskip
+\noindent {\bf b.}  Assume that $\lambda >1$.  Compute the household's optimal
+plan
+$\{c_t,  b_{t+1}\}_{t=0}^\infty$.
+
+%{\bf Answer:}  In part a, the borrowing constraint doesn't bind.
+%The optimal $c_t$ is constant at ${1 \over 1-\beta \lambda}$.
+%In part  b, the borrowing constraint always binds. The optimal plan is
+%to consume the endowment each period.
+
+\medskip
+\noindent{\bf Part II.}
+In this part, assume that the consumer is subject to
+the natural borrowing constraint associated with the given endowment
+sequence.
+
+
+\medskip
+\noindent{\bf c.} Compute the natural borrowing limits for all
+$t\geq 0$.
+\medskip
+\noindent{\bf d.}
+Assume that $\lambda < 1$.  Compute the household's optimal plan for
+$\{c_t,  b_{t+1}\}_{t=0}^\infty$.
+\medskip
+\noindent {\bf e.}  Assume that $\lambda >1$.  Compute the household's optimal
+plan
+$\{c_t,  b_{t+1}\}_{t=0}^\infty$.
+
+\medskip
+%{\bf Answer:  In parts, (d) and (e), the household sets constant
+%consumption at ${1 \over 1 - \lambda \beta}$.  In case d, the household
+%saves, while in case e, the household perpetually borrows.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.2} \quad
+The household has preferences over stochastic processes of a single consumption
+good that are ordered by
+$ E_0 \sum_{t=0}^\infty \beta^t \ln(c_t)$, where $\beta \in (0,1)$
+and $E_0$ is the mathematical
+expectation with respect to the distribution of the  consumption sequence
+of a single nonstorable good, conditional
+on the value of the time $0$ endowment.
+ The consumer's  endowment is the following
+stochastic process: at times $t=0,1$, the household's endowment is drawn
+from the distribution
+${\rm Prob}(y_t = 2)  = \pi$,
+${\rm Prob}(y_t = 1)  =1 -  \pi$, where $\pi \in (0,1)$.  At all times
+$t\geq 2$, $y_t =y_{t-1}$.
+At each date $t \geq 0$, the household can  lend, but not borrow, at an
+exogenous and constant risk-free one-period net interest rate of
+$r$ that satisfies $(1+r)\beta =1$.
+The consumer's budget constraint at $t$ is
+$a_{t+1} = (1+r) (a_t -c_t) + y_{t+1}$, subject to the initial
+condition $a_0 = y_0$.
+One-period assets carried $(a_t -c_t)$ over into period
+$t+1$ from $t$ must be nonnegative, so that the no-borrowing
+constraint is $a_t \geq c_t$. At time $t=0$, after $y_0$ is realized,
+the consumer devises an optimal consumption plan.
+\medskip
+\noindent{\bf a.} Draw a tree that portrays the possible paths for
+the endowment sequence from date $0$ onward.
+\medskip
+\noindent{\bf b.}  Assume that $y_0 = 2$.  Compute the consumer's optimal
+consumption and lending plan.
+\medskip
+\noindent{\bf c.}  Assume that $y_0 =1$.  Compute the consumer's optimal
+consumption and lending plan.
+\medskip
+\noindent{\bf d.}  Under the two assumptions on the initial condition
+for $y_0$ in the preceding two questions,
+ compute the asymptotic distribution of the marginal
+utility of consumption $u'(c_t)$ (which in this case is the distribution
+of $u'(c_t) = V_t^\prime(a_t)$
+for $t \geq 2$),   where $V_t(a)$ is the consumer's value function
+at date $t$).
+
+\medskip
+\noindent{\bf e.} Discuss whether your   results in part d conform to
+Chamberlain and Wilson's application of the supermartingale convergence
+theorem.
+
+\medskip
+\noindent{\it Exercise  \the\chapternum.3}  \quad
+Consider the stochastic version of the savings problem
+under the following {\it natural borrowing constraints\/}.   At each
+date $t \geq 0$, the consumer can issue risk-free one-period debt
+up to an amount   that it is feasible for him to
+repay almost surely, given the nonnegativity   constraint on consumption
+$c_t \geq 0$ for all $t \geq 0$.
+
+\medskip
+\noindent{\bf a.} Verify that the  natural debt limit
+is $(1+r)^{-1} b_{t+1} \leq {\overline y_1 \over r} $.
+\medskip
+\noindent{\bf b.}  Show that the natural debt limit can also be expressed
+as $a_{t+1} - y_{t+1} \geq - {(1+r) \overline y_1 \over r}$ for all
+$t \geq 0$.
+\medskip
+\noindent{\bf c.}  Assume that $y_t$ is an i.i.d.\ process with nontrivial
+distribution $\{\Pi_s\}$,  in the sense that at least two distinct endowments
+occur with positive probabilities.   Prove that optimal consumption
+diverges to $+ \infty$ under the natural borrowing limits.
+\medskip
+\noindent{\bf d.}  For identical realizations of the endowment sequence,
+get as far as you can in comparing what would be the sequences
+of optimal consumption under the natural and  ad hoc borrowing
+constraints.
+
+\medskip
+\noindent{\it Exercise  \the\chapternum.4}  \quad {\bf Trade?}
+\medskip
+\noindent  A  pure endowment  economy consists of two
+households with identical preferences  but different endowments.
+A household of type $i$ has preferences that are ordered by
+$$ E_0 \sum_{t=0}^\infty \beta^t u(c_{it})  , \quad
+\beta \in (0,1) \leqno(1)$$
+where $c_{it}$ is time $t$ consumption
+of a single consumption good,  $u(c_{it}) = u_1 c_{it} -
+ .5 u_2 c_{it}^2$, where
+$u_1, u_2 >0$,  and $E_0$ denotes the mathematical
+expectation conditioned on time $0$ information.  The household of type
+$1$
+has a stochastic  endowment  $y_{1t}$ of the good
+governed by
+$$ y_{1t+1} = y_{1t} + \sigma \epsilon_{t+1} \leqno(2) $$
+where $\sigma >0$ and $\epsilon_{t+1} $ is an i.i.d.\ process
+Gaussian process with mean $0$ and variance $1$.
+The household of type 2 has endowment
+$$ y_{2t+1} = y_{2t} - \sigma \epsilon_{t+1} \leqno(3) $$
+where $\epsilon_{t+1}$ is the {\it same\/} random process as in
+(2).
+At time $t$, $y_{it}$ is realized before consumption at $t$ is chosen.
+Assume that at time $0$, $y_{10}  = y_{20}$ and that $y_{10}$ is substantially
+less than the bliss point $u_1/u_2$.  To make the computation easier,
+please assume that there is no disposal of resources.
+
+\medskip
+\noindent{\bf Part I.} In this part, please
+assume that there are complete markets in
+history- and date-contingent claims.
+\medskip
+\noindent{\bf a.} Define   a competitive equilibrium, being
+careful to specify all of the objects of which a competitive
+equilibrium is composed.
+\medskip
+\noindent{\bf b.}  Define a Pareto problem for a fictitious planner
+who attaches equal weight to the two households.  Find the consumption
+allocation that solves the Pareto (or planning) problem.
+\medskip
+\noindent{\bf c.}  Compute a competitive equilibrium.
+
+\medskip
+
+\noindent{\bf Part II.}  Now assume that markets are incomplete.
+There is only one traded asset: a one-period risk-free
+bond that both households can either purchase or issue.
+The gross rate of  return on the asset between date $t$ and
+date $t+1$ is $R_t$.  Household
+$i$'s budget constraint at time $t$ is
+$$  c_{it} + R_t^{-1} b_{it+1}  = y_{it} + b_{it} \leqno(4) $$
+where $b_{it} $ is the  value in terms of time $t$ consumption
+goods of household's $i$ holdings of one-period risk-free bonds.
+We require that
+a consumers's holdings of bonds are subject to the restriction
+$$ \lim_{t\rightarrow +\infty}  \beta^t  u'(c_{it}) E b_{it+1} = 0. \leqno(5) $$
+Assume that $b_{10} = b_{20} = 0$. An  incomplete markets
+competitive equilibrium is a gross interest rate sequence
+$\{R_t\}$, sequences of bond holdings $\{b_{it}\}$
+ for $i=1,2$,  and
+feasible allocations $\{c_{it}\}, i=1,2$ such that given $\{R_t\}$,
+household
+$i=1,2$ is  maximizing (1) subject to the sequence of budget constraints
+(4) and the given initial levels of $b_{10},b_{20}$.
+
+
+\medskip
+\noindent{\bf d.}  A friend of yours recommends
+the guess-and-verify method and offers the following guess
+about the equilibrium.    He conjectures that there are no gains to trade:
+in equilibrium, each household simply consumes its endowment.
+Please verify  or falsify this guess.  If you verify it, please
+give  formulas for the equilibrium $\{R_t\}$  and the stocks
+of bonds held by each household  at each date.
+
+
+\medskip
+\noindent{\it Exercise  \the\chapternum.5}  \quad {\bf Trade??}
+\medskip
+
+
+\noindent A consumer orders consumption streams according to
+$$ E_0 \sum_{t=0}^\infty \beta^t {c_t^{1-\gamma} \over 1-\gamma},
+\quad \beta \in (0,1) \leqno(1) $$
+where $\gamma > 1$ and $E_0$ is the mathematical expectation
+conditional on time $0$ information.
+The consumer can borrow or lend a one-period risk-free security that
+bears a fixed gross rate of return of $R = \beta^{-1}$.   The consumer's
+budget constraint at time $t$ is
+$$ c_t + R^{-1} b_{t+1} = y_t + b_t \leqno(2) $$
+where $b_t$ is the level of the asset  that the consumer brings into
+period $t$.    The household is subject to a ``natural'' borrowing limit.
+The household's initial asset level is $b_0 = 0$ and his
+endowment sequence $y_t$ follows the process
+$$ y_{t+1} = y_t \exp(\sigma_y \varepsilon_{t+1} + \mu) \leqno(3) $$
+where $\varepsilon_{t+1}$ is an i.i.d.\ Gaussian process with mean
+zero and variance $1$, $\mu = .5 \gamma \sigma_y^2$, and $\sigma_y >0 $.
+The consumer chooses a process $\{c_t,  b_{t+1} \}_{t=0}^\infty$
+to maximize (1) subject to (2), (3), and  the natural borrowing limit.
+
+
+\medskip
+\noindent{\bf a.}  Give a closed-form expression for the consumer's
+optimal consumption and asset accumulation plan.
+\medskip
+\noindent{\it Hint 1:}  If $\log x$ is  ${\cal N}(\mu,
+\sigma^2)$, then $E x = \exp(\mu+\sigma^2/2)$.
+\medskip
+\medskip\noindent
+{\it Hint 2:}  You could start by trying
+to verify the following guess:
+the optimal policy has $b_{t+1} = 0$ for all $t\geq 0$.
+\medskip
+
+\noindent{\bf b.} Discuss the solution  that you obtained in part {\bf a}
+in terms of Friedman's permanent income hypothesis.
+
+\medskip
+\noindent{\bf c.}  Does the household engage in precautionary
+savings?

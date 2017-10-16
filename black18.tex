@@ -1,0 +1,1674 @@
+
+\input grafinp3
+%\input grafinput8
+\input psfig
+%\eqnotracetrue
+
+%\showchaptIDtrue
+%\def\@chaptID{18.}
+
+%\hbox{}
+
+\def\toone{{t+1}}
+\def\ttwo{{t+2}}
+\def\tthree{{t+3}}
+\def\Tone{{T+1}}
+\def\TTT{{T-1}}
+\def\rtr{{\rm tr}}
+\footnum=0
+\chapter{Credit and Currency\label{townsend}}
+\index{credit and currency}%
+\section{Credit and currency with long-lived agents}
+
+This chapter describes Townsend's (1980) turnpike model of money
+and puts it to work.  The model uses a particular pattern of heterogeneity
+of endowments and locations to create a demand for currency.
+The model is more primitive than the shopping time model of chapter
+\use{fiscalmonetary}.  As with the overlapping generations model,
+the turnpike model starts from a setting in which diverse intertemporal
+endowment patterns across agents prompt borrowing and lending.  If
+something prevents loan markets from operating, it is possible that
+an unbacked currency can play a role in helping agents smooth their
+consumption over time.  Following Townsend, we shall eventually appeal
+to locational heterogeneity as the force that causes loan markets to
+fail in this way.
+
+\auth{Bewley, Truman}  \auth{Townsend, Robert M.}
+The turnpike  model can be viewed as a simplified version
+of the stochastic model proposed by Truman Bewley (1980).   We
+use the model to study a number of interrelated issues and theories,
+including (1) a \idx{permanent income model} of consumption, (2) a
+Ricardian doctrine \index{Ricardian proposition}%
+that government borrowing and taxes have
+equivalent economic effects, (3) some restrictions on the operation
+of private loan markets needed in order that unbacked currency be
+valued, (4) a theory of inflationary finance, (5) a theory of
+the optimal inflation rate and the optimal behavior of the
+currency stock over time, (6) a ``legal restrictions'' theory
+of inflationary finance, and (7) a theory of exchange rate
+indeterminacy.\NFootnote{Some of the analysis in this chapter
+follows Manuelli and Sargent (2010).  Also see Chatterjee and
+Corbae (1996) and Ireland (1994) for analyses of policies within
+a turnpike environment.}
+\auth{Manuelli, Rodolfo}
+\auth{Sargent, Thomas J.}
+\auth{Ireland, Peter N.}
+\auth{Corbae, Dean}
+\auth{Chatterjee, Satyajit}
+
+%\vfill\eject
+\section{Preferences and endowments}
+
+There is one consumption good.  It cannot be produced or stored.
+The total amount of goods available each period
+is constant at $N$.  There are $2N$ households, divided
+into equal numbers $N$ of two types, according to their endowment
+sequences.
+   The two types of households, dubbed {\it odd} and {\it even}, have endowment sequences
+$$ \eqalign{ \{y_t^o\}_{t=0}^{\infty} &= \{ 1, 0 , 1, 0, \ldots \}, \cr
+             \{y_t^e\}_{t=0}^{\infty} &= \{ 0, 1, 0, 1, \ldots \}. \cr} $$
+Households of both types order consumption sequences
+$\{c_t^h\}$ according to the common utility function
+$$ U = \sum_{t=0}^\infty \beta^t u(c_t^h),$$
+where $\beta \in (0,1)$, and $u(\cdot)$ is twice continuously
+differentiable, increasing, and strictly
+concave, and satisfies
+$$ \lim_{c \downarrow 0} u'(c) = +\infty.             \EQN turn_inada
+$$
+
+\section{Complete markets}
+
+As a benchmark, we study a version of the economy with complete markets.
+Later, we shall more or less arbitrarily shut down many
+of the markets  to make room for money.
+
+\subsection{A Pareto problem}
+
+Consider the following \idx{Pareto problem}:  Let $\theta \in [0,1]$
+be a weight indexing how much a social planner likes
+odd agents.  The problem is to choose consumption
+sequences $\{c_t^o, c_t^e\}_{t=0}^\infty$ to maximize
+$$ \theta \sum_{t=0}^\infty \beta^t u(c_t^o) +
+  (1-\theta) \sum_{t=0}^\infty \beta^t u(c_t^e), \EQN od1$$
+subject to
+$$ c_t^e + c_t^o = 1, \quad t \geq 0.\EQN od2$$
+The first-order conditions are
+$$ \theta u'(c_t^o) - (1-\theta) u'(c_t^e) = 0.$$
+Substituting the constraint \Ep{od2} into this first-order
+condition and rearranging gives the condition
+$$ { u'(c_t^o)\over u'(1-c_t^o)} = {1 - \theta \over \theta}.\EQN od3$$
+Since the right side is independent of time, the left must be also, so that condition \Ep{od3} determines the one-parameter family
+of
+optimal allocations
+$$ c_t^o = c^o (\theta), \quad c_t^e = 1-c^o(\theta).$$
+
+\index{complete markets}
+\subsection{A complete markets equilibrium}
+A household takes the price sequence $\{ q_t^0\}$ as given
+and chooses a consumption sequence to maximize
+$\sum_{t=0}^\infty \beta^t u(c_t)$ subject to
+the budget constraint
+$$ \sum_{t=0}^\infty q_t^0 c_t \leq \sum_{t=0}^\infty q_t^0 y_t .$$
+The household's Lagrangian is
+$$ L = \sum_{t=0}^\infty \beta^t u(c_t)
++ \mu  \sum_{t=0}^\infty q_t^0 (y_t - c_t) ,$$
+where $\mu$ is a nonnegative Lagrange multiplier.
+The first-order conditions for the household's problem
+are
+$$ \beta^t u'(c_t) \leq \mu q_t^0 , \quad = \ {\rm if} \ c_t > 0 .$$
+\medskip
+\noindent{\sc Definition 1:}  A {\it competitive equilibrium}
+is a price sequence $\{q_t^o\}_{t=0}^\infty$ and an allocation
+$\{c_t^o, c_t^e\}_{t=0}^\infty$ that have the property that
+(a) given the price sequence, the allocation solves
+the optimum problem of households of both types; and (b) $c^o_t+c^e_t=1$
+for all $t\geq 0$.
+\index{competitive equilibrium}
+
+\medskip
+To find an equilibrium, we have to produce an allocation and a price system
+for which we can verify that the first-order conditions of both households
+are satisfied.  We start with a guess inspired by the constant-consumption
+property of the \idx{Pareto optimal allocation}.  We guess that
+$c_t^o = c^o, c_t^e = c^e \ \forall t,$
+where $c^e+c^o =1$.  This guess and the first-order condition for the
+odd agents imply
+$$ q_t^0 = {\beta^t  u'(c^o) \over \mu^o},$$
+or
+$$ q_t^0 = q^0_0 \beta^t, \EQN od4$$
+where we are free to normalize by setting $q^0_0 = 1.$
+For odd agents, the right side of the budget constraint
+evaluated at the prices given in equation \Ep{od4} is then
+$$ {1 \over 1 - \beta^2},$$
+and for even households it is
+$$ {\beta \over 1 - \beta^2}. $$
+The left side of the budget constraint evaluated
+at these prices is
+$$ {c^i \over 1 - \beta}, \quad i = o,e  .$$
+For both of the budget constraints to be satisfied with
+equality,  we evidently require
+that
+$$ \eqalign{ c^o & = {1 \over \beta+1}  \cr
+             c^e &= {\beta \over \beta+1}. \cr }  \EQN od5 $$
+The price system given by equation \Ep{od4} and the constant-over-time
+allocations given by equations \Ep{od5} are a competitive equilibrium.
+
+Notice that the competitive equilibrium allocation corresponds to a particular
+Pareto optimal allocation.
+  \index{Ricardian proposition}
+\subsection{Ricardian proposition}
+
+   We temporarily add a government to the model.  The
+government levies lump-sum taxes on agents of type $i=o,e$ at
+time $t$ of $\tau_t^i$.  The government uses the
+proceeds to finance a constant level of government
+purchases of $G \in (0,1)$ each period $t$. Consumer
+$i$'s budget constraint is
+$$ \sum_{t=0}^\infty q_t^0 c_t^i \leq \sum_{t=0}^\infty q_t^0
+       (y_t^i - \tau_t^i).$$
+The government's budget constraint is
+$$ \sum_{t=0}^\infty q_t^0 G = \sum_{i=o,e}\ \sum_{t=0}^\infty
+        q_t^0 \tau_t^i.$$
+We modify Definition 1 as follows:
+
+\medskip
+\noindent{\sc Definition 2:}  A {\it competitive equilibrium} is
+a price sequence $\{q_t^0\}_{t=0}^\infty$,
+a tax system $\{\tau_t^o, \tau_t^e\}_{t=0}^\infty$,
+and an allocation $\{c_t^o, c_t^e, G_t\}_{t=0}^\infty$
+such that given the price system and the tax system the following conditions
+hold: (a) the allocation solves each consumer's optimum problem;
+(b) the government budget constraint is satisfied for all $t\geq 0$; and
+(c) $N(c^o_t+c^e_t)+G_t=N$ for all $t \geq 0$.
+
+\medskip
+Let the present value of the taxes imposed on consumer $i$
+be $\tau^i \equiv \sum_{t=0}^\infty q_t^0 \tau_t^i$.  Then
+it is straightforward to verify that the equilibrium price
+system is still equation \Ep{od4} and that equilibrium allocations
+are
+$$\eqalign{ c^o &= {1 \over \beta +1} - \tau^o (1 -\beta) \cr
+\noalign{\smallskip}
+            c^e & ={\beta \over \beta+1} - \tau^e (1 -\beta). \cr}$$
+
+This equilibrium features a ``Ricardian proposition'':
+
+
+\noindent{\sc Ricardian Proposition:}
+ The equilibrium is invariant to changes in the {\it timing}
+of tax collections that leave unaltered the present value of lump-sum
+taxes assigned to each agent.
+
+\subsection{Loan market interpretation}
+Define total time $t$ tax collections
+as $\tau_t = \sum_{i=o,e} \tau_t^i$,
+and write the government's budget constraint as
+$$  (G_0 - \tau_0) = \sum_{t=1}^\infty {q_t^0 \over q_0^0}
+    (\tau_t - G_t) \equiv
+     B_1,$$
+where $B_1$ can be interpreted as government debt issued at
+time $0$ and due at time $1$.  Notice that $B_1$ equals
+the present value of the future (i.e., from time 1 onward) government
+{\it surpluses} $(\tau_t - G_t)$. The government's budget constraint
+can also be represented as
+$$ {q_0^0 \over q_1^0}  (G_0 -\tau_0)  +(G_1 - \tau_1)
+    = \sum_{t=2}^\infty {q_t^0 \over q_1^0}(\tau_t - G_t) \equiv B_2,$$
+or
+$$ R_1 B_1 +(G_1 - \tau_1) = B_2,$$
+where $R_1 = {q_0^0 \over q_1^0}$ is the gross rate of
+return between time $0$ and time $1$, measured in time $1$ consumption
+goods
+per unit of time $0$ consumption good.  More generally,
+we can represent the government's budget constraint by
+the sequence of budget constraints
+$$ R_t B_t + (G_t - \tau_t) = B_{t+1} ,\quad t \geq 0,$$
+subject to the boundary condition $B_0=0$.
+In the equilibrium computed here,
+$R_t = \beta^{-1}$ for all $t \geq 1$.
+
+
+Similar  manipulations of consumers' budget constraints can
+be used to express them in terms of sequences of one-period
+budget constraints.  That no opportunities are lost to
+the government or the consumers by representing the budget
+sets in this way lies behind the following fact:
+  The Arrow-Debreu allocation in this economy can be
+implemented with a sequence of one-period loan markets.
+
+
+In the following section, we shut down {\it all} loan markets,
+and also set government expenditures $G=0$.
+
+
+\section{A monetary economy}
+   We keep preferences and endowment patterns as they
+were in the preceding economy, but we rule out all intertemporal
+trades achieved through borrowing and lending or
+trading of future-dated consumptions.
+We replace complete markets with
+a fiat money mechanism.  At time $0$, the government
+endows each of the $N$ even agents with $M/N$ units
+of an unbacked or inconvertible currency.  Odd agents
+are initially endowed with zero units of the currency.
+Let $p_t$ be the time $t$ price level, denominated in dollars
+per time $t$ consumption good.  We seek an equilibrium
+in which currency is valued ($p_t < + \infty \ \forall t \geq 0$)
+and in which each period agents not endowed with goods pass currency
+to agents who are endowed with goods. Contemporaneous exchanges
+of currency for goods are the only exchanges that
+we, the model builders, permit.  (Later, Townsend will give us a defense
+or reinterpretation of this high-handed shutting down of
+markets.)
+
+Given the sequence of prices $\{ p_t \}_{t=0}^\infty$, the
+household's problem is to choose nonnegative sequences
+$\{ c_t, m_t\}_{t=0}^\infty$ to maximize $\sum_{t=0}^\infty
+\beta^t u(c_t)$ subject to
+$$ m_t + p_t c_t \leq p_t y_t + m_{t-1} , \quad t \geq 0, \EQN od6$$
+where $m_t$ is currency held from $t$ to $t+1$.
+   Form the household's Lagrangian
+$$L = \sum_{t=0}^\infty \beta^t \{ u(c_t) +
+  \lambda_t ( p_t y_t + m_{t-1}  - m_t - p_t c_t ) \} ,$$
+where $\{ \lambda_t \}$ is a sequence of nonnegative
+Lagrange multipliers.
+The household's first-order conditions  for $c_t$ and
+$m_t$, respectively, are
+$$ u'(c_t) \leq \lambda_t p_t, \quad = \ {\rm if  } \ c_t > 0 ,$$
+$$ - \lambda_t + \beta \lambda_{t+1} \leq 0 , \quad = \ {\rm  if } \
+    m_t > 0 .$$
+Substituting the first condition at equality into the
+second gives
+$$ { \beta u'(c_{t+1}) \over p_{t+1}} \leq {u'(c_t) \over p_t } , \quad
+   = \ {\rm if} \ m_t > 0 .  \EQN od7 $$
+
+\noindent{\sc Definition 3:}  A {\it competitive equilibrium\/} is an allocation
+$\{c_t^o, c_t^e\}_{t=0}^\infty$, nonnegative
+money holdings $\{m_t^o, m_t^e\}_{t=-1}^\infty$,
+and a nonnegative price level sequence $\{p_t\}_{t=0}^\infty$ such that
+(a) given the price level sequence and $(m^o_{-1},m^e_{-1})$;
+the allocation solves the optimum problems of both types of
+households; and (b)  $c^o_t+c^e_t=1$, $m^o_{t-1}+m^e_{t-1}=M/N$,
+for all $t \geq 0$.
+\medskip
+
+The periodic nature of the endowment sequences prompts us to
+guess the following two-parameter form of stationary equilibrium:
+$$\eqalign{\{c_t^o\}_{t=0}^\infty& = \{c_0, 1- c_0, c_0, 1-c_0, \ldots\},
+\cr
+\noalign{\smallskip}
+\{c_t^e\}_{t=0}^\infty& = \{ 1- c_0, c_0, 1- c_0, c_0, \ldots \} ,\cr}
+\EQN od8 $$
+and
+$p_t = p$ for all $t \geq 0$.  To determine the
+two undetermined parameters $(c_0,p)$, we use the first-order
+conditions and budget constraint of the odd agent at time $0$. His endowment
+sequence for periods $0$ and $1$, $(y^o_0,y^o_1)=(1,0)$, and
+the Inada condition \Ep{turn_inada} ensure that both of his
+first-order conditions at time $0$ will hold with equality. That is,
+his desire to set $c^o_0 > 0$ can be met by consuming some of the
+endowment $y^o_0$, and the only way for him to secure consumption
+in the following period $1$ is to hold strictly positive money
+holdings $m^o_0 > 0$. From his first-order conditions at equality,
+we obtain
+$$ { \beta u'(1-c_0) \over p } = { u'(c_0) \over p} ,$$
+which implies that $c_0$ is to be determined as the
+root of
+$$ \beta - { u'(c_0) \over u'(1-c_0) }  =0 .\EQN od9$$
+Because $\beta < 1, $ it follows that $c_0 \in (\frac 1/2, 1)$.  To
+determine the price level, we use the odd agent's budget constraint
+at $t=0$, evaluated at $m_{-1}^o = 0$ and $m_0^o = M/N$, to get
+$$ p c_0 + M/N = p \cdot 1 ,$$
+or
+$$ p = { M \over N (1 - c_0)}.      \EQN turn_p
+$$
+See Figure \Fg{dmt62f} %18.1
+ for a graphical
+determination of $c_0$.
+
+%%%%%%%%%%%%
+%\topinsert
+%$$
+%\grafone{dmt61.ps,height=3in}{{\bf Figure 1.}  The tradeoff between time
+%$t$ and time $t+1$ consumption faced by agent endowed with one unit in
+%period $t$.}
+%$$ \endinsert
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\midfigure{dmt61f}}
+%\centerline{\epsfxsize=3truein\epsffile{dmt61.eps}}
+%\caption{The tradeoff between time %$t$ and time $t+1$ consumption faced by
+%agent endowed with one unit in %period $t$.}
+%\infiglist{dmt61f}
+%\endfigure
+
+From equation \Ep{od9}, it follows that for $\beta < 1$, $c_0 > .5$ and $1-c_0 < .5$.
+Thus, both types of agents experience fluctuations in their consumption sequences
+in this monetary equilibrium.  Because Pareto optimal allocations have constant
+consumption sequences for each type of agent, this equilibrium allocation is
+not Pareto optimal.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%\topinsert{
+%$$\grafone{dmt62.ps,height=3in}{{\bf Figure 18.1}
+% The tradeoff between time-$t$ and time -$(t+1)$ consumption faced
+%by agent $o(e)$ in equilibrium for $t$ even (odd).  For $t$
+%even, $c_t^o =c_0$, $c_{t+1}^o=1-c_0$, $m_t^o=p (1-c_0)$, and
+%5$m_{t+1}^o=0$.  The slope of the indifference curve at $X$ is
+%$-u'(c_t^h)/\be u'(c_{t+1}^h)=-u'(c_0)/\be u'(1-c_0)=-1$, and
+%the slope of the indifference curve at $Y$ is $-u'(1-c_0)/\beta
+%u'(c_0)=-1/\beta^2$.}
+%$$  }\endinsert
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\midfigure{dmt62f}
+\centerline{\epsfxsize=3truein\epsffile{dmt62.ps}}
+\caption{The trade-off between time $t$ and time $(t+1)$ consumption faced
+by agent $o(e)$ in equilibrium for $t$ even (odd).  For $t$ even,
+$c_t^o =c_0$, $c_{t+1}^o=1-c_0$, $m_t^o=p (1-c_0)$, and $m_{t+1}^o=0$.
+The slope of the indifference curve at $X$ is
+$-u'(c_t^h)/\be u'(c_{t+1}^h)=-u'(c_0)/\be u'(1-c_0)=-1$, and the slope of
+the indifference curve at $Y$ is $-u'(1-c_0)/\beta u'(c_0)=-1/\beta^2$.}
+\infiglist{dmt62f}
+\endfigure
+\index{turnpike!Townsend's}
+\section{Townsend's ``turnpike'' interpretation}
+The preceding analysis of currency is artificial in the sense that it depends
+entirely on our having arbitrarily ruled out the existence of markets for
+private loans.  The physical setup of the model itself provided no reason for
+those loan markets not to exist, and indeed good reasons for them to exist.
+In addition, for many questions that we want to analyze, we want a model in
+which private loans and currency coexist, with currency being
+valued.\NFootnote{In the United States today, for example, $M_1$ %
+consists of the sum of demand deposits (a part of which is backed by %
+commercial loans and another, smaller part of which is backed by reserves %
+or currency) and currency held by the public.  Thus, $M_1$ is not %
+interpretable as the $m$ in our model.}
+
+\auth{Townsend, Robert M.}
+Robert Townsend has proposed a model whose mathematical structure is
+identical with the preceding model, but in which a global market in
+private loans cannot emerge because agents are spatially separated.
+Townsend's setup can accommodate local markets for private loans,
+so that it meets the objections to the model that we have expressed.
+But first we will focus on a version of Townsend's model where
+local credit markets cannot emerge, which will be mathematically equivalent
+to our model above.
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%$$\grafone{turn10.eps,height=.5in,width=3in}{{\bf Figure 18.2}  Endowment
+%pattern along a Townsend turnpike.  The turnpike
+%is of infinite extent in each direction, and
+%has equidistant trading posts.  Each trading
+%post has equal numbers of east-heading and west-heading
+%agents.  At each trading post  (the
+%black dots) each period, for  each east-heading agent there
+%is a west-heading agent with whom he would like to borrow or lend.
+%But itineraries rule out the possibility of repayment.}  $$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\midfigure{turn10f}
+\centerline{\epsfxsize=3truein\epsffile{turn10.eps}}
+\caption{Endowment pattern along a Townsend turnpike.  The turnpike
+is of infinite extent in each direction, and has equidistant trading
+posts.  Each trading post has equal numbers of east-heading and west-heading
+agents.  At each trading post (the black dots) each period, for each
+east-heading agent there is a west-heading agent with whom he would like
+to borrow or lend.  But itineraries rule out the possibility of repayment.}
+\infiglist{turn10f}
+\endfigure
+
+The economy starts at time $t=0$, with $N$ east-heading migrants and $N$
+west-heading migrants physically located at each of the integers along a
+``turnpike'' of infinite length extending in both directions.  Each of the
+integers $n=0,\pm 1, \pm 2,\ldots$ is a trading post number.  Agents can
+trade the one good only with agents at the trading post at which they find
+themselves at a given date.  An east-heading agent at an even-numbered
+trading post is endowed with one unit of the consumption good, and an
+odd-numbered trading post has an endowment of zero units (see Figure \Fg{turn10f}). %18.2).
+  A
+west-heading agent is endowed with zero units at an even-numbered trading post
+and with one unit of the consumption good at an odd-numbered trading post.
+Finally, at the end of each period, each east-heading agent moves one trading
+post to the east, whereas each west-heading agent moves one trading post to the
+west.  The turnpike along which the trading posts are located is of infinite
+length in each direction, implying that the east-heading and west-heading
+agents who are paired at time $t$ will never meet again.  This feature means
+that there can be no private debt between agents moving in opposite directions.
+An IOU between agents moving in opposite directions can never be collected
+because a potential lender never meets the potential borrower again, nor does
+the lender meet anyone who ever meets the potential borrower, and so on, ad
+infinitum.
+
+%\input gayejnl.txt
+%\input gayedef.txt
+
+Let an agent who is endowed with one unit of the good $t=0$ be called an agent
+of type $o$ and an agent who is endowed with zero units of the good at $t=0$ be
+called an agent of type $e$.  Agents of type $h$ have preferences summarized by
+$\sum_{t=0}^\infty \be^t u(c_t^h)$.  Finally, start the economy at time 0 by
+having each agent of type $e$ endowed with $m_{-1}^e=m$ units of unbacked currency
+and each agent of type $o$ endowed with $m_{-1}^o=0$ units of unbacked currency.
+
+With the symbols thus reinterpreted, this model involves precisely the same
+mathematics as that which was analyzed earlier.  Agents' spatial separation and
+their movements along the turnpike have been set up to produce a physical
+reason that a global market in private loans cannot exist.  The various
+propositions about the equilibria of the model and their optimality that were
+already proved apply equally to the turnpike version.\NFootnote{A
+version of the model could be constructed in which local private markets for
+loans coexist with valued unbacked currency.  To build such a model, one would
+assume some heterogeneity in the time patterns of the endowment of agents who
+are located at the same trading post and are headed in the same direction.  If
+half of the east-headed agents located at trading post $i$ at time $t$ have
+present and future endowment pattern $y_t^h=(\a,\ga,\a,\ga\ldots)$, for
+example, whereas the other half of the east-headed agents have
+$(\ga,\a,\ga,\a,\ldots)$ with $\ga\not=\a$, then there is room for local
+private loans among this cohort of east-headed agents.  Whether or not there
+exists an equilibrium with valued currency depends on how nearly Pareto optimal
+the equilibrium with local loan markets
+ is.}$^,$\NFootnote{Narayana Kocherlakota (1998)
+ has analyzed the frictions in the Townsend turnpike and overlapping
+generations model.  By permitting agents to use history-dependent
+decision rules, he has been able to support optimal allocations with
+the equilibrium of a gift-giving game.  Those equilibria leave no
+room for valued fiat currency. Thus, Kocherlakota's view is that the
+frictions that give valued currency in the Townsend turnpike must include
+the restrictions on the strategy space that Townsend implicitly
+imposed.}
+Thus, in Townsend's version of the model, spatial
+separation is the ``friction'' that provides a potential social
+role for a valued unbacked currency.  The spatial separation
+of agents and their endowment patterns give a setting in which private
+loan markets are limited by the need for people who trade IOUs to be
+linked together, if only indirectly, recurrently over time and space.
+\index{gift-giving game}
+\auth{Kocherlakota, Narayana R.}
+\index{Friedman rule}
+\auth{Friedman, Milton}
+\section{The Friedman rule}
+Friedman's proposal to pay interest on currency by engineering a deflation can
+be used to solve for a Pareto optimal allocation in this economy.  Friedman's
+proposal is to decrease the currency stock by means of lump-sum taxes at a
+properly chosen rate.  Let the government's budget constraint be
+$$ M_t = (1 + \tau) M_{t-1} .$$
+There are $N$ households of each type.  At time $t$, the government transfers or
+taxes nominal balances in amount $\tau M_{t-1} / (2 N)$ to each household of each
+type.  The total transfer at time $t$ is thus $\tau M_{t-1}$, because there are
+$2 N$ households receiving transfers.
+
+The household's time $t$ budget constraint becomes
+$$ p_t c_t + m_t \leq p_t y_t + {\tau \over 2} {M_{t-1} \over N} +m_{t-1}. $$
+
+We guess an equilibrium allocation of the same periodic
+pattern \Ep{od8}.  For the price level, we make
+the ``quantity theory'' guess $M_t / p_t = k$,
+where $k$ is a constant.  Substituting this guess into
+the government's budget constraint gives
+$$ { M_t \over p_t} = (1+ \tau) {M_{t-1} \over p_{t-1}}{p_{t-1} \over p_t}$$
+or
+$$ k = (1 + \tau) k { p_{t-1} \over p_t},$$
+or
+$$ p_t = (1+\tau) p_{t-1},                                 \EQN turn_rorm
+$$
+which is our guess for the price level.
+
+Substituting the price level guess and the allocation guess
+into the odd agent's first-order condition \Ep{od7} at $t=0$ and
+rearranging shows that $c_0$ is now the root of
+$$ {1 \over (1 + \tau)} - {u'(c_0) \over \beta u'(1-c_0)} = 0 .\EQN od10$$
+The price level at time $t=0$ can be determined by evaluating
+the odd agent's time $0$ budget constraint at
+$m_{-1}^o = 0$ and $m_0^o = M_0/N=(1+\tau)M_{-1}/N$, with the result
+that
+$$(1 - c_0) p_0 = {M_{-1} \over N} \left(1+ {\tau \over 2}\right) .$$
+
+Finally, the allocation guess must also satisfy the even agent's
+first-order condition \Ep{od7} at $t=0$ but not necessarily with
+equality, since the stationary equilibrium has $m_0^e = 0$.
+After substituting $(c_0^e, c_1^e) =(1-c_0, c_0)$ and
+\Ep{turn_rorm} into \Ep{od7}, we have
+$$
+{1 \over 1+\tau} \leq {u'(1-c_0) \over \beta u'(c_0)}.     \EQN turn_foc
+$$
+The substitution of \Ep{od10} into \Ep{turn_foc} yields a restriction
+on the set of periodic allocations of type \Ep{od8} that can
+be supported as one of our stationary monetary equilibria,
+$$
+\left[ {u'(c_0) \over u'(1-c_0)} \right]^2 \leq 1 \quad \Longrightarrow
+\quad c_0 \geq 0.5.
+$$
+This restriction on $c_0$, together with \Ep{od10}, implies a
+corresponding restriction on the set of permissible monetary/fiscal
+policies, $1+\tau \geq \beta$.
+
+\subsection{Welfare}
+For allocations of the class \Ep{od8}, the utility functionals
+of odd and even agents, respectively, take values that
+are functions of the single parameter $c_0$, namely,
+$$\eqalign{ U^o(c_0) & = {u(c_0) + \beta u(1-c_0) \over 1- \beta^2}, \cr
+\noalign{\smallskip}
+   U^e(c_0)& = { u(1-c_0) + \beta u(c_0) \over  1- \beta^2}. \cr }  $$
+Both expressions are strictly concave in $c_0$, with derivatives
+$$\eqalign{ {U^o}'(c_0)& = { u'(c_0) - \beta u'(1-c_0) \over 1- \beta^2}, \cr
+\noalign{\smallskip}
+            {U^e}'(c_0) &= { - u'(1-c_0) + \beta u'(c_0) \over
+                1 - \beta^2}. \cr }$$
+The Inada condition \Ep{turn_inada} ensures strictly interior maxima with
+respect to $c_0$.
+For the odd agents, the preferred $c_0$ satisfies ${U^o}'(c_0) = 0 $,
+or
+$${u'(c_0) \over \beta u'(1-c_0)} = 1 ,                  \EQN turn_odd
+$$
+which by \Ep{od10} is the zero-inflation equilibrium, $\tau=0$. For the
+even agents, the preferred allocation given by ${U^e}'(c_0) = 0 $
+implies $c_0 < 0.5$, and can therefore not be implemented as a monetary
+equilibrium above. Hence, the even agents' preferred stationary monetary
+equilibrium is the one with the smallest permissible $c_0$, i.e.,
+$c_0=0.5$. According to \Ep{od10}, this allocation can be supported by
+choosing money growth rate $1+\tau = \beta$, which
+is then also the equilibrium gross rate of deflation.
+Notice that
+all agents, both odd and even, are in agreement that they prefer
+no inflation to positive inflation, that is, they prefer $c_0$
+determined by \Ep{turn_odd} to any higher value of $c_0$.
+
+To abstract from the described conflict of interest between odd and
+even agents, suppose that the agents must pick their preferred
+monetary policy under a ``veil of ignorance,'' before knowing their
+true identity. Since there are equal numbers of each type of agent, an
+individual faces a fifty-fifty chance of her identity being an odd or
+an even agent. Hence, prior to knowing one's identity, the expected
+lifetime utility of an agent is
+$$
+\bar U(c_0) \equiv {1 \over 2} U^o(c_0) + {1 \over 2} U^e(c_0)
+            = {u(c_0) + u(1-c_0) \over 2(1-\beta)}.
+$$
+The {\it ex ante\/} preferred allocation $c_0$ is determined by the
+first-order condition $\bar U'(c_0)=0$, which has the solution $c_0=0.5$.
+Collecting equations \Ep{turn_rorm}, \Ep{od10}, and \Ep{turn_foc},
+this preferred policy is characterized by
+$$  {p_t \over p_{t+1}} = {1 \over 1+\tau}
+   ={u'(c^o_t) \over \beta u'(c^o_{t+1})}
+   = {u'(c^e_t) \over \beta u'(c^e_{t+1})} = {1 \over \beta}, \qquad \forall t \geq 0,
+$$
+where $c^i_j=0.5$ for all $j \geq 0$ and $i\in\{o,e\}$. Thus, the
+real return on money, $p_t/p_{t+1}$, equals a common marginal rate of
+intertemporal substitution, $\beta^{-1}$, and this return would therefore
+also constitute the real interest rate if there were a credit market.
+Moreover, since the gross real return on money is the inverse of the gross
+inflation rate, it follows that the gross real interest rate $\beta^{-1}$
+multiplied by the gross rate of inflation is unity, or the net nominal
+interest rate is zero. In other words, all agents are {\it ex ante\/} in favor
+of Friedman's rule.   \index{Friedman rule}
+
+%%%%%%%%%%%%%%%%%%%
+%\topinsert{ $$
+%\grafone{townsend.ps,height=3.5in}{{\bf Figure 18.3} Utility possibility
+%frontier in Townsend turnpike.  The locus of points $ABC$ denotes
+%allocations attainable in stationary monetary equilibria.  The
+%point $B$ is the allocation associated with the zero-inflation
+%monetary equilibrium.  Point $A$ is associated with Friedman's rule,
+%while points between $B$ and $C$ correspond to stationary monetary
+%equilibria with inflation.}
+%$$ } \endinsert
+%%%%%%%%%%%%%%%%%%%%%%
+
+\midfigure{townsendf}
+\centerline{\epsfxsize=3truein\epsffile{townsend.ps}}
+\caption{Utility possibility frontier on the  Townsend turnpike.  The locus of
+points $ABC$ denotes allocations attainable in stationary monetary
+equilibria.  Point $B$ is the allocation associated with the
+zero-inflation monetary equilibrium.  Point $A$ is associated with
+Friedman's rule, while points between $B$ and $C$ correspond to
+stationary monetary equilibria with inflation.}
+\infiglist{townsendf}
+\endfigure
+
+Figure \Fg{townsendf} %18.3
+shows the ``utility possibility frontier'' associated with
+this economy.  Except for the allocation associated with Friedman's rule,
+the allocations associated with stationary monetary equilibria lie inside
+the utility possibility frontier.
+\index{deficit finance!as cause of inflation}
+
+\section{Inflationary finance}
+The government prints new currency in total amount $M_t-M_{t-1}$ in period $t$
+and uses it to purchase a constant amount $G$ of goods in period $t$.  The
+government's time $t$ budget constraint is
+$$ M_t - M_{t-1} = p_t G, \quad t \geq 0. \EQN od11$$
+Preferences and endowment patterns of odd and even agents
+are as specified previously.
+We now use the following definition:
+
+\medskip
+
+\noindent{\sc Definition 4:} A \idx{competitive equilibrium} is a price
+level sequence $\{p_t\}_{t=0}^\infty$, a money supply
+process $\{M_t\}_{t=-1}^\infty$,
+an allocation $\{c_t^o, c_t^e, G_t\}_{t=0}^\infty$ and nonnegative
+money holdings $\{m_t^o, m_t^e\}_{t=-1}^\infty$
+ such that
+(a)  given the price sequence and $(m^o_{-1},m^e_{-1})$,
+the allocation solves the optimum problems of households of both types;
+(b) the government's budget constraint is satisfied
+for all $t \geq 0$; and (c) $N(c^o_t+c^e_t)+G_t=N$, for all $t \geq 0$; and
+$m^o_{t}+m^e_{t}=M_{t}/N$, for all $t \geq -1$.
+
+\medskip
+
+For $t \geq 1$, write the government's budget constraint as
+$$ {M_t \over N p_t} = {p_{t-1} \over p_t} {M_{t-1} \over N p_{t-1} }
+      + {G \over N}  ,$$
+or
+$$ \tilde m_t = R_{t-1} \tilde m_{t-1} + g, \EQN od12$$
+where $g = G / N$,$\tilde m_t = M_t / (N p_t)$ is
+per-odd-person real balances, and $R_{t-1} = p_{t-1}/ p_t$
+is the rate of return on currency from $t-1$ to $t$.
+
+To compute an equilibrium, we guess an allocation of
+the periodic form
+$$\eqalign{ \{c_t^o\}_{t=0}^\infty &
+ = \{c_0, 1 - c_0 -g, c_0, 1- c_0 -g, \ldots \}, \cr
+\noalign{\smallskip}
+   \{c_t^e\}_{t=0}^\infty &=\{ 1-c_0-g, c_0, 1-c_0-g, c_0, \ldots\}. \cr }
+  \EQN od13$$
+We guess that $R_t = R$ for all
+$t\geq 0$, and again guess a ``quantity theory'' outcome
+$$ \tilde m_t = \tilde m \quad \forall t \geq 0.$$
+Evaluating the odd household's time $0$ first-order condition
+for currency at equality gives
+$$ \beta R = {u'(c_0) \over u'(1-c_0-g)}  . \EQN od14$$
+With our guess,  real balances held by each odd
+agent at the end of period $0$, $m^o_0/p_0$, equal $1-c_0$, and
+time $1$ consumption, which also is $R$ times the
+value of these real balances held from $0$ to $1$,
+is $1-c_0 -g$.  Thus,
+$(1-c_0)R = (1-c_0-g)$, or
+$$ R = {1-c_0 -g \over 1-c_0 } . \EQN od15$$
+Equations \Ep{od14} and \Ep{od15} are two simultaneous equations that
+we want to solve for $(c_0,R)$.
+
+Use equation \Ep{od15} to eliminate $(1-c_0-g)$ from equation \Ep{od14} to get
+$$ \beta R = {u'(c_0) \over u'[R(1-c_0)] } .$$
+Recalling that $(1-c_0) = m_0$, this can be
+written
+$$ \beta R ={u'(1-  m_0) \over u'(R  m_0)}.\EQN od17$$
+For the power utility function $u(c)={c^{1-\delta} \over 1-\delta}$,
+this equation can be solved for $m_0$ to get the demand function
+for currency
+$$ m_0 = \tilde m(R) \equiv{(\beta R^{1-\delta})^{1/\delta} \over 1 +
+       (\beta R^{1-\delta})^{1/\delta}} .\EQN od18$$
+Substituting this into the government budget constraint \Ep{od12} gives
+$$ \tilde m(R)(1-R) = g . \EQN od19 $$
+This equation equates the revenue from the inflation
+tax, namely, $\tilde m(R)(1-R)$ to the government deficit, $g$.
+The revenue from the inflation tax is the product of
+real balances and the inflation tax rate $1-R$.  The equilibrium value
+of $R$ solves equation \Ep{od19}.
+
+%%%%%%%%%%%%%%%%%%%%
+%\topinsert
+%$$
+%\grafone{town7.ps,height=1.75in}{{\bf Figure 18.4} Revenue from
+%inflation tax \hfil\break [$m(R)(1-R)$]
+% and deficit for $\beta=.95, \delta=2, g=.2$.  The gross
+%rate of return on currency is on the $x$-axis; the revenue from
+%inflation and $g$ are on the $y$-axis.}$$
+%%%%%%%%%%%%%%%%%%%%
+%$$\grafone{town5.ps,height=1.75in}{{\bf Figure 18.5} Revenue from
+%inflation tax \hfil\break [$m(R)(1-R)$]
+%and deficit for $\beta=.95, \delta=.7, g=.2$.  The
+%rate of return on currency is on the $x$-axis; the revenue from
+%inflation and $g$ are on the $y$-axis. Here there is a Laffer curve.}
+%$$ \endinsert
+%%%%%%%%%%%%%%%%%%%%%%
+
+\midfigure{town7f}
+\centerline{\epsfxsize=3truein\epsffile{town7.ps}}
+\caption{Revenue from inflation tax  $m(R)(1-R)$ and deficit
+for $\beta=.95, \delta=2, g=.2$.  The gross rate of return on currency is
+on the $x$-axis;  $g$ and the revenue from inflation  are on the $y$-axis.}
+\infiglist{town7f}
+\endfigure
+
+\midfigure{town5f}
+\centerline{\epsfxsize=3truein\epsffile{town5.ps}}
+\caption{Revenue from inflation tax $m(R)(1-R)$ and deficit for
+$\beta=.95, \delta=.7, g=.2$.  The rate of return on currency is on the
+$x$-axis;   $g$ and the revenue from inflation are on the $y$-axis.  Here
+there is a Laffer curve.}
+\infiglist{town5f}
+\endfigure
+
+\index{Laffer curve}
+Figures \Fg{town7f} and \Fg{town5f} %18.4 and 18.5
+ depict the determination of the stationary
+equilibrium value of $R$ for two sets of parameter values.  For
+the case $\delta=2$, shown in Figure \Fg{town7f}, %18.4,
+ there is a unique
+equilibrium $R$; there is a unique equilibrium for every
+$\delta \geq 1$.  For $\delta \geq 1$, the demand function for
+currency slopes upward as a function of $R$, as for the example in
+Figure \Fg{town6f}.  %18.6.
+ For $\delta <1$, there can occur multiple stationary
+equilibria, as for the example in Figure \Fg{town5f}. %  18.5.
+  In such cases, there
+is a Laffer curve in the revenue from the inflation tax.  Notice
+that the demand for real balances is downward sloping as a
+function of $R$ when $\delta < 1$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%\midinsert
+%$$\grafone{town6.ps,height=2in}{{\bf Figure 18.6} Demand
+%for real balances on the $y$-axis as function of the gross
+%rate of return on currency on $x$-axis when $\beta =.95, \delta =2.$}
+%$$
+%%%%%%%%%%%%%%%
+%$$\grafone{town8.ps,height=2in}{{\bf Figure 18.7}  Demand for
+%real balances on the $y$-axis as function of the
+%gross rate of return on currency on $x$-axis when $\beta = .95,
+%\delta = .7.$}
+%$$ \endinsert
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\midfigure{town6f}
+\centerline{\epsfxsize=3truein\epsffile{town6.ps}}
+\caption{Demand for real balances on the $y$-axis as a function of the gross
+rate of return on currency on the $x$-axis when $\beta =.95, \delta =2.$}
+\infiglist{town6f}
+\endfigure
+
+%\midfigure{town8f}
+%\centerline{\epsfxsize=3truein\epsffile{town8.ps}}
+%\caption{Demand for real balances on the $y$-axis as a function of the gross
+%rate of return on currency on the $x$-axis when $\beta = .95, \delta = .7.$}
+%\infiglist{town8f}
+%\endfigure
+
+The initial price level is determined by the time $0$ budget constraint of the
+government, evaluated at equilibrium time $0$ real balances.  In particular,
+the time $0$ government budget constraint can be written
+$$ {M_0 \over N p_0} - {M_{-1} \over N p_0} = g,$$
+or
+$$ \tilde m - g = {M_{-1} \over N p_0} .$$
+Equating $\tilde m$ to its equilibrium value $1-c_0$ and solving
+for $p_0$ gives
+$$ p_0 = {M_{-1} \over N (1 - c_0 - g)}.$$
+ \index{legal restrictions}
+\section{Legal restrictions}
+
+This section adapts ideas of Bryant and Wallace (1984)  and Villamil (1988) to the turnpike environment.
+Those authors analyzed situations in which the government
+could make all savers better off by introducing a price discrimination scheme for
+marketing its debt.  The analysis formalizes some ideas mentioned
+by John Maynard Keynes (1940).
+\auth{Keynes, John Maynard}
+\auth{Villamil, Anne}
+\auth{Wallace, Neil}
+\auth{Bryant, John}
+
+Figure \Fg{bryant4f} %18.8
+ depicts the terms on which an odd agent at $t=0$ can transfer
+consumption between $0$ and $1$ in an equilibrium with inflationary finance.
+The agent is endowed at the point $(1,0)$.  The monetary mechanism allows
+him to transfer consumption between periods on the terms $c_1 = R (1 - c_0)$,
+depicted by the budget line connecting $1$ on the $c_t$-axis with the point $B$
+on the $c_{t+1}$-axis.  The government insists on raising revenues in the
+amount $g$ for each pair of an odd and an even agent, which means that $R$ must
+be set so that the tangency between the agent's indifference curve and the budget
+line $c_1=R(1-c_0)$ occurs at the intersection of the budget line and the straight
+line connecting $1-g$ on the $c_t$-axis with the point $1-g$ on the $c_{t+1}$-axis.
+At this point, the marginal rate of substitution for odd agents is
+$${u'(c_0) \over \beta u'(1-c_0 -g)} = R,$$
+(because currency holdings are positive).  For even agents, the
+marginal rate of substitution is
+$$ {u'(1-c_0-g) \over \beta u'(c_0)}= {1 \over \beta^2 R} > 1,$$
+where the inequality follows from the fact that $R< 1$ under
+inflationary finance.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%\midinsert{$$
+%\grafone{bryant4.eps,height=3.0in}{{\bf Figure 18.8} The budget
+%line starting at $(1,0)$ and ending at the point B describes
+% an odd agent's time $0$ opportunities in an equilibrium with inflationary finance.
+%Because this equilibrium has the ``private consumption feasibility
+%menu'' intersecting the odd agent's indifference curve, a ``forced saving''
+%legal restriction can be used to put the odd agent onto a higher
+%indifference curve than I, while leaving even agents better off
+%and the government with revenue $g$. If the individual is
+%confronted with a minimum denomination $F$ at the
+%rate of return associated with the budget line ending at H,
+%he would choose to consume $1-F$.}
+%$$   }\endinsert
+%%%%%%%%%%%%%%%%%%%%%%
+
+\midfigure{bryant4f}
+\centerline{\epsfxsize=3truein\epsffile{bryant4.eps}}
+\caption{The budget line starting at $(1,0)$ and ending at the point $B$
+describes an odd agent's time $0$ opportunities in an equilibrium with
+inflationary finance.  Because this equilibrium has the ``private
+consumption feasibility menu'' intersecting the odd agent's indifference
+curve, a ``forced saving'' legal restriction can be used to put the odd
+agent onto a higher indifference curve than $I$, while leaving even agents
+better off and the government with revenue $g$. If the individual is
+confronted with a minimum denomination $F$ at the rate of return associated
+with the budget line ending at $H$, he would choose to consume $1-F$.}
+\infiglist{bryant4f}
+\endfigure
+
+The fact that the odd agent's indifference curve intersects the solid line
+connecting $(1-g)$ on the two axes indicates that the government could improve
+the welfare of the odd agent by offering him a higher rate of return subject
+to a minimal real balance constraint. The higher rate of return is used to
+send the line $c_1 = (1-R) c_0$ into the lens-shaped area in Figure \Fg{bryant4f}
+onto a higher indifference curve. The minimal real balance constraint is
+designed to force the agent onto the ``postgovernment share'' feasibility
+line connecting the points $1-g$ on the two axes.
+
+Thus, notice that in Figure \Fg{bryant4f}, %18.8,
+ the government can raise the same revenue by
+offering odd agents the {\it higher\/} rate of return associated with the line
+connecting $1$ on the $c_t$ axis with the point $H$ on the $c_{t+1}$ axis, provided
+that the agent is required to save at least $F$, if he saves at all.  This minimum
+saving requirement would make the household's budget set the point $(1,0)$  together
+with the heavy segment $DH$.  With the setting of $F,R$ associated with the line $DH$
+in Figure \Fg{bryant4f}, %18.8,
+odd households have the same two-period utility as without this
+scheme. (Points $D$ and $A$ lie on the same indifference curve.)  However, it is
+apparent that there is room to lower $F$ and lower $R$ a bit, and thereby move the
+odd household into the lens-shaped area.  See Figure \Fg{bryant5f}. %18.9.
+
+The marginal rates of substitution that we computed earlier indicate that
+this scheme makes both odd and even agents better off relative to the
+original equilibrium. The odd agents are better off because they move
+into the lens-shaped area in Figure \Fg{bryant4f}.  The even agents are better
+off because relative to the original equilibrium, they are being
+permitted to ``borrow'' at a gross rate of interest of $1$.  Since their
+marginal rate of substitution at the original equilibrium is
+$1/(\beta^2 R) > 1$, this ability to borrow makes them better off.
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%$$
+%\grafone{townsend2.ps,height=3.5in}{{\bf Figure 18.8} The budget
+%line starting at $(1,0)$ and ending at the point B describes
+% an odd agent's
+%time $0$ opportunities in an equilibrium with inflationary finance.
+%Because this equilibrium has the ``private consumption feasibility
+%menu'' intersecting the odd agent's indifference curve, a ``forced saving''
+%legal restriction can be used to put the odd agent onto a higher
+%indifference curve than II, while leaving even agents better off
+%and the government with revenue $g$.}
+%$$
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%
+%\midfigure{townsend2f}
+%\centerline{\epsfxsize=3truein\epsffile{townsend2.eps}}
+%\caption{The budget line starting at $(1,0)$ and ending at the point B
+%describes an odd agent's time $0$ opportunities in an equilibrium with
+%inflationary finance.  Because this equilibrium has the ``private consumption
+%feasibility menu'' intersecting the odd agent's indifference curve, a
+%``forced saving'' legal restriction can be used to put the odd agent onto
+%a higher indifference curve than II, while leaving even agents better off
+%and the government with revenue $g$.}
+%\infiglist{townsend2f}
+%\endfigure
+
+
+%  bryant1.eps has the picture with legal restrictions
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%\topinsert{
+%$$\grafone{bryant5.eps,height=3.0in}{{\bf Figure 18.9}  The minimum
+%denomination $F$ and the return on money
+%can be lowered {\rm vis-$\grave a$-vis} their setting associated with line DH in
+%Figure 18.8 to make the odd household better off, raise the
+%same revenues for the government, and leave even households better off
+%(as compared to no government intervention).  The
+%lower value of $F$ puts the odd household at $E$, which leaves him
+%at the higher indifference curve I$'$.  The minimum
+%denomination $F$ and the return on money
+%can be lowered {\rm vis-$\grave a$-vis} their setting associated with line DH in
+%Figure 18.8 to make the odd household better off, raise the
+%same revenues for the government, and leave even households better off
+%(as compared to no government intervention).  The
+%lower value of $F$ puts the odd household at $E$, which leaves him
+%at the higher indifference curve I$'$.}
+%$$  }\endinsert
+%%%%%%%%%%%%%%%%%%%%%%
+
+\midfigure{bryant5f}
+\centerline{\epsfxsize=3truein\epsffile{bryant5.eps}}
+\caption{The minimum denomination $F$ and the return on money can be lowered
+{\it vis-$\grave a$-vis\/} their setting associated with line DH in Figure \Fg{bryant4f}
+to make the odd household better off, raise the same revenues for the government,
+and leave even households better off (as compared to no government intervention).
+The lower value of $F$ puts the odd household at $E$, which leaves him at the
+higher indifference curve $I'$.  The minimum denomination $F$ and the return on
+money can be lowered {\it vis-$\grave a$-vis} their setting associated with line
+$DH$ in Figure \Fg{bryant4f} to make the odd household better off, raise the same revenues
+for the government, and leave even households better off (as compared to no government
+intervention).  The lower value of $F$ puts the odd household at $E$, which leaves
+him at the higher indifference curve $I'$.}
+\infiglist{bryant5f}
+\endfigure
+
+
+%The minimum
+%denomination $F$ can be lowered {\it vis a vis} its setting in
+%Figure 6 to make the odd household better off, raise the
+%same revenues for the government, and leave even households better off.  The
+%lower value of $F$ puts the household at E, which leaves him
+%at the higher indifference curve I$'$.}
+
+%\vfill\eject
+ \index{exchange rate}
+\section{A two-money model}
+
+There are two types of currency being issued, in amounts $M_{it}, i=1,2$, by each of
+two countries. The currencies are issued according to the rules
+
+%\beginleftbox  Note:  no original eqn. 20 \endleftbox
+
+$$ M_{it} - M_{it-1} = p_{it} G_{it}, \quad i=1,2, \EQN od21$$
+where $G_{it}$ is total purchases of time $t$ goods by
+the government issuing currency $i$, and $p_{it}$ is the time $t$
+price level denominated in units of currency $i$.  We
+assume that currencies of both types are initially
+equally distributed among the even agents at time $0$.  Odd
+agents start out with no currency.
+
+Household $h$'s optimum problem becomes to maximize
+$\sum_{t=0}^\infty \beta^t u(c_t^h)$ subject to the
+sequence of budget constraints
+$$ c_t^h + {m_{1t}^h \over p_{1t}} + {m_{2t}^h \over p_{2t}}
+  \leq y_t^h + {m_{1t-1}^h \over p_{1t}} +{m_{2t-1}^h \over p_{2t} },$$
+where $m_{jt-1}^h$ are nominal holdings of
+country $j$'s currency by household $h$. Currency holdings
+of each type must be nonnegative.  The first-order conditions
+for the household's problem with respect to $m_{jt}^h$ for
+$j=1,2$ are
+$$\eqalign{ {\beta u'(c_{t+1}^h) \over p_{1t+1}}& \leq {u'(c_t^h) \over p_{1t}}
+ , \quad = \ {\rm if} \ m_{1t}^h > 0, \cr
+            {\beta u'(c_{t+1}^h) \over p_{2t+1}}& \leq {u'(c_t^h) \over p_{2t}}
+ , \quad = \ {\rm if} \ m_{2t}^h > 0. \cr   }$$
+If agent $h$ chooses to hold both currencies from $t$ to $t+1$,
+these first-order conditions imply that
+$$\EQNalign{
+{ p_{2t} \over p_{1t}} &= {p_{2t+1} \over p_{1t+1}},  \cr
+\noalign{\hbox{\rm or}}
+p_{1t} &= e p_{2t}, \quad \forall t \geq 0, \EQN od22 \cr}$$
+for some constant $e > 0$.\NFootnote{Evaluate both of the first-order
+conditions at equality, then divide one by the other to obtain this
+result.}  This equation states that if in each period
+there is some household that chooses
+to hold positive amounts of both types of currency, the
+rate of return from $t$ to $t+1$ must
+be equal for the two types of currencies, meaning that
+the exchange rate must be constant over time.\NFootnote{As long
+as we restrict ourselves to nonstochastic equilibria.}
+
+We use the following definition:
+
+\medskip
+\noindent{\sc Definition 5:} A {\it competitive equilibrium\/} with two valued
+fiat currencies is an allocation $\{c_t^o, c_t^e, G_{1t},G_{2t}\}_{t=0}^\infty$,
+nonnegative money holdings $\{m_{1t}^o, m_{1t}^e, m_{2t}^o, m_{2t}^e  \}_{t=-1}^\infty$,
+a pair of finite
+price level sequences $\{p_{1t},p_{2t}\}_{t=0}^\infty$ and
+currency supply sequences $\{M_{1t}, M_{2t}\}_{t=-1}^\infty$
+such that \index{equilibrium} %
+(a)  given the price level sequences and
+$(m^o_{1,-1},m^e_{1,-1}, \hfil\break m^o_{2,-1},m^e_{2,-1})$, the
+allocation solves the households' problems;
+(b) the budget constraints of the governments are satisfied for all $t \geq 0$; and
+(c) $N(c^o_t+c^e_t)+G_{1t}+G_{2t}=N$, for all $t \geq 0$; and
+$m^o_{jt}+m^e_{jt}=M_{jt}/N$, for $j=1,2$ and all $t \geq -1$.
+
+\medskip
+
+In the case of constant government expenditures $(G_{1t},G_{2t})=(N g_1, N g_2)$
+for all $t\geq 0$,
+we guess an equilibrium allocation of the  form
+\Ep{od13}, where we reinterpret $g$ to be
+$g=g_1+g_2$.
+We also guess an equilibrium with a constant real value of the
+``world money supply,'' that is,
+$$ \tilde m = {M_{1t} \over N p_{1t}} + {M_{2t} \over N p_{2t}},$$
+and a constant exchange rate, so that we impose condition \Ep{od22}.  We
+let $R =p_{1t}/ p_{1t+1} = p_{2t}/ p_{2t+1}$
+be the constant common value of the rate of return on the
+two currencies.
+
+   With these guesses, the sum of the two countries' budget
+constraints  for $t \geq 1$ and the conjectured
+form of the equilibrium allocation imply an
+equation of the form \Ep{od19},
+where now
+$$ \tilde m(R) = {M_{1t} \over p_{1t} N} +{M_{2t} \over p_{2t} N }.$$
+Equation \Ep{od19} can be solved for $R$ in the  fashion described
+earlier.  Once $R$ has been determined,
+so has the constant real value of the world
+currency supply, $\tilde m$.
+ To determine the time $t$ price levels, we add the
+time $0$ budget constraints of the two governments to get
+$${M_{10} \over N p_{10}} + {M_{20} \over N p_{20}}
+     = {M_{1,-1} + e M_{2,-1} \over N p_{10}} + (g_1+g_2) ,$$
+or
+$$ \tilde m - g = {M_{1,-1}+eM_{2,-1} \over N p_{10} }.$$
+In the conjectured allocation, $\tilde m = (1-c_0)$,
+so this equation becomes
+$$ {M_{1,-1} + e M_{2,-1} \over N p_{10}} = 1 - c_0 - g ,    \EQN turn_p10$$
+which, given any $e > 0$,
+has a positive solution for the initial country 1 price
+level. Given the solution $p_{10}$ and any $e \in (0,\infty)$,
+the price level sequences  for the two countries are determined
+by the constant rate of return on currency $R$.
+To determine the values of the nominal currency stocks
+of the two countries, we use the government budget constraints
+\Ep{od21}.
+
+  Our findings are a special case of the following remarkable
+proposition:
+\medskip
+\noindent{\sc Proposition (Exchange Rate Indeterminacy):} Given the initial stocks of
+currencies $(M_{1,-1},M_{2,-1})$ that are equally distributed among
+the even agents at time $0$, if there is an equilibrium
+for one constant exchange rate $e \in (0,\infty)$, then there exists
+an equilibrium for any $\hat e \in (0,\infty)$
+with the same consumption allocation but different currency supply sequences.
+\index{exchange rate!indeterminacy}
+
+\medskip
+
+\noindent{\sc Proof:} Let $p_{10}$ be the country $1$ price level at
+time zero in the equilibrium that is assumed to exist with exchange
+rate $e$.
+For the conjectured equilibrium with exchange rate $\hat e$, we guess
+that the corresponding price level is
+$$
+\hat p_{10} = p_{10}
+     {M_{1,-1} + \hat e M_{2,-1} \over M_{1,-1} + e M_{2,-1}}.
+$$
+After substituting this expression into \Ep{turn_p10}, we can verify
+that the real value at time $0$ of the initial ``world money supply'' is
+the same across equilibria. Next, we guess that the conjectured equilibrium
+shares the same rate of return on currency, $R$, and constant
+end-of-period real value of the ``world money supply'', $\tilde m$, as the
+the original equilibrium. By construction from the original equilibrium,
+we know that this setting of the world money supply process guarantees
+that the consolidated budget constraint of the two governments is satisfied
+in each period. To determine the values of each country's
+prices and nominal money supplies, we proceed as above.
+That is, given $\hat p_{10}$ and $\hat e$,
+the price level sequences  for the two countries are determined
+by the constant rate of return on currency $R$.
+The evolution of the nominal money stocks
+of the two countries is governed by government budget constraints
+\Ep{od21}. \qed
+
+\medskip
+ Versions of  this proposition were
+stated by Kareken and Wallace (1980).
+\auth{Wallace, Neil}
+\auth{Kareken, John}
+See chapter \use{fiscalmonetary} for a discussion of a possible way to
+alter assumptions to make the exchange rate  determinate.
+
+%\input pformat
+%\title{Add on}
+ \index{money!commodity}
+ \auth{Smith, Bruce D.}
+\auth{Velde, Fran\c cois} \auth{Wallace, Neil}
+\section{A model of commodity money}
+Consider the following ``small-country'' model.\NFootnote{See Sargent and Wallace (1983),
+Sargent and Smith (1997), and Sargent and Velde (1999)
+for alternative models of commodity money.}
+\
+ There are now two goods, the consumption good and a durable good, silver.
+Silver has a gross physical rate of return of $1$: storing one unit of silver
+this period yields one unit of silver next period.  Silver is not valued
+domestically, but it can be exchanged abroad at a fixed price of $v$ units of
+the consumption good per unit of silver; $v$ is constant over time and is
+independent of the amount of silver imported or exported from this country.
+There are equal numbers $N$ of odd and even households, endowed
+with consumption good sequences
+$$\eqalign{ \{y_t^o\}_{t=0}^{\infty} &= \{ 1, 0, 1, 0, \ldots \}, \cr
+\noalign{\smallskip}
+            \{y_t^e\}_{t=0}^{\infty} &= \{ 0, 1, 0 , 1, \ldots \}. \cr }  $$
+Preferences continue to be  ordered by $\sum_{t=0}^\infty \beta^t
+u(c_t^i)$ for each type of person, where $c_t$ is consumption
+of the consumption good.
+
+   Each {\it even\/} person is initially endowed with $S$ units of
+silver at time $0$. Odd agents own no silver at $t=0$.
+
+ Households are prohibited from borrowing or lending with each other, or with
+foreigners.  However, they can exchange silver with each other and with
+foreigners.  At time $t$, a household of type $i$ faces the budget constraint
+$$ c_t^i + m_t^i v \leq y_t^i + m_{t-1}^i v, $$
+subject to $m_t^i \geq 0$, where $m_t^i$ is the amount of
+silver stored from time $t$ to time $t+1$ by agent $i$.
+
+%%%%%%%%%%%%%%%%%%%%%
+%\topinsert{
+%$$\grafone{silver.eps,height=3.0in}{{\bf Figure 18.10} Determination
+%of equilibrium when $u'(v S) < \beta u'(c_0)$.  For as long as it is
+%feasible, the even agent sets $u'(c_{t+1}^e) /u'(c_t^e) = \beta$ by running
+%down his silver holdings.  This implies that  $c_{t+1}^e < c_t^e$ during
+%the run-down period.  Eventually, the even agent runs out of silver,
+%so that the ``tail'' of his allocation is $\{c_0, 1-c_0, c_0, 1-c_0, \ldots\}$,
+%determined as before.  The figure depicts how the spending of silver
+%pushes the agent onto lower and lower two-period budget sets.}$$
+%}\endinsert
+%%%%%%%%%%%%%%%%%%%%%
+
+\midfigure{silverf}
+\centerline{\epsfxsize=3truein\epsffile{silver.eps}}
+\caption{Determination of equilibrium when $u'(v S) < \beta u'(c_0)$.  For
+as long as it is feasible, the even agent sets $u'(c_{t+1}^e) /u'(c_t^e) = \beta$
+by running down his silver holdings.  This implies that  $c_{t+1}^e < c_t^e$
+during the run-down period.  Eventually, the even agent runs out of silver,
+so that the tail of his allocation is $\{c_0, 1-c_0, c_0, 1-c_0, \ldots\}$,
+determined as before.  The figure depicts how the spending of silver pushes the
+agent onto lower and lower two-period budget sets.}
+\infiglist{silverf}
+\endfigure
+
+%\vfill\eject
+ \index{equilibrium}
+\subsection{Equilibrium}
+
+\noindent{\sc Definition 6:}
+   A {\it competitive equilibrium\/} is an allocation
+$\{c_t^o, c_t^e\}_{t=0}^\infty$ and nonnegative
+asset holdings $\{m_t^o, m_t^e\}_{t=-1}^\infty$
+such that, given $(m^o_{-1},\hfil\break m^e_{-1})$,
+the allocation solves each agent's
+optimum problem.
+\medskip
+  Adding the budget constraints  of the two types of agents with
+equality at time
+$t$ gives
+$$ c_t^o + c_t^e = 1 +v(S_{t-1} - S_t) , \EQN od23  $$
+where   $S_t = m_t^o+ m_t^e$ is the total (per odd person) stock
+of silver in the country at time $t$.
+Equation \Ep{od23} asserts that total domestic consumption at
+time $t$ is the sum of the country's endowment plus
+its imports of goods, where the latter equals its exports of silver,
+$v (S_{t-1} - S_t)$.
+
+Given the opportunity to choose nonnegative asset holdings with a
+gross rate of return equal to $1$,
+the equilibrium allocation to the odd agent is
+$\{c_t^o\}_{t=0}^{\infty} =\{c_0, 1-c_0, c_0, 1-c_0, \ldots, \}$,
+where $c_0$ is the solution to equation \Ep{od9}. Thus, the odd
+agent holds $(1-c_0)$ units of silver from time $0$ to time $1$.  He
+gets this silver either from even agents or from abroad.
+
+Concerning the allocation to even agents, two types of equilibria are
+possible, depending on the value of $v S$ relative to the
+value $c_0$ that solves equation \Ep{od9}.
+If $u'(v S) \geq \beta u'(c_0)$, the equilibrium allocation
+to the even agent is
+$\{c_t^e\}_{t=0}^{\infty} =\{ c_0^e, c_0, 1-c_0, c_0, 1-c_0, \ldots \}$,
+where $c_0^e = v S$.  In this equilibrium, the
+even agent at time $0$ sells all of his silver to support
+time $0$ consumption.    Net {\it exports\/} of silver for the
+country at time $0$ are $S - (1-c_0)/v$, i.e., summing up the
+transactions of an even and an odd agent.  For $t \geq 1$, the country's
+allocation and trade pattern is exactly as in the original
+model (with a stationary fiat money equilibrium).
+
+
+  If the solution $c_0$ to equation \Ep{od9} and $v S$ are such that
+$u'(v S) < \beta u'(c_0)$,
+  the equilibrium allocation to the
+odd agents remains the same, but the allocation to the
+even agents is different.  The situation is  depicted in
+Figure \Fg{silverf}. %18.10.
+  Even agents have so much silver
+at time $0$ that they want to carry over positive amounts of
+silver into time $1$ and maybe beyond.  As long as they
+are carrying over positive amounts of silver from $t-1$ to
+$t$,
+the allocation to even agents has to satisfy
+$$ {u'(c_{t-1}^e) \over \beta  u'(c_{t}^e) } = 1, \EQN od24$$
+which implies that $c_{t}^e < c_{t-1}^e$.
+Also, as long as they
+are carrying over positive amounts of silver, their
+first $T$ budget constraints can be used
+to deduce an intertemporal budget constraint
+$$\sum_{t=0}^T c_t^e \leq
+         \cases{vS + (T+1) /2, &  if  $T$ odd; \cr
+                vS + T/2,      &  if $T$ even. \cr} \EQN od25 $$
+%& \leq vS + (T+1) /2  \quad T \ {\rm odd} \cr
+%                               & \leq vS + T/2 \quad T \ {\rm even} .\cr}
+The even agent finds the largest  horizon $T$ over which he satisfies
+both  \Ep{od24} and \Ep{od25} at equality
+%, as well as
+%$c > c_0$ or $c > (1-c_0)$
+with nonnegative carryover of silver for each period.  This largest
+horizon $T$ will occur on an even date.\NFootnote{Suppose to the contrary
+that the largest horizon $T$ is an odd date. That is, up  until date $T$, both
+ \Ep{od24} and \Ep{od25} are satisfied with nonnegative savings for each period.
+Now, let us examine what happens if we add one additional period and the
+horizon becomes $T+1$. Since that additional period is an even date,
+the right side of budget constraint \Ep{od25} is unchanged.
+Therefore, condition \Ep{od24} implies that the extra period induces the
+agent to reduce consumption in all periods $t\leq T$,
+in order to save for consumption in period $T+1$. Since the
+initial horizon $T$ satisfied  \Ep{od24} and \Ep{od25} with
+nonnegative savings, it follows that so must also horizon $T+1$.
+Therefore, the largest horizon $T$ must occur on an even date.}
+ The equilibrium allocation to the
+even agents is determined by ``gluing'' this initial piece
+with declining consumption onto a ``tail'' of the
+allocation assigned to even agents in the original
+model, starting on an odd date,
+$\{c_t\}_{t=T+1}^\infty =\{ c_0, 1-c_0, c_0, 1-c_0, \ldots \}$.\NFootnote{Is
+the equilibrium with $u'(v S) < \beta u'(c_0)$, a  stylized model of Spain in
+the sixteenth century? At the beginning of the sixteenth century, Spain suddenly received
+a large claim on silver and gold from the New World.  During the century,
+Spain exported gold and silver to the rest of Europe to finance government
+and private purchases.}
+
+\subsection{Virtue of fiat money}
+
+This is a model with an exogenous price level and an endogenous
+stock of currency.  The model can be used to express a version
+of  Friedman's and Keynes's condemnation of commodity money systems:
+the equilibrium allocation can be Pareto dominated by the allocation
+in a fiat money equilibrium in which, in addition to
+the stock of silver at time $0$, the even agents are
+endowed with $M$ units of an unbacked fiat currency.
+We can then show that there exists a monetary
+equilibrium with a constant price level $p$ satisfying
+\Ep{turn_p},
+$$ p = { M \over N (1 - c_0)}. $$
+In effect, the time $0$ endowment of the even agents is increased by $1-c_0$
+units of consumption good.  Fiat money creates wealth by removing commodity money
+from circulation, which instead can be transformed into consumption.
+
+
+\section{Concluding remarks}
+
+The model of this chapter is basically a ``nonstochastic incomplete markets
+model,'' a special case of the stochastic incomplete markets models of chapter
+\use{incomplete}.  The virtue of the model is that we can work out many things by
+hand.  The limitation on markets in private loans leaves room for a
+consumption-smoothing role to be performed by a valued fiat currency.
+The reader might note how some of the monetary doctrines worked out precisely
+in this chapter have counterparts in the stochastic  incomplete markets
+models of chapter \use{incomplete}.
+
+%\section{Exercises}
+ \showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+\noindent{\it Exercise \the\chapternum.1}\quad {\bf Arrow-Debreu}
+\medskip\noindent
+ Consider an environment with equal numbers $N$ of two types of agents, odd and even,
+who have endowment sequences
+ $$\eqalign{ \{y_t^o\}_{t=0}^\infty &= \{1, 1 ,0,1 , 1, 0, \ldots \} \cr
+\noalign{\smallskip}
+           \{y_t^e\}_{t=0}^\infty & = \{0, 0, 1, 0, 0 , 1,  \ldots \}. \cr}$$
+Households of type $h$ order consumption sequences
+by $\sum_{t=0}^\infty \beta^t u(c_t^h)$.  Compute the
+Arrow-Debreu equilibrium for this economy.
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.2}\quad {\bf One-period consumption loans}
+\medskip\noindent
+  Consider an environment with equal
+numbers $N$ of two types of agents, odd and even, who have endowment sequences
+ $$\eqalign{ \{y_t^o\}_{t=0}^\infty &= \{1, 0 ,1, 0, \ldots \} \cr
+\noalign{\smallskip}
+           \{y_t^e\}_{t=0}^\infty & = \{0, 1, 0, 1, \ldots \}. \cr}$$
+Households of type $h$ order consumption sequences
+by $\sum_{t=0}^\infty \beta^t u(c_t^h)$. The only market
+that exists is for one-period loans.  The budget constraints
+of household $h$ are
+$$ c_t^h + b_t^h \leq y_t^h + R_{t-1} b_{t-1}^h ,\quad t \geq 0,$$
+where $b_{-1}^h = 0, h=o,e$.  Here $b_t^h$ is agent $h$'s
+lending (if positive) or borrowing (if negative) from
+$t$ to $t+1$, and $R_{t-1}$ is the gross real rate of interest
+on consumption loans from $t-1$ to $t$.
+
+\medskip
+\noindent{\bf a.}  Define a competitive equilibrium with
+one-period consumption loans.
+\medskip
+\noindent{\bf b.}  Compute a competitive equilibrium with
+one-period consumption loans.
+\medskip
+\noindent{\bf c.}  Is the equilibrium
+allocation Pareto optimal?  Compare the equilibrium
+allocation with that for the corresponding Arrow-Debreu
+equilibrium for an economy with identical endowment
+and preference structure.
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.3}\quad {\bf Stock market}
+\medskip\noindent
+  Consider a ``stock market'' version of an
+economy with endowment and preference structure identical
+to the one in the previous economy.  Now odd and even
+agents begin life owning one of two types of ``trees.''  Odd
+agents own the ``odd'' tree, which is a perpetual
+claim to a dividend sequence
+$$ \{y_t^o\}_{t=0}^\infty = \{ 1, 0, 1, 0, \ldots \} ,$$
+while even agents initially own the
+``even'' tree, which entitles them to a perpetual claim on
+dividend sequence
+$$ \{y_t^e\}_{t=0}^\infty = \{0, 1, 0, 1, \ldots \}.$$
+Each period, there is a stock market in which
+people can trade the two types of trees.  These are the
+only two markets open each period. The time $t$ price
+of type $j$ trees is $a_t^j, j=o,e$.
+The time $t$ budget constraint of agent $h$ is
+$$ c_t^h + a_t^o s_t^{ho} + a_t^e s_t^{he} \leq
+      ( a_t^o + y_t^o) s_{t-1}^{ho} + (a_t^e + y_t^e) s_{t-1}^{he} ,$$
+where $s_t^{hj}$ is the number of shares of
+stock in tree $j$ held by agent $h$ from $t$ to $t+1$.
+We assume that $s_{-1}^{oo} = 1, s_{-1}^{ee} = 1,
+s_{-1}^{jk} = 0 \ {\rm for} \ j \neq k$.
+
+\medskip
+\noindent{\bf a.}  Define an equilibrium of the stock market
+economy.
+\medskip\noindent{\bf b.}  Compute an equilibrium of the stock market
+economy.
+\medskip
+\noindent{\bf c.}  Compare the allocation of the stock
+market economy with that of the corresponding Arrow-Debreu
+economy.
+%\vfil\eject
+\medskip
+\noindent{\it Exercise  \the\chapternum.4} \quad {\bf Inflation}
+\medskip\noindent
+   Consider a Townsend turnpike model  in which there are
+$N$ odd agents and $N$ even agents who have endowment
+sequences, respectively, of
+$$\eqalign{ \{y_t^o\}_{t=0}^\infty &= \{1, 0 ,1, 0, \ldots \} \cr
+\noalign{\smallskip}
+           \{y_t^e\}_{t=0}^\infty & = \{0, 1, 0, 1, \ldots \}. \cr}$$
+Households of each type order consumption sequences
+by $\sum_{t=0}^\infty \beta^t u(c_t)$.
+  The government
+makes the stock of currency move according to
+$$ M_t = z M_{t-1},  \quad t \geq 0 .$$
+At the beginning of period $t$,
+the government hands out $(z-1) m_{t-1}^h$ to each
+type $h$ agent who held $m_{t-1}^h$ units of currency from
+$t-1$ to $t$.  Households of type $h=o,e$ have time $t$ budget constraint of
+$$ p_t c^h_t + m_t^h \leq p_t y_t^h + m_{t-1}^h + (z-1) m_{t-1}^h .$$
+\medskip
+
+\noindent {\bf a.}
+Guess that an equilibrium endowment sequence of the periodic
+form \Ep{od8} exists.  Make a guess at an equilibrium price sequence
+$\{p_t\}$ and compute the equilibrium values of
+($c_0, \{p_t\}$).  ({\it Hint:} Make a ``quantity theory''
+guess for the price level.)
+
+\medskip
+\noindent{\bf b.}  How does the allocation vary with
+the rate of inflation?  Is inflation ``good'' or ``bad''? Describe
+odd and even agents' attitudes toward living in economies
+with different values of $z$.
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.5}\quad {\bf A Friedman-like scheme}
+\medskip\noindent
+  Consider Friedman's scheme to improve
+welfare by  generating
+a deflation.   Suppose that the
+government tries to boost the rate
+of return on currency above $\beta^{-1}$ by
+setting $\beta > (1+\tau)$.  Show that there exists no equilibrium
+with an allocation of the class \Ep{od8} and  a price-level
+path satisfying $p_t = (1+\tau) p_{t-1}$, with odd agents
+holding $m_0^o>0$.  [(That is, the piece of the ``restricted
+Pareto optimality frontier'' does not extend above
+the allocation (.5,.5) in Figure \Fg{townsendf}.)%18.3.]
+\medskip
+\noindent{\it Exercise \the\chapternum.6}\quad{\bf Distribution of currency}
+\medskip\noindent
+  Consider an economy consisting of large and equal
+numbers of two types of infinitely lived agents. There
+is one kind of consumption good, which is nonstorable.
+``Odd'' agents have period 2 endowment pattern $\{y_t^o\}_{t=0}^\infty$,
+while ``even'' agents have period 2 endowment pattern
+$\{y_t^e\}_{t=0}^\infty$.
+ Agents of both types have preferences that are ordered
+by the utility functional
+$$ \sum_{t=0}^\infty \beta^t \ln (c_t^i) , \quad i = o,e , \quad 0 <
+  \beta < 1  ,  $$
+where $c_t^i$ is the time $t$ consumption of the single good
+by an agent of type $i$.
+
+Assume the following
+endowment pattern:
+$$ y_t^o =\{1, 0, 1, 0, 1, 0, \ldots \} $$
+$$ y_t^e = \{0, 1, 0, 1, 0 ,1, \ldots \} .$$
+
+
+\medskip
+\noindent
+Now assume that all borrowing and lending is prohibited, either
+{\rm ex cathedra\/} through legal restrictions or by virtue of traveling
+and locational restrictions of the kind introduced by Robert
+Townsend. At time $t=0$, all odd agents are endowed with
+$\alpha H$ units of  an unbacked, inconvertible currency,
+and all even units are endowed with $(1-\alpha) H$ units
+of currency, where $\alpha \in [0,1]$.  The currency is
+denominated in dollars and  is perfectly durable.
+Currency is the only object that agents are permitted
+to carry over from one period to the next.
+Let $p_t$ be the price level at time $t$, denominated in units
+of dollars per time $t$ consumption good.
+
+\medskip
+\noindent{\bf a.}  Define an {\it equilibrium with valued fiat currency}.
+
+\medskip
+\noindent{\bf b.}  Let an ``eventually stationary'' equilibrium with
+valued fiat currency be one in which there exists a $\bar t$ such
+that for $t \geq \bar t$, the equilibrium allocation to each
+type of agent is of period 2 (i.e., for each type
+of agent, the allocation is a periodic sequence that oscillates
+between two values).  Show that for each value of $\alpha \in [0,1]$,
+there exists such an equilibrium. Compute this equilibrium.
+
+\medskip
+\noindent {\it Exercise \the\chapternum.7}\quad {\bf Capital overaccumulation}
+\medskip\noindent
+  Consider an environment with
+equal numbers $N$ of two types of agents, odd and even,
+who have endowment sequences
+$$\eqalign{ \{y_t^o\}_{t=0}^\infty &= \{ 1 - \varepsilon,
+\varepsilon, 1-\varepsilon, \varepsilon, \ldots\} \cr
+\noalign{\smallskip}
+      \{y_t^e\}_{t=0}^\infty &= \{ \varepsilon, 1-\varepsilon, \varepsilon,
+         1-\varepsilon, \ldots \} .\cr }$$
+Here, $\varepsilon$ is a small positive number that is very close
+to zero.  Households of each type $h$ order consumption sequences
+by $\sum_{t=0}^\infty \beta^t \ln(c_t^h)$ where $\beta \in (0,1)$.
+The one good in the model is storable.  If a nonnegative amount
+$k_t$ of the good is stored at time $t$, the outcome
+is that $\delta k_t$ of the good is carried into period $t+1$,
+where $\delta \in (0,1)$.  Households are free to store
+nonnegative amounts of the good.
+
+\medskip
+\noindent{\bf a.}  Assume that there are no markets.  Households
+are on their own.  Find the autarkic consumption allocations
+and storage sequences for the two types of agents.  What
+is the total per-period storage in this economy?
+
+\medskip
+\noindent{\bf b.}  Now assume that there exists a fiat
+currency, available in fixed supply of $M$, all of which
+is initially equally distributed among the even agents.  Define
+an equilibrium with valued fiat currency.  Compute
+a stationary equilibrium with valued fiat currency.  Show
+that the associated allocation Pareto dominates the one
+you computed in part a.
+
+\medskip
+\noindent{\bf c.}  Suppose that in the storage technology
+$\delta=1$ (no depreciation) and that there is a fixed supply
+of fiat currency, initially distributed as in part b.  Define
+an ``eventually stationary'' equilibrium.  Show that there
+is a continuum of eventually stationary equilibrium price levels
+and allocations.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.8}\quad {\bf Altered endowments}
+\medskip\noindent
+Consider a Bewley model identical to the one in the text,
+except that now the
+ odd and even  agents are endowed with the sequences
+$$ \eqalign{ y_t^0 &= \{1 - F, F, 1-F, F, \ldots \} \cr
+             y_t^e & =\{F, 1- F, F, 1-F, \ldots \}, \cr }$$
+where  $ 0 < F< (1-c^o)$, where $c^o$ is the solution of equation \Ep{od9}.
+
+   Compute the equilibrium allocation and price level.  How
+do these objects vary across economies with different
+levels of $F$?  For what values of $F$ does a stationary
+equilibrium with valued fiat currency exist?
+
+%\vfill\eject
+\medskip
+\noindent{\it Exercise \the\chapternum.9}\quad {\bf Inside money}
+\medskip\noindent
+   Consider an environment with equal numbers $N$ of two types
+of households, odd and even, who have endowment sequences
+$$\eqalign{ \{y_t^o\}_{t=0}^\infty &= \{1,0,1, 0, \ldots\} \cr
+\noalign{\smallskip}
+     \{y_t^e\}_{t=0}^\infty &= \{0, 1,0,1, \ldots\}. \cr}$$
+Households of type $h$ order consumption sequences by
+$\sum_{t=0}^\infty \beta^t u(c_t^h) .$  At the beginning
+of time $0$, each even agent is endowed with $M$ units
+of an unbacked fiat currency and owes  $F$ units of consumption
+goods; each odd agent is owed $F$ units of consumption
+goods and owns $0$ units of currency.  At time $t \geq 0$,
+a household of type $h$ chooses to carry over
+$m_t^h \geq 0$ of currency from time $t$ to $t+1$.
+(We start households out with these debts or assets at time $0$
+to support a stationary equilibrium.)  Each period $t \geq 0$,
+ households can issue indexed one-period debt in amount
+$b_t$, promising to pay off $b_t R_t$ at $t+1$, subject to
+the constraint that $b_t \geq -F/R_t$, where $F>0$ is a parameter
+characterizing the borrowing constraint and $R_t$
+is the rate of return on these loans between time
+$t$ and $t+1$.  (When $F = 0$, we get the Bewley-Townsend model.)
+A household's period $t$ budget constraint is
+$$ c_t + m_t/p_t + b_t = y_t + m_{t-1}/p_t + b_{t-1}R_{t-1},$$
+where $R_{t-1}$ is the gross real rate of return on indexed debt
+between time $t-1$ and  $t$.  If $b_t<0$, the  household is borrowing
+at $t$, and if $b_t>0$, the household is lending at $t$.
+\medskip
+\noindent{\bf a.}  Define a competitive equilibrium in which
+valued fiat currency and private loans coexist.
+\medskip
+\noindent{\bf b.}  Argue that, in the equilibrium defined in part
+a, the real rates of return on currency and indexed debt must be
+equal.
+\medskip
+\noindent{\bf c.}  Assume that $0 < F< (1-c^o)/2$, where $c^o$ is
+the solution of equation \Ep{od9}.  Show that there exists a
+stationary equilibrium with a constant price level and that the
+allocation equals that associated with the stationary equilibrium
+of the $F=0$ version of the model. How does $F$ affect the price
+level?  Explain.
+
+\medskip
+\noindent{\bf d.}  Suppose that $F=(1-c^o)/2$.  Show that there is
+a stationary
+ equilibrium with private loans but that fiat currency is valueless in
+ that equilibrium.
+
+\medskip
+\noindent{\bf e.}  Suppose that $F={\beta \over 1+ \beta}$.  For a
+stationary equilibrium, find an equilibrium  allocation and
+interest rate.
+\medskip
+\noindent{\bf f.}  Suppose that $F \in [(1-c^o)/2, {\beta \over
+1+\beta}]$. Argue that there is a stationary equilibrium (without
+valued currency) in which the real rate of return on debt is $R
+\in (1, \beta^{-1}).$
+
+\medskip
+\noindent{\it Exercise \the\chapternum.10}\quad {\bf Initial conditions and inside
+money}
+
+\medskip
+\noindent
+  Consider a version of the preceding model in which each
+odd person is initially endowed with no currency and no IOUs,
+and each even person is initially endowed with $M/N$ units of currency
+but no IOUs.  At every time $t\geq 0$, each agent can issue one-period
+IOUs promising to pay off $F/R_t$ units of consumption
+in period $t+1$, where $R_t$ is the gross real rate of return on currency
+or IOUs between periods $t$ and $t+1$.  The parameter
+$F$ obeys the same restrictions imposed in exercise {\it \the\chapternum.9\/}.
+
+\medskip
+\noindent{\bf a.}  Find an equilibrium with valued fiat
+currency in which the tail of the  allocation for $t \geq 1$ and
+the tail of the price level sequence, respectively, are
+identical with that found in exercise {\it \the\chapternum.9\/}.
+\medskip
+\noindent{\bf b.}  Find the price level, the allocation, and
+the rate of return on currency and consumption loans at period
+$0$.
+
+\medskip
+\index{real bills doctrine}
+
+\noindent{\it Exercise \the\chapternum.11}\quad {\bf Real bills experiment}
+\medskip
+\noindent
+  Consider a version of  exercise {\it \the\chapternum.9\/}.  The initial
+conditions and restrictions on borrowing are as described
+in exercise {\it \the\chapternum.9\/}.  However, now
+the government augments the currency stock by an
+``open market operation'' as follows:
+In period $0$, the government issues $\bar M - M$ units
+per each odd agent for the purpose of purchasing $\Delta$ units
+of IOUs issued at time $0$ by the even agents.  Assume
+that $0 < \Delta<  F$.  At each time $t\geq 1$, the
+government uses any net real interest payments
+from  its stock IOUs from the private
+sector to decrease the outstanding stock of currency.  Thus,
+the government's budget constraint sequence is
+$$ \eqalign{ {\bar M - M \over p_0} & = \Delta,  \quad t=0, \cr
+\noalign{\medskip}
+              {\bar M_t - \bar M_{t-1}\over p_t}
+                & = -(R_{t-1} -1) \Delta
+                  \quad t \geq 1 .\cr}  $$
+Here,$R_{t-1}$ is the gross rate of return on consumption
+loans from $t-1$ to $t$, and $\bar M_t$ is the total stock of
+currency outstanding at the end of time $t$.
+
+\medskip
+\noindent{\bf a.}  Verify that there exists a stationary equilibrium
+with valued fiat currency in which the allocation has the
+form \Ep{od8} where $c_0$ solves equation \Ep{od9}.
+
+\medskip
+\noindent{\bf b.}  Find a formula for the price level in this
+stationary equilibrium.  Describe how the price level varies
+with the value of $\Delta$.
+\medskip
+\noindent{\bf c.}  Does the ``quantity theory of money'' hold
+in this example?

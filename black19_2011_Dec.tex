@@ -1,0 +1,3169 @@
+
+\input grafinp3
+%\input grafinput8
+\input psfig
+
+%\showchaptIDtrue
+%\def\@chaptID{19.}
+%\input gayejnl.txt
+%\input gayedef.txt
+\def\lege{\raise.3ex\hbox{$>$\kern-.75em\lower1ex\hbox{$<$}}}
+
+%\hbox{}
+\footnum=0
+\chapter{Equilibrium Search, Matching, and Lotteries\label{search2}}
+
+\section{Introduction}
+
+   This chapter presents various equilibrium models of search and matching. We
+describe (1) Lucas and Prescott's version of an island model; (2) some matching
+models in the style of Mortensen, Pissarides, and Diamond; and (3) a
+search model of money along the lines of Kiyotaki and Wright.
+
+Chapter \use{search1} studied the optimization problem of a single
+unemployed agent who searched for a job by drawing from an
+exogenous wage offer distribution.  We now turn to a model with a
+continuum of agents who interact across a large number of
+spatially separated labor markets. Phelps (1970, introductory
+chapter)
+\auth{Phelps, Edmund S.}%
+describes such an ``island economy,''
+\index{island model}%
+and a formal framework is analyzed by Lucas and Prescott (1974).
+\auth{Lucas, Robert E., Jr.}\auth{Prescott, Edward C.}%
+The agents on an island can choose to work at
+the market-clearing wage in their own labor market or seek their
+fortune by moving to another island and its labor market. In an equilibrium,
+agents tend to move to islands that experience good productivity shocks,
+while an island with bad productivity may see some of its labor force depart.
+Frictional unemployment arises because moves between labor markets take
+time.
+
+Another approach to model unemployment is the matching framework
+\index{matching model}%
+described by Diamond (1982), Mortensen (1982), and Pissarides (1990).
+\auth{Diamond, Peter A.}\auth{Mortensen, Dale T.}\auth{Pissarides, Christopher}%
+These models postulate the existence of a matching function that
+maps measures of unemployment and vacancies into a measure of matches. A match
+pairs a worker and a firm, who then have to bargain about how to share the
+``match surplus,''
+\index{matching model!match surplus}%
+that is, the value that will be lost if the two parties cannot agree and
+break the match. In contrast to the island model with price-taking behavior
+and no externalities, the decentralized outcome in the matching framework is
+in general not efficient. Unless parameter values satisfy a knife-edge
+restriction, there will be either  too many or too few vacancies posted
+in an equilibrium.  The efficiency problem is further exacerbated if it is
+assumed that heterogeneous jobs must be created via a single matching function.
+This assumption creates a tension between getting an efficient mix of jobs and
+an efficient total supply of jobs.
+
+As a reference point to models with search and matching frictions, we also study a
+frictionless aggregate labor market but assume that labor is indivisible.  For
+example, agents are constrained to work either full time or not at all.  This
+kind of assumption has been used in the real business cycle literature to generate
+unemployment. If markets for contingent claims exist,
+Hansen (1985) and Rogerson (1988)
+\auth{Hansen, Gary D.} \auth{Rogerson, Richard}%
+show that employment lotteries
+\index{employment lottery}%
+can be welfare enhancing and that they imply that only a fraction  of agents will
+be employed in an equilibrium. Using this model and the other two frameworks
+that we have mentioned, we analyze how layoff taxes affect an economy's employment
+level. The different models yield very different conclusions, shedding further
+light on the economic forces at work in the various frameworks.
+
+To illustrate another application of search and matching, we study Kiyotaki and
+Wright's (1993) search model of money.
+Agents who differ with respect to their taste for different goods meet pairwise
+and at random. In this model, fiat money can potentially ameliorate the problem
+of ``double coincidence of wants.''
+\auth{Kiyotaki, Nobuhiro} \auth{Wright, Randall}%
+
+\index{island model}\auth{Lucas, Robert E., Jr.} \auth{Prescott, Edward C.}%
+\section{An island model}\label{sec:LucasPrescott}%
+The model here is a simplified version of Lucas and
+Prescott's (1974) ``island economy.''
+There is a continuum of agents populating a large number of spatially separated
+labor markets.  Each island is endowed with an aggregate production function
+$\theta f(n)$, where $n$ is the island's employment level and $\theta>0$ is an
+idiosyncratic productivity shock. The production function
+satisfies
+$$f'>0, \qquad f''<0, \qquad {\rm and} \qquad
+               \lim_{n\to0} f'(n) \,=\, \infty\,.       \EQN prodfn
+$$
+The productivity shock takes on $m$ possible values,
+$\theta_1 < \theta_2 < \cdots < \theta_m$, and the
+shock is governed by strictly positive transition probabilities,
+$\pi(\theta, \theta') > 0$. That is, an island with a current
+productivity shock of $\theta$ faces a probability
+$\pi(\theta, \theta')$ that its next period's shock is $\theta'$.
+The productivity shock is persistent in the sense that the
+cumulative distribution function,
+${\rm Prob}\left(\theta' \leq \theta_k \vert \theta \right) =
+\sum_{i=1}^k \pi(\theta, \theta_i)$, is a decreasing
+function of $\theta$.
+
+
+At the beginning of a period, agents are distributed in some
+way over the islands. After observing the productivity shock, the
+agents decide whether or not to move to another island. A mover
+forgoes his labor earnings in the period of the move, whereas he
+can choose the destination with complete information about
+current conditions on all islands. An agent's decision to work or to move
+is taken so as to maximize the expected
+present value of his earnings stream. Wages are determined
+competitively, so that each island's labor market clears with
+a wage rate equal to the marginal product of labor.
+We will study stationary equilibria.
+
+
+\subsection{A single market (island)}
+
+The state of a single market is given by its productivity level
+$\theta$ and its beginning-of-period labor force $x$. In an
+equilibrium, there will be functions mapping this state into
+an employment level, $n(\theta, x)$, and a wage rate,
+$w(\theta, x)$. These functions must satisfy the market-clearing
+condition
+$$w(\theta, x) \;=\; \theta f'\bigl[ n(\theta, x) \bigr]   $$
+and the labor supply constraint
+$$n(\theta, x) \;\leq\; x \,.
+$$
+
+Let $v(\theta, x)$ be the value of the optimization problem
+for an agent finding himself in market $(\theta, x)$ at the
+beginning of a period. Let $v_u$ be the expected value obtained
+next period by an agent leaving the market, a value to be
+determined by conditions in the aggregate economy.
+The value now associated with leaving the
+market is then $\beta v_u$.
+ The Bellman equation can then be
+written as
+$$v(\theta, x) \;=\; \max \Bigl\{\beta v_u \,,\; w(\theta, x) \,+\,
+   \beta E\left[v(\theta',x') \vert \theta, x \right]
+                                                     \Bigr\}\,, \EQN value1
+$$
+where the conditional expectation refers to the evolution of
+$\theta'$ and $x'$ if the agent remains in the same market.
+
+
+The value function $v(\theta, x)$ is equal to $\beta v_u$ whenever
+there are any agents leaving the market. It is instructive to
+examine the opposite situation when no one leaves the market.
+This means that the current employment level is
+$n(\theta, x) = x$ and the wage rate becomes
+$w(\theta, x) = \theta f'(x)$. Concerning the continuation
+value for next period,
+$\beta E\left[v(\theta',x') \vert \theta, x \right]$, there
+are two possibilities:
+
+%\vskip.2cm
+\medskip
+\noindent {\it Case i:} All agents remain, and some additional agents arrive
+next period. The arrival of new agents corresponds to a continuation
+value of $\beta v_u$ in the market. Any value less than $\beta v_u$ would not
+attract any new agents, and a value higher than $\beta v_u$ would be driven
+down by a larger inflow of new agents. It follows that the current
+value function in equation \Ep{value1} can under these circumstances
+be written as
+$$v(\theta, x) \;=\; \theta \, f'(x) \,+\, \beta v_u \,.
+$$
+\medskip
+\noindent {\it Case ii:} All agents remain, and no additional agents arrive
+next period. In this case $x' = x$, and the lack of new arrivals
+implies that the market's continuation value is less than or equal to
+$\beta v_u$. The current value function becomes
+$$v(\theta, x) \;=\; \theta \, f'(x) \,+\,
+   \beta E\left[v(\theta',x) \vert \theta \right] \;\leq\;
+                      \theta \, f'(x) \,+\, \beta v_u \,.
+$$
+\medskip
+%\vskip.3cm
+After putting both of these cases together, we can rewrite the value
+function in equation \Ep{value1} as follows:
+$$v(\theta, x) \;=\; \max \Bigl\{\beta v_u\,,\; \theta \, f'(x) \,+\,
+  \min \bigl\{ \beta v_u\,,\; \beta E\left[v(\theta',x) \vert \theta \right]
+      \bigr\} \Bigr\}\,. \EQN value2
+$$
+Given a value for $v_u$, this is a well-behaved functional equation
+with a unique solution $v(\theta, x)$. The value function is
+nondecreasing in $\theta$ and nonincreasing in $x$.
+
+On the basis of agents' optimization behavior, we can study the
+evolution of the island's
+labor force. There are three possible cases:
+
+%\vskip.2cm
+\medskip
+\noindent {\it Case 1:} Some agents leave the market. An implication is
+that no
+additional workers will arrive next period, when the beginning-of-period
+labor force will be equal to the current employment level,
+$x'=n$. The current employment level, equal to  $x'$, can then be computed from
+the condition that agents remaining in the market receive the same
+utility as the movers, given by $\beta v_u$,
+$$\theta \, f'(x') \,+\, \beta E\left[v(\theta',x') \vert \theta \right]
+      \;=\; \beta v_u \,.                                 \EQN value2aa
+$$
+This equation implicitly defines $x^+(\theta)$ such that
+$x'=x^+(\theta)$ if $x\geq x^+(\theta)$.
+
+%\vskip.2cm
+\medskip
+\noindent {\it Case 2:} All agents remain in the market, and some additional
+workers arrive next period. The arriving workers must expect to attain the
+value $v_u$, as discussed in case {\it i}. That is, next period's
+labor force $x'$ must be such that
+$$ E\left[v(\theta',x') \vert \theta \right]
+      \;=\; v_u \,.                                  \EQN value2bb
+$$
+This equation implicitly defines $x^-(\theta)$ such that
+$x'=x^-(\theta)$ if $x\leq x^-(\theta)$. It can be seen that
+$x^-(\theta) < x^+(\theta)$.
+
+%\vskip.2cm
+\medskip
+\noindent {\it Case 3:} All agents remain in the market, and no additional
+workers arrive next period. This situation was discussed in case {\it ii}.
+It follows here that $x'=x$ if $x^-(\theta) <x< x^+(\theta)$.
+
+
+%\vskip.5cm
+
+\subsection{The aggregate economy}
+
+The previous section assumed an exogenous value to search,
+$v_u$. This assumption will be maintained in the first part
+of this section on the aggregate economy. The approach
+amounts to assuming a perfectly elastic outside labor supply
+with reservation utility $v_u$. We end the section by
+showing how to endogenize the value to search in the face
+of a given inelastic aggregate labor supply.
+
+Define a set $X$ of possible labor forces in a market as
+follows:
+$$
+X \equiv \cases{
+ \Bigl\{x \in \bigl\{x^-(\theta_i)\,,\; x^+(\theta_i)\bigr\}_{i=1}^m \,:\;
+   x^+(\theta_1) \leq x \leq x^-(\theta_m) \Bigr\}, & \cr
+\noalign{\vskip.2cm}
+\hskip5.5cm {\rm if} \;x^+(\theta_1) \leq x^-(\theta_m); & \cr
+\noalign{\vskip.3cm}
+ \Bigl\{x \in \left[x^-(\theta_m)\,,\; x^+(\theta_1) \right] \Bigr\}\,,
+                     \hskip1.5cm {\rm otherwise.} &                \cr}
+$$
+The set $X$ is the ergodic set of labor forces in a stationary
+equilibrium. This can be seen by considering a single market
+with an initial labor force $x$. Suppose that $x > x^+(\theta_1)$;
+the market will then
+eventually experience the least advantageous productivity shock
+with a next period's labor force of $x^+(\theta_1)$. Thereafter,
+the island can at most attract a labor force $x^-(\theta_m)$
+associated with the most advantageous productivity
+shock.
+Analogously, if the market's initial labor force is
+$x < x^-(\theta_m)$, it will eventually have a labor force of
+$x^-(\theta_m)$ after experiencing the most advantageous productivity
+shock. Its labor force will thereafter never fall below
+$x^+(\theta_1)$, which is the next period's labor force of a market
+experiencing the least advantageous shock (given a current
+labor force greater than or equal to $x^+(\theta_1)$). Finally,
+in the case that $x^+(\theta_1) > x^-(\theta_m)$, any initial
+distribution of workers such that each island's labor force
+belongs to the closed interval
+$\left[x^-(\theta_m)\,,\; x^+(\theta_1) \right]$
+can constitute a stationary equilibrium. This would be a parameterization
+of the model where agents do not find it worthwhile to relocate in
+response to productivity shocks.
+
+
+In a stationary equilibrium, a market's transition probabilities
+among states $(\theta, x)$ are given by
+$$\eqalign{
+\Gamma(\theta', x' \vert \theta, x) \;=\; \pi(\theta, \theta')\;\cdot\;
+I\Bigl(\,
+&\left[x' = x^+(\theta) \; \hbox{and} \; x \geq x^+(\theta) \right]
+\;\hbox{or}\;                                                     \cr
+&\left[x' = x^-(\theta) \; \hbox{and} \; x \leq x^-(\theta) \right]
+\;\hbox{or}\;                                                     \cr
+&\left[x' = x \; \hbox{and} \; x^-(\theta) < x < x^+(\theta) \right]
+                                                           \,  \Bigr)\,, \cr
+\noalign{\vskip.2cm}
+&\hskip1cm \hbox{for} \ \ x,x' \in X \;\; \hbox{and all}\ \
+                          \theta, \, \theta'\,;                     \cr}
+$$
+where $I(\cdot)$ is the indicator function that
+ takes on the value
+1 if any of its arguments are true and 0 otherwise.
+These transition probabilities define an operator $P$ on distribution
+functions $\Psi_t(\theta,x;v_u)$ as follows: Suppose that at a point
+in time, the distribution of productivity shocks and labor forces
+across markets is given by $\Psi_t(\theta,x;v_u)$, then the next
+period's distribution is
+$$\eqalign{
+\Psi_{t+1}(\theta',x';v_u) \;&=\;
+P \Psi_{t}(\theta',x';v_u) \cr
+\;&=\; \sum_{x \in X}\ \sum_{\theta}
+            \Gamma(\theta', x' \vert \theta, x)\, \Psi_t(\theta,x;v_u)\,.\cr}
+$$
+Except for the case when the stationary equilibrium involves no
+reallocation of labor, the described process has a
+unique stationary distribution, $\Psi(\theta,x;v_u)$.
+
+Using the stationary distribution $\Psi(\theta,x;v_u)$, we can
+compute the economy's average labor force per market,
+$$
+\bar x(v_u) \;=\; \sum_{x \in X}\ \sum_{\theta} x \, \Psi(\theta,x;v_u)\,,
+$$
+where the argument $v_u$ makes explicit that the construction
+of a stationary equilibrium rests on the maintained assumption
+that the value to search is exogenously given by $v_u$. The
+economy's equilibrium labor force $\bar x$ varies negatively
+with $v_u$. In a stationary equilibrium with labor
+movements, a higher value to search is only consistent with
+higher wage rates, which in turn require higher marginal
+products of labor, that is, a smaller labor force on the islands.
+
+From an economy-wide viewpoint, it is the size of the labor
+force that is fixed, let's say $\hat x$, and the value to
+search that adjusts to clear the markets. To find a
+stationary equilibrium for a particular $\hat x$, we trace
+out the schedule $\bar x(v_u)$ for different values of $v_u$.
+The equilibrium pair $(\hat x, v_u)$ can then be read off at the
+intersection $\bar x(v_u) = \hat x$, as illustrated in
+Figure \Fg{fig191f}. %19.1.
+
+%%%%%%%%%%%
+%\topinsert
+%$$\grafone{fig191.eps,height=2.5in}{{\bf Figure 19.1}  The
+%curve maps an economy's average labor force per market, $\bar x$,
+%into the stationary-equilibrium value to search, $v_u$.}
+%$$\endinsert
+%%%%%%%%%%%%
+
+\midfigure{fig191f}
+\centerline{\epsfxsize=3truein\epsffile{fig191.eps}}
+\caption{The curve maps an economy's average labor force per market, $\bar x$,
+into the stationary equilibrium value to search, $v_u$.}
+\infiglist{fig191f}
+\endfigure
+
+%\vfil\eject
+ \index{matching model}
+\section{A matching model}\label{sec:matchingmodel}%
+Another model of unemployment is the matching framework, as described
+by Diamond (1982), Mortensen (1982), and Pissarides (1990).
+\auth{Diamond, Peter A.}\auth{Mortensen, Dale T.}\auth{Pissarides, Christopher}%
+The basic
+model is as follows: Let there be a continuum of identical workers
+with measure normalized to 1. The workers are infinitely lived and
+risk neutral. The objective of each worker is to maximize the expected
+discounted value of leisure and labor income. The leisure enjoyed by
+an unemployed worker is denoted $z$, while the current utility of an
+employed worker is given by the wage rate $w$. The workers'
+discount factor is $\beta = (1+r)^{-1}$.
+
+The production technology is constant returns to scale, with labor
+as the only input. Each employed worker produces $y$ units of output.
+Without loss of generality, suppose each firm employs at most one
+worker. A firm entering the economy incurs a vacancy cost $c$ in
+\index{vacancy}%
+each period when looking for a worker, and in a subsequent match
+the firm's per-period earnings are $y-w$. All matches are exogenously
+destroyed with per-period probability $s$.
+ Free entry implies that the expected
+discounted stream of a new firm's vacancy costs and earnings is
+equal to zero. The firms have the same discount factor as the
+workers (who would be the owners in a closed economy).
+
+The measure of successful matches in a period is given by a matching
+function  \index{matching model!matching function}%
+ $M(u,v)$, where $u$ and $v$ are the aggregate measures of
+unemployed workers and vacancies. The matching function is increasing
+in both its arguments, concave, and homogeneous of degree 1. By the
+homogeneity assumption, we can write the probability of filling a
+vacancy as $q(v/u) \equiv M(u,v)/v$. The ratio between vacancies and
+unemployed workers, $\theta \equiv v/u$, is commonly labelled the
+{\it tightness\/} of the labor market.  \index{tightness of labor market}%
+The probability that an unemployed
+worker will be matched in a period is $\theta q(\theta)$. We
+will assume that the matching function has the Cobb-Douglas form,
+which implies constant elasticities,
+$$\EQNalign{
+M(u,v) & \;=\; A u^{\alpha} v^{1-\alpha} \,, \cr { \partial M(u,v) \over \partial u} {u \over M(u,v) }  & \;=\;
+- q'(\theta) {\theta \over q(\theta)}  \;=\; \alpha \,, \EQN matchingfunction \cr}
+$$
+where $A>0$, $\alpha\in(0,1)$, and the last equality will be used
+repeatedly in our derivations that follow.
+
+Finally, the wage rate is assumed to be determined in a Nash bargain between
+a matched firm and worker.  Let $\phi\in[0,1)$ denote the worker's bargaining
+strength, or his weight in the Nash product, as described in the next subsection.
+
+
+%\vfill\eject
+\subsection{A steady state}
+
+In a steady state, the measure of laid-off workers in a period,
+$s(1-u)$, must be equal to the measure of unemployed workers
+gaining employment, $\theta q(\theta) u$. The steady-state
+unemployment rate can therefore be written as
+$$
+u \;=\; {s \over s \,+\, \theta q(\theta) } \,. \EQN unemp
+$$
+To determine the equilibrium value of $\theta$, we now turn to
+the situations faced by firms and workers, and we impose the
+no-profit condition for vacancies and the Nash bargaining
+outcome on firms' and workers' payoffs.
+
+A firm's value of a filled job $J$ and a vacancy $V$ are given by
+$$\EQNalign{
+J\;&=\; y\,-\, w\,+\,\beta \left[ sV \,+\, (1-s)J \right] \,,  \EQN J_eq \cr
+V\;&=\; -c \,+\, \beta \bigl\{ q(\theta) J \,+\,
+[1 - q(\theta)] V \bigr\}                     \,.  \EQN V_eq \cr}
+$$
+That is, a filled job turns into a vacancy with probability
+$s$, and a vacancy turns into a filled job with probability
+$q(\theta)$. After invoking the condition that vacancies earn
+zero profits, $V=0$, equation \Ep{V_eq} becomes
+$$
+J \;=\; {c \over \beta q(\theta)} \,,                          \EQN V2_eq
+$$
+which we substitute into equation \Ep{J_eq} to arrive at
+$$
+w\;=\; y \,-\, {r+s \over q(\theta)} c \,.                     \EQN wage1
+$$
+The wage rate in equation \Ep{wage1} ensures that firms with vacancies
+break even in an expected present-value sense. In other words,
+a firm's match surplus must be equal to $J$ in equation \Ep{V2_eq}
+in order for the firm to recoup its average discounted costs
+of filling a vacancy.
+
+\index{matching model!match surplus}
+\index{Nash bargaining}%
+The worker's share of the match surplus
+is the difference between the value of an employed
+worker $E$ and the value of an unemployed worker $U$,
+$$\EQNalign{
+E\;&=\; w\,+\, \beta \bigl[s U \,+\, (1-s) E \bigr] \,,     \EQN E_eq \cr
+U\;&=\; z\,+\, \beta \bigl\{\theta q(\theta) E \,+\,
+[1 - \theta q(\theta)] U \bigr\} \,,           \EQN U_eq \cr}
+$$
+where an employed worker becomes unemployed with probability
+$s$ and an unemployed worker finds a job with probability
+$\theta q(\theta)$.  The worker's share of the match surplus, $E-U$, has to
+be related to the firm's share of the match surplus, $J$, in a particular
+way to be consistent with Nash bargaining.
+Let the total match
+surplus be denoted $S=(E-U)+J$, which is shared according to
+the Nash product
+$$\EQNalign{
+&\max_{(E-U), J} \; \; (E-U)^\phi J^{1-\phi} \EQN Nash_prod   \cr
+\noalign{\vskip.2cm}
+&\hbox{subject to} \quad S \,=\, E-U \,+\, J\,,  \cr}
+$$
+with solution
+$$
+E-U \;=\; \phi S \  \hbox{and} \ J \;=\; (1-\phi) S\,. \EQN split
+$$
+
+After solving equations \Ep{J_eq} and \Ep{E_eq} for $J$ and $E$,
+respectively, and substituting them into equations \Ep{split}, we get
+$$
+w\;=\; {r \over 1+r} U \,+\, \phi\left(y\,-\, {r \over 1+r} U\right)\,.
+                                                     \EQN wage2
+$$
+The expression is quite intuitive when seeing $r(1+r)^{-1}U$
+as the annuity value of being unemployed. The wage rate is
+just equal to this outside option plus the worker's share $\phi$ of
+the one-period match surplus. The annuity value of being unemployed
+can be obtained by solving equation \Ep{U_eq} for $E-U$ and
+substituting this expression and equation \Ep{V2_eq} into equations
+\Ep{split},
+$$
+{r \over 1+r} U \;=\; z \,+\, {\phi\,\theta\,c \over 1-\phi}\,.  \EQN U_value
+$$
+Substituting equation \Ep{U_value} into equation \Ep{wage2},
+we obtain still another expression for the wage rate,
+$$
+w\;=\; z \,+\, \phi (y-z\,+\,\theta c)\,.              \EQN wage3
+$$
+That is, the Nash bargaining results in the worker receiving
+compensation for lost leisure $z$ and a fraction $\phi$ of both
+the firm's output in excess of $z$ and the economy's average
+vacancy cost per unemployed worker.
+
+The two expressions for the wage rate in equations \Ep{wage1} and
+\Ep{wage3} determine jointly the equilibrium value for $\theta$,
+$$
+y-z \;=\; {r\,+\,s\,+\,\phi\,\theta\,q(\theta) \over
+                    (1-\phi) q(\theta) } \; c \,.            \EQN equili
+$$
+This implicit function for $\theta$ ensures that
+vacancies are associated with zero profits, and that firms' and
+workers' shares of the match surplus are the outcome of Nash
+bargaining.
+
+
+
+\subsection{Welfare analysis}
+A  planner would choose an allocation that maximizes the discounted
+value of output and leisure net of vacancy costs. The
+social optimization problem does not involve any uncertainty because
+the aggregate fractions of successful matches and destroyed matches are
+just equal to the probabilities of these events. The social
+planner's problem of choosing the measure of vacancies,
+$v_t$, and next period's employment level, $n_{t+1}$, can then be
+written as
+$$\EQNalign{
+&\max_{\{v_t,n_{t+1}\}_{t}} \;\; \sum_{t=0}^\infty \beta^t
+     \left[y n_t \,+\, z(1-n_t) \,-\, c v_t \right] \,,   \EQN soc_obj  \cr
+&\hbox{subject to} \quad n_{t+1} \;=\; (1-s)n_t \,+\,
+                                q\left({v_t \over 1-n_t}\right) v_t \,,
+                                                           \EQN law_mot \cr
+&\hbox{given \ \ } n_0\,.                                               \cr}
+$$
+The first-order conditions with respect to $v_t$ and $n_{t+1}$,
+respectively, are
+%$$\EQNalign{
+%-\beta^t c \,&+\, \lambda_t \left[q'\left(\theta_t\right) \theta_t
+%              \,+\, q\left(\theta_t\right) \right] \;=\; 0 \,, \EQN foc_v \cr
+%\noalign{\vskip.2cm}
+%-\lambda_t \,&+\, \beta^{t+1} (y-z) \cr
+%\noalign{\vskip.1cm}
+%           \,&+\, \lambda_{t+1}
+%  \left[ (1-s) \,+\, q'\left(\theta_{t+1}\right) \theta_{t+1}^2 \right]
+%                                               \;=\; 0\,,     \EQN foc_n  \cr}
+%$$
+$$\EQNalign{
+-\beta^t c \, +\, \lambda_t \left[q'\left(\theta_t\right) \theta_t
+              \,+\, q\left(\theta_t\right) \right] & \;=\; 0 \,, \EQN foc_v \cr
+\noalign{\vskip.2cm}
+-\lambda_t \, +\, \beta^{t+1} (y-z)
+           \,+\, \lambda_{t+1}
+  \left[ (1-s) \,+\, q'\left(\theta_{t+1}\right) \theta_{t+1}^2 \right]
+                                               & \;=\; 0\,,   \hskip1cm  \EQN foc_n  \cr}
+$$
+where $\lambda_t$ is the Lagrangian multiplier on equation \Ep{law_mot}.
+Let us solve for $\lambda_t$ from equation \Ep{foc_v}, and substitute
+into equation \Ep{foc_n} evaluated at a stationary solution
+$$
+y-z \;=\; {r\,+\,s\,+\,\alpha\,\theta\,q(\theta) \over
+                    (1-\alpha) q(\theta) } \; c \,.            \EQN soc_opt
+$$
+A comparison of this social optimum to the private outcome in equation
+\Ep{equili} shows that the decentralized equilibrium is only efficient
+if $\phi = \alpha$. If the workers' bargaining strength $\phi$ exceeds
+(falls below) $\alpha$, the equilibrium job supply is too low (high).
+Recall that $\alpha$ is both the elasticity of the matching function with
+respect to the measure of unemployment, and the negative of the
+elasticity of the probability of filling a vacancy with respect to
+$\theta_t$. In its latter meaning, a high $\alpha$ means that
+an additional vacancy has a large negative impact on all firms'
+probability of filling a vacancy; the social planner would therefore
+like to curtail the number of vacancies by granting workers a relatively
+high bargaining power. Hosios (1990) shows how the efficiency condition
+$\phi=\alpha$ is a general one for the matching framework.
+
+\auth{Hosios, Arthur J.}
+It is instructive to note that the social optimum is equivalent
+to choosing the worker's bargaining power $\phi$ such that the value of
+being unemployed is maximized in a decentralized equilibrium. To see
+this point, differentiate the value of being unemployed \Ep{U_value}
+to find the slope of the indifference in the space of $\phi$ and
+$\theta$,
+$$
+{ \partial \theta \over \partial \phi} \;=\; - {\theta \over \phi (1-\phi)}\,,
+$$
+and use the implicit function rule to find the corresponding slope of
+the equilibrium relationship \Ep{equili},
+$$
+{ \partial \theta \over \partial \phi} \;=\; - {y\,-\,z\,+\,\theta c \over
+\left[\phi \,-\, (r+s)\, q'(\theta)\, q(\theta)^{-2} \right] \, c }\;.
+$$
+We set the two slopes equal to each other because a maximum would be
+attained at a tangency point between the highest attainable
+indifference curve and equation \Ep{equili} (both curves are negatively
+sloped and convex to the origin):
+$$
+y-z \;=\; {(r+s) {\displaystyle \alpha \over \displaystyle  \phi}
+           \,+\,\phi\,\theta\,q(\theta) \over
+                    (1-\phi) q(\theta) } \; c \,.            \EQN U_opt
+$$
+When we also require that the point of tangency satisfy the
+equilibrium condition \Ep{equili}, it can be seen that
+$\phi = \alpha$ maximizes the value of being unemployed in a
+decentralized equilibrium. The solution is the same as the
+social optimum because the social planner and an unemployed
+worker both prefer an optimal rate of investment
+in vacancies, one that takes matching externalities into account.
+\index{matching model!match surplus}
+
+\subsection{Size of the match surplus}
+The size of the match surplus depends naturally on the output $y$
+produced by the worker, which is lost if the match breaks up and
+the firm is left to look for another worker. In principle,
+this loss includes any returns to production factors used by the
+worker that cannot be adjusted immediately. It might then
+seem puzzling that a common assumption in the matching literature
+is to exclude payments to physical capital when determining the
+size of the match surplus (see, e.g., Pissarides, 1990).
+\auth{Pissarides, Christopher}%
+Unless capital can be moved without friction in the economy,
+this exclusion of payments to physical capital must rest on some
+implicit assumption of outside financing from a third party that
+is removed from the wage bargain between the firm and the worker.
+For example, suppose the firm's capital is financed by a financial
+intermediary that demands specific rental payments in order
+not to ask for the firm's bankruptcy.
+As long as the financial intermediary can credibly distance itself
+from the firm's and worker's bargaining, it would be rational for
+the two latter parties to subtract the rental payments from the
+firm's gross earnings and bargain over the remainder.
+
+In our basic matching model, there is no physical capital, but
+there is investment in vacancies. Let us consider the possibility
+that a financial intermediary provides a single firm funding for this
+investment. The simplest contract would
+be that the intermediary hand over funds $c$ to a firm with a
+vacancy in exchange for a promise that the firm pay
+$\epsilon$ in every future period of operation. If the firm cannot
+find a worker in the next period, it fails and the intermediary
+writes off the loan, and otherwise the intermediary receives the
+stipulated interest payment $\epsilon$ so long as a successful
+match stays in business. This agreement with a single firm will
+have a negligible effect on the economy-wide values of market
+tightness $\theta$ and
+the value of being unemployed $U$. Let us examine the consequences
+for the particular firm involved and the worker it meets.
+
+Under the conjecture that a match will be acceptable to both the
+firm and the worker, we can compute the interest payment $\epsilon$
+needed for the financial intermediary to break even in an expected
+present-value sense,
+$$
+c\;=\; q(\theta) \, \beta  \sum_{t=0}^\infty
+                          \beta^t (1-s)^t \epsilon
+\quad \Longrightarrow \quad \epsilon \;=\; {r+s \over q(\theta)} \, c\,.
+                                                            \EQN interest
+$$
+A successful match will then generate earnings net of the interest
+payment equal to $\tilde y = y - \epsilon$. To determine how the
+match surplus is split between the firm and the worker, we replace
+$y$, $w$, $J$, and $E$ in equations \Ep{J_eq} and \Ep{E_eq}, and
+\Ep{Nash_prod} by $\tilde y$, $\tilde w$, $\tilde J$, and $\tilde E$.
+That is, $\tilde J$ and $\tilde E$ are the values to the firm and the worker,
+respectively, for this particular filled job. We treat $\theta$, $V$, and
+$U$ as constants, since they are determined in the rest of the
+economy. The Nash bargaining can then be seen to yield
+$$
+\tilde w \;=\; {r \over 1+r} U \,+\,
+                  \phi\left(\tilde y\,-\, {r \over 1+r} U\right)
+         \;=\; {r \over 1+r} U \,+\, \phi {\phi \, (r+s) \over
+                  (1-\phi)\,q(\theta) } \,c \,,
+$$
+where the first equality corresponds to the previous equation \Ep{wage2}.
+The second equality is obtained after invoking
+$\tilde y = y - \epsilon$ and equations \Ep{U_value}, \Ep{equili},
+and \Ep{interest}, and the resulting
+expression confirms the conjecture that the match is
+acceptable to the worker who receives a wage in excess of the
+annuity value of being unemployed. The firm will, of course, be
+satisfied with any positive $\tilde y - \tilde w$ because it has
+not incurred any costs whatsoever in order to form the match,
+$$
+\tilde y \,-\, \tilde w \;=\; {\phi \, (r+s) \over q(\theta)} \, c\;>\;0\,,
+$$
+where we once again have used $\tilde y = y - \epsilon$, equations
+\Ep{U_value}, \Ep{equili}, and \Ep{interest}, and the
+preceding expression for $\tilde w$. Note that $\tilde y - \tilde w =
+\phi \epsilon$ with the following interpretation:
+If the interest payment on the firm's investment, $\epsilon$, was
+not subtracted
+from the firm's earnings prior to the Nash bargain, the worker
+would receive an increase in the wage equal to his share $\phi$ of
+the additional ``match surplus.'' The present financial arrangement
+saves the firm this extra wage payment, and the saving becomes the
+firm's profit.  Thus, a single firm with the proposed contract
+would have a strictly positive present value when entering the
+economy of the previous subsection. If there were unlimited  entry of new firms having
+access to intermediaries offering such a contract, those profits would be
+competed away.  We ask the reader to characterize equilibrium outcomes
+under free entry.
+\index{matching model!heterogeneous jobs}
+
+\auth{Caballero, Ricardo J.}
+ \auth{Acemoglu, Daron} \auth{Bertola, Giuseppe} \auth{Davis, Steven J.}%
+\section{Matching model with heterogeneous jobs}\label{Sec_matching_heterojobs}%
+Acemoglu (1997), Bertola and Caballero (1994), and Davis (1995)
+explore matching models
+where heterogeneity on the job supply side must be negotiated through a
+single matching function, which gives rise to additional externalities.
+Here, we will study an infinite horizon version of Davis's model,
+which assumes that heterogeneous jobs are
+created in the same labor market with only one matching
+function. We extend our basic matching framework as follows:
+Let there be $I$ types of jobs. A filled job of type $i$
+produces $y^i$. The cost in each period of creating a measure $v^i$
+of vacancies of type $i$ is given by a strictly convex upward-sloping cost
+schedule, $C^i(v^i)$.
+In a decentralized equilibrium, we will assume that vacancies are
+competitively supplied at a price equal to the marginal cost of
+creating an additional vacancy, ${C^i}'(v^i)$, and we
+retain the assumption that firms employ at most one worker.
+Another implicit assumption is that $\{y^i, C^i(\cdot)\}$ are such
+that all types of jobs are created in both the decentralized steady
+state and the socially optimal steady state.
+
+
+\subsection{A steady state}
+In a steady state, there will be a time-invariant distribution of
+employment and vacancies across types of jobs. Let $\eta^i$
+be the fraction of type $i$ jobs
+among all vacancies. With respect to a job of type $i$,
+the value of an employed worker, $E^i$, and a firm's values
+of a filled job, $J^i$, and a vacancy, $V^i$, are given by
+$$\EQNalign{
+J^i\;&=\; y^i\,-\, w^i\,+\,\beta \bigl[ sV^i \,+\, (1-s)J^i \bigr] \,,
+                                                               \EQN Ji_eq \cr
+V^i\;&=\; -{C^i}'(v^i)\,+\, \beta \bigl\{ q(\theta) J^i \,+\,
+\bigl[1 - q(\theta)\bigr] V^i     \bigr\}        \,,  \EQN Vi_eq \cr
+E^i\;&=\; w^i\,+\, \beta \left[s U \,+\, (1-s) E^i \right] \,, \EQN Ei_eq \cr
+U\;&=\; z\,+\, \beta \Bigl\{\theta q(\theta) \sum_j \eta^j E^j \,+\,
+\bigl[1 - \theta q(\theta) \bigr] U \Bigr\} \,,             \EQN Ui_eq \cr}
+$$
+where the value of being unemployed, $U$, reflects that the
+probabilities of being matched with different types of jobs are
+equal to the fractions of these jobs among all vacancies.
+
+After imposing a zero-profit condition on all types of vacancies,
+we arrive at the analogue to equation \Ep{wage1},
+$$
+w^i\;=\; y^i \,-\, {r+s \over q(\theta)} {C^i}'(v^i) \,.         \EQN wage1i
+$$
+As before, Nash bargaining can be shown to give rise to still another
+characterization of the wage,
+$$
+w^i\;=\; z \,+\, \phi\Bigl[y^i-z\,+\,\theta
+                \sum_j \eta^j {C^j}'(v^j)  \Bigr]\,,    \EQN wage3i
+$$
+which should be compared to equation \Ep{wage3}. After
+setting the two wage expressions \Ep{wage1i} and \Ep{wage3i} equal to
+each other, we arrive at a set of equilibrium conditions for
+the steady-state distribution of vacancies and
+the labor market tightness,
+$$
+y^i-z \;=\; {\displaystyle r\,+\,s\,+\,\phi\,\theta\,q(\theta)
+              {\sum\nolimits_j \eta^j {C^j}'(v^j)
+              \over  {C^i}'(v^i) }
+             \over \displaystyle  (1-\phi) q(\theta) } \; {C^i}'(v^i) \,.
+                                                           \EQN equilii
+$$
+
+
+When we next turn to the efficient allocation in the current setting,
+it will be useful to manipulate equation \Ep{equilii}
+in two ways. First, subtract from this equilibrium expression for job $i$
+the corresponding expression for job $j$,
+$$
+y^i-y^j \;=\; {r\,+\,s\, \over  (1-\phi) q(\theta) } \,
+            \left[ {C^i}'(v^i) \,-\,  {C^j}'(v^j) \right] \,.   \EQN equilii2
+$$
+Second, multiply equation \Ep{equilii} by $v^i$ and sum over all types of
+jobs,
+$$
+\sum_i v^i (y^i-z) \;=\; {r\,+\,s\,+\,\phi\,\theta\,q(\theta)  \over
+      (1-\phi) q(\theta) } \; \sum_i v^i {C^i}'(v^i) \,. \EQN equilii3
+$$ (This expression is reached after invoking $\eta^j \equiv v^j / \sum_h v^h$, and an interchange of summation signs.)
+
+
+\subsection{Welfare analysis}
+
+The social planner's optimization problem becomes
+$$\EQNalign{
+& \max_{\{v_t^i,n_{t+1}^i\}{}_{t,i}} \;\; \sum_{t=0}^\infty \beta^t
+     \Bigl[\sum_j y^j n_t^j \,+\, z\Bigl(1-\sum_j n_t^j\Bigr)
+          \,-\, \sum_j C^j(v_t^j) \Bigr],      \EQN soc_obji;a  \cr
+\noalign{\vskip.2cm}
+%%%\noalign{\hbox{subject to }}
+&\hbox{subject to }\ \
+ n_{t+1}^i \;=\; (1-s)n_t^i \,+\,
+      q\left({\sum_j v_t^j \over 1-\sum_j n_t^j}\right) v_t^i \,,
+\hskip.3cm          \forall i, \; t\geq 0, \hskip1.5cm  \EQN soc_obji;b  \cr
+&\hbox{given \ \ } \left\{n_0^i\right\}_i\,.       \EQN soc_obji;c  \cr}
+$$
+The first-order conditions with respect to $v_t^i$ and $n_{t+1}^i$,
+respectively, are
+$$\EQNalign{
+&-\beta^t {C^i}'(v_t^i) \,+\, \lambda_t^i q(\theta_t) \,+\,
+              { q'\left(\theta_t\right)
+               \over 1 - \sum\nolimits_j n_t^j } \,
+             \sum_j \lambda_{t}^j \, v_t^j \;=\; 0 \,,     \EQN foc_vi \cr
+\noalign{\vskip.2cm}
+&-\lambda_t^i \,+\, \beta^{t+1} (y^i-z) \,+\, \lambda_{t+1}^i (1-s) \cr
+\noalign{\vskip.2cm}
+&\hskip 2.5cm   \,+\, {q'\left(\theta_{t+1}\right)\theta_{t+1}
+            \over 1 - \sum\nolimits_j n_{t+1}^j }\,
+            \sum_j \lambda_{t+1}^j \, v_{t+1}^j \;=\; 0\,. \hskip1cm \EQN foc_ni  \cr}
+$$
+To explore the efficient relative allocation of different types of
+jobs, we subtract from equation \Ep{foc_vi} the corresponding expression
+for job $j$,
+$$
+\lambda_t^i \,-\, \lambda_t^j \;=\; {\beta^t \left[{C^i}'(v_t^i)\,-\,
+                   {C^j}'(v_t^j) \right] \over q(\theta_t) }\,.  \EQN lamb_i
+$$
+Next, we do the same computation for equation \Ep{foc_ni} and substitute
+equation \Ep{lamb_i} into the resulting expression evaluated at a
+stationary solution,
+$$
+y^i-y^j \;=\; {r\,+\,s\, \over  q(\theta) } \,
+            \left[ {C^i}'(v^i) \,-\,  {C^j}'(v^j) \right] \,.   \EQN soc_opti
+$$
+A comparison of equation \Ep{soc_opti} to equation \Ep{equilii2}
+suggests that there will be an efficient {\it relative\/} supply
+of different types of jobs in a
+decentralized equilibrium only if $\phi=0$. For any strictly positive
+$\phi$, the difference in marginal costs of creating vacancies for
+two different jobs is smaller in the decentralized equilibrium as
+compared to the social optimum; that is, the decentralized equilibrium
+displays smaller differences in the distribution of vacancies across
+types of jobs. In other words, the decentralized equilibrium creates
+relatively too many ``bad jobs'' with low $y$'s or, equivalently,
+relatively too few ``good jobs'' with high $y$'s.
+The inefficiency in the mix of jobs disappears if the workers have no
+bargaining power so that the firms reap all the benefits of upgrading
+jobs.\NFootnote{The interpretation that $\phi=0$, which is needed to attain an
+efficient relative supply of different types of jobs in a decentralized
+equilibrium, can be made precise in the following way:  Let $v$ and $n$
+denote any sustainable stationary values of the economy's measure of
+total vacancies and employment rate, that is,
+$s n = q\left({v \over1-n}\right) v$.  Solve the social planner's
+optimization problem in equation \Ep{soc_obji} subject to the
+additional constraints
+%$$
+%\sum_i v_t^i = v\,, \hskip.25cm  \sum_i n_{t+1}^i = n\,,\hskip.25cm
+%\forall t\geq 0,
+%$$
+$
+\sum_i v_t^i = v\,,   \sum_i n_{t+1}^i = n
+\forall t\geq 0,
+$
+given $\{n_0^i: \sum_i n_{0}^i = n \}$. After applying the
+steps in the main text to the first-order conditions of this problem,
+we arrive at the very same expression \Ep{soc_opti}.
+Thus, if $\{v, n\}$
+is taken to be the steady-state outcome of the decentralized economy,
+it follows that equilibrium condition \Ep{equilii2} satisfies
+efficiency condition \Ep{soc_opti} when $\phi = 0$.}
+But from before we know that workers' bargaining power is
+essential to correct an excess supply of the {\it total\/} number of
+vacancies.
+
+To investigate the efficiency with respect to the total number of
+vacancies, multiply equation \Ep{foc_vi} by $v^i$ and sum over all types of
+jobs,
+$$
+\sum_i \lambda_t^i \, v_t^i \;=\; {\beta^t \sum\nolimits_i v_t^i
+ {C^i}'(v_t^i) \over q(\theta_t) \,+\, q'(\theta_t) \theta_t} \,. \EQN lamb_i2
+$$
+Next, we do the same computation for equation \Ep{foc_ni} and substitute
+equation \Ep{lamb_i2} into the resulting expression evaluated at a stationary
+solution,
+$$
+\sum_i v^i (y^i-z) \;=\; {r\,+\,s\,+\,\alpha\,\theta\,q(\theta)
+    \over  (1-\alpha) q(\theta) } \; \sum_i v^i {C^i}'(v^i) \,. \EQN soc_opti2
+$$
+A comparison of equations \Ep{soc_opti2} and \Ep{equilii3} suggests
+the earlier result from the basic matching model; that is, an
+efficient {\it total\/}
+supply of jobs in a decentralized equilibrium calls for
+$\phi = \alpha$.\NFootnote{The suggestion that $\phi = \alpha$, which is
+needed to attain an efficient total supply of jobs in a decentralized
+equilibrium, can be made precise in the following way. Suppose that the
+social planner is forever constrained to some arbitrary relative
+ distribution, $\{\gamma^i\}$, of types of jobs and vacancies,
+where $\gamma^i\geq 0$ and
+$\sum_i \gamma^i = 1$. The constrained social planner's problem is then
+given by equations \Ep{soc_obji} subject to the additional restrictions
+%$
+%v_t^i = \gamma^i v_t \,, \hskip.5cm  n_t^i = \gamma^i n_t \,,\hskip.5cm
+%                                                            \forall t\geq 0.
+%$
+$
+v_t^i = \gamma^i v_t \,, n_t^i = \gamma^i n_t
+                                                            \forall t\geq 0.
+$
+That is, the only choice variables are now total vacancies
+and employment, $\{v_t,n_{t+1}\}$.  After consolidating the
+two first-order conditions with respect to $v_t$ and $n_{t+1}$, and evaluating
+at a stationary solution, we obtain
+$$
+\sum_j y^j \gamma^j - z \;=\; {r\,+\,s\,+\,\alpha\,\theta\,q(\theta)
+    \over  (1-\alpha) q(\theta) } \;
+           \sum_j \gamma^j {C^j}'(\gamma^j v) \,.
+$$
+By multiplying both sides by $v$, we arrive at the very same expression
+\Ep{soc_opti2}. Thus, if the arbitrary distribution $\{\gamma^i\}$
+is taken to be the steady-state outcome of the decentralized economy,
+it follows that equilibrium condition \Ep{equilii3} satisfies
+efficiency condition \Ep{soc_opti2} when $\phi = \alpha$.}
+Hence, Davis (1995) concludes that there is a
+fundamental tension between the condition for an efficient mix
+of jobs ($\phi=0$) and the standard condition for an efficient
+total supply of jobs ($\phi=\alpha$).
+\index{matching model!separate markets}
+\subsection{The allocating role of wages  I: separate markets}
+
+The last section clearly demonstrates Hosios's (1990) characterization
+\auth{Hosios, Arthur J.}%
+of the matching framework: ``Though wages in matching-bargaining
+models are completely flexible, these wages have nonetheless been
+denuded of any allocating or signaling function: this is because
+matching takes place before bargaining and so search effectively
+precedes wage-setting.'' In Davis's matching model, the problem of
+wages having no allocating role is compounded through the existence
+of heterogeneous jobs. But as discussed by Davis, this latter
+complication would be overcome if different types of jobs were
+{\it ex ante\/} sorted into separate markets. Equilibrium movements
+of workers across markets would then remove the tension between
+the optimal mix and the total supply of jobs. Different wages in
+different markets would serve an allocating role for the labor
+supply across markets, even though the equilibrium wage in each market
+would still be determined through bargaining after matching.
+
+Let us study the outcome when there are such separate markets for
+different types of jobs and each worker can  participate in only one
+market at a time. The modified model is described by equations
+\Ep{Ji_eq}, \Ep{Vi_eq}, and \Ep{Ei_eq} where
+the market tightness variable is now also indexed by $i$ and
+$\theta^i$, and the new expression for the value of being
+unemployed is
+$$
+U\;=\; z\,+\, \beta \bigl\{\theta^i q(\theta^i) E^i \,+\,
+\bigl[1 - \theta^i q(\theta^i) \bigr] U \bigr\} \,.          \EQN Uis_eq
+$$
+In an equilibrium, an unemployed worker attains the value
+$U$ regardless of which labor market he participates in.
+The characterization of a steady state proceeds along the
+same lines as before.  Let us here reproduce only three
+equations that will be helpful in our reasoning. The wage
+in market $i$ and the annuity value of an unemployed worker can
+be written as
+$$\EQNalign{
+w^i \;&=\; \phi y^i \,+\, (1-\phi) {r \over 1+r} U\,,  \EQN wageis     \cr
+\noalign{\vskip.2cm}
+{r \over 1+r} U \;&=\; z\,+\,{\phi \theta^i {C^i}'(v^i) \over 1-\phi} \,,
+                                                     \EQN U_valueis  \cr}
+$$
+and the equilibrium condition for market $i$ becomes
+$$
+y^i-z \;=\; {r\,+\,s\,+\,\phi\,\theta^i\,q(\theta^i)
+    \over  (1-\phi) q(\theta^i) } \, {C^i}'(v^i) \,.          \EQN equiliis
+$$
+
+The social planner's objective function is the same as expression
+\Ep{soc_obji;a}, but the earlier constraint \Ep{soc_obji;b} is now
+replaced by
+$$\EQNalign{
+n_{t+1}^i \;&=\; (1-s)n_t^i \,+\,
+      q\left({v_t^i \over u_t^i}\right) v_t^i \,,
+                                                   \cr
+1\;&=\;\sum_j \left(u_t^j \,+\, n_t^j \right) \,,  \cr}
+$$
+where $u_t^i$ is the measure of unemployed workers in
+market $i$. At a stationary solution, the first-order
+conditions with respect to
+$v_t^i$, $u_t^i$, and $n_{t+1}^i$ can be combined to
+read
+$$
+y^i-z \;=\; {r\,+\,s\,+\,\alpha\,\theta^i\,q(\theta^i) \over
+                 (1-\alpha) q(\theta^i) } \; {C^i}'(v^i) \,.  \EQN soc_optis
+$$
+Equations \Ep{equiliis} and \Ep{soc_optis} confirm Davis's
+finding that the social optimum can be attained with
+$\phi = \alpha$ as long as different
+types of jobs are sorted into separate markets.
+
+It is interesting to note that the socially optimal wages, that is,
+equation \Ep{wageis} with $\phi=\alpha$, imply wage differences for
+{\it ex ante\/} identical workers. Wage differences here are not a sign of any
+inefficiency but rather necessary to ensure an optimal
+supply and composition of jobs. Workers with higher pay are
+compensated for an unemployment spell in their job market, which is
+on average longer.
+
+\index{matching model!wage announcements}%
+\subsection{The allocating role of wages  II: wage announcements}
+According to Moen (1997), we can reinterpret the socially optimal
+\auth{Moen, Espen R.}%
+steady state in the last section as an economy with competitive wage
+announcements instead of wage bargaining with $\phi=\alpha$.
+Firms are assumed to
+freely choose a wage to announce, and then they join the market
+offering this wage without any bargaining. The socially optimal equilibrium
+is attained when workers as wage takers choose between labor markets,
+so that the value of an unemployed worker is equalized in the economy.
+
+To demonstrate that wage announcements are consistent with the
+socially optimal steady state, consider a firm with a vacancy
+of type $i$ which is free to choose any wage $\tilde w$ and
+then join a market with this wage. A labor market with wage
+$\tilde w$ has a market tightness $\tilde \theta$ such that
+the value of unemployment is equal to the economy-wide value
+$U$. After replacing $w$, $E$, and $\theta$ in equations \Ep{Ei_eq}
+and \Ep{Uis_eq} by $\tilde w$, $\tilde E$, and $\tilde \theta$,
+we can combine these two expressions to arrive at a
+relationship between $\tilde w$ and $\tilde \theta$,
+$$
+\tilde w \;=\; {r \over 1+r} U \,+\, {r+s \over
+\tilde \theta q(\tilde \theta)} \Bigl({r \over 1+r} U \,-\, z\Bigr) \,.
+                                                        \EQN tildew
+$$
+The expected present value of posting a vacancy of type $i$
+for one period in market $(\tilde w, \tilde \theta)$ is
+$$
+-{C^i}'(v^i) \,+\, q(\tilde \theta) \beta \sum_{t=0}^\infty
+\beta^t (1-s)^t (y^i-\tilde w) \;=\;
+-{C^i}'(v^i) \,+\, q(\tilde \theta) {y^i-\tilde w \over r+s} \,.
+$$
+After substituting equation \Ep{tildew} into this expression, we can
+compute the first-order condition with respect to $\tilde \theta$ as
+$$
+q'(\tilde \theta) {y^i \over r+s} \,-\, {z \over \tilde \theta^{2}}
+\,+\, \left[{1\over\tilde \theta^{2}} \,-\,
+ {q'(\tilde \theta) \over r+s} \right]
+\,{r \over 1+r}\, U \;=\; 0\,.
+$$
+Since the socially optimal steady state is our conjectured equilibrium,
+we get the economy-wide value $U$ from equation \Ep{U_valueis} with $\phi$
+replaced by $\alpha$. The substitution of this value for $U$ into the
+first-order condition yields
+$$
+y^i-z \;=\; {r\,+\,s\,+\,\alpha\,\tilde \theta\,q(\tilde \theta) \over
+         (1-\alpha) q(\tilde \theta)  } \;\;
+{\theta^i \over \tilde \theta} \; {C^i}'(v^i) \,.  \EQN equiliwa
+$$
+The right side is strictly decreasing in $\tilde \theta$, so by
+equation \Ep{soc_optis} the equality can only hold with
+$\tilde \theta=\theta^i$.
+We have therefore confirmed that the wages in an optimal steady state
+are such that firms would like freely to  announce them and to participate
+in the corresponding markets without any wage bargaining. The equal
+value of an unemployed worker across markets  ensures  the
+participation of workers, who now also act as wage takers.
+
+%%
+%%
+\def\lege{\raise.3ex\hbox{$>$\kern-.75em\lower1ex\hbox{$<$}}}
+%%
+%%
+\index{lotteries!households}
+\index{employment lottery}
+\section{Model of employment lotteries}\label{Empl_lottery}%
+Consider a labor market without search and matching frictions but
+where labor is indivisible. An individual can supply either
+one unit of labor or no labor at all, as assumed by Hansen (1985)
+and Rogerson (1988).
+\auth{Hansen, Gary D.}\auth{Rogerson, Richard}%
+In such a setting, employment lotteries can
+be welfare enhancing. The argument is best understood in
+Rogerson's static model, but with physical capital (and its
+implication of diminishing marginal product of labor)
+removed from the analysis.  We assume that a single good
+can be produced with labor, $n$, as the sole input in a
+constant returns to scale technology,
+$$
+f(n) \,=\, \gamma n\,,  \qquad \hbox{\rm where} \quad \gamma >0\,.  \EQN Elott_tech
+$$
+In a competitive equilibrium, the equilibrium wage is then equal to
+$\gamma$.
+Following Hansen and Rogerson, the preferences of an individual
+are assumed to be additively separable in consumption, $c$, and labor,
+$$
+u(c) \,-\, v(n)\,.
+$$
+The standard assumptions are that both $u$ and $v$ are twice continuously
+differentiable and increasing, but while $u$ is strictly concave,
+$v$ is convex. However, as pointed out by Rogerson, the precise
+properties of the function $v$ are not essential because of the
+indivisibility of labor. The only values of $v(n)$ that matter
+are $v(0)$ and $v(1)$. Let $v(0)=0$
+and $v(1)=A>0$. An individual who can supply one unit of labor
+in exchange for $\gamma$ units of goods would then choose to do
+so if
+$$
+u(\gamma) \,-\, A \;\geq\; u(0)\,,
+$$
+and otherwise the individual would choose not to work.
+
+The proposed allocation might be improved upon by introducing
+employment lotteries. That is, each individual chooses
+a probability of working, $\psi \in [0, 1]$, and he
+trades his stochastic labor earnings in contingency markets.
+We assume a continuum of agents so that the
+idiosyncratic risks associated with employment lotteries
+do not pose any aggregate risk, and the
+contingency prices are then determined by the probabilities
+of events occurring. (See chapters \use{recurge}, \use{assetpricing1}, and \use{assetpricing2}.)
+Let $c_1$ and $c_2$ be the individual's choice of consumption
+when working and not working, respectively. The optimization
+problem becomes
+$$\eqalign{
+\max_{c_1, c_2, \psi} \;\;&\psi \left[u(c_1) \,-\, A\right] \;+\;
+(1-\psi) \, u(c_2) \,,                                           \cr
+\hbox{\rm subject to} \quad &\psi c_1 \,+\, (1-\psi) c_2 \;\leq\;
+\psi \gamma \,,                                                  \cr
+ \quad &c_1, c_2 \,\geq\,0\,, \quad \psi \in [0, 1]\,.           \cr}
+$$
+At an interior solution for $\psi$, the first-order
+conditions for consumption imply that $c_1=c_2$,
+$$\eqalign{
+ \psi \, u'(c_1) \;&=\; \psi \, \lambda \,,                      \cr
+ (1-\psi) \, u'(c_2) \;&=\; (1-\psi) \, \lambda \,,              \cr}
+$$
+where $\lambda$ is the multiplier on the budget constraint.
+Since there is no harm in also setting $c_1=c_2$ when
+$\psi=0$ or $\psi=1$,
+the individual's maximization problem can be simplified to
+read
+$$\eqalign{
+\max_{c, \psi} \;\; &u(c) \,-\, \psi \, A  \,,               \cr
+ \hbox{\rm subject to} \quad & c \;\leq\;
+\psi \gamma \,,
+\quad c \,\geq\,0\,, \quad \psi \in [0, 1]\,.           \cr}
+\EQN lott_max
+$$
+The welfare-enhancing potential of employment lotteries is
+implicit in the relaxation of the earlier constraint that
+$\psi$ could only take on two values, 0 or 1. With
+employment lotteries, the marginal rate of transformation
+between leisure and consumption is equal to $\gamma$.
+
+The solution to expression \Ep{lott_max} can be characterized
+by considering three possible cases:
+\medskip
+\noindent {\it Case 1.} $A/u'(0) \geq \gamma$.
+
+\noindent {\it Case 2.} $A/u'(0) < \gamma < A/u'(\gamma)$.
+
+\noindent {\it Case 3.} $A/u'(\gamma) \leq \gamma$.
+\medskip
+\noindent
+The introduction of employment lotteries will only affect
+individuals' behavior in the second case. In the first case,
+if $A/u'(0) \geq \gamma$, it will under all circumstances be
+optimal not to work ($\psi=0$), since the marginal value of
+leisure in terms of consumption exceeds the marginal rate of
+transformation even
+at a zero consumption level. In the third case, if
+$A/u'(\gamma) \leq \gamma$, it will always be optimal to
+work ($\psi=1$), since the marginal value of
+leisure falls short of the marginal rate of transformation
+when evaluated at the highest feasible consumption per worker.
+The second case implies that expression \Ep{lott_max} has an
+interior solution with respect to $\psi$ and that employment
+lotteries are welfare enhancing.
+The optimal value, $\psi^*$, is then given by the first-order
+condition
+$$
+{A  \over u'(\gamma \psi^*)}  \;=\; \gamma \,.
+$$
+An example of the second case is shown in Figure \Fg{fig192f}. %19.2.
+The situation here is such that the individual would choose
+to work in the absence of employment lotteries, because the
+curve $u(\gamma n) - u(0)$ is above the curve $v(n)$ when
+evaluated at $n = 1$. After the introduction of employment
+lotteries, the individual chooses the probability $\psi^*$
+of working, and his welfare increases by $\triangle_{\psi} -
+\triangle$.
+
+%%%%%%%%%%%
+% \topinsert
+%$$\grafone{fig192.eps,height=2.5in}{{\bf Figure 19.2}
+%The optimal employment lottery is given by probability $\psi^*$ of working,
+%which increases expected welfare by  $\triangle_{\psi} -
+%\triangle$ as compared to working full-time $n=1$.} $$\endinsert
+%%%%%%%%%%%%%
+
+\midfigure{fig192f}
+\centerline{\epsfxsize=3truein\epsffile{fig192.eps}}
+\caption{The optimal employment lottery is given by probability $\psi^*$ of working,
+which increases expected welfare by  $\triangle_{\psi} - \triangle$ as compared
+to working full-time, $n=1$.}
+\infiglist{fig192f}
+\endfigure
+\index{layoff taxes}
+
+
+%\section{Lotteries for households versus lotteries for firms}
+\section{Lotteries for households versus lotteries for firms}\label{sec:lotteries_firms_households}%
+\index{lotteries!firms}%
+Prescott (2005b) focuses on the role of nonconvexities at the level of
+individual households and production units in the study of business
+cycles. On the household side, he envisions indivisibilities in labor
+supply like those in the previous section, while on the firm side, he
+uses capacity constraints as an example. In spite of these
+nonconvexities at the micro level, where all units are assumed to be
+infinitesimal, Prescott points out that the
+aggregate economy is convex when there are lotteries for
+households and lotteries for firms that serve to smooth
+the nonconvexities and that thereby deliver both a stand-in
+household and a stand-in firm. \auth{Prescott, Edward C.}%
+
+\index{family!one big happy}
+Prescott thus recommends an  aggregation theory to rationalize a
+ stand-in household that is analogous to  better-known
+  aggregation results that underlie the stand-in firm and
+the aggregate production
+function. He emphasizes the formal similarities
+associated with smoothing out nonconvexities
+by aggregating over firms, on the one hand,  and aggregating over households,
+on the other.
+Here we shall argue that
+the  economic interpretations that attach
+to these two types of aggregation
+make the two aggregation theories
+very different.\NFootnote{Our argument is based on
+Ljungqvist and Sargent's (2005) comment on Prescott (2005b).
+\auth{Ljungqvist, Lars}
+\auth{Sargent, Thomas J.}}
+ Perhaps this
+explains why this aggregation method has been applied more to firms
+than to households.\NFootnote{Sherwin Rosen often used a lottery model
+for the household. Instead of analyzing why a particular individual
+chose higher education, Rosen modeled
+a family with a continuum of members
+that allocates fractions of its members to distinct educational  choices
+that involve different numbers of years of schooling. See Ryoo and Rosen
+ (2003).\auth{Rosen, Sherwin}\auth{Ryoo, Jaewoo}}
+
+
+
+Before turning to a critical comparison of the two aggregation theories,
+we first describe a simple technology that will capture the essence
+of Prescott's example of nonconvexities on the firm side, while
+leaving intact most of our analysis in section \use{Empl_lottery}.
+
+\subsection{An aggregate production function}
+We replace our earlier linear technology \Ep{Elott_tech} with
+a production technology based on a strictly concave function
+$g(\cdot)$,
+$$
+g(0)=0,\hskip.5cm g(1)=\gamma,\hskip.5cm g'>0,\hskip.5cm g''<0
+\hskip.25cm \Longrightarrow \hskip.25cm g'(1)<\gamma.
+$$
+The point of normalization, $g(1)=\gamma$, will be a focal point in
+our analysis, and the strict concavity of $g$ ensures that
+$g'(1)<\gamma$.
+
+We assume that there is a continuum of firms  and each firm
+has a production technology given by
+ $$
+f(n) = \cases{ g(n)   & if $n\geq1$, \cr
+%%\noalign{\vskip.1cm}
+  0      & otherwise, \cr} \EQN Elott_tech2
+$$
+where $n$ is the amount of labor employed in the firm.
+Note that production can  take place only if the firm employs
+at least $n\geq1$.\NFootnote{As a clarification,
+note that we do not impose an integer constraint on employment in a
+firm. It is true that each household in section
+\use{Empl_lottery} faces the integer
+constraint of  supplying either one unit of labor or no labor at all.
+However, a household that chooses to work can very well divide
+its one unit of labor across several firms.}
+We normalize the measure of households in section \use{Empl_lottery}
+to unity and assume that there is a measure of firms
+equal to $Z<1$, i.e., there are more households than firms.
+Each household owns an equal share of all firms.
+
+In a competitive equilibrium where $N$ households are working, there
+will be $\min\{N,Z\}$ firms in operation. Because of the
+technological constraint in \Ep{Elott_tech2}, firms
+will  choose to operate only if they can employ at least one worker.
+Moreover, competitive forces will guarantee that the maximum number
+of firms is operating subject to the constraint
+that each firm employs at least one worker. This is an implication
+of our assumption of decreasing returns to scale in each
+firm. The assumption guarantees that it is profitable to operate
+many small firms rather than one large firm and that all operating
+firms will employ the same amount of labor. Thus, in a competitive
+equilibrium, aggregate output as a function of aggregate employment
+$N$ is given by
+$$
+F(N) = \cases{ N \,\gamma   & if $N<Z$, \cr
+%%\noalign{\vskip.1cm}
+  Z\, g\!\left({N\over Z}\right)& if $N\geq Z$. \cr} \EQN Elott_tech2agg
+$$
+
+The aggregate production function in \Ep{Elott_tech2agg} can be
+understood as follows. In the first case, only $N$ firms
+are active and each  employs one worker. Hence, aggregate
+output is equal to $N\,g(1)=N\,\gamma$, and the economy is operating
+at less than full capacity because there are idle
+firms ($N<Z$). In the second case, all $Z$ firms are active and
+each one employs the same amount of labor, $n=N/Z$. Hence,
+aggregate output is equal to $Z\,g(N/Z)$, and the economy
+is operating at full capacity in the sense that there are no idle
+firms. Note that the aggregate production function
+in \Ep{Elott_tech2agg} is convex even though individual
+firms are subject to a nonconvexity in \Ep{Elott_tech2}.
+
+We now turn to an example of time-varying capacity utilization
+to compare and criticize the aggregation theory underlying
+the stand-in household in section \use{Empl_lottery} and
+the aggregation theory underlying the aggregate production
+function in \Ep{Elott_tech2agg}.\NFootnote{There are three
+differences between Prescott's (2004) example and ours, but none
+ materially effects  our illustration of time-varying
+capacity utilization. First, Prescott postulates an additional
+production factor, capital, that can also be freely allocated
+across firms. Second, Prescott assumes a technology for
+creating new firms. Third, Prescott studies
+technology shocks while we explore preference shocks.}
+
+\subsection{Time-varying capacity utilization}
+\index{capacity utilization}%
+We assume that the stand-in household in section \use{Empl_lottery}
+is subject to an aggregate preference shock where the disutility of
+working can take on two different values, $A\in\{0,\, \bar A\}$.
+The parameters satisfy the following restrictions:
+$$
+{\bar A \over u'(0)} < \gamma, \hskip1cm
+g'\!\left({ 1 \over Z}\right) <
+ {\bar A \over u'\!\Bigl[Z\,g\!\left({1 \over Z}\right)\Bigr] }. \EQN Elott_para
+$$
+These parameter restrictions are the analogue to
+the parameter restriction in case 2 of section \use{Empl_lottery}.
+In particular, restrictions \Ep{Elott_para}
+guarantee an interior solution with
+respect to the employment lottery when $A=\bar A$, i.e., employment,
+will then satisfy $N\in(0,1)$ where $N$ is both the measure of
+households working and the probability of an individual household working
+since the population of all households is normalized to one.
+
+To see that parameter restrictions \Ep{Elott_para} guarantee an
+interior solution with respect to $N$ when $A=\bar A$, we will examine
+why neither $N=0$ nor $N=1$ can constitute an equilibrium. First,
+we can reject $N=0$ with the following argument. Whenever $N<Z$,
+competition among firms drives up the equilibrium
+wage to $w=g(1)=\gamma$. That is, firms are then not
+a scarce input in production and, therefore, earn no rents. Given
+the equilibrium wage $w=\gamma$, the first inequality in
+\Ep{Elott_para} states that the stand-in household's
+first-order conditions  would be
+violated if $N=0$. Second, we can reject an equilibrium
+outcome with $N=1$ as follows. At full employment, all
+firms are operating and aggregate output is given by
+$Z\,g(1/Z)$, which is also equal to per capita output since the
+measure of households is normalized to one. Moreover,
+according to section \use{Empl_lottery}, households will
+trade in contingent claims prior to the outcome of the employment
+lottery so that each household's consumption is also given
+by $c=Z\,g(1/Z)$. The equilibrium wage at full employment is
+given by $w=g'(1/Z)$, i.e, the marginal product of labor in an
+individual firm that employs the same amount of labor
+as all other firms. Given the  consumption outcome and
+wage rate when $N=1$, we can ask if the stand-in household
+would indeed choose the probability of working equal to one
+that would be required in order for this allocation to constitute
+an equilibrium. According to the second inequality in
+\Ep{Elott_para}, the answer is no because the stand-in household
+would then value a marginal increase in leisure more than the
+loss of wage income. Thus, we can conclude that parameter
+restrictions \Ep{Elott_para} guarantee an interior solution
+with respect to the probability of working when $A=\bar A$.
+%Let $\psi^*=N\in(0,1)$ denote the associated equilibrium value
+%of the probability of working.
+
+In contrast, when the preference shock is $A=0$, the stand-in
+household will inelastically supply one unit of labor since there
+is no disutility of working. The economy will then be operating
+at full employment with no idle firms. Hence, different realizations
+of the preference
+shock $A\in\{0,\bar A\}$ will trigger changes in unemployment
+and potentially changes in capacity utilization, where the
+latter depends on the size of the given measure of firms.
+Everything else being equal, a higher $Z$  makes it  more likely that
+the preference shock $\bar A$ entails idle firms in an equilibrium.
+The households and firms
+that are designated to be unemployed and idle, respectively,
+are determined by the outcome of lotteries among households and
+lotteries among firms. Prescott's assertion that the
+aggregation theory for households is the analogue of the
+aggregation theory for firms seems to be accurate. So what
+is the difference between these two aggregation theories?
+
+An important distinction between firms and households is that
+firms have no independent
+preferences.  They  serve only as vehicles for
+generating rental payments for employed factors and profits for their owners.
+When a firm becomes  inactive, the ``firm'' itself does not
+care whether it continues or ceases to exist. Our
+example of a nonconvex production technology that generates
+time-varying capacity utilization
+illustrates this point very well. The firms that do not find any workers
+stay idle;  that is just as well for those idle firms because
+the firms in operation earn zero rents. In short, whether individual
+firms operate or remain idle is the end of the
+story in the aggregation theory behind the aggregate production
+function in \Ep{Elott_tech2agg}. But in the aggregation theory behind the stand-in
+household's utility function in \Ep{lott_max}, it is really just the beginning.
+Individual households do have preferences and
+care about alternative states of the world. So the aggregation theory behind
+the stand-in household has an additional aspect that is not present
+in the theory that aggregates over firms, namely,
+it says how consumption
+and leisure are smoothed  across households with the help of an
+extensive set of contingent claim markets.
+This market arrangement and randomization device  stands at the
+center of the employment lottery model.  To us, it seems that
+they make the aggregation
+theory behind the stand-in household fundamentally different than
+the well-known aggregation theory for the firm side.
+
+Next, we explore how models with employment lotteries that are
+used to generate unemployed individuals in a frictionless framework
+can have very different implications than models embodying
+frictional unemployment. In particular,
+%we study the employment effects of layoff taxes.
+models with employment  lotteries predict effects from layoff
+taxes that are
+opposite to those in search models.
+
+
+
+
+\section{Employment effects of layoff taxes}
+
+The models of employment determination in this chapter can be
+used to address the question, how do layoff taxes affect an
+economy's employment? Hopenhayn and Rogerson (1993)
+\auth{Hopenhayn, Hugo A.}\auth{Rogerson, Richard}%
+apply the model of employment lotteries to this very question
+and conclude that a layoff tax would reduce the level
+of employment. Mortensen and Pissarides (1999b) reach the opposite
+conclusion in a matching model.
+We will here examine these results by
+scrutinizing the economic forces at work in different
+frameworks. The purpose is both to
+gain further insights into the workings of our theoretical
+models and to learn about possible effects of layoff
+taxes.\NFootnote{The analysis is based on Ljungqvist's (2002)
+\auth{Ljungqvist, Lars}%
+study of layoff taxes in different models
+of employment determination.}
+
+Common features of many analyses of layoff taxes
+are as follows: The productivity of a job evolves
+according to a Markov process, and a sufficiently poor
+realization triggers a layoff. The government imposes
+a layoff tax $\tau$ on each layoff. The tax revenues
+are handed back as equal lump-sum transfers to all
+agents, denoted by $T$ per capita.
+
+Here, we assume the simplest possible Markov process
+for productivities. A new job has productivity $p_0$.
+In all future periods, with
+probability $\xi$, the worker keeps the productivity
+from last period, and with probability $1-\xi$,
+the worker draws a new
+productivity from a distribution $G(p)$.
+
+In our numerical examples, the model period is 2 weeks,
+and the assumption that $\beta=0.9985$ then implies an
+annual real interest rate of 4 percent. The initial productivity
+of a new job is $p_0=0.5$, and $G(p)$ is taken to be
+a uniform distribution on the unit interval. An
+employed worker draws a new productivity on average
+once every two years when we set $\xi =0.98$.
+\index{employment lottery!layoff taxes}
+\index{layoff taxes!employment lottery}
+\subsection{A model of employment lotteries with layoff taxes}
+
+In a model of employment lotteries,  a market-clearing wage $w$
+  equates the demand and supply of labor. The constant-returns-to-scale
+technology implies that this wage is determined from the supply side, as follows.
+At the beginning of a period, let $V(p)$ be the firm's value of an
+employee with productivity $p$,
+$$\eqalign{
+V(p) &\;=\; \max \, \Bigl\{p \,-\, w \,+\,
+\beta \Bigl[ \xi V(p) \,+\, (1-\xi) \int V(p') \,\;
+dG(p')\Bigr]\,, \;\, \cr
+&\hskip7.5cm
+-\tau \, \Bigr\} \,. \cr}  \EQN lott_V
+$$
+Given a value of $w$, the solution to this Bellman
+equation is a reservation productivity $\bar p$.
+If there exists an equilibrium with strictly positive
+employment, the equilibrium wage must be such that new
+hires exactly break even, so that
+$$
+V(p_0) \;=\; p_0 \,-\, w \,+\,
+\beta \Bigl[ \xi V(p_0) \,+\, (1-\xi) \int V(p') \,
+dG(p')\Bigr] \;=\; 0
+$$
+$$
+\Rightarrow  w \;=\; p_0 \,+\, \beta (1-\xi) \tilde V\,, \EQN lott_0
+$$
+where
+$$
+\tilde V \;\equiv\; \int V(p') \, dG(p') \,.
+$$
+To compute $\tilde V$, we first look at the value of
+$V(p)$ when $p \geq \bar p$,
+$$\EQNalign{
+V(p)\Big\vert_{p \geq \bar p} \;&=\; p \,-\, w \,+\,
+\beta \left[ \xi V(p) \,+\, (1-\xi) \tilde V \right]        \cr
+&=\; p \,-\, w \,+\,
+\beta \xi \Bigl\{ p \,-\, w \,+\,
+\beta \bigl[ \xi V(p) \,+\, (1-\xi) \tilde V \bigr] \Bigr\}
+\,+\, \beta (1-\xi) \tilde V                            \hskip.5cm  \cr
+&=\; (1\,+\,\beta \xi)\left[p \,-\, w \,+\, \beta (1-\xi)
+\tilde V \right] \,+\, \beta^2 \xi^2 V(p)                   \cr
+&=\; {p \,-\, w \,+\, \beta (1-\xi) \tilde V   \over
+1\,-\,\beta \xi}  \;=\;
+{p \,-\, p_0   \over   1\,-\,\beta \xi}  \,,  \EQN lott_V+ \cr}
+$$
+where the first equalities are obtained through successive
+substitutions of $V(p)$, and the last equality incorporates equation
+\Ep{lott_0}. We can then use equation \Ep{lott_V+} to find an expression
+for $\tilde V$,
+$$\EQNalign{
+\tilde V \;&=\;  \int_{-\infty}^{\bar p} -\tau\, dG(p)
+\,+\, \int_{\bar p}^{\infty} V(p) \, dG(p)            \cr
+&=\; -\tau\, G(\bar p)
+\,+\, \int_{\bar p}^\infty
+{p \,-\, p_0   \over   1\,-\,\beta \xi}\, dG(p)
+                                                \,.   \EQN lott_tildeV \cr}
+$$
+From Bellman equation \Ep{lott_V}, the reservation productivity satisfies
+$$
+\bar p \,-\, w \,+\,
+\beta \left[ \xi V(\bar p) \,+\, (1-\xi) \tilde V \right]\;=\;\, -\tau\,.
+$$
+After imposing equation \Ep{lott_0} and $V(\bar p) = -\tau$, we find
+$$
+\bar p \;=\; p_0 \,-\, (1-\beta \xi) \tau \;\equiv\; \bar p(\tau) \,.    \EQN lott_barp
+$$
+Equations \Ep{lott_barp}, \Ep{lott_tildeV}, and \Ep{lott_0} can
+be used to solve for the equilibrium wage $w=w(\tau)$.
+
+
+In a stationary equilibrium, let $\mu $ be the mass of new jobs
+created in every period. The mass of jobs with productivity $p_0$
+that have not yet experienced a new productivity draw can then be
+expressed as
+$$
+\mu  \sum_{i=0}^{\infty} \xi^i = {\mu  \over 1-\xi}\,,\EQN lott_firm1
+$$
+and the mass of jobs that have experienced a new productivity draw and
+are still operating is given by
+$$\EQNalign{
+\sum_{i=0}^{\infty} \xi^i \mu  (1-\xi) \left[1 - G(\bar p)\right]
+&\sum_{j=0}^{\infty} \bigl\{\xi + (1-\xi)\left[1-G(\bar p)\right]\bigr\}^j \cr
+&\hskip.5cm
+\;=\; {\mu  \over 1- \xi} {1-G(\bar p) \over G(\bar p)} \,.  \EQN lott_firm2 \cr}
+$$
+After
+equating the sum
+of these two kinds of jobs
+to $N$ (which
+we use to denote the total mass of all jobs), we get the
+following steady-state relationship:
+$$
+\mu  = N  G(\bar p) (1-\xi).  \EQN lott_muPsi
+$$
+The firms generate aggregate profits $\Pi$. These profits are here computed
+ gross of aggregate layoff taxes, i.e., $\Pi+T$. (Recall that the
+government hands back layoff tax revenues to the representative
+agent as a lump-sum transfer $T$.) Using the masses of jobs in expressions
+\Ep{lott_firm1} and \Ep{lott_firm2}, we have
+$$\EQNalign{
+\Pi \,+\, T \;&=\; {\mu  \over 1-\xi} \left(p_0 - w \right)  +
+{\mu  \over 1- \xi} {1-G(\bar p) \over G(\bar p)}
+\int_{\bar p}^{\infty}{p-w  \over 1-G(\bar p)} \,dG(p) \cr
+&=\; N  \left[ G(\bar p)  \left(p_0 - w \right)   +
+\int_{\bar p}^{\infty}\left( p-w  \right) \,dG(p) \right]\,,
+                           \EQN lott_profit  \cr}
+$$
+where the last inequality invokes relationship \Ep{lott_muPsi}.
+
+
+In a stationary equilibrium with wage $w$ and a gross interest rate $1/\beta$, the
+representative agent's optimization problem reduces to the static problem:
+$$\eqalign{
+\max_{c, \psi} \;\; &u(c) \,-\, \psi \, A  \,,               \cr
+ \hbox{\rm subject to} \quad & c \;\leq\;
+\psi w \,+\, \Pi \,+\,T\,,
+\quad c \,\geq\,0\,, \quad \psi \in [0, 1]\,,           \cr}
+\EQN lott_max2
+$$
+where the profits $\Pi$ and the lump-sum transfer $T$ are taken
+as given by the agents.\NFootnote{As above, we are normalizing
+the measure of agents to unity so that aggregate variables also
+represent per capita outcomes.}
+We let
+$\psi^*$ denote the optimally chosen probability of working.  It is equal to $N$ in an equilibrium
+and the corresponding
+optimal consumption level is
+$$ c^* \;=\; N w \,+\, \Pi \,+\, T \;=\;
+ N  \left[ G(\bar p) p_0    +
+\int_{\bar p}^{\infty} p \,dG(p) \right]\,,
+                           \EQN lott_consumption
+$$
+where we have invoked expression \Ep{lott_profit}. Hence,
+the steady-state expected
+lifetime utility of an agent before seeing the outcome of any
+employment lottery is equal to
+$$
+\sum_{t=0}^\infty \beta^t \Bigl[ u\left( c^* \right)\,-\, \psi^* A\Bigr]\,.
+$$
+
+Following Hopenhayn and Rogerson (1993), the preference specification
+is $u(c) = \hbox{\rm log}(c)$ and the disutility of work is calibrated
+to match an employment to population ratio equal to $0.6$, which leads
+us to choose $A=1.6$. Figures \Fg{hsm_pic1f}--\Fg{hsm_pic5f} %19.3--19.7
+show how equilibrium
+outcomes vary with the layoff tax. The curves labelled $L$ pertain to
+the model of employment lotteries. As derived in equation
+\Ep{lott_barp}, the reservation
+productivity in Figure \Fg{hsm_pic1f} %19.3
+  falls when it becomes more costly to lay
+off workers. Figure \Fg{hsm_pic3f} %19.4
+ shows how the decrease in number of layoffs
+is outweighed by the higher tax per layoff, so total layoff taxes
+as a fraction of GNP increase over almost the whole range.
+Figure \Fg{hsm_pic4f} %19.5
+ reveals changing job prospects, where the probability
+of working falls with a higher layoff tax (which is  equivalent
+to falling employment in a model of employment lotteries).
+The welfare loss associated with a layoff tax is depicted in
+Figure \Fg{lay_p5f} %19.6
+as the amount of consumption that an agent would be
+willing to give up in exchange for a steady state
+with no layoff tax,            %rid the economy of the layoff tax,
+and the ``willingness to pay'' is expressed as a fraction of per
+capita consumption at a zero layoff tax.
+
+
+
+Figure \Fg{hsm_pic5f} %19.7
+reproduces Hopenhayn and Rogerson's (1993) result
+that employment falls with a higher layoff tax (except at the
+highest layoff taxes). Intuitively, from a private perspective,
+a higher layoff tax
+is like a deterioration in
+the production technology; the optimal change in the agents'
+employment lotteries will therefore depend on the strength of
+the substitution effect versus the income effect. The income
+effect is largely mitigated by the government's lump-sum transfer
+of the tax revenues back  to the private economy. Thus,
+layoff taxes in models of employment lotteries have strong
+negative employment implications that are caused by substituting
+leisure for work. Formally, the
+logarithmic preference specification gives rise to an optimal
+choice of the probability of working, which is equal to
+the employment outcome, as given by
+$$
+\psi^* \;=\; {1 \over A} \,-\, {T + \Pi \over w} \,. \EQN lott_psiopt
+$$
+The precise employment effect here is driven by profit flows
+from firms gross of layoff taxes expressed in terms of
+the wage rate. Since these profits are to a large extent
+generated in order to pay for firms' future layoff taxes, a
+higher layoff tax tends to increase the accumulation of such
+funds with a corresponding negative effect on the optimal
+choice of employment.
+
+
+\vskip.5cm
+\medskip
+\noindent{\bf Negative employment effect of layoff taxes, when evaluated at $\tau=0$}
+\smallskip
+\noindent
+Under the assumption that $p_0=1$, i.e., the initial productivity of a new job is
+equal to the upper support of the uniform distribution $G(p)$ on
+the unit interval $[0,1]$, we will show that the derivative of equilibrium
+employment is strictly negative with
+respect to the layoff tax when evaluated at $\tau=0$.
+
+Expressions \Ep{lott_tildeV} and \Ep{lott_profit} can then
+be evaluated as follows:
+$$\EQNalign{
+\tilde V \;&=\;  -\tau\, \bar p + \left[ {1+\bar p \over 2} -1 \right]
+{1-\bar p \over 1 - \beta \xi}\,,  \EQN lott_tildeV_uni \cr
+\noalign{\hbox{\rm and}}
+\Pi \,+\, T \;&=\;
+N \left[ \bar p + (1-\bar p) {1+\bar p \over 2} - w \right]\,.
+                           \EQN lott_profit_uni  \cr}
+$$
+From equations \Ep{lott_0} and \Ep{lott_tildeV_uni},
+$$
+w \;=\; 1 \,+\, \beta (1-\xi) \left[ - \tau \bar p -
+{(1-\bar p)^2 \over 2 (1 - \beta \xi)   } \right]\,,
+$$
+and after substituting for $\bar p$ from \Ep{lott_barp}
+$$
+w \;=\; 1 \,-\, \beta (1-\xi) \tau \left[1 -
+                {(1 - \beta \xi) \tau \over 2} \right] \equiv w(\tau) \,.
+\EQN lott_0_uni
+$$
+
+By substituting \Ep{lott_profit_uni} into \Ep{lott_psiopt} and using
+expressions \Ep{lott_barp} and \Ep{lott_0_uni}, we
+arrive at an equilibrium expression for $N$,
+$$
+N(\tau) = { 2 w(\tau) \over \gamma \left[ 2 \bar p(\tau) + 1
+- \bar p(\tau)^2 \right] }
+$$
+with its derivative
+$$
+{d\, N(\tau)  \over d\, \tau \hfill}=
+{-2 \beta (1-\xi) \bar p(\tau)  \left[ 2 \bar p(\tau) + 1 - \bar p(\tau)^2 \right]
++ 4 (1-\beta \xi) \left[1-\bar p(\tau)\right] w(\tau) \over
+\gamma \left[ 2 \bar p(\tau) + 1 -  \bar p(\tau)^2 \right]^2 }\,.
+$$
+Evaluating the derivative at $\tau=0$, where $\bar p(0) = p_0 = 1$, we have
+$$
+{d\, N(\tau) \over d \,\tau \hfill}\Bigg|_{\tau=0} =
+{-\beta (1-\xi) \over \gamma } < 0.
+$$
+This states that in general equilibrium, employment falls
+in response to the introduction
+of a layoff tax in our employment lottery model.
+
+
+
+%%%%%%%%%%%%%
+%$$\grafone{hsm_pic1.ps,height=2.5in}{{\bf Figure 19.3} Reservation
+%productivity for different values of the layoff tax.}$$
+%%%%%%%%%%%%%%%%%%
+
+\midfigure{hsm_pic1f}
+\centerline{\epsfxsize=3truein\epsffile{hsm_pic1.ps}}
+\caption{Reservation productivity for different values of the layoff tax.}
+\infiglist{hsm_pic1f}
+\endfigure
+
+\vfill\eject
+
+%%%%%%%%%%%%
+%$$\grafone{hsm_pic3.ps,height=2.25in}{{\bf Figure 19.4} Total layoff taxes
+%as a fraction of GNP for different values of the layoff tax.}$$
+%%%%%%%%%%%%%%%%
+
+\midfigure{hsm_pic3f}
+\centerline{\epsfxsize=3truein\epsffile{hsm_pic3.ps}}
+\caption{Total layoff taxes as a fraction of GNP for different values of the
+layoff tax.}
+\infiglist{hsm_pic3f}
+\endfigure
+
+%%%%%%%%%%%%
+%$$\grafone{hsm_pic4.ps,height=2.25in}{{\bf Figure 19.5}  Probability
+%of working in the model with employment lotteries and probability
+%of finding a job within 10 weeks in the other models, for different
+%values of the layoff tax.} $$
+%%%%%%%%%%%%%%%%%
+
+\midfigure{hsm_pic4f}
+\centerline{\epsfxsize=3truein\epsffile{hsm_pic4.ps}}
+\caption{Probability of working in the model with employment lotteries
+and probability of finding a job within 10 weeks in the other models, for
+different values of the layoff tax.}
+\infiglist{hsm_pic4f}
+\endfigure
+
+%%%%%%%%%%%%%%%%%
+%$$\grafone{lay_p5.ps,height=2.25in}{{\bf Figure 19.6} A job finder's
+%welfare loss due to the presence of a layoff tax, computed
+%as a fraction of per capita consumption at a zero layoff tax.} $$
+%%%%%%%%%%%
+
+\midfigure{lay_p5f}
+\centerline{\epsfxsize=3truein\epsffile{lay_p5.ps}}
+\caption{A job finder's welfare loss due to the presence of a layoff tax,
+computed as a fraction of per capita consumption at a zero layoff tax.}
+\infiglist{lay_p5f}
+\endfigure
+
+%%%%%%%%%%%%%%%%%
+%$$\grafone{hsm_pic5.ps,height=2.25in}{{\bf Figure 19.7}  Employment
+%index for different values of the layoff tax. The index is equal
+%to one at a zero layoff tax.} $$
+%%%%%%%%%%%%%%%
+
+\midfigure{hsm_pic5f}
+\centerline{\epsfxsize=3truein\epsffile{hsm_pic5.ps}}
+\caption{Employment index for different values of the layoff tax.  The index
+is equal to $1$ at a zero layoff tax.}
+\infiglist{hsm_pic5f}
+\endfigure
+
+\ \vfil \eject
+\ \vfil \eject
+
+
+\index{island model!layoff taxes} \index{layoff taxes!island model}
+\subsection{An island model with layoff taxes}
+To stay with the described technology in an island framework, let each
+job represent a separate island, and an agent moving to a new island
+experiences productivity $p_0$.  We retain the feature that every agent
+bears the direct consequences of his decisions.  He receives his marginal
+product $p$ when working and incurs the layoff tax $\tau$ if leaving his
+island. The Bellman equation can then be
+written as
+$$\EQNalign{
+V(p) \;=\; \max \, \Biggl\{p \,-\, z \,+\,
+\beta &\left[ \xi V(p) \,+\, (1-\xi) \int V(p') \, dG(p')\right]\,,   \cr
+&\qquad \qquad \;\, -\tau \,+\,\beta^T\,V(p_0) \, \Biggr\} \,,
+                                                       \EQN island_V \cr}
+$$
+where $z$ is the forgone utility of leisure when working and $T$ is
+the number of periods it takes to move to another island.\NFootnote{Note
+that we have left out the lump-sum transfer from the government because
+it does not affect the optimization problem.}
+ The solution
+to this equation is a reservation productivity $\bar p$.
+
+If there
+exists an equilibrium with agents working, we must have
+$$\EQNalign{
+&V(p_0) \;=\; p_0 \,-\, z \,+\,
+\beta \left[ \xi V(p_0) \,+\, (1-\xi) \int V(p') \, dG(p')\right]\,   \cr
+&\Longrightarrow \quad
+\beta (1-\xi) \tilde V \;=\; (1 - \beta \xi) V(p_0) \,+\, z \,-\, p_0\,,
+                                                         \EQN island_V0   \cr}
+$$
+where
+$$
+\tilde V \;\equiv\; \int V(p') \, dG(p') \,.
+$$
+If the equilibrium entails agents moving between islands, the
+reservation productivity, by equation \Ep{island_V}, satisfies
+$$
+ \bar p \,-\, z \,+\,
+\beta \left[ \xi V(\bar p) \,+\, (1-\xi) \tilde V \right]  \;=\;
+ -\tau \,+\,\beta^T\,V(p_0)  \,,
+$$
+and, after imposing equation \Ep{island_V0} and
+$V(\bar p)= -\tau \,+\,\beta^T\,V(p_0)$,
+$$
+\bar p \;=\; p_0 \,-\, (1-\beta \xi )\left[ \tau \,+\,
+(1- \beta^T) \, V(p_0) \right]\,.                             \EQN island_barp
+$$
+Note that if agents could move instantaneously between islands,
+$T=0$, the reservation productivity would be the same as in the
+model of employment lotteries, given by equation \Ep{lott_barp}.
+
+A higher layoff tax  also reduces the reservation productivity
+in the island model; that is, an increase in $\tau$ outweighs the
+drop in the second term in square brackets in equation \Ep{island_barp}.
+For a formal proof, let us make explicit that
+the value function and the reservation
+productivity are functions of the layoff tax, $V(p; \tau)$ and
+$\bar p(\tau)$. Consider two layoff taxes, $\tau$ and $\tau'$, such
+that $\tau'>\tau\geq0$, and denote the difference $\triangle \tau =
+\tau'-\tau$. We can then construct a lower bound for $V(p; \tau')$ in
+terms of $V(p; \tau)$. In response to the higher layoff tax
+$\tau'$, the agent can always keep his decision rule associated
+with $V(p; \tau)$ and an upper bound for his extra layoff tax
+payments would be that he paid $\triangle \tau$ in the current
+period and every $T$th period from there on,
+$$
+V(p;\tau') \;>\; V(p,\tau) \,-\,
+\sum_{i=0}^\infty \beta^{iT} \triangle \tau \,,            \EQN island_bound
+$$
+where the strict inequality follows from the fact that it cannot be
+optimal to constantly move. In addition, the agent might be able to select
+a better decision rule than the one associated with $\tau$. In fact,
+the reservation productivity must fall in response to a higher layoff
+tax whenever there is an interior solution with respect to $\bar p$,
+as given by equation \Ep{island_barp}. By using equations \Ep{island_barp}
+and \Ep{island_bound}, we have
+$$\EQNalign{
+\bar p(\tau') \,-\, \bar p(\tau) \;&=\; - (1-\beta \xi )
+\bigl\{ \triangle \tau  \,+\,
+(1- \beta^T) \bigl[V(p_0; \tau')-V(p_0; \tau) \bigl] \bigr\}   \cr
+&<\;- (1-\beta \xi )
+\Bigl[ \triangle \tau  \,-\,
+(1- \beta^T) \sum_{i=0}^\infty \beta^{iT} \triangle \tau \Bigr] \;=\;0\,. \cr}
+$$
+
+The numerical illustration in Figures \Fg{hsm_pic1f} through \Fg{hsm_pic5f}  %%19.3--19.7
+is based
+on a value of leisure $z=0.25$ and a length of transition between
+jobs $T=7$; that is, unemployment spells last 14 weeks. The curves
+that pertain to the island model are labeled $S$. The effects
+of layoff taxes on the reservation productivity, the economy's
+total layoff taxes, and the welfare of a recent job finder are
+all similar to the outcomes in the model of employment lotteries.
+The sharp difference appears in Figure \Fg{hsm_pic5f} %%19.7
+depicting the effect
+on the economy's employment. In the island model where agents are
+left to fend for themselves, a lower
+reservation productivity is synonymous with both less labor
+reallocation and lower unemployment. Lower
+unemployment is thus attained at the cost of a less efficient
+labor allocation.
+
+Mobility costs also cause employment  to rise in the general
+version of the island model, as mentioned by Lucas and Prescott
+(1974, p. 205).
+\auth{Lucas, Robert E., Jr.}\auth{Prescott, Edward C.}%
+ For a given expected value of arriving on a new
+island $v_u$, the value function in equation \Ep{value2} is
+replaced by
+$$\EQNalign{v(\theta, x) \;=\; \max \Bigl\{&\beta v_u\,-\,\tau\,,\;\;
+ \cr
+\,&\theta \, f'(x) \,+\,
+  \min \bigl\{ \beta v_u\,,\; \beta E [v(\theta',x) \vert \theta ]
+      \bigr\} \Bigr\}\,, \hskip.5cm \EQN value2_lay \cr}
+$$
+which lies below equation \Ep{value2}, but with a drop of at
+most $\tau$. Similarly, equation \Ep{value2aa} changes to
+$$\theta \, f'(n) \,+\, \beta E\left[v(\theta',n) \vert \theta \right]
+      \;=\; \beta v_u \,-\, \tau \,.             \EQN Case1_lay
+$$
+An implication here is that $x^+(\theta)$ rises in response to a higher
+layoff tax. The unchanged expression \Ep{value2bb} means that $x^-(\theta)$
+falls as a result of the preceding drop in the value function. In
+other words, the range of an island's employment levels characterized by no
+labor movements is enlarged. This effect will shift the curve in
+Figure \Fg{fig191f}  %%19.1
+downward and decrease the equilibrium value of $v_u$. Less
+labor reallocation maps directly into a lower unemployment
+rate.
+
+\index{matching model!layoff taxes}
+\index{layoff taxes!matching model}
+\subsection{A matching model with layoff taxes}\label{sec:layofftaxmatch}%
+We now modify the matching model to incorporate
+a layoff tax, and the exogenous destruction of jobs is replaced
+by the described Markov process for a job's productivity.  A job
+is now endogenously destroyed when the outside option, taking the
+layoff tax into account, is higher than the value of maintaining
+the match. The match surplus, $S_i(p)$, is a function of the
+job's current productivity $p$ and can be expressed as
+$$\EQNalign{
+  S_i(p)+U_i \;=\;\max \Biggl\{p
+    +\beta & \left[ \xi S_i(p) \,+\, (1-\xi) \int S_i(p') \,
+          dG(p') \,+\, U_i \right]  , \cr
+              & \hskip3.5cm U_i \,-\, \tau \Biggr\}\,,  \EQN lay_S \cr}
+$$
+where $U_i$ is once again the agent's outside option, that is, the
+value of being unemployed. Both $S_i(p)$ and $U_i$ are
+indexed by $i$, since we will explore the implications of two
+alternative specifications of the Nash product, $i\in\{a,b\}$,
+$$\EQNalign{
+& \bigl[E_a(p) - U_a \bigr]^\phi J_a(p)^{1-\phi}\,,
+                                                             \EQN Nash_a \cr
+& \bigl[E_b(p) - U_b \bigr]^\phi
+       \bigl[J_b(p) + \tau \bigr]^{1-\phi} \,.        \EQN Nash_b \cr  }
+$$
+Specification \Ep{Nash_a} leads to the usual result that the worker
+receives a fraction $\phi$ of the match surplus, while
+the firm gets the remaining fraction $(1-\phi)$,
+$$  E_a(p) - U_a \,=\, \phi S_a(p)  \quad {\rm and}
+     \quad J_a(p) \,=\, (1-\phi) S_a(p) \,.  \EQN split_a
+$$
+The alternative specification \Ep{Nash_b} adopts the assumption of
+Saint-Paul (1995)
+\auth{Saint-Paul, Gilles}%
+that the layoff cost changes the firm's threat point from 0 to
+$-\tau$, and thereby increases the worker's relative share of
+the match surplus.
+Solving for the corresponding surplus-sharing rules, we get
+$$\eqalign{  E_b(p) - U_b \,&=\, \phi \bigl(S_b(p) + \tau \bigr)\,, \cr
+ J_b(p) \,&=\, (1-\phi) S_b(p) - \phi \tau  \,.
+ \cr} \EQN split_b
+$$
+
+The worker's continuation value outside of the match associated with
+Nash product \Ep{Nash_a} or \Ep{Nash_b}, respectively, is
+$$\EQNalign{
+U_a\;&=\; z\,+\, \beta \bigl[\theta q(\theta) \phi S_a(p_0) \,+\,
+ U_a \bigr] \,,           \EQN U_a                                   \cr
+\noalign{\vskip.2cm}
+U_b\;&=\; z\,+\, \beta \bigl\{ \theta q(\theta) \phi \bigl[ S_b(p_0)
+\,+\, \tau\bigr] \,+\,  U_b \bigr\} \,.           \EQN U_b \cr}
+$$
+The equilibrium conditions that firms post vacancies until the expected
+profits are driven down to zero become
+$$\EQNalign{
+(1-\phi) S_a(p_0) \;&=\; {c \over \beta q(\theta)} \,,
+                                                         \EQN noprofit_a \cr
+(1-\phi) S_b(p_0)\,-\, \phi \tau \;&=\; {c \over \beta q(\theta)} \,,
+                                                         \EQN noprofit_b \cr}
+$$
+for Nash product \Ep{Nash_a} or \Ep{Nash_b}, respectively.
+
+In the calibration, we choose a matching function $M(u,v)=0.01 u^{0.5}
+v^{0.5}$, a worker's bargaining strength $\phi=0.5$, and the same value
+of leisure as in the island model, $z=0.25$. Qualitatively, the results
+in Figures \Fg{hsm_pic1f} through \Fg{lay_p5f}  %%19.3--19.6   XXXXXX
+are the same across all the models
+considered here. The curve labeled $Ma$ pertains to the matching model
+in which the workers' relative share of the match surplus is constant,
+while the curve $Mb$ refers to the model in which the share is positively
+related to the layoff tax. However, matching model $Mb$ does stand
+out. Its reservation productivity plummets in
+response to the layoff tax in Figure \Fg{hsm_pic1f},  %%19.3
+and is close to zero
+at $\tau=11$. A zero reservation productivity means that labor
+reallocation comes to a halt, and the economy's tax revenues
+fall to zero in Figure \Fg{hsm_pic3f}.   %%19.4
+The more dramatic outcomes under $Mb$
+have to do with layoff taxes increasing workers' relative
+share of the match surplus.
+The equilibrium condition
+\Ep{noprofit_b} requiring that firms finance incurred vacancy
+costs with retained earnings from the matches becomes exceedingly
+difficult to satisfy when a higher layoff tax erodes the fraction
+of match surpluses going to firms.
+Firms can  break even only if the expected time to fill a vacancy
+is cut dramatically; that is, there has to be a large number of
+unemployed workers for each posted vacancy. This equilibrium outcome
+is reflected in the sharply falling probability of a worker
+finding a job within 10 weeks in Figure \Fg{hsm_pic4f}.     %%19.5
+As a result, there
+are larger welfare costs in model $Mb$, as shown by the welfare
+loss of a job finder in Figure \Fg{lay_p5f}.   %%19.6
+The welfare loss of
+an unemployed agent is even larger in model $Mb$, whereas the
+differences between employed and unemployed agents in the three other
+model specifications are negligible (not shown in any figure).
+
+In Figure \Fg{hsm_pic5f},   %%19.7
+matching model $Ma$ looks very much like
+the island model with increasing employment, and matching model
+$Mb$ displays initially falling employment, similar to the model of
+employment lotteries. The later sharp reversal of the employment
+effect in the $Mb$ model is driven by our choice of a Markov
+process with rather little persistence. (For a comparison, see
+Ljungqvist, 2002, who explores Markov formulations with more
+persistence.)
+
+Mortensen and Pissarides (1999a)
+\auth{Mortensen, Dale T.} \auth{Pissarides, Christopher}%
+ propose still another bargaining specification where
+expression \Ep{Nash_a} is the Nash product when a worker and a firm
+meet for the first time, while the Nash product in expression \Ep{Nash_b}
+characterizes all their consecutive negotiations. The idea is
+that the firm will not incur any layoff tax if the firm and worker
+do not agree on a wage in the first encounter; that is, there is
+never an employment relationship. In contrast, the firm's threat point
+is weakened in future negotiations with an already employed worker
+because the firm would then have to pay a layoff tax if the match
+were broken up. We will here show that, except for the wage profile,
+this alternative specification is equivalent to just assuming
+Nash product \Ep{Nash_a} for all periods. The intuition is
+that the modified wage profile under the Mortensen and Pissarides
+assumption is equivalent to a new hire posting a bond equal to his
+share of the future layoff tax.
+
+First, we compute the wage associated with expression \Ep{Nash_a},
+$w_a(p)$, from the expression for a firm's match surplus,
+$$
+J_a(p) \;=\; p \,-\,w_a(p) \,+\, \beta
+\Bigl[ \xi J_a(p) \,+\, (1-\xi) \int J_a(p') \, dG(p') \Bigr]\,,  \EQN J_a
+$$
+which together with equation \Ep{split_a} implies
+$$\EQNalign{
+w_a(p) \;=\; p \,-\, (1&-\phi)\,S_a(p) \,+\, \beta
+\Bigl[ \xi (1-\phi)\,S_a(p)                                           \cr
+&\,+\,(1-\xi) \int (1-\phi)\,S_a(p') \, dG(p') \Bigr]\,.  \EQN wage_a \cr}
+$$
+Second, we verify that the present value of these wages
+is exactly equal to that of Mortensen and Pissarides' bargaining scheme
+for any completed job, under the maintained hypothesis that the two
+formulations have the same match surplus $S_a(p)$. Let $J_1(p)$ and
+$J_+(p)$ denote the firm's match surplus with Mortensen and Pissarides'
+specification in the first period and all future periods, respectively.
+The solutions to the maximization of their Nash products are
+$$\eqalign{
+J_1(p) \;&=\; (1-\phi) S_a(p) \,,\cr
+J_+(p) \;&=\; (1-\phi) S_a(p) - \phi \tau   \,. \cr} \EQN split_c
+$$
+The associated wage functions can be written as
+$$\EQNalign{
+w_1(p) \;&=\; p \,-\, J_1(p) \,+\, \beta
+\Bigl[ \xi J_+(p) \,+\, (1-\xi) \int J_+(p') \, dG(p') \Bigr]  \cr
+\;&=\; w_a(p) \,-\, \beta \,\phi \tau \,,\cr
+w_+(p) \;&=\; p \,-\, J_+(p) \,+\, \beta
+\Bigl[ \xi J_+(p) \,+\, (1-\xi) \int J_+(p') \, dG(p') \Bigr]  \cr
+\;&=\; w_a(p) \,+\, r\, \beta \,\phi \tau \,,\cr}
+$$
+where the second equalities follow from equations \Ep{wage_a} and
+\Ep{split_c}, and $r\equiv \beta^{-1}-1$. It can be seen that the
+wage under the Mortensen and Pissarides' specification is reduced
+in the first period by the worker's share of any future layoff tax,
+and future wages are increased by an amount equal to
+the net interest on this posted ``bond.'' In other words,
+the present value of a worker's total compensation for any
+completed job is identical for the two specifications.
+It follows that the present value of a firm's match surplus
+is also identical across specifications. We have thereby
+confirmed that the same equilibrium allocation is supported
+by Nash product \Ep{Nash_a} and Mortensen and Pissarides'
+alternative bargaining formulation.
+
+
+\index{search model!money}
+\index{money!search model}
+\section{Kiyotaki-Wright search model of money}
+
+We now explore a discrete-time version of Kiyotaki and Wright's (1993)
+\auth{Kiyotaki, Nobuhiro} \auth{Wright, Randall}%
+search model of money.\NFootnote{Our main simplification is that
+the time to produce is deterministic rather than stochastic.  We
+also
+alter the way money is introduced into the model.}
+Let us first study their environment without money.
+The economy is populated by a continuum of infinitely lived agents,
+with total population normalized to unity. There is also a
+number of differentiated commodities, which are indivisible and
+come in units of size one.  Agents have idiosyncratic
+tastes over these consumption goods as captured by a parameter
+$x\in(0,1)$. In particular, $x$ equals the proportion of commodities
+that can be consumed by any given agent, and $x$ also equals
+the proportion of agents that can consume any given commodity. If a
+commodity can be consumed by an agent, then we say that it is one of
+his consumption goods. An
+agent derives utility $U>0$ from consuming one of his consumption
+goods, while the goods that he cannot consume yield zero utility.
+
+Initially, let each agent be endowed with one good, and let these
+goods be randomly drawn from the set of all commodities. Goods are
+costlessly storable, but each agent can store at most
+one good at a time. The only input in the production of goods
+is the agents' own prior consumption. After consuming one of his
+consumption goods, an agent produces next period a new good drawn
+randomly from the set of all commodities. We assume that agents can
+consume neither their own output nor their initial endowment, so
+for consumption and production to take place there must be exchange
+among agents.
+
+Agents meet pairwise and at random. In each period, an agent meets
+another agent with probability $\theta \in (0,1]$ and he has no encounter
+with probability $1-\theta$. Two agents who meet will trade if there is
+a mutually agreeable transaction. Any transaction must be quid pro quo
+because private credit arrangements are ruled out by the assumptions of a
+random matching technology and a continuum of agents.
+We also assume that there is a transaction cost
+$\epsilon \in (0, U)$ in terms of disutility, which is incurred
+whenever accepting a commodity in trade. Thus, a trader who is indifferent
+between holding two goods will never trade one for the other.
+
+Agents choose trading strategies in order to maximize their expected
+discounted utility from consumption net of transaction costs, taking as
+given the strategies of other traders. Following Kiyotaki and Wright
+(1993), we restrict our attention to symmetric Nash equilibria, \index{Nash equilibrium}%
+where all agents follow the same strategies and all goods are treated
+the same, and to steady states, where strategies and aggregate variables
+are constant over time.
+
+In a symmetric equilibrium, an agent will  trade only if he is offered
+a commodity that belongs to his set of consumption goods, and then
+consumes it immediately. Accepting a commodity that is not one's consumption
+good would only give rise to a transaction cost $\epsilon$ without
+affecting expected future trading opportunities. This statement
+is true because no commodities are treated as special in a
+symmetric equilibrium, and therefore the probability of a commodity
+being accepted by the next agent one meets is independent of the
+type of commodity
+one has.\NFootnote{Kiyotaki and Wright (1989) analyze commodity money in
+a related model with nonsymmetric equilibria, where some goods become
+media of exchange.}
+It follows that $x$ is the probability that a trader located
+at random is willing to accept any given commodity, and $x^2$ becomes
+the probability that two traders consummate a barter in a situation
+of ``double coincidence of wants.''
+\index{double coincidence of wants}
+
+At the beginning of a period before the realization of the matching
+process, the value of an agent's optimization problem becomes
+$$
+V^n_c \;=\; \theta\,x^2\,(U-\epsilon) \,+\, \beta V^n_c \,,
+$$
+where $\beta \in (0,1)$ is the discount factor. The superscript and
+subscript of $V^n_c$ denote a nonmonetary equilibrium and a commodity
+trader, respectively, to set the stage for our next exploration of the
+role for money in this economy. How will fiat money affect welfare?
+Keep the benchmark of a barter economy in mind,
+$$
+V^n_c \;=\; { \theta\,x^2\,(U-\epsilon) \over 1 - \beta }\,.   \EQN VNc
+$$
+
+\subsection{Monetary equilibria}
+
+At the beginning of time, suppose a fraction $\bar M \in [0,1)$ of all
+agents are each offered one unit of fiat money. The money is
+indivisible, and an agent can store at most one unit of money or one
+commodity at a time. That is, fiat money will enter into circulation only
+if some agents accept money and discard their endowment of goods. These
+decisions must be based solely on agents' beliefs about other traders'
+willingness to accept money in future transactions, because fiat money
+is by definition unbacked and intrinsically worthless. To determine
+whether or not fiat money will initially be accepted, we will therefore
+first have to characterize monetary equilibria.\NFootnote{If money is valued
+in an equilibrium, the relative price of goods and
+money is trivially equal to $1$, since both objects are indivisible
+and each agent can carry at most one unit of the objects.
+Shi (1995) and Trejos and Wright (1995)
+\auth{Shi, Shouyong}\auth{Trejos, Alberto}\auth{Wright, Randall}%
+endogenize the price level
+by relaxing the assumption that goods are indivisible.}
+
+Fiat money adds two state variables in a symmetric steady state:
+the probability that a commodity trader accepts money, $\Pi\in[0,1]$,
+and the amount of money circulating, $M\in[0, \bar M]$, which is
+also the fraction of all agents carrying money. An equilibrium pair
+$(\Pi, M)$ must be such that an individual's choice of probability of
+accepting money when being a commodity trader, $\pi$, coincides
+with the economy-wide $\Pi$, and the amount of money $M$ is consistent
+with the decisions of those agents who are initially free to replace
+their commodity endowment with fiat money.
+
+In a monetary equilibrium, agents can be divided into two types of
+traders. An agent brings either a commodity
+or a unit of fiat money to the trading process; that is, he is either
+a commodity trader or a money trader. At the beginning of a period,
+the values associated with being
+a commodity trader and a money trader are denoted $V_c$ and $V_m$,
+respectively. The Bellman equations can be written
+$$\EQNalign{
+V_c \;&=\; \theta (1-M) x^2 \bigl(U-\epsilon+\beta V_c\bigr)
+\,+\, \theta M x \max_{\pi} \bigl[\pi \beta V_m + (1-\pi) \beta V_c\bigr] \cr
+\noalign{\vskip.15cm}
+      &\hskip.4cm
+    +\, \bigl[1 \,-\, \theta (1-M) x^2 \,-\, \theta M x\bigr] \beta V_c \,,
+                                                               \EQN Vc \cr
+\noalign{\vskip.3cm}
+V_m \;&=\; \theta (1-M) x  \Pi \bigl(U-\epsilon+\beta V_c\bigr)
+    +  \bigl[1 - \theta (1-M) x \Pi \bigr] \beta V_m .
+                                                               \EQN Vm \cr}
+$$
+The value of being a commodity trader in equation \Ep{Vc} equals the sum of
+three terms. The first term is the probability of the agent meeting other
+commodity traders, $\theta (1-M)$, times the probability that both want
+to trade, $x^2$, times the value of trading, consuming, and returning
+as a commodity trader next period, $U-\epsilon+\beta V_c$. The second
+term is the probability of the agent meeting money traders, $\theta M$,
+times the probability that a money trader wants to trade, $x$, times
+the value of accepting money with probability $\pi$,
+$\pi \beta V_m + (1-\pi) \beta V_c$, where $\pi$ is
+chosen optimally. The third term captures the complement to the two
+previous events when the agent stores his commodity to the next
+period with a continuation value of $\beta V_c$.
+According to equation \Ep{Vm}, the value of being a money trader
+equals the sum of two terms. The first term is the probability of
+the agent meeting a commodity trader, $\theta (1-M)$, times the
+probability of both wanting to trade, $x \Pi$, times the value of
+trading, consuming, and becoming a commodity trader next period,
+$U-\epsilon+\beta V_c$. The second term is the probability of
+the described event not occurring times the value of keeping
+the unit of fiat money to the next period, $\beta V_m$.
+
+The optimal choice of $\pi$ depends solely on $\Pi$. First, note
+that if $\Pi<x$ then equations \Ep{Vc} and \Ep{Vm} imply that $V_m<V_c$,
+so the individual's best response is $\pi=0$. That is, if money
+is being accepted with a lower probability than a barter offer,
+then it is harder to trade using money than barter, so agents
+would never like to exchange a commodity for money. Second, if
+$\Pi>x$, then equations \Ep{Vc} and \Ep{Vm} imply that $V_m>V_c$, so the
+individual's best response is $\pi=1$. If money is being accepted
+with a greater probability than a barter offer, then it is easier
+to trade using money than barter, and agents would always like to
+exchange a commodity for money whenever possible. Finally, if
+$\Pi=x$, then equations \Ep{Vc} and \Ep{Vm} imply that $V_m=V_c$,
+so $\pi$ can be anything in $[0, 1]$. If monetary exchange and
+barter are equally easy, then traders are indifferent between carrying
+commodities and fiat money, and they could accept money with
+any probability. Based on these results, the individual's best-response
+\index{best response}%
+correspondence is as shown in Figure \Fg{fig194f}, %19.8,
+and there are exactly
+three values consistent with $\Pi=\pi$: $\Pi=0$, $\Pi=1$, and $\Pi=x$.
+
+%%%%%%%%%%%%
+%\topinsert
+%$$\grafone{fig194.eps,height=2.5in}{{\bf Figure 19.8.}  The
+%best-response correspondence.}
+%$$\endinsert
+
+\midfigure{fig194f}
+\centerline{\epsfxsize=3truein\epsffile{fig194.eps}}
+\caption{The best-response correspondence.}
+\infiglist{fig194f}
+\endfigure
+
+We can now answer our first question, namely, how many of the agents
+who are initially free to exchange their commodity endowment for fiat
+money will choose to do so? The answer is implicit in our
+discussion of the best-response correspondence. Thus, we have the
+following three types of symmetric equilibria:
+
+\noindent{1. } A nonmonetary equilibrium with $\Pi=0$ and $M=0$, which
+is identical to the barter outcome in the previous section: Agents
+expect that money
+will be valueless, so they never accept it, and this expectation
+is self-fulfilling. All agents become commodity traders associated
+with a value of $V^n_c$, as given by equation \Ep{VNc}.
+\smallskip
+\noindent{2.} A pure monetary equilibrium with $\Pi=1$ and $M=\bar M$:
+Agents expect that money will be universally acceptable. From
+our previous discussion
+we know that agents will then prefer to bring money rather than
+commodities to the trading process. It is therefore a dominant strategy
+to accept money whenever possible; that is, expectation is self-fulfilling.
+Another implication is that the fraction
+$\bar M$ of agents who are initially free to exchange their commodity
+endowment for fiat money will also do so. Let $V^p_c$ and $V^p_m$
+denote the values associated with being a commodity trader and a
+money trader, respectively, in a pure monetary equilibrium.
+\smallskip
+\noindent{3. } A mixed monetary equilibrium with $\Pi=x$ and $M\in[0, \bar M]$:
+Traders are indifferent between accepting and rejecting money as long
+as future trading partners take it with probability $\Pi=x$, so partial
+acceptability with agents setting $\pi=x$ can also be self-fulfilling.
+However, a mixed monetary equilibrium has no longer a unique mapping to
+the amount of circulating money $M$. Suppose the initial choices
+between commodity endowment and fiat money are separate
+from agents' decisions on trading strategies. It
+follows that any amount of money between $[0, \bar M]$
+can constitute a mixed monetary equilibrium because of the indifference
+between a commodity endowment and a unit of fiat money.
+Of course, the allocation in a
+mixed monetary equilibrium with $M=0$ is identical to the one in a
+nonmonetary equilibrium. Let $V^i_c(M)$ and $V^i_m(M)$
+denote the values associated with being a commodity trader and a
+money trader, respectively, in a mixed monetary equilibrium with an
+amount of money equal to $M\in[0, \bar M]$.
+
+
+\subsection{Welfare}
+
+To compare welfare across different equilibria, we set $\pi=\Pi$ in
+equations \Ep{Vc} and \Ep{Vm} and solve for the reduced-form expressions
+$$\EQNalign{
+V_c \;&=\; { \psi \over 1-\beta } \bigl\{ (1-\beta) x +
+           \beta \theta x \Pi \bigl[M \Pi + (1-M) x \bigr] \bigr\} ,
+                                                               \EQN Vc_2 \cr
+\noalign{\vskip.3cm}
+V_m \;&=\; { \psi \over 1-\beta } \bigl\{ (1-\beta) \Pi +
+           \beta \theta x \Pi \bigl[M \Pi + (1-M) x \bigr] \bigr\} ,
+                                                               \EQN Vm_2 \cr}
+$$
+where $\psi=[\theta (1-M) x (U-\epsilon)]/[1- \beta(1- \theta x \Pi)]>0$.
+The value
+$V_m$ is greater than or equal to $V_c$ in a monetary equilibrium, since
+a necessary condition is that monetary exchange is at least as easy as
+barter ($\Pi \geq x$),
+$$
+V_m \;=\;  V_c \,+\, \psi \, (\Pi - x) \,.
+$$
+
+After setting $\Pi=x$ in equations \Ep{Vc_2} and \Ep{Vm_2}, we
+see that a mixed monetary equilibrium with $M>0$ gives rise to
+a strictly lower welfare as compared to the barter outcome in
+equation \Ep{VNc},
+$$
+V^i_c(M) \;=\; V^i_m(M) \;=\; (1-M) V^n_c \,.
+$$
+Even though some agents are initially willing to switch their commodity
+endowment for fiat money, it is detrimental for the economy as a
+whole. Since money is accepted with the same probability as commodities,
+money does not ameliorate the problem of ``double coincidence of wants''
+but only diverts real resources from the economy.\NFootnote{This welfare
+result differs from that of Kiyotaki and Wright (1993), who assume that
+a fraction $\bar M$ of all agents are initially endowed with fiat money
+without any choice. It follows that those agents endowed with money are
+certainly better off in a mixed monetary equilibrium as compared to
+the barter outcome, while the other agents are indifferent. The latter
+agents are indifferent because the existence of the former agents
+has the same crowding-out effect on their consumption arrival rate
+in both types of equilibria. Our welfare results reported here are
+instead in line with Kiyotaki and Wright's (1990) original working
+paper based on a slightly different environment where agents can at
+any time dispose of their fiat money and engage in production.}
+In fact, as noted by Kiyotaki and Wright (1990), the mixed monetary
+equilibrium is isomorphic to the nonmonetary equilibrium of another
+economy where the probability of meeting an agent is reduced
+from $\theta$ to $\theta (1-M)$.
+
+In a pure monetary equilibrium ($\Pi=1$), the value of being a money
+trader is strictly greater than the value of being a commodity trader.
+A natural welfare criterion is the {\it ex ante\/} expected utility
+before the quantity $\bar M$ of fiat money is randomly distributed,
+$$\EQNalign{
+W \;&=\;  \bar M V^p_m  \,+\, (1-\bar M) V^p_c                        \cr
+\noalign{\vskip.3cm}
+    &=\; {\theta (1-\bar M) x (U - \epsilon) \over 1-\beta }\,
+         \bigl[\bar M \,+\, (1-\bar M)x \bigr] \,.    \EQN W_pure      \cr}
+$$
+The first and second derivatives of equation \Ep{W_pure} are
+$$\EQNalign{
+{ \partial W \over \partial \bar M } \;&=\;
+  { \theta x (U - \epsilon) \over 1 - \beta }
+  \Bigl\{1 \,-\,2\bigl[\bar M + (1-\bar M) x \bigr] \Bigr\}  \,,\EQN Wder1 \cr
+\noalign{\vskip.3cm}
+{ \partial^2 W \over \partial \bar M^2 } \;&=\;
+  -\, 2 \,{ \theta x (U - \epsilon) \over 1 - \beta }\,
+  (1 - x) \;<\; 0  \,.                                        \EQN Wder2 \cr}
+$$
+Since the second derivative is negative, fiat money can
+only have a welfare-enhancing role if the first derivative is positive
+when evaluated at $\bar M=0$. Thus, according to equation \Ep{Wder1},
+money can (cannot) increase welfare if $x<.5$ ($x\geq .5$). Intuitively
+speaking, when $x\geq .5$, each agent is willing to consume
+(and therefore accept) at least half of all commodities, so barter
+is not very difficult. The introduction of money would here only reduce
+welfare by diverting real resources from the economy. When $x< .5$,
+barter is sufficiently difficult so that the introduction of some
+fiat money improves welfare. The optimum quantity of money is then
+found by setting equation \Ep{Wder1} equal to zero,
+$\bar M^\star = (1-2x)/(2-2x)$. That is, $\bar M^\star$ varies
+negatively with $x$, and the optimum quantity of money increases
+when $x$ shrinks and the problem of ``double coincidence of wants''
+becomes more difficult. In particular, $\bar M^\star$ converges to
+$.5$ when $x$ goes to zero.
+
+
+\section{Concluding remarks}
+
+The frameworks of search and matching present various ways of departing
+from the frictionless Arrow-Debreu economy where all agents meet in
+a complete set of markets. This chapter has mainly focused on labor markets
+as a central application of these theories. The presented models have
+the concept of frictions in common, but there are also differences.
+The island economy has frictional unemployment without any externalities.
+An unemployed worker does not inflict any injury
+on other job seekers other than what a seller of a good imposes on his
+competitors. The equilibrium value to search, $v_u$, serves the function
+of any other equilibrium price of signaling to suppliers the correct
+social return from an additional unit supplied. In contrast, the matching
+model with its matching function is
+associated with externalities. Workers and firms impose
+congestion effects when they enter as unemployed
+in the matching function or add another vacancy in the matching
+function. To arrive at an efficient allocation in the economy, it is
+necessary that the bilaterally bargained wage be exactly right.
+In a labor market with homogeneous firms and workers,
+efficiency prevails only if the workers' bargaining strength,
+$\phi$, is exactly equal to the elasticity of the matching function
+with respect to the measure of unemployment, $\alpha$. In the case of
+heterogeneous jobs in the same labor market with a single matching
+function, we established the impossibility of efficiency without
+government intervention.
+
+The matching model unarguably offers  a richer analysis through its
+extra interaction effects, but it comes at the cost of the model's
+microeconomic structure. In an explicit economic environment,
+feasible actions can be clearly envisioned
+for any population size, even if there is only one Robinson Crusoe.
+The island economy is an example of such a model with its
+microeconomic assumptions,
+such as the time it takes to move from one island to another.
+In contrast, the matching model with its matching function imposes
+relationships between aggregate outcomes. It is therefore not
+obvious how the matching function arises when gradually increasing
+the population from one Robinson Crusoe to an economy with more
+agents. Similarly, it is an open question what
+determines when heterogeneous firms and labor have to be matched through
+a common matching function and when they have access to
+separate matching functions.
+
+Peters (1991) and Montgomery (1991)
+\auth{Peters, Michael} \auth{Montgomery, James D.}%
+suggest some microeconomic underpinnings to
+labor market frictions, which are further pursued by Burdett, Shi, and Wright (2001).
+\auth{Burdett, Kenneth}\auth{Shi, Shouyong}\auth{Wright, Randall}%
+Firms post vacancies with announced wages, and unemployed workers can  apply
+to only one firm at a time. If the values of filled jobs differ across firms, firms
+with more valued jobs will have an incentive to post higher wages to attract job
+applicants. In an equilibrium, workers will be indifferent between applying to
+different jobs, and they are assumed to use identical mixed strategies in
+making their applications. In this way, vacancies may remain
+unfilled because some firms do not receive any
+applicants, and some workers may find themselves ``second in line''
+for a job and therefore remain unemployed.
+When assuming a large number of firms that take market tightness as
+given for each posted wage, Montgomery finds that the decentralized
+equilibrium does maximize welfare for reasons similar to Moen's (1997)
+identical finding that was discussed earlier in this chapter.
+
+Lagos (2000)
+\auth{Lagos, Ricardo}%
+ derives a matching function from a model without
+any exogenous frictions at all. He studies a dynamic market for taxicab
+rides in which taxicabs seek potential passengers on a spatial grid and
+the fares are regulated exogenously. In each location, the shorter side
+determines the number of matches. It is shown that a matching function
+exists for this model, but this matching function is an equilibrium
+object that changes with policy experiments. Lagos sounds a warning
+that assuming an exogenous matching function when doing policy analysis
+might be misleading.
+
+Throughout our discussion of search and matching models, we have
+assumed risk-neutral agents. Acemoglu and Shimer (1999), and
+Gomes, Greenwood, and Rebelo (2001)
+ analyze a matching model and a search model,
+respectively, where agents are risk averse and hold precautionary
+savings because of imperfect insurance against unemployment.
+\auth{Gomes, Joao} \auth{Greenwood, Jeremy} \auth{Rebelo, Sergio}
+\auth{Acemoglu, Daron} \auth{Shimer, Robert}
+
+%\note{Compare to chapter XXX where we resort %to a ``black-box'' transaction cost
+%function to make fiat money %valuable. See especially subsection XXX
+%that discusses a government's %use of legal restrictions to boost demand for its currency.}
+
+
+%\section{Exercises}
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+\medskip\noindent
+{\it Exercise \the\chapternum.1} \quad {\bf An island economy}\  (Lucas and Prescott, 1974)
+\auth{Lucas, Robert E., Jr.} \auth{Prescott, Edward C.}%
+\index{island model}%
+\medskip\noindent
+Let the island economy in this chapter have
+a productivity shock that takes on two possible values, $\{\theta_L,
+\theta_H\}$ with $0 < \theta_L < \theta_H$. An island's
+productivity remains constant from one period to another
+with probability $\pi \in (.5, 1)$, and its productivity changes
+to the other possible value with probability $1-\pi$. These
+symmetric transition probabilities imply a stationary distribution
+where half of the islands experience a given $\theta$ at any point
+in time. Let $\hat x$ be the economy's labor supply (as an
+average per market).
+
+\medskip
+\noindent{\bf a.}  If there exists a stationary equilibrium with
+labor movements, argue that an island's labor force has two
+possible values, $\{x_1, x_2\}$ with $0 < x_1 < x_2$.
+
+
+\medskip
+\noindent{\bf b.} In a stationary equilibrium with labor
+movements, construct a matrix $\Gamma$ with the transition
+probabilities between states $(\theta, x)$, and explain what
+the employment level is in different states.
+
+\medskip
+\noindent{\bf c.} In a stationary equilibrium with labor
+movements, we observe only four values of the value function
+$v(\theta,x)$ where $\theta\in\{\theta_L, \theta_H\}$ and
+$x\in\{x_1, x_2\}$. Argue that the value function takes on
+the same value for two of these four states.
+
+\medskip
+\noindent{\bf d.} Show that the condition for the existence
+of a stationary equilibrium with labor movements is
+$$
+\beta (2 \pi - 1) \theta_H \;>\; \theta_L \,,    \eqno(1)   %%EQN cond_move
+$$
+and, if this condition is satisfied, an implicit
+expression for the equilibrium value of $x_2$ is
+$$
+\left[ \theta_L \,+\, \beta (1-\pi) \theta_H \right] f'(2 \hat x - x_2)
+\;= \; \beta \pi \theta_H f'(x_2)\,.             \eqno(2)   %%\EQN x2_opt
+$$
+\noindent
+
+
+\medskip
+\noindent{\bf e.}
+Verify that the allocation of labor in part d coincides with a social
+planner's solution when maximizing the present value of the
+economy's aggregate production. Starting from an initial equal
+distribution of workers across islands, condition (1)   %%\Ep{cond_move}
+indicates when it is optimal for the social planner to increase
+the number of workers on high-productivity islands.
+The first-order condition for the social planner's choice of
+$x_2$ is then given by equation (2).           %%\Ep{x2_opt}.
+
+%\noindent
+%{\it Hint}:
+%Consider an employment plan $(x_1, x_2)$ such that the next
+%period's labor force is $x_1$ ($x_2$) for an island currently experiencing
+%productivity shock $\theta_L$ ($\theta_H$). If $x_1 \leq x_2$, the present
+%value of the economy's production (as an island average) becomes
+%$$
+%.5 \sum_{t=0}^\infty \beta^t \left[ \theta_L f(2 \hat x - x_2)
+%\,+\, (1-\pi) \theta_H f(2 \hat x - x_2) \,+\, \pi \theta_H f(x_2)
+%                                                    \right] \,.
+%$$
+%Examine the effect of a once-and-for-all increase in the number
+%of workers allocated to high-productivity islands.
+\vfil\eject
+\medskip\noindent
+{\it Exercise \the\chapternum.2}\quad  {\bf Business cycles and search} \ \ (Gomes, Greenwood,
+and Rebelo, 2001)
+\auth{Gomes, Joao}\auth{Greenwood, Jeremy}\auth{Rebelo, Sergio}%
+\index{search model!business cycles}
+
+\medskip\noindent
+{\bf Part I} \ \ {\it The worker's problem}
+
+\medskip\noindent
+Think about an economy in which workers  all confront the following common
+environment: Time is discrete.  Let $t=0, 1, 2, \ldots$ index time.
+At the beginning of each period, a  previously employed
+worker can choose to work at her last
+period's wage or  draw a new wage.
+ If she draws a new wage, the old wage is
+lost and she will be unemployed in the current period.  She can start work
+at the new wage in the next period.
+New wages are independent and identically
+distributed from the cumulative
+distribution function $F$, where $F(0)=0$, and $F(M)=1$ for $M<\infty$. Unemployed workers face a similar problem. At the beginning of each period, a previously unemployed worker can choose to work at last period's wage offer or to draw a new wage from $F$. If she draws a new wage, the old wage offer is lost and she can start working at the new wage in the following period. Someone offered a wage is free to work at that wage for as long as she
+chooses (she cannot be fired).  The income of an unemployed
+worker is $b$, which includes unemployment insurance and the
+value of home production.  Each worker seeks to maximize
+$E_0 \sum_{t=0}^\infty (1-\mu)^t \beta^t I_t, $
+where $\mu$ is the probability that a worker dies at the end of a period,
+$\beta$ is the subjective discount factor, and $I_t$ is the worker's income
+in period $t$; that is, $I_t$ is equal to the wage $w_t$ when employed
+and the income $b$ when unemployed.  Here, $E_0$ is the mathematical
+expectation operator, conditioned on information known at time $0$.
+Assume that $\beta \in (0,1)$ and $\mu \in (0,1)$.
+
+\medskip
+\noindent{\bf a.} Describe the  worker's optimal decision rule.  In particular,
+what should an employed worker do?  What should an unemployed worker do?
+\vskip.1cm
+
+\noindent{\bf b.} How would an unemployed  worker's
+behavior be affected by an increase in $\mu$?
+\medskip\noindent
+{\bf Part II}\ \ {\it  Equilibrium unemployment rate}
+
+\medskip\noindent
+The economy is populated with a continuum of the workers just
+described. There is an exogenous rate of new workers entering
+the labor market  equal to $\mu$, which equals
+the death rate. New entrants are unemployed and must draw a new wage.
+
+\vskip.2cm
+
+\noindent{\bf c.} Find an expression for the economy's unemployment
+rate in terms of exogenous parameters and the endogenous reservation
+wage.  Discuss the determinants of the unemployment rate.
+
+\medskip
+\noindent
+We now change the technology so that
+the economy fluctuates between booms ($B$) and recessions ($R$).
+In a boom, all employed workers are paid an extra $z>0$.
+That is, the income of a worker with wage $w$ is $I_t=w+z$ in a boom and
+$I_t=w$ in a recession.  Let whether the economy is
+in a boom or a recession define the {\it state\/} of the economy.
+Assume that
+the state of the economy is i.i.d.\ and that booms and
+recessions have the same probabilities of
+$.5$. The state of the economy is publicly known at the beginning
+of a period before any decisions are made.
+
+\vskip.2cm
+\noindent{\bf d. }  Describe the optimal behavior of employed and unemployed
+ workers.  When, if ever, might workers choose to quit?
+
+\vskip.2cm
+\noindent{\bf e. } Let $w_{\scriptscriptstyle B}$ and $w_{\scriptscriptstyle R}$
+be the reservation wages in booms and recessions, respectively. Assume
+that $w_{\scriptscriptstyle B} < w_{\scriptscriptstyle R}$.
+Let $G_t$ be the fraction of workers employed at wages
+$w \in [w_{\scriptscriptstyle B}, w_{\scriptscriptstyle R}]$ in period $t$.
+Let $U_t$ be the fraction
+of workers unemployed in period $t$.
+Derive difference equations for $G_t$ and $U_t$ in terms
+of the parameters of the model and the reservation wages,
+$\{F, \mu, w_{\scriptscriptstyle B}, w_{\scriptscriptstyle R}\}$.
+
+\vskip.1cm
+\noindent{\bf f. } Figure \Fg{pic11f} contains a simulated time series from the solution
+of the model with booms and recessions.  Interpret the time series in terms
+of the model.
+
+
+%%%%%%%%%%%%%
+%$$
+%\grafone{pic1.ps,height=2.1in}{\bf } % replaced from Lars, Aug 10, 2001
+%\grafone{pic11.ps,height=2.1in}{{\bf Figure 19.9.}  Unemployment during
+%business cycles.}  $$
+%%%%%%%%
+
+\midfigure{pic11f}
+\centerline{\epsfxsize=3truein\epsffile{pic11.ps}}
+\caption{Unemployment during business cycles.}
+\infiglist{pic11f}
+\endfigure
+
+\medskip
+\noindent {\it Exercise \the\chapternum.3} \quad {\bf Business cycles and search again}
+\medskip
+\noindent
+The economy is either in a boom ($B$) or recession ($R$) with
+probability $.5$.  The state of the economy ($R$ or $B$) is
+i.i.d. through time.  At the beginning of each period, workers
+know the state of the economy for that period.
+At the beginning of each period, a previously
+employed worker can choose to work at her last
+period's wage or draw a new wage. If she draws a new wage,
+the old wage is lost, $b$ is received this period,
+and she can start working at the new wage in the following period.
+During recessions, new wages (for jobs to start next period)
+are i.i.d. draws from the c.d.f. $F$, where $F(0)=0$ and $F(M)=1$
+for $M<\infty$. During booms, the worker can choose to quit and
+take {\it two\/} i.i.d. draws of a possible new wage (with the
+option of working at the higher wage, again for a job to start
+the next period) from the {\it same\/} c.d.f. $F$ that prevails
+during recessions.  (This ability to choose
+is what ``jobs are more plentiful during booms'' means
+to workers.)  Workers who are unemployed at the beginning of
+a period receive $b$ this period and draw either one (in recessions)
+or two (in booms) wage offers from the c.d.f. $F$ to start
+work next period.
+\medskip
+\noindent
+A worker seeks to maximize
+$E_0 \sum_{t=0}^\infty (1-\mu)^t \beta^t I_t$,
+where $\mu$ is the probability that a worker dies at the end of
+a period, $\beta$ is the subjective discount factor, and $I_t$
+is the worker's income in period $t$; that is, $I_t$ is equal
+to the wage $w_t$ when employed and the income $b$ when unemployed.
+
+\vskip.2cm
+\noindent{\bf a.} Write the Bellman equation(s) for a previously
+employed worker.
+
+\vskip.1cm
+\noindent{\bf b.} Characterize the worker's quitting policy.
+If possible, compare reservation wages in booms and recessions.
+Will employed workers ever quit?  If so, who will quit and when?
+
+\medskip
+\noindent
+{\it Exercises \the\chapternum.4--\the\chapternum.6} \quad {\bf European unemployment}
+\index{unemployment!European}
+\medskip\noindent
+The following three exercises are based on work by Ljungqvist
+and Sargent (1998), Marimon and Zilibotti (1999), and Mortensen
+and Pissarides (1999b),
+who calibrate versions of search and
+matching models to explain high European unemployment. Even
+though the specific mechanisms differ, they all
+attribute the rise in unemployment to generous benefits in
+times of more dispersed labor market outcomes for job seekers.
+\auth{Ljungqvist, Lars} \auth{Sargent, Thomas J.} \auth{Marimon, Ramon}
+\auth{Zilibotti, Fabrizio} \auth{Mortensen, Dale T.} \auth{Pissarides, Christopher}
+\medskip\noindent
+{\it Exercise \the\chapternum.4} \quad {\bf Skill-biased technological change} \
+              (Mortensen and Pissarides, 1999b)
+\index{matching model!skill-biased technological change}
+
+\medskip\noindent
+Consider a matching model in discrete time with infinitely lived
+and risk-neutral
+workers who are endowed with different skill levels. A worker
+of skill type $i$ produces $h_i$ goods in each period that
+she is matched to a firm, where $i\in\{1,2,\ldots,N\}$
+and $h_{i+1}>h_i$. Each skill type has its own but identical
+matching function $M(u_i,v_i)=A u_i^\alpha v_i^{1-\alpha}$,
+where $u_i$ and $v_i$ are the measures of unemployed workers
+and vacancies in skill market $i$. Firms incur a vacancy
+cost $c \, h_i$ in every period that a vacancy is posted in
+skill market $i$; that is, the vacancy cost is proportional to
+the worker's productivity. All matches are exogenously
+destroyed with probability $s\in(0,1)$ at the beginning of a
+period. An unemployed worker receives unemployment compensation
+$b$. Wages are determined in Nash bargaining between matched
+firms and workers. Let $\phi \in [0,1)$ denote the worker's
+bargaining weight in the Nash product, and we adopt the
+standard assumption that $\phi=\alpha$.
+
+\vskip.2cm
+\noindent{\bf a.} Show analytically how the unemployment rate in
+a skill market varies with the skill level $h_i$.
+
+\vskip.1cm
+\noindent{\bf b.} Assume an even distribution of workers across skill
+levels. For different benefit levels $b$, study numerically
+how the aggregate steady-state unemployment rate is affected by
+mean-preserving spreads in the distribution of skill levels.
+
+\vskip.1cm \noindent{\bf c.} Explain how the results would change if
+unemployment benefits are proportional to a worker's productivity.
+
+
+\medskip\noindent
+{\it Exercise \the\chapternum.5} \quad {\bf Dispersion of match values} \
+                                    (Marimon and Zilibotti, 1999)
+
+\index{matching model!dispersion of match values}
+\medskip\noindent
+We retain the matching framework of exercise {\it \the\chapternum.4\/}  %%19.4
+but assume that all
+workers have the same innate ability $h=\bar h$ and any earnings
+differentials are purely match specific. In particular, we assume that
+the meeting of a firm and a worker is associated with a random draw of a
+match-specific productivity $p$ from an exogenous distribution $G(p)$.
+If the worker and firm agree to stay together, the output of the
+match is then $p \cdot h$ in every period as long as the match
+is not exogenously destroyed as in exercise {\it \the\chapternum.4\/}.   %%19.4.
+We also keep the
+assumptions of a constant unemployment compensation $b$ and
+Nash bargaining over wages.
+
+\vskip.1cm
+\noindent{\bf a.} Characterize the equilibrium of the model.
+
+\vskip.1cm
+\noindent{\bf b.} For different benefit levels $b$, study numerically
+how the steady-state unemployment rate is affected by
+mean-preserving spreads in the exogenous distribution $G(p)$.
+
+\medskip
+\noindent {\it Exercise \the\chapternum.6} \quad {\bf Idiosyncratic shocks to human capital}
+ \ \ (Ljung\-qvist and Sargent, 1998)
+\index{search model!shocks to human capital}
+
+\medskip\noindent
+We retain the assumption of exercise {\it \the\chapternum.5\/}    %%19.5
+that a worker's output is the product of
+his human capital $h$ and a job-specific component which we now
+denote $w$, but we replace the matching framework with a search
+model. In each period of unemployment, a worker draws a value
+$w$ from an exogenous wage offer distribution $G(w)$ and, if the worker
+accepts the wage $w$, he starts working in the following period.
+The wage $w$ remains constant throughout the employment spell that
+ends either because the worker quits or the job is exogenously
+destroyed with probability $s$ at the beginning of each period.
+Thus, in a given job with wage $w$, a worker's earnings $w h$
+can only vary over time because of changes in human capital $h$.
+For simplicity,
+we assume that there are only two levels of human capital,
+$h_1$ and $h_2$ where $0<h_1<h_2<\infty$. At the beginning of
+each period of employment, a worker's human capital is unchanged
+from last period with probability $\pi_e$ and is equal to
+$h_2$ with probability $1-\pi_e$. Losses of human capital
+are only triggered by exogenous job destruction. In the
+period of an exogenous job loss, the laid off worker's human
+capital is unchanged from last period with probability $\pi_u$
+and is equal to $h_1$ with probability $1-\pi_u$. All unemployed
+workers receive unemployment compensation, and
+the benefits are equal to a replacement ratio $\gamma \in [0,1)$
+times a worker's last job earnings.
+
+\vskip.1cm
+\noindent{\bf a.} Characterize the equilibrium of the model.
+
+\vskip.1cm
+\noindent{\bf b.} For different replacement ratios $\gamma$, study numerically
+how the steady-state unemployment rate is affected by
+changes in $h_1$.
+
+\vskip.3cm
+\noindent{\it  Comparison of models}
+
+\vskip.3cm
+\noindent{\bf c.} Explain how the different models in exercises
+{\it \the\chapternum.4\/} through {\it \the\chapternum.6\/}    %%19.4--19.6
+address the observations
+that European welfare states have experienced less of an increase
+in earnings differentials as compared to the United States, but
+suffer more from long-term unemployment where the probability
+of gaining employment drops off sharply with the length of the
+unemployment spell.
+
+\vskip.1cm
+\noindent{\bf d.} Explain why
+the assumption of infinitely lived agents is innocuous for the
+models in exercises {\it \the\chapternum.4\/} and {\it \the\chapternum.5\/},  %%19.4 and 19.5,
+but the alternative assumption
+of finitely lived agents can make a large difference for
+the model in exercise {\it \the\chapternum.6\/}.                     %%19.6
+\medskip
+  \noindent {\it Exercise \the\chapternum.7} \quad  {\bf Temporary jobs and layoff costs}
+  \medskip \noindent Consider a search model with temporary jobs. At the beginning of
+each period, a
+previously employed worker loses her job with probability $\mu$, and she can keep
+her job and wage rate from last period with  probability $1-\mu$. If she loses
+ her job (or chooses to quit),  she draws a new wage and can start working at the
+new wage in  the following period with probability $1$. After a first period on
+the new job, she will again in each period face  probability $\mu$ of losing her
+job. New wages are independent and identically distributed from the cumulative
+distribution function $F$, where $F(0)=0$, and $F(M)=1$ for $M<\infty$. The
+situation during unemployment is as follows. At the beginning of each period, a
+previously unemployed worker can choose to start working at last period's wage
+offer or to draw a new wage from $F$. If she draws a new wage, the old wage offer
+is lost and she can start working at the new wage in the following period. The
+income of an unemployed  worker is $b$, which includes unemployment insurance and
+the  value of home production.  Each worker seeks to maximize
+$E_0 \sum_{t=0}^\infty \beta^t I_t$, where  $\beta$ is the subjective discount
+factor, and $I_t$ is the worker's income in period $t$; that is, $I_t$ is equal
+to the wage $w_t$ when employed  and the income $b$ when unemployed.
+Here $E_0$ is the mathematical expectation operator, conditioned on information
+known at time $0$. Assume that $\beta \in (0,1)$ and $\mu \in (0,1]$.
+\medskip
+\noindent{\bf a.} Describe the worker's optimal decision rule.
+\medskip
+\noindent Suppose that there are two types of temporary jobs: short-lasting
+jobs with $\mu_s$ and long-lasting jobs with $\mu_l$, where $\mu_s>\mu_l$.
+When the worker draws a new wage from the distribution $F$, the job is now
+randomly designated as  either short-lasting with probability $\pi_s$ or
+long-lasting with probability $\pi_l$, where $\pi_s+\pi_l=1$. The worker
+observes the characteristics of a job offer, $(w, \mu)$.
+\medskip
+\noindent{\bf b.} Does the worker's reservation wage depend on whether a job
+is short-lasting or long-lasting? Provide intuition for your answer.
+\medskip
+ We now consider the effects of layoff costs. It is
+assumed that the government imposes a cost $\tau>0$ on each worker that
+loses a job (or quits).
+
+\medskip
+\noindent{\bf c.} Conceptually, consider the following two reservation wages,
+for a given value of $\mu$: (i) a previously unemployed worker sets a
+reservation wage for accepting last period's wage offer;
+(ii) a previously employed worker sets a reservation wage for continuing
+working at last period's wage. For a given value of $\mu$, compare these
+two reservation wages.
+
+\medskip
+\noindent{\bf d.} Show that an unemployed worker's reservation wage for
+a short-lasting job exceeds her reservation wage for a long-lasting job.
+
+\medskip
+\noindent{\bf e.} Let $\bar w_s$ and $\bar w_l$ be
+an unemployed worker's reservation wages for
+short-lasting jobs and long-lasting jobs, respectively. In period $t$,
+let $N_{st}$ and $N_{lt}$ be the fractions of workers employed
+in short-lasting jobs and long-lasting jobs, respectively. Let $U_t$
+ be the fraction of workers unemployed in period $t$. Derive difference
+equations for $N_{st}$, $N_{lt}$ and $U_t$ in terms of the parameters
+of the model and the reservation wages,
+$\{F,\mu_s,\mu_l,\pi_s,\pi_l,\bar w_s,\bar w_l\}$.
+
+\medskip
+
+\noindent
+{\it Exercise \the\chapternum.8} \quad  {\bf Productivity shocks,
+ job creation, and job destruction}, donated by Rodolfo Manuelli
+\medskip \noindent
+Consider an economy populated by a large number of identical individuals.
+  The utility function of each individual is
+$$ \sum_{t=0}^\infty \beta ^t  x_t, $$
+where $0 < \beta < 1$, $\beta=1/(1+r)$, and $x_t$ is income
+at time $t$.  All individuals are endowed with one unit of labor
+that is supplied inelastically: If the individual is working in the market,
+its productivity is $y_t$, while if he or she works at home,
+productivity is $z$.  Assume that $z < y_t$.  Individuals who
+are producing at home can also, at no cost, search for a
+market job.  Individuals who are searching and jobs that are vacant get
+randomly matched.
+    Assume that the number of matches per period is given by
+$$ M(u_t, x_t), $$
+where $M$ is concave, increasing in each
+argument, and homogeneous of degree $1$. In this
+setting, $u_t$ is interpreted as the total number of unemployed
+workers, and $v_t$ is the total number of vacancies.
+Let $\theta \equiv v/u$, and let $q(\theta) = M(u,v)/v$ be
+ the probability that a vacant job (or firm) will meet a worker.
+  Similarly, let $\theta q(\theta) = M(u,v)/u$ be the probability that
+an unemployed worker is matched with a vacant job.  Jobs are exogenously
+destroyed with probability $s$.
+    In order to create a vacancy, a firm must pay a cost $c > 0$ per
+period in which the vacancy is ``posted'' (i.e., unfilled).  There is a large
+number of potential firms (or jobs), and this guarantees that the expected
+value of a vacant job, $V$, is zero.
+    Finally, assume that when a worker and a vacant job meet, they
+bargain according to the Nash bargaining solution, with the worker's share
+equal to $\varphi$.  Assume that $y_t = y$ for all $t$.
+\medskip
+ \noindent{\bf a.} Show that the zero-profit condition implies that
+$$ w = y - (r+s)c/q(\theta). $$
+
+\noindent{\bf b.}  Show that if workers and firms negotiate wages according to
+the Nash bargaining solution (with worker's share equal to $\varphi$),
+wages must also satisfy
+$$ w = z + \varphi (y - z + \theta c). $$
+
+\noindent{\bf c.}  Describe the determination of the equilibrium level
+ of market tightness, $\theta$.
+\medskip
+\noindent{\bf d.}  Suppose that at $t = 0$, the economy is at its steady
+state.  At this point, there is a once-and-for-all
+increase in productivity.  The new value of $y$ is $y' > y$.
+Show how the new steady-state value of $\theta$, $\theta'$, compares
+with the previous value.  Argue that the economy ``jumps'' to the new
+value right away.  Explain why there are no ``transitional dynamics'' for
+the level of market tightness, $\theta$.
+\medskip
+
+\noindent{\bf e.}  Let $u_t$ be the unemployment rate at time $t$.
+  Assume that at time $0$ the economy is at the steady-state
+ unemployment rate corresponding to $\theta$, the ``old''
+market tightness, and display this rate.  Denote this rate as $u_0$.
+  Let $\theta_0 = \theta'$.  Note that change in unemployment rate is
+equal to the difference between job destruction at $t, JD_t$ and
+job creation at $t, JC_t$.  It follows that
+$$ \eqalign{JD_t &= (1-u_t) s,  \cr
+    JC_t &= \theta_t q (\theta_t) u_t,  \cr
+    u_{t+1} - u_t &= JD_t - JC_t.  \cr }  $$
+    Go as far as you can characterizing job creation and job
+destruction at $t = 0$ (after the shock).  In addition, go as far
+as you can describing the behavior of both $JC_t$ and $JD_t$ during
+the transition to the new steady state (the one corresponding to $\theta'$).
+\vfil\eject
+\medskip
+\noindent{\it Exercise \the\chapternum.9} \quad  {\bf Workweek restrictions,
+unemployment, and welfare}, donated by
+Rodolfo Manuelli
+\medskip \noindent
+Recently, France has moved to a shorter workweek of about 35 hours per week.   In this
+exercise you are asked to evaluate the consequences of such a move.
+To this end, consider an economy populated by risk-neutral, income-maximizing  workers with preferences given by
+
+$$ U = E_t \sum_{j=0}^\infty \beta^j y_{t+j}, \quad
+0 < \beta < 1, \quad
+1 + r = \beta^{-1}.  $$
+ \noindent
+Assume that workers produce $z$ at home if they are unemployed, and that they are
+endowed with one unit of labor.  If a worker is employed, he or she can spend $x$ units
+of time at the job, and $(1-x)$ at home, with $0\leq x \leq 1$.  Productivity on the
+job is $yx$, and $x$ is perfectly observed by both workers and firms.
+\medskip
+\noindent
+Assume that if a worker works $x$ hours, his or her wage is $wx$.
+\medskip
+\noindent
+Assume that all jobs have productivity $y>z$, and that to create a vacancy
+firms have to pay a cost of $c>0$ units of output per period.  Jobs are destroyed
+with probability $s$.  Let the number of matches per period be given by
+$$ M(u,v),  $$
+where $M$ is concave, increasing in each argument, and homogeneous of degree one.
+In this setting, $u$ is interpreted as the total number of unemployed workers,
+and $v$ is the total number of vacancies.  Let $\theta \equiv v/u$, and let
+$q(\theta) = M(u,v)/v$.
+\medskip
+\noindent
+Assume that workers and firms bargain over wages, and that the outcome is
+described by a Nash bargaining outcome with the workers' bargaining power
+equal to $\varphi$.
+\medskip
+
+\noindent{\bf a.} Go as far as you can describing the unconstrained (no restrictions on
+$x$ other than it be a number between $0$ and $1$) market equilibrium.
+\medskip
+
+\noindent{\bf b.} Assume that $q(\theta) = A\theta^{-\alpha}$, for some $0 < \alpha < 1$.
+Does the solution of the planner's problem coincide with the market equilibrium?
+\medskip
+
+\noindent{\bf c.} Assume now that the workweek is restricted to be less than or
+equal to $x^* < 1$.  Describe the equilibrium.
+\medskip
+
+\noindent{\bf d.} For the economy in part c, go as far as you can (if necessary, make
+additional assumptions) describing the impact of this workweek restriction on wages,
+unemployment rates, and the total number of jobs.  Is the equilibrium optimal?
+\medskip
+\noindent{\it Exercise \the\chapternum.10} \quad {\bf Costs of creating a vacancy and
+ optimality}, donated by Rodolfo Manuelli
+\medskip \noindent
+Consider an economy populated by risk-neutral, income-maximizing workers with
+preferences given by
+$$ U = E_t \sum_{j=0}^\infty \beta^j y_{t+j}, \quad
+0 < \beta < 1, \quad
+1 + r = \beta^{-1}.  $$
+Assume that workers produce $z$ at home if they are unemployed.  Assume that
+ all jobs have productivity $y>z$, and that to create a vacancy firms
+have to pay $p_A$, with $p_A = C'(v)$, per period when they have an open
+ vacancy, with $v$ being the total number of vacancies.  Assume that the
+function $C(v)$ is strictly convex, twice differentiable and increasing.
+  Jobs are destroyed with probability $s$.
+\medskip
+\noindent
+Let the number of matches per period be given by
+$$ M(u,v),  $$
+where $M$ is concave, increasing in each argument, and homogeneous
+ of degree $1$.  In this setting, $u$ is interpreted as the total
+number of unemployed workers, and $v$ is the total number of vacancies.
+Let $\theta \equiv v/u$, and let $q(\theta) = M(u,v)/v$.
+\medskip
+\noindent
+Assume that workers and firms bargain over wages and that the outcome is
+described by a Nash bargaining outcome with the worker's bargaining power
+equal to $\varphi$.
+\medskip
+
+\noindent{\bf a.} Go as far as you can describing the market equilibrium.
+In particular, discuss how changes in the exogenous variables, $z$, $y$, and
+the function $C(v)$, affect the equilibrium outcomes.
+\medskip
+
+\noindent{\bf b.} Assume that $q(\theta) = A \theta^{-\alpha}$ for some  $0 < \alpha < 1$.
+Does the solution of the planner's problem coincide with  the market equilibrium?
+Describe instances, if any, in which this is the case.
+\vfil\eject
+\medskip
+\noindent{\it Exercise \the\chapternum.11} \quad  {\bf Financial wealth, heterogeneity,
+ and unemployment}, donated by Rodolfo Manuelli
+\medskip \noindent
+Consider the behavior of a risk-neutral worker who seeks to maximize the expected
+present discounted value of wage income.  Assume that the discount factor is fixed
+and equal to $\beta$, with $0<\beta<1$.  The interest rate is also constant and
+satisfies $1+r=\beta^{-1}$.  In this economy, jobs last  forever.  Once the worker
+has accepted a job, he or she never quits and the job is never destroyed.  Even though
+preferences are linear, a worker needs to consume a minimum of $a$ units of
+consumption per period.  Wages are drawn from a distribution with support
+on $[a,b]$.  Thus, any employed individual can have a feasible consumption
+level.  There is no unemployment compensation.
+
+\medskip
+\noindent
+Individuals of type $i$ are born with wealth $a^i$, $i=0,1,2$, where $a^0=0$,
+$a^1=a$, $a^2=a(1+\beta)$.  Moreover, in the period that they are born, all
+individuals are unemployed.  Population, $N_t$, grows at the constant rate $1+n$.
+Thus, $N_{t+1} = (1+n) N_t$.  It follows that, at the beginning of period $t$,
+at least $nN_{t-1}$ individuals --- those born in that period --- will be unemployed.
+Of the $nN_{t-1}$ individuals born at time $t$, $\varphi^0$ are of type $0$,
+$\varphi^1$ of type $1$, and the rest, $1-\varphi^0 - \varphi^1$, are of type $2$.
+Assume that the mean of the offer distribution (the mean offered, not necessarily
+accepted, wage) is greater than $a/\beta$.
+\medskip
+
+\noindent{\bf a.} Consider the situation of an unemployed worker who has $a^0=0$.
+Argue that this worker will have a reservation wage $w^*(0)=a$.  Explain.
+\medskip
+
+\noindent{\bf b.} Let $w^*(i)$ be the reservation wage of an individual with wealth
+$i$.  Argue that $w^*(2) > w^*(1) > w^*(0)$.  What does this say about the cross-sectional
+relationship between financial wealth and employment probability?
+Discuss the economic reasons underlying this result.
+\medskip
+
+\noindent{\bf c.} Let the unemployment rate be the number of unemployed
+individuals at $t, U_t$, relative to the population at
+$t, N_t$.  Thus, $u_t = U_t/N_t$.  Argue that in this economy,
+the unemployment rate is constant.
+\medskip
+
+\noindent{\bf d.} Consider a policy that redistributes wealth in the form
+of changes in the fraction of the population that is born with
+wealth $a^i$.  Describe as completely as you can the effect upon
+the unemployment rate of changes in $\varphi^i$.  Explain your results.
+\medskip
+
+\noindent{\it Extra credit:} Go as far as you can describing the distribution
+of the random variable ``number of periods unemployed'' for an individual
+of type 2.

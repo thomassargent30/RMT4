@@ -1,0 +1,2507 @@
+\input grafinp3
+%\input grafinput8
+\input psfig
+
+%\showchaptIDtrue
+%\def\@chaptID{19.}
+%\input gayejnl.txt
+%\input gayedef.txt
+\def\lege{\raise.3ex\hbox{$>$\kern-.75em\lower1ex\hbox{$<$}}}
+
+%\hbox{}
+\footnum=0
+\chapter{Matching Models Mechanics\label{mechanics_matching}}
+
+
+\auth{Lucas, Robert E., Jr.} \auth{Prescott, Edward C.}
+\auth{Ljungqvist, Lars} \auth{Sargent, Thomas J.}
+\auth{McCall, John} \auth{Shimer, Robert} \auth{Jovanovic, Boyan}
+\auth{Pissarides, Christopher} \auth{Petrongolo, Barbara}
+
+\section{Introduction}
+%One of the workhorses in macro labor is the framework of
+%matching models, as presented in section \use{sec:matchingmodel}
+%of chapter \use{search2}.
+We reserve  the term search models to denote ones in the spirit of McCall (1970), like the search-island
+model of Lucas and Prescott (1974) described in
+section \use{sec:LucasPrescott}. What are now widely called matching models  have   matching
+functions that are designed to represent congestion externalities concisely.\NFootnote{We encountered these earlier
+ in section \use{sec:matchingmodel}. In chapter \use{search1}, %%we applied  the
+the word `matching' described  Jovanovic's (1979a)  analysis
+of a process in which workers and firms  gradually  learn about match quality.
+In macro labor, the term `matching models' has
+come instead to mean models that postulate matching functions.}$\!\!^,\!$\NFootnote{Petrongolo and
+Pissarides (2001) call
+the matching function a black box because it describes outcomes of labor market frictions without
+explicitly modeling them.}
+This chapter explores some of the mechanics of
+matching models, especially those governing the responses of labor market outcomes to productivity shocks.
+
+
+
+ To get big responses of unemployment to movements
+in productivity, matching models require a high elasticity of market
+tightness %-- the ratio of vacancies to unemployment --
+with respect to
+productivity.  Shimer (2005) pointed out  that
+for common calibrations of what was then a standard matching model, the elasticity
+of market tightness is too low to explain business cycle fluctuations.
+To increase that elasticity, researchers  reconfigured
+matching models in various ways:  by elevating the utility
+of leisure, by making wages sticky, by assuming alternating-offer wage
+bargaining, by introducing costly acquisition of credit, or by
+assuming fixed matching costs.  Ljungqvist and Sargent (2017) showed that beneath this apparent
+diversity there resides an essential unity: all of these redesigned  matching models increase responses of
+unemployment to movements in productivity by diminishing what Ljungqvist and Sargent called the
+{\it fundamental surplus} fraction, a name they gave  to an upper bound
+on the fraction of a job's output that the {\it invisible hand}
+can allocate to vacancy creation. Business cycle and
+welfare state dynamics of an entire class of reconfigured matching
+models  operate through this common channel.
+
+
+Across a variety of matching models, the fundamental surplus fraction is the
+single intermediate channel through which economic forces
+generating a high elasticity of market tightness with
+respect to productivity must operate.  Differences in the  fundamental surplus
+explain  why unemployment responds sensitively to
+movements in productivity in some matching models but not in
+others. The role of the fundamental surplus in generating that response sensitivity
+transcends diverse matching models having
+very different outcomes along other dimensions that include the elasticity of
+wages with respect to productivity %%the size of match surpluses,
+and
+whether or not outside values affect bargaining outcomes.
+
+
+
+
+For any model with a matching function,  to arrive at the fundamental surplus take the output of a job, then deduct the
+sum of the value of leisure,
+the annuitized values of layoff costs and training costs and a worker's
+ability to exploit a firm's cost of delay under
+alternating-offer wage bargaining, and  any other items that must
+be set aside. The fundamental surplus is an
+upper bound on what the invisible hand could allocate
+to vacancy creation. If that fundamental surplus constitutes
+a small fraction of a job's output, it means that a given change
+in productivity translates into a  much larger percentage
+change in the fundamental surplus. Because such large movements in the
+amount of resources that could potentially be used for vacancy
+creation cannot be offset by the invisible hand,
+significant variations in market tightness ensue,  causing large
+movements in unemployment.
+
+In contrast to search models, matching models with inputs
+of unemployed workers and vacancies in matching functions are
+typically plagued by externalities. What types of workers -- perhaps
+differentiated by education, skill, age -- and what types of jobs
+-- perhaps differentiated by required skills and strengths  --
+does the analyst make sit within the same matching functions?
+Broadly speaking, matching analyses can be divided into those
+that focus on  congestion externalities, and those that
+seek to eliminate such  externalities, in order to facilitate analytical
+tractability.
+% along several important dimensions.
+For example, we  describe a way
+of proliferating matching functions and  assigning workers to them  that can be interpreted as  expressing
+ `directed search' and that succeeds in arresting congestion
+externalities and improving analytic tractability along some dimensions.
+
+%A key dimension along which matching models differs
+%is how they envision   a key force captured with a matching function:
+%congestion externalities.   What types of workers -- perhaps
+%differentiated by education, skill, age --
+%and what types of jobs -- perhaps differentiated by skill and strength
+%requirements --
+%does the analyst make sit within the same matching functions.
+%By proliferating  matching functions
+%and thereby arresting congestion externalities along some dimensions,
+%we can approach notions of 'directed search' in tractable ways.
+
+
+
+
+\auth{Ch\'eron, Arnaud} \auth{Hairault, Jean-Olivier} \auth{Langot, Francois}
+\auth{Menzio, Guido} \auth{Telyukova, Irina A.} \auth{Visschers, Ludo}
+
+To illustrate the two types of matching analyses that either
+emphasize or eliminate externalities, we turn to aging as one
+key source of heterogeneity. Ch\'eron,
+Hairault and Langot (2013), and Menzio, Telyukova and Visschers (2016)
+study overlapping generations models in which unemployed
+workers either enter a single matching function or are assigned
+to type-specific matching functions. In a version of the
+model of Ch\'eron, Hairault and Langot, we show that it is optimal  to subsidize the continuing employment
+of old workers and to tax that of young workers  in order properly
+to rearrange  the age composition of  unemployed workers sitting inside
+ a single matching function. The
+age-specific matching functions of
+Menzio, Telyukova and Visschers make
+those externalities vanish and unleash market forces that make job finding rates decrease with
+ age.
+Equilibrium computation  turns out to be `block recursive' because agents' value and policy functions depend on
+realizations of  exogenous shocks but not on the distribution
+of agents across employment and unemployment states. This
+makes it easy to compute out-of-steady-state dynamics
+as well as equilibria with aggregate shocks.
+
+
+\section{Fundamental surplus}
+\index{fundamental surplus}%
+With exogenous separation,  a comparative steady state analysis decomposes  the elasticity of market tightness with respect to productivity into
+two multiplicative factors,  both of which are bounded from below by unity.
+In a matching model  of variety $j$, let $\eta^j_{\theta,y}$ be the elasticity of
+market tightness $\theta$ with respect to productivity $y$:
+$$
+ \eta^j_{\theta,y}
+\;\equiv\; {d\, \theta \over d\, y} \; {y \over \theta}
+\;=\; \Upsilon^j \; \frac{y}{y-x^j} .    \EQN MLI_generic
+$$
+The first factor $\Upsilon^j$  has  an   upper bound
+coming  from a consensus  about values of the elasticity
+of matching with respect to unemployment. The second factor
+$y/(y-x^j)$ is the inverse of what we  define to be   the
+`fundamental surplus fraction'. The fundamental surplus $y-x^j$ equals a quantity that  deducts from productivity $y$ a
+value $x^j$ that the `invisible hand' cannot allocate to
+vacancy creation, a quantity whose economic interpretation differs across models.  Unlike $\Upsilon^j$, the fraction $y/(y-x^j)$ has no
+widely agreed upon upper bound.
+To get a high elasticity of market
+tightness requires that $y/(y-x^j)$ must  be large, i.e., that  what we call the
+fundamental surplus fraction must be small.\NFootnote{We call $y-x$ the fundamental surplus and
+$\frac{y-x}{y}$ the fundamental surplus fraction.}
+ Across reconfigured matching models, many details
+differ, but
+what ultimately matters is the fundamental surplus.
+
+
+\subsection{Sensitivity of unemployment to market tightness}
+
+To set the stage for studying how small changes in productivity
+can have large effects on unemployment, we start by computing
+the elasticity of unemployment with respect to market tightness.
+The derivative of steady-state unemployment in equation
+\Ep{unemp} with respect to market tightness is
+$$
+{{d}\, u \over {d} \, \theta } \;=\;
+- { s \left[q(\theta) \,+\, \theta \,q'(\theta) \right] \over
+  [s \,+\, \theta \,q(\theta)]^2 }
+\;=\; -
+\left[ 1 \,+\, { \theta \,q'(\theta) \over q(\theta)}  \right]
+{ u\, q(\theta) \over   s \,+\, \theta \,q(\theta) }
+\;=\;  - (1-\alpha)\,
+{ u \,q(\theta) \over  s \,+\, \theta \,q(\theta) }
+             \,,
+$$
+where the second equality uses equation \Ep{unemp} and factors
+$q(\theta)$ from the expression in square brackets of the numerator,
+and the third equality is obtained after invoking
+the constant elasticity of matching with respect to unemployment,
+$\alpha=-q'(\theta)\, \theta / q(\theta)$.
+So the elasticity of
+unemployment with respect to market tightness is
+$$
+\eta_{u,\theta}
+%\;&\equiv&\; {d\, u \over d\, \theta} \; {\theta \over u}
+\;=\; -(1-\alpha)\,
+{ \theta \,q(\theta) \over  s \,+\, \theta \,q(\theta) }
+\;=\; -(1-\alpha)\,
+\left(1\,-\, { s \over  s \,+\, \theta \,q(\theta) } \right)
+\;=\;  - (1-\alpha)\,(1-u)\,,                  %%%%%%%%\EQN ML1_unempelast
+$$
+where the second equality is obtained after adding and subtracting
+$s$ to the numerator, and the last third equality invokes
+expression \Ep{unemp}.
+
+
+Thus, to shed light on what contributes to significant volatility
+in unemployment, we seek forces that can make market tightness
+$\theta$ highly elastic with respect to productivity.
+
+
+%\subsection{Decomposition of the elasticity of market tightness}
+\subsection{Nash bargaining model}
+           \label{sec:ML1_Nash_elasticity}
+%Our first focus is on the standard matching model with Nash
+%bargaining, for which equilibrium expression \Ep{equili}
+%%for market tightness
+%can be rewritten as
+In the standard version of the Nash bargaining model, the equilibrium
+expression \Ep{equili} for market tightness
+can be rewritten as
+$$
+{1-\phi \over c} (y-z) \;=\; {r+s \over q(\theta)}\,+\,\phi\,\theta\,.
+                                                     \EQN ML1_theta
+$$
+Implicit differentiation  yields
+$$\EQNalign{
+{d\, \theta \over d\, y} \;&=\; - {
+{\displaystyle  1-\phi \over \displaystyle c} \over
+- \left( {\displaystyle - q'(\theta)\,(r+s) \over \displaystyle q(\theta)^2}
+\,+\, \phi \right)  }
+\;=\; - { \left( {\displaystyle r+s \over \displaystyle q(\theta)}
+\,+\, \phi \, \theta \right) \; {\displaystyle 1 \over \displaystyle y-z} \over
+- \left( {\displaystyle \alpha (r+s) \over \displaystyle \theta q(\theta)}
+\,+\, \phi \right)  }                                   \cr
+\noalign{\vskip.2cm}
+\;&=\;  {\hfill (r+s)\,+\,\phi\,\theta\,q(\theta)  \over
+\alpha (r+s) \,+\, \phi\,\theta\,q(\theta) } \; \; {\theta \over y-z}
+\;\equiv\; \Upsilon^{\rm Nash} \; {\theta \over y-z}
+\,,                                                 \EQN ML1_thetadiff \cr}
+$$
+where the second equality is obtained after using
+equation \Ep{ML1_theta}
+to rearrange the numerator, while in the denominator, we invoke
+the constant elasticity of matching with respect to unemployment;
+the third equality
+follows from multiplying and dividing by $\theta\,q(\theta)$. The
+elasticity of market tightness with respect to productivity
+is then given by
+$$
+\eta_{\theta,y}
+%%\;\equiv\; {d\, \theta \over d\, y} \; {y \over \theta}
+\;=\;
+{\hfill (r+s)\,+\,\phi\,\theta\,q(\theta)  \over
+\alpha (r+s) \,+\, \phi\,\theta\,q(\theta) } \; \; {y \over y-z}
+\;\equiv\;
+\Upsilon^{\rm Nash} \; {y \over y-z} \,.    \EQN ML1_thetaelast
+$$
+This multiplicative decomposition of the elasticity of market
+tightness is central to our analysis. Similar decompositions
+prevail in all of the reconfigured matching models to be
+described below and those in Ljungqvist and Sargent (2017).
+The first factor $\Upsilon^{\rm Nash}$
+in expression \Ep{ML1_thetaelast},
+ has counterparts in other setups.   A consensus
+about reasonable parameter values   %%calibrations
+bounds its contribution
+to the elasticity of market tightness. Hence, the
+magnitude of the elasticity of market tightness depends mostly on
+the second factor in expression \Ep{ML1_thetaelast}, i.e.,
+the inverse of what %in section \ref{sec:intro}
+we  define to be the fundamental surplus
+fraction.
+
+In
+the standard matching model with Nash bargaining, the fundamental surplus
+is simply what remains  after deducting  the worker's value
+of leisure from productivity; $x=z$ in expression \Ep{MLI_generic}.
+To induce  them  to work, workers have to receive at least  the
+value of  leisure, so the invisible hand cannot allocate  that value to
+vacancy creation.
+
+
+\subsection{Shimer's  critique}
+\auth{Shimer, Robert}%
+%As noted above, Shimer's (2005) critique is that for common
+%calibrations of the standard matching model,
+%the elasticity of market tightness
+%%with respect to productivity
+%is too low to explain business cycle fluctuations.
+Shimer  (2005) observed that  the average job finding rate
+$\theta\, q(\theta)$ is large relative to the observed value of
+the sum   of the net interest rate and the separation rate $(r+s)$. When
+ combined with reasonable parameter values for a worker's
+bargaining power $\phi$ and the elasticity of matching with
+respect to unemployment $\alpha$, this  implies that the first factor
+$\Upsilon^{\rm Nash}$ in expression \Ep{ML1_thetaelast},
+is close to
+its lower bound of unity. More generally,
+the first
+factor in \Ep{ML1_thetaelast} is bounded from above by $1/\alpha$.
+Because reasonable values of the elasticity $\alpha$ imply an upper bound on
+the first factor,  the second factor
+$y/(y-z)$ in expression \Ep{ML1_thetaelast} becomes
+critical for  generating movements in market tightness.
+For values of leisure within a commonly assumed range
+well below productivity, the second factor is not large
+enough to generate the high volatility of market
+tightness associated with observed business cycles. This is  Shimer's critique.
+
+
+Shimer (2005, pp.\ 39-40)  documented that comparisons of steady states described by   expression
+\Ep{ML1_thetaelast}
+provide a good approximation to average outcomes from
+simulations of an economy subject to aggregate productivity shocks.
+% Anticipating that  good  approximations will also  prevail in other
+% matching frameworks,
+Inspired by his finding, we will
+derive  steady states under some alternative specifications. These
+will shed light on properties of stochastic simulations
+to be reported in section \use{sec:FS_simulations}.     %later sections.
+
+
+
+
+
+\subsection{Relationship to worker's outside value}
+%The match surplus is the capitalized surplus accruing to a firm
+%and a worker in a current match.  It is the
+%difference between the present value of the match and the sum of
+%the worker's outside value and the  firm's outside value.
+By rearranging equation \Ep{U_eq} and imposing the first
+Nash-bargaining outcome of equations \Ep{split}, $E-U=\phi S$,
+the worker's outside value can be expressed as
+$$
+U \;=\; \frac{z}{1-\beta} \,+\, \frac{\beta}{1-\beta}
+\theta q(\theta)\,\phi S
+\;=\; \frac{z}{1-\beta}\,+\,\Psi^{\rm m.surplus}_u
+                             \,+\,\Psi^{\rm extra}_u\,,
+                                                    \EQN U_composition
+$$
+where the second equality decomposes $U$ into three nonnegative parts: (i) the
+capitalized value of choosing leisure in all future periods,
+$z(1-\beta)^{-1}$; (ii)  the sum % $\Psi^{\rm m.surplus}_u$
+of the discounted values of the worker's share of match
+surpluses in his or her as yet unformed future
+matches\NFootnote{Let $\Psi^{\rm m.surplus}_n$ be the
+analogous capital value of an employed worker's share of all
+match surpluses over  lifetime,
+including  current
+employment. The capital values $\Psi^{\rm m.surplus}_u$
+and $\Psi^{\rm m.surplus}_n$ solve the Bellman equations
+$$\EQNalign{
+\Psi^{\rm m.surplus}_u\;&=\; 0\,+\, \beta \Bigl\{\theta q(\theta)
+\Psi^{\rm m.surplus}_n \,+\, \left[1-\theta q(\theta)\right]
+\Psi^{\rm m.surplus}_u \Bigr\}\,,
+                                                    \cr
+\Psi^{\rm m.surplus}_n\;&=\; \psi\,+\, \beta \Bigl\{(1-s)
+\Psi^{\rm m.surplus}_n \,+\, s \Psi^{\rm m.surplus}_u \Bigr\}\,,
+                                                     \cr}
+$$
+where $\psi$ is an annuity that, when paid for
+the duration of a match, has the same expected present value as
+a worker's share of the match surplus, $E-U=\phi S$:
+$$
+\sum_{t=0}^{\infty} \beta^t (1-s)^t \psi \;=\; \phi S
+\qquad \Longrightarrow
+\qquad \psi\,=\; (r+s) \beta \phi S  \,.
+$$}
+$$
+\Psi^{\rm m.surplus}_u \;=\;
+\frac{r+s}{r} \, \frac{\theta\,q(\theta)}{r+s\,+\,\theta\,q(\theta)}
+\, \phi S\,;
+                                                 \EQN U_part2
+$$
+ and, key to our new perspective, (iii)
+the  parts %$\Psi^{\rm extra}_u$
+of fundamental surpluses
+from future employment matches that are not allocated to match
+surpluses
+$$
+\Psi^{\rm extra}_u \;=\; \frac{\theta q(\theta)}{r+s}
+\, \Psi^{\rm m.surplus}_u \,,
+                                                  \EQN U_part3
+$$
+which can be deduced from equation \Ep{U_composition}
+after replacing $\Psi^{\rm m.surplus}_u$ with
+expression \Ep{U_part2}.
+
+We can use decomposition \Ep{U_composition} of a worker's outside
+value $U$
+%in equation (\ref{U_composition})
+to shed light on the activities  of the
+`invisible hand' that make the elasticity of market
+tightness with respect to productivity be low for
+common calibrations of  matching models.
+Those parameter settings entail a value
+of leisure $z$ well below productivity  and a
+significant share $\phi$ of match surpluses being awarded to workers,
+which together with  a high job finding
+probability $\theta q(\theta)$ imply that the sum
+$\Psi^{\rm m.surplus}_u +\Psi^{\rm extra}_u$ in equation
+\Ep{U_composition} forms a substantial part of a
+worker's outside value. Furthermore, $\Psi^{\rm extra}_u$
+is the much larger term in that sum, which follows from
+expression \Ep{U_part3} and the assumption that $\theta q(\theta)$
+is large relative to $r+s$. That big term
+$\Psi^{\rm extra}_u$ makes it easy for the
+invisible hand to realign a worker's outside value in a
+way that leaves the match surplus almost unchanged when
+productivity changes. Offsetting changes
+in $\Psi^{\rm extra}_u$ can absorb the impact of productivity
+shocks so that resources devoted to vacancy creation can remain
+almost unchanged, which in turn explains why unemployment
+does not respond sensitively to productivity.
+
+\auth{Hagedorn, Marcus} \auth{Manovskii, Iourii}
+But in Hagedorn and Manovskii's (2008)  calibration with a high value of
+leisure,
+the fundamental-surplus components of a worker's outside
+value are so small that there is little room for the invisible hand to  realign things as we have described,
+making the equilibrium amount
+of resources allocated to vacancy creation respond
+sensitively to variations in productivity.
+That  results in a high
+elasticity of market tightness with respect to productivity. Put
+differently, since the fundamental surplus is a part of
+productivity, it follows that a given change
+in productivity translates into  a greater percentage change in
+the fundamental surplus by a factor of $y/(y-z)$, i.e., the
+inverse of the fundamental surplus fraction. Thus, the small
+fundamental surplus fraction in  calibrations
+like Hagedorn and Manovskii's having high values of leisure imply large percentage
+changes in the fundamental surplus. Such large changes in the
+amount of resources that could potentially be used for
+vacancy creation cannot be offset by the invisible hand
+and hence variations in productivity lead to
+large variations in vacancy creation, resulting in a high
+elasticity of market tightness with respect to
+productivity.\NFootnote{It is instructive to consider a
+single perturbation, $\phi=0$, to common calibrations of the
+standard matching model, for which a worker's outside
+value in expression \Ep{U_composition} solely equals
+the capitalized value of leisure and the worker receives no
+part of fundamental surpluses,
+$\Psi^{\rm m.surplus}_u +\Psi^{\rm extra}_u=0$.
+What explains  that the elasticity of market tightness with respect to
+productivity remains low for such perturbed parameter settings in which
+large fundamental surpluses  end up  affecting only  firms' profits that
+in  equilibrium are all used for vacancy creation? The answer
+lies precisely in the outcome that firms' profits would then be
+truly large; therefore, even though variations in productivity then
+affect firms' profits directly, the percentage wise impact of
+productivity shocks on such huge profits is negligible,  so market
+tightness and unemployment  hardly changes. This shows that
+decomposition \Ep{U_composition} of a worker's outside value can
+only go so far to shed light on the sensitivity of market tightness to
+changes in productivity, because what ultimately matters is
+evidently the size of the fundamental
+surplus fraction in expression \Ep{ML1_thetaelast}.}
+%For further
+%discussion of profits and fundamental surpluses, see
+%section \ref{sec:profits}.}
+
+%Having described  how the fundamental surplus
+%supplements the concept of a worker's outside value, we now tell
+
+\subsection{Relationship to match surplus}
+How does the fundamental surplus relate to the match surplus?
+The fundamental
+surplus is an upper bound on resources that the invisible hand
+can allocate to vacancy creation.  Its magnitude as a
+fraction of output is the prime determinant of the
+elasticity of market tightness with respect to productivity.\NFootnote{We express the fundamental
+surplus as a flow value while the match surplus is typically a
+capitalized value.}
+%The smaller the
+%fundamental surplus fraction the larger is the elasticity of
+%market tightness.
+In contrast, although it
+%too measures resources that might be
+is directly connected to resources that are
+devoted to vacancy creation,  match surplus that is small
+relative to output
+has no direct bearing on the elasticity of market tightness.
+Recall that in the standard matching model, the zero-profit
+condition for vacancy creation implies that the expected present
+value of a firm's share of match surpluses  equals
+the average cost of filling a vacancy. Since common
+calibrations award firms a significant share of
+match surpluses,  and since vacancy cost expenditures are calibrated
+to be relatively small,
+%relative to the output of a filled job,
+it follows that
+equilibrium match surpluses must form  small parts of output
+across various matching models, regardless of the elasticity
+of market tightness in any particular model.
+
+%%From an accounting perspective,
+%A fundamental surplus yields both  a match surpluses and firms' profits.
+%% emerge from fundamental surpluses.
+Fundamental surpluses yield match surpluses, which in turn include
+firms' profits.
+A small fundamental surplus
+fraction necessarily implies small match surpluses and small firms' profits.
+But small match surpluses and small firms' profits don't necessarily  imply
+small fundamental surpluses. Therefore,   the size of the fundamental surplus fraction
+is the only reliable indicator
+of  the magnitude
+of the elasticity of market tightness with respect to productivity, a situation  conveyed by expression \Ep{ML1_thetaelast}.
+
+
+
+
+
+
+%Dynamics that are intermediated through the fundamental
+%surplus occur in other popular
+%setups, including those with sticky wages, alternative
+%bargaining protocols and costly acquisition of credit.
+%For example, it  matters little
+%if the source of  a diminished fundamental surplus fraction
+%is Hagedorn and Manovskii's (\citeyear{HagedornManovskii})
+%high value of leisure for workers, Hall's (\citeyear{Hall2005})
+%sticky wage, Hall and Milgrom's (\citeyear{HallMilgrom})
+%cost of delay for firms that participate in  alternating-offer bargaining,
+%or Wasmer and Weil's (\citeyear{WasmerWeil}) upfront cost for firms
+%to secure credit.
+%A small fundamental surplus fraction
+%causes variations in productivity to have large effects on
+%resources devoted to vacancy creation either because  workers
+% insist on being compensated for their  losses of leisure,
+%or because  firms  have to pay the sticky wage, or because workers
+%  strategically exploit the firm's cost
+%of delay under an alternating-offer bargaining protocol,
+%or because firms must bear the cost of acquiring credit.
+
+
+\subsection{Fixed matching cost}
+\auth{Pissarides, Christopher}%
+Pissarides (2009) contributed what for us is  another good laboratory in which to study the pervasive role
+of the fundamental surplus  when he argued that fixed
+matching costs increase the elasticity of market
+tightness with respect to productivity. So in addition to a vacancy posting cost $c$ per period,
+we now assume that a firm incurs a fixed cost $H$ when matching
+with a worker. Our job is  to verify that the addition of these
+ costs diminishes the fundamental surplus fraction.
+
+
+Under the assumption that a fixed matching cost $H$ is
+incurred after the firm and the worker have bargained over the
+consummation of a match (e.g., a training cost before work
+commences),\NFootnote{For the alternative assumption that
+the firm incurs the fixed matching cost before
+bargaining with the worker, as well as for analyses of layoff
+costs upon separation, see Ljungqvist and Sargent (2017).}
+the match surplus $S$ becomes
+$$
+S \;=\; \left\{\sum_{t=0}^\infty \beta^t (1-s)^t
+        \left[ y - (1-\beta) U \right] \right\} \,-\, H\,
+  \;=\; \frac{y-(1-\beta)U-(1-\beta(1-s))H}{1-\beta(1-s)}\,.
+                                               \EQN fixed_a_S
+$$
+By Nash bargaining, the firm receives $S_f$ and the worker $S_w$:
+% of
+%that match surplus, as given by
+$$
+S_f = (1-\phi)S \hskip1cm \hbox{\rm and} \hskip1cm S_w = \phi S .
+                                               \EQN fixed_a_splitS
+$$
+A worker's value as unemployed is
+$$
+U \;=\; z \,+\, \beta \left[\theta q(\theta) S_w + U\right],
+$$
+which by using \Ep{fixed_a_splitS} can be rearranged to
+$$
+U \;=\; \frac{z \,+\, \beta \theta q(\theta)
+         \frac{\displaystyle \phi}{\displaystyle 1-\phi} S_f}
+         {1-\beta}\,.                             \EQN fixed_a_U
+$$
+Equations \Ep{fixed_a_S}, \Ep{fixed_a_splitS} and
+\Ep{fixed_a_U} imply that  a firm's match surplus satisfies
+$$
+S_f \;=\; (1-\phi)\,
+          \frac{y-z-\beta(r+s)H}
+               {\beta(r+s)+ \beta\theta q(\theta) \phi}\,,
+                                                  \EQN fixed_a_Sf
+$$
+where we have used $\beta=(1+r)^{-1}$ and $1-\beta(1-s)=\beta(r+s)$.
+
+A firm's match surplus must also satisfy the zero profit
+condition for vacancy creation:
+$$
+c\;=\; \beta q(\theta) S_f  \hskip.75cm \Longrightarrow \hskip.75cm
+S_f \;=\; \frac{c}{\beta q(\theta)}\,.     \EQN fixed_a_zeroprofit
+$$
+Expressions \Ep{fixed_a_Sf} and \Ep{fixed_a_zeroprofit}
+for a firm's match surplus imply that  the equilibrium
+ $\theta$ satisfies
+$$
+\frac{1-\phi}{c} [y-z -\beta (r+s) H] \;=\;
+\frac{r+s}{q(\theta)}\,+\,\phi\,\theta\,.
+                                                \EQN fixed_a_theta
+$$
+Paralleling the steps of implicit differentiation in section
+\use{sec:ML1_Nash_elasticity},
+we arrive at the elasticity of
+market tightness with respect to productivity for the model with a fixed matching cost:
+     %%(\ref{fixed_a}).
+$$
+\eta_{\theta,y}
+%% \;\equiv\; {\partial \theta \over \partial y} \; {y \over \theta}
+\;=\; \Upsilon^{\rm Nash} \;
+        {y \over y-z-\beta (r+s) H} \,.           \EQN fixed_a
+$$
+The only difference between the elasticity of market tightness with
+a fixed matching cost \Ep{fixed_a} and the
+earlier expression \Ep{ML1_thetaelast} without such a cost
+is the additional term  $\beta (r+s) H$ that is deducted from the fundamental surplus.
+So long as the firm continues to operate, this is an annuity payment $a$ having the same expected present
+value as the fixed matching cost:
+$$
+\sum_{t=0}^{\infty} \beta^t (1-s)^t a \;=\; H
+\qquad \Longrightarrow
+\qquad a\,=\; [1-\beta(1-s)]H \,=\, \beta (r+s) H\,.
+$$
+%where the flow of annuity payments on the left  side of the first
+%equation starts in the first
+%period of operating and ceases when the job is destroyed.
+The ``invisible hand'' cannot allocate  those resources
+to vacancy creation, so it is appropriate to subtract this annuity value
+when computing the fundamental surplus.
+
+
+We have thus  reaffirmed Pissarides's (2009) insight that  the addition of a
+fixed matching cost increases the elasticity
+of market tightness and shown how the effect works through the fundamental surplus.  In addition,  our analysis thus adds the insight that the
+  quantitative effect coming from  that fixed cost is
+inversely related to the  size of the fundamental
+surplus fraction.
+
+
+
+
+\subsection{Sticky wages}
+\auth{Hall, Robert E.} \index{sticky wage}%
+The standard assumption of Nash
+bargaining in matching models is  one way to determine a
+wage, but not the only one.  Matching frictions create  a
+range of wages that a firm and worker both prefer
+ to breaking  a match.  Hall noted that  a constant wage  can
+be consistent with no private inefficiencies in
+contractual arrangements within a matching model.  That motivated
+Hall (2005) to assume sticky wages, in the form of  a constant wage in his main
+analysis, as a way of responding to the Shimer critique.   Hall
+posited a `wage norm'  $\hat w$
+inside the Nash bargaining set that must be paid to workers.
+Here we show that an appropriately defined fundamental surplus
+fraction determines how does such a constant wage affects the elasticity of market
+tightness with respect to productivity.
+
+Given a constant wage $w=\hat w$, an equilibrium is
+characterized by the zero-profit condition for vacancy creation
+in expression \Ep{wage1} of the standard matching model
+$$
+\hat w\;=\; y \,-\, {r+s \over q(\theta)} c \,.      \EQN ML1_fixwage
+$$
+There exists an equilibrium for any constant wage
+$\hat w \in [z, y-(r+s)c]$. The lower bound
+is a worker's utility of leisure and the upper bound
+is determined by the zero-profit condition for vacancy
+creation evaluated at the  point where the  probability of a firm filling a vacancy
+is at its maximum value of $q(\theta)=1$.
+%Rearrange expression \Ep{ML1_fixwage} to get
+%$$
+%q(\theta)\, (y -\hat w) \;=\; (r+s)\, c
+%$$
+%and
+%implicitly  differentiate to get
+%\$$
+%{d\, \theta \over d\, y} \;=\; - {
+%q(\theta) \over q'(\theta) (y -\hat w) }
+%\;=\; {\theta \over \alpha (y -\hat w) }\,,    \EQN ML1_thetadiff2
+%$$
+%where the second equality follows from invoking
+%the constant elasticity of matching with respect to unemployment,
+%$\alpha=-q'(\theta)\, \theta / q(\theta)$.
+After implicitly differentiating \Ep{ML1_fixwage},
+we can compute the elasticity of market tightness as
+$$
+\eta_{\theta,y}
+%% \;\equiv\; {\partial \theta \over \partial y} \; {y \over \theta}
+\;=\; { 1 \over \alpha } \;\; {y \over y-\hat w}
+\;\equiv\; \Upsilon^{\rm sticky}\; {y \over y-\hat w}\,.
+                                                \EQN ML1_thetaelast2
+$$
+This equation resembles the earlier one for $\eta_{\theta,y}$  in
+\Ep{ML1_thetaelast}. Not surprisingly, if the constant wage
+ equals the value of leisure, $\hat w = z$, then the
+elasticity \Ep{ML1_thetaelast2} is equal to that earlier
+elasticity of market tightness in the standard
+matching model with Nash bargaining when the worker has a zero
+bargaining weight, $\phi=0$. With such lopsided
+bargaining power, the equilibrium wage would indeed be the constant
+value $z$ of leisure.
+
+This outcome reminds us that the first factor in
+expression \Ep{ML1_thetaelast} can play only a limited role in magnifying
+the elasticity $\eta_{\theta,y}$ because it is bounded from above by the inverse of
+the elasticity of matching with respect to unemployment, $\alpha$.   In
+\Ep{ML1_thetaelast2},  the upper bound is attained.
+So again it is the second factor, the inverse of the fundamental
+surplus fraction, that tells whether the elasticity
+of market tightness is high or low. The pertinent definition of
+the fundamental surplus is now the difference between productivity and
+the stipulated constant wage.
+
+In Hall's (2005) model, all
+of the fundamental surplus goes to vacancy creation (as also occurs  in the
+standard matching model with Nash
+bargaining when  the worker's
+bargaining weight is zero). A given percentage
+change in productivity is multiplied  by a factor  \hbox{$y/(y-\hat w)$}
+to become a larger percentage
+change in the fundamental surplus.
+Because all of the fundamental surplus now goes to vacancy creation, there
+is a correspondingly magnified impact on unemployment. Numerical simulations of economies with aggregate
+productivity shocks in section \use{sec:FS_Hall_simul} reaffirm this interpretation.
+
+
+
+\subsection{Alternating-offer wage bargaining}\label{sec:HallMilgrom}%
+Hall and Milgrom (2008) proposed yet another response to the Shimer critique.
+Instead of Nash bargaining, a firm and a worker take
+turns making  wage offers. The threat is not to break
+up and receive  outside values, but instead to continue to bargain
+because that choice has a strictly higher payoff than accepting
+the outside option. After each unsuccessful bargaining round, the
+firm incurs a cost of delay $\gamma > 0$ while the worker enjoys
+the value of leisure $z$. There is also a probability $\delta$ that
+the job opportunity is exogenously destroyed between bargaining rounds, sending  the
+worker to the unemployment pool.
+\auth{Hall, Robert E.} \auth{Milgrom, Paul R.}%
+\index{alternating-offer bargaining}%
+
+It is optimal for both bargaining  parties  to make  barely
+acceptable offers. The firm always offers $w^f$ and
+the worker always offers $w^w$. Consequently, in an equilibrium, the
+first wage offer is accepted. Hall and Milgrom assume that firms make the first
+wage offer.
+
+ Hall and Milgrom (2008, p.~1673)
+chose to emphasize that ``the limited influence of unemployment
+[the outside value of workers] on the wage results in large
+fluctuations in unemployment under plausible movements in
+[productivity].'' It is more accurate to emphasize
+that  the key
+force is actually  that an appropriately defined fundamental surplus fraction has to be
+calibrated to be small. Without a small fundamental surplus
+fraction, it matters little that the outside value has been
+prevented  from influencing  bargaining. To  illustrate this, we  compute the
+elasticity of market tightness with respect to productivity and look under the hood.
+
+After a wage agreement, a firm's value of a filled job, $J$, and
+the value of an employed worker, $E$,
+are still  given
+by expressions \Ep{J_eq} and \Ep{E_eq} in the standard
+matching model. These  can be rearranged to become
+$$\EQNalign{
+E \;&=\; {w \,+\, \beta \,s\,U \over 1-\beta(1-s)} \,,
+                                               \EQN ML1_employ \cr
+\noalign{\vskip.2cm} \cr
+J \;&=\; {y - w \over 1-\beta(1-s)} \,,        \EQN {ML1_job}  \cr}
+$$
+where we have imposed a zero-profit condition  $V=0$ on vacancy
+creation in the second expression. Thus, using
+expression \Ep{ML1_employ}, the indifference condition for
+a worker who has just received a wage offer $w^f$ from the firm and is choosing
+whether  to decline  the offer and wait until the next period
+to make a counteroffer $w^w$ is
+$$
+{w^f \,+\, \beta \,s\,U \over 1-\beta(1-s)}
+ \;=\; z\,+\, \beta \left[(1-\delta)
+       {w^w \,+\, \beta \,s\,U \over 1-\beta(1-s)}
+        \,+\, \delta\, U\right].                     \EQN ML1_employW
+$$
+Using expression \Ep{ML1_job}, the analogous condition for
+a firm contemplating a counteroffer from the worker is
+$$
+{y - w^w \over 1-\beta(1-s)}  \;=\; -\gamma \,+\,
+   \beta (1-\delta)\, {y - w^f \over 1-\beta(1-s)} \,.  \EQN ML1_jobW
+$$
+
+
+After collecting and simplifying the terms that involve the
+worker's outside value $U$, expression \Ep{ML1_employW} becomes
+$$
+{w^f \over 1-\beta(1-s)}
+ \;=\; z\,+\, \beta (1-\delta)\,{w^w \over 1-\beta(1-s)} \,+\,
+ \beta \,{1-\beta \over 1-\beta(1-s) } \,(\delta-s)\,U.
+                                               \EQN ML1_employWnew
+$$
+As emphasized by Hall and Milgrom, the worker's outside value $U$
+has a small influence on bargaining: when  $\delta=s$, the
+outside value disappears from expression \Ep{ML1_employWnew}. That
+is, with  bargaining that  ends   either with an
+agreement or with destruction of the job, the outside value will
+matter only if  job destruction probabilities differ
+before and after reaching an agreement. To strengthen
+Hall and Milgrom's (2008) observation that under their bargaining protocol
+the outside value has at most a
+small influence, we proceed
+under the assumption that $\delta=s$, which makes the two indifference
+conditions \Ep{ML1_employWnew} and \Ep{ML1_jobW} become
+$$\EQNalign{
+w^f \;&=\; (1-\tilde \beta)\,z\,+\, \tilde \beta\, w^w
+                                              \EQN ML1_employW2 \cr
+\noalign{\vskip.2cm}  \cr
+y - w^w \;&=\; -(1-\tilde \beta)\,\gamma \,+\,
+        \tilde \beta \, (y - w^f)    \,,      \EQN ML1_jobW2   \cr}
+$$
+where $\tilde \beta \equiv \beta (1-s)$.
+Solve for $w^w$ from \Ep{ML1_jobW2} and substitute into
+\Ep{ML1_employW2} to get
+%%\begin{equation}
+%%w^f \;=\; (1-\tilde \beta)\,z \,+\,
+%%      \tilde \beta\left[(1-\tilde \beta)(y+\gamma)
+%%                      \,+\,\tilde \beta\,w^f\right], \label{ML1_wageF}
+%%\end{equation}
+%%which can be rearranged to read
+$$
+w^f \;=\; {(1-\tilde \beta)\left[ z\,+\,\tilde \beta(y+\gamma)\right] \over
+           1-\tilde \beta^2 }
+\;=\; { z\,+\,\tilde \beta(y+\gamma) \over 1+\tilde \beta }\,.
+                                                   \EQN ML1_wageF2
+$$
+This is the wage that a firm would immediately offer a worker  when first matched;  the offer would
+be accepted.\NFootnote{When firms
+make the first wage offer, a necessary
+condition for an equilibrium is that $w^f$ in expression
+\Ep{ML1_wageF2} is less than productivity $y$, i.e., the parameters
+must satisfy $z + \tilde \beta \gamma < y$.}
+In an equilibrium, this
+wage must also be consistent with the no-profit condition for vacancy
+creation. Substitution of $w=w^f$ from expression
+\Ep{ML1_wageF2} into the no-profit condition \Ep{wage1}
+of the standard matching model results in the following
+expression for equilibrium market tightness:
+$$
+{ z\,+\,\tilde \beta(y+\gamma) \over 1+\tilde \beta }  \;=\;
+y \,-\, {r + s \over q(\theta)} \, c .       \EQN ML1_altbarg
+$$
+After implicit differentiation,
+we can compute the elasticity of market tightness as
+$$
+%%\eta_{\theta,y}\Big|_{\rm first\, wage\, offer\, by\, firm}
+\eta_{\theta,y}
+%% \;\equiv\; {d\, \theta \over d\, y} \; {y \over \theta}
+\;=\; {1 \over \alpha} \; \;
+      {y \over y-z- \tilde \beta \,\gamma}
+\;=\; \Upsilon^{\rm sticky}\;
+         {y \over y-z- \tilde \beta \,\gamma}\,,  \EQN ML1_thetaelast3
+$$
+where the fundamental surplus is the productivity
+that remains after making deductions for the value of leisure $z$
+and a firm's discounted cost of delay $\tilde \beta \gamma$.
+The latter item
+captures the worker's prospective gains from his
+ ability to exploit the
+cost that delay imposes on the firm.  What remains of productivity is the
+fundamental surplus that could potentially be allocated by the
+`invisible hand'  to  vacancy creation in an equilibrium.
+
+To summarize, the alternative bargaining
+protocol of Hall and Milgrom (2008) does suppress the influence of the
+worker's outside value during bargaining. But
+this outcome would be irrelevant if  Hall and Milgrom had  not
+calibrated a small fundamental surplus fraction, as numerically
+illustrated in their own parameterized model in section
+\use{sec:FS_HallMil_simul}.
+
+
+
+
+
+
+
+\section{Business cycle simulations}\label{sec:FS_simulations}%
+\auth{Hall, Robert E.}%
+To illustrate that a small fundamental surplus fraction is essential for
+generating ample unemployment volatility over the business cycle in
+matching models, we use  Hall's (2005) specification
+with discrete time and a  random productivity process.
+The monthly discount factor $\beta$ corresponds to a 5-percent annual
+rate and the value of leisure is $z=0.40$. The elasticity of
+matching with respect to unemployment is $\alpha=0.235$, and the
+exogenous monthly separation rate is $s=0.034$. Aggregate productivity
+takes on five  values $y_s$ uniformly spaced around a mean of
+one on the interval $[0.9935, 1.00565]$, and is governed by
+a monthly transition probability matrix $\Pi$ with probabilities
+that are zero except as follows: $\pi_{1,2}=\pi_{4,5}=2(1-\rho)$,
+$\pi_{2,3}=\pi_{3,4}=3(1-\rho)$, with the upper triangle of the
+transition matrix symmetrical to the lower triangle and the
+diagonal elements equal to one minus the sums of the nondiagonal
+elements. The resulting serial correlation of $y$ is $\rho$, which
+is parameterized to be $\rho=0.9899$.
+To facilitate the
+sensitivity analysis, following Ljungqvist and Sargent (2017), we alter
+Hall's model period from one month to one day.
+
+
+
+
+\subsection{Hall's sticky wage}\label{sec:FS_Hall_simul}%
+Following  Hall (2005),  we posit a
+fixed wage $\hat w = 0.9657$, which  equals the flexible wage that
+would prevail at the median productivity level under standard Nash
+bargaining (with equal bargaining weights, $\phi=0.5$).
+Figure \Fg{figMLIHall1} reproduces Hall's figures 2 and 4
+for those two models. The solid line and the upper dotted line
+depict unemployment rates at different productivities for the
+sticky-wage model and the standard Nash-bargaining model,
+respectively.\NFootnote{Unemployment is a state variable
+that is not just a function of the current productivity, as are
+all of the other variables, but depends on the history of the
+economy. But high persistence of productivity and the
+high job-finding rates make the unemployment rate that is  observed at
+a given productivity level be well approximated by expression
+\Ep{unemp}
+evaluated at the market tightness $\theta$ prevailing at that
+productivity (see Hall (2005, p.~59)).}
+Unemployment is almost invariant to productivity under Nash bargaining
+but responds sensitively under the sticky wage. These outcomes are
+explained by differences in job-finding rates, as shown by the
+dashed line and the lower dotted line for the
+sticky-wage model and the standard Nash-bargaining model,
+respectively, expressed at our daily frequency.\NFootnote{Our
+daily job-finding rates are roughly $1/30$ of the monthly
+rates in Hall (2005, figures 2 and 4),
+confirming our conversion from a monthly to a daily frequency.}
+Under the sticky wage, high productivities cause firms to post many
+vacancies, making it easy for unemployed workers to find
+jobs, while the opposite is true when productivity is low.
+
+\midfigure{figMLIHall1}
+\centerline{\epsfxsize=3truein\epsffile{MLI_Hall1.eps}}
+\caption{Sticky-wage model. Unemployment rates and daily job-finding
+rates at different productivities (given a fixed wage $\hat w = 0.9657$),
+where the dotted lines with almost no slopes are counterparts from
+a standard Nash-bargaining model.}
+\infiglist{figMLIHall1}
+\endfigure
+
+%Starting from this verification of our conversion of Hall's
+%(2005) model into a daily frequency,
+We conduct a sensitivity analysis of the choice of the fixed wage.
+The solid line in Figure \Fg{figMLIHall2} shows how
+the average unemployment rate varies with the fixed wage $\hat w$.
+A small set  of wages spans outcomes ranging from
+%nearly zero to very high average unemployment.
+             %%REMARK: We truncated the graph so the lowest
+             %%unemployment rate is two percent.
+ very low to  very high average unemployment rates.
+Small variations in a fixed wage close to
+productivity generate large changes in the fundamental surplus
+fraction, $(y-\hat w)/y$.  Free entry of firms makes that map
+directly into the amount of resources devoted to vacancy creation.
+The dashed line in Figure \Fg{figMLIHall2}
+delineates  implications
+for the volatility of unemployment. The standard deviation of
+unemployment is nearly zero at the left end of the graph where the
+job-finding probability is almost one for all productivity levels.
+Unemployment volatility then increases for higher constant wages
+until, outside of the graph at the right end, vacancy creation
+becomes so unprofitable that average unemployment converges to its
+maximum of 100 percent, causing there to be no more fluctuations.
+
+
+
+\midfigure{figMLIHall2}
+\centerline{\epsfxsize=3truein\epsffile{MLI_Hall2.eps}}
+\caption{Sticky-wage model. Average unemployment rate and standard
+deviation of unemployment for
+different postulated values of the fixed wage.}
+\infiglist{figMLIHall2}
+\endfigure
+
+
+At Hall's fixed wage $\hat w = 0.9657$, Figure \Fg{figMLIHall2}
+shows a standard deviation of unemployment equal to
+1.80 percentage points, which is close to the target of 1.54 to which
+Hall (2005) calibrated his model.
+
+
+\subsection{Hagedorn and Manovskii's high value of leisure}
+           \label{sec:FS_HagMan_simul}%
+\auth{Hagedorn, Marcus} \auth{Manovskii, Iourii}%
+ It turns out that  by elevating the value of
+leisure,
+the standard Nash-bargaining model can attain the
+same volatility of unemployment as does the sticky wage model of the previous subsection.
+To illustrate this, we use  Hall's (2005) parameterized environment
+but
+now simply assume standard Nash wage bargaining in order to study
+ Hagedorn and Manovskii's (2008) analysis of the consequences of
+  positing a high value $z=0.960$ of leisure  and a low
+bargaining power of workers  $\phi=0.0135$.
+%%who focus on a high value
+%%of leisure, $z=0.955$, and a low bargaining power of workers,
+%%$\phi=0.052$. At such a parameterization,
+These parameter values imply a
+high standard deviation of 1.4 percentage points for unemployment.
+Figure \Fg{figMLINash1}, which depicts outcomes for different
+constellations of $z\in [0.4, .99]$ and $\phi\in[0.001, 0.5]$, sheds light
+ on the sensitivity of outcomes to  the choice of parameters.
+To construct the figure, for each pair $(z,\phi)$, we adjusted the efficiency parameter $A$
+of the matching function to make the average unemployment rate stay at
+5.5 percent. Because it implies a
+a small fundamental surplus fraction, a high value of leisure is essential for obtaining large variations in market tightness and a high volatility of unemployment.
+
+%As detailed in section \ref{sec:HagedornManovskii}
+%(and elaborated upon in online appendix \ref{app:wageelasticity}),
+
+
+To match the elasticity of wages with respect to productivity,
+Hagedorn and Manovskii (2008) require a low bargaining power for workers.
+%If we use the Hall (2005) parameter values and Hagedorn and Manovskii's
+%$(z,\phi)=(0.960, 0.0135)$ in the otherwise same  parametrized
+%environment of Hall (2005),
+Given the above parameterization with $(z,\phi)=(0.960, 0.0135)$,
+we obtain a  wage elasticity
+of 0.44, which  is approximately the value that
+Hagedorn and Manovskii had targeted. To conduct a sensitivity analysis to variations in $z$ and $\phi$,
+Figure \Fg{figMLINash2}
+employs   the same computational approach underlying Figure \Fg{figMLINash1}.
+  The figure confirms
+that  a low $\phi$ is required to obtain a low wage
+elasticity.\NFootnote{Note that the
+axes in Figure \Fg{figMLINash2} are rotated relative to
+Figure \Fg{figMLINash1}, for easy viewing of the relationship.}
+
+
+\auth{Rogerson, Richard} \auth{Shimer, Robert}
+Taken together, Figures \Fg{figMLINash1} and \Fg{figMLINash2}
+seem to settle a difference of opinions in favor of  Hagedorn and Manovskii (2008, p.~1696), who argued
+that ``the volatility of labor market tightness is almost independent
+of [$\phi$] and is determined only by the level of $z$.''
+Rogerson and Shimer (2011, p.~660) apparently disagreed when they instead  emphasized
+that wages are rigid under the calibration of ``Hagedorn and
+Manovskii (2008), although it is worth noting that the authors
+do not interpret their paper as one with wage rigidities. They
+calibrate ... a small value for the workers' bargaining power
+[$\phi$]. This significantly amplifies productivity shocks ...''
+But Figures \Fg{figMLINash1} and \Fg{figMLINash2} indicate that  the low wage elasticity of
+Hagedorn and Manovskii (2008)
+is incidental to and neither necessary nor sufficient to obtain
+a high volatility of unemployment. We suggest that instead of stressing the importance of a rigid wage, as Rogerson and Shimer
+did, what should be concluded is the general principle that
+the fundamental surplus fraction must be small in order to amplify business cycle responses to productivity changes.
+
+\midfigure{figMLINash1}
+\centerline{\epsfxsize=3truein\epsffile{MLI_Nash1.eps}}
+\caption{Nash-bargaining model. Standard deviation of unemployment in
+percentage points for different
+constellations of the value of leisure $z$, and the bargaining
+power of workers $\phi$.}
+\infiglist{figMLINash1}
+\endfigure
+
+\midfigure{figMLINash2}
+\centerline{\epsfxsize=3truein\epsffile{MLI_Nash2.eps}}
+\caption{Nash-bargaining model. Wage elasticity with respect to
+productivity for different
+constellations of the value of leisure $z$, and the bargaining
+power of workers $\phi$. (Note that the axes are rotated relative
+to Figure \Fg{figMLINash1}.)}
+\infiglist{figMLINash2}
+\endfigure
+
+
+\subsection{Hall and Milgrom's alternating-offer bargaining}\label{sec:FS_HallMil_simul}%
+\auth{Hall, Robert E.}\auth{Milgrom, Paul R.}%
+ Hall and Milgrom's (2008)
+model of alternating-offer wage bargaining is another way to
+increase unemployment volatility. Except for
+the wage formation process, their environment is  Hall's (2005). But Hall and Milgrom   parameterize it  differently.
+One difference between  Hall and Milgrom's parameterization and  Hall's (2005) plays  an especially  important role in setting  the
+ fundamental surplus: Hall and Milgrom' raised the value of leisure  to $z=0.71$ from Hall's value of $z= 0.40$.
+ Section \use{sec:HallMilgrom} taught us that
+the values of leisure and of  the firm's cost of delay in
+bargaining $\gamma$ are likely to be critical determinants of
+ the elasticity of market tightness with respect
+to productivity and hence of the volatility of unemployment.
+
+But that is not what
+Hall and Milgrom (2008) chose to emphasize. Instead, they stressed how much the
+outside value of unemployment is suppressed in alternating-offer
+wage bargaining since disagreement no longer leads to
+unemployment but instead to another round of bargaining. So from Hall and Milgrom's perspective
+a key parameter
+is the exogenous rate $\delta$ at which parties break up
+between bargaining rounds. Figure \Fg{figMLIHallMilgrom} shows
+how different constellations of $(\gamma, \delta)$ affect the
+standard deviation of unemployment.  %% in percentage points.
+For each pair $(\gamma,\delta)$, we adjust the efficiency
+parameter $A$ of the matching function to make the average
+unemployment rate stay at 5.5 percent. Because
+Hall and Milgrom (2008) assumed that productivity shocks are not
+the sole source of unemployment fluctuations, leading them to lower their target  standard deviation
+of unemployment to 0.68 percentage points -- a target
+attained with their parameterization
+$(\gamma, \delta)=(0.27, 0.0055)$
+%%$\gamma= 0.27$ and $\delta=0.0055$
+and reproduced in Figure \Fg{figMLIHallMilgrom}.
+
+Figure \Fg{figMLIHallMilgrom} supports our earlier finding
+that the cost of delay $\gamma$ together with the value of
+leisure $z$ are the keys to  generating higher volatility
+of unemployment. Without a cost of delay sufficiently high
+to reduce the fundamental surplus fraction, the exogenous separation rate between
+bargaining rounds  matters little.\NFootnote{To be specific, our formula
+\Ep{ML1_thetaelast3} for the steady-state comparative statics
+is an approximation of the elasticity of market tightness at
+the rear end of Figure \Fg{figMLIHallMilgrom} where
+the exogenous rate $\delta$ at which parties break up
+between bargaining rounds is equal to Hall and Milgrom's
+(2008) assumed job destruction rate of $0.0014$ per day.}
+
+\midfigure{figMLIHallMilgrom}
+\centerline{\epsfxsize=3truein\epsffile{MLI_HallMilgrom.eps}}
+\caption{Alternating-offer bargaining model. Standard deviation of unemployment in percentage
+points for different constellations of firms' cost of delay
+$\gamma$ in bargaining  and the exogenous separation rate
+$\delta$ while bargaining.}
+\infiglist{figMLIHallMilgrom}
+\endfigure
+
+Although Hall and Milgrom (2008, p.~1670) notice that their ``sum
+of $z$ and $\gamma$ is $\ldots$ not very different from the value
+of $z$ by itself in $\ldots$ Hagedorn and Manovskii's
+calibration'' (as studied in our section \use{sec:FS_HagMan_simul}),
+they demphasized this  similarity and instead emphasized
+  differences in mechanisms across Hagedorn and Manovskii's model and theirs.
+Focusing on the  fundamental surplus tells us that it is
+their similarity that should
+be stressed.   Hall and Milgrom's and Hagedorn and Manovskii's  models are united in requiring a small fundamental
+surplus fraction  to generate high unemployment volatility
+over the business cycle.
+
+
+\subsection{Matching and bargaining protocols in a  DSGE model}
+Christiano, Eichenbaum and Trabandt (2016) compare consequences
+of assuming
+alternative-offer bargaining (AOB) and Nash bargaining
+in a dynamic stochastic general equilibrium (DSGE)
+model with a matching function. They find that,  if they adjust structural parameters across the two models  to  fit the  data,
+ models parameters estimated under   the two alternative assumptions are  able to account for
+the data equally well. That  includes comparable performance in   generating observed  unemployment volatility.
+%They find that  the two
+%assumptions about bargaining allow the
+%model perform equally well in accounting for patterns in
+%the data, including generating unemployment volatility.
+The solid lines in Figure \Fg{figMLI_CLT}
+depict responses of unemployment to a neutral technology
+shock that are virtually identical across the two models.
+But  beneath those nearly identical responses there resides  a substantial difference in estimates of a key parameter under
+the two assumptions, namely,
+the replacement rate from unemployment insurance, a parameter that
+corresponds to our value of leisure $z$. They estimate a value of  0.37 under the AOB
+model versus 0.88 with the Nash bargaining model.
+\auth{Christiano, Lawrence J.}\auth{Eichenbaum, Martin}%
+\auth{Trabandt, Mathias} \index{DSGE model}%
+
+%Christiano, Eichenbaum and Trabandt (2016) compare the implications
+%of assuming alternative-offer bargaining (AOB) and Nash bargaining
+%over a wage in  a DSGE framework with a matching function.
+%The solid line in Figure \Fg{figMLI_CLT}
+%depicts the  response of unemployment to a neutral technology
+%shock, which is virtually identical across the two models.
+%Though, a key difference in estimated parameter values is
+%the replacement rate from unemployment insurance (that
+%corresponds to our value of leisure $z$): 0.37 in the AOB
+%model versus 0.88 in the Nash bargaining model.
+
+
+
+\midfigure{figMLI_CLT}
+\centerline{\epsfxsize=3truein\epsffile{AllComparisonFigure.eps}}
+\caption{Impulse response of unemployment to a neutral
+technology shock in the DSGE analyses. The solid lines refer
+to estimates of   AOB and Nash bargaining models,
+respectively. The
+dashed lines refer to perturbed models where parameter
+values for the replacement ratio and,  in the AOB model, 
+for a firm's cost to make a counteroffer are cut in half. The
+two solid (dashed) lines are almost indistinguishable, except for the Nash bargaining model being slightly below
+the AOB model.}
+\infiglist{figMLI_CLT}
+\endfigure
+
+
+ Christiano et al.\ (2016, pp.~1551-1552) remark that
+   their high estimate of the value of leisure in the
+Nash bargaining model ``$\ldots$  is reminiscent of Hagedorn
+and Manovskii's (2008) argument that a high replacement ratio has
+the potential to boost the volatility of unemployment''.\NFootnote{See  section \use{sec:FS_HagMan_simul} above.}
+To elaborate, Christiano et al. demonstrate  that if they restrict the replacement
+rate in the Nash bargaining model to be the same as that of the
+AOB model and then recalculate the impulse response functions, then there occurs
+a dramatic deterioration in the performance of the Nash
+bargaining model. Thus,  the dashed line in Figure \Fg{figMLI_CLT}
+show how  unemployment becomes much less responsive to
+a neutral technology shock under that perturbation in the replacement rate.
+
+Christiano et al.\ (2016, p.~1547) proceed to interpret  their low estimate of the value of leisure in the
+AOB model as meaning that ``the replacement ratio does not play a critical role
+in the AOB model's ability to account for the data.''
+Their account conceals that the fundamental surplus  is really at work once
+again. Christiano et al.
+ generously conducted for us
+%what can be regarded as a reverse of their perturbation of the AOB model,
+a perturbation of the AOB model that can be regarded as the
+analogue to their perturbation of the Nash bargaining model;
+namely, a cutting in half
+of both the replacement rate 0.37 and a firm's cost of delay
+in bargaining, where the latter in their model is a firm's
+cost of  making a counteroffer  calibrated to 0.6 of a firm's
+daily revenue per worker.\NFootnote{Christiano et al.\ (2016)
+assume that it takes one day for a wage offer to be extended, with a firm and a worker alternating in
+making an offer.}
+As  sections
+\use{sec:HallMilgrom} and \use{sec:FS_HallMil_simul} lead us to expect, this
+perturbation of the AOB model also brings a dramatic
+deterioration in performance, one as bad as that of the perturbed Nash
+bargaining model: the dashed lines depicting a
+dampened impulse response of unemployment to a neutral
+technology shock in Figure  \Fg{figMLI_CLT}
+are 
+%virtually identical across the two perturbed models.
+almost the same 
+across the two perturbed models.
+We conclude from this exercise that contrary to what Christiano et al. say,  the replacement ratio is  critical
+in the AOB model too, and that  what is needed to make the fundamental surplus fraction small
+in that model
+is a combination of very high
+values of the replacement rate and a firm's cost of delay in
+bargaining.
+
+
+
+
+
+
+
+
+\auth{Ch\'eron, Arnaud} \auth{Hairault, Jean-Olivier} \auth{Langot, Francois}
+\auth{Menzio, Guido} \auth{Telyukova, Irina A.} \auth{Visschers, Ludo}%
+%%\section{Matching model with overlapping generations}
+\section{Overlapping generations in one matching function}\label{sec:M_OLG1}%
+  To emphasize the important role of  congestion externalities, it
+  is useful to study a matching model in which workers are heterogeneous along one or more
+  dimensions, for example, age.
+%Heterogeneous agents have become an important ingredient of many macroeconomic
+%models.
+ Ch\'eron,
+Hairault, and Langot (2013) and Menzio, Telyukova, and Visschers (2016)
+study overlapping generations  models under alternative arrangements in which unemployed
+workers either enter a single matching function or are assigned to type-specific
+matching functions. In this section,
+we adopt a framework of Ch\'eron, Hairault
+and Langot. They  assume a single matching function and an exogenous retirement
+age $T+1$. Each period, a retiring generation is replaced by a new generation of the same
+size, normalized to unity.  All newborn workers enter the labor market being
+unemployed.
+
+
+At the beginning of each period, a new
+productivity is drawn  from a differentiable
+cumulative distribution function $G(\epsilon)$
+for each newly filled job and also  for each ongoing job.
+The continuous random variable $\epsilon$ has the support
+$[\underline \epsilon,1]$.
+%At the beginning of each period, a new
+%productivity is drawn  from a
+%cumulative distribution function $G(\epsilon)$ with
+%$\epsilon\in[0,1]$ for each newly filled job and also for each ongoing job.
+After observing the job
+productivity, the firm decides whether  to operate the job. If a job
+is not operated, the match between the firm and worker is broken, and the
+worker returns to the pool of unemployed. In an equilibrium, jobs with  productivities below
+age-specific reservation productivities $R_i$ for  workers of
+age $i$ are terminated. This setting gives rise to
+intergenerational labor market externalities   like  those that
+arose with the  heterogeneous jobs model of  section \use{Sec_matching_heterojobs}.
+
+We assume that the worst productivity realization $\underline \epsilon$
+is so low that it triggers job separations for any age in the
+decentralized equilibrium as well as in the social planner solution.
+Hence, all reservation productivities are at interior solutions.
+If that requires a negative parameter value $\underline \epsilon$, it
+can be thought of as a 'labor hoarding cost' for a (temporarily)
+non-productive job, which can only be avoided by breaking the match
+and not operating the job.
+
+
+
+\subsection{A steady state}
+
+In a steady state, there is a list of  time-invariant unemployment rates
+$\{u_i\}_{i=1}^{T}$, where the index $i$ denotes the
+age of workers. Since newborn workers enter as
+unemployed,  $u_1=1$. Given equilibrium market tightness
+$\theta$ and reservation productivities $\{R_i\}_{i=2}^{T}$,
+unemployment rates across ages evolve as
+$$
+u_i \,=\, u_{i-1} \Bigl[1 - \theta q(\theta) \Bigl(1- G(R_i) \Bigr) \Bigr]
+         + (1-u_{i-1}) \,G(R_i)\,,                             \EQN M_OLG_u
+$$
+for $i=2, \ldots, T$. Note that the unemployed of age $i-1$ can
+be matched to jobs in the subsequent period and hence, the reservation
+productivity $R_i$ determines which of those jobs are operated. Total
+unemployment is $u = \sum_{i=1}^T u_i$, with an economy-wide
+unemployment rate of $u/T$.
+
+For a job with productivity $\epsilon$ that is matched and acceptable
+to a worker of age $i$ (i.e., $\epsilon \geq R_i$), a firm's value, $J_i(\epsilon)$, and an employed worker's value, $E_i(\epsilon)$, are
+$$\EQNalign{
+J_i(\epsilon) \;&=\; \epsilon\,-\, w_i(\epsilon)\,+\,
+    \beta \left[ \int_{R_{i+1}}^1 J_{i+1}(\epsilon ') dG(\epsilon ')
+     \,+\, G(R_{i+1}) V \right]
+                                                           \EQN M_OLG_Ji \cr
+V\;&=\; -c \,+\, \beta q(\theta) \sum_{i=2}^{T}
+     \left[{u_{i-1} \over u} \left(\int_{R_i}^{1} J_i(\epsilon) dG(\epsilon)
+           + G(R_i) V\right)\right] \cr
+   &  \hskip1.5cm + \beta (1-q(\theta))V   \EQN M_OLG_V \cr
+E_i(\epsilon) \;&=\; w_i(\epsilon) \,+\,
+     \beta \left[ \int_{R_{i+1}}^1 E_{i+1}(\epsilon ') dG(\epsilon ')
+     \,+\, G(R_{i+1}) U_{i+1} \right]
+                                                           \EQN M_OLG_Ei \cr
+U_i \;&=\; z\,+\, \beta \theta q(\theta) \left[
+\int_{R_{i+1}}^1 E_{i+1}(\epsilon ') dG(\epsilon ')
+     \,+\, G(R_{i+1}) U_{i+1} \right]   \cr
+     & \hskip1.5cm + \beta (1-\theta q(\theta)) U_{i+1}  \cr
+     \;&=\; z\,+\, \beta U_{i+1}
+      \,+\, \beta \theta q(\theta)
+\int_{R_{i+1}}^1 \bigl[ E_{i+1}(\epsilon ')-U_{i+1} \bigr] dG(\epsilon '),
+                                                           \EQN M_OLG_Ui \cr}
+$$
+where the value  $V$ of a vacancy reflects a firm's probabilities
+of being matched with workers of different ages. A free entry
+condition requires that a vacancy earn zero expected profits, $V=0$,
+and so equation \Ep{M_OLG_V} can be rewritten as
+$$
+q(\theta)\,=\, { c \over
+       \beta \sum_{i=2}^{T} {u_{i-1} \over u}
+\int_{R_i}^{1} J_i(\epsilon) dG(\epsilon)} \,.          \EQN M_OLG_noprofit
+$$
+The expression for the value of an unemployed worker of age $i$
+in the second equality of equation \Ep{M_OLG_Ui}  shows
+that a successful match earns the worker a surplus of employment over
+the value of remaining unemployed, $E_{i+1}(\epsilon ') -U_{i+1}$.
+
+For an acceptable firm-worker match with a worker of age $i$ and
+job productivity $\epsilon \geq R_i$, the match surplus is
+$$
+S_i(\epsilon) \,=\, J_i(\epsilon) \,+\, E_i(\epsilon)\,-\, U_i \geq 0.
+                                                           \EQN M_OLG_Si
+$$
+Nash bargaining implies  that  the surplus is
+divided between a worker and a firm according to
+$$
+ E_i(\epsilon)\,-\, U_i \,=\, \phi S_i(\epsilon) \,=\,
+{\phi \over 1-\phi} J_i(\epsilon) \,.                      \EQN M_OLG_Nash
+$$
+After substituting expressions \Ep{M_OLG_Ji}, \Ep{M_OLG_Ei} and
+\Ep{M_OLG_Ui} in equation \Ep{M_OLG_Si}, the surplus of an acceptable
+match becomes
+$$\EQNalign{
+S_i(\epsilon) \;&=\; \epsilon - z\,+\,
+    \beta  \int_{R_{i+1}}^1 \left[ J_{i+1}(\epsilon ')
+                      +  E_{i+1}(\epsilon ') \right] dG(\epsilon ')
+                     \,-\, \beta \left[1-G(R_{i+1})\right] U_{i+1}  \cr
+    &\hskip1.4cm -\; \beta \theta q(\theta)
+                     \int_{R_{i+1}}^1 \left[ E_{i+1}(\epsilon ')
+                      -  U_{i+1} \right] dG(\epsilon ')             \cr
+    &=\; \epsilon - z\,+\,
+    \beta \left[1-\theta q(\theta) \phi\right]
+          \int_{R_{i+1}}^1 S_{i+1}(\epsilon ') \, dG(\epsilon ')\,,
+                                                       \EQN M_OLG_Si_1 \cr}$$
+where the last equality invokes \Ep{M_OLG_Si} for match
+surpluses in period $t+1$, and associated Nash bargaining outcomes
+\Ep{M_OLG_Nash},
+$E_{i+1}(\epsilon ')-U_{i+1}=\phi S_{i+1}(\epsilon ')$.
+
+We conclude that the surplus function satisfies
+$$
+S_i(\epsilon) \,=\, \max\left\{\epsilon - z\,+\,
+    \beta \left[1-\theta q(\theta) \phi\right]
+    \int_{\underline \epsilon}^1 S_{i+1}(\epsilon ') \, dG(\epsilon ')\,,
+\; 0 \right\}.                                        \EQN M_OLG_Si_2
+$$
+The value $R_i$ of the productivity
+$\epsilon$ at which the first argument behind the max operator
+is zero is
+$$
+R_i \;=\; z \,-\,  \beta \bigl[1 - \theta q(\theta) \,\phi \bigr]
+\int_{\underline \epsilon}^1 S_{i+1}(\epsilon ') dG(\epsilon ')\,.
+                                                     \EQN M_OLG_cutoff
+$$
+Since the surplus function is zero for a worker who has retired from the labor market,
+$S_{T+1}(\epsilon ') =0$, so we see from equation \Ep{M_OLG_cutoff} that
+ reservation productivity in the last period before retirement is
+$R_T = z$, i.e., acceptable jobs are those having productivities above
+the value of leisure for an unemployed worker. Furthermore, before the worker's  last period in the labor market, the reservation
+productivity is strictly less than $z$ because by staying in the match,
+a firm-worker pair is assured of a new productivity draw next period,
+and without having to incur any vacancy posting costs.\NFootnote{When
+a worker has all the bargaining power,
+$\phi=1$, we see from equation \Ep{M_OLG_cutoff} that the reservation
+productivity at age $i<T$ would be less than $z$ if and only if
+the job finding rate of an unemployed worker is less than one,
+$\theta q(\theta)<1$, which reflects the worker's value of staying
+on the job in order to be assured of a new productivity
+draw next period. But of course, if $\phi=1$, there would not exist
+an equilibrium with job creation since firms then could not
+recover their vacancy costs. The other extreme of a firm having
+all the bargaining power, $\phi =0$, is consistent with job
+creation in an equilibrium. With such lopsided bargaining power, the
+equilibrium wage would be the value of leisure, $w_i(\epsilon)=z$ (see
+equation \Ep{M_OLG_wage} below); and at reservation productivity $R_i$ in
+equation \Ep{M_OLG_cutoff}, the firm would be just indifferent to
+operating the job and incurring the loss $w_i(R_i)- R_i= z-R_i$ in
+return for the expected present value of the total match surplus next
+period, $\beta \int_0^1 S_{i+1}(\epsilon ') dG(\epsilon ')$.}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%The surplus is zero for $\epsilon < R_i$ when a job is terminated, but
+%positive for $\epsilon \geq R_i$ when the surplus satisfies
+%$$
+%S_i(\epsilon) \,+\, U_i \,=\, \epsilon \,+\,
+%\beta \left[ \int_0^1 S_{i+1}(\epsilon ') dG(\epsilon ') \,+\, U_{i+1}
+%\right],$$
+%and hence the surplus functions satisfy
+%$$
+%S_i(\epsilon) \,=\, \max\left\{\epsilon \,+\,
+%\beta \int_0^1 S_{i+1}(\epsilon ') dG(\epsilon ') \,-\,
+%(U_i - \beta U_{i+1})\,,  \; 0 \right\}.            \EQN M_OLG_Si_2
+%$$
+%
+%The value $\bar \epsilon_i$ of the productivity
+%$\epsilon$ at which the first argument behind the max operator in
+%equation \Ep{M_OLG_Si_2} is zero is
+%$$\EQNalign{
+%\bar \epsilon_i \;&=\; - \beta \int_0^1 S_{i+1}(\epsilon ') dG(\epsilon ')
+%         \,+\,U_i\,-\,\beta U_{i+1} \cr
+%\;&=\; z \,-\,  \beta \bigl[1 - \theta q(\theta) \,\phi \bigr]
+%\int_{R_{i+1}}^1 S_{i+1}(\epsilon ') dG(\epsilon '),   \EQN M_OLG_cutoff }
+%$$
+%where we have used equation \Ep{M_OLG_Ui} to eliminate $U_i$
+%and then used  the Nash bargaining outcome in equation \Ep{M_OLG_Nash}.
+%Since $S_{i+1}(\epsilon ')=0$ for $\epsilon ' < R_{i+1}$, we have
+%appropriately  integrated   over the region
+% at which values are not zero. If the cutoff value
+%$\bar \epsilon_i$ in equation \Ep{M_OLG_cutoff} is positive, it equals the
+%optimal reservation productivity, i.e.,
+%$$
+%R_i = \max \{\bar \epsilon_i,\, 0\}.
+%$$
+%Since the surplus function is zero for a worker who has retired from the
+%labor market,
+%$S_{T+1}(\epsilon ') =0$, so we see from equation \Ep{M_OLG_cutoff} that
+% reservation productivity in the last period before retirement is
+%$R_T = z$, i.e., acceptable jobs are those having productivities above
+%the value of leisure for an unemployed worker. Furthermore, before the
+%worker's  last period in the labor market, the reservation
+%productivity is strictly less than $z$ because by staying on the job,
+%a worker is assured of a new productivity draw next period, while
+%if the worker were to be  unemployed, he or she  would be uncertain
+%about being matched with a firm  next period.
+
+\subsection{Reservation productivity is increasing in age}
+
+By substituting \Ep{M_OLG_cutoff} in \Ep{M_OLG_Si_2}, the match
+surplus can be expressed as
+$$
+S_i(\epsilon) \,=\, \max\left\{\epsilon - R_i \,, \; 0 \right\}.
+                                                        \EQN M_OLG_Si_3
+$$
+We will now confirm that the reservation productivity is strictly
+increasing in age, $R_i < R_{i+1}$, and hence, the match surplus in
+\Ep{M_OLG_Si_3} decreases in age, $S_i(\epsilon) \geq S_{i+1}(\epsilon)$.
+Use expression \Ep{M_OLG_Si_3} and apply
+integration by parts to the integral over the future surplus in
+equation \Ep{M_OLG_cutoff}:
+$$\EQNalign{
+\int_{R_{i+1}}^1 & S_{i+1}(\epsilon ') \, dG(\epsilon ')
+\;=\; \int_{R_{i+1}}^1 \left[\epsilon ' - R_{i+1} \right] dG(\epsilon ') \cr
+\;&=\; [1 - R_{i+1}] \, G(1) \,-\, [R_{i+1} - R_{i+1}] \, G(R_{i+1})
+- \int_{R_{i+1}}^1 G(\epsilon ') d \epsilon' \cr
+\;&=\; 1 - R_{i+1} - \int_{R_{i+1}}^1  G(\epsilon ') d \epsilon'
+\,=\, \int_{R_{i+1}}^1  [1 - G(\epsilon ')] d \epsilon' \,.
+\EQN M_OLG_intsurplus \cr}
+$$
+Since $S_{i+1}(\epsilon ')=0$ for $\epsilon ' < R_{i+1}$, we have
+appropriately integrated over the region at which values are not zero.
+Substituting expression \Ep{M_OLG_intsurplus} into equation
+\Ep{M_OLG_cutoff} shows that   reservation productivities are
+determined recursively by
+$$\EQNalign{
+R_i \,&=\,  z \,-\,  \beta \bigl[1 - \theta q(\theta) \,\phi \bigr]
+\int_{R_{i+1}}^1 [1 - G(\epsilon ')] d \epsilon'  \EQN M_OLG_cutoff_2;a \cr
+\noalign{\hbox{for $i=2,\ldots,T-1$, and}}
+R_T \,&=\,  z \,.                                    \EQN M_OLG_cutoff_2;b \cr}
+$$
+The momentum of the reduction in the reservation productivity when
+going from age $T$ to $T-1$ continues throughout the recursions,
+as the integral in \Ep{M_OLG_cutoff_2;a} is computed for
+a successively widened range when working backward; that is, the
+negative of the enlarged term with the integral on the right side of
+\Ep{M_OLG_cutoff_2;a} causes the reservation productivity for the
+next younger age on the left side of \Ep{M_OLG_cutoff_2;a} to become
+smaller, which in the subsequent recursion further widens the range of
+integration and hence, further reduces the right side of
+\Ep{M_OLG_cutoff_2;a}, and so on. Thus, the reservation
+productivity is strictly increasing in age.
+
+The described feedback loop is an equilibrium outcome as follows.
+On the one hand, when the reservation productivity is increasing in
+age, the range of acceptable productivity draws shrinks over the life
+cycle and hence, the expected match surplus unambiguously falls with
+age. On the other hand, since the expected match surplus for older
+workers is lower, labor hoarding on their jobs becomes less valuable
+and hence, their reservation productivities are higher than those of
+younger workers. At the very end, for workers of the highest age $T$
+in the labor market, who will be retired next period, labor hoarding
+cannot be rational so the reservation productivity
+becomes equal to the value of leisure.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Since the surplus function is weakly decreasing in age,
+%$S_i(\epsilon) \geq S_{i+1}(\epsilon)$, we can conclude
+%from equation \Ep{M_OLG_cutoff} that the reservation productivity is
+%weakly increasing in age. To elaborate, suppose that the
+%reservation productivity is at an interior solution for age $i$,
+%$R_i=\bar \epsilon_i \in(0,1)$, and therefore is also at interior
+%solutions for older ages, $R_j\in(0,1)$ for $j\geq i$. Apply
+%integration by parts to the integral over the future surplus in
+%equation \Ep{M_OLG_cutoff}:
+%$$\EQNalign{
+%\int_{R_{i+1}}^1 & S_{i+1}(\epsilon ') \, dG(\epsilon ')  \cr
+%\;&=\; S_{i+1}(1) \, G(1) \,-\, S_{i+1}(R_{i+1}) \, G(R_{i+1})
+%- \int_{R_{i+1}}^1 S_{i+1}'(\epsilon ') \,G(\epsilon ') d \epsilon' \cr
+%\;&=\; S_{i+1}(1)
+%- \int_{R_{i+1}}^1  G(\epsilon ') d \epsilon'
+%\,=\, \int_{R_{i+1}}^1  [1 - G(\epsilon ')] d \epsilon' ,
+%\EQN M_OLG_intsurplus \cr}
+%$$
+%where the second equality invokes $G(1)=1$, $S_{i+1}(R_{i+1})=0$, and
+%$S_{i+1}'(\epsilon ')=1$. The third equality uses $S_{i+1}'(\epsilon ')=1$
+% and an  interior solution to the reservation productivity
+%$R_{i+1}$ to deduce  that $S_{i+1}(1) = \int_{R_{i+1}}^1 1 \,d\epsilon '$.
+%Substituting expression \Ep{M_OLG_intsurplus} into equation
+%\Ep{M_OLG_cutoff} shows that   reservation productivities are
+%determined recursively by
+%$$\EQNalign{
+%R_j \,&=\,  z \,-\,  \beta \bigl[1 - \theta q(\theta) \,\phi \bigr]
+%\int_{R_{j+1}}^1 [1 - G(\epsilon ')] d \epsilon'  \EQN M_OLG_cutoff_2;a \cr
+%\noalign{\hbox{for $j=i,\ldots,T-1$, and}}
+%R_T \,&=\,  z \,.                                    \EQN M_OLG_cutoff_2;b %\cr}
+%$$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Wage rate is decreasing in age}\label{Sec_M_OLG_wage}%
+The outcome that the reservation productivity increases with age means that
+employed older workers have a higher average productivity than younger
+ones. However, as measured by wage rates conditional on job productivity, we shall
+now show that
+ older workers earn less than younger workers. Recall
+from wage equation \Ep{wage2} in the standard matching model that the
+equilibrium wage is a function of both a job's productivity and
+a worker's value of unemployment. The latter decreases
+with a worker's  age in our model.
+
+After substituting expression \Ep{M_OLG_noprofit} for $q(\theta)$ in
+equation \Ep{M_OLG_Ui} and utilizing Nash bargaining outcome \Ep{M_OLG_Nash},
+the value of an unemployed worker of age $i$ becomes
+$$
+U_i \,=\, z\,+\, \beta U_{i+1}
+      \,+\, {\phi \over 1-\phi} \, \theta \, c \, \kappa_{i+1}, \EQN M_OLG_Ui_2
+$$
+where
+$$
+\kappa_{i+1} \equiv { \int_{R_{i+1}}^1 S_{i+1}(\epsilon ') dG(\epsilon ')
+                  \over
+           \sum_{j=2}^{T} {u_{j-1} \over u}
+               \int_{R_j}^{1} S_j(\epsilon) dG(\epsilon)} .   \EQN M_OLG_kappa
+$$
+Since the surplus function is decreasing in age,
+it follows that $\kappa_i > \kappa_{i+1}$ is also decreasing in age.  In addition, starting with
+the terminal value $U_{T+1}=0$ and then working backwards,  the value
+of unemployment in equation \Ep{M_OLG_Ui_2} can be shown  to
+be decreasing in age.
+
+
+To compute the equilibrium wage for a worker of age $i$, we start with the Nash bargaining outcome
+in expression \Ep{M_OLG_Nash}
+$$
+ E_i(\epsilon)\,-\, U_i \,=\,
+\phi \bigl[J_i(\epsilon) \,+\, E_i(\epsilon)\,-\, U_i \bigr] \EQN M_OLG_Nash_2
+$$
+and  rearrange it  to  get
+$$\EQNalign{
+(1-\phi) U_i \;&=\; E_i(\epsilon)
+          \,-\, \phi \bigl[J_i(\epsilon) \,+\, E_i(\epsilon) \bigr]  \cr
+\;&=\; w_i(\epsilon) - \phi \epsilon  + (1-\phi) \beta G(R_{i+1}) U_{i+1} \cr
+& \hskip.3cm + \beta \int_{R_{i+1}}^1
+\Bigl\{ E_{i+1}(\epsilon ') - \phi \bigl[J_{i+1}(\epsilon ')
+                    + E_{i+1}(\epsilon ')\bigr] \Bigr\}    d G(\epsilon') \cr
+\;&=\; w_i(\epsilon) - \phi \epsilon  + (1-\phi) \beta G(R_{i+1}) U_{i+1}
++ (1-\phi) \beta [1-G(R_{i+1})] U_{i+1}                                      \cr
+& \hskip.3cm + \beta \int_{R_{i+1}}^1
+\Bigl\{ E_{i+1}(\epsilon ') - U_{i+1} - \phi \bigl[J_{i+1}(\epsilon ')
+        + E_{i+1}(\epsilon ') - U_{i+1}\bigr] \Bigr\}       d G(\epsilon') \cr
+\;&=\; w_i(\epsilon) - \phi \epsilon  + (1-\phi) \beta U_{i+1} , \cr}
+$$
+where the second equality is obtained by eliminating
+$J_i(\epsilon)$ and $E_i(\epsilon)$ by using equations
+\Ep{M_OLG_Ji} and \Ep{M_OLG_Ei}, and the third equality follows
+from adding and subtracting $(1-\phi)\beta[1-G(R_{i+1})]U_{i+1}$.
+The integral on the right side of the third equality  is zero according to Nash bargaining
+outcome \Ep{M_OLG_Nash_2};  after further simplification, we arrive
+at the last fourth equality. From the outermost left and right
+ sides of the above succession of equalities the equilibrium wage of a worker of age $i$
+satisfies
+$$
+w_i(\epsilon) \,=\, \phi \epsilon + (1-\phi)\left[U_i - \beta U_{i+1}\right].
+$$
+After eliminating  $U_i$ by using equation \Ep{M_OLG_Ui_2},
+we arrive at
+$$
+w_i(\epsilon) \,=\, z \,+\, \phi [ \epsilon - z + \theta\, c\, \kappa_{i+1}].
+                                                             \EQN M_OLG_wage
+$$
+
+Since $\kappa_{T+1}=0$, it follows that the wage in the last period
+before retirement is $w_T=z + \phi (\epsilon - z)$, i.e., the worker
+receives the outside payoff to an unemployed worker, $z$, plus a worker's
+Nash bargaining share of the surplus from a one-period match,
+$\phi (\epsilon - z)$. Wages before  that last period ($i<T$) are
+higher by virtue  of the higher outside value of younger workers
+as captured by the term $\phi \, \theta \, c \, \kappa_{i+1}$
+in expression \Ep{M_OLG_wage}, which is
+decreasing in age.
+
+\subsection{Welfare analysis}
+
+We study a planning
+ problem with equal Pareto weights on subsequent generations
+and individual agents who do not discount the future, $\beta=1$. An
+optimal allocation  maximizes steady-state
+output net of vacancy costs plus the value of leisure enjoyed by
+the unemployed. Given an unemployment rate $u_{i-1}$ at
+the end of age $i-1$, the output of workers of age $i$ is
+the product of the fraction of age $i$ workers employed,
+$\bigl[u_{i-1} \theta q(\theta) +1-u_{i-1}\bigr]
+\bigl[1-G(R_i)\bigr]$,
+and their average productivity,
+$\bigl[1-G(R_i)\bigr]^{-1}\int_{R_i}^1 \epsilon \,d G(\epsilon)$.
+Omitting  the constant $z u_1$ from the objective function, the planner's optimization problem becomes
+$$\EQNalign{
+& \max_{\theta, \{R_i, u_i\}_{i=2}^T} \;\; \sum_{i=2}^T
+\left\{ \bigl[u_{i-1} \theta q(\theta) +1-u_{i-1}\bigr]
+        \int_{R_i}^1 \epsilon \,d G(\epsilon) + z u_i\right\}
+ -c \theta \sum_{j=1}^T u_j                      \cr
+\noalign{\vskip.2cm}
+%%%\noalign{\hbox{subject to }}
+&\hbox{subject to }\ \
+ u_{i} \;=\; u_{i-1} \Bigl\{1-\theta q(\theta) \left[1-G(R_i) \right]\Bigr\}
+     + (1-u_{i-1}) G(R_i) \cr
+&\hskip8cm \hskip.3cm  \hbox{\rm for     } i=2,\ldots , T   \cr
+&\hbox{given \ \ } u_1=1\,.                                 \cr}
+%&\hskip5cm \hskip.3cm  \hbox{\rm for     } i=2,\ldots , T, \hbox{given \ \ } u_1=1 \,,  \cr}
+%&\hbox{given \ \ } u_1=1\,.                                \cr}
+$$
+
+
+%We confine our analysis to settings of  primitives that give rise to interior
+%solutions for reservation productivities for workers of all ages.
+First-order necessary conditions at interior solutions are
+$$\EQNalign{
+\theta:\hskip.5cm &\sum_{i=2}^T
+   u_{i-1} \bigl[q(\theta) + \theta q'(\theta) \bigr]
+        \int_{R_i}^1 \epsilon \,d G(\epsilon) -c\sum_{j=1}^T u_j  \cr
+\noalign{\vskip.2cm}
+&\hskip 1cm   \,-\, \sum_{i=2}^T\lambda_i \bigl[q(\theta)+\theta q'(\theta) \bigr]
+               \left[1-G(R_i) \right] u_{i-1} \;=\; 0  \cr
+\noalign{\vskip.2cm}
+R_i:\hskip.5cm &\bigl[u_{i-1} \theta q(\theta) + 1-u_{i-1}\bigr]
+                                                \bigl(-R_i \, g(R_i)\bigr) \cr
+\noalign{\vskip.2cm}
+&\hskip 1cm   \,+\, \lambda_i \Bigl[ u_{i-1} \theta q(\theta) g(R_i)
+       + (1-u_{i-1}) g(R_i)\Bigr]  \;=\; 0             \cr
+\noalign{\vskip.2cm}
+u_i:\hskip.5cm &z - c \theta -\lambda_i + \bigl[\theta q(\theta) -1\bigr]
+               \int_{R_{i+1}}^1 \epsilon \,dG(\epsilon)                    \cr
+\noalign{\vskip.2cm}
+&\hskip 1cm   \,+\, \lambda_{i+1} \Bigl\{1-
+     \theta q(\theta) \left[1-G(R_{i+1}) \right] -G(R_{i+1})\Bigr\}  \;=\; 0\,,
+                                             \hskip1cm   \cr}
+$$
+where the last two terms on the left side of the last equation should
+be understood to be zero for the last period before retirement, $u_T$, i.e.,
+the first-order condition  becomes
+$z - c \theta -\lambda_T=0$. After rearranging and simplifying, let us rewrite the
+first-order conditions as
+$$\EQNalign{
+\theta: \hskip.5cm & c \, u \,=\, q(\theta) [1-\alpha]
+    \sum_{i=2}^T u_{i-1} \left\{ \int_{R_i}^1 \epsilon \,d G(\epsilon)
+   \,-\, \lambda_i \left[1-G(R_i) \right] \right\}
+                                   \hskip1cm        \EQN M_OLG_foc_theta \cr
+\noalign{\vskip.2cm}
+R_i:\hskip.5cm &\lambda_i \,=\, R_i               \EQN M_OLG_foc_Ri  \cr
+\noalign{\vskip.2cm}
+u_i:\hskip.5cm &\lambda_i \,=\; z - c \,\theta
+    - \bigl[1 - \theta q(\theta)\bigr] \cr
+&\hskip2cm  \cdot\left\{ \int_{R_{i+1}}^1 \epsilon \,d G(\epsilon)
+   \,-\, \lambda_{i+1} \left[1-G(R_{i+1}) \right] \right\},
+                                                      \EQN M_OLG_foc_ui  \cr}
+$$
+where $u$ is total unemployment, $u=\sum_{j=1}^T u_j$, and $\alpha$ is the
+elasticity of matching with respect to unemployment,
+$\alpha = - q'(\theta) \,\theta / q(\theta)$, as described in equation
+\Ep{matchingfunction}. By substituting \Ep{M_OLG_foc_Ri} into
+\Ep{M_OLG_foc_theta} and \Ep{M_OLG_foc_ui}, and by applying integration
+by parts,\NFootnote{Integration by parts yields
+$$ \int_{R_i}^1 \epsilon\, dG(\epsilon)
+    = G(1) - R_i G(R_i) - \int_{R_i}^1 G(\epsilon)\, d\epsilon
+    = R_i \bigl[1-G(R_i)\bigr]
+       + \int_{R_i}^1 \bigl[ 1 - G(\epsilon)\bigr] d\epsilon\,,
+$$
+where the last equality is obtained by adding and subtracting $R_i$.}
+the following equations characterize the  optimum of the Pareto problem:
+$$\EQNalign{
+q(\theta) \;&=\; {c \over [1-\alpha]
+    \sum_{i=2}^T {u_{i-1} \over u}
+  \int_{R_i}^1 \bigl[1-G(\epsilon)\bigr] \,d \epsilon}  \EQN M_OLG_opt1 \cr
+\noalign{\vskip.2cm}
+R_i \,&=\; z - c \,\theta
+    - \bigl[1 - \theta q(\theta)\bigr]
+          \int_{R_{i+1}}^1 \bigl[1-G(\epsilon)\bigr] \,d \epsilon
+                                                             \EQN M_OLG_opt2;a \cr
+\noalign{\hbox{ for $i=2,\ldots, T-1$, and}}
+R_T \,&=\; z - c \,\theta \,.                                \EQN M_OLG_opt2;b \cr}
+$$
+Given a market tightness $\theta$, it follows immediately from
+equations \Ep{M_OLG_opt2} that the socially optimal reservation
+productivity is increasing in age, just as it is in the decentralized or market economy
+analyzed above.
+However, note that the reservation productivity \Ep{M_OLG_opt2;b} in the
+last period before retirement is lower than the corresponding
+reservation productivity \Ep{M_OLG_cutoff_2;b} in the market economy, which
+seems to suggest that an optimal labor market policy calls for
+ employment  subsidies for older workers that lower  the
+reservation productivities attached to hiring them. We will confirm this conjecture
+and also show that  employment of younger workers should
+ be taxed.
+
+To prepare to study  an optimal labor market policy, it is useful to
+substitute expression \Ep{M_OLG_opt1} for $q(\theta)$ in
+equation \Ep{M_OLG_opt2;a}
+$$
+R_i +  \int_{R_{i+1}}^1 \bigl[1-G(\epsilon)\bigr] \,d \epsilon
+\,=\; z - c \,\theta + {\theta \,c \over 1-\alpha} \hat \kappa_{i+1},
+                                                        \EQN M_OLG_optR_1
+$$
+where
+$$
+\hat \kappa_{i+1} \equiv
+{ \int_{R_{i+1}}^1 \bigl[1-G(\epsilon)\bigr] d \epsilon \over
+               \sum_{j=2}^{T} {u_{j-1} \over u}
+               \int_{R_j}^{1} \bigl[1-G(\epsilon)\bigr] d \epsilon }
+                                                        \EQN M_OLG_kappaHAT
+$$
+for $i=2,\ldots, T-1$.
+Add and subtract $\theta\, c\, \hat \kappa_{i+1}$ to the
+right  side of equation \Ep{M_OLG_optR_1} to get
+$$
+R_i +  \int_{R_{i+1}}^1 \bigl[1-G(\epsilon)\bigr] \,d \epsilon
+\,=\; z - c \,\theta \bigl[1- \hat \kappa_{i+1} \bigr]
++ {\alpha \over 1-\alpha} \theta \,c \,\hat \kappa_{i+1}.
+                                                        \EQN M_OLG_optR_2
+$$
+
+
+\subsection{The optimal policy}
+%When a social optimum entails interior solutions for reservation
+%productivities of all ages,%
+The optimal allocation can be supported
+by  age-specific subsidies $\delta_i$ to employment  (taxes if
+negative)\NFootnote{We assume that
+any deficit or surplus from the proposed scheme of employment subsidies
+and taxes are offset with lump-sum transfers imposed on all agents.}
+so long as workers' bargaining strength $\phi$
+satisifies the Hosios condition, $\phi=\alpha$. We will assume that
+the Hosios condition holds along with our assumption from
+the previous section that $\beta=1$.
+
+Introducing subsidies to employment alters  equation
+\Ep{M_OLG_Si_2} for the match surplus to
+%$$
+%S_i(\epsilon) \,=\, \max\left\{\epsilon \,+\, \delta_i \,+\,
+%\beta \int_{\underline \epsilon}^1 S_{i+1}(\epsilon ') dG(\epsilon ')
+%\,-\, (U_i - \beta U_{i+1})\,,
+%\; 0 \right\}.                             \EQN M_OLG_S_subsidy
+%$$
+$$
+S_i(\epsilon) \,=\, \max\left\{\epsilon \,+\, \delta_i \,-\,z\,+\,
+    \beta \left[1-\theta q(\theta) \phi\right]
+    \int_{\underline \epsilon}^1 S_{i+1}(\epsilon ') \, dG(\epsilon ')\,,
+\; 0 \right\}.                                  \EQN M_OLG_S_subsidy
+$$
+In addition, equation \Ep{M_OLG_Ji} for a firm's value of a
+filled job is modified to become
+$$
+J_i(\epsilon) \,=\, \epsilon \,+\, \delta_i \,-\, w_i(\epsilon)\,+\,
+    \beta \int_{R_{i+1}}^1 J_{i+1}(\epsilon ') dG(\epsilon ').
+                                              \EQN M_OLG_J_subsidy
+$$
+Following  the same steps used to derive  wages in
+section \use{Sec_M_OLG_wage}, we arrive at
+$$
+w_i(\epsilon) \,=\, z \,+\, \phi [ \epsilon + \delta_i
+                                   - z + \theta\, c\, \kappa_{i+1}].
+                                          \EQN M_OLG_wage_subsidy
+$$
+
+At the reservation productivity $R_i$, we know that $J_i(R_i)=0$
+so from equation \Ep{M_OLG_J_subsidy}, we have
+$$\EQNalign{
+0 \,&=\, R_i \,+\, \delta_i \,-\, w_i(R_i)\,+\,
+    \beta (1-\phi) \int_{R_{i+1}}^1 S_{i+1}(\epsilon ') dG(\epsilon ') \cr
+   \,&=\, R_i \,+\, \delta_i \,-\, w_i(R_i)\,+\,
+    \beta (1-\phi) \int_{R_{i+1}}^1 \bigl[1-G(\epsilon ')\bigr] d \epsilon ',
+                                 \hskip1cm   \EQN M_OLG_cutoff_subsidy \cr}
+$$
+where the first equality invokes the Nash bargaining outcome \Ep{M_OLG_Nash},
+$J_{i+1}(\epsilon ')= (1-\phi) S_{i+1}(\epsilon ')$,
+and the second equality uses expression \Ep{M_OLG_intsurplus}.
+Similar invocations of relationships
+\Ep{M_OLG_Nash} and \Ep{M_OLG_intsurplus} in the no-profit
+condition \Ep{M_OLG_noprofit} and in equation \Ep{M_OLG_kappa}
+for $\kappa_{i+1}$ establish that
+$$
+q(\theta)\,=\, { c \over
+       \beta (1-\phi) \sum_{i=2}^{T} {u_{i-1} \over u}
+\int_{R_i}^{1} \bigl[1-G(\epsilon)\bigr]d \epsilon}
+                                             \EQN M_OLG_noprofit_subsidy
+$$
+$$
+\kappa_{i+1} = \hat \kappa_{i+1},              \EQN M_OLG_kappa_same
+$$
+respectively, where $\hat \kappa_{i+1}$ is given by equation
+\Ep{M_OLG_kappaHAT}.
+
+After substituting expression \Ep{M_OLG_wage_subsidy}
+for $w_i(R_i)$ in equation \Ep{M_OLG_cutoff_subsidy}, and
+using equation \Ep{M_OLG_kappa_same}, we find that an
+equilibrium is characterized by
+$$
+R_i +  \beta \int_{R_{i+1}}^1 \bigl[1-G(\epsilon)\bigr] \,d \epsilon
+\,=\; z - \delta_i
++ {\phi \over 1-\phi} \theta \,c \,\hat \kappa_{i+1},
+                                               \EQN M_OLG_R_subsidy
+$$
+By comparing expressions \Ep{M_OLG_optR_2} and \Ep{M_OLG_R_subsidy},
+and recalling our
+assumptions that $\phi=\alpha$ and $\beta=1$, it follows that an
+age-specific employment subsidy of
+$\delta_i= c \,\theta \bigl[1- \hat \kappa_{i+1} \bigr]$
+ would attain the socially
+optimal reservation productivity whenever the market tightness
+is the same. By inspecting equations \Ep{M_OLG_opt1} and
+\Ep{M_OLG_noprofit_subsidy},
+we can also confirm (via a circular or fixed-point argument) that market
+tightness $\theta$ is indeed the same whenever the reservation
+productivites are the same.
+
+Thus, we have shown that employment in the last period before
+retirement, should be subsidized by $\delta_T=c\,\theta$.
+Subsidies $\delta_i= c \,\theta \bigl[1- \hat \kappa_{i+1} \bigr]$ to employment at earlier ages
+taper off with time  to retirement, since $\hat \kappa_{i+1}$
+is decreasing in age; at a sufficiently young age,
+the subsidy becomes negative and turns into a tax on employment of
+young workers (when $\hat \kappa_{i+1} > 1$). Note that, except
+for one caveat, $\hat \kappa_{i+1}$ as defined in
+\Ep{M_OLG_kappaHAT} is the expected next-period surplus for an employed
+worker of age $i$ relative to a weighted average across employed workers
+of all ages, where the weights are age-specific unemployment,
+$u_i$, as a fraction of total unemployment, $u$. The caveat is
+that these weights sum to less than one because unemployment of
+the youngest generation, $u_1=1$, is included in $u$ while there are no
+employed workers in that generation. However, this caveat just serves to  emphasize
+that there is a critical cutoff age $i$ at which  $\hat \kappa_{j+1} >1$
+for all $j\leq i$, since  the expected next-period surplus of such a
+young employed worker, which tends to be greater than an economy-wide  weighted
+average,  is compared to something less than a weighted
+average of expected next-period surpluses of all employed workers.
+
+The justification  for the subsidy $\delta_T=c\,\theta$ to employed workers
+in the last period before retirement is that if one of them joins the
+ranks of the unemployed, the economy incurs a vacancy cost per unemployed
+equal to $c \, \theta$ with no potential gain in terms of future matches.
+So long as this cost exceeds a worker's value of leisure when unemployed
+net of the output in the present job, $c\,\theta \geq z - \epsilon$, it
+is socially optimal for the worker to  remain employed; the subsidy accomplishes this
+ by lowering the reservation productivity to
+$R_T= z-c \, \theta$.
+Similarly, employed workers further  from retirement  are also subsidized, but by less, in order to
+ameliorate  congestion in the matching function. Interestingly, the argument is reversed for sufficiently young
+workers whose employment should instead be taxed, because otherwise they would
+ fail to internalize the positive externality that they
+exert in the matching function.
+
+
+
+\auth{Menzio, Guido} \auth{Telyukova, Irina A.} \auth{Visschers, Ludo}%
+\index{directed search}%
+\section{Directed search: age-specific matching functions}
+\label{sec:OLG2}%
+Following Menzio, Telyukova and Visschers (2016), we now
+assume age-specific matching functions. Within a particular  submarket and
+ matching function, firms post vacancies for a
+particular age of  unemployed workers;  only workers of
+that age  are allowed to sit in that  matching
+function. Such a directed search setting leads to a
+block recursive structure in which agents' value and policy
+functions and measures of market tightness are independent of
+the distribution of workers across states of employment and
+unemployment. Two important features are
+(1)  computation of equilibria simplifies;
+(2)  the congestion externalities of section \use{sec:M_OLG1}
+vanish because there is no longer a  mixture  of heterogeneous
+workers sitting inside a matching function.
+
+To facilitate a transparent presentation, we shut down differences in
+productivity, each employed worker produces $y$;
+and let age be the only source
+of heterogeneity. Matches break up exogenously
+with probability $s$.
+
+
+
+\subsection{Value functions and market tightness}
+
+A key difference from the  section \use{sec:M_OLG1} setting is that there
+are now age-specific measures of market tightness $\theta_i$ and
+values of vacancy creation $V_i$. Corresponding to  value
+functions \Ep{M_OLG_Ji}--\Ep{M_OLG_Ui},
+we have
+$$\EQNalign{
+J_i \;&=\; y \,-\, w_i \,+\, \beta (1-s) J_{i+1}  \EQN M_OLG2_Ji \cr
+V_i \;&=\; -c \,+\, \beta q(\theta_i) J_{i+1}     \EQN M_OLG2_Vi \cr
+E_i \;&=\; w_i \,+\, \beta
+    \left[ (1-s) E_{i+1} \,+\, s U_{i+1} \right]  \EQN M_OLG2_Ei \cr
+U_i \;&=\; z\,+\, \beta \theta_i q(\theta_i) E_{i+1}
+     \,+\, \beta \left[1 - \theta_i q(\theta_i) \right] U_{i+1}   \cr
+    \;&=\; z\,+\, \beta U_{i+1} \,+\, \beta \theta_i q(\theta_i)
+               \left[ E_{i+1} - U_{i+1} \right],   \EQN M_OLG2_Ui \cr}
+$$
+where we have already imposed the zero-profit condition in
+vacancy creation on the right sides of these
+equations. After also imposing $V_i=0$ on the left
+side of \Ep{M_OLG2_Vi}, a zero-profit condition  becomes
+%the break-even condition for the
+%creation vacancies for workers of age $i$ becomes
+$$
+q(\theta_i)\,=\, { c \over \beta J_{i+1} }  \,.   \EQN M_OLG2_noprofit
+$$
+
+The age-specific match surplus is given by
+$$
+S_i \;=\; J_i \,+\, E_i \,-\, U_i                 \EQN M_OLG2_surplus
+$$
+and as before, Nash bargaining determines how this surplus
+is shared by a worker and a firm according to
+$$
+E_i\,-\,U_i \;=\; \phi S_i
+             \;=\; \frac{\phi}{1-\phi} J_i\,.      \EQN M_OLG2_Nash
+$$
+After substituting expressions \Ep{M_OLG2_noprofit} and
+\Ep{M_OLG2_Nash} into \Ep{M_OLG2_Ui}, the value of an
+unemployed worker of age $i$ becomes
+$$
+U_i \;=\; z+ \beta U_{i+1} + \beta \theta_i
+        { c \over \beta J_{i+1} } \, \frac{\phi}{1-\phi} J_{i+1}
+    \;=\; z + \beta U_{i+1} + {\phi \over 1-\phi}\, c \,\theta_i\,.
+                                                  \EQN M_OLG2_UiII
+$$
+Next, substitutions of expressions \Ep{M_OLG2_Ji},
+\Ep{M_OLG2_Ei} and \Ep{M_OLG2_UiII} into \Ep{M_OLG2_surplus}
+yield an equation for the match surplus in terms of market
+tightness;
+$$\EQNalign{
+S_i \;&=\; J_i\,+\,E_i\,-\,U_i \;=\; y - w_i + \beta (1-s) J_{i+1}   \cr
+  &\hskip.5cm +w_i+ \beta \left[ (1-s) E_{i+1} \,+\, s U_{i+1} \right]
+   -\left[z + \beta U_{i+1} +{\phi \over 1-\phi}\, c \,\theta_i\right] \cr
+  &=\; y - z - {\phi \over 1-\phi}\, c \,\theta_i + \beta (1-s) S_{i+1}\cr
+    \;&=\; \sum_{j=0}^{T-i} \beta^j (1-s)^j
+          \left[ y - z -\frac{\phi}{1-\phi}\, c \,\theta_{i+j} \right]\,,
+                                              \EQN M_OLG2_surplusII \cr}
+$$
+where the last equality emerges after continued
+substitutions of subsequent match surpluses at higher ages,
+$S_{i+j}$, with the terminal value $S_{T+1}=0$.
+
+To arrive at a characterization  of equilibrium market
+tightness in terms of primitives, we start by deriving two
+expressions for wages that must  be satisfied in
+an equilibrium. A first  expression  is
+based on the no-profit condition for vacancy creation.
+Specifically, solve forward for the value of a filled
+job in equation \Ep{M_OLG2_Ji}
+$$\EQNalign{
+J_{i+1} \;&=\; y - w_{i+1} + \beta (1-s) J_{i+2}
+        \;=\; \sum_{j=0}^{T-i-1} \beta^j (1-s)^j
+          \left[ y - w_{i+1+j} \right]                              \cr
+        \;&=\; \frac{1-\beta^{T-i} (1-s)^{T-i}}{1-\beta (1-s)} \,y
+           \,-\, \sum_{j=0}^{T-i-1} \beta^j (1-s)^j w_{i+1+j} \,.
+                                                 \EQN M_OLG2_J_recurs \cr}
+$$
+%$$
+%\frac{1-\beta^{T-i} (1-s)^{T-i}}{1-\beta (1-s)} \,y
+%           \,-\, \sum_{j=0}^{T-i-1} \beta^j (1-s)^j w_{i+1+j}
+%\;=\; \beta^{-1} \frac{c}{q(\theta_i)}\,,
+%$$
+By substituting this expression into \Ep{M_OLG2_noprofit},
+multiplying through by \hbox{$[1-\beta(1-s)]$}, and rearranging,
+we obtain
+$$
+\left[1-\beta(1-s)\right] \sum_{j=0}^{T-i-1} \beta^j (1-s)^j w_{i+1+j}
+  \;=\; \left[1-\beta^{T-i} (1-s)^{T-i}\right]y
+        \,-\, \frac{r+s}{q(\theta_i)}\, c \,,      \EQN M_OLG2_wage1
+$$
+where the last term uses $\beta^{-1}[1-\beta(1-s)]=[1-r-(1-s)]=r+s$.
+A second expression requires that  wage payments are
+consistent with Nash bargaining. Specifically, use
+equations \Ep{M_OLG2_Ei} and \Ep{M_OLG2_UiII} and
+solve forward for a worker's part of the match surplus:
+$$\EQNalign{
+E_{i+1}-U_{i+1}\;&=\; w_{i+1}
+    + \beta \left[ (1-s) E_{i+2} \,+\, s U_{i+2} \right]
+-\left[z + \beta U_{i+2} +{\phi \over 1-\phi}\, c \,\theta_{i+1}\right] \cr
+     &=\; w_{i+1} - z - {\phi \over 1-\phi}\, c \,\theta_{i+1}
+    + \beta (1-s) \left[ E_{i+2} \,-\, U_{i+2} \right]                 \cr
+   \;&=\; \sum_{j=0}^{T-i-1} \beta^j (1-s)^j w_{i+1+j}
+     -\frac{1-\beta^{T-i} (1-s)^{T-i}}{1-\beta (1-s)} \,z   \cr
+&\hskip.5cm  -\; \frac{\phi}{1-\phi} \,c
+                \sum_{j=0}^{T-i-1} \beta^j (1-s)^j \theta_{i+1+j}\,.
+                                                 \EQN M_OLG2_EU_recurs \cr}
+$$
+By substituting \Ep{M_OLG2_J_recurs} and \Ep{M_OLG2_EU_recurs}
+into \Ep{M_OLG2_Nash}, $(1-\phi)[E_{i+1}-U_{i+1}]=\phi J_{i+1}$,
+and rearranging, we arrive at
+$$\EQNalign{
+\left[1-\beta(1-s)\right] &\sum_{j=0}^{T-i-1} \beta^j (1-s)^j w_{i+1+j}
+  \;=\; \left[1-\beta^{T-i} (1-s)^{T-i}\right]
+             \left[\phi\,y +(1-\phi)\, z\right]            \cr
+  &+\, \left[1-\beta(1-s)\right] \phi\, \,c
+       \sum_{j=0}^{T-i-1} \beta^j (1-s)^j \theta_{i+1+j}\,.
+                                                    \EQN M_OLG2_wage2 \cr}
+$$
+Set the right sides of \Ep{M_OLG2_wage1} and \Ep{M_OLG2_wage2}
+equal to each other and rearrange to get
+$$\EQNalign{
+ & \left[1-\beta(1-s)\right] \frac{\phi}{1-\phi} \,c
+      \sum_{j=0}^{T-i-1} \beta^j (1-s)^j \theta_{i+1+j}             \cr
+  & \;=\; \left[1-\beta^{T-i} (1-s)^{T-i}\right]
+             \left[y - z\right]
+    \,-\,  \frac{r+s}{(1-\phi) q(\theta_i)}\, c .
+                                                    \EQN M_OLG2_theta \cr}
+$$
+This expression determines  age-specific market tightnesses
+and  is a counterpart of expression \Ep{equili} in the standard
+matching model with infinitely-lived workers.\NFootnote{By imposing
+an infinite lifespan, $T=\infty$, and constant market tightness,
+$\theta_i =\theta$, expression \Ep{M_OLG2_theta} reduces to  \Ep{equili}. Likewise, the same manipulations
+of expressions \Ep{M_OLG2_wage1} and \Ep{M_OLG2_wage2}, including
+the imposition of constant wages, $w_i = w$, yield
+ expressions \Ep{wage1} and \Ep{wage2}
+in the standard matching model with infinitely-lived workers.}
+
+Equilibrium market tightnesses can be computed
+recursively. Starting at age $T$, firms choose not to
+create any vacancies, $\theta_T=0$, since workers of age $T$
+are known to retire next period and hence, there would be no
+return to  investing  in such vacancies. Solving backward,
+measures of market tightness can then be computed recursively
+from expression \Ep{M_OLG2_theta}.
+
+
+\subsection{Job finding rate is decreasing in age}
+
+To determine the dynamics of age-specific market tightness,
+we compute  differences in match surpluses between two
+adjacent ages $i$ and $i+1$, for $i= 1, 2, \dots, T-1$,
+using expression \Ep{M_OLG2_surplusII}:
+$$\EQNalign{
+S_i-S_{i+1} \;&=\; \sum_{j=0}^{T-i} \beta^j (1-s)^j \left[y - z\right]
+                -\sum_{j=0}^{T-i-1} \beta^j (1-s)^j \left[y - z\right]\cr
+&\hskip.5cm  -\; \frac{\phi}{1-\phi} \,c
+               \sum_{j=0}^{T-i} \beta^j (1-s)^j \theta_{i+j}
+             +\; \frac{\phi}{1-\phi} \,c
+                \sum_{j=0}^{T-i-1} \beta^j (1-s)^j \theta_{i+1+j} \cr
+            \;&=\; \beta^{T-i} (1-s)^{T-i} \left[y - z\right]
+             \; -\; \frac{\phi}{1-\phi} \,c \,\theta_i             \cr
+&\hskip.5cm  +\; \frac{\phi}{1-\phi} \,c
+                 \sum_{j=0}^{T-i-1} \beta^j (1-s)^j
+    \left[1-\beta(1-s)\right]\theta_{i+1+j}                        \cr
+           \;&=\; \beta^{T-i} (1-s)^{T-i} \left[y - z\right]
+             \; -\; \frac{\phi}{1-\phi} \,c \,\theta_i             \cr
+&\hskip.5cm  +\; \left[1-\beta^{T-i} (1-s)^{T-i}\right] \left[y-z\right]
+             \;-\; \frac{r+s}{(1-\phi)q(\theta_i)}\,c              \cr
+           \;&=\; y-z \;-\;\frac{r+s\,+\,\phi\,\theta_i\,q(\theta_i)}
+                    {(1-\phi)q(\theta_i)}\,c\,, \EQN M_OLG2_surdiff \cr}
+$$
+where we replace the term with the summation sign in the second
+equality  by the right  side of equation
+\Ep{M_OLG2_theta}.
+
+Under the assumption of long-lived workers, i.e., a large $T$,
+young workers' experiences should resemble  those of
+infinitely-lived workers. This can be confirmed from expression
+\Ep{M_OLG2_surdiff}, evaluated at some young ages $i$ and $i+1$,
+for which match surpluses would have to be practically the same.
+Specifically, a near-zero value of the last equality
+in \Ep{M_OLG2_surdiff} shows that the equilibrium value of
+$\theta_i$ would be practically identical to that of market
+tightness in the standard matching model with infinitely-lived
+workers, as given by equation \Ep{equili}. The incentives of those firms and young workers
+to engage in job creation are practically identical with those in a
+standard matching model with infinitely-lived workers because the
+matches into which they enter will almost certainly break before workers retire,
+ and at most of those future separations, the
+worker will  still be much younger than
+retirement age $T+1$. Therefore, in the setting of this section, young workers' experiences are
+similar to those of infinitely-lived workers.
+
+Because workers have  finite lives,  equilibrium values of
+$\theta_i$  have to be less than market tightness
+in the standard matching model with infinitely-lived workers.
+Subject to the risk of workers retiring before an exogenous
+job destruction shock, the `invisible hand'
+compensates firms that create vacancies with a higher probability
+of filling vacancies, i.e., a lower equilibrium value of market
+tightness. By the last equality in \Ep{M_OLG2_surdiff}, it follows
+that $S_i - S_{i+1}$ is strictly positive, so  match
+surpluses are decreasing in age, $S_i > S_{i+1}$. By
+substituting \Ep{M_OLG2_Nash} into \Ep{M_OLG2_noprofit},
+$q(\theta_i)\,=\, c / (\beta (1-\phi) S_{i+1})$, we can
+confirm that market tightness also declines
+in age and hence, a worker's job finding rate  decreases with
+age.
+
+The declining job finding rate becomes especially pronounced
+towards the end of a worker's labor market career, more so with  a low
+exogenous separation rate $s$, i.e., when jobs are expected to
+last long in the absence of retirement. As an illustration,
+Figure \Fg{DS_job_finding_prob} reports a numerical example
+where the job finding index is a worker's job finding probability
+relative to that of the youngest worker (with the highest job
+finding probability).\NFootnote{As in common
+parameterizations of matching models, the elasticity $\alpha$ of a
+Cobb-Douglas matching function with respect to unemployment
+and a worker's bargaining power $\phi$ are set equal to each other and near
+ the middle of the unit interval, $\alpha=\phi=0.5$, and
+the replacement ratio in unemployment is around half of
+worker productivity, $z/y=0.6$.
+The annual discount rate is 4 percent, and a worker's labor
+market career lasts 45 years. (The model period is set  to
+be one day.) For different economies indexed  by their exogenous job destruction rates $s$,
+ the vacancy
+cost $c$ and a multiplicative efficiency parameter $A$ in the
+matching function are chosen to yield an unemployment
+rate of 5 percent in a corresponding matching model with
+infinitely-lived workers. (When there is no calibration target
+for vacancies, fixing either $c$ or $A$ amounts to a  normalization, with
+the other parameter then being used to target an unemployment rate.)}
+The axis labeled mean job duration, calculated as $1/s$,
+identifies different economies defined by their exogenous job
+destruction rate $s$. For each such economy, the age-specific
+job finding index is shown for older workers defined by their
+times to  retirement.
+
+
+\midfigure{DS_job_finding_prob}
+\centerline{\epsfxsize=3truein\epsffile{DS_job_finding_prob.eps}}
+\caption{Job finding index of older workers, defined by their
+time left until retirement, in different economies, defined by
+their mean job duration. The index is a worker's job finding
+probability relative to that of the youngest worker in respective
+economy.}
+\infiglist{DS_job_finding_problay_p5f}
+\endfigure
+
+
+
+\subsection{Block recursive equilibrium computation}
+\index{block recursive equilibrium}%
+\auth{Menzio, Guido} \auth{Shi, Shouyong}%
+The value and policy functions and measures
+of market tightness described in the previous subsections are independent
+of the distributions of workers across age and employment and
+unemployment states. It is analytically convenient to be able
+to derive those quantities before  computing
+distributions of workers in a steady state or along transition paths  or  in response to aggregate shocks.
+For an example of
+business cycle analysis in a matching model with directed
+search, see Menzio and Shi (2011) who bring out the benefits  of such block recursive structures.
+They show how agents' value and policy functions
+%%, and measures of market tightness,
+depend on the aggregate state of the economy
+through realization of aggregate shocks only, and not
+through endogenous distributions of workers across
+employment and unemployment states.
+
+In  our present framework, it is  easy to
+compute a steady state. Under the assumption of a stationary
+population in which the number of new labor market
+entrants of age 1 equals the number of retiring  workers of
+age $T+1$, the age-specific unemployment rates in a steady
+state are computed as follows. At age 1, all new entrants
+are unemployed since it takes at least one period to be
+matched with a vacancy, $u_1=1$. The unemployment rates for
+subsequent ages $i=2, 3, \ldots, T$ are then sequentially
+computed as
+$$
+u_i \,=\, \Bigl[1 - \theta_{i-1} q(\theta_{i-1}) \Bigr] u_{i-1}
+         + s (1-u_{i-1}) \,.                      \EQN M_OLG2_u
+$$
+
+Besides having enough matching functions to assure that each type of
+worker-job pair is matched within its
+own matching function, a block recursive equilibrium requires
+that matching and production technologies both exhibit constant returns to scale and that financial funds
+are available in perfectly elastic supply. The latter condition is actually
+an equilibrium outcome under a common assumption in the
+matching literature that preferences are linear in consumption.
+Linear preferences make workers not only risk neutral but
+also indifferent to the timing of consumption at a gross
+interest equal to the inverse of their subjective discount
+factor, $\beta^{-1}$, so that they are  willing to finance
+new vacancy creation and to acquire ownership of existing
+firms, valued by their `match capital' in filled jobs.
+Moreover, under the assumption of linear preferences, those
+asset holdings can be omitted from a worker's Bellman
+equations because they do not affect equilibrium outcomes
+in labor markets.\NFootnote{Many expositions of matching models don't  spell out a
+general equilibrium  but instead
+simply list workers and firms as separate actors,
+taking  workers to be  hand-to-mouth consumers of
+wage income or unemployment benefits, and firms as
+profit maximizers while being silent about how they are  financed.
+But as suggested above, an equilibrium of a
+matching model with risk-neutral preferences can be interpreted
+as a general equilibrium  analogous to ones in  growth models of earlier chapters:  workers own  firms that are merely intermediaries who  hire
+factors of production and operate technologies to maximize
+shareholder value.}
+%In principle, except for the friction in labor
+%markets, the functioning of firms and their financing
+%are no different than that in the standard growth model
+%in earlier chapters. {\bf Lars XXXXX: I think this footnote should be
+%clarified or expanded. I find the last sentence
+%needs some elaboration if it is to be linked to thoughts earlier in the
+%footnote.}}
+
+Other assumptions, such as a small
+open economy and an internationally given interest rate,
+could support a block recursive equilibrium,
+%% and its accompanying analytical tractability,
+but even when block recursivity fails to prevail,
+the assumption of directed search simplifies equilibrium computation by eliminating congestion
+externalities that would otherwise arise if heterogeneous
+workers and jobs were to reside inside the same matching function.
+
+
+%One alternative to linear preferences would be the assumption
+%of a small open economy that with an internationally given interest
+%rate together with complete markets. Contingent claims would
+%then be used finance both investments in vacancy creation and
+%households' demand for smooth consumption streams in the face
+%of idiosyncratic employment risk. The analytical tractability
+%would be preserved in such a block recursive {\it partial}
+%equilibrium.
+
+
+
+\subsection{Welfare analysis}
+Because directed search eliminates congestion externalities,
+we can expect a
+decentralized equilibrium to  be Pareto optimal, conditional
+on  Hosios efficiency conditions being satisfied. Moreover,
+ the  block recursive structure in the present
+framework means that the welfare maximum of each generation can be
+studied in isolation from other generations. The
+reason is that a block recursive structure
+eliminates  feedbacks from aggregates to outcomes that can be
+deduced from individual decision problems.
+Recall that value and policy functions and measures of market
+tightness can be derived
+before computing distributions of workers across age and employment and
+unemployment states.
+%{\bf XXXXX distributions across??? please fill in}.
+Our discussion in the previous subsection alerts us to
+one caveat attached to this consequence of block recursiveness in our  present
+overlapping generations
+framework: each new generation enters the economy as
+unemployed and  without the resources needed to create the vacancies
+that will allow them eventually to become employed. But this caveat  constitutes no
+obstacle to connecting the welfare analysis of
+a single generation to that of  the overall economy, since
+all agents are  indifferent to intertemporal trades that occur
+at a gross rate of return $\beta^{-1}$. That is, any earlier born
+worker with resources available in the present period and who will
+be alive next period, is willing to postpone consumption to
+fund vacancy creation in the present period in exchange
+for repayment with interest next period.
+
+The planner's optimization problem for a single  generation  $i$ becomes
+$$\EQNalign{
+& \max_{\theta_1, \{\theta_i, u_i\}_{i=2}^T} \;\;
+        z u_1 \,-\, \theta_1 u_1 \,c                           \cr
+&\hskip1.8cm  + \, \sum_{i=2}^T \beta^{i-1}
+\Bigl\{ y \bigl[(1-s)(1-u_{i-1})
+        + \theta_{i-1} q(\theta_{i-1}) u_{i-1}\bigr]
+        + z u_i - \theta_i u_i c  \Bigr\}                      \cr
+\noalign{\vskip.2cm}
+&\hbox{subject to }\ \
+ u_{i} \;=\;  \bigl[1-\theta_{i-1} q(\theta_{i-1})\bigr] u_{i-1}
+     + s (1-u_{i-1})\,,
+\hskip.5cm \hbox{\rm for     } i=2,\ldots , T ,  \cr
+&\hbox{given \ \ }\hskip.8cm u_1=1\,.                                 \cr}
+$$
+The optimal choice of market tightness for the last age is
+$\theta_T=0$ since there is  a cost term for posting such
+vacancies but no future return because workers will  retire
+at age $T+1$. The first-order conditions for the remaining
+choice variables are
+$$\EQNalign{
+\theta_i:\hskip.5cm &-\beta^{i-1} u_i c
+    + \beta^i y \bigl[q(\theta_i) + \theta_i q'(\theta_i) \bigr] u_i \cr
+      &\hskip2.1cm   - \beta^i \lambda_{i+1}
+                \bigl[q(\theta_i) + \theta_i q'(\theta_i) \bigr] u_i
+ \;=\; 0 \,,
+\hskip.5cm \hbox{\rm for     } i=1,\ldots , T-1   \cr
+u_i:\hskip.5cm &\beta^{i-1} [z - \theta_i c ] - \beta^{i-1} \lambda_i
+    + \beta^i y \bigl[-(1-s) + \theta_i q(\theta_i) \bigr]        \cr
+     &\hskip2.5cm  - \beta^i \lambda_{i+1}
+                \bigl[1 - \theta_i q(\theta_i) - s \bigr]  \;=\; 0 \,,
+\hskip.5cm \hbox{\rm for     } i=2,\ldots , T-1   \cr
+u_T:\hskip.5cm &\beta^{T-1} [z - \theta_T c ] - \beta^{T-1} \lambda_T
+                                                         \;=\; 0   \,.}
+$$
+After rearranging and simplifying, the first-order conditions
+can be written
+$$\EQNalign{
+\theta_i: \hskip.5cm & c \,=\, \beta q(\theta_i) [1-\alpha]
+    (y - \lambda_{i+1})\,,
+     \hskip.5cm \hbox{\rm for     } i=1,\ldots , T-1
+                                   \hskip2cm
+       \EQN M_OLG2_foc_thetai \cr
+\noalign{\vskip.2cm}
+u_i:\hskip.5cm &\lambda_i \,=\; z - \theta_i \,c
+    - \beta \bigl[1 - \theta_i q(\theta_i) - s \bigr]
+                                      (y - \lambda_{i+1})\,, \cr
+&\hskip5cm  \hbox{\rm for     } i=2,\ldots , T-1   \hskip2cm
+                                         \EQN M_OLG2_foc_ui  \cr
+u_T:\hskip.5cm &\lambda_T \,=\; z \,,    \EQN M_OLG2_foc_uT  \cr}
+$$
+where $\alpha$ is the elasticity of matching with respect to
+unemployment, $\alpha = - q'(\theta) \,\theta / q(\theta)$, and
+the last expression invokes $\theta_T=0$. These equations
+enable us to solve backward for measures of optimal market
+tightness. Starting with terminal shadow value $\lambda_T=z$,
+equation \Ep{M_OLG2_foc_thetai} for $i=T-1$ determines optimal
+market tightness $\theta_{T-1}$. Next, given $\lambda_T$ and
+$\theta_{T-1}$, equation \Ep{M_OLG2_foc_ui} for $i=T-1$
+determines $\lambda_{T-1}$, and in that manner, we can continue
+solving backward until we eventually  recover all measures of
+optimal market tightness.
+
+By applying this algorithm, the optimal market tightness
+\hbox{$\theta_i$, for $i=1,\ldots,$} $T-1$, can be expressed recursively as
+$$\EQNalign{
+ & \left[1-\beta^{T-i} (1-s)^{T-i}\right]
+             \left[y - z\right]                                   \cr
+  & \;=\;  \left( \frac{r+s}{(1-\alpha) q(\theta_i)}\,+\,
+           \left[1-\beta(1-s)\right] \frac{\alpha}{1-\alpha}
+   \sum_{j=0}^{T-i-1} \beta^j (1-s)^j \theta_{i+1+j} \right) c .
+                                    \hskip1.5cm   \EQN M_OLG2_PO \cr}
+$$
+Comparing this with equilibrium expression \Ep{M_OLG2_theta} confirms
+our conjecture that the equilibrium allocation
+is Pareto optimal so long as a worker's bargaining
+power is equal to the elasticity of matching with respect
+to unemployment, $\phi=\alpha$.
+
+
+
+\section{Concluding remarks}
+Ljungqvist and Sargent (2017) showed that in a variety of
+matching models, productivity
+changes affect both business cycle and welfare state dynamics through a single
+intermediate channel called the fundamental surplus.
+Thus, in studying welfare state dynamics,  Mortensen and Pissarides (1999b)
+and Ljungqvist and Sargent (2007)  attribute the outbreak of
+European unemployment after the late 1970s to changes in the
+economic environment in conjunction with the  generous
+unemployment benefits offered by  European government, i.e., a higher $z$ in the formulation of matching models in this chapter.
+ In
+a matching model with directed search by workers with permanently
+different productivities, Mortensen and Pissarides (1999b)  model `skill-biased' technology shocks in terms of a mean preserving
+spread of the distribution of productivities.
+There is a convex inverse relationship between the unemployment rate
+and worker productivity across submarkets, so
+moving workers to a lower range of productivities causes a larger
+increase in unemployment than a  decrease that would  caused by moving
+workers to higher productivities. Because the relationship
+becomes more convex for a higher  value of $z$,
+ unemployment increases more in high $z$ Europe than in low $z$ America. In a matching model with
+skill accumulation and unemployment benefits that are paid as a
+fixed replacement rate of a worker's past earnings, Ljungqvist and
+Sargent (2007) study how European unemployment erupts in
+`turbulent' times, modeled as an increased risk of skill loss at   layoff events,
+both under random search in a single matching function but more so
+under directed search.
+They conclude that ``the cost of posting vacancies is the
+lynchpin, or to use a less kind metaphor, the tail that wags the
+dog, of matching models.'' Then how is it that vacancy costs that are
+commonly calibrated to be small relative to aggregate output turn out to  wag
+the dog in some matching models  but not in others? The answer is that it all
+depends  on whether  the fundamental surplus
+fraction is small.  Here it helps to remember that the fundamental surplus fraction serves as  an upper bound on the fraction of a job's output
+that the invisible hand can allocate to vacancy creation.
+\index{unemployment!European}%
+\auth{Lucas, Robert E., Jr.} \auth{Prescott, Edward C.}%
+\auth{Ljungqvist, Lars} \auth{Sargent, Thomas J.}%
+\auth{Pissarides, Christopher} \auth{Mortensen, Dale T.}%
+
+
+As mentioned in the introduction of this chapter as well as
+in the concluding remarks of chapter \use{search2},
+an important difference between  matching models and search models
+is whether  there are congestion externalities.  It is helpful to recall how  Lucas
+and Prescott (1974) and Pissarides (1992) summarized  these distinct frameworks.  In their search-island
+economy, Lucas and Prescott remarked that ``the injury a
+searching worker imposes on his fellows is of exactly the same
+type as the injury a seller of any good imposes on his fellow
+sellers: the equilibrium expected return from job search serves
+the function of any other equilibrium price of signalling to
+suppliers the correct social return from an additional unit
+supplied.'' Things are very different in Pissarides's
+(1992) matching model with two-period-lived overlapping
+generations in which workers who remain unemployed in the first period of life
+lose skills. Because all unemployed workers congest the same
+matching function, ``a temporary shock to employment can persist
+for a long time [outlasting the maximum duration of any worker's
+unemployment]. The key mechanism is a thin market externality
+that reduces the supply of jobs when the duration of unemployment
+increases. ... persistence and multiple equilibria are possible
+even with constant returns production and matching technologies.''
+
+Directed search in matching models disarms
+congestion externalities because heterogeneous workers (and/or
+heterogeneous jobs) no longer sit in the same matching
+function. Directed search simultaneously simplifies  equilibrium computation and eradicates congestion
+externalities.\NFootnote{Scope for beneficial government interventions remain  in matching
+models with directed search  whenever the elasticity of
+a matching function with respect to unemployment does not equal
+ a worker's Nash bargaining power $\phi$, i.e., whenever the Hosios
+efficiency condition is violated.}
+%Some matching models with directed search can accommodate
+%heterogeneous workers who
+In some matching models with directed search, all types of
+heterogeneous workers
+prefer to sit in their assigned
+matching functions, but there are other  models populated by some  workers
+who would like  to `sneak' into another matching
+function. For example, an older worker in section \use{sec:OLG2} would  prefer
+to sit in a matching function with younger workers and thereby enjoy a higher
+job finding probability. A firm encountering such a deviant
+job applicant would be disappointed with that worker's type, but nevertheless  to recover some of  its sunk vacancy-posting cost   would  engage in Nash bargaining with the older worker and
+form a match because the match surplus is positive.
+

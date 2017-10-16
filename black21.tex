@@ -1,0 +1,1095 @@
+
+\input grafinp3
+%\input grafinput8
+\input psfig
+%
+%\showchaptIDtrue
+%\def\@chaptID{21.}
+%\input form1
+%\chapternum=28
+\def\cov{\mathop{\rm cov}\nolimits} \overfullrule=0pt
+%\hbox{}
+\footnum=0
+\Appendix{B}{Control and Filtering\label{lincontrol}}
+\section{Introduction}
+ By recursive techniques we mean the application of dynamic
+programming to control problems, and of Kalman filtering to
+the filtering problems.  We describe classes of problems in
+which the dynamic programming and the Kalman filtering algorithms
+are formally equivalent, being tied together by {\it duality}.
+  By exploiting their equivalence, we reap
+double dividends from any results that apply to one or the other
+problem.\NFootnote{The concepts of controllability and reconstructibility
+are used to establish conditions for the convergence and other
+important properties of the recursive algorithms.}
+
+The next-to-last section of this appendix contains statements of a few
+facts about linear least-squares projections.
+%  Familiarity with Sargent [1987, Ch. 10]
+%would also help the reader.
+The final section briefly describes filtering problems
+where the state evolves according to a finite-state Markov
+process.
+\index{optimal linear regulator}
+\section{The optimal linear regulator control problem}
+We briefly recapitulate the {\it optimal linear regulator\/}
+problem.  Consider a system with a $(n \times 1)$ {\it state\/} vector
+$x_t$ and a $(k \times 1)$ {\it control\/} vector $u_t$.  The system is
+assumed to evolve according to the law of motion
+$$x_{t+1} = A_tx_t + B_tu_t \qquad t = t_0, t_0+1, \ldots, t_1 - 1 ,\EQN
+ori2.1$$
+where $A_t$ is an $(n \times n)$ matrix and $B_t$ is an $(n \times k)$
+matrix.  Both
+$A_t$ and $B_t$ are known sequences of matrices.  We define the {\it return
+function\/} at time $t,\  r_t (x_t, u_t)$, as the quadratic form
+$$r_t (x_t,u_t) = - \left[x^\prime_t\, u^\prime_t\right]
+ \left[\matrix{R_t & W_t \cr
+W^\prime_t & Q_t \cr}\right]\ \left[\matrix{x_t \cr u_t \cr}\right] \qquad
+t = t_0, \ldots, t_1 -1$$
+where $R_t$ is $(n \times n),\ Q_t$ is $(k \times k)$, and $W_t$ is $(n
+\times k)$.  We shall initially assume that the matrices $\Bigl[{R_t \atop
+W^\prime_t} \, {W_t \atop
+Q_t}\Bigr]$ are positive semidefinite, though subsequently we shall see that
+the problem can still be well posed even if this assumption is weakened.  We
+are also given an $(n \times n)$ positive semidefinite matrix $P_t$, which
+is used to assign a terminal value of the state $x_{t_1}$.
+
+The {\it optimal linear regulator\/} problem is to maximize
+$$\EQNalign{ - \sum^{t_1-1}_{t = t_0}\, &
+\left[\matrix{x_t\cr  u_t \cr}\right]'
+\left[\matrix{R_t & W_t \cr W^\prime_t & Q_t \cr} \right]
+\left[\matrix{x_t \cr u_t \cr}\right]\, - \, x^\prime_{t_1} P_{t_1} x_{t_1} \cr
+\hbox{subject to }\qquad & x_{t+1} = A_t x_t + B_t u_t, \qquad x_{t_0}\
+\hbox{ given} . \EQN ori2.2 \cr}$$
+The maximization is carried out over the sequence of controls $(u_{t_0},
+u_{t_{0+1}}, \hfill\break
+\ldots, u_{t_{1-1}})$.  This is a recursive or serial problem, which is
+appropriate to solve using the method of dynamic programming.  In this case,
+the {\it value functions\/} are defined as the quadratic forms, $s = t_0, t_0
++ 1, \ldots, t_1 -1$,
+$$\eqalign{- x^\prime_s P_s x_s = \max\ &
+\biggl\{ - \sum^{t_{1-1}}_{t=s}\, \left[\matrix{x_t\cr  u_t \cr}\right]'
+\left[\matrix{R_t & W_t \cr W^\prime_t & Q_t \cr}\right]\ \left[\matrix{x_t \cr
+u_t \cr}\right] - x^\prime_{t_1} P_{t_1} x_{t_1} \biggr\} \cr
+\hbox{subject to}  \quad & x_{t+1}=A_t x_t + B_t u_t ,\cr}\EQN ori2.3$$
+$x_s$ given, $s = t_0, t_0 + 1, \ldots, t_1 -1$.  The {\it Bellman equation\/}
+becomes the following backward recursion in the quadratic forms $x^\prime_t\,
+P_t\, x_t$:
+\index{Bellman equation}
+
+$$\eqalign{
+x^\prime_t P_t x_t = \min_{u_t}\ &\Bigl\{x^\prime_t R_t x_t + u^\prime_t Q_t
+u_t + 2 x^\prime_t W_t u_t + (A_t x_t + B_t u_t)^\prime \cr
+& P_{t+1} (A_t x_t +B_t u_t) \Bigr\} ,\cr
+&\hskip .75in t = t_1 -1, t_1 -2, \ldots, t_0\cr
+&\hskip .75in \qquad P_{t_1} \hbox{ given .} \cr}\EQN ori2.4$$
+Using the rules for differentiating quadratic forms, the
+first-order necessary condition for the problem on the right side of equation
+\Ep{ori2.4} is found by differentiating with respect to the vector $u_t$:
+$$\left\{ Q_t + B^\prime_t P_{t+1} B_t \right\}u_t = -(B^\prime_t P_{t+1}
+A_t + W^\prime_t) x_t.$$
+Solving for $u_t$ we obtain
+$$u_t = -(Q_t + B^\prime_t P_{t+1} B_t)^{-1} (B^\prime_t P_{t+1} A_t +
+W^\prime_t) x_t .\EQN ori2.5$$
+The inverse $(Q_t + B^\prime_t P_{t+1} B_t)^{-1}$ is assumed to exist.
+Otherwise, it could be interpreted as a generalized inverse, and most of our
+results would go through.
+
+Equation \Ep{ori2.5} gives the optimal control in terms of a {\it feedback rule\/}
+upon the state vector $x_t$, of the form
+$$u_t = -F_t x_t \EQN ori2.6$$
+where
+$$F_t = (Q_t + B^\prime_t P_{t+1} B_t)^{-1} (B^\prime_t P_{t+1} A_t +
+W^\prime_t) . \EQN ori2.7$$
+
+Substituting equation \Ep{ori2.5} for $u_t$ into equation \Ep{ori2.4} and
+rearranging gives the following recursion for $P_t$:
+$$\eqalign{P_t = R_t + A^\prime_t P_{t+1} A_t - & (A_t P_{t+1} B_t + W_t)
+\ (Q_t + B^\prime_t P_{t+1} B_t)^{-1}\cr
+& (B^\prime_t P_{t+1} A_t + W^\prime_t) .\cr}\EQN ori2.8$$
+Equation \Ep{ori2.8} is a version of the {\it matrix Riccati
+difference equation}.   \index{Riccati equation!matrix difference}
+
+Equations \Ep{ori2.8} and \Ep{ori2.5} provide a recursive algorithm
+for computing the optimal controls in feedback form.  Starting at time
+$(t_1 -1)$, and given
+$P_{t_1}$, equation \Ep{ori2.5} is used to compute $u_{t_{1^{-1}}} =
+- F_{t_{1^{-1}}} x_{t_{1^{-1}}}$.  Then equation \Ep{ori2.8} is used to
+compute $P_{t_{1^{-1}}}$.  Then equation \Ep{ori2.5} is used to compute
+$u_{t_{1^{-2}}} = F_{t_{1^{-2}}} x_{t_{1^{-2}}}$, and so on.
+
+By substituting the optimal control $u_t = - F_t x_t$ into the state equation
+\Ep{ori2.1}, we obtain the optimal {\it closed loop system\/} equations
+$$x_{t+1} = (A_t - B_t F_t) x_t.$$
+Eventually, we shall be concerned extensively with the properties of the
+optimal closed loop system, and how they are related to the properties of $A_t,
+\, B_t,\, Q_t,\, R_t$, and $W_t$.
+
+\dsection{Converting a problem with cross products in states and controls
+to one with no such cross products}{Converting a problem with cross products}
+\noindent For our future work it is useful to introduce a problem that is equivalent
+with equations \Ep{ori2.2} and \Ep{ori2.3}, and has a form in which no
+cross products between states and controls appear in the objective
+function.  This is useful because our theorems about the properties
+of the solutions \Ep{ori2.5} and \Ep{ori2.8}
+will be in terms of the special case in which $W_t = 0\quad \forall t$.  The
+equivalence between the problems \Ep{ori2.2} and \Ep{ori2.3} and the
+following problem
+implies that no generality is lost by restricting ourselves to the case in
+which $W_t = 0\quad \forall t$.
+\par
+The equivalent problem
+$$\min_{\{u^\ast_t\}} \sum^{t_{1^{-1}}}_{t=t_0}\, \Bigl\{x^\prime_t (R_t - W_t
+Q_t^{-1} W^\prime_t) x_t + u_t^{\ast\prime} Q_t u^\ast_t \Bigr\} +
+x^\prime_{t_1} P_{t_1} x_{t_1} \EQN ori2.9$$
+subject to
+$$x_{t+1} = (A_t - B_t Q_t^{-1} W^\prime_t) x_t + B_t u^\ast_t,\EQN ori2.10$$
+and $x_{t_0}, \, P_{t_0}$ are given.  The new control variable $u^\ast_t$ is
+related to the original control $u_t$ by
+$$u^\ast_t = Q^{-1}_t W^\prime_t x_t + u_t .\EQN ori2.11$$
+
+We can state the problem \Ep{ori2.9}--\Ep{ori2.10} in a more compact
+notation as being to minimize
+$$\sum^{t_{1^{-1}}}_{t=t_0} \, \Bigl\{x^\prime_t \bar R_t x_t +
+u_t^{\ast \prime} Q_t u^\ast_t \Bigr\} + x_i, P_t, x_t ,\EQN ori2.12$$
+subject to
+$$x_{t+1} = \bar A_t x_t + B_t u^\ast_t \EQN ori2.13$$
+where
+$$\bar R_t = R_t - W_t Q_t^{-1} W^\prime_t \EQN ori2.14$$
+and
+$$\bar A_t = A_t - B_t Q^{-1}_t W^\prime_t. \EQN ori2.15$$
+With these specifications, the solution of the problem can be computed using
+the following versions of equations \Ep{ori2.5} and \Ep{ori2.8}
+$$u^\ast_t = -\bar F_t x_t \equiv - (Q_t + B^\prime_t P_{t+1} B_t)^{-1} B_t
+P_{t+1} \bar A_t \EQN ori2.16$$
+$$P_t = \bar R_t + \bar A^\prime_t P_{t+1} \bar A_t - \bar A^\prime_t P_{t+1}
+B_t (Q_t +
+B^\prime_t P_{t+1} B_t)^{-1} B^\prime_t P_{t+1} \bar A_t \EQN ori2.17$$
+We ask the reader to verify the following facts:
+\itemitem{a.}  Problems \Ep{ori2.2}--\Ep{ori2.3} and \Ep{ori2.9}--\Ep{ori2.10} are equivalent.
+\itemitem{b.} The feedback laws $\bar F_t$ and $F_t$ for $u^\ast_t$ and
+$u_t$, respectively, are related by
+$$F_t = \bar F_t + Q_t^{-1} W^\prime_t.$$
+\itemitem{c.}  The Riccati equations \Ep{ori2.8} and \Ep{ori2.17}
+are equivalent.
+\itemitem{d.}  The ``closed loop'' transition matrices are related by
+$$A_t - B_t F_t = \bar A_t - B_t \bar F_t .$$
+
+\section{An example}
+We now give an example of a problem for which the preceding transformation is
+useful.  A consumer wants to maximize
+$$\sum^\infty_{t=t_0}\ \beta^t\ \Bigl\{ u_1 c_t-{u_2 \over 2}c^2_t \Bigr \}
+\quad 0 \, < \beta < 1\quad ,\ u_1> 0,\, u_2>0 \EQN ori2.18$$
+subject to the intertemporal budget constraint
+$$k_{t+1} = (1 + r)\ (k_t + y_t - c_t) , \EQN ori2.19$$
+the law of motion for labor income
+$$y_{t+1} = \lambda_0 + \lambda_1 y_t, \EQN ori2.20$$
+and a given level of initial assets, $k_{t_0}$.  Here $\beta$ is a discount
+factor, $u_1$ and $u_2$ are constants, $c_t$ is consumption, $k_t$ is
+``nonhuman'' assets at the beginning of time $t,\  r > -1$ is the interest
+rate on nonhuman assets, and $y_t$ is income from labor at time $t$.
+
+We define the transformed variables
+$$\eqalign{\tilde k_t &= \beta^{t/2} k_t, \cr
+\tilde y_t &= \beta^{t/2} y_t, \cr
+\tilde c_t &= \beta^{t/2} c_t.\cr}$$
+In terms of these transformed variables, the problem can be rewritten as
+follows:  maximize
+$$\sum^\infty_{t=t_0}\ \Bigl\{u_1 \beta^{t/2} \cdot \tilde c_t - {u_2 \over 2}
+\tilde c^2_t \Bigr\} \EQN ori2.21$$
+subject to
+$$\eqalign{\tilde k_{t+1} &=(1+r)\beta^{1/2}\ (\tilde k_t + \tilde y_t -
+\tilde c_t )\quad \hbox { and } \cr
+\noalign{\smallskip}
+\tilde y_{t+1} &= \lambda_0 \beta^{{t + 1 \over 2}}+\lambda_1 \beta^{1/2}
+\tilde y_t \cr} \EQN ori2.22$$
+and $k_{t_0}$ given.  We write this problem in the state-space form:
+$$\eqalign{\max_{\{\tilde u_t\}}\ & \sum^\infty_{t=t_0}\ \Bigl\{\tilde
+x_t^\prime R \tilde x_t + 2 \tilde x^\prime_t W \tilde u_t + \tilde u^\prime_t
+Q \tilde u_t \Bigr \} \cr
+& \hbox{ subject to } \ \tilde x_{t+1} = A \tilde x_t + B \tilde u_t.\cr}$$
+We take
+$$\eqalign{\tilde x_t &= \left[\matrix{\tilde k_t \cr \tilde y_t \cr
+\beta^{t/2}\cr} \right], \ \tilde u_t = \tilde c_t, \cr
+\noalign{\medskip}
+R &= \left[\matrix{0 & 0 & 0 \cr 0 & 0 & 0 \cr 0 & 0 & 0 \cr}\right], \
+W^\prime = \left[\matrix{ 0 & 0 &  {u_1 \over 2}\cr} \right], \cr
+\noalign{\medskip}
+Q = - {u_2 \over 2}, \ A &= \left[\matrix{(1+r) & (1+r) & 0 \cr 0 &
+\lambda_1 & \lambda_0 \cr 0 & 0 & 1 \cr}\right]\ \beta^{1/2}, \quad B =
+\left[\matrix{-(1+r) \cr 0 \cr 0\cr}\right]\ \beta^{1/2} . \cr}$$
+
+To obtain the equivalent transformed problem in which there are no
+cross-product terms between states and controls in the return function, we
+take
+$$\eqalign{\bar A &= A - BQ^{-1} W^\prime = \left[\matrix{(1+r) & (1+r)
+& - {u_1 (1+ r) \over u_2} \cr 0 & \lambda_1 & \lambda_0 \cr 0 & 0 & 1 \cr}
+\right] \ \beta^{1/2} \cr
+\noalign{\medskip}
+\bar R &= R - WQ^{-1} W^\prime = \left[\matrix{0 & 0 & 0 \cr 0 & 0 & 0 \cr
+0 & 0 &{u^2_1 \over 2u_2}\cr}\right]\cr
+u^\ast_t &= \tilde u_t + Q^{-1} W^\prime \tilde x_t \cr
+c^\ast_t &= \tilde c_t - {u_1 \over u_2} \beta^{t/2} .\cr}\EQN ori2.23$$
+Thus, our original problem can be expressed as
+$$\eqalign{\max_{\{u^\ast_t\}}\ & \sum^\infty_{t=t_0}\ \Bigl\{ \tilde
+x_t^\prime \bar R \tilde x_t + u_t^{\ast \prime} Q u^\ast_t \Bigr \} \cr
+ \hbox {\ subject to} \quad & \tilde x_{t+1} = \bar A \tilde x_t +
+B u^\ast_t.\cr} \EQN ori2.24$$
+
+\section{The Kalman filter}  \index{Kalman filter}
+Consider the linear system
+$$x_{t+1} = A_t x_t + B_t u_t + G_t w_{1t+1} \EQN ori2.25$$
+$$y_t = C_t x_t + H_t u_t + w_{2 t}, \EQN ori2.26$$
+where $[w_{1 t+1}^\prime,\, w_{2t}^\prime]$ is a vector white noise with
+contemporaneous covariance matrix
+$$E \left[\matrix{w_{1 t+1} \cr w_{2 t} \cr}\right] \left[\matrix{w_{1
+t+1}\cr w_{2 t} \cr}\right]^\prime = \left[\matrix{V_{1t} & V_{3t} \cr
+V^\prime_{3t} & V_{2t}\cr}\right]\  \geq \, 0 .$$
+The $[w^\prime_{1t+1},\ w^\prime_{2t}]$ vector for $t\geq t_0$ is assumed
+orthogonal to the initial condition $x_{t_0}$, which represents the initial
+state.  Here, $A_t$ is $(n \times n), B_t$ is $(n \times k), \
+G_t$ is $(n \times N), C_t$ is $(\ell \times n), H_t$ is $(\ell \times k),
+w_{1t+1}$ is $(N \times 1), w_{2 t+1}$ is $(\ell \times 1), x_t$
+is an $(n \times 1)$ vector of {\it state\/} variables, $u_t$ is a
+$(k \times 1)$ vector
+of {\it controls\/}, and $y_t$ is an $(\ell \times 1)$ vector
+of {\it output\/}
+or observed variables.  The matrices $A_t, B_t, G_t, C_t, \hbox { and } H_t$
+are known, though possibly time varying.  The noise vector $w_{1 t+1}$ is the
+state disturbance, while $w_{2t}$ is the measurement error.
+\par
+The analyst does not directly observe the $x_t$ process.  So from his point
+of view, $x_t$ is a ``hidden state vector.''  The system is assumed to start
+up at time $t_0$, at which time the state vector $x_{t_0}$ is regarded as a
+random variable with mean $E x_{t_0} = \hat x_{t_0}$, and given covariance
+matrix
+$\sum_{t_0} = \sum_0$.  The pair $(\hat x_{t_0}, \sum_0)$ can be regarded as
+the mean and covariance of the analyst's Bayesian prior distribution on
+$x_{t_0}$.
+
+It is assumed that for $s \geq 0$, the vector of random variables
+$\bigl[{w_{1 t_0 + s + 1} \atop w_{2 t_0 + s}}\bigr]$ is orthogonal to the
+random variable $x_{t_0}$ and to the random variables $\bigl[{w_{1 t_0 + r +
+1} \atop w_{2 t_0 + r}} \bigr]$ for $r \not = s$.  It is also assumed that $E
+\bigl[{w_{1 t_0 + s + 1} \atop w_{2 t+s}}\bigr]\hfil\break
+ = 0 \hbox { for } s \geq 0$.
+Thus, $\bigl[{w_{1t} \atop w_{2t}}\bigr]$ is a serially uncorrelated or
+white noise process.  Further, from equations \Ep{ori2.25} and \Ep{ori2.26} and
+the orthogonality
+properties posited for $\bigl[{w_{1 t+1} \atop w_{2t}}\bigr]$ and $x_{t_0}$,
+it follows that $\bigl[{w_{1 t+1} \atop w_{2t}}\bigr]$ is orthogonal to $\{x_s,
+y_{s-1}\}$ for $s \leq t$.  This conclusion follows because $y_t \hbox { and } x_{t+1}$
+are in the space spanned by current and lagged $u_t, w_{1t+1},
+w_{2t}, \hbox { and } x_{t_0}$.
+\par
+The analyst is assumed to observe at time $t\, \{ y_s,\, u_s : s = t_0,
+t_0 + 1, \ldots t \}$, for $t = t_0, t_0 + 1, \ldots t_1$.  The object is then
+to compute the linear least-squares projection of the state $x_{t+1}$ on this
+information, which we denote $\widehat E_t x_{t+1}$.  We write this
+projection as
+$$\widehat E_t x_{t+1} \equiv \widehat E [x_{t+1} \mid y_t, y_{t-1},
+\ldots, y_{t_0}, \hat x_{t_0}], \EQN ori2.27$$
+where $\hat x_{t_0}$ is the initial estimate of the state.  It is convenient to
+let $Y_t$ denote the information on $y_t$ collected through time $t$:
+$$Y_t = \{y_t, y_{t-1}, \ldots, y_{t_0}\} .$$
+The linear least-squares projection of $y_{t+1}$ on $Y_t$, and $\hat x_{t_0}$
+is, from equations \Ep{ori2.26} and \Ep{ori2.27}, given by
+$$\eqalign{\widehat E_t y_{t+1} &\equiv \widehat E [y_{t+1} \mid Y_t,
+\hat x_0] \cr
+&= C_{t+1} \widehat E_t x_{t+1} + H_{t+1} \ u_{t+1},\cr} \EQN ori2.28$$
+since $w_{2 t+1}$ is orthogonal to $\{w_{1s+1},\, w_{2s} \},\ s \leq t,\hbox{
+and } \hat x_{t_0}$ and is therefore orthogonal to $\{Y_t,\, \hat x_{t_0}\}$.
+
+In the interests of conveniently constructing the projections $\widehat E_t
+x_{t+1}$ and $\widehat E_t y_{t+1}$, we now apply a \idx{Gram-Schmidt
+orthogonalization} procedure to the set of random variables $\{\hat x_{t_0},
+y_{t_0}, y_{t_0 + 1}, \ldots y_{t_1}\}$.  An orthogonal basis for this
+set of random variables is formed by the set $\{\hat x_{t_0}, \tilde y_{t_0}
+\tilde y_{t_0 +1}, \ldots, \tilde y_{t_1}\}$ where
+$$\tilde y_t = y_t - \widehat E [y_t \mid \tilde y_{t-1}, \tilde y_{t-2},
+\ldots \tilde y_{t_0}, \hat x_{t_0}] .\EQN ori2.29$$
+For convenience, let us write $\widetilde Y_t =\{\tilde y_{t_0},
+\tilde y_{t_0 +1}, \ldots, \tilde y_t\}$.  We note that the
+linear spaces spanned by
+$(\hat x_{t_0}, Y_t)$ equal the linear spaces spanned by $(\hat x_{t_0},
+\tilde Y_t)$.  This follows because (a) $ \tilde y_t$ is formed as
+indicated previously as a linear function of $Y_t$ and $\hat x_{t_0}$,
+and (b) $ \ y_t$ can be recovered from $\tilde Y_t$ and $\hat x_{t_0}$
+by noting that $y_t = \widehat E [y_t \mid \hat x_{t_0}, \tilde Y_{t-1}] +
+\tilde y_t$.  It follows that $\widehat E[y_t \mid \hat x_{t_0}, Y_{t-1}] =
+\widehat E [y_t \mid \hat x_{t_0}, \tilde Y_{t-1}] = E_{t-1} y_t$.  In equation \Ep{ori2.29},
+we use equation \Ep{ori2.26} to write
+
+
+$$\widehat E [y_{t_0} \mid \hat x_{t_0}] = C_{t_0} \hat x_{t_0} +
+H_{t_0} u_{t_0} .$$
+
+We set $\hat x_{t_0} = Ex_0$.  To summarize developments up to
+this point, we have defined the {\it innovations process}
+$$\eqalign{
+\tilde y_t &= y_t - \widehat E [y_t\mid \hat x_{t_0},\ Y_{t-1}] \cr
+&= y_t - \widehat E [y_t \mid \hat x_{t_0}, \tilde Y_{t-1}],\ t\geq t_0 + 1 \cr
+\tilde y_{t_0} &= y_{t_0}-\hat E[y_{t_0} \mid \hat x_{t_0}] .\cr}$$
+The innovations process is {\it serially uncorrelated\/} ($\tilde y_t$ is
+orthogonal to $\tilde y_s$ for $t \not= s$) and spans the same linear space
+as the original $Y$ process.
+\par
+We now use the innovations process to get a recursive procedure for evaluating
+$\widehat E_t x_{t+1}$.  Using \Theorem{th21.4} about projections on orthogonal
+bases gives
+$$\eqalign{
+\widehat E\, & [x_{t+1} \mid \hat x_{t_0}, \tilde y_{t_0},
+\tilde y_{t_0 + 1}, \ldots, \tilde y_t] \cr
+&= \widehat E [x_{t+1} \mid \tilde y_t] + \widehat E [x_{t+1} \mid
+\hat x_{t_0}, \tilde y_{t_0}, \tilde y_{t_0 + 1}, \ldots, \tilde y_{t-1}]
+- E x_{t+1}. \cr} \EQN ori2.30$$
+We have to evaluate the first two terms on the right
+ side of equation \Ep{ori2.30}.
+
+From \Theorem{th21.1}, we have the
+ following:\NFootnote{Here, we are using $E\tilde y_t=0$.}
+$$\widehat E [x_{t+1} \mid \tilde y_t] = Ex_{t+1} +\cov \ (x_{t+1},
+\tilde y_t)\ \bigl[\cov\ (\tilde y_t, \tilde y_t)\bigr]^{-1} \tilde y_t .
+\EQN ori2.31$$
+
+To evaluate the covariances that appear in equation \Ep{ori2.31}, we shall use
+the covariance matrix of one-step-ahead errors, $\tilde x_t = x_t -
+\widehat E_{t-1} x_t$, in estimating $x_t$.  We define this covariance
+matrix as $\Sigma_t = E \tilde x_t \tilde x_t^\prime$.  It follows from
+equations \Ep{ori2.25} and \Ep{ori2.26} that
+$$\eqalign{
+\cov (x_{t+1},  \tilde y_t)  = & \cov (A_t x_t + B_t u_t - G_t w_{1t+1}, y_t -
+\widehat E_{t-1} y_t) \cr
+= & \cov (A_t x_t + B_t u_t + G_t w_{1t+1}, \, C_t x_t + w_{2t} - C_t \widehat
+E_{t-1} x_t) \cr
+= &\cov (A_t x_t + B_t u_t + G_t w_{1t+1}, C_t \tilde x_t + w_{2t}) \cr
+= & E \{[ A_t x_t + B_t u_t + G_t w_{1t+1} - E (A_t x_t + B_t u_t + G_t
+w_{1t+1})] \cr
+& [C_t \tilde x_t + w_{2t}-E (C_t \tilde x_t + w_{2t}]^\prime)\}\cr
+=& E [(A_t x_t + G_t w_{1t+1} - A_t E x_t) (\tilde x_t^\prime C_t^\prime
++ w_{2t}^\prime)] \cr
+= & E (A_t x_t \tilde x_t^\prime C_t^\prime) + G_t E (w_{1t+1}
+ \tilde x_t^\prime C_t^\prime) - A_t E x_t E \tilde x_t^\prime C_t^\prime \cr
+&  + A_t E (x_t w_{2t}^\prime) + G_t E (w_{1t+1} w_{2t}^\prime ) -
+A_t Ex_t Ew_{2t}^\prime\cr
+= & E (A_t x_t \tilde x_t^\prime C_t^\prime) + G_t E (w_{1t+1} w_{2t}^\prime)\cr
+= &  E[ A_t (\tilde x_t + \widehat E_{t-1} x_t) \tilde x_t^\prime C_t^\prime]
++ G_t E ( w_{1t+1} w_{2t}^\prime)\cr
+= & A_t E \tilde x_t \tilde x_t^\prime C_t^\prime + G_t E (w_{1t+1}\,
+w_{2t}^\prime) = A_t \Sigma_t C_t^\prime + G_t V_{3t} . \cr} \EQN ori2.32$$
+
+The second equality uses the fact that $\widehat E_{t-1} w_{2t} = 0$, since
+$w_{2t}$ is orthogonal to $\{x_s,\, y_{s-1}\},\, s \leq t$.  To get the
+fifth equality, we use the fact that $E \tilde x_t = E (x_t - \widehat E_{t-1}
+x_t) = 0$ by the unbiased property of linear projections when one of the
+regressors is a constant.  We also use the
+facts that $u_t$ is known and that $w_{1t+1}$ and $w_{2t}$ have zero means.  The
+seventh equality follows from the orthogonality of $w_{1t+1}$ and $w_{2t}$ to
+variables dated $t$ and earlier and the means of $w_{2t}^\prime$ and $\tilde
+x_t^\prime$ being zero.  Finally, the ninth equation relies on the fact that
+$\tilde x_t$ is orthogonal to the subspace generated by $y_{t-1}, y_{t-2},
+\ldots, \hat x_{t_0}$ and $\widehat E_{t-1} x_t$ is a function of these vectors.
+
+Next, we evaluate
+$$\eqalign{\cov (\tilde y_t, \tilde y_t ) & = E ( C_t
+\tilde x_t + w_{2t}) (C_t \tilde x_t + w_{2 t} )^\prime \cr
+&= C_t \Sigma_t C_t^\prime + V_{2t}, \cr}$$
+since $E \tilde y_t = 0 \hbox { and } E \tilde x_t w_{2t}^\prime = 0$.
+Therefore, equation \Ep{ori2.31} becomes
+$$\widehat E (x_{t+1} \mid \tilde y_t ) = E ( x_{t+1}) + (A_t \Sigma_t
+C_t^\prime + G_t V_{3t}) (C_t \Sigma_t C_t^\prime + V_{2t})^{-1} \tilde y_t .
+\EQN ori2.33$$
+Using equation \Ep{ori2.25}, we evaluate the second term on the right side
+of equation \Ep{ori2.30},
+$$\widehat E (x_{t+1} \mid \tilde Y_{t-1}, \hat x_{t_0}) = A_t \widehat E (x_t
+\mid \tilde Y_{t-1}, \hat x_{t_0}) + B_t u_t$$
+or
+$$\widehat E_{t-1} x_{t+1} = A_t \widehat E_{t-1} x_t+B_t u_t .\EQN ori2.34$$
+Using equations \Ep{ori2.33} and \Ep{ori2.34} in equation \Ep{ori2.30} gives
+$$\widehat E_t x_{t+1} = A_t \widehat E_{t-1} x_t + B_t u_t + K_t
+(y_t - \widehat E_{t-1} y_t ) \EQN ori2.35$$
+where
+$$K_t = \Bigl( A_t \Sigma_t C_t^\prime + G_t V_{3 t} \Bigr)
+\Bigl(C_t \Sigma_t C_t^\prime + V_{2 t}\Bigr)^{-1} .\EQN ori2.36$$
+Using $\widehat E_{t-1} y_t = C_t \widehat E_{t-1} x_t + H_t u_t$,
+equation \Ep{ori2.35} can also be written
+$$\widehat E_t x_{t+1} = (A_t - K_t C_t ) \widehat E_{t-1} x_t + ( B_t - K_t
+H_t ) u_t + K_t y_t .\EQN orn2.35;a$$
+
+We now aim to derive a recursive formula for the covariance matrix
+$\Sigma_t$.  From equation \Ep{ori2.26} we know that $\widehat E_{t-1} y_t
+= C_t \widehat E_{t-1} x_t + H_t u_t$.  Subtracting this expression from $y_t$ in equation
+\Ep{ori2.26} gives
+$$y_t - \widehat E_{t-1} y_t = C_t (x_t-\widehat E_{t-1} x_t) + w_{2t} .
+\EQN orn2.35;b$$
+Substituting this expression in equation \Ep{ori2.35} and
+subtracting the result from equation \Ep{ori2.25} gives
+$$\eqalign{ (x_{t+1} - \widehat E_t x_{t+1} ) = & (A_t - K_t  C_t)\, (x_t -
+\widehat E_{t-1} x_t ) \cr
+&+ G_t w_{1 t+1} - K_t w_{2 t} \cr}$$
+or
+$$\tilde x_{t+1} = (A_t - K_t C_t ) \tilde x_t + G_t w_{1 t+1} -
+K_t w_{2t} . \EQN ori2.37$$
+From equation \Ep{ori2.37} and our specification of the covariance matrix
+$$E\left[\matrix{w_{1 t+1} \cr w_{2t} \cr}\right] \left[\matrix{w_{1t+1} \cr
+w_{2 t}\cr}\right]^\prime = \left[\matrix{V_{1 t} & V_{3t}\cr V_{3t}^\prime &
+V_{2 t} \cr} \right]$$
+we have
+$$\eqalign{E \tilde x_{t+1} \tilde x_{t+1}^\prime = & \Bigl(A_t - K_t C_t
+\Bigr) E \tilde x_t \tilde x_t^\prime \Bigl(A_t - K_t C_t \Bigr)^\prime\cr
+&+ G_t V_{1 t} G_t^\prime + K_t V_{2 t} K_t^\prime\cr
+&- G_t V_{3 t} K_t^\prime - K_t V_{3 t}^\prime G_t^\prime . \cr}$$
+We have defined the covariance matrix of $\tilde x_t$ as $\Sigma_t = E
+\tilde x_t \tilde x_t^\prime = E (x_t - \widehat E_{t-1} x_t)\hfil\break
+(x_t - \widehat E_{t-1} x_t)^\prime$.  So we can express the
+preceding equation as
+$$\eqalign{\Sigma_{t+1} = & \Bigl(A_t - K_t C_t \Bigr) \Sigma_t \Bigl(
+A_t - K_t C_t \Bigr)^\prime\cr
+&+ G_t V_{1 t} G_t^\prime + K_t V_{2 t} K_t^\prime - G_t V_{3 t}
+K_t^\prime \cr
+&- K_t V_{3t}^\prime G^\prime_t .\cr} \EQN ori2.38$$
+Equation \Ep{ori2.38} can be rearranged to the equivalent form
+$$\eqalign{\Sigma_{t+1} = & A_t \Sigma_t A_t^\prime + G_t V_{1 t}
+G_t^\prime \cr
+&- \Bigl(A_t \Sigma_t C_t^\prime + G_t V_{3 t} \Bigr) \Bigl (C_t
+\Sigma_t C_t^\prime + V_{2 t} \Bigr)^{-1}\, \Bigl(A_t\Sigma_t C_t + G_t
+V_{3t}\Bigr)^\prime  . \cr}  \EQN orn2 $$
+%\beginleftbox repeated eq no 2.36\endleftbox
+%We repeat \Ep{ori2.36} here for your convenience
+%$$K_t = \Bigl (A_t \Sigma_t C_t^\prime + G_t V_{3 t} \Bigr) \Bigl(C_t
+%\Sigma_t C_t^\prime + V_{2 t} \Bigr)^{-1}\leqno (2.36)$$
+Starting from the given initial condition for $\Sigma_{t_0} = E (x_{t_0}
+- E x_{t_0}) (x_{t_0} - E x_{t_0})^\prime$, equations \Ep{ori2.38}
+and \Ep{ori2.36} give a recursive
+procedure for generating the ``Kalman gain'' $K_t$, which is the crucial
+unknown ingredient of the recursive algorithm \Ep{ori2.35} for generating
+$\widehat E_t x_{t+1}$.
+%\beginleftbox there is a 2.39 refered to in this para but there is
+%no leqno 2.39 \endleftbox
+The Kalman filter is used as follows:  Starting from time $t_0$ with
+$\Sigma_{t_0} = \Sigma_0$ and $\hat x_{t_0} = E x_0$ given, equation \Ep{ori2.36}
+is used to form $K_{t_0}$, and equation \Ep{ori2.35} is used to obtain
+$\widehat E_{t_0} x_{t_0 + 1}$ with $\widehat E_{t_{0^{-1}}} x_{t_0} =
+\hat x_0$.  Then equation \Ep{ori2.38}  is used to form
+$\Sigma_{t_0 +1}$, equation \Ep{ori2.36} is used to form $K_{t_0 + 1}$,
+equation \Ep{ori2.35} is used to obtain $\widehat E_{t_{0^{+1}}} x_{t_0 + 2}$,
+and so on.
+
+Define $\hat x_t = \widehat E_{t-1}x_t$ and $\hat y_t =
+\widehat E_{t-1} y_t$.  Set
+$$a_t=w_{2t} + C_t(x_t-\hat x_t) . \EQN ori2.40$$
+From equation \Ep{orn2.35;b}, we have
+$$y_t - \hat y_t = C_t (x_t - \hat x_t) + w_{2t}$$
+or
+$$y_t - \hat y_t = a_t .\EQN ori2.41$$
+We know that $E a_t a_t^\prime = C_t \Sigma_t C_t^\prime + V_{2t}$.  The
+random process $a_t$ is the ``innovation'' in $y_t$, that is, the part of
+$y_t$ that cannot be predicted linearly from past $y$'s.
+
+From equations \Ep{ori2.25} and \Ep{ori2.41} we get $y_t=C_t \hat x_{t+1}
+H_t u_t+a_t$.  Substituting this expression into equation \Ep{orn2.35;a} produces the
+following system:
+$$\eqalign{\hat x_{t+1} &= A_t \hat x_t + B_t u_t + K_t a_t \cr
+y_t &= C_t \hat x_t +H_t u_t + a_t . \cr}\EQN ori2.42$$
+System \Ep{ori2.42} is called an {\it innovations representation}.
+\index{innovations representation}
+
+Another representation of the system that is useful is obtained from
+equation \Ep{orn2.35;a}:
+$$\eqalign{\hat x_{t+1} &= (A_t - K_t C_t) \hat x_t + (B_t - K_t H_t)\, u_t
++ K_t y_t \cr
+a_t &= y_t - C_t \hat x_t - H_t u_t . \cr} \EQN ori2.43$$
+This is called a {\it whitening filter}.  Starting from a given $\hat x_{t_0}$,
+this system accepts as an ``input'' a history of $y_t$ and gives as an output
+the sequence of innovations $a_t$, which by construction are serially
+uncorrelated.
+\index{whitening filter}
+
+We shall often study situations in which the system is time invariant, that is,
+$A_t = A,\, B_t=B,\, G_t=G,\, H_t=H,\, C_t = C$, and $V_{jt} = V_j$ for all $t$.
+We shall later describe
+regulatory conditions on $A, C, V_1, V_2$, and $V_3$ which imply that (1) $\ K_t
+\rightarrow K$ as $t \rightarrow \infty$ and $\Sigma_t \rightarrow \Sigma$ as
+$t\rightarrow \infty$; and (2) $ \ \mid \lambda_i (A - KC) \mid < 1$ for all
+$i$, where $\lambda_i$ is the $i$th eigenvalue of $(A - KC)$.  When these
+conditions are met, the limiting representation for equation \Ep{ori2.43} is time
+invariant and is an (infinite dimensional) innovations representation.
+Using the lag operator $L$ where $L \hat x_t = \hat x_{t-1}$, imposing
+time invariance in equation \Ep{ori2.42}, and rearranging gives the representation
+$$y_t = [I + C (L^{-1} I - A)^{-1} K] a_t +\bigl[ H+C (L^{-1} I-A)\,B\bigr]\,
+u_t, \EQN ori2.44$$
+which expresses $y_t$ as a function of $[a_t, a_{t-1}, \ldots]$.  In
+order that $[y_t, y_{t-1},
+\ldots]$ span the same linear space as $[a_t, a_{t-1}, \ldots]$,
+it is necessary that the following condition be met:
+$$\det\, [I + C (zI - A)^{-1} K] = 0 \ \Rightarrow \ \mid z \mid < 1 .$$
+Now by a theorem from linear algebra we know that\NFootnote{See Noble and Daniel
+(1977, exercises 6.49 and 6.50, p. 210).}
+\auth{Nobel, Ben}  \auth{Daniel, James W.}
+%
+$$\det [I + C (zI-A)^{-1} K] = {\det [zI - (A-KC)] \over \det (zI-A)} .$$
+The formula shows that the zeros of $\det [I + C (zI-A)^{-1} K]$ are
+zeros of $\det [zI - (A - KC)]$, which are eigenvalues of $A - KC$.  Thus,
+if the eigenvalues of $(A-KC)$ are all less than unity in modulus, then the
+spaces $[a_t, a_{t-1}, \ldots]$ and $[y_t, y_{t-1}, \ldots]$ in
+representation \Ep{ori2.44} are equal.
+
+%\beginleftbox these eqs. 35, 38, 6, and 7 are repeated from earlier
+%in the paper.  should they be renumbered? \endleftbox
+\index{duality!of control and filtering}
+\section{Duality}
+For purposes of highlighting their relationship, we now repeat the Kalman
+filtering formulas for $K_t$ and $\Sigma_t$ and the optimal linear regulator
+formulas for $F_t$ and $P_t$
+$$K_t = \Bigl(A_t \Sigma_t C_t^\prime + G_t V_{3 t} \Bigr) \Bigl(C_t
+\Sigma_t C_t^\prime + V_{2t} \Bigr)^{-1}.\EQN duality1$$
+
+$$\eqalign{\Sigma_{t+1} = & A_t \Sigma_t A_t^\prime + G_t V_{1t}
+G_t^\prime \cr
+&- \Bigl ( A_t \Sigma_t C_t^\prime + G_t V_{3t}\Bigr) \Bigl(C_t \Sigma_t
+C_t^\prime + V_{2 t} \Bigr)^{-1} \cr
+&\times \Bigl( A_t \Sigma_t C_t^\prime + G_t V_{3 t} \Bigr)^\prime\cr}
+\EQN duality2
+$$
+
+$$F_t = (Q_t + B^\prime_t P_{t+1} B_t)^{-1} (B^\prime_t P_{t+1} A_t +
+W^\prime_t) . \EQN duality3 $$
+
+$$\eqalign{P_t = & R_t + A_t^\prime P_{t+1} A_t \cr
+&- (A_t^\prime P_{t+1} B_t + W_t)\, (Q_t + B_t^\prime P_{t+1} B_t)^{-1} \cr
+& \times \Bigl (B_t^\prime P_{t+1} A_t + W^\prime_t\Bigr)\cr}\EQN duality4$$
+for $t = t_0, t_0 + 1, \ldots, t_1$.  Equations \Ep{duality1} and
+\Ep{duality2}  are
+solved forward from $t_0$ with $\Sigma_{t_0}$ given, while equations
+\Ep{duality3}  and \Ep{duality4}, are solved backward from $t_1 -1$ with
+$P_{t_1}$ given.
+
+The equations for $K_t$ and $F_t$ are intimately related, as are the
+equations for $P_t$ and $\Sigma_t$.  In fact, upon properly reinterpreting
+the various matrices in equations \Ep{duality1},  \Ep{duality2},
+\Ep{duality3}, and \Ep{duality4}, the
+equations for the Kalman filter and the optimal linear regulator can
+be seen to be identical.  Thus, where $A$ appears in the Kalman filter,
+$A^\prime$ appears in the corresponding regulator equation; where $C$
+appears in the Kalman filter, $B^\prime$ appears in the corresponding
+regulator equation; and so on.  The correspondences are listed in detail
+in \Tbl{tab21.1}. %Table 21.1.
+By taking account of these correspondences, a single set
+of computer programs can be used to solve either an optimal linear
+regulator problem or a Kalman filtering problem.
+
+
+The concept of {\it duality\/} helps to clarify the relationship between
+the optimal regulator and the Kalman filtering problem.
+\medskip
+\table{tab21.1}
+\caption{\bf Duality}
+$$\vbox{\offinterlineskip \hrule
+\halign{#\hfil & \qquad #\hfil \cr
+\noalign{\smallskip}
+Object in Optimal Linear & \phantom{00000} Object in \cr
+\phantom{000} Regulator Problem & \phantom{000}Kalman Filter \cr
+\noalign{\smallskip}
+    \noalign{\hrule}
+\noalign{\medskip}
+$A_{t_0 + s}, s = 0,\ldots, t_1 - t_0 -1$ & $A_{t_1 - 1 -s}^\prime,
+s=0, \ldots, t_1 -t_0 -1$ \cr
+\noalign{\smallskip}
+$B_{t_0 + s}$ & $C_{t_1 -1 -s}^\prime$ \cr
+\noalign{\smallskip}
+$R_{t_0+s}$ & $G_{t_1 -1 -s} V_{1 t_1 -1 -s} G_{t_1 -1 -s}^\prime$ \cr
+\noalign{\smallskip}
+$Q_{t_0 + s}$ & $V_{2t_1 -1 -s}$ \cr
+\noalign{\smallskip}
+$W_{t_0 + s}$ & $G_{t_1 -1 -s} V_{3 t_1 -1 -s}$\cr
+\noalign{\smallskip}
+$P_{t_0 + s}$ & $\Sigma_{t_1 - s}$\cr
+\noalign{\smallskip}
+$F_{t_0 + s}$ & $K_{t_1 -1 -s}^\prime$ \cr
+\noalign{\smallskip}
+$P_{t_1}$ & $\Sigma_{t_0}$ \cr
+\noalign{\smallskip}
+$A_{t_0 + s} - B_{t_0 + s} F_{t_0 +s}$ & $A_{t_1 -1 -s}^\prime -
+C_{t_1 -1 -s}^\prime K_{t_1 -1 -s}^\prime$ \cr
+\noalign{\smallskip}\cr
+\noalign{\hrule}  }}$$
+\endtable
+%\specsec{Definition 21.1}:
+\definition{def21.1} Consider the time-varying linear system:
+$$\eqalign{x_{t+1} &= A_t x_t + B_t u_t \cr
+y_t &= C_t x_t, \  t = t_0, \ldots, t_1 -1 . \cr} \EQN ori2.47$$
+The {\it dual\/} of system \Ep{ori2.47} (sometimes called the ``dual
+with respect to $t_1-1$'') is the system
+$$\eqalign{x^\ast_{t+1} &= A_{t_1 -1 -t}^\prime x^\ast_t +
+C^\prime_{t_1 -1 -t} u^\ast_t \cr
+y^\ast_t &= B^\prime_{t_1 -1 -t} x^\ast_t\cr}$$
+with $t = t_0, t_0 + 1, \ldots, t_1 -1$.
+\enddefinition
+
+With this definition, the correspondence exhibited in \Tbl{tab21.1} %Table 21.1
+ can be
+summarized succinctly in the following proposition:
+
+%\specsec{Proposition 21.1:}
+\theorem{prop21.1}
+ Let the solution of the optimal linear regulator
+problem defined by the given matrices
+ $\{A_t, B_t, R_t, Q_t, W_t; t = t_0,
+\ldots, t_1 -1; \, P_{t_1}\}$ be given by $\{ P_t, F_t, \ t= t_0, \ldots, t_1
+-1\}$.  Then the solution of the Kalman filtering problem defined by
+$\{A_{t_1 -1 -t}^\prime,\, C_{t_1 -1 -t}^\prime$, $  G_{t_1 -1 -t}\,
+V_{1 t_1 -1 -t} G^\prime_{t_1 -1-t},   V_{2 t_1 -1 -t},
+G_{t_1 -1 -t}\,\hfil\break V_{3t_1 -1 -t};\ t = t_0, \ldots,
+ t_1 -1; \ \Sigma_{t_0}\}$
+is given by $\{K_{t_1 -t -1}^\prime =$ $F_t,
+\Sigma_{t_1 -t} = P_t; \ t = t_0,\, t_0 + 1, \ldots, t_1 -1 \}$.
+\endtheorem
+\smallskip
+This proposition describes the sense in which the Kalman filtering problem and
+the optimal linear regulator problems are ``dual'' to one another.
+As is also true of so-called
+classical control and filtering methods, the
+same equations arise in solving both
+the filtering problem and the
+control problem.  This fact implies that almost everything that we learn about
+the control problem applies to the filtering problem, and {\rm vice versa}.
+
+As an example of the use of duality, recall the transformations \Ep{ori2.13}
+and \Ep{ori2.14} that we used to convert the optimal linear regulator
+problem with
+cross products between {\it states\/} and {\it controls\/} into an equivalent
+problem with no such cross products.  The preceding discussion of duality and
+%Table 21.1
+\Tbl{tab21.1} suggest that the same transformation will convert the original dual
+filtering problem, which has nonzero covariance matrix $V_3$ between {\it
+state noise\/} and {\it measurement noise\/}, into an equivalent problem with
+covariances zero.  This hunch is correct.  The transformations, which can be
+obtained by duality directly from equations \Ep{ori2.13} and \Ep{ori2.14}, are for
+$t = t_0, \ldots, t_1 -1$
+$$\eqalign{\bar A^\prime_{t_1 -1 -t} &= A^\prime_{t_1 -1 -t}
+-C_{t_1 -1 -t}^\prime V_{2 t_1 -1 -t}^{-1} V^\prime_{3 t_1 -1 -t}
+G^\prime_{t_1 -1 -t}\cr
+\bar V_{1 t_1 -1 -t} &= V_{1 t_1 -1 -t} - V_{3 t_1 -1 -t}
+V^{-1}_{2 t_1 -1 -t} V_{3 t_1 -1 -t}^\prime .\cr}$$
+The Kalman filtering problem defined by $\{\bar A_t, C_t,
+-G_t \bar V_{1t} G^\prime_t  -V_{2t}, 0; \hfil\break
+t= t_0, \ldots, t_1 -1; \, \Sigma_0\}$
+is equivalent to the original problem in the sense that
+$$A_t - K_t C_t = \bar A_t - \bar K_t C_t, $$
+where $\bar K_t$ is the solution of the transformed problem.  We also have,
+by the results for the regulator problem and duality, the following:
+$$\bar K_t = K_t - G_t V_{3 t} V_{2 t}^{-1}.$$
+
+\section{Examples of Kalman filtering}
+This section contains several examples that have been widely used by
+economists and that fit into the Kalman filtering setting.  After the reader
+has worked through our examples, no doubt many other examples will occur.
+
+\medskip \noindent
+{\it a. Vector autoregression\/}:  We consider an $(n \times 1)$ stochastic
+process $y_t$ that obeys the linear stochastic difference equation
+$$y_t = A_1 y_{t-1} + \ldots + A_m y_{t-m} + \varepsilon_t , $$
+where $\varepsilon_t$ is an $(n \times 1)$ vector white noise, with mean
+zero and $E \varepsilon_t \varepsilon_t^\prime = V_{1 t},\, E\varepsilon_t
+y_s^\prime = 0, \  t > s$.  We define the state vector $x_t$ and shock vector
+$w_t$ as
+$$x_t = \left[\matrix{y_{t-1} \cr y_{t-2} \cr \vdots \cr y_{t-m}\cr}\right], \
+\left[\matrix{w_{1 t+1} \cr w_{2 t} \cr}\right] = \pmatrix{\varepsilon_t \cr
+\varepsilon_t}.$$
+The law of motion of the system then becomes
+$$\left[\matrix{y_t \cr y_{t-1} \cr y_{t-2} \cr \vdots \cr y_{t-m+1}\cr}
+\right] =
+\left[\matrix{A_1 & A_2 & \ldots & A_m \cr I & 0 & \ldots & 0 \cr 0 & I &
+\ldots & 0 \cr \vdots & \vdots & \ddots & \vdots \cr
+0 & \ldots & I & 0 \cr}\right] \pmatrix{y_{t-1} \cr y_{t-2} \cr y_{t-3} \cr
+\vdots \cr y_{t-m} \cr} + \left[\matrix{I\cr0\cr0\cr\vdots \cr 0}\right] \,
+\varepsilon_t.$$
+The measurement equation is
+$$y_t = [A_1 \  A_2 \ldots A_m] \, x_t + \varepsilon_t.$$
+For the filtering equations, we have
+$$\eqalign{A_t &= \left[\matrix{A_1 & A_2 & \ldots & A_m \cr I & 0 & \ldots &
+0 \cr 0 & I & \ldots & 0 \cr \vdots & \vdots & \ddots & \vdots \cr
+0 & \ldots & I & 0 \cr}\right], \  G_t =  G =
+\left[\matrix{I \cr 0 \cr 0 \cr \vdots \cr 0\cr} \right ] \cr
+C_t &= [A_1, \ldots, A_n] \cr
+V_{1 t} &= V_{2 t} = V_{3 t}.\cr}$$
+Starting from $\Sigma_{t_0} = 0$, which means that the system is imagined to
+start up with $m$ lagged values of $y$ having been observed, equation
+ \Ep{ori2.36} implies
+$$K_{t_0} = G,$$
+while equation \Ep{ori2.38} implies that $\Sigma_{t_0 + 1} = 0$.  It follows
+recursively that $K_t = G$ for all $t \geq t_0$ and that $\Sigma_t = 0$
+for all $t \geq t_0$.  Computing $(A-KC)$, we find that
+$$\widehat E_t x_{t+1} = \left[\matrix{0 & 0 & \ldots & 0 \cr I & 0 & \ldots &
+0 \cr 0 & I & \ldots & 0 \cr \vdots \cr 0 & \ldots & I & 0 \cr}\right] \
+\widehat E_{t-1} x_t + \left[\matrix{I \cr 0 \cr \vdots\cr 0 \cr}\right]
+y_t,$$
+which is equivalent with
+$$\widehat E_t x_{t+1} = \left[\matrix{y_t \cr y_{t-1} \cr \vdots \cr
+y_{t-m}\cr}\right].$$
+The equation $\widehat E_t y_{t+1} = C \widehat E_t x_{t+1}$ becomes
+$$\widehat E_t y_{t+1} = A_1 y_t + A_2 y_{t-1} + \ldots  + A_m y_{t-m+1}.$$
+
+Evidently, the preceding equation for forecasting a vector autoregressive
+process can be obtained in a much less roundabout manner, with no need to
+use the Kalman filter.
+\medskip \noindent
+{\it b. Univariate moving average\/}:  We consider the model
+$$y_t = w_t + c_1 w_{t-1} + \ldots + c_n w_{t-n}$$
+where $w_t$ is a univariate white noise with mean zero and variance
+$V_{1 t}$.  We write the model in the state-space form
+$$\eqalign{x_{t+1} &= \left[\matrix{w_t \cr w_{t-1} \cr \vdots \cr
+w_{t-n+1}\cr}\right] =
+\left[\matrix{0 & 0 & \ldots & 0 \cr 1 & 0 & \ldots & 0 \cr \vdots & \vdots &
+\ddots & \vdots \cr 0 & \ldots
+& 1 & 0 \cr}\right] \left[\matrix{w_{t-1} \cr w_{t-2} \cr \vdots \cr w_{t-n}
+\cr}\right] + \left[\matrix{1 \cr 0 \cr \vdots\cr 0\cr}\right] w_t \cr
+y_t &= [c_1 \  c_2 \ldots c_n] x_t + w_t .\cr}$$
+We assume that $\Sigma_{t_0} = 0$, so that the initial state is known.  In this
+setup, we have $A, G$, and $C$ as indicated previously, and $w_{1t+1} = w_t, w_{2t}
+= w_t$, and $V_1 = V_2 = V_3$.  Iterating on the Kalman filtering
+equations \Ep{ori2.38} and \Ep{ori2.36} with $\Sigma_{t_0} = 0$, we obtain
+$\Sigma_t = 0, \ t \geq t_0,\ K_t = G,\ t \geq t_0$, and
+$$(A-KC) = \pmatrix{-c_1 & -c_2 & \ldots & -c_{n-1} & -c_n \cr 1 & 0 & \ldots
+& 0 & 0 \cr 0 & 1 & \ldots & 0 & 0 \cr \vdots & \vdots & \ddots & \vdots &
+\vdots \cr 0 & 0 & \ldots & 1 & 0 \cr} .$$
+It follows that
+$$\eqalign{ \widehat E_t x_{t+1} &= \widehat E_t \pmatrix{w_t \cr w_{t-1} \cr
+\vdots \cr w_{t-n+1}\cr} = \pmatrix{-c_1 & -c_2 & \ldots & -c_{n-1} & -c_n \cr
+1 & 0 & \ldots & 0 & 0 \cr 0 & 1 & \ldots & 0 & 0 \cr \vdots & \vdots & \ddots
+& \vdots & \vdots \cr 0 & 0 & \ldots & 1 & 0 \cr} \cr
+\noalign{\medskip}
+&\hskip .50in \widehat E_{t-1} \pmatrix{w_{t-1} \cr w_{t-2} \cr \vdots \cr
+w_{t-n}\cr} + \pmatrix{1 \cr 0 \cr \vdots \cr 0 \cr} y_t . \cr}$$
+With $\Sigma_{t_0} = 0$, this equation implies
+$$\widehat E_t w_t = y_t - c_1 w_{t-1} - \ldots -c_n w_{t-n} .$$
+Thus, the innovation $w_t$ is recoverable from knowledge of $y_t$ and $n$
+past innovations.
+\medskip \noindent
+{\it c. Mixed moving average--autoregression\/}:  We consider the univariate,
+mixed second-order autoregression, first-order moving average process
+$$y_t = A_1 y_{t-1} + A_2 y_{t-2} + v_t + B_1 v_{t-1}, $$
+where $v_t$ is a white noise with mean zero, $Ev_t^2 = V_1$ and $Ev_t y(s)
+= 0$ for $s<t$.  The trick in getting this system into the state-space form is
+to define the state variables $x_{1 t} = y_t - v_t$, and $x_{2 t} = A_2
+y_{t-1}$.  With these definitions the system and measurement equations become
+$$x_{t+1} = \pmatrix{A_1 & 1 \cr A_2 & 0 \cr} x_t + \pmatrix{B_1  +  A_1 \cr
+A_2 \cr} v_t \EQN ori2.48$$
+$$y_t = [1 \  0] x_t + v_t. \EQN ori2.49$$
+Notice that using equation \Ep{ori2.48} and \Ep{ori2.49} repeatedly, we have
+$$\eqalign{y_t = x_{1 t} + v_t &= A_1 x_{1 t-1} + x_{2 t-1} + (B_1 + A_1)
+v_{t-1} + v_t \cr
+&= A_1 (x_{1 t-1} + v_{t-1}) + v_t + B_1 v_{t-1}+ A_2 (x_{1 t-2} + v_{t-2})\cr
+&= A_1 y_{t-1} + A_2 y_{t-2} + v_t + B_1 v_{t-1} \cr}$$
+as desired.  With the state and measurement equations \Ep{ori2.48} and
+\Ep{ori2.49}, we have $V_1 = V_2 = V_3$,
+$$A = \pmatrix{A_1 & 1 \cr A_2 & 0\cr}, G = \pmatrix{B_1 + A_1 \cr A_2
+\cr},\ C = [1\ 0].$$
+We start the system off with $\Sigma_{t_0} = 0$, so that the initial state is
+imagined to be known.  With $\Sigma_{t_0} = 0$, recursions on equations \Ep{ori2.35} and
+\Ep{ori2.38} imply that $\Sigma_t = 0$ for $t \geq t_0$ and $K_t = G$ for $t \geq
+t_0$.  Computing $A - KC$, we find
+$$(A-KC) = \pmatrix{-B_1 & 1 \cr 0 & 0\cr}$$
+and we have
+$$\widehat E_t x_{t+1} = \left[\matrix{-B_1 & 1\cr 0 & 0\cr}\right]\, \hat
+t_{t-1} x_t + \left[\matrix{B_1 + A_1\cr A_2\cr}\right]\, y_t .$$
+Therefore, the recursive prediction equations become
+$$\widehat E_t y_{t+1} = \left[\matrix{1 &  0\cr}\right]
+ \widehat E_{t+1} x_{t+1} = \widehat E_t
+x_{1t+1} .$$
+Recalling that $x_{2 t} = A_2 y_{t-1}$, the preceding two equations imply that
+$$\widehat E_t y_{t+1} = -B_1 \widehat E_{t-1} y_t + A_2 y_{t-1} + (B_1 + A_1)
+y_t . \EQN ori2.50$$
+Consider the special case in which $A_2 = 0$, so that the $y_t$ obeys a first-order
+moving average, first-order autoregressive process.  In this
+case equation \Ep{ori2.50} can be expressed
+$$\widehat E_t y_{t+1} = B_1 (y_t - \widehat E_{t-1} y_t) + A_1 y_t ,$$
+which is a version of the Cagan-Friedman ``error-learning'' model.  The
+solution of the preceding difference equation for $\widehat E_t y_{t+1}$ is given
+by the geometric distributed lag
+$$\eqalign{\widehat E_t y_{t+1} &= (B_1 + A_1) \sum^m_{j=0} (-B_1)^j y_{t-j}\cr
+&+ (-B_1)^{m+1} \widehat E_{t-m-1} y_{t-m} .\cr}$$ For the more
+general case depicted in equation \Ep{ori2.50} with $A_2 \not= 0$,
+$\widehat E_t y_{t+1}$ can be expressed as a
+convolution\NFootnote{A sequence $\{c_s\}$ is said to be the
+convolution of the two sequences $\{a_s\}, \{b_s\}$ if $c_s =
+\sum_{j=-\infty}^\infty a_j b_{s-j}$.} of geometric lag
+distributions in current and past $y_t$'s.
+\medskip\noindent
+{\it d. Linear regressions\/}:  Consider the standard linear regression model
+$$y_t = z_t \beta + \varepsilon_t, \quad t = 1, 2, \ldots, T$$
+where $z_t$ is a $1 \times n$ vector of independent variables, $\beta$ is an
+$n \times 1$ vector of parameters, and $\varepsilon_t$ is a serially
+uncorrelated random term with
+mean zero and variance $E \varepsilon^2_t = \sigma^2$, and satisfying
+$E\varepsilon_t z_s = 0$ for $t \geq s$.  The least-squares estimator of
+$\beta$ based on $t$ observations, denoted $\hat \beta_{t+1}$, is obtained as
+follows.  Define the stacked matrices
+$$Z_t = \left[\matrix{z_1 \cr z_2 \cr \vdots \cr z_t\cr}\right] ,\quad Y_t =
+\left[\matrix{y_1 \cr y_2 \cr \vdots \cr y_t \cr}\right].$$
+Then the least-squares estimator based on data through time $t$ is given by
+$$\hat \beta_{t+1} = (Z_t^\prime Z_t)^{-1} Z_t^\prime Y_t \EQN ori2.51 $$
+with covariance matrix
+$$E (\hat \beta_{t+1} - E \hat \beta_{t+1}) (\hat \beta_{t+1} - E \hat
+\beta_{t+1})^\prime = \sigma^2 (Z^\prime_t Z_t)^{-1}. \EQN ori2.52$$
+For reference, we note that
+$$\eqalign{\hat \beta_t &= (Z^\prime_{t-1} Z_{t-1})^{-1} Z_{t-1}^\prime Y_{t-1}
+\cr
+E (\hat \beta_t & - E \hat \beta_t) (\hat \beta_t - E \hat \beta_t)^\prime =
+\sigma^2 (Z^\prime_{t-1} Z_{t-1})^{-1} .\cr}\EQN ori2.52e$$
+If $\hat \beta_t$ has been computed by equation \Ep{ori2.52e}, it is computationally
+inefficient to compute $\hat \beta_{t+1}$ by equation \Ep{ori2.51} when new data
+$(y_t, z_t)$ arrive at time $t$.  In particular, we can avoid inverting
+the matrix $(Z_t^\prime Z_t)$ directly, by employing a recursive procedure
+for inverting it.  This approach can be viewed as an application of the
+Kalman filter.  We explore this connection briefly.
+
+We begin by noting how least-squares estimators can be computed recursively
+by means of the Kalman filter.  We let $y_t$ in the Kalman filter be $y_t$ in the
+regression model.  We then set $x_t = \beta$ for all $t$, $V_{1 t} = 0, \,
+V_{3 t} = 0, \, V_{2 t} = \sigma^2, \, w_{1t+1} = 0, \, w_{2t} = \varepsilon_t,
+\, A = I$, and $C_t = z_t$.  Let
+$$\hat \beta_{t+1} = E \left[ \beta \mid y_t, y_{t-1}, \ldots y_1, z_t,
+z_{t-1}, \ldots, z_1, \hat \beta_0\right],$$
+where $\hat \beta_0$ is $\hat x_0$.  Also, let $\Sigma_t = E (\hat \beta_t -
+E \hat \beta_t) (\hat \beta_t - E \hat \beta_t)^\prime$.  We start things off
+with a ``prior'' covariance matrix $\Sigma_0$.  With these definitions, the
+recursive formulas \Ep{ori2.36} and \Ep{ori2.38} become
+$$\eqalign{K_t &= \Sigma_t z^\prime_t (\sigma^2 + z_t \Sigma_t
+z_t^\prime)^{-1} \cr
+\Sigma_{t+1} &= \Sigma_t - \Sigma_t z_t^\prime (\sigma^2 + z_t \Sigma_t
+z_t^\prime)^{-1} z_t \Sigma_t\cr}\EQN ori2.53$$
+Applying the formula $\hat x_{t+1} = (A - K_t C_t) \hat x_t + K_t y_t$ to the
+present problem with the preceding formula for $K_t$ we have
+$$\hat \beta_{t+1} = (I - K_t z_t) \hat \beta_t + K_t y_t.\EQN ori2.54$$
+\par
+We now show how equations \Ep{ori2.53} and \Ep{ori2.54} can be derived directly
+from equations \Ep{ori2.51} and \Ep{ori2.52}.  From a matrix inversion formula
+(see Noble and Daniel, 1977, p. 194), we have
+$$\eqalign{(Z_t^\prime Z_t)^{-1} &= (Z^\prime_{t-1} Z_{t-1})^{-1}\cr
+& - (Z_{t-1}^\prime Z_{t-1})^{-1} z_t^\prime [1 + z_t(Z^\prime_{t-1}
+Z_{t-1}^1)^{-1} z^\prime_t]^{-1} z_t (Z^\prime_{t-1} Z_{t-1})^{-1} .\cr} \EQN
+ori2.55$$
+Multiplying both sides of equation \Ep{ori2.55} by $\sigma^2$ immediately gives
+equation \Ep{ori2.53}.  Use the right side of equation \Ep{ori2.55} to substitute for
+$(Z^\prime_t Z_t)^{-1}$ in equation \Ep{ori2.51} and write
+$$Z^\prime_t Y_t = Z^\prime_{t-1} Y_{t-1} + z^\prime_t y_t$$
+to obtain
+$$\eqalign{\hat \beta_{t+1} = & {1 \over \sigma^2} \{ \Sigma_t - \Sigma_t
+z_t^\prime (\sigma^2 + z_t \Sigma_t z_t^\prime)^{-1} z_t \Sigma_t \}
+\cdot \{ Z_{t-1}^\prime Y_{t-1} + z^\prime_t y_t \} \cr
+=& \underbrace{{1\over \sigma^2}\Sigma_t Z_{t-1}^\prime
+Y_{t-1}}_{\hat \beta_t} -
+\underbrace{\Sigma_t z_t^\prime (\sigma^2 + z_t \Sigma_t z^\prime_t)^{-1}}
+_{K_t}\, \underbrace{z_t}_{C_t} \  \underbrace{{1\over \sigma^2}\Sigma_t
+Z^\prime_{t-1} Y_{t-1}}_{\beta_t} \cr
+& + \underbrace{\Sigma_t Z^\prime_t (\sigma^2 + z_t \Sigma_t
+Z^\prime_t)^{-1}}_{K_t} y_t\cr
+\hat \beta_{t+1} = &(A - K_t C_t) \hat \beta_t + K_t y_t.\cr}$$
+These formulas are evidently equivalent with those asserted earlier.
+%
+%insert1
+%
+%
+%insert2
+%
+%
+\section{Linear projections} %to Chapter 2}
+
+For reference we state the following theorems about linear least-squares
+projections.  We let $Y$ be an $(n \times 1)$ vector of random variables and
+$X$ be an $(h \times 1)$ vector of random variables.  We assume that the
+following first and second moments exist:
+$$\eqalign{EY &= \mu_Y,\ EX = \mu_X , \cr
+EXX^\prime &= S_{XX},\ EYY^\prime = S_{YY},\ EYX^\prime = S_{YX} .\cr}$$
+Letting $x=X - EX$ and $y = Y - EY$, we define the following covariance matrices
+$$Exx^\prime = \Sigma_{xx},\ E_{yy}^\prime = \Sigma_{yy},\ Eyx^\prime =
+\Sigma_{yx}.$$
+
+We are concerned with estimating $Y$ as a linear function of $X$.  The
+estimator of $Y$ that is a linear function of $X$ and that minimizes the
+mean squared error between each component $Y$ and its estimate is called the
+{\it linear projection of $Y$ on $X$.}
+\medskip\noindent
+%\specsec{Definition 21.2:}
+\definition{def21.2} The {\it linear projection\/} of $Y$ on $X$ is the
+affine
+function $\hat Y = AX + a_0$ that minimizes $E\hbox{ trace } \{(Y-\hat Y)\,
+(Y-\hat Y)^\prime\}$ over all affine functions $a_0+AX$ of $X$.  We denote
+this linear
+projection as $\widehat E [Y \mid X]$, or sometimes as $\widehat E\, [Y\mid x,
+\, 1]$ to emphasize that
+a constant is included in the ``information set.''
+\enddefinition
+\par
+The linear projection of $Y$ on $X$, $\widehat E \, [Y \mid X]$ is also
+sometimes called the {\it wide sense expectation of $Y$ conditional on $X$.}
+We have the following theorems:
+\medskip \noindent
+%\specsec{Theorem 21.1:}
+\theorem{th21.1}
+$$\widehat E\,[Y \mid X] = \mu_y + \Sigma_{yx} \Sigma^{-1}_{xx} (X-\mu_x) .
+\EQN A1$$
+\endtheorem
+\medskip \noindent
+%\specsec{Proof:}
+\proof
+The theorem follows immediately by writing out $E\, {\rm trace}
+\ (Y-\hat Y) (Y - \hat
+Y)^\prime$ and completing the square, or else by writing out $E \, {\rm trace}
+(Y-\hat Y) (Y - \hat Y)^\prime$ and obtaining first-order necessary conditions
+(``normal equations'') and solving them. \endproof %\qed
+\medskip \noindent
+%\specsec{Theorem 21.2:}
+\theorem{th21.2}
+$$\widehat E\,\biggl[\bigl(Y - \widehat E [Y \mid x]\bigr) \mid X^\prime
+\biggr] = 0.$$
+\endtheorem
+\noindent This equation states that the errors from the projection are orthogonal to each
+variable included in $X$.
+\medskip\noindent
+%\specsec{Proof:}
+\proof Immediate from the normal equations.\endproof % \qed
+\medskip\noindent
+%\specsec{Theorem 21.3:}
+\theorem{th21.3} \quad (Orthogonality principle)
+$$E\Bigl[ [Y-\widehat E\,(Y\mid x)]\,x^\prime\Bigr]=0 .$$
+\endtheorem
+\medskip\noindent
+%\specsec{Proof:}
+\proof Follows from Theorem 21.3. \endproof %\qed
+
+%\specsec{Theorem 21.4:}
+\theorem{th21.4} \quad (Orthogonal regressors)
+\medskip \noindent
+ Suppose that\hfil\break
+$X^\prime = (X_1, X_2, \ldots, X_h)^\prime, EX^\prime= \mu^\prime = (\mu_{x1},
+\ldots, \mu_{xh})^\prime$, and $E (X_i - \mu_{xi})\, (X_j-\mu_{xj}) = 0$
+for $i \not= j$.  Then
+$$\widehat E \, [Y \mid x_1,\ldots, x_n, 1] = \widehat E\,[Y \mid x_1]+\widehat
+E\,[Y\mid x_2] + \ldots + \widehat E\, [Y\mid x_n]-(n-1) \mu_y . \EQN A2$$
+\endtheorem
+\medskip\noindent
+%\specsec{Proof:}
+\proof Note that from the hypothesis of orthogonal regressors, the
+matrix $\Sigma_{xx}$ is diagonal.  Applying equation
+\Ep{A1} then gives equation \Ep{A2}. \endproof %\qed
+\index{Markov chain!hidden}
+\index{filter!nonlinear}
+\section{Hidden Markov models\label{sec:HMM}}
+This section gives a brief introduction to hidden Markov models,
+a tool that is useful to study a variety of nonlinear filtering
+problems in finance and economics.  We display a solution to
+a nonlinear filtering problem that a reader might want
+to compare to the linear filtering problem described earlier.
+
+    Consider an $N$-state Markov chain.   We can represent the
+state space in terms of the unit vectors
+$S_x = \{e_1,\ldots, e_N\}$, where $e_i$  is the $i$th
+ $N$-dimensional unit vector.  Let the $N \times N$ transition
+matrix be $P$, with $(i,j)$ element
+$$P_{ij} = {\rm Prob}(x_{t+1} = e_j\mid x_t = e_i).$$
+With these definitions, we have
+$$E x_{t+1} \mid x_t = P^\prime x_t.$$
+%
+Define the ``residual''
+$$v_{t+1} = x_{t+1} - P^\prime x_t,$$
+which implies the linear ``state-space'' representation
+$$x_{t+1} = P^\prime x_t + v_{t+1}.$$
+Notice how it follows that
+$E \ v_{t+1} \mid x_t = 0 ,$ which qualifies $v_{t+1}$ as a ``martingale
+difference process adapted to $x_t$.''\index{martingale difference}%
+
+  We want to append a ``measurement equation.''   \index{measurement equation}%
+Suppose that $x_t$ is not observed, but that $y_t$, a   noisy function
+of $x_t$, is observed.  Assume that $y_t$ lives in the $M$-dimensional
+space $S_y$, which we represent in terms of
+$M$ unit  vectors:
+$S_y = \{f_1,\ldots, f_M\}$, where $f_i$ is the $i$th $M$-dimensional
+unit vector.
+To specify a  linear measurement equation $y_t = C(x_t, u_t)$, where
+$u_t$ is a measurement noise, we begin by defining the $N \times M$
+matrix $Q$ with
+$$\hbox{Prob } (y_t = f_j \mid x_t = e_i) = Q_{ij}.$$
+It follows that
+ $$E\ (y_t\mid x_t) = Q^\prime x_t.$$
+Define the residual
+$$u_t \equiv y_t - E\ y_t\mid x_t,$$
+which suggests the ``observer equation''  \index{observer equation}
+$$y_t = Q^\prime x_t + u_t.$$
+It follows from the definition of $u_t$ that $E \ u_t \mid x_t = 0$.
+Thus, we have the linear state-space system
+$$\eqalign{ x_{t+1} &= P' x_t + v_{t+1} \cr
+             y_t &= Q' x_t + u_t. \cr}  $$
+Using the definitions,
+it is straightforward to calculate the conditional second moments
+of the error processes
+ $v_{t+1},u_t$.\NFootnote{Notice that
+ $$\eqalign{x_{t+1} x_{t+1}^\prime &= P' x_t (P' x_t)' + P' x_t v'_{t+1}\cr
+&+ v_{t+1} (P' x_t)' + v_{t+1} v'_{t+1}\cr}$$
+Substituting into this equation the facts that
+$x_{t+1} x^\prime_{t+1} = \hbox{diag } x_{t+1} = \hbox{diag } (P^\prime
+x_t) + \hbox{diag } v_{t+1}$ gives
+$$\eqalign{v_{t+1} v^\prime_{t+1}&= \hbox{diag } (P^\prime x_t) + \hbox{diag }
+(v_{t+1}) - P^\prime \hbox{diag } x_t P \cr
+&- P^\prime x_t v^\prime_{t+1} (P^\prime x_t)^\prime.\cr}$$
+It follows that
+$$E\  [v_{t+1} v^\prime_{t+1} \mid x_t] = \hbox{diag } (P^\prime x_t) -
+P^\prime \hbox{diag } x_t P.$$
+Similarly,
+$$E\ [u_t\ u^\prime_t \mid x_t] = \hbox{diag } (Q^\prime x_t) - Q^\prime
+\hbox{diag } x_t Q.$$}
+
+
+
+\subsection{Optimal filtering}
+We seek a recursive formula for  computing the conditional
+distribution of the hidden state:
+%
+%
+$$\rho_i (t) = {\rm Prob}\{x_t = i\mid y_1=\eta_1, \ldots, y_t = \eta_t\}.$$
+%$$P_{ij} (t) = {\rm Prob}\{x_t = j\mid x_{t-1}=i\}$$
+%$$\sum_j P_{ij}(t) = 1\ ,\quad P_{ij} (t) \geq 0$$
+%$$q_{ij} = {\rm Prob} \{y_t =
+%    j\mid x_t=i\}\ ,\quad \sum_j q_{ij}=1,\quad q_{ij}\geq
+%0$$
+   Denote the history of observed $y_t$'s up to $t$ as
+$\eta^t = \hbox{ col } (\eta_1,\ldots,\eta_t).$
+Define the conditional probabilities
+$$p(\xi_t,\eta_1,\ldots,\eta_t) = {\rm Prob} \ (x_t=\xi_t, y_1= \eta_1,\ldots,
+y_t=\eta_t),$$
+and assume $p(\eta_1,\ldots, \eta_t)\not= 0$.
+Then apply the calculus of conditional expectations to compute\NFootnote{Notice
+ that
+$$\eqalign{p(\xi_t,\eta_t \mid \eta^{t-1}) &= \sum_{\xi_{t-1}}
+ p(\xi_t, \eta_t,
+\xi_{t-1}\mid \eta^{t-1}) \cr\noalign{\medskip}
+&= \sum_{\xi_{t-1}} p (\xi_t, \eta_t\mid \xi_{t-1}, \eta^{t-1})
+p (\xi_{t-1}\mid \eta^{t-1})\cr}$$
+
+$$\eqalign{p(\xi_t,\eta_t \mid \xi_{t-1}, \eta^{t-1}) &=
+p(\xi_t \mid \xi_{t-1}, \eta^{t-1}) p(\eta_t \mid \xi_t,\ \xi_{t-1},
+\eta^{t-1})\cr \noalign{\smallskip}
+&= p(\xi_t\mid \xi_{t-1}) p(\eta_t\mid \xi_t) . \cr}$$
+Combining these results gives the formula in the text.}
+$$\eqalign{p(\xi_t\mid \eta^t) &= {p(\xi_t, \eta_t\mid \eta^{t-1})\over
+p (\eta_t\mid \eta^{t-1})}\cr
+        & = { \sum_{\xi_{t-1}} p(\eta_t \mid \xi_t)\ p(\xi_t
+\mid \xi_{t-1}) p(\xi_{t-1}\mid \eta^{t-1})\over
+\sum_{\xi_t} \sum_{\xi_{t-1}} p(\eta_t\mid \xi_t) p(\xi_t \mid \xi_{t-1})
+p(\xi_{t-1}\mid \eta^{t-1})} .\cr}$$
+This result can be written
+$$\rho_i (t+1) = {\sum_s Q_{ij} P_{si} \rho_s(t)\over \sum_s \sum_i Q_{ij}
+P_{si} \rho_s(t)},  $$
+where $\eta_{t+1} = j$ is the value of $y$ at $t+1$
+%$$\rho_i(t+1) = \hbox{Prob } \{x_{t+1} = i\mid y_{t+1} = j, \eta^{t-1}\}$$
+We can represent  this recursively as
+$$\eqalign{\tilde \rho(t+1) &= \hbox{ diag } (Q_j) P^\prime
+ \rho(t)\cr \rho(t+1) &=
+{\tilde \rho(t+1)\over < \tilde \rho(t+1), \underline{1}>} . \cr}$$
+where $Q_j$ is the $j$th column of $Q$, and diag$(Q_j)$ is a diagonal matrix
+with $Q_{ij}$ as the $i$th diagonal element; here $< \cdot, \cdot >$ denotes
+the inner product of two vectors, and $\underline 1$ is the
+unit vector.
+
+\chapternum=0

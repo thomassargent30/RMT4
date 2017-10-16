@@ -1,0 +1,2810 @@
+
+\hyphenation{contin-gent}
+\input grafinp3
+\input psfig
+%\eqnotracetrue
+
+%\showchaptIDtrue
+%\def\@chaptID{10.}
+
+%Blackboard Bold R
+\def\bbR{{I\kern-0.3em R}}
+
+\def\Az{{A_z}}
+\def\Cz{{C_z}}
+\def\ez{{e_z}}
+
+%\hbox{}
+\def\epigraph#1#2{%
+\begingroup
+\smallskip
+%\epigraphskip
+\leftskip=2em
+\rightskip=0pt plus2em
+\it\noindent #1\par
+\noindent --- #2\par
+\endgroup\noindent}
+
+\def\tone{{t+1}}
+\def\toner{{t-1}}
+\def\pdp{{{p_{t+1}+d_{t+1}\over p_t}}}
+\def\ucuc{{{u'(c_{t+1})\over u'(c_t)}}}
+\def\ucucc{{{u'(c_{t+2})\over u'(c_t)}}}
+\def\cov{{\rm cov}}
+\footnum=0
+\chapter{Asset Pricing Empirics\label{assetpricing2}}
+\section{Introduction}
+
+In chapter \use{assetpricing1}, we repeatedly encountered a random variable that in this chapter
+we shall call a  \idx{stochastic discount factor} $m_{t+1}$, namely
+$$ m_{t+1} = \beta \left( {\frac{C_{t+1}}{C_t}}\right)^{-\gamma}, \EQN ConsDuffTom1 $$
+where $\beta$ is a discount factor, $\gamma$ is a coefficient of relative risk aversion,
+and $C_t$ is the consumption of a representative consumer.  The random process $\left( {\frac{C_{t+1}}{C_t}}\right)^{-\gamma}$ contributes
+ the stochastic part of the stochastic discount factor.  The asset pricing theories
+in chapter \use{assetpricing1}  assert that for
+any asset $j$ traded by a representative consumer, its one period gross return $R_{j,t+1}$ must satisfy
+$$ E_t \left( m_{t+1} R_{j,t+1} \right)= 1 . \EQN ConsDuffTom2 $$
+Empirically, for the stochastic discount factor \Ep{ConsDuffTom1}, restriction \Ep{ConsDuffTom2} fails to work well when applied  to data on  returns of stocks and risk-free bonds.
+Mehra and Prescott (1985)  called this failure the `equity premium puzzle.'  As we explain in this chapter,
+a substantial part of the problem is that with aggregate U.S. data for $C_t$ and `reasonable' values for $\gamma$, $\left( {\frac{C_{t+1}}{C_t}}\right)^{-\gamma}$ is
+insufficiently volatile.
+This chapter first  describes what is commonly meant by `reasonable' values for $\gamma$. Then we describe the equity premium puzzle, other affiliated asset pricing puzzles,
+and some approaches to explaining them.   Our major theme is how to  modify the standard CRRA  stochastic discount factor \Ep{ConsDuffTom1} in ways that can make \Ep{ConsDuffTom2} fit key features
+of the returns data better. We shall study some  theories that increase the volatility of the stochastic discount factor by  multiplying $\beta \left( {\frac{C_{t+1}}{C_t}}\right)^{-\gamma}$
+with a volatile random variable that reflects either aspects of the preferences of a representative consumer or heterogeneity in the distribution of consumption within a collection
+of consumers. \auth{Mehra, Rajnish}%
+\auth{Prescott, Edward C.}%
+We conclude this chapter in section \use{sec:expaffine} by describing a widely used way of explaining expected rate of return discrepancies by
+cutting a Gordian knot by using   a good fitting and conveniently parameterized stochastic discount factor that is divorced from consumer preferences.
+
+\section{Interpretation of risk-aversion parameter}
+
+    To  understand why
+the large measured equity premium is a puzzle, it is important to interpret $\gamma$ in \Ep{ConsDuffTom1},
+a parameter that measures attitudes about gambles over events governed by a known probability distribution.
+ Economists' prejudice that reasonable values
+of the \idx{coefficient of relative risk aversion} must be below 3
+comes from experiments that confront people with gambles drawn from well understood probability distributions.
+
+The asset-pricing literature
+often uses the constant relative risk-aversion utility function
+$$ u(C) = {\frac{C^{1-\gamma}}{1-\gamma}}.$$
+Note that
+$$ \gamma = {- C u''(C) \over u'(C) },$$
+which is the individual's coefficient of relative risk aversion.
+ \auth{Pratt, John}%
+  We want to interpret the parameter $\gamma$ in terms of a preference
+for avoiding risk.   Following Pratt (1964), consider
+ offering  two alternatives to a
+ consumer who starts off with risk-free consumption
+level $C$: he can receive $C - \Delta_C$ with certainty
+or  a lottery paying $C - y$ with probability .5 and $C+y$ with probability
+.5.   For given   $y$  and $C$, we seed a  $\Delta_C = \Delta_C(y,C)$ that leaves the consumer
+indifferent between these two choices.  That is, we want
+a function $\Delta_C(y,C)$ that solves
+$$ u[C - \Delta_C(y,C)] = .5 u(C+y) + .5 u(C-y). \EQN old0 $$
+  For given  values of $C,y$, we can solve the nonlinear
+equation \Ep{old0} for $\Delta_C$.
+
+Alternatively, for small values of $y$, we can appeal to
+Pratt's local  argument.    A Taylor series
+expansion of $u(C - \Delta_C)$ around the point $C$ gives\NFootnote{Here $O(\cdot)$ means
+terms of order at most $(\cdot)$, while $o(\cdot)$ means
+terms of smaller order than $(\cdot)$.}
+$$ u(C -\Delta_C) = u(C) - \Delta_C u'(C) + O(\Delta_C^2) . \EQN pratt2$$
+ Taking a Taylor series expansion
+of $u(C+\tilde y) $ around the point $C$ gives
+$$ u(C+\tilde y)   = u(C) + \tilde y u'(C) +  {1 \over 2}
+         \tilde y^2 u''(C) + O(\tilde y^3) , \EQN old2$$
+where $\tilde y$ is the random variable that takes
+value $y$ with probability .5 and $-y$ with probability .5.
+Taking expectations  on both sides gives
+$$ Eu(C+\tilde y) = u(C) + { 1\over 2} y^2 u''(C) + o(y^2). \EQN old3 $$
+Equating formulas
+ \Ep{pratt2} and \Ep{old3} and ignoring the  higher-order terms gives
+$$ \Delta_C(y,C) \approx {1 \over 2} y^2 \left[{ - u''(C) \over u'(C)}\right] .$$
+For the constant relative risk-aversion
+utility function, we have
+$$ \Delta_C(y,C) \approx {1 \over 2} y^2 {\gamma \over C}.  $$
+This can be expressed
+as
+$$ \Delta_C / y \approx {1 \over 2} \gamma \left(y / C \right) . \EQN old5 $$
+The left side is the percentage premium that the consumer is willing
+to pay to avoid a fair bet     of size $y$; the right
+side is one-half $\gamma$ times the ratio of the size of the
+bet $y$ to his initial consumption level $C$.
+
+
+
+%\medskip
+%$$\vbox{\halign{#\hfil &\quad \hfil# &\quad \hfil# &\quad \hfil# &\quad \hfil#\cr
+%$\gamma  \ \  y:$ & 10  & 100 & 1000 & 5000 \cr
+%2 & .02 & .2 & 20 & 500 \cr
+%5 & .05 & 5 & 50 & 1217 \cr
+%10 & .1 & 1 & 100 & 2212 \cr}}$$
+%\centerline{\bf Table 2}
+%\centerline{Risk premium}
+%\centerline{$\pi(y,c)$ for various values of $y$ and $\gamma$.}
+%\medskip\noindent
+
+
+
+
+\tag{Cochranepage}{\the\pageno}%
+Following Cochrane (1997), think of confronting
+someone with initial consumption of \$50,000 per year
+ with a  50--50 chance of winning or losing  $y$ dollars.  How much
+would the person be willing to pay to avoid that risk?
+  For $C=50,000$, we calculated $\Delta_C$ from equation \Ep{old0}
+for values of $y=10, 100, 1000, 5000$ (see  \Tbl{old101}).
+% We did so
+%for several values of $\gamma$.  For $\gamma=2$,
+%the premiums $\pi$ associated with
+%these values of $y$ are .02, .2, 20, 500.  For
+%$\gamma=5$ the values are .05, .5, 50, 1,217.  For $\gamma=10$,
+%the values of the premium are .1, 1, 100, 2,212.
+A common reaction to these premia is that for values
+of $\gamma$ even as high as 5, they are too big.   This
+is one important source of macroeconomists' prejudice
+that $\gamma$ should not be much higher than 2 or 3. Please see the quotation
+from Robert E. Lucas, Jr., that appears later in this chapter.
+\bigskip
+\midtable{old101}
+
+$$\vbox{\offinterlineskip
+\hrule
+\halign{\strut #\hfil & \hfil# &\quad \hfil# &\quad \hfil#
+&\quad \hfil#\cr
+$\gamma \setminus y$  &  10  & 100 & 1,000 & 5,000 \cr \noalign{\hrule}
+2 & .02 & .2 & 20 & 500 \cr
+5 & .05 & 5 & 50 & 1,217 \cr
+10 & .1 & 1 & 100 & 2,212 \cr\noalign{\hrule}
+}}$$
+\caption{Risk premium $\Delta_C(y,C)$ for various
+values of $y$ and $\gamma$ when $C = 50,000$.}
+\endtable
+
+\section{The equity premium puzzle}\label{sec:equitypremium}%
+\Tbl{old102} depicts empirical  first and second moments  of  yields on relatively riskless bonds and risky equity in the
+U.S.\ data over the $90$-year period 1889--1978. The average real yield on the Standard \& Poor's 500 index
+was 7 percent, while the average yield on short-term debt was only
+1 percent.   The \idx{equity premium puzzle} is that with aggregate consumption data, it takes an extraordinarily large value of
+the coefficient of relative risk aversion to generate such a large gap between the returns on equities and risk-free securities.\NFootnote{For
+insightful reviews and lists of  possible resolutions of the equity premium
+puzzle, see Aiyagari (1993), Kocherlakota (1996a), and Cochrane (1997).}
+%\vfil\eject
+\medskip
+\midtable{old102}
+
+$$\vbox{\offinterlineskip
+\hrule
+\halign{\strut #\hfil \quad & #\qquad & #\quad & #\quad & \hfil # \cr
+& {\bf Mean}  & \multispan3{\bf Variance-Covariance}\cr
+&             & $1+r^s_{t+1}$ & $1+r^b_{t+1}$ & $C_{t+1}/C_t$ \cr
+\noalign{\hrule}
+$1+r^s_{t+1}$ & 1.070 & 0.0274 & 0.00104 &    0.00219 \cr
+$1+r^b_{t+1}$ & 1.010 &        & 0.00308 & \llap{$-$}0.000193\cr
+$C_{t+1}/C_t$ & 1.018 &        &         &    0.00127 \cr \noalign{\hrule}
+}}$$
+
+\smallskip\noindent
+\caption{Summary statistics for U.S.\ annual data, 1889--1978.
+The quantity $1+r^s_{t+1}$ is the real return to stocks,
+$1+r^b_{t+1}$ is the real return to relatively riskless bonds, and
+$C_{t+1} / C_t$ is the growth rate of per capita real consumption
+of nondurables and services. Source: Kocherlakota (1996a, Table 1), who uses the same data as
+Mehra and Prescott (1985).}
+\endtable
+\bigskip
+%%%%%%%%%%%%%%%%%%
+%\topinsert
+%\settabs 7 \columns
+%\+ {\bf Table 10.2:} Summary statistics for U.S.\ annual data, 1889-1978 \cr
+%%\+ \hskip1.5cm      age group in 1990               \cr
+%\hskip.1cm
+%\+&             &{\bf Mean}      &\hskip.5cm {\bf Variance-Covariance}    \cr
+%\+&             &          &$1+r^s_{t+1}$ &$1+r^b_{t+1}$ &$c_{t+1} / c_t$ \cr
+%\hskip.1cm
+%\+& $1+r^s_{t+1}$   &1.070  &0.0274  &0.00104  &\ 0.00219  \cr
+%\+& $1+r^b_{t+1}$   &1.010  &        &0.00308  & -0.000193 \cr
+%\+& $c_{t+1} / c_t$ &1.018  &        &         &\ 0.00127  \cr
+%\hskip.1cm
+%\+\hskip.7cm The quantity $1+r^s_{t+1}$ is the real return to stocks,
+%$1+r^b_{t+1}$ is the real return to                       \cr
+%\+\hskip.7cm  relatively riskless bonds, and
+%$c_{t+1} / c_t$ is the growth rate of per capita          \cr
+%\+\hskip.7cm Source:\ \ Kocherlakota (1996a, Table 1), who uses the same data
+%\+\hskip.7cm  real consumption
+%of nondurables and services. \cr
+%as                                                   \cr
+% \+\hskip.7cm Mehra and Prescott (1985).       \cr
+%\endinsert
+%%%%%%%%%%%%%%%%
+
+  We choose to proceed in the fashion of Hansen and
+Singleton (1983) and
+\auth{Singleton, Kenneth J.}%
+\auth{Hansen, Lars P.}%
+to illuminate the equity premium puzzle by studying unconditional averages
+of Euler equations under the assumptions that returns are  log normal.
+Let the real rates of return on stocks and bonds between periods $t$ and
+$t+1$ be denoted $1+r^s_{t+1}$ and $1+r^b_{t+1}$, respectively. In our
+Lucas  tree model, these numbers would be given by
+$1+r^s_{t+1}=(y_{t+1}+p_{t+1})/p_t$ and $1+r^b_{t+1}=R_{1t}$. Concerning
+the real rate of return on bonds, we now use time subscript $t+1$ to allow
+for uncertainty at time $t$ about its realization. Since the numbers in
+\Tbl{old102} are computed on the basis of nominal bonds, real bond yields
+are subject to inflation uncertainty. To allow that and
+to switch notation, we rewrite Euler equations \Ep{ap_euler1} and
+\Ep{ap_euler2} as
+$$
+1 = \be E_t\left[(1+r^i_{t+1}) {u'(C_{t+1}) \over u'(C_{t})}\right],
+              \ \ {\rm for\ \ }i=s,b.                    \EQN ap_euler11
+$$
+
+We  posit
+these stochastic processes for consumption and rates
+of return: $$\EQNalign{ {C_{t+1} \over C_t}
+  &= \bar c_{\triangle}
+{\rm exp}\left\{\varepsilon_{c,t+1}-\sigma^2_c /2\right\}, \EQN process_c \cr
+1+r^i_{t+1} &= (1+ \bar r^i)
+               {\rm exp}\left\{\varepsilon_{i,t+1}-\sigma^2_i /2\right\},
+   \, {\rm for\ \ }i=s,b,                               \EQN process_r \cr}
+$$
+where ${\rm exp}$ is the exponential function and
+$\{\varepsilon_{c,t+1}, \varepsilon_{s,t+1}, \varepsilon_{b,t+1}\}$
+are jointly normally distributed
+with zero means, variances $\{\sigma^2_c, \sigma^2_s, \sigma^2_b\}$, and possibly
+nonzero covariances.
+Thus, the logarithm of consumption growth and the logarithms of
+rates of return are  \index{distribution!log normal}
+jointly normally distributed. When the logarithm of a random variable $\eta$
+is normally distributed with some mean $\mu$ and variance $\sigma^2$,
+ the mean of $\eta$ is
+${\rm exp}(\mu +\sigma^2/2)$. Thus, the mean of
+consumption growth and the means of real yields on stocks and bonds
+are here equal to
+$\bar c_{\triangle}$, $1+ \bar r^s$, and $1+ \bar r^b$, respectively.
+
+Assume
+the
+utility function $u(C_t)=(C_t^{1-\gamma}-1)/(1-\gamma)$. After
+substituting this utility function and the stochastic processes
+\Ep{process_c} and \Ep{process_r} into equation \Ep{ap_euler11}, we take
+unconditional expectations of equation  \Ep{ap_euler11}. By the law of
+iterated expectations, we obtain
+$$\EQNalign{ 1&= \be E\left[(1+r^i_{t+1}) \left({C_{t+1} \over C_{t}}\right)^{-\gamma}\right],
+\cr
+ &= \be (1+ \bar r^i) \bar c_{\triangle}^{-\gamma}
+    E\left\{{\rm exp}\left[\varepsilon_{i,t+1}-\sigma^2_i /2
+              -\gamma\left(\varepsilon_{c,t+1}-\sigma^2_c /2\right) \right]\right\} \cr
+ &= \be (1+ \bar r^i) \bar c_{\triangle}^{-\gamma}
+    {\rm exp}\left[(1+\gamma)\gamma \sigma^2_c /2
+   -\gamma \,\cov(\varepsilon_{i}, \varepsilon_{c}) \right],           \cr
+       &       \quad  {\rm for\ \ }i=s,b,    \EQN ap_euler11b \cr}
+$$
+where the second equality follows from the expression in braces being
+log normally distributed. Taking logarithms of equation \Ep{ap_euler11b} yields
+$$\EQNalign{
+{\rm log}(1+ \bar r^i) = -{\rm log}(\be) +\gamma {\rm log}(\bar c_{\triangle})
+     -(1+\gamma)\gamma &\sigma^2_c /2
+                       +\gamma \,\cov(\varepsilon_{i}, \varepsilon_{c}) ,      \cr
+                        &  {\rm for\ \ }i=s,b.         \EQN ap_euler11c \cr}
+$$
+It is informative to interpret equation \Ep{ap_euler11c} for the risk-free
+interest rate in Bohn's model of section \use{sec:Bohnmodel}
+under the auxiliary
+assumption of log normally distributed dividend growth, so that equilibrium
+consumption growth is given by equation
+\Ep{process_c}. Since interest rates are
+time invariant, we have $\cov(\varepsilon_{b}, \varepsilon_{c})=0$.
+In the case of risk neutral agents ($\gamma=0$), equation \Ep{ap_euler11c}
+has the familiar implication that the interest rate is equal to the inverse
+of the subjective discount factor $\be$, regardless of any uncertainty. In the
+case of deterministic growth ($\sigma^2_c=0$), the second term
+of equation \Ep{ap_euler11c} says that the safe interest rate is positively
+related to the coefficient of relative risk aversion $\gamma$, as we also
+found in the example of Figure \Fg{returnf}.  %10.1.
+ Likewise, the downward pressure on the
+interest rate due to uncertainty in Figure \Fg{returnf} %10.1
+ shows up as the third term
+of equation \Ep{ap_euler11c}.\NFootnote{Since the term involves the square of $\gamma$,
+the safe interest rate must eventually be a decreasing function of the
+coefficient of relative risk aversion when $\sigma^2_c>0$, but only at very high and therefore
+uninteresting values for the coefficient of relative risk aversion.}   This downward pressure
+as $\sigma^2_c$ grows reflects the workings of a precautionary savings motive of the type to be discussed
+in chapter \use{selfinsure}.  At a given $\gamma$, a higher $\sigma_c^2$ induces people to want to save more.
+The  risk-free rate must decline to prevent them from doing so.
+
+We now turn to the equity premium by taking the difference between
+the expressions for the rates of return on stocks and bonds, as given
+by equation \Ep{ap_euler11c},
+$$
+{\rm log}(1+ \bar r^s) - {\rm log}(1+ \bar r^b)
+   = \gamma \left[ \cov(\varepsilon_{s}, \varepsilon_{c})
+                   - \cov(\varepsilon_{b}, \varepsilon_{c}) \right].  \EQN eq_prem
+$$
+Using the approximation ${\rm log}(1+ r) \approx r$,
+and noting that the covariance between consumption growth and real
+yields on bonds in \Tbl{old102} is virtually zero, we can write the theory's
+interpretation of the historical equity premium as
+$$
+\bar r^s - \bar r^b \approx \gamma \,\cov(\varepsilon_{s}, \varepsilon_{c}).
+                                                                 \EQN eq_prem2
+$$
+After approximating $\cov(\varepsilon_{s}, \varepsilon_{c})$ with the covariance
+between consumption growth and real yields on stocks in \Tbl{old102},
+equation \Ep{eq_prem2} states that an equity premium of 6 percent would
+require a $\gamma$ of 27. Kocherlakota (1996a, p. 52) summarized the prevailing
+view that ``a vast majority of economists believe that values [of $\gamma$]
+above ten (or, for that matter, above five) imply highly implausible behavior
+on the part of individuals.''\NFootnote{The assertion that  high values of $\gamma$ are unreasonable  is
+is based on  calculations along the lines of Pratt's described in the preceding section.}
+This constitutes the equity premium puzzle.
+Mehra and Prescott (1985) and Weil (1989) point out that an additional
+puzzle relates to the low observed historical mean of the riskless rate of return.
+We describe this {\it \idx{risk-free rate puzzle}} in section \use{sec:failureHJ}.%
+%According to equation \Ep{ap_euler11c} for bonds, a high $\gamma$ is needed to
+%rationalize an average risk-free rate of only 1 percent given historical
+%consumption data and the standard assumption that $\be$ is less than
+%$1$.
+\NFootnote{For $\beta<0.99$,
+equation \Ep{ap_euler11c} for bonds with data from \Tbl{old102}
+produces a coefficient of relative risk aversion of at least 27.
+If we use the lower variance of the growth rate of U.S. consumption
+in post--World War II data,
+the implied $\gamma$ exceeds 200, as noted by Aiyagari (1993).}
+
+Expression \Ep{eq_prem2} indicates how excess returns compensate for  risk.  Assets
+that give low returns in bad consumption states (i.e., assets for which $\cov(\varepsilon_{s}, \varepsilon_{c}) > 0$)
+are not useful for hedging consumption risk.  Therefore, such assets have low prices, meaning that they are associated
+with high excess returns.
+
+%%%\vfil\eject
+
+\section{Market price of risk}
+
+    Gallant, Hansen, and Tauchen (1990) and Hansen and
+Jagannathan (1991) interpret the equity premium puzzle in terms
+of the high ``\idx{market price of risk}'' implied by time series
+data on asset returns.   The market price of risk
+is defined in terms of asset prices and their one-period payoffs.
+Let $q_t$ be the time $t$ price of an asset bearing
+a one-period payoff $p_{t+1}$.    A household with time separable preferences
+$ E_0 \sum_{t=0}^\infty \beta^t  u(C_t)$ has an  Euler equation for
+holdings of this asset that can be represented as
+$$ q_t = E_t (m_{t+1} p_{t+1}) \EQN hansen1 $$
+where $m_{t+1} = {\beta u'(C_{t+1}) \over u'(C_t)}$ serves
+as a \idx{stochastic discount factor} for discounting the
+stochastic payoff $p_{t+1}$.
+Using the definition of a conditional covariance,
+equation \Ep{hansen1} can be written
+$$ q_t = E_t m_{t+1} E_t p_{t+1} + {\rm cov}_t (m_{t+1}, p_{t+1}) .$$
+
+Applying the \idx{Cauchy-Schwarz inequality}\NFootnote{The Cauchy-Schwarz
+inequality is
+$ {| {\rm cov}_t(m_{t+1}, p_{t+1}) | \over \sigma_t (m_{t+1})
+       \sigma_t (p_{t+1}) } \leq 1.$ To get equation \Ep{hansen3} from the preceding equation,
+       we use the ${\rm cov}_t(m_{t+1}, p_{t+1}) \geq - \sigma_t(p_{t+1}) \sigma_t(m_{t+1})$ branch
+       of the Cauchy-Schwarz inequality.}
+ to the covariance term in the preceding equation
+gives
+$${q_t \over E_t m_{t+1} } \geq
+    E_t p_{t+1} -
+\left({\sigma_t (m_{t+1}) \over E_t m_{t+1} }\right)
+ \sigma_t (p_{t+1}) ,
+      \EQN hansen3  $$
+where $\sigma_t$ denotes a conditional standard deviation. %  The bound on the right side of  \Ep{hansen3} is attained by securities that are on the efficient
+%mean-standard deviation frontier.  Notice that $E_t m_{t+1}$
+%is the reciprocal of the gross one-period risk-free return; this can be
+%seen by setting $p_{t+1} \equiv 1$ in \Ep{hansen1}.  Thus, the left side
+%of \Ep{hansen3} is the price of a security relative to the price of a risk
+%free security.  In expression \Ep{hansen3}, the term
+% $ \left({\sigma_t (m_{t+1}) \over E_t m_{t+1} }\right)$
+%is called the market price of risk.   According to expression \Ep{hansen3},
+%it provides an estimate of the rate at which the price of a security falls
+%with an increase in the conditional standard deviation of its payoff.
+As an example of \Ep{hansen3}, let the payoff $p_{t+1}$ be a {\it return} $R_{t+1}$ on an asset, so that
+$q_t = 1$.  In this case, \Ep{hansen3} implies
+$$ E_t R_{t+1} \leq R_{f,t+1} + \left({\sigma_t (m_{t+1}) \over E_t m_{t+1} }\right) \sigma_t(R_{t+1}) ,   \EQN hansen3a $$
+where $R_{f,t+1}^{-1} = E_t m_{t+1}$ is the reciprocal of the risk-free interest rate.
+Inequality \Ep{hansen3a} says that  the return on any security is bounded by the sum of the risk-free rate $R_{f,t+1}$ and
+the market price of risk times the conditional standard deviation of the return.
+The market price of risk % ${\frac{\sigma \left( m\right) }{E\left[ \right]}}$
+%is the slope of the mean-standard deviation frontier.  It
+is the
+increase in the expected rate of return needed to compensate an
+investor for bearing a unit increase in the standard deviation of returns
+along the efficient frontier.\NFootnote{An asset's Sharpe ratio is defined as
+${\frac{E_t R_{t+1} - R_f,{t+1}}{\sigma_t(R_{t+1}}}$, i.e., its excess return relative to its standard deviation. A Sharpe ratio measures the
+excess return relative to the standard deviation.  The market price
+of risk is the maximal Sharpe ratio. Assets (or portfolios of assets) whose returns attain the bound
+are said to be on the efficient mean-standard deviation frontier.}\index{Sharpe ratio}%
+
+
+    Gallant, Hansen, and Tauchen (1990) and Hansen and
+Jagannathan (1991) used asset prices and  returns alone
+to estimate the market price of risk, without
+imposing the link to consumption data implied by a
+particular specification of a stochastic discount factor.
+Their version of the equity premium puzzle is that
+the market price of risk implied by the asset market data alone
+is much higher than can be reconciled with the aggregate
+consumption data, say, with
+a specification that
+$ m_{t+1} = \beta \left( {C_{t+1} \over C_t }\right)^{-\gamma}$.
+Aggregate consumption is not volatile enough to make the
+standard deviation of the object  high enough for the reasonable
+values of $\gamma$ that we have  discussed.
+
+  In the next section, we describe how Hansen and Jagannathan
+coaxed evidence about the market price of risk $\left({\sigma_t (m_{t+1}) \over E_t m_{t+1} }\right)$ from
+asset prices and one-period returns.
+
+
+\section{Hansen-Jagannathan bounds}\label{sec:HJbounds}%
+   The section \use{sec:equitypremium} Hansen-Singleton (1983) exposition of the equity premium
+puzzle based on the log normal specification
+of returns  was
+ tied to  particular parametric specifications of preferences
+and the distribution of  asset returns.
+Hansen and Jagannathan (1991)  described
+a less structured   way of stating an equity premium puzzle.
+Their work can be regarded as  extending  Robert Shiller's and
+Stephen LeRoy's earlier work on  variance bounds.\NFootnote{See Hansen's (1982a)
+early call for such a generalization.}
+We present one of Hansen and Jagannathan's bounds.
+
+\auth{Shiller, Robert}
+\auth{LeRoy, Stephen}
+\auth{Hansen, Lars P.}
+\auth{Jagannathan, Ravi}
+
+Until now, we have worked with theories that
+price assets by using a particular ``\idx{stochastic discount factor}''
+ $m_{t+1} = \beta {u'(C_{t+1}) \over u'(C_t)}$.  The  theories
+assert that the price at $t$ of  an asset with one-period random payoff $p_{t+1}$
+is $E_t m_{t+1} p_{t+1}$.  Hansen and Jagannathan were interested in settings
+in which the stochastic discount factor can assume
+other forms.
+\auth{Hansen, Lars P.}
+\auth{Jagannathan, Ravi}
+
+
+\subsection{Law of one price implies that $E m R =1$}
+
+This section briefly indicates how a very weak theoretical restriction on  prices and returns
+implies that there exists a stochastic discount factor $m$ that satisfies
+$E m R_j =1$ for the return $R_j$ on any asset $j$. In fact, when markets are incomplete there exist {\it many\/} different random variables
+$m$ that satisfy $E m R_j =1$.  We have to say very little about consumers' preferences to get this result, a `law of one price' being
+ enough.
+
+Following Hansen and Jagannathan, let $x_j$ be a random payoff on a security.
+Let there be $J$ primitive securities, so $j = 1, \ldots, J$.  Let
+$x$ be a $J \times 1$  vector of random payoffs on the primitive securities.
+Assume that the $J \times J$ matrix $E x x'$ exists and that so does its inverse
+$(E x x')^{-1}$.  Also assume that
+a $J \times 1$ vector $q$ of prices  of the primitive securities is observed,
+where the $j$th component of $q$ is the price of the $j$th component of
+the payoff vector $x$.  Consider forming portfolios, i.e., linear combinations of the primitive securities.
+ How do  prices of portfolios
+relate to the prices of the primitive securities from which they have been formed?
+
+Let $c\in \bbR^J$ be a vector of portfolio weights.  The random payoff
+on a portfolio with weights $c$ is $c \cdot x$.
+Define the space of payoffs attainable from
+portfolios of the primitive securities:
+$$ P \equiv \left\{ p: p = c\cdot x \ {\rm for \ some} \ c \in \bbR^J\right\}.$$
+We want to price  portfolios, that is, pay outs in $P$.
+We seek a price functional $\phi$ mapping $P$ into $\bbR$:
+$\phi: P \rightarrow \bbR$.
+
+
+The observed price of the $j$th primitive security must satisfy  $q_j = \phi(x_j)$, so
+the  $J \times 1$ vector $q$ of observed prices of primitive securities satisfies
+ $q  = \phi(x)$.
+The pricing functional $\phi$ values a portfolio with payoff $c \cdot x \in P$ at   $\phi(c\cdot x)$.  We can replicate the payoff of the portfolio $p = c \cdot x$ by purchasing primitive securities in amounts
+$c_1, \ldots, c_J$ and paying
+  $c_1 q_1 + \cdots + c_J q_J = c \cdot q$.  A  {\it \idx{law of one price}\/} asserts that these two ways of purchasing payoff $p \in P$ should have the same cost:
+$$  \phi(c \cdot x) = c_1 \phi(x_1) + c_2 \phi(x_2) + \cdots + c_J \phi(x_J) .\EQN eqn:linearfunctional $$
+   %is the value of a portfolio costing $c \cdot q$.
+%The {\it \idx{law of one price}\/} asserts that the value of a portfolio
+%equals what it costs:
+%$$ c \cdot q = \phi(c \cdot x). $$
+The left side is the price of a portfolio with portfolio weights $c$. The right side is a weighted sum of the prices of the
+individual primitive securities, with weights in the sum being given by the vector $c$.  Equation \Ep{eqn:linearfunctional} says that
+the  portfolio and the  sum of assets of comprising it  should cost the same.  Technically,  equation \Ep{eqn:linearfunctional}  asserts that
+  $\phi$ is a linear functional on $P$.
+
+An aspect of the law of one price is that $\phi(c \cdot x)$ depends
+on $c\cdot x$, not on $c$.  If any other portfolio has payoff $c \cdot x$,
+it should also be priced at $\phi(c\cdot x)$.  Thus, two portfolios with
+the same payoff have the same price:
+$$ \phi(\check c \cdot x) = \phi(\hat c \cdot x)  \ {\rm if } \ \check c\cdot x = \hat c\cdot x.$$
+If the $x$'s are {\it returns}, then $q={\bf 1}$, the unit
+vector,  and
+$$ \phi(c \cdot x) = c \cdot {\bf 1}. $$
+
+\subsection{Inner product representation of the pricing kernel}
+Hansen and Jagannathan used a convenient representation of a linear functional.
+   If $y$ is a scalar random variable, $E (yx)$ is the vector whose $j$th
+component is $E(yx_j)$.  The cross-moments $E(yx)$ are called the inner
+product of $x$ and $y$.  According to the \idx{Riesz representation theorem},
+a linear functional $\phi$ can be represented as the inner product of the random
+payoff $x$ with {\it some\/} scalar random variable $y$ that we call
+a \idx{stochastic discount factor}.\NFootnote{See appendix \use{appRiesz} for a statement and proof of the
+Riesz representation theorem.}   Thus, a {\it stochastic
+discount factor\/} is a scalar random variable $y$ that makes the following
+equation true:
+$$ \phi(p) = E(y p) \  \forall p \in P. \EQN riesz $$
+Equality \Ep{riesz} implies that  the vector of prices of the primitive securities, $q$, satisfies
+$$ q  = E (y x).  \EQN price1 $$
+Because it implies that a pricing functional is linear, the law of one price
+implies that there exists a stochastic discount factor.  In fact, there exist
+many stochastic discount factors.  Hansen and Jagannathan sought to characterize
+a set of admissible stochastic  discount factors, meaning scalar random variables $y$ that satisfy
+\Ep{riesz}.
+
+Note
+$$ {\rm cov}(y,p) = E(y p) - E(y) E(p), $$
+which implies that the price functional can be represented as
+$$  \phi(p) = E(y) E(p) + {\rm cov}(y,p) .$$
+This expresses the price of a portfolio as the expected value of the stochastic discount factor
+times the expected payoff   plus
+the covariance between the stochastic discount factor and the payoff.
+Notice that the expected value of the stochastic discount factor is simply the
+price of a sure scalar payoff of unity:
+$$\phi(1) = E (y)  .$$
+
+  The linearity of the pricing functional leaves open the possibility
+that prices of some portfolios are negative.  That would open
+ arbitrage opportunities. David Kreps (1979) showed that
+\auth{Kreps, David M.}%
+ the principle that the price system should offer
+{\it no arbitrage\/} opportunities \index{arbitrage!no-arbitrage principle}
+requires that the stochastic discount factor be
+strictly positive.  For most of this section, we shall not impose
+the principle of no arbitrage, just the law of one price.  Thus, at this point
+we do not require stochastic discount factors to be positive, though later we will study
+positive stochastic discount factors.
+
+\subsection{Classes of stochastic discount factors}
+
+   In previous sections we constructed structural models of the stochastic
+discount factor. In particular, for the stochastic discount factor, our
+theories typically implied that
+$$ y = m_{t+1} \equiv {\beta u'(C_{t+1})\over u'(C_t) }, \EQN yintertemp $$
+the intertemporal marginal rate of substitution of consumption today for consumption
+tomorrow.  For a particular utility function, this specification
+leads to a parametric form of the stochastic discount factor that
+depends on the random  consumption of a particular consumer
+or set of consumers.
+
+ Hansen and Jagannathan want to impose less and to approach the data with a {\it class\/}
+of stochastic discount factors.  To begin, Hansen and Jagannathan note
+that one candidate for a stochastic discount factor is
+$$ y^* = x'(E x x')^{-1} q. \EQN stochdisc1 $$
+This can be verified directly by substituting into
+equation \Ep{price1} and confirming that $q = E(y^* x)$.\NFootnote{Thus, $E x y^* = E [x x'] [E x x']^{-1} q = q$.}
+
+Besides equation \Ep{stochdisc1}, many other stochastic discount
+factors work, in the sense of pricing the random
+payoffs $x$ correctly, that is, recovering $q$ as their price.
+It can be verified directly that any other $y$ that satisfies
+$$ y = y^* + e $$
+is also a stochastic discount factor, where $e$ is orthogonal to $x$.\NFootnote{Let $y_1$ and $y_2$ be two
+stochastic discount factors, so that $E y_1 x = E y_2 x$, which implies that $E (y_1 - y_2) x = 0$.  Thus,
+the difference between two stochastic discount factors is orthogonal to $x$, as asserted in the text.}
+Let ${\cal Y}$ be the space of all stochastic discount factors.
+
+\subsection{A Hansen-Jagannathan bound}
+
+  Given data on prices $q$ and the distribution of payoffs $x$,
+Hansen and Jagannathan wanted to infer properties
+of $y$ while imposing no more structure than linearity
+of the pricing functional (the law of one price).  Imposing only this,
+they constructed bounds on the first and second moments of stochastic
+discount factors $y$ that are consistent with a given distribution
+of payoffs on a  set of primitive securities.  %For $y \in {\cal Y}$,
+They  used linear regression   to construct their bounds.
+
+   Let $y$ be an unobserved stochastic discount factor.
+Though $y$ is unobservable, we can represent it in terms
+of the population linear regression\NFootnote{See chapter \use{timeseries} for the
+definition and construction of a population linear regression.}
+$$ y = a +  x'b + e \EQN regress2 $$
+where $e$ is orthogonal to $x$ and
+$$\eqalign{ b& = [{\rm cov}(x,x)]^{-1} {\rm cov}(x,y) \cr
+        a & = E y - Ex'b .  \cr}$$
+Here ${\rm cov}(x,x) = E(x x')  - E(x) E(x)'$.
+We have data that allow us to estimate the
+second-moment matrix of $x$, but no data on $y$ and
+therefore no data on ${\rm cov}(x,y)$. But we do
+have data on $q$, the vector of security prices.
+So Hansen and Jagannathan proceeded
+ to use the data on $q,x$  to infer {\it something\/}
+about ${\rm cov}(x,x)$.  Notice that
+$ q= E(y  x)$ implies ${\rm cov}(x,y) = q - E(y) E(x)$.
+Therefore,
+$$ b = [{\rm cov}(x,x)]^{-1} [q - E(y) E(x)]. \EQN regress $$
+Given a guess about  $E(y)$, asset payoffs $x$ and prices $q$
+can be used to estimate $b$.
+Because the residuals in the projection equation \Ep{regress2} are orthogonal to $x$,
+$$ {\rm var} (y) = {\rm var}(x'b) + {\rm var} (e) .$$
+Therefore
+$$ \left[{\rm var}(x'b)\right]^{.5} \leq \sigma(y) , \EQN HJbound1 $$
+where $\sigma(y)$ denotes the standard deviation of the
+random variable $y$.
+The left side of \Ep{HJbound1} is a lower bound on the standard deviation of all\NFootnote{The stochastic
+discount factors are not
+necessarily positive.  Hansen and Jagannathan (1991)
+derive another bound that imposes positivity.} stochastic discount factors with
+assumed mean $E(y)$ used to compute $b$ in equation \Ep{regress}.
+For various specifications, Hansen and Jagannathan used expressions
+  \Ep{regress} and  \Ep{HJbound1}
+to compute a lower bound on $\sigma(y)$ as a function of $E(y)$, thereby tracing
+out a frontier of admissible stochastic discount factors in
+terms of their means and standard deviations.
+
+
+ First, recall that a (gross) return
+for an asset with price $q$ and payoff $x$ is defined as $z = x/q$.
+A return is risk free if $z$ is constant.    Then note
+that if there is an asset with risk-free return $z^{RF} \in x$,
+it follows that
+$ E( y z^{RF} ) = z^{RF} E y = 1$, and therefore $Ey$ is a known
+constant.  Then there is only one point on the frontier that is of
+interest, the one with the known $E(y)$.
+
+Here we focus on the case in which there is no risk-free
+asset.  For this case Hansen and Jagannathan  calculate a lower bound on $\sigma(y)$ as a function of
+an unknown value
+of $E(y)$.
+They do this for data on gross returns on a set of assets.
+  For a set of returns, $q={\bf 1}$ so that equation \Ep{regress}
+becomes
+$$ b =[{\rm cov}(x,x)]^{-1} [{\bf 1} - E(y) E(x)]. \EQN bound2$$
+The bound is computed by solving equation \Ep{bound2} and
+$$ \sqrt{b' {\rm cov} (x,x) b} \leq \sigma(y).\EQN bound4 $$
+In more detail, we compute the bound for various values
+of $E(y)$ by using equation \Ep{bound2} to compute $b$, then using
+that $b$ in expression \Ep{bound4} to compute the lower bound on
+$\sigma(y)$. Taking into account how equation \Ep{bound2} makes $b$ depend
+on $E(y)$, the bound on the left side of
+\Ep{bound4} is a parabola as a function of $E(y)$.
+
+
+
+We shall use  quarterly data on two returns, namely, the real return on a
+value-weighted NYSE stock return and the real return on U.S. Treasury bills over the period 1948-2005   to
+compute the Hansen-Jagannathan bound on the left side of  inequality  \Ep{bound4}.  We report the bound in figure \Fg{CRRAtimeseparablepreferences}, which contains other information about the predicted behavior
+of the stochastic discount factor of a consumer with time-separable CRRA preferences, to be explained in the next section.
+
+
+
+
+
+\section{Failure of CRRA to attain HJ bound}\label{sec:failureHJ}%
+For time-separable CRRA
+preferences with discount factor $\beta$, the stochastic discount factor  $m_{t+1}$ is simply the
+marginal rate of substitution:
+$$ m_{t+1}=\beta \left(\frac{C_{t+1}}{C_{t}}\right) ^{-\gamma } \EQN CRRA $$
+where $\gamma $ is the coefficient of relative risk aversion and $C_t$ is consumption.
+Let $c_t = \log C_t$ and express \Ep{CRRA} as
+$$ m_{t+1}=\beta \exp\left( -\gamma\left(c_{t+1} - c_t\right) \right) .  \EQN CRRA2 $$
+For aggregate U.S.\ data on per capita consumption of nondurables and services, a good approximation
+to the data is the following model that makes the growth in the log of per capita consumption a
+random walk with drift:
+ %\noindent Random walk consumption:
+$$c_{t} =\mu +c_{t-1}+ \sigma_c \varepsilon _{t},~~ \left\{ \varepsilon
+_{t}\right\} ~i.i.d.\sim {\cal N}\left( 0, 1 \right) .  \EQN TallRW  $$
+With this model for consumption growth, \Ep{CRRA2} becomes
+$$ m_{t+1} = \beta \exp \left( - \gamma \mu - \gamma \sigma_c \varepsilon_{t+1} \right) , \EQN CRRA3 $$
+and the log of the stochastic discount factor is
+$$ \log m_{t+1} = \log \beta - \gamma \mu - \gamma \sigma_c \varepsilon_{t+1},  \EQN CRRA4 $$
+which  is a normal random variable
+with mean $\log \beta - \gamma \mu $ and variance $\gamma^2 \sigma_c^2$.
+To compute the mean and standard deviation of the particular  stochastic discount factor \Ep{CRRA3}, we use:
+
+\medskip
+\specsec{Property:}  If $\log X \sim {\cal N}(\mu_x, \sigma_x^2)$, then $E (X )= \exp\left( \mu_x + {\frac{1}{2}} \sigma_x^2\right)$ and
+${\rm std}(X) = E(X) \sqrt{\left( \exp(\sigma_x^2) - 1 \right)} $. Here ${\rm std}$ denotes a standard deviation.
+\medskip
+
+Applying this property, we find that the mean $E(m)$ and standard deviation  $\sigma(m)$
+are\NFootnote{Let log consumption growth be a random variable $g$ with  probability density  $\phi(\cdot)$ having  finite moments
+ $\zeta_j = \int g^j \phi(g) d g $ for all orders $j \geq 1$.  Then note that $ E m \equiv   \beta E \exp( - \gamma g)$ and that  $E \exp( - \gamma g)$
+ is a {\it \idx{moment generating function}} with expansion
+ $  1 -\gamma \zeta_1 + {\frac{\gamma^2}{2}}\zeta_2  - {\frac{\gamma^3}{3!}}\zeta_3 + \cdots .$ Therefore, the gross risk-free rate $E(m)$ depends on moments of the log consumption growth process of
+ all orders.
+ Stanley Zin (2002) named this a `never a dull moment' fact and indicated how one could adjust higher moments of log consumption growth to fit asset pricing observations while
+ also fitting  lower moments of a log consumption growth process.}  $$ E m_{t+1} = E\left[
+m\right]=\beta \exp \left[  - \gamma \mu +{\frac{\sigma_c^{2}\gamma^2}{2}} \right]  \EQN EsdfCRRA $$ and
+$$ {\rm std}(m_{t+1}) \equiv \sigma(m)  = E(m) \left\{ \exp \left[ \sigma_c^{2}\gamma ^{2}\right] -1\right\} ^{\frac{1}{2}} \EQN sigmasfCRRA $$
+Notice that for small $\sigma_c^2 \gamma^2$,  $\left\{ \exp \left[ \sigma_c^{2}\gamma ^{2}\right] -1\right\} ^{\frac{1}{2}} \approx \sigma_c \gamma$, so that the market price of risk is
+${\frac{{\rm std}(m_{t+1})}{ E(m_{t+1})}} \approx \sigma_c \gamma $.
+
+\auth{Zin, Stanley E.}
+
+
+
+
+\midfigure{CRRAtimeseparablepreferences}
+\centerline{\epsfxsize=2.75truein\epsffile{timeseparableCRRApreferences.eps}}
+%\centerline{\epsfxsize=2.75truein\epsffile{Tallarinisfigure_Korea.eps}}
+\caption{Solid line: Hansen-Jagannathan volatility bounds for
+quarterly returns on the value-weighted NYSE and Treasury Bill,
+1948-2005. Crosses: Mean and standard deviation for intertemporal
+marginal rate of substitution for CRRA time separable preferences.
+The coefficient of relative risk aversion, $\gamma$ takes on the
+values 1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50 and the discount
+factor $\beta$=0.995.}
+\endfigure
+
+Another convenient way to express the stochastic discount factor $m_{t+1}$ given by \Ep{CRRA3} is first to represent the
+discount factor in terms of a discount rate $\rho$, namely,  $\beta = \exp(-\rho)$. Then equation \Ep{CRRA3} is
+equivalent with
+$$ \EQNalign{ m_{t+1} & = \exp ( - r_t - {\frac{1}{2}} \sigma_c^2 \gamma^2 - \gamma \sigma_c \varepsilon_{t+1}) \EQN affine101a \cr
+    r_t & = \rho + \gamma \mu - {\frac{1}{2}} \sigma_c^2 \gamma^2 .\EQN affine101b  \cr} $$
+Notice that $ E m_{t+1} = \exp(- r_t)$, so $r_t$ is  the one-period  net rate of return on a risk-free claim,
+often appropriately called the short rate.  It shows how discounting in preferences ($\rho$), consumption growth ($\mu$), taste for
+smooth consumption ($\gamma$), and a precautionary savings motive ($ {\frac{1}{2}} \sigma_c^2 \gamma^2$) all affect the short
+rate.
+ In a literature on exponential quadratic  stochastic discount factors to be discussed in section
+\use{sec:expaffine}, the loading $\gamma \sigma_c$ of the log of the stochastic discount factor on the innovation $\varepsilon_{t+1}$ is
+called the price of consumption growth risk. Of course, it also equals the market price of risk computed above.
+
+
+ Figure
+ \Fg{CRRAtimeseparablepreferences} plots the Hansen and Jagannathan bound (the
+parabola in the upper right corner of the graph) constructed using quarterly data on two returns, the real return on a
+value-weighted NYSE stock return and the real return on U.S. Treasury bills over the period 1948-2005  in conjunction with inequality  \Ep{bound2}.
+The figure also reports  the locus of $E(m)$ and  $\sigma(m)$ %${\frac{\sigma\left( m\right) }{E\left[ m\right]}$
+implied by equations \Ep{EsdfCRRA} and \Ep{sigmasfCRRA} traced out by different values of $\gamma$.
+ The figure shows that while high values of $\gamma$ deliver high
+$\sigma(m)$, high values of $\gamma$ also push $E(m)$,  the
+reciprocal of the risk-free rate down and away from the Hansen and
+Jagannathan bounds. The {\it \idx{equity premium puzzle}} is the observation that it takes a very high value of $\gamma$ to make $\sigma(m)$ high with CRRA preferences.
+The  {\it\idx{risk-free rate puzzle}} of
+Weil (1990) is that with the CRRA stochastic discount factor \Ep{CRRA3}, setting $\gamma$ higher pushes $E(m)$ downward and increasingly to the left of the Hansen-Jagannathan bounds.\auth{Weil, Philippe}%
+\auth{Kocherlakota, Narayana R.}%
+
+The  risk free rate problem % that impedes the CRRA stochastic discount factor \Ep{CRRA3} from attaining the Hansen-Jagannathan bounds as $\gamma$ is increased
+ can be understood by focusing on equations \Ep{EsdfCRRA} and \Ep{sigmasfCRRA}.  The parameter $\gamma$ expresses two distinct forces on the risk-free interest rate that come  from two conceptually distinct consumer attitudes.
+
+\medskip
+\item{1.} {\it Effects of $\gamma$ on ${\frac{\sigma(m)}{E(m)}}$} \quad Equation \Ep{sigmasfCRRA} shows that increases in $\gamma$ unambiguously increase the market price of risk ${\frac{\sigma(m)}{E(m)}} \approx \sigma_c \gamma$.
+Here $\gamma$ is playing its role of expressing the consumer's distaste for atemporal gambles.  Higher values of $\gamma$ indicate more hatred of risk and a higher price of risk.
+ \medskip
+
+\item{2.}  {\it Effects of $\gamma$ on $E(m)$} \quad
+ Countervailing effects of increases in $\gamma$ on $E(m)$ are visible in equation \Ep{EsdfCRRA}.  Through the term  $\exp(- \gamma \mu)$, $\gamma$  expresses
+the representative consumer's distaste for deviations of consumption from a smooth path across time.
+ The growth parameter $\mu$ induces  deviations from intertemporal consumption smoothness,
+while $\gamma$ multiplicatively  affects the compensation in terms of a risk-free interest needed to compensate the consumer for accepting paths that are not smooth intertemporally, regardless of
+how risky they are. Here, $\gamma$ is expressing views about intertemporal substitution of consumption today for consumption tomorrow.
+The parameter $\gamma$ also affects $E(m)$ through the term $\exp\left({\frac{\sigma_c^{2}\gamma^2 }{2}}\right)$, which reflects the consumer's dislike of risky consumption streams, a dislike that increases with $\gamma$ and is  compensated for by a {\it higher} $E(m)$ via a \idx{precautionary savings} motive to be analyzed in chapter \use{selfinsure}.
+
+ \medskip
+
+ Empirically, the estimates of $\mu$ and $\sigma_c$  in  \Tbl{table:parameterestimates}  are the same order of magnitude. Thus, $\mu$ is two orders of magnitude larger than $\sigma_c^2$, which makes increases in $\gamma$ drive $E(m)$ {\it down\/} through its effect on the term $\exp(- \gamma \mu)$ much faster
+than it drives $E(m)$ {\it up\/} through its effect on $\exp\left({\frac{\sigma_c^{2}\gamma^2 }{2}}\right)$. This is why increases in $\gamma$ push $E(m)$ downward, at least for all but extraordinarily  large $\gamma$'s.\NFootnote{This observation
+underlies an insight of Kocherlakota (1990), who pointed out that by adjusting $(\beta, \gamma)$ pairs suitably, it is possible to  attain the Hansen-Jagannathan  bounds for the random walk model of log consumption and CRRA time-separable preferences, thus explaining both
+the equity premium and the risk-free rate. Doing so requires a very high $\gamma$ and $\beta > 1$.} %Thus, so far as concerns
+%our expression for $E(m)$, $\gamma$ mainly expresses attitudes about intertemporal substitution.
+
+
+\table{table:parameterestimates}
+\caption{Estimates from quarterly U.S. data
+1948:2-2005:4.}
+\singlespaced
+\ruledtable
+%\multispan5\hfil blah \CR
+Parameter & Estimate  \cr
+$\mu$ & 0.004952  \nr
+$\sigma_c$ & 0.005050  \\
+%$\rho$ & - & 0.99747 % \\
+\endruledtable
+\endtable
+
+In conclusion, the fact that the same parameter $\gamma$ expresses two attitudes  -- atemporal risk aversion and intertemporal substitution aversion -- leads to Weil's
+risk-free rate puzzle as captured by our figure \Fg{CRRAtimeseparablepreferences}.  In the next section,
+we  describe how Tallarini (2000) made progress by assigning to $\gamma$   only the single job of describing  risk aversion and using a new parameter $\eta$ to describe attitudes toward intertemporal substitution.
+By proceeding this way, Tallarini was able to find values of the risk aversion parameter $\gamma$ that  push the $(E(m), \sigma(m))$  pair toward the Hansen and
+Jagannathan bounds.
+
+
+
+
+
+
+
+\section{Non-expected utility}\label{sec:recursivepref}%
+\index{non-expected utility}%
+To separate risk aversion from intertemporal substitution,
+Tallarini (2000) assumed preferences that can be described by a recursive non-expected
+utility value  function iteration \`{a} la Kreps and Porteus (1978), Epstein and Zin (1989),
+and Weil (1990), namely,\NFootnote{Obstfeld (1994) and Dolmas (1998)  used recursive preferences to study costs of consumption fluctuations.}\auth{Obstfeld, Maurice}%
+\auth{Dolmas, Jim}\auth{Epstein, Larry G.}\auth{Zin, Stanley E.}\auth{Tallarini, Thomas D.}%
+\auth{Weil, Philippe}\auth{Kreps, David M.}\auth{Porteus, Evan}%
+$$
+V_{t}=W\left( C_{t},\xi \left( V_{t+1}\right) \right) . \EQN kreps_porteus
+$$
+Here $W$ is an aggregator function that maps today's consumption $C$ and a function $\xi$  of tomorrow's random continuation value $V_{t+1}$ into a value $V_t$ today; $\xi \left(\cdot\right) $ is a
+`\idx{certainty equivalent}' function that maps a random variable  $V_{t+1}$ that is measurable with respect to next period's information into a random variable that is measurable with respect to this
+period's information:
+$$
+\xi \left( V_{t+1}\right) =f^{-1}\left( E_{t}f\left( V_{t+1}\right)
+\right),
+$$
+where  $f$ is a concave function that describes attitudes toward atemporal risk, for example:
+%$$R_{t}(\a) = \cases{ 0 & if $s_{\tone}>\a$\cr
+%1/q_\a(s_t) & if $s_{\tone}\le \a$.\cr}$$
+$$
+f\left( z\right) =\cases{ z^{1-\gamma } & if $0<\gamma \neq 1$ \cr
+   \log z & if $\gamma =1$, \cr} \EQN Tall_certequiv $$
+and $\gamma $ is the coefficient of relative risk aversion.  In recursion \Ep{kreps_porteus}, attitudes toward intertemporal substitution are expressed through the
+aggregator $W$, while attitudes toward risk are expressed through the concave utility function $f$ that underlies $\xi$.
+
+To express intertemporal substitution, Epstein and Zin (1991)  used the CES aggregator %
+%$$
+%W\left( C,\mu \right) =\left[ \left( 1-\beta \right) C^{1-\eta
+%}+\beta \mu ^{1-\eta }\right] ^{\frac{1}{1-\eta }}~~~{\rm
+%for}~0<\eta \neq 1
+%$$
+%or
+%$$
+%\lim_{\eta \rightarrow 1}W\left( C,\mu \right) =C^{1-\beta }\mu
+%^{\beta }
+%$$
+$$
+W\left( C,\xi \right) = \cases {\left[ \left( 1-\beta \right) C^{1-\eta
+}+\beta \xi ^{1-\eta }\right] ^{\frac{1}{1-\eta }} &  if $0<\eta \neq 1 $\cr
+ C^{1-\beta }\xi
+^{\beta } & if $\eta = 1 $, \cr} \EQN Tall_agrregator
+$$
+where  $\frac{1}{\eta }$ is the intertemporal elasticity of
+substitution, that is, the elasticity of substitution between consumption today and the certainty equivalent $\xi$ of continuation utility tomorrow. Setting $\gamma =\eta $ gives the special case of additive
+power  utility with discount factor $\beta $.
+
+%Following many authors in the real business cycle literature,
+
+Tallarini (2000) used a special case of this model. He set  $\eta =1$ in the aggregator function \Ep{Tall_agrregator} and  used the power function \Ep{Tall_certequiv} for  his certainty equivalent function.  %Setting $\eta=1$ when there is no uncertainty
+% leads to log preferences
+%$$
+%W\left( C,W^{\ast }\right) =C^{1-\beta }  W^{\ast \beta }
+%$$
+%where $\cdot^\ast$ denotes a next-period value.
+%Taking logs gives%
+%$$
+%\log W=\left( 1-\beta \right) \log c+\beta \log W^{\ast }.
+%$$
+These choices led Tallarini to  use the following recursion to define preferences over risky consumption streams $\{C_t\}_{t=0}^\infty$:%
+$$
+V_{t}=C_{t}^{1-\beta }\left[ \left( E_{t}\left( V_{t+1}^{1-\gamma
+}\right) \right) ^{\frac{1}{1-\gamma }}\right] ^{\beta }.
+$$
+Taking logs gives%
+$$
+\log V_{t}=\left( 1-\beta \right)  c_{t}+{\frac{\beta }{1-\gamma
+}}\log E_{t}\left( V_{t+1}^{1-\gamma }\right)
+$$
+or
+$$
+{\frac{\log V_{t}}{\left( 1-\beta \right) }}=c_{t}+{\frac{\beta
+}{\left( 1-\gamma \right) \left( 1-\beta \right) }}\log E_{t}\left(
+V_{t+1}^{1-\gamma }\right) . \EQN neweq100
+$$
+%Define $U_{t}\equiv \frac{\log V_{t}}{1-\beta }$ and note that
+%$\exp \left( \left( 1-\beta \right) U_{t}\right) =V_{t}$
+%and that $%
+%\exp \left( \left( 1-\beta \right) \left( 1-\gamma \right)
+%U_{t}\right)
+%=V_{t}^{1-\gamma }$, so that we can write \Ep{neweq100} as % :%
+%%$$
+%%\frac{\log V_{t}}{\left( 1-\beta \right) }=\log c_{t}+\frac{\beta
+%%}{\left( 1-\gamma \right) \left( 1-\beta \right) }\log E_{t}\left(
+%%V_{t+1}^{1-\gamma }\right)
+%%$$
+%%as%
+%$$
+%U_{t}=\log c_{t}+\frac{\beta }{\left( 1-\gamma \right) \left( 1-\beta \right) }%
+%\log E_{t}\left[ \exp \left( \left( 1-\beta \right) \left( 1-\gamma
+%\right) U_{t+1}\right) \right]. \EQN risksensrecursion
+%$$
+
+For our purposes, it is useful to represent \Ep{neweq100} in another way.
+Define
+$ U_t \equiv \log V_t /(1-\beta)$ and
+$$
+ \theta \equiv {\frac{-1}{(1-\beta)(1-\gamma)}}. \EQN thetagamma
+ $$
+Then \Ep{neweq100} is equivalent with
+$$
+ U_t = c_t - \beta \theta \log E_t \left[ \exp \left( {\frac{-U_{t+1}}{\theta}}\right)\right].
+ \EQN Trecur2 $$
+\index{risk sensitivity}%
+For now, $\theta$ is just a particular function of the
+interpretable parameters $\beta$ and $\gamma$.  But later in subsection  \use{sec:ambiguity1}, $\theta$ will become
+an interpretable parameter of independent interest.
+
+
+ Equation \Ep{Trecur2} is the risk-sensitive recursion of
+Hansen and Sargent (1995).\NFootnote{Tallarini defined $\sigma
+=2\left( 1-\beta \right) \left( 1-\gamma \right) $ in order to
+interpret his recursion in terms of the risk-sensitivity parameter
+$\sigma$ of Hansen and Sargent (1995), who regarded negative
+values of $\sigma$ as enhancing
+risk aversion.}
+In the special case that $\gamma=1$ (or  $\theta = +\infty$), application of L'Hopital's rule verifies that recursion \Ep{Trecur2} becomes a
+discounted expected utility recursion
+$$ U_t  = c_t + \beta E_t U_{t+1}. $$
+
+To solve recursion \Ep{Trecur2}, we use a guess and verify method.
+We continue to assume that the log  consumption growth process is a random walk with drift  \Ep{TallRW} and seek to solve \Ep{Trecur2}.  Guess a
+ linear value function
+ $$ U_t = k_0 + k_1 c_t , \EQN Tall_guess $$
+where $k_0, k_1$ are scalar constants. Then  solve the
+  Bellman equation:
+$$
+k_0 + k_1 c = c -\beta \theta \log E_t \exp \left( {\frac{-\left(k_0 + k_1 [ \mu + c + \sigma_c \varepsilon_{t+1} ]\right)}{\theta}} \right)
+ \EQN Trecur30
+$$
+for $k_0$ and $k_1$.
+Direct calculations that again use the properties of log normal random variables
+ show that $k_0 ={\frac{\beta }{\left( 1-\beta \right) ^{2}}}\left[ \mu
+-{\frac{\sigma_c^{2}}{2\theta\left(1-\beta\right)}}
+\right]
+$ and $k_1 = {\frac{1}{1-\beta }}$, so that
+$$
+U_{t}={\frac{\beta }{\left( 1-\beta \right) ^{2}}}\left[ \mu
+-{\frac{\sigma_c^{2}}{2\theta\left(1-\beta\right)}}
+\right] +{\frac{1}{1-\beta }}{c}_{t}. \EQN BeqnsolnRW
+$$
+
+
+
+
+
+\subsection{Another representation of the utility recursion}
+When log consumption follows the random walk with drift  \Ep{TallRW} or more broadly is a member  of  a class of models that
+makes the conditional distribution of $c_{t+1}$ be Gaussian,
+another way to express
+recursion \Ep{Trecur2} is
+$$ U_t = c_t + \beta E_t U_{t+1} - {\frac{\beta}{2 \theta }} {\rm var}_t (U_{t+1}) ,\EQN U_var_mult1 $$
+where ${\rm var}_t (U_{t+1})$ denotes the conditional variance of continuation utility $U_{t+1}$.  Using
+\Ep{thetagamma} to eliminate $\theta$ in favor of $\gamma$, we can also express \Ep{U_var_mult1} as
+$$ U_t = c_t + \beta E_t U_{t+1} + {\frac{\beta(1-\gamma)(1-\beta)}{2}} {\rm var}_t (U_{t+1}) .\EQN U_var_mult2 $$
+When $\theta < + \infty$ or $\gamma >1$, representation \Ep{U_var_mult1} generalizes the ordinary time separable expected utility recursion by making the consumer
+care not only about the conditional expectation of  continuation utility but also its  conditional variance.   According to \Ep{U_var_mult1},  when $\theta < +\infty$
+the consumer dislikes conditional variance in continuation utility.\NFootnote{Equation \Ep{U_var_mult1} is a discrete time version
+of the stochastic differential utility model of Duffie and Epstein (1992).}
+\index{stochastic differential utility}%
+
+ \medskip
+
+That the consumer dislikes conditional volatility of continuation utility when $\theta < + \infty$ means that he cares about  both  the timing of the resolution of uncertainty
+and  the persistence risk. When $\theta = + \infty$, he cares about neither.
+Figures \Fg{treeAB} and \Fg{treeCD} display consumption payoffs (displayed above the nodes) and transition probabilities (the fractions above the lines connecting nodes) for four plans.
+ When $0 <\theta < + \infty$  the consumer prefers early resolution of risk (he prefers plan A to plan B in figure \Fg{treeAB}), while he is indifferent to the timing of risk
+  when $\theta = + \infty$.\NFootnote{See Kreps and Porteus (1978).}  When $0 <\theta < + \infty$, the consumer dislikes {\it persistence\/} of risk (he prefers plan C to plan D in figure \Fg{treeCD}), while when $\theta = + \infty$ he is indifferent to the persistence of risk.\NFootnote{See
+Duffie and Epstein (1992).}
+%\auth{Epstein, Larry}%
+\auth{Kreps, David M.}\auth{Porteus, Evan}
+
+\auth{Duffie, Darrell}%
+\auth{Epstein, Larry G.}%
+
+
+
+
+
+
+\figure{treeAB}
+%\centerline{\epsfxsize=2.75truein\epsffile{timeseparableCRRApreferences.eps}}
+\centerline{\epsfxsize=3.5truein\epsffile{PlansABtree.eps}}
+\caption{Plan A has early resolution of uncertainty.  Plan B has late resolution of uncertainty.}
+\endfigure
+
+
+\figure{treeCD}
+%\centerline{\epsfxsize=2.75truein\epsffile{timeseparableCRRApreferences.eps}}
+\centerline{\epsfxsize=3.5truein\epsffile{PlansCDtree.eps}}
+\caption{Plan C has i.i.d.\ risk. Plan  D has persistent risk.}
+\endfigure
+
+ %so that the
+%expression above becomes:
+%\begin{equation*}
+%U_{t}=\log c_{t}+\beta \frac{2}{\sigma }\log E_{t}\left[ \exp \left(
+%\left( \frac{\sigma }{2}\right) U_{t+1}\right) \right] .
+%\end{equation*}}
+\subsection{Stochastic discount factor}
+With preferences induced by the risk-sensitive recursion \Ep{Trecur2}, calculating the intertemporal rate of substitution  shows that
+the \idx{stochastic discount factor} is\NFootnote{Appendix \use{sec:sdf_risk_sens} describes how to compute a stochastic
+ discount factor for risk-sensitive preferences by appropriately differentiating utility functionals with respect to $C_t$ and $C_{t+1}$ in particular
+states at time $t+1$.}
+$$
+m_{t+1}=\left(\beta{\frac{C_{t}}{C_{t+1}}}\right)\left({\frac{\exp \left( -\theta^{-1} U_{t+1}\right) }{E_{t}\left[
+\exp \left( - \theta^{-1}
+U_{t+1}\right) \right] }}\right) , \EQN sdfrisksensitive0
+$$
+or
+$$
+m_{t+1}=\left(\beta{\frac{C_{t}}{C_{t+1}}}\right)\left({\frac{\exp \left( \left(
+1-\beta \right) \left( 1-\gamma \right) U_{t+1}\right) }{E_{t}\left[
+\exp \left( \left( 1-\beta \right) \left( 1-\gamma \right)
+U_{t+1}\right) \right] }}\right) . \EQN sdfrisksensitive00
+$$
+The term $g(\varepsilon_{t+1}) \equiv \left({\frac{\exp \left( \left(
+1-\beta \right) \left( 1-\gamma \right) U_{t+1}\right) }{E_{t}\left[
+\exp \left( \left( 1-\beta \right) \left( 1-\gamma \right)
+U_{t+1}\right) \right] }}\right) $ is a nonnegative random variable whose conditional expectation is unity by construction.  This  makes it interpretable as a {\it \idx{likelihood ratio}}, i.e.,  the ratio of one probability
+density to another.
+Direct calculations using \Ep{sdfrisksensitive00} and \Ep{BeqnsolnRW} show that the likelihood ratio $g$  satisfies
+$$ g(\varepsilon_{t+1}) \equiv \left({\frac{\exp \left( \left(
+1-\beta \right) \left( 1-\gamma \right) U_{t+1}\right) }{E_{t}\left[
+\exp \left( \left( 1-\beta \right) \left( 1-\gamma \right)
+U_{t+1}\right) \right] }}\right)  = \exp(w  \varepsilon_{t+1}  - {\frac{1}{2}} w^2 )
+\EQN RN_formula $$
+where
+$$ w = - {\frac{\sigma_c}{\theta\left(1-\beta\right)}} . \EQN worst_w_defn $$
+Using the definition of $\theta$ in  \Ep{thetagamma}, we can also express $w$ as
+$$ w = \sigma_c (1 - \gamma). \EQN worst_w_defn2 $$
+Thus, for a log consumption process described by a random walk with drift  \Ep{TallRW}, the stochastic discount factor \Ep{sdfrisksensitive0} becomes
+$$\eqalign{ m_{t+1} &= \beta \exp\left( - \left(c_{t+1} - c_t \right)\right) \exp \left( w \varepsilon_{t+1} - {\frac{1}{2}} w^2 \right) \cr
+    & = \beta \exp\left( - \left( \mu  + \sigma_c \varepsilon_{t+1} - \sigma_c(1-\gamma)  \varepsilon_{t+1} + {\frac{1}{2}} \sigma_c^2 ( 1-\gamma)^2 \right)\right)  }
+    \EQN stdfTall $$
+where we have used \Ep{worst_w_defn2} in moving from the first line to the second.
+Therefore,
+$$ \log m_{t+1} = \log \beta - \mu - \gamma \sigma_c \varepsilon_{t+1} -  {\frac{1}{2}} \sigma_c^2 (1-\gamma)^2 ,  \EQN logsdf $$
+so that $\log m_{t+1} \sim {\cal N}(\log \beta - \mu - {\frac{1}{2}} \sigma_c^2 (1-\gamma)^2, \gamma^2 \sigma_c^2)$.
+
+
+
+
+
+
+
+
+
+
+\midfigure{tallarini}
+\centerline{\epsfxsize=2.75truein\epsffile{Tallarinisfigure2.eps}}
+\caption{Solid line:
+Hansen-Jagannathan volatility bounds for quarterly returns on the
+value-weighted NYSE and Treasury bill, 1948--2005. Circles: Mean and
+standard deviation for intertemporal marginal rate of substitution
+generated by Epstein-Zin preferences with random walk consumption.
+ Crosses: Mean and standard
+deviation for intertemporal marginal rate of substitution for CRRA
+time separable preferences. The coefficient of relative risk
+aversion $\gamma$ takes on the values 1, 5, 10, 15, 20, 25, 30, 35,
+40, 45, 50 and the discount factor $\beta=0.995$.}
+\endfigure
+
+
+
+
+Applying  standard properties of log normal random variables to  formula \Ep{stdfTall} for the stochastic discount factor gives
+$$ E m_{t+1} ={\beta }\exp \left[ -
+\mu +{\frac{\sigma_c^{2}}{2}}\left( 2\gamma -1\right) \right]
+\EQN rwrf
+$$
+$$ {\frac{\sigma \left( m\right) }{E\left[ m\right] }}=\left\{
+\exp \left[ \sigma_c^{2}\gamma ^{2}\right] -1\right\}
+^{\frac{1}{2}} \approx \sigma_c \gamma . \EQN rwsdf
+$$
+Please compare these two to the corresponding formulas \Ep{EsdfCRRA}, \Ep{sigmasfCRRA} for the time-separable CRRA specification.
+The salient difference is that $\gamma$ no longer appears in the key component  $\exp(-\mu)$ of $E(m)$ in \Ep{rwrf}, while it does appear
+in the corresponding term in formula \Ep{EsdfCRRA} coming from time separable CRRA preferences.
+ Tallarini made $\gamma$ disappear there by locking the inverse intertemporal rate of substitution
+parameter $\eta$ at unity while still allowing what is now a pure risk aversion parameter $\gamma$ to vary.   This arrests the   force causing $E(m)$ in \Ep{EsdfCRRA} to fall as $\gamma$ rises and allows Tallarini
+to avoid the risk-free rate  puzzle and to approach the Hansen-Jagannathan bounds as he increases the  risk aversion parameter $\gamma$.
+
+To link up with the exponential quadratic stochastic discount factor models of section \use{sec:expaffine}, we can  represent  Tallarini's stochastic discount factor \Ep{stdfTall} as
+$$ \EQNalign{ m_{t+1} & = \exp( - r_t - {\frac{1}{2}} \sigma_c^2 \gamma^2 - \sigma_c \gamma \varepsilon_{t+1} ) \EQN std10020a \cr
+            r_t & = \rho + \mu - {\frac{1}{2}} \sigma_c^2 (2 \gamma-1) , \EQN std10020b \cr} $$
+where $r_t$ is again the risk-free one period net rate of interest and $\sigma_c \gamma$ is again the market price
+of risk.\NFootnote{By using formula \Ep{worst_w_defn2} for $w$, we can show that an equivalent representation for $m_{t+1}$ is
+$$ m_{t+1}  = \exp( - r_t - {\frac{1}{2}} \sigma_c^2 \gamma^2 - \sigma_c \varepsilon_{t+1} + w \varepsilon_{t+1} ). \EQN tallstd200 $$
+ Talleriini interpreted $\sigma_c -w = \sigma_c \gamma$ as the market price of risk.
+In section \use{sec:reinterpret},  we shall instead interpret $\sigma_c$ in this expression as the market price
+of risk and $-w$ as a market price of {\it uncertainty}. }
+ Notice how variations in $\gamma$ have a very small effect on $r_t$, unlike in formula
+\Ep{affine101b} for the standard case of time separable  CRRA preferences.  Increases in $\gamma$ now increase the market price of
+risk without substantially decreasing $r_t$, thus sidestepping the risk-free rate puzzle.
+
+
+Figure \Fg{tallarini} is a version of Tallarini's (2000) key figure for our data on
+quarterly returns on the value-weighted NYSE and Treasury Bill,
+1948-2005.  It uses formulas \Ep{EsdfCRRA}, \Ep{sigmasfCRRA}  to compute
+loci of $(E(m), \sigma(m))$ pairs for different values of the risk-aversion parameter $\gamma$.  When it is compared to the corresponding
+ figure \Fg{CRRAtimeseparablepreferences} for time separable CRRA preferences, this figure registers a striking success for Tallarini.  Notice how  increasing $\gamma$ pushes  the volatility of the
+ stochastic discount factor upward toward the Hansen-Jagannathan bounds while
+ leaving $E(m)$ unaffected, thus avoiding the risk-free rate puzzle of Weil (1990).  A    risk aversion coefficient $\gamma=50$ almost
+ succeeds in attaining the Hansen-Jagannathan
+ bounds.\NFootnote{By adjusting the calibrated value of $\beta$ upward, it would be possible to move all the circles in figure \Fg{tallarini} to the
+ right, thus moving them closer to the Hansen-Jagannathan bound.}
+\auth{Tallarini, Thomas D.}%
+\auth{Weil, Philippe}%
+\auth{Lucas, Robert E., Jr.}%
+
+
+\subsection{Twisted probability distributions}
+Under model \Ep{TallRW} for log consumption growth, the distribution of the i.i.d.\ innovation $\varepsilon_{t+1}$ is
+$$ \phi(\varepsilon_{t+1}) = {\frac{1}{ \sqrt{2 \pi}}} \exp\left(- {\frac{\varepsilon_{t+1}^2}{2}} \right) \sim
+   {\cal N}(0,1) .$$
+If we multiply the density $\phi$ by the likelihood ratio  $g(\varepsilon_{t+1}) = \exp\left( w \varepsilon_{t+1} - {\frac{w^2}{2}} \right)$ that emerged in
+\Ep{RN_formula} above, we obtain the ``twisted'' probability density  $\hat \phi = \phi g$ or
+$$ \hat \phi(\varepsilon_{t+1}) = {\frac{1}{ \sqrt{2 \pi}}} \exp\left( - {\frac{(\varepsilon_{t+1}- w)^2}{2}} \right) \sim {\cal N}(w, 1) .$$
+It follows that the twisted probability  model for $c_{t+1} - c_t$
+is
+$$ c_{t+1} - c_t = (\mu + \sigma_c w) + \sigma_c \hat \varepsilon_{t+1} , \EQN eq_twist101 $$
+where $\hat \varepsilon_{t+1} \sim {\cal N}(0,1)$.
+
+In an environment in which  the original model \Ep{TallRW} governs log consumption growth,
+Tallarini's stochastic discount factor would  emerge from a representative consumer
+whose Euler equations for  an asset with stochastic gross return $R_{t+1}$ are for some reason
+$$ \hat E_t \beta \left( {\frac{C_t}{C_{t+1}}} \right) R_{t+1}  = 1 , \EQN eq:twist102 $$
+where $\hat E_t (\cdot)$ denotes a conditional expectation taken with respect to the twisted conditional probability
+distribution for $c_{t+1}$, and $\beta \left( {\frac{C_t}{C_{t+1}}} \right)$
+is the ordinary stochastic discount factor associated with time separable logarithmic preferences. Equation \Ep{eq:twist102} could emerge from a
+ setting in which a representative agent orders consumption streams according to the time separable logarithmic utility recursion
+ $U_t = c_t + \beta \hat E_t U_{t+1}$ because he has the wrong probability model \Ep{eq_twist101} instead of the probability model
+ \Ep{TallRW} from which nature draws consumption.  In the next section,
+we describe a setting in which a representative consumer behaves in this way for another reason.
+
+
+
+
+\section{Reinterpretation of the utility recursion}\label{sec:reinterpret}%
+Is Tallarini's explanation convincing? Not to Robert E. Lucas, Jr.  To succeed in  approaching the Hansen-Jagannathan
+bounds required that Tallarini set the risk-aversion parameter $\gamma$ to such  a  high value, namely 50,  that it provoked   Lucas (2003)  to disregard
+Tallarini's evidence for high risk aversion:
+
+
+
+\epigraph{No one has found risk aversion parameters of 50 or 100
+in the diversification of individual portfolios, in the level of
+insurance deductibles, in the wage premiums associated with
+occupations with high earnings risk, or in the revenues raised by
+state-operated lotteries. It would be good to have the equity
+premium resolved, but I think we need to look beyond high
+estimates of risk aversion to do it.} {Robert E. Lucas, Jr., ``Macroeconomic Priorities,'' 2003}
+
+Relying on  what he regarded to be  more pertinent evidence about risk aversion, for  measuring the costs of aggregate fluctuations
+along lines to be described in section \use{sec:costsfluctuations}, Lucas (1987, 2003) preferred to use a value of $\gamma$ of $1$ or $2$ rather than
+the $\gamma$ of $50$ that Tallarini used to reconcile his model of preferences with  both the consumption data  and the asset returns data
+as summarized by the Hansen-Jagannathan bounds.\NFootnote{For another perspective on the evidence,
+see Barseghyan,  Molinari,  O'Donoghue, and  Teitelbaum (2013). Their findings challenge the notion that purchasers of insurance know
+probability distributions.}
+\auth{Barseghyan, Levon}%
+\auth{Molinari, Francesca}%
+\auth{O'Donoghue, Ted}%
+\auth{Teitelbaum, Joshua C.}%
+
+\subsection{Risk aversion versus model misspecification aversion}
+
+To respond to  Lucas's reluctance to use  Tallarini's findings as a source of evidence about  a
+representative consumer's distaste for  consumption fluctuations,  we now reinterpret $\gamma$ as a parameter that expresses not risk aversion but instead distress about
+model specification doubts. Fearing {\it risk\/} means disliking randomness described by a {\it known\/} probability distribution.  Fearing {\it uncertainty\/}
+-- also called  {\it model misspecification\/} --  means disliking {\it not knowing\/} a
+probability distribution.
+\index{risk aversion!versus robustness}%
+\index{risk sensitivity!versus robustness}%
+We will reinterpret the forward-looking term\NFootnote{The presence of the continuation value  $U_{t+1}$ is our reason for saying   `forward-looking'.}  $ g(\varepsilon_{t+1}) \equiv {\frac{\exp \left( \left(
+1-\beta \right) \left( 1-\gamma \right) U_{t+1}\right) }{E_{t}\left[
+\exp \left( \left( 1-\beta \right) \left( 1-\gamma \right)
+U_{t+1}\right) \right] }}$ that multiplies the ordinary logarithmic
+stochastic discount factor $\beta {\frac{C_{t}}{C_{t+1}}}$ in \Ep{sdfrisksensitive00} as an
+adjustment of the stochastic discount factor  that reflects a consumer's fears about model
+misspecification.  While a consumer's risk aversion is about  his reaction to risks described by a {\it known\/} probability distribution,
+his attitude about model misspecification is about his reaction to risks described by an {\it unknown\/} probability distribution.
+%\subsection{Language for robustness: an `approximating model'}
+%
+% One of the beautiful things about rational expectations is the communism of models that it imposes
+% on the agents inside the model, the econometrician, and God (the data generating mechanism).  Under rational expectations, we can
+% speak  unambiguously about `the model'.  When we venture into the
+% wilderness of concerns about model misspecification, we put multiple probability specifications on the table and abandon the comfort
+% of having a single model. We require some terms for talking about multiple models.
+%
+% Just as under rational expectations, we  work with a setting in which a representative agent has one fully specified
+% model.
+% That model will be either the random walk model or the trend stationary model described in the preceding section. We shall
+% call this the `approximating model' to acknowledge that the agent does not completely trust it.  To express that distrust, we imagine that the
+% agent surrounds his approximating model
+% with a set of unspecified models that are statistically nearby (as measured by conditional relative entropy)
+% and that he thinks might govern the data. He wants one value function that will somehow  evaluate consumption streams under all of those
+% nearby models.
+% Before telling how he gets such a value function, we first describe a mathematical formalism that provides a convenient way of
+% representing the unspecified  models that concern the agent as statistical perturbations
+% of his approximating model.\NFootnote{Hansen et al. (2006) describe links
+% between max-min control theory and the max-min utility theory of
+% Gilboa and Schmeidler (1989).}
+
+%\subsection{Using martingales to represent probability distortions}
+%We use the framework of chapter \use{rgames03} to represent sets of perturbations to an approximating model.
+%Let the agent's information set be ${\cal X}_t$, which in our
+%context will be the history of log consumption growth rates up to
+%date $t$. Hansen and Sargent (2005b) and chapters \use{rgames03} and \use{rgames2t}
+%use a nonnegative ${\cal
+%X}_t$-measurable function $G_t$ with $E G_t = 1$ to create a
+%distorted probability measure that is absolutely continuous with
+%respect to the probability measure over ${\cal X}_t$ generated
+%by our approximating model for log consumption growth.\NFootnote{See
+%Hansen, Sargent, Turnuhambetova, and Williams (2006) for a corresponding continuous time
+%formulation.} The random variable $G_t$ is a martingale under this
+%probability measure. Using $G_t$ as a Radon-Nikodym derivative
+%generates a distorted measure under which  the expectation of a
+%bounded ${\cal X}_t$-measurable random variable $W_t$  is $
+%{\tilde E} W_t \equiv E G_t W_t $. % or $
+% The {\it entropy\/} of the distortion at time $t$ conditioned on date zero
+%information is $E \left( G_t \log G_t \vert {\cal X}_0
+%\right)$.
+%
+%
+%
+%\subsection{Recursive representations of distortions}
+%
+%Following Hansen and Sargent (2005b), recall how we often factor a joint
+%density $F_{t+1}$ for an ${\cal X}_{t+1}$-measurable random
+%vector as $F_{t+1} = f_{t+1} F_t$, where $f_{t+1}$ is a one-step-ahead
+%density conditioned on ${\cal X}_t$. It is also useful
+%to factor $G_t$.
+%  Thus, take a nonnegative martingale $\{ G_t : t\ge 0\}$ and
+%form
+%$$
+%g_{t+1} = \cases{ {\frac {G_{t+1}} {G_t}} & if \ $G_t > 0 $ \cr
+%   1    & if \ $ G_t = 0$. \cr}
+%$$
+%Then $G_{t+1} = g_{t+1}G_t$ and $$
+% G_t = G_0 \prod_{j=1}^t g_{j}. \EQN martrep
+%$$
+%
+%The random variable $G_0$ has unconditional expectation equal to
+%unity. By construction, $g_{t+1}$ has date $t$ conditional
+%expectation equal to unity. For a bounded random variable $W_{t+1}$
+%that is ${\cal X}_{t+1}$-measurable, the distorted conditional
+%expectation implied by the martingale $\{G_t : t \ge 0 \}$ is
+%$$
+%{\frac {E(G_{t+1} W_{t+1} \vert {\cal X}_t )} { E (G_{t+1}
+%\vert {\cal X}_t)}} = {\frac {E(G_{t+1} W_{t+1} \vert
+%{\cal X}_t )} {G_t}} = E  \left( g_{t+1} W_{t+1} \vert
+%{\cal X}_t \right)
+%$$
+%provided that $G_t > 0$.
+%  We use $g_{t+1}$ to represent distortions of the conditional probability distribution for ${\cal
+%X}_{t+1}$ given ${\cal X}_t$. For each $t \ge 0$, construct
+%the space ${\cal G}_{t+1}$ of all nonnegative, ${\cal
+%X}_{t+1}$-measurable random variables $g_{t+1}$ for which
+%$E(g_{t+1} \vert {\cal X}_t) = 1.$
+%In the next subsection, we shall use the nonnegative random variable $g$ statistically to perturb the one-step ahead conditional
+%distribution of consumption growth that is associated with the representative consumer's approximating model.
+
+\subsection{Recursive representation of probability distortions}
+
+It is convenient to use the following notation  similar to some used in chapter \use{recurge}.
+Let $s_t = c_t - c_{t-1}$ and $s^t = s_t, \ldots, s_1$.  Denote a  joint probability density over
+$s^t$ as $F_t(s^t)$. Where $f_{t+1}(s_{t+1} | s^t)$ is a conditional density, the recursion
+$$ F_{t+1}(s^{t+1}) = f_{t+1}(s_{t+1}| s^t) F_t(s^t), \quad t \geq 1 \EQN Frecur $$
+governs the evolution of the joint densities $F_t(s^t)$. For example, setting $s_t = c_t$ in  our  model of consumption growth \Ep{TallRW}, $f_{t+1}(s_{t+1} | s^t) \sim {\cal N}( \mu + s_t, \sigma_c^2)$.
+Let $G_t(s^t)$ be the ratio of another joint density $\tilde F_t(s^t)$ to $F_t(s^t)$, so that
+$$ \tilde F_t(s^t) = G_t(s^t) F_t(s^t). \EQN tildeFt $$
+We can factor the likelihood  ratio $G_{t+1}(s^{t+1})$ in a way analogous to the factorization of $F_{t+1}(s^{t+1})$ in \Ep{Frecur}:
+$$ G_{t+1}(s^{t+1}) = g_{t+1}(s_{t+1}| s^t) G_t(s^t), \quad t \geq 1. \EQN Grecur $$
+Here $g_{t+1}(s_{t+1}| s^t)$ is a likelihood ratio of conditional densities, namely,  $$g_{t+1}(s_{t+1}| s^t)={\frac{\tilde f_{t+1}(s_{t+1}|s^t)}{f_{t+1}(s_{t+1}|s^t)}}.$$
+Because $g_{t+1}(s_{t+1}| s^t)$ is a likelihood ratio, its expectation under $f_{t+1}(s_{t+1}| s^t)$ is unity:
+$$ \int g_{t+1}(s_{t+1}| s^t) f_{t+1}(s_{t+1} |s^t) d s_{t+1} =1. $$
+This in turn implies that under the $\{F_t(s^t)\}_{t=0}^\infty$ densities, the likelihood ratio $G_t(s^t)$ is a martingale with respect to the filtration generated by $s^t$:
+$$ \eqalign{ E [ G_{t+1}(s^{t+1}) | s^t ] &= [\int g_{t+1}(s_{t+1} | s^t) f_{t+1}(s_{t+1}|s^t) d s_{t+1} ] G_t(s^t) \cr
+                                  & =  G_t(s^t).  }$$ \index{martingale!likelihood ratio}\index{likelihood ratio!martingale}%
+
+
+\subsection{Entropy}
+To measure  proximity of two conditional densities $\tilde f_{t+1}(s_{t+1}|s^t)$ and $ f_{t+1}(s_{t+1}|s^t)$, we use the expected log likelihood ratio
+$$ \eqalign{ {\rm ent}(g_{t+1}) &  \equiv \int \log (g_{t+1}(s_{t+1}|s^t)) \tilde f_{t+1}(s_{t+1}|s^t) d s_{t+1}  \cr
+                             & = \int \log (g_{t+1}(s_{t+1}|s^t)) g_{t+1}(s_{t+1}|s^t)   f_{t+1}(s_{t+1}|s^t) d s_{t+1}, } \EQN entgdef $$
+where the mathematical expectation  on the right  side of the first line is with respect to the  conditional density $\tilde f_{t+1}$ and the integration on the right side of the second line is with respect
+to the  conditional density $ f_{t+1}$.  The object ${\rm ent}(g_{t+1})$ is called the {\it \idx{relative  entropy}} of conditional density $\tilde f_{t+1}$ with respect to conditional
+density $f_{t+1}$. \index{entropy!rlative}
+
+Entropy is an informative measure of the statistical  proximity of the two densities because it determines the limiting   behavior of tests for statistically discriminating between  two densities
+using samples of finite length. Entropy is nonnegative and equals zero if $g_{t+1} = 1$, so that $\tilde f_{t+1} = f_{t+1}$.  If entropy is  small, it takes a  large number of observations   to distinguish the two densities with high statistical confidence, while if entropy is large, it requires fewer observations.\NFootnote{Anderson, Hansen, and Sargent (2003) develop the connection between entropy and statistical model discrimination.} We elaborate on  this connection in section \use{sec:measureambiguity}.  But first we reinterpret recursion \Ep{Trecur2} as expressing
+a decision maker's fears about model misspecification.
+ \auth{Hansen, Lars P.}%
+\auth{Sargent, Thomas J.}\auth{Anderson, Evan W.}%
+\index{entropy}%
+
+
+
+\subsection{Expressing ambiguity aversion}\label{sec:ambiguity1}%
+Let $\varepsilon$ be a random variable with normalized Gaussian density $\phi(\varepsilon) \sim {\cal N}(0,1)$. Let $\tilde \phi(\varepsilon) = g(\varepsilon) \phi(\varepsilon)$ be some other density
+for $\varepsilon$.  Let $Z(\varepsilon)$ be a value function.  Consider the minimization problem:
+$$\eqalign{ {\bf T} (Z) & = \min_{g(\varepsilon) \geq 0} \int  Z(\varepsilon)  g(\varepsilon) \phi(\varepsilon) d\varepsilon + \theta  \ {\rm ent}(g(\varepsilon))  \cr
+                        & = \min_{g(\varepsilon) \geq 0} \int \left[ Z(\varepsilon)  + \theta  \log g(\varepsilon)  \right] g(\varepsilon)  \phi(\varepsilon) d\varepsilon  } \EQN Tminimization $$
+where  $0 < \theta \leq +\infty$ and  the minimization is subject to $\int g(\varepsilon) \phi(\varepsilon) d \varepsilon = 1$, so that $g$ is a likelihood ratio.
+The minimization problem on the right  side of \Ep{Tminimization} has the following interpretation. {\it Ex post}, a decision maker values random outcomes  $\varepsilon$ according to the value function
+$Z(\varepsilon)$.  The decision maker's  guess about the  probability density over $\varepsilon$ is $\phi(\varepsilon)$. But  he does not completely trust $\phi(\varepsilon)$, meaning that he thinks
+that outcomes might actually be drawn from some unknown distribution $g(\varepsilon) \phi(\varepsilon)$.  He wants an {\it ex ante} valuation that will work `well enough' for a set of densities
+in a neighborhood of $\phi(\varepsilon)$.  He  measures proximity by relative entropy.  He attains such a `robust' valuation, i.e., one suitable for a {\it set\/} of probability distributions,  by solving the minimization problem on the right side of
+\Ep{Tminimization}.  The problem is to choose a probability distortion $g$ that minimizes expected utility under the `distorted' density $\tilde \phi = g \phi$ plus a positive penalty parameter
+$\theta $ times relative entropy.  The purpose of  the  entropy penalty term $(\theta \ {\rm ent})$  is to constrain the   probability distortions $g$   to have  small  entropy.  Smaller values of $\theta$ allow   bigger probability distortions because the  penalty on entropy is smaller in the minimization problem on the right side
+of the equations in \Ep{Tminimization}. The penalty parameter $\theta$ is an inverse index of the decision maker's distrust of his baseline probability
+model $\phi$.
+
+Performing the minimization on the right side of \Ep{Tminimization} gives the following minimizing value of $g(\varepsilon)$:
+$$ \hat g(\varepsilon) = {\frac{\exp\left( - \theta^{-1} Z(\varepsilon) \right)} {E   \exp\left( - \theta^{-1} Z(\varepsilon) \right) }}.   \EQN g_minimum $$
+Substituting the minimizer \Ep{g_minimum} into the right side of \Ep{Tminimization} gives the indirect utility function
+$$ {\bf T}(Z) = - \theta \log E \exp \left( -\theta^{-1} Z(\varepsilon) \right) ,  \EQN Tindirect $$
+which we recognize to be the same \idx{risk-sensitivity} operator that appears on the right side of recursion \Ep{Trecur2}.  We rely on the fact that \Ep{Tindirect} is the \idx{indirect utility function}
+for the minimization problem on the right side of \Ep{Tminimization} to interpret the penalty parameter  $\theta$ in ${\bf T}(Z)$ as expressing distrust of the distribution
+$\phi(\varepsilon)$.
+An application of l'Hopital's rule shows that when $\theta= +\infty$, ${\bf T}(Z) = \int Z(\varepsilon) \phi(\varepsilon) d \varepsilon $, which is expected utility under complete trust
+in the density $\phi$.\index{l'Hopital's rule}
+
+
+
+\subsection{Ambiguity averse  preferences}
+
+We  return to our representative consumer and use the following recursion to express preferences over consumption streams.  But we now endow the
+ consumer with distrust of the  density $\phi(\varepsilon_{t+1})$
+ in \Ep{TallRW}.
+He expresses that distrust by using the following recursion to order consumption streams:
+$$ W_t = c_t + \beta {\bf T}_t ( W_{t+1} ) ,$$
+where ${\bf T}_t$ is a conditional version of ${\bf T}$. This is equivalent with
+%$$
+% W_t = c_t - \beta \theta \log E_t  \exp \left[ \left( {\frac{-W_{t+1}}{\theta}}\right) \right],
+% \EQN Trecur3, $$
+ $$
+ W_t = c_t - \beta \theta \log E_t \left[ \exp \left( {\frac{-W_{t+1}}{\theta}}\right)\right] ,
+ \EQN Trecur3 $$
+\index{risk sensitivity}%
+ which is identical with recursion \Ep{Trecur2}, namely, the risk-sensitive recursion of
+Hansen and Sargent (1995) once again.  When interpreted in terms of model ambiguity, \Ep{Trecur3} is said
+to describe `multiplier preferences' that express model ambiguity through the penalty  parameter or `multiplier' $\theta$.\NFootnote{See Hansen and Sargent (2001) for the origin of the term `multiplier preferences'.}
+\auth{Hansen, Lars P.}%
+\auth{Sargent, Thomas J.}%
+\index{multiplier preferences}
+
+
+The identity of recursions \Ep{Trecur2} and  \Ep{Trecur3} means that so far as choices among risky
+consumption plans indexed by $(\mu, \sigma_c)$ are concerned, the risk-sensitive representative consumer of Tallarini (2000)
+is observationally equivalent to a representative consumer who is concerned about model misspecification.
+But the {\it motivations} behind their choices differ and that would in principle  allow us to distinguish
+them if we were able to confront the consumer  with choices between  gambles with known distributions and  gambles with
+unknown distributions.\NFootnote{The classic experiments of Daniel Ellsberg (1961) have often been interpreted as indicating
+that people are averse to not knowing probability distributions of risks. Hansen and Sargent (2011) cite various authors whose doubts about model
+specifications in macroeconomics have convinced them to decline to use expected utility.} \auth{Ellsberg, Daniel}%
+\index{observational equivalence!risk sensitivity and robustness}%
+
+Recall formula \Ep{thetagamma} that for risk-sensitive preferences defines $\theta$ in terms of the
+elementary parameters $\beta$ and $\gamma$:
+$$
+ \theta = {\frac{-1}{(1-\beta)(1-\gamma)}}.
+ $$
+For Tallarini, $\gamma = 1 + {\frac{\theta^{-1}}{1-\beta}}$ is the fundamental parameter. For him, it describes the consumer's
+attitude toward atemporal risky choices under a {\it known\/} probability distribution.
+ But  under the probability ambiguity or `robustness' interpretation,   $\theta$ is an elementary parameter in its own right,
+ one that measures the
+consumer's doubts about the probability model that describes consumption growth risk.
+The evidence cited in  the above quote from
+Lucas (2003) and the introspective  reasoning of Cochrane (1997) and Pratt (1964) that we  described above on page \use{Cochranepage}
+ explain why many economists  think
+that only small positive values of $\gamma$ are plausible when it is
+interpreted as a risk-aversion parameter. Pratt's experiment
+confronts a decision maker with choices between gambles with {\it known\/}
+ probability distributions.
+
+   How should we think
+about plausible values of $\gamma$, or rather,  $\theta$,  when it is instead
+interpreted as encoding responses to gambles that involve {\it unknown\/}
+probability distributions?  Hansen, Sargent, and Wang (2002) and Anderson, Hansen, and Sargent (2003) answer
+this question by recognizing the role of entropy in statistical tests for discriminating one probability distribution from another based on a sample of size $T$ drawn from one or the
+other of the two distributions.  They use the probability of making an error in discriminating between the two models as a way of disciplining the calibration of $\theta$.
+That  leads  them to  argue
+that it is not appropriate to regard $\theta$ as a
+parameter that remains fixed across alternative hypothetical  stochastic
+processes for consumption.
+We take up this issue again in section \use{sec:measureambiguity}.
+\auth{Hansen, Lars P.}%
+\auth{Sargent, Thomas J.}\auth{Anderson, Evan W.}%
+\auth{Wang, Neng}%
+\index{observational equivalence!risk sensitivity and robustness}%
+%\subsection{Worst-case random walk and trend stationary models\label{sec:worst_case}}
+%
+%In appendix \use{sec:appendix}, we show that the worst-case
+%density for the innovation $\varepsilon$ under the random walk
+%model is
+%$$
+%\hat{\pi}\left( \varepsilon _{t+1}\right) \propto \exp \left(
+%{\frac{-\left( \varepsilon _{t+1}+{\frac{\sigma _{\varepsilon
+%}\varepsilon _{t+1}}{\left( 1-\beta \right) \theta }\right)
+%^{2}}{2}}\right).
+%$$
+%Thus, the worst-case distributions shift the mean of
+%$\varepsilon_{t+1}$ from $0$ to $ w_{t+1}=-{\sigma_c \over
+%{\left( 1-\beta \right) \theta }}$ under the random walk model and
+%to $w_{t+1}=-{\sigma_c \over {\left( 1-\rho \beta \right)
+%\theta }}$ under the trend stationary model.  Note that the
+%worst-case models do not perturb the variances of $\varepsilon_{t+1}$, a consequence of the fact that the
+%value functions are linear under Tallarini's log preference
+%specification.
+%%
+%%\begin{equation*}
+%%v_{t+1}^{TS}=\frac{-\sigma_c}{\left( 1-\rho \beta
+%%\right) \theta }.
+%%\end{equation*}
+
+
+\subsection{Market price of  model uncertainty}\label{sec:MPU}%
+Recall the stochastic discount factor \Ep{sdfrisksensitive0}
+$$
+m_{t+1}=\left(\beta{\frac{C_{t}}{C_{t+1}}}\right)\left({\frac{\exp \left( -\theta^{-1} U_{t+1}\right) }{E_{t}\left[
+\exp \left( - \theta^{-1}
+U_{t+1}\right) \right] }}\right) ,
+$$
+or
+$$
+m_{t+1}= \beta \exp( - (c_{t+1} - c_t) ) g(\varepsilon_{t+1}), \EQN sdf_again
+$$
+where $g$ is the likelihood ratio given  by \Ep{RN_formula}.
+One way to state the equity premium puzzle is that the data
+show that for U.S.\ data on per capita consumption, the conditional coefficient of variation of $\exp( - (c_{t+1} - c_t) )$
+is small while the conditional standard deviation of $m_{t+1}$ revealed by asset market prices and returns is large.
+If the stochastic discount factor \Ep{sdf_again} is to explain the large observed equity premium, most of the
+job has to be done by volatility in $g(\varepsilon_{t+1})$.
+
+
+ Direct calculations show that   the conditional standard
+deviation of the likelihood ratio  $g(\varepsilon_{t+1})$ given by formula \Ep{RN_formula} is
+$$ {\rm std}_t(g) = [\exp(w' w)-1]^{1\over 2}
+\approx | w|, \EQN lion
+$$
+where recall that $w$ is given by \Ep{worst_w_defn2} and that because $g(\varepsilon_{t+1})$ is a likelihood ratio, $E_t g= 1$. Therefore, the ratio of ${\rm std}_t (g)$ to $E_t (g)$ equals ${\rm std}_t (g)$.
+    It can be verified directly that
+$|w|$ given by formula \Ep{lion} comprises the lion's share
+of what Tallarini interpreted as the market price of risk given by
+formulas \Ep{EsdfCRRA} and \Ep{sigmasfCRRA}. This is because the first
+difference of the log of consumption has a small conditional
+coefficient of variation in our data,  the heart of the equity premium puzzle. Thus, formula \Ep{lion} is a
+good approximation to Tallarini's formula \Ep{rwsdf}.\NFootnote{In particular, using $w= (1-\gamma) \sigma_c$, direct computations show that
+${\rm std}(g) = [\exp((\gamma-1)^2 \sigma_c^2) -1 ]^{\frac{1}{2}}$ which for large $\gamma$ approximates \Ep{rwsdf}.}
+
+As we have seen in equation \Ep{tallstd200},  Tallarini's stochastic discount factor can be expressed as
+$m_{t+1}  = \exp( - r_t - {\frac{1}{2}} \sigma_c^2 \gamma^2 - \sigma_c \varepsilon_{t+1} + w \varepsilon_{t+1} )$.
+ Hansen, Sargent, and Tallarini (1999) and Hansen and Sargent (2008)  advocate  calling $\sigma_c$ the market price of risk
+ and
+%$${\rm std}_t (g) \approx | w | = {\frac{\sigma_c}{\theta (1-\beta)}}$$
+$-w$ the {\it \idx{market
+price of model uncertainty}}. They  interpret $-w$  as compensation that the representative consumer requires
+for bearing  uncertainty about the probability distribution that governs $c_{t+1} - c_t$.  Barillas, Hansen, and Sargent (2009)
+show that setting $\theta$ to capture what they regard as moderate and plausible  amounts of model uncertainty
+goes a long way toward  pushing  what Tallarini would measure as the market price of uncertainty,
+but which they instead interpret as the market price of model uncertainty, toward the Hansen-Jagannathan bounds.
+\auth{Barillas, Francisco}%
+\auth{Hansen, Lars P.}%
+\auth{Sargent, Thomas J.}%
+
+
+\subsection{Measuring model uncertainty}\label{sec:measureambiguity}%
+Anderson, Hansen, and Sargent (2003) took the following approach to measuring plausible  amounts of model uncertainty.
+The decision maker's baseline approximating model is the random walk with drift  \Ep{TallRW}.  However, the decision
+maker doubts this model and surrounds it with a cloud of models characterized by likelihood ratios $g(\varepsilon)$.   To get a robust
+valuation, he constructs a worst-case model, namely, the model associated with the minimizing likelihood ratio $g(\varepsilon)$ in the appropriate version of
+\Ep{Tminimization}. When his  approximating model is \Ep{TallRW},
+this worst-case model for log consumption growth is
+$$ c_{t+1} = c_t + (\mu + \sigma_c w) + \sigma_c \varepsilon_{t+1}, \EQN TallRWworst $$
+where $\varepsilon_{t+1}$ is again distributed according to a Gaussian density with mean zero and unit variance.  Equation \Ep{TallRWworst}  says that the mean of consumption growth is not $\mu$ but $\mu + \sigma_c w$, where $w$
+is again given by \Ep{worst_w_defn} or \Ep{worst_w_defn2}.  Evidently, the approximating model is the $\gamma=1$ version
+of \Ep{TallRWworst}.  The ambiguity averse consumer has a stochastic discount factor with respect to the approximating
+model \Ep{TallRW} that looks as if he  believes \Ep{TallRWworst} instead of \Ep{TallRW}. It is as if he evaluates utility according to the ordinary utility
+recursion $U_t = c_t + \beta \tilde E_t U_{t+1}$, where $\tilde E_t$ is the mathematical expectation taken with respect to the probability distribution generated by \Ep{TallRWworst}.
+\index{uncertainty!measuring}
+\index{ambiguity!model uncertainty}
+
+When it is  interpreted as a measure of model uncertainty, rather than risk aversion, Anderson, Hansen, and Sargent recommend
+calibrating $\gamma$ or $\theta$ by using an object called a  `\idx{detection error probability}'. In the present context, this object answers the following question.
+Given a sample of size $T$ drawn from either  \Ep{TallRW} (call it model A) or \Ep{TallRWworst} (call it model B), what is the probability that a likelihood ratio test would incorrectly testify {\it either\/} that
+model A generated the data  when in fact model B generated the data, {\it or\/} that model B generated the data when in fact model A did?\NFootnote{Anderson, Hansen, and Sargent (2003) describe the close links between
+entropy and such detection error probabilities.}\index{entropy!detection errors}
+It is easy to compute detection error probabilities by simulating likelihood ratios for samples of size $T$ and counting the frequency of such model discrimination  mistakes.\NFootnote{See Barillas, Hansen, and Sargent (2009).}
+
+   Evidently, when  $\gamma=1$ (which means $\theta = + \infty$), $w = 0$, so models A and B are identical, and therefore statistically indistinguishable.
+In this case, the detection error probability is $.5$, signifying that, via rounding error,  the computer essentially flips a coin in deciding which model generated the data. A detection error probability
+ of $.5$ thus means that it is impossible to distinguish the models from sample data.  But as we increase $\gamma$ above $1$,
+i.e., drive the penalty parameter $\theta$ below $+\infty$, the detection error probability falls.  The idea here is to guide our choice of $\gamma$ or $\theta$ as follows. Set a detection error probability that
+reflects an amount of model specification uncertainty about which it seems plausible for the decision maker to be concerned, then in the context of the particular approximating model at hand
+(which for us is \Ep{TallRW}), find the $\gamma$ associated with that detection error probability.
+\auth{Hansen, Lars P.}%
+\auth{Sargent, Thomas J.}\auth{Anderson, Evan W.}%
+
+
+\midfigure{tallarini50}
+\centerline{\epsfxsize=2.75truein\epsffile{MPRRWvsTS_Korea.eps}}
+\caption{Reciprocal of risk free rate, market price of risk
+pairs for the random walk % ($\circ$)
+model for values of
+detection error probabilities  of 50, 45, 40, 35, 30, 25, 20, 15, 10, 5 and 1 percent.}
+\endfigure
+
+A plausible value for the detection error probability is a matter of judgement. If the detection error probability is .5, it means that the two models are statistically identical and
+can't be distinguished.   A detection error probability of .25 means that there is a one in four chance of making the wrong decision about which model is generating the data.
+From our own experiences fitting models to data,  a person whose specification doubts include perturbed models with a  detection error of .25 or .1 or even .05  could be said to have
+a plausible amount of model uncertainty.
+
+Figure \Fg{tallarini50} redraws Tallarini's figure in terms of detection error probabilities for a sample size equal to the number of quarterly observations
+between 1948 and 2005 used to compute the Hansen and Jagannathan bounds.  The figure again plots $(E(m), \sigma(m))$
+pairs  given by formulas \Ep{rwrf}
+\Ep{rwsdf} for $\gamma$'s chosen to deliver the indicated detection error probabilities.  The figure shows that moderate detection error probabilities of
+10 or 15 percent take us more than half way to the Hansen and Jagannathan bounds, while 1 percent gets us there.
+The sense of these calculations is that moderate amounts of aversion to model uncertainty can substitute for huge amounts of risk aversion from the point of view of pushing the
+$(E(m), \sigma(m))$ toward the Hansen-Jagannathan bounds.
+In the next section, we revisit the quote from Lucas in light of this finding.
+
+\section{Costs of aggregate fluctuations}\label{sec:costsfluctuations}%
+ We now take up the important substantive issue that prompted Lucas to dismiss Tallarini's evidence about $\gamma$ for the particular purpose then at hand for Lucas (1987, 2003).
+ Lucas wanted to measure  the gains to eliminating further unpredictable fluctuations in aggregate U.S.\ per capita consumption beyond reductions  that had
+ already been achieved by post World War II aggregate stabilization policies. His method was to find an upper bound on   possible additional  gains by computing the reduction in initial consumption that a representative consumer with time-separable
+ preferences would be willing to accept in order to eliminate {\it all\/} unpredictable fluctuations that post WWII consumption around have exhibited.  In this section, we describe Tallarini's version
+ of Lucas's calculation and spotlight how  $\gamma$ affects conclusions.\NFootnote{For another perspective on the topic of this section,
+  see Alvarez and Jermann (2004).} \auth{Alvarez, Fernando} \auth{Jermann, Urban}
+
+For the  random walk with drift model of log consumption
+described by equation \Ep{TallRW}, the level of consumption $C_t = \exp (c_t)$ obeys
+$C_{t+1} = \exp( \mu + \sigma_c \varepsilon_{t+1}) C_t$.  A deterministic\NFootnote{A stochastic process is said to
+be {\it deterministic\/} if its future is perfectly predictable given its past and present.}
+process with same expected growth rate as the process $\{C_t\}$ is evidently
+$$ C_{t+1}^d = \exp( \mu + {\frac{1}{2}} \sigma_c^2) C_t^d \EQN TallRWdet $$
+because $E \exp( \mu + \sigma_c \varepsilon_{t+1}) = \exp( \mu + {\frac{1}{2}} \sigma_c^2)$.
+\index{deterministic!stochastic process}%
+Now using $\theta^{-1} = -(1-\gamma ) (1-\beta)$ in our formula \Ep{BeqnsolnRW}  allows us to express
+  a risk-sensitive value function  in terms of $\gamma$:
+$$
+U_{t}={\frac{\beta }{\left( 1-\beta \right) ^{2}}}\left[ \mu
++{\frac{\sigma_c^{2}(1-\gamma)}{2}}
+\right] +{\frac{1}{1-\beta }}{c}_{t}. \EQN BeqnsolnRW
+$$
+Equating a time zero risk-sensitive value function for the deterministic process $\{C_t^d\}$ (on the left side) with a time zero risk-sensitive  value function for  the random process
+$\{C_t\}$ governed by the geometric random walk with drift \Ep{TallRW} (on the right side) gives
+$$ {\frac{\beta }{\left( 1-\beta \right) ^{2}}}\left[ \mu
++{\frac{\sigma_c^{2}}{2}}
+\right] +{\frac{1}{1-\beta }}{c}_{o}^d = {\frac{\beta }{\left( 1-\beta \right) ^{2}}}\left[ \mu
++{\frac{\sigma_c^{2}(1-\gamma)}{2}}
+\right] +{\frac{1}{1-\beta }}{c}_{0} $$
+where $c_0 = \log C_0$ and $c_0^d = \log C_0^d$.
+Solving for $c_0 - c_0^d$ gives
+$$ c_0 - c_0^d = \left({\frac {\beta}{1-\beta}}\right){\frac{ \gamma \sigma_c^2}{2}} .\EQN eqn:costsbc $$
+The left  side is the proportionate once-and-for-all reduction in initial consumption that a consumer would accept
+ to trade a random process  \Ep{TallRW} for a perfectly predictable process with the same
+conditional mean growth rate as \Ep{TallRW}.    The formula shows  the utility  costs of random fluctuations
+to be proportional to $\gamma$.
+ The pertinent sources of evidence about the magnitude of  $\gamma$ and whether they can be  interpreted as  measures of attitudes toward risk, or maybe something else,
+are the issues under scrutiny in the above quote from Lucas.
+% In showing that getting into the Hansen-Jagannathan bounds requires a value of $\gamma$
+% of about 50 rather than Lucas's preferred number of 1 or 2,
+Together with the values of $\gamma$ that allowed him to attain the Hansen-Jagannathan bounds, Tallarini's formula \Ep{eqn:costsbc} brings   a very large increase in estimates
+of the costs of aggregate consumption fluctuations relative to the small ones asserted by Lucas.
+In dismissing  the high value of $\gamma$ that Tallarini found is necessary to attain the Hansen-Jagannathan bounds as measuring attitudes toward  risks with known probabilities,
+Lucas was advocating a lower estimate of the costs of aggregate risk than Tallarini had inferred.
+
+
+
+
+\midfigure{BHS_punchline}
+\centerline{\epsfxsize=2.75truein\epsffile{proportions1.eps}}
+\caption{Proportions $c_0- c_0^d$ of
+initial consumption  that a representative consumer with model-uncertainty averse (multiplier) preferences would surrender not to confront risk (dotted line) and model uncertainty (solid line)  for random-walk model of log consumption growth, plotted as a function of detection error probability.}
+\endfigure
+
+In section \use{sec:MPU} we argued that most of what Tallarini interpreted as the market price of {\it risk\/} should instead be interpreted
+as a market price of {\it model uncertainty}.  The section \use{sec:MPU} argument    is one possible way of fulfilling Lucas's hope that ``It would be good to have the equity
+premium resolved, but I think we need to look beyond high
+estimates of risk aversion to do it.''  And it is compatible with Lucas's judgement that Tallarini's values of $\gamma$'s calibrated to get into the Hansen-Jagannathan bounds are
+not suitable for mental experiments about risks with {\it known\/} probabilities of the kind that Lucas performed.
+Those high estimates of $\gamma$ are relevant to {\it other\/} mental experiments about eliminating the consumer's concern about {\it model uncertainty\/}, but not
+about Lucas's experiment. Model uncertainty  experiments are a subject of Barillas, Hansen, and Sargent (2009).
+
+Figure \Fg{BHS_punchline} shows Barillas, Hansen, and Sargent's measures of the costs of removing random fluctuations in aggregate consumption per capita (the dotted line) as well as costs of removing
+model uncertainty (the solid line). The figure reports these costs  as a function of the detection error probability described in subsection \use{sec:measureambiguity}.  The costs of consumption risk drawn from a known distribution are small, as Lucas asserted, but for moderate
+values of detection error probabilities, the costs of model uncertainty are substantial.\NFootnote{See De Santis (2007) for a modification of the baseline around which the costs of
+aggregate fluctuations are measured. De Santis adopts a specification according to which a typical consumer's consumption process consists of an aggregate component and an uninsurable idiosyncratic
+component, modeled in the same fashion Constantinides and Duffie (1996) do in the model described in the next section.  De Santis describes the welfare consequences of eliminating {\it aggregate\/}
+fluctuations, while leaving {\it idiosyncratic\/} fluctuations unaltered at their calibrated value.  For a coefficient of relative risk aversion of 3, De Santis finds that the benefits of removing aggregate fluctuations are much larger when idiosyncratic fluctuations are not removed first.  If one were to repeat De Santis's exercise for a coefficient of risk aversion of 1, the effect that he
+finds would disappear.}
+\auth{De Santis, Massimiliano}%
+
+
+
+
+%\section{Heterogeneity and incomplete markets}
+%
+%As Hansen and Jagannathan (1991) and the preceding
+%analysis of the log linear model both indicate,
+%the equity premium reflects restrictions
+%across returns and consumption imposed by Euler equations.
+%These restrictions do not assume complete markets.
+%A complete markets assumption might enter indirectly,
+%to justify using aggregate consumption growth
+%to measure the intertemporal rate of substitution.
+%
+%The equity premium puzzle is that data on asset returns
+%and aggregate consumption say that the equity premium is
+%much larger than is predicted by Euler equations for
+%asset holdings with a plausible coefficient of relative
+%risk aversion $\gamma$.
+%
+%
+%
+%XXXXXX start here
+
+
+\section{Reverse engineered consumption heterogeneity}\label{sec:ConsDuff}%
+In earlier sections, we explored how risk-sensitive preferences or a fear of model misspecification would increase the volatility of the stochastic discount factor
+by multiplying the ordinary stochastic discount factor
+$
+m_{t+1}= \beta \exp( - (c_{t+1} - c_t) ) $ with a random variable $  g(\varepsilon_{t+1})$ that can be interpreted as a likelihood ratio.
+In this section, we describe how Constantinides and Duffie (1996) constructed such  a volatility-increasing  multiplicative adjustment in another way, namely,
+by  introducing incomplete markets and stochastic volatility in the  cross-sectional distribution of consumption growth.
+
+\index{reverse engineer}%
+Let $R_{j, t+1}, j=1, \ldots, J$ be a list of returns on assets and let $m_{t+1}\geq 0$ be a stochastic discount factor
+for which
+$$ E_t m_{t+1}  R_{j,t+1} = 1 \EQN ConDuff1  $$
+for $j = 1, \ldots, J$. As discussed  in section \use{sec:HJbounds}, we know that such a discount factor exists under the weak assumptions
+that returns obey the law of one price and a no-arbitrage outcome.  Constantinides and Duffie (1996)\NFootnote{Also see  Mankiw (1986)  and Attanasio and
+Weber (1993) for analyses that anticipate  elements of the setup of this
+section.} assumed that  \Ep{ConDuff1} holds for some $m_{t+1}$.  They then reverse engineered consumption processes $\{C_t^i\}$ and  personal stochastic discount
+factors $m^i_{t+1}$ for a  collection of heterogeneous consumers $i \in I$ with the properties
+that
+\auth{Mankiw, Gregory}%
+\auth{Attanasio, Orazio}%
+\auth{Weber, Gugliemo}%
+\auth{Constantinides, George M.}%
+\auth{Duffie, Darrell}%
+\medskip
+\item{1.} For each $i$, the personal stochastic discount factor  $m_{t+1}^i$ satisfies
+$$ E_t m_{t+1}^i R_{j,t+1} = 1 , \quad j =1, \ldots , J; $$
+
+\medskip
+
+\item{2.}  Where $\{C_t^i\}_{t=0}^\infty$ is consumer $i$'s consumption process,  consumer $i$'s personal stochastic discount factor $m_{t+1}^i$ is
+$$ m_{t+1}^i = \beta \left({\frac{C_{t+1}^i}{C_t^i}}\right)^{-\gamma}; \EQN ConDuff0 $$ and
+
+\medskip
+\item{3.} There exists a pattern for the evolution of  the conditional volatility of the cross section of relative consumptions across agents for which the  $\gamma$  in \Ep{ConDuff0}
+can be much lower than the $\hat \gamma$  that would be estimated for  a stochastic discount factor $m_{t+1}^a = \beta \left({\frac{C_{t+1}}{C_t}}\right)^{-\hat \gamma} $ based on {\it aggregate\/} consumption data $\{C_t\}$.
+%lower than what one would obtain by fitting
+%
+%
+%  consumption distributions general equilibrium  with incomplete
+%markets that generates a stochastic discount factor $m_{t+1}$ that satisfies
+%\Ep{ConDuff1}.
+
+
+\medskip
+ %Constantinides and Duffie's construction  uses the properties of the  log normal distribution in the following way.
+  Here is how Constantinides and Duffie reverse engineered an intertemporal  pattern of volatility in the cross-section
+ of consumption to get their three properties.\NFootnote{This section can be viewed as an application of  {\it \idx{back-solving}}. See section \use{sec:back-solving} of chapter \use{linappro}.}
+Consider an economy with a large number (strictly speaking, a continuum)  of consumers named $i$. Let
+ $C_t$ be the average   across $i$ of the individual consumption levels $C_{t}^i$. For a given  return vector $\{R_{j,t+1}, j= 1, \ldots, J\}$, take  as given a  `successful' stochastic discount factor $\{m_{t+1}\}$ (i.e., one that
+satisfies \Ep{ConDuff1} for $j=1, \ldots, J$).\NFootnote{In section \use{sec:expaffine}, we shall describe a  widely used and  empirically
+successful stochastic discount factor.}
+Let $C_t^i = \delta_t^i C_t$ for a continuum of consumers $i \in I$.\NFootnote{Constantindes and Duffie (1996)
+assume that the $\{m_{t+1}, {\frac{C_{t+1}}{C_t}}\}$ processes satisfy \hfil\break
+$\log m_{t+1} -\log \beta + \gamma \log \left({\frac{C_{t+1}}{C_t}}\right) \geq 0$.}  For a given $\beta \in (0,1)$ and a given $\gamma \geq 0$,
+express $E m_{t+1} R_{j,t+1} =1$ as
+$$ E_t \left( {\frac{m_{t+1}}{\beta \left( {\frac{ C_{t+1}^i}{C_t^i}}\right)^{-\gamma} }}\right) \beta \left({\frac{C_{t+1}^i}{C_t^i}}\right)^{-\gamma}
+  R_{j,t+1} = 1 $$
+  or
+$$ E_t \left( {\frac{m_{t+1}}{\beta \left( {\frac{ C_{t+1}}{C_t}}\right)^{-\gamma} \left( {\frac{ \delta_{t+1}^i}{\delta_t^i}}\right)^{-\gamma}}}\right) \beta \left({\frac{C_{t+1}^i}{C_t^i}}\right)^{-\gamma}
+  R_{j,t+1} = 1. \EQN constduff101 $$
+Constantinides and Duffie assumed  that the consumption share process  $\delta_t^i$ obeys
+$$ \delta_{t+1}^i = \exp\left[ \eta_{t+1}^i y_{t+1} - {\frac{y_{t+1}^2}{2}} \right] \delta_t^i , \EQN constduff102 $$
+where $\eta_{t+1}^i \sim {\cal N}(0,1)$ is independently and identically distributed across individuals $i$ and
+$y_{t+1}^2$ is the conditional volatility of $\log \delta_{t+1}^i$ at time $t$. Evidently, $E\left[ \delta_{t+1}^i | \delta_t^i, y_{t+1}\right] = \delta_t^i $, so that $\{\delta_t^i\}$ is a  geometric random walk  process.
+ A law of large numbers for a cross section implies that the mean of $\delta_t^i$ across agents is $1$ for all $t$.\NFootnote{See Constantinides and Duffie (1993, p.~227) for qualifications. The stochastic share process $\{\delta^i_t\}_{t=0}^\infty$ converges almost surely to zero, 
+   almost everyone eventually becomes very poor. See chapter \use{socialinsurance} for a discussion of a very different setting in which such ``immiseration'' for most people is a feature    of an optimal contract.} To complete their  construction,
+Constantinides and Duffie chose the conditional volatility $y_{t+1}$ in such a way that equation \Ep{constduff101}
+ verifies their desired outcome, namely,
+$$ E_t  \beta \left({\frac{C_{t+1}^i}{C_t^i}}\right)^{-\gamma}
+  R_{j,t+1} = 1 \EQN constduff1001 $$
+for all $i$ and $j = 1, \ldots, J$.
+% Notice that equations \Ep{constduff101} and \Ep{constduff102} imply that
+To get this, they needed that the term $$\left( {\frac{m_{t+1}}{\beta \left( {\frac{ C_{t+1}}{C_t}}\right)^{-\gamma} \left( {\frac{ \delta_{t+1}^i}{\delta_t^i}}\right)^{-\gamma}}}\right)$$  have mean   $1$, where the expectation  is  with respect to the
+distribution of $ \left( {\frac{ \delta_{t+1}^i}{\delta_t^i}}\right)$.
+To get this outcome, they imposed  that
+$$ E\left[ \exp \left( -\gamma (\eta_{t+1}^i y_{t+1} - {\frac{y_{t+1}^2}{2}}) \right) \right] | y_{t+1}^2   = {\frac{m_{t+1}}{\beta}}\left( {\frac{ C_{t+1}}{C_t}}\right)^{\gamma},
+\EQN constduff103 $$
+where the expectation is over the distribution of $\eta^i_{t+1}$.
+%Constantinides and Duffie set $y_{t+1}^2$ so that  the mathematical expectation of the left side of \Ep{constduff103} conditional on $y_{t+1}^2$ equals the right side of \Ep{constduff103}.
+The fact that % The expectation of the left side of \Ep{constduff103}  conditional on volatility $y_{t+1}^2$ can be computed to be
+$$ E \exp \left( -\gamma (\eta_{t+1}^i y_{t+1} - {\frac{y_{t+1}^2}{2}}) \right) \bigl| y_{t+1}^2
+= \exp \left[\left({\frac{\gamma (\gamma+1)}{2}}\right) y_{t+1}^2 \right]$$
+implies that to compute $y_{t+1}^2$,   the conditional variance of the cross-section distribution of ${\frac{C_{t+1}^i}{C_{t+1}}}/{\frac{C_t^i}{C_t}} = {\frac{\delta_{t+1}^i}{\delta_t^i}}$, Constantinides and Duffie had to solve
+$$ \exp \left[ \left({\frac{\gamma (\gamma+1)}{2}}\right) y_{t+1}^2 \right] = {\frac{m_{t+1}}{\beta}}\left( {\frac{ C_{t+1}}{C_t}}\right)^{\gamma} $$
+which implies that % $y_{t+1}^2$,
+%Substituting \Ep{ConDuff8} into
+%\Ep{ConDuff5} shows that we can rewrite $\tilde m_{t+1}^i$ as
+$$ y_{t+1}^2 = {\frac{2}{\gamma(\gamma+1) }}\left[ \log m_{t+1} - \log \beta + \gamma \log \left( {\frac{ C_{t+1}}{C_t}}\right) \right].
+\EQN constduff104 $$
+With this specification, we have succeeded in generating a collection of stochastic discount factors $m_{t+1}^i$ satisfying
+\Ep{ConDuff0},  % that equal
+%$$  m_{t+1}^i = \beta \left( {\frac{C_{t+1}^i}{C_t^i}}\right)^{-\gamma}, \EQN ConDuff9 $$
+namely, the ordinary discount factor for a consumer $i$ with time separable CRRA preferences and consumption process $\{C_t^i\}$.
+%
+%
+%
+%For that empirically successful $\{m_{t+1}\}$ process, define the random $y_{t+1}$ process\NFootnote{Constantindes and Duffie (1996)
+%assume that the $\{m_{t+1}, {\frac{C_{t+1}}{C_t}}\}$ processes satisfy \hfil\break
+%$\log m_{t+1} -\log \beta + \gamma \log \left({\frac{C_{t+1}}{C_t}}\right) \geq 0$.}
+%$$ y_{t+1} = \left[{\frac{2}{\gamma(\gamma+1)}}\right]^{\frac{1}{2}}\left[\log m_{t+1} -\log \beta + \gamma \log \left({\frac{C_{t+1}}{C_t}}\right) \right]^{\frac{1}{2}}. \EQN ConDuff2 $$
+%For a given $\beta \in (0,1)$ and a given $\gamma \geq 0$, define a candidate stochastic discount factor as the following function
+%of given stochastic processes for $\{C_t, m_{t+1}\}$:
+%$$ \tilde m_{t+1} = \beta \left({\frac{C_{t+1}}{C_t}}\right)^{-\gamma} \exp \left({\frac{\gamma(\gamma+1)}{2}} y_{t+1}^2 \right) .\EQN ConDuff3 $$
+%Evidently, the right side of \Ep{ConDuff3} can be said to condition on knowledge of $y_{t+1}$, which via \Ep{ConDuff2} depends on $m_{t+1}$.
+%By substituting \Ep{ConDuff2} into \Ep{ConDuff3}, it can be verified that
+%$$ \tilde m_{t+1} = m_{t+1} , \EQN ConDuff4 $$
+%so in equation \Ep{ConDuff3} we have succeeded in generating a multiplicative adjustment $\exp\left({\frac{\gamma(\gamma+1)}{2}} y_{t+1}^2 \right)$ to the standard CRRA stochastic discount factor that is capable of reconciling the returns data $R_{j,t+1}, j = 1, \ldots, J$ with the
+%theoretical restrictions $E m_{t+1} R_{j,t+1} =1$ for $j = 1, \ldots, J$.
+%
+%    But how can we interpret \Ep{ConDuff3} and the associated multiplicative adjustment $\exp\left({\frac{\gamma(\gamma+1)}{2}} y_{t+1}^2 \right)$? %Notice that
+%%the stochastic discount factor $\tilde m_{t+1} $ defined by \Ep{ConDuff3} is the product of the usual stochastic discount factor associated
+%%with time separable CRRA preferences and  $\left({\frac{\gamma(\gamma+1)}{2}} y_{t+1}^2 \right) $.
+%To answer that question, we proceed as follows. % We can interpret the multiplicative adjustment  process $\left({\frac{\gamma(\gamma+1)}{2}} y_{t+1}^2 \right) $ in \Ep{ConDuff3} in the following way.
+%Let $\eta_{t+1}^i \sim {\cal N}(0,1)$ and assume that the $\eta_{t+1}^i$ processes are statistically independent across $i$.
+% Using once again the properties of log normal random variables, note that
+%$$ E \exp \left[ - \gamma \left(\eta_{t+1}^i y_{t+1} - {\frac{y_{t+1}^2}{2}} \right) \Bigl| y_{t+1} \right] = \exp ({\frac{\gamma(\gamma+1)}{2}} y_{t+1}^2) .\EQN ConDuff4 $$
+%The right side of \Ep{ConDuff4} is the multiplicative adjustment to the ordinary CRRA discount factor with aggregate consumption that appears on the right side of \Ep{ConDuff3}.
+%Therefore, by removing the conditioning on $y_{t+1}^2$ from the right side of \Ep{ConDuff3}, we can form a   stochastic discount factor measurable with respect to  {\it  three\/} random processes
+%$\{C_{t+1}, m_{t+1},  \eta_{t+1}^i\}$:
+%$$ \tilde m_{t+1}^i  =  \beta \left({\frac{C_{t+1}}{C_t}}\right)^{-\gamma}  \exp \left[- \gamma \left(\eta_{t+1}^i y_{t+1} - {\frac{y_{t+1}^2}{2}} \right) \right]. \EQN ConDuff5 $$
+%Imagine doing  this for each $i\in I$, taking note again of our assumption that the  $\eta_{t+1}^i$ processes are independent across the $i$'s.\NFootnote{See Constantinides and Duffie (1993, p.~227) for important
+%technical caveats about this independence assumption.}  For each personal stochastic discount factor  $ \tilde m_{t+1}^i$, an application of the law of iterated expectations  establishes
+%that
+%$$ E_t [ \tilde m_{t+1}^i R_{j,t+1} ] =1 , \quad  j=1, \ldots . J \EQN ConDuff6 $$
+%In this way, Constantinides and Duffie  have reverse engineered a collection of personal  stochastic discount factors $\tilde m_{t+1}^i$ that, for all $i$,  succeed in reconciling  the returns data to $E \tilde m_{t+1}^i R_{j,t+1}=1$.
+\auth{Constantinides, George M.}%
+\auth{Duffie, Darrell}%
+%
+%To interpret $\tilde m_{t+1}^i$ for person $i$, define a collection of stochastic processes $\{\delta_t^i\}$ that satisfy
+%$$ \delta_{t+1}^i = \exp\left[ \eta_{t+1}^i y_{t+1} - {\frac{y_{t+1}^2}{2}} \right] \delta_t^i . \EQN ConDuff6 $$
+%Evidently, $E\left[ \delta_{t+1}^i | \delta_t^i, y_{t+1}\right] = \delta_t^i $, so that $\{\delta_t^i\}$ is a  geometric random walk  process. Also, an appeal to
+%a law of large numbers for a cross section implies that the mean of $\delta_t^i$ across agents is $1$ for all $t$.\NFootnote{Again, see Constantinides and Duffie (1993, p.~227) for qualifications about such an  argument.}
+%Constantinides and  Duffie posit that $C_t^i$ is related to per capita consumption $C_t$ by
+%$$ C_t^i = \delta_t^i C_t, \EQN ConDuff7 $$
+%so that the nonnegative  exponential random walk $\{\delta_t^i\}$ process governs consumer $i$'s share of aggregate consumption.
+%With this interpretation,
+%$$ {\frac{C_{t+1}^i}{C_t^i }} = \exp\left[ \eta_{t+1}^i y_{t+1} - {\frac{y_{t+1}^2}{2}} \right] {\frac{C_{t+1}}{C_t }},  \EQN ConDuff8 $$
+%and
+
+
+To attain \Ep{ConDuff0} and $C_t^i = \delta_t^i C_t$ %\Ep{ConDuff7} and \Ep{ ConDuff9}
+as equilibrium outcomes requires a setting with the following features:
+
+\medskip
+
+\item{1.}  Markets are incomplete.  In particular, consumers are allowed to trade only risk-free zero coupon bonds of various maturities together with  our $J$ securities,  with security $j$ have given return processes $\{R_{j,t+1}\}$.\NFootnote{Since  $E_t m_{t+1}^i $ are equal across all $i$'s  at the assumed allocation $\{C_t^i\}$, it follows that the risk-free bonds are not traded. We know from chapter \use{recurge} that if markets were complete,  \Ep{ConDuff0} and $C_t^i = \delta_t^i C_t$ could not prevail in equilibrium.}
+
+\medskip
+\item{2.} Each individual consumer's idiosyncratic risk is very persistent, as captured by the geometric random walk $\delta_t^i$ for household $i$'s consumption share.
+\medskip
+\item{3.}  The conditional volatility of the cross section distribution of consumption growth rates varies systematically with the growth rate of aggregate consumption, as
+described by \Ep{constduff104}.
+
+\medskip
+
+\noindent These three features  characterize  an incomplete markets  equilibrium with no trade in which $\{C_t^i\}$ is interpreted as an exogenous endowment process assigned
+to agent $i$.\NFootnote{Heathcote, Storesletten, and  Violante (2012) and De Santis (2007) put aspects of the Constantinides and Duffie specification of the consumption process to work in
+other contexts.  By reinterpreting an individual consumption process in the Constantinides and Duffie  as the outcome of an island in which there are complete insurance markets for heterogeneously
+endowed consumers,   Heathcote, Storesletten, and  Violante model  partial consumption insurance: there is complete insurance within islands, but  incomplete insurance across islands.
+De Santis uses the Constantinides and Duffie  consumption process to get a candidate for an alternative benchmark for measuring the costs of removing aggregate, but for De Santis, not idiosyncratic
+consumption fluctuations.}
+\auth{De Santis, Massimiliano}%
+\auth{Heathcote, Jonathan}%
+\auth{Storesletten, Kjetil}%
+\auth{Violante, Giovanni L.}%
+
+
+To illustrate key forces,
+Constantinides and Duffie consider the following model for the dependence of cross-section consumption growth volatility on
+the growth rate of aggregate consumption:
+$$ y_{t+1}^2 = a + b \log \left( {\frac{C_{t+1}}{C_t}} \right) . \EQN Conduff10 $$
+Then it follows directly from
+${\frac{C_{t+1}^i}{C_t^i }} = \exp\left[ \eta_{t+1}^i y_{t+1} - {\frac{y_{t+1}^2}{2}} \right] {\frac{C_{t+1}}{C_t }}$
+ that
+$$ E_t \left[ R_{j,t+1} \hat \beta \left({\frac{C_{t+1}}{C_t}}\right)^{- \hat \gamma } \right] = 1, \EQN ConDuff10 $$
+where
+$$ \EQNalign{ \log \hat \beta & = \log \beta + {\frac{\gamma(\gamma+1)}{2}}a \EQN ConDuff11;a \cr
+            \hat \gamma & = \gamma - {\frac{\gamma(\gamma+1)}{2}} b .  \EQN ConDuff11;b } $$
+Formula \Ep{ConDuff11;b} implies that if $b <0$, so that the cross-section dispersion of consumption growth increases during
+downturns in $\left({\frac{C_{t+1}}{C_t}}\right)$, then $\hat \gamma > \gamma$.
+So in this case,  estimates of $\gamma$ constructed in usual ways from aggregate
+consumption data are distorted upwards.
+%
+%Constantinides and Duffie (1996)\NFootnote{Also see Attanasio and
+%Weber (1993) for important elements of the argument of this
+%section.} reverse engineer  a general equilibrium  with incomplete
+%markets that features Mankiw's mechanism.  Their economy is
+%arranged so that no trade occurs in equilibrium, and it generates
+%the volatility of the cross-section distribution of consumption
+%growth as well as the negative covariation between excess returns
+%and the cross-section dispersion of consumption growth required to
+%activate Mankiw's mechanism.  An important feature of
+%Constantinides and Duffie's example is that each household's
+%endowment process is very persistent (it is a random walk).
+
+\auth{Constantinides, George M.}
+\auth{Duffie, Darrell}
+
+ Storesletten, Telmer, and Yaron (1998, 2004) and Cogley (1999) pursued some of the ideas of  Constantinides and Duffie by using evidence from the
+panel study of income dynamics (PSID) to estimate the persistence of endowment shocks and the volatility of consumption innovations.  %  They use
+%a different econometric specification than that of Heaton and
+%Lucas (1996), who found limited persistence in endowments from
+%the PSID data, limited enough to shut down Mankiw's mechanism.
+%Cogley (1999) checked the contribution of the covariance
+%term in equation \Ep{mankiw5}  using data from the Consumer
+%Expenditure Survey, and found what he interpreted as
+%weak support for the idea.  The cross-section
+%covariance found by Cogley has the correct sign but
+%is not very large.
+%
+\auth{Storesletten, Kjetil}
+\auth{Yaron, Amir}
+\auth{Telmer, Chris}
+\auth{Cogley, Timothy}
+\auth{Constantinides, George M.}
+\auth{Duffie, Darrell}
+
+
+
+\section{Affine risk prices}\label{sec:expaffine}%
+This section describes another response to the empirical
+problems encountered by the theory
+$E (m_{t+1} R_{j,t+1})=1$ under   the   stochastic discount factor
+\Ep{affine101a}-\Ep{affine101b} induced by time separable CRRA preferences,
+%\Ep{CRRA3},
+which we repeat here for convenience:
+%$$ m_{t+1} = \beta \exp \left( - \gamma \mu - \gamma \sigma_c \varepsilon_{t+1} \right)  $$
+%or
+$$ \eqalign{ m_{t+1} & = \exp ( - r_t - {\frac{1}{2}} \sigma_c^2 \gamma^2 - \gamma \sigma_c \varepsilon_{t+1})  \cr
+    r_t & = \rho + \gamma \mu - {\frac{1}{2}} \sigma_c^2 \gamma^2 .  \cr} $$
+This model of the stochastic discount factor asserts that exposure to the  random part of  consumption growth, $\sigma_c  \varepsilon_{t+1}$, is the only possible source discrepancies among expected rates of returns on different securities: $\varepsilon_{t+1}$
+is the only priced risk.
+
+Another approach maintains $E (m_{t+1} R_{t+1})=1$ but divorces the stochastic discount factor
+$m_{t+1}$
+from consumption risk.  Instead,  this approach specifies a stochastic discount
+factor that (a) is analytically tractable (a test passed by \Ep{CRRA3} or \Ep{affine101a}-\Ep{affine101b}), and (b) can be calibrated to fit observed asset prices
+without provoking skeptical comments about implausible parameter values and  magnitudes of  risk prices (a test  critics like Lucas say
+ \Ep{CRRA3} or Tallarini's \Ep{std10020a}-\Ep{std10020b} fails to pass).
+
+ The alternative approach  imposes
+\index{term structure!affine yield model}%
+the law of one price via $E (m_{t+1} R_{t+1} ) =1$ (and often also the no-arbitrage principle via $m_{t+1}> 0$)
+but abandons a link between the stochastic discount
+factor and a consumption growth process.  Instead, it  posits
+a stochastic process for the stochastic discount factor that is not tightly linked to a theory about consumers' preferences,
+and then uses  overidentifying restrictions from $E (m_{t+1} R_{j, t+1} ) =1$  for a set of $N$ returns
+$R_{j,t+1}, i=1, \ldots, N$,  to let the data indicate  risks and the prices that the returns data
+attach to them.
+
+
+The model has two sets of  components.  The first  is a vector autoregression that describes
+ underlying risks  $\varepsilon_{t+1}$ and the evolution of the yield  $r_t$ on a one period risk free claim:\NFootnote{Note that
+we are recycling notation by redefining $\varepsilon_{t+1}$ here.}
+$$ \EQNalign{ z_{t+1} & = \mu +   \phi z_t + C \varepsilon_{t+1} \EQN zstatesp1 \cr
+              r_t & = \delta_0 + \delta_1' z_t, \EQN zstatesp2 } $$
+where $\phi$ is a stable $m \times m$ matrix, $C$ is an $m \times m$ matrix,  $\varepsilon_{t+1} \sim {\cal N}(0,I)$ is an i.i.d.\ $m\times 1$ random vector, and $z_t$ is an $m \times 1$ state vector.
+The second set of components is a vector of risk prices  $\lambda_t$ and an associated stochastic discount factor $m_{t+1}$ defined
+via %whose log is affine (i.e., linear plus a constant) in the state vector
+%$z_t$ from the vector autoregresssion:
+$$ \EQNalign{ \lambda_t & = \lambda_0 + \lambda_z z_t \EQN sdflambda1 \cr
+                \log ( m_{t+1}) & = - r_t - {\frac{1}{2}} \lambda_t' \lambda_t - \lambda_t' \varepsilon_{t+1} .\EQN sdflambda2 }$$
+Here $\lambda_0$ is $m \times 1$ and $\lambda_z$ is $m \times m$. The  components of  $\lambda_t$ that multiply corresponding components of the risks $\varepsilon_{t+1}$ are  called
+risk prices, for reasons that we explain in the next subsection.  The stochastic discount factor $m_{t+1}$ is exponential quadratic in the state $z_t$ as a result of the risk prices  $\lambda_t$  being affine in $z_t$.
+Evidently,
+$$ \EQNalign{ E_t (m_{t+1}) & = \exp ( - [\delta_0 + \delta_1' z_t] )= \exp(- r_t) \EQN sdfmoment1 \cr
+               {\rm std}_t(m_{t+1}) & =  E_t (m_{t+1}) ( \exp(\lambda_t' \lambda_t) - 1 )^{\frac{1}{2}}  \approx | \lambda_t |. \EQN sdfmoment2 }$$
+Equation  \Ep{sdfmoment1} confirms that $r_t$ is the yield on a risk-free one-period bond.  That is why it is often called `the short rate' in
+the literature on exponential quadratic models of the stochastic discount factor.  The free parameters of the vector autoregression for the $\{z_t\}$ process
+are  $(\mu, \phi, C)$ and
+the free parameters  $(\delta_0, \delta_1, \lambda_0, \lambda_z)$ pin down the stochastic discount factor as a function of $(z_t, \varepsilon_{t+1})$.
+\index{risk prices!affine}%
+
+\subsection{An application}
+We  gather insights by using  the stochastic discount factor \Ep{sdflambda2} to
+restrict a  risky one-period gross return $R_{j,t+1}$.  Our  standard pricing formula
+is $$E_t (m_{t+1} R_{j,t+1}) = 1. \EQN asset_always $$
+ Let $R_{j,t+1}$ be described by
+$$ R_{j,t+1} = \exp(\nu_t(j) - {\frac{1}{2}} \alpha_t(j)' \alpha_t(j) + \alpha_t(j)' \varepsilon_{t+1} ) \EQN Rjlaw $$
+or
+$$ \log R_{j,t+1} \sim {\cal N}(\nu_t(j)  - {\frac{1}{2}} \alpha_t(j)' \alpha_t(j) , \alpha_t(j)' \alpha_t(j)) , $$
+where $\nu_t(j) $ is a function of $z_t$ that makes \Ep{asset_always} become satisfied and
+$$  \alpha_t(j) = \alpha_0(j) + \alpha_z(j) z_t, \EQN alphaRj $$
+where $\alpha_0(j)$ is an $m \times 1$ vector and $\alpha_z(j)$ is an $m \times m$ matrix.
+%Evidently, \Ep{Rjlaw} implies\NFootnote{Equation \Ep{Rjlaw} also implies that the conditional volatility of $R_{j,t+1}$ equals
+% $\alpha_t(j)' \alpha_t(j)$.}
+%$$ E_t R_{j,t+1} = \exp(\nu_t(j)) .$$
+In \Ep{Rjlaw}, the components of the loading vector $\alpha_t(j)$ express  {\it  exposures\/} \index{risk exposure}%
+of $\log R_{j,t+1}$ to corresponding components of the vector of risks $\varepsilon_{t+1}$.
+Equation \Ep{Rjlaw}  implies that
+$$ E_t R_{j,t+1} = \exp(\nu_t(j)) .$$
+We want to know how $\lambda_t$ and $\alpha_t(j)$ affect $\nu_t(j)$.
+
+
+ The formula for the
+mean of a log normal random variable implies that  \Ep{asset_always} becomes
+$\exp\bigl( \nu_t(j) - r_t - \alpha_t(j)'\lambda_t \bigr) = 1$ or
+$$ \nu_t(j) = r_t + \alpha_t(j)' \lambda_t.  \EQN asset_key $$
+According to \Ep{asset_key}, the net expected return $\nu_t(j)$ equals
+the net risk-free return $r_t$ plus the transposed vector $\lambda_t'$ of risk prices
+times the vector $\alpha_t(j)$ of  the  risk exposures of the logarithm of the gross return $R_{j,t+1}$.
+This outcome expresses how  $\lambda_t$ is a vector of \idx{risk prices} that tell how the expected return on an asset
+depends on its exposures to the  risks $\varepsilon_{t+1}$.
+%
+%$$  \nu_t & = \alpha_0 + \alpha_1' z_t, \EQN zstatesp2
+
+
+\subsection{Affine term structure of yields}\label{sec:affine_term_structure1}%
+A good example of an exponential quadratic  model of a stochastic discount factors is the model of the term structure of yields on risk-free claims  constructed and estimated by Ang and Piazzesi (2003).
+ Let $p_t(n)$ be the price at time $t$ of a risk-free claim to one unit of the consumption good at time $t+n$. The one-period gross {\it return\/}
+ on holding  an $n+1$ period pure discount bond from $t$ to $t+1$ is $R_{t+1} = {\frac{p_{t+1}(n)}{p_t(n+1)}}$.  Evidently,
+  $E_t \left( m_{t+1} R_{t+1}\right) =1 $ implies\NFootnote{See exercise \the\chapternum.14.}
+ $$ p_t(n+1) = E_t \left( m_{t+1} p_{t+1}(n)\right) \EQN purediscounteq $$
+ and
+ $$ p_t(1) = E_t \left(m_{t+1}\right) = \exp(- \delta_0 - \delta_1' z_t) = \exp(- r_t ).\EQN eqn:shortrate2 $$
+ From \Ep{purediscounteq} and \Ep{eqn:shortrate2}, it follows that
+ $$ p_t(n) = \exp\left( \bar A_n + \bar B_n z_t \right) , \EQN eq:affine1 $$
+ where $(\bar A_n,\bar B_n)$ solve the system of difference  equations
+ $$ \EQNalign{ \bar A_{n+1} & = \bar A_n + \bar B_n'(\mu - C \lambda_0) + {\frac{1}{2}} \bar B_n' C C' \bar B_n - \delta_0 \EQN affinef1 \cr
+                \bar B_{n+1}' & = \bar B_n' (\phi - C \lambda_z) - \delta_1' ,  \EQN affinef2 }$$
+ subject to the initial conditions $\bar A_1 = - \delta_0, \bar B_1 = -\delta_1$.
+
+ The {\it yield\/} to maturity on an $n$ period pure discount bond is defined as
+ $$ y_t(n) = - {\frac{\log(p_t(n))}{n}} , \EQN yielddef $$
+which is equivalent with $p_t(n) = \exp\left( -n y_t(n)\right)$.  Evidently,
+$$ y_t(n) = A_n + B_n' z_t, \EQN affineyield $$
+where $A_n = - \bar A_n/n, B_n = -\bar B_n/n$. Yields are affine functions functions of $z_t$.
+\index{affine!yields to maturity}
+
+%
+%If  the factors $z_t$
+%are observed,  these conditions can be used to    estimate the coefficients
+%$\alpha_j, \beta_{jh}$ by the generalized method of moments.
+%If the factors are not observed,
+%by making the further assumption
+%that the logs of returns are jointly normally
+%distributed and by exploiting the assumption that the
+%errors $a_{jt}$ are Gaussian, analytic solutions
+%for $R_{i,t+1}$ as a function of  current and lagged values
+%of the $k$  factors can be attained, and these can be used
+%to form  a likelihood function.\NFootnote{Sometimes
+%even if the factors are unobserved, it is   possible
+%to deduce good enough estimates of them to proceed as
+%though they are observed.  Thus, in their
+%empirical term-structure model, Chen and Scott (1993) and
+%  Dai and Singleton  (2000)
+%set the number of factors $k$ equal to the number of yields
+%studied. Letting $R_t$ be the $k\times 1$ vector   of yields and
+%$f_t$ the $k\times 1$ vector of factors, they can solve equation
+%\Ep{euler1} for an expression of the form $R = g_0 + g_1 f_t$, from
+%which Chen and Scott could deduce $f_t = g_1^{-1}(R_t - g_0)$ to
+%get  observable factors. See Gong and Remolona (1997) for a
+%discrete-time affine term-structure model.} \auth{Gong, Frank
+%F.}\auth{Singleton, Kenneth J.} \auth{Dai, Qiang} \auth{Chen,
+%Ren-Raw} \auth{Scott, Louis} \auth{Remolona, Eli M.}
+
+This model for yields fits within a class of linear Gaussian models that can be
+estimated by maximum likelihood using methods described in section  \use{sec:estimation2}
+of chapter \use{timeseries}.
+ See Ang and Piazzesi (2003) and Piazzesi (2005)
+for applications
+where some of the factors are interpreted in terms
+of a monetary  policy authority's rule for setting a short rate.\NFootnote{Appendix \use{sec:backus} of this chapter
+ uses methods of chapter \use{timeseries} to bring out
+some of the implications of a  simple affine term structure model of Backus and Zin (1994). %
+Also see Chen and Scott (1993),
+ Dai and Singleton  (2000), and Piazzesi and Schneider (2006).}
+\auth{Singleton, Kenneth J.} \auth{Dai, Qiang} \auth{Chen,
+Ren-Raw} \auth{Scott, Louis} \auth{Remolona, Eli M.}
+\auth{Piazzesi, Monika}\auth{Schneider, Martin}
+\auth{Ang, Andrew}%
+\auth{Backus, David K.}\auth{Zin, Stanley E.}
+
+\index{risk neutral probabilities}%
+\index{rational expectations}%
+
+\section{Risk-neutral probabilities}
+We return to the section \use{sec:expaffine}
+vector autoregression and short-rate equation \Ep{zstatesp1}-\Ep{zstatesp2}, which for convenience we repeat here
+$$ \eqalign{ z_{t+1} & = \mu +   \phi z_t + C \varepsilon_{t+1}  \cr
+              r_t & = \delta_0 + \delta_1' z_t, } $$
+where $\varepsilon \sim {\cal N}(0,I)$.   We suppose that this structure describes the data generating mechanism.
+Finance economists call this the  ``physical measure'' to distinguish it from what they call a ``risk neutral measure'', an object that we
+now describe.  Evidently,
+under the  physical measure generated by \Ep{zstatesp1}-\Ep{zstatesp2}, the distribution of $z_{t+1}$ conditional on $z_t$ is ${\cal N}(\mu + \phi z_t, C C')$.
+As in section \use{sec:expaffine}, define the vector of risk prices $\lambda_t = \lambda_0 + \lambda_z z_t $ and then define the following nonnegative random variable:
+$${\frac{\xi^Q_{t+1}}{\xi^Q_t}} = \exp \left( - {\frac{1}{2}} \lambda_t' \lambda_t - \lambda_t' \varepsilon_{t+1}  \right) . \EQN Qmeas101 $$
+Evidently,   ${\frac{\xi^Q_{t+1}}{\xi^Q_t}}$ is a log normal random variable with mean unity.
+Therefore,     ${\frac{\xi^Q_{t+1}}{\xi^Q_t}}$ is a likelihood ratio can be used to  twist the distribution of $z_{t+1}$ conditional on $z_t$.
+Multiplying the conditional distribution of $z_{t+1}$ by this likelihood ratio transforms  it  into the  so-called ``risk neutral''
+conditional distribution $z_{t+1} \sim {\cal N}(\mu + \phi z_t - C \lambda_t, CC') $
+or
+$$ z_{t+1} \sim {\cal N}(\mu - C \lambda_0 + (\phi - C \lambda_z) z_t, CC') .  \EQN Mon_Mar_101 $$
+The risk neutral conditional distribution's  twisting of  the conditional mean of the original or ``physical'' measure  from
+$\mu + \phi z_t$ to $\mu - C \lambda_0 + (\phi - C \lambda_z) z_t$
+encodes how the formula $E_t m_{t+1} R_{j,t+1} =1$ adjusts expected returns for exposures to the vector of risks
+$\varepsilon_{t+1}$.%\NFootnote{Finance economists call the original probability measure that nature uses to generate the data  the ``physical measure''.}
+
+\subsection{Asset pricing in a nutshell}
+Let $E^P$ denote  an expectation under the physical measure that nature uses to generate the data. Our   key asset pricing equation is
+ $E^P_t m_{t+1} R_{j,t+1} =1$ for all
+returns $R_{j, t+1}$. Using \Ep{Qmeas101}, it is convenient to express the exponential quadratic stochastic discount factor \Ep{sdflambda2} as
+$$ m_{t+1}  =   {\frac{\xi^Q_{t+1}}{\xi^Q_t}} \exp(- r_t) , $$
+where remember that $r_t$ is the risk-free net short rate.
+Then the condition $E^P_t m_{t+1} R_{j,t+1} = 1$ is equivalent with
+$ E^P_t  \exp(- r_t)  {\frac{\xi^Q_{t+1}}{\xi^Q_t}} R_{j,t+1} = 1$ or
+$$ E^Q_t R_{j,t+1} = \exp( r_t) ,$$
+where $E^Q_t$ is the conditional expectation under the risk neutral measure \Ep{Mon_Mar_101}.
+Under the risk neutral measure, expected returns on all assets equal the risk-free return.
+
+\auth{Schneider, Martin}%
+\auth{Piazzesi, Monika}%
+\auth{Salomao, Juliana}%
+
+\section{Distorted beliefs}
+  Piazzesi, Salomao, and Schneider (2015) assemble survey evidence that  suggests that economic experts' forecasts are systematically biased.
+  Let $\{z_t\}_{t=1}^T$ be a record of observations on the state $z$ and let $\{\check z_{t+1}\}_{t=1}^T$ be a record of one-period ahead expert forecasts. %
+Let $\check \mu, \check \phi$ be regression coefficients in the least squares regression
+$$ \check  z_{t+1} = \check \mu + \check \phi z_t + e_{t+1} , \EQN zstatewrong $$
+where the residual $e_{t+1}$ has mean zero, is orthogonal to $z_t$, and we assume that $E e_{t+1} e_{t+1}' = C C'$.  By comparing estimates of the regression coefficients
+$\mu, \phi$ in equation  \Ep{zstatesp1}  that nature uses to generate the data with estimates of $\check \mu, \check \phi$ in \Ep{zstatewrong} that describe the subjective beliefs of the experts,
+Piazzesi, Salomao, and Schneider deduce that experts' beliefs are systematically distorted.
+\index{beliefs!distorted}%
+
+   To organize the evidence about
+ how the experts' subjective beliefs are systematically distorted relative to the physical measure,
+  Piazzesi, Salomao, and Schneider  let $\kappa_t = \kappa_0 + \kappa_z z_t $ and then define the likelihood ratio\NFootnote{Because the random variable ${\frac{\xi^S_{t+1}}{\xi^S_t}}$ is log normal  with conditional mean unity, it is a likelihood ratio.}
+$${\frac{\xi^S_{t+1}}{\xi^S_t}} = \exp \left( - {\frac{1}{2}} \kappa_t' \kappa_t - \kappa_t' \varepsilon_{t+1}  \right) . \EQN Smeas101 $$
+Multiplying the conditional distribution of $z_{t+1}$ under the physical measure by the likelihood ratio ${\frac{\xi^S_{t+1}}{\xi^S_t}}$ transforms it to the  experts' subjective
+conditional distribution $z_{t+1} \sim {\cal N}(\mu + \phi z_t - C \kappa_t, CC') $
+or
+$$ z_{t+1} \sim {\cal N}(\mu - C \kappa_0 + (\phi - C \kappa_z) z_t, CC') .  $$
+The discrepancy between the conditional mean of $z_{t+1}$ under the physical measure $\mu + \phi z_t$,
+and the conditional mean $\mu - C \kappa_0 + (\phi - C \kappa_z) z_t$ under the subjective measure characterizes how the subjective
+$S$ measure differs from the physical  $P$ measure that generates  the data. In their regression  \Ep{zstatewrong} of  experts' forecasts  $\check z_{t+1}$
+on $z_t$,
+Piazzesi, Salomao, and Schneider  interpret their estimate of  $\check \mu$
+as an estimate of $\mu - C \kappa_0$ and $\check \phi$ as an estimate of $(\phi - C \kappa_z) $.
+In particular, they find that the experts'  forecasts are formed as if the level and slope of the yield curve are more persistent than under the physical
+measure.
+
+ Piazzesi, Salomao, and Schneider explore the hypothesis that a representative agent with these distorted beliefs prices assets and makes
+ returns satisfy
+ $$  E_t^S m_{t+1}^* R_{j,t+1} = 1,  \EQN PSS101$$
+ where $ E_t^S$ is a conditional expectation with respect to  the subjective $S$ measure  rather than the physical measure and $m_{t+1}^*$ is the stochastic discount factor of a representative  agent
+ having these  subjective beliefs.  In particular, Piazzesi, Salomao, and Schneider's  representative agent with distorted beliefs has
+ a  stochastic discount factor
+  $$ m_{t+1}^* = \exp(-r_t^*) \exp( - \lambda_t^{*\prime} \varepsilon_{t+1} - {\frac{\lambda_t^{*\prime}  \lambda_t^{* \prime}}{2}} ), $$
+ where $r_t^*$ is now the short rate and $\lambda_t^*$ is the agent's vector of risk prices.
+ %  Piazzesi, Salomao, and Schneider pursue the idea
+ %that the experts' forecasts faithfully reflect the beliefs of the representative agents who price assets.
+%
+% Note that  the product of two log normal random variables with means of unity is another log normal random variable with
+% mean unity. Therefore, note that
+%  $$ {\frac{\xi^{SQ}_{t+1}}{\xi^{SQ}_t}} = {\frac{\xi^S_{t+1}}{\xi^S_t}} {\frac{\xi^Q_{t+1}}{\xi^Q_t}}  $$
+% is a likelihood ratio with representation
+% $$  {\frac{\xi^{SQ}_{t+1}}{\xi^{SQ}_t}} = \exp \left( - {\frac{1}{2}} \lambda_t^{*'} \lambda_t^* - \lambda_t^{*'} \varepsilon_{t+1}  \right)
+% $$
+% where $\lambda_t^* = \lambda_t - \kappa_t$.
+ Consequently Piazzesi, Salomao, and Schneider's subjective pricing equation \Ep{PSS101} can be expressed as
+$$ E^P \exp (- r_t^*) \exp \left( - \lambda_t^{*\prime} \varepsilon_{t+1} - {\frac{\lambda_t^{*\prime} \lambda_t^{*}}{2}} \right) \exp \left( - \kappa_t' \varepsilon_{t+1} - {\frac{\kappa_t' \kappa_t}{2}} \right)
+R_{j,t+1} = 1 $$
+or
+$$  E^P \exp (- r_t) \exp \left( - (\lambda_t^* + \kappa_t)' \varepsilon_{t+1} - {\frac{(\lambda_t^* +  \kappa_t)' (\lambda_t^* + \kappa_t)}{2}} \right)
+R_{j,t+1} = 1 \EQN MM103 $$
+where $r_t = r_t^* - \lambda_t^{*\prime} \kappa_t$.\NFootnote{The adjustment to the risk-free short rate $r_t$ comes
+because the product of two correlated likelihood ratios is not a likelihood ratio. Such an adjustment is responsible for the difference in formulas
+\Ep{affine101b} and \Ep{std10020b} for  risk-free rates of interest  in the time-separable CRRA model and the Tallarini model, respectively.}  If we compare equation \Ep{MM103} with the rational expectations
+econometrician's
+$$  E^P \exp (-  r_t) \exp \left( - \lambda_t' \varepsilon_{t+1} - {\frac{\lambda_t' \lambda_t}{2}} \right)
+R_{j,t+1} = 1 , $$
+ we see that what the  econometrician interprets as $\lambda_t$ is actually $\lambda_t^* + \kappa_t$.
+
+%   $$ E^{S}_t m_{t+1} R_{j,t+1} = 1  $$
+%   or
+%   $$ E^{SQ}_t R_{j,t+1} = \exp(r_t)  .$$
+
+ Piazzesi, Salomao, and Schneider used their structure to reinterpret econometric  estimates of risk prices
+$\lambda_t$ obtained by imposing rational expectations, i.e., by mistakenly imputing the physical measure to the agents that determine asset prices via $E_t^P m_{t+1} R_{j,t+1} =1$.
+When the physical measure differs from the  subjective measure of the investors who price assets,
+ investors charge risk prices $\lambda_t^*$
+rather than the $\lambda_t$ that would be estimated by the econometrician who imposes rational expectations.  Because the rational expectations econometrician's estimates of
+$\lambda_t$ equal $\lambda_t^* + \kappa_t$, they partly reflect systematic distortions in subjective beliefs, not the representative agent's risk prices.%
+\NFootnote{A closely
+related analysis appears in section \use{sec:reinterpret} where we reinterpret Tallarini's (2000) model in terms of an {\it ex post\/} belief distortion that
+emerges from a representative agent's concerns about misspecification
+of the physical measure. Thus, Piazzesi, Salomao, and Schneider's analysis can be viewed as following the recommendation of  Robert E. Lucas, Jr,
+ to ``look beyond high
+estimates of risk aversion'' in order to understand high (mismeasured) prices of risk.}
+
+
+
+
+
+\section{Concluding remarks}%
+In this chapter, we
+have gone beyond chapter \use{recurge}  in studying how, in the
+spirit of Hansen and Singleton (1983),
+consumer optimization alone puts restrictions on asset
+returns and   consumption,  without requiring complete
+markets or a fully articulated general equilibrium model.
+ At various points in this chapter, especially in section \use{sec:ConsDuff}, we have alluded to
+incomplete markets models.  In chapters \use{incomplete} and
+\use{socialinsurance},
+we describe the ingredients of such models.
+
+
+
+\appendix{A}{Riesz representation theorem}\label{appRiesz}%
+The version of the {Riesz representation theorem}  used in this chapter is yet another ramification of population least squares regression.
+
+Let $X$ be a Hilbert space (i.e., a complete inner product space) of random variables  with inner product $<x_1, x_2> = E (x_1 x_2) $.
+Let $\phi: X \rightarrow {\bbR}$ be a  continuous linear functional mapping $X$ into $\bbR$, the real line.
+We say that $\phi$ is {\it linear} because
+(i) for $x_1 \in X, x_2 \in X$, $\phi(x_1+ x_2 ) = \phi(x_1) + \phi(x_2)$, and   (ii) for $a \in {\bbR}, x\in X,
+\phi(a x ) = a \phi(x)$.  We want to prove
+
+
+\theorem{thmReisz}  (Riesz representation)   Let $\phi$ be a continuous linear functional $\phi: X \rightarrow \bbR$. There exists a unique element
+$y \in X$ such that
+$$\phi(x) = E (yx) . \EQN eqn:Rieszassertion $$
+\endtheorem
+
+\proof
+  The null space $N\equiv N(\phi)$ is defined as:
+$$ N(\phi) = \bigl\{ x \in X: \phi(x) = 0 \bigr\} .$$
+$N(\phi)$ is a closed linear subspace of $X$.  If $N = X$, then evidently  $\phi(x) =0 $ for all $x \in X$.  If $X \neq N(\phi)$,
+then there exists a non-zero vector $x_1 \in N^\perp$, where $N^\perp$ is the orthogonal complement of $N$, i.e., the set of vectors $y \in X$
+for which $<x, y> = 0$ for every $x \in N$.  In fact, $N^\perp$ consists of scalar multiples of one vector $x_1$  that is a basis for
+$N^\perp$. To prove this, assume to the contrary that there are two linearly independent vector $x_1 $ and $x_2$, both of which are elements
+of $N^\perp$.  The linear independence of the vectors $x_1$ and $x_2$  implies that we can choose two nonzero real scalars $a, b$ such that $\phi(ax_1 - b x_2 ) = a \phi(x_1) - b \phi(x_2) = 0$.
+But this implies that $a x_1 - b x_2$ belongs to both $N$ and to $N^\perp$.  This is possible only if $a x_1 - b x_2 = 0$, contradicting the premise
+that $x_1$ and $x_2$ are linearly independent.  Thus, there is a unique linearly independent vector $x_1$ that is a basis for $N^\perp$.
+
+We propose the  following  scaled version of the  basis vector $x_1$ as our candidate for the vector $y$ in  representation \Ep{eqn:Rieszassertion}:
+$$ y = {\frac{\phi(x_1)}{< x_1, x_1>}} x_1  . \EQN eqn:Riesz1 $$
+Evidently, $y \in N^\perp$.  By computing a population linear least squares regression of $x \in X$ on $y \in X$, we can represent  $x$ as the sum of the linear least squares projection of  $x_1$  on $y$ and
+an orthogonal residual:
+$$ x = a   y + (x - a y) ,\EQN eqn:Riesz2 $$
+where $a$ is the scalar regression coefficient
+$$ a = {\frac{<x, y>}{<y,y>}}. \EQN eqn:Riesz3 $$
+Both $a y \in N^\perp$ and $(x - a y ) \in N$ are unique in representation \Ep{eqn:Riesz3}.
+In \Ep{eqn:Riesz2}, $a y  \in N^\perp$ and $(x-a y) \in N$ because the least squares residual $x - ay $ is  orthogonal to the regressor $y$.
+   Therefore, applying $\phi $ to both sides of \Ep{eqn:Riesz2} gives
+$$ \phi(x) = a \phi(y) $$
+by the linearity of $\phi$ and the fact that $\phi(x-ay) = 0$ because $(x - ay ) \in N$.
+Direct computations show that $a = {\frac{<x,y> <x_1, x_1> }{\phi(x_1)^2}}$ and from definition \Ep{eqn:Riesz1} that $\phi(y) = {\frac{<x,y> }{<x_1,x_1>}}$.
+Therefore,
+$$ \phi(x) = a \phi(y) = <x, y>.  \EQN eqn:Riesz4 $$  \endproof
+
+
+\medskip
+
+\specsec{Remark:}  Suppose that $x \in M$ where $M$ is a closed linear subspace of $X$.  Then a corollary of \Theorem{thmReisz} asserts that there exist multiple random variables $\tilde y \in X$ for which
+$$ \phi(x ) = E (\tilde y x). $$
+The random variable $\tilde y$ can be constructed as $\tilde y = y + \varepsilon$ where $y$ is constructed as in \Theorem{thmReisz} (except that now
+it is required to be in the linear subspace $M$) and $\varepsilon$ is any random vector in the orthogonal complement of $M$ (i.e., the space
+of random vectors in $X$ that are orthogonal to the closed linear subspace $M$).  This fact is pertinent for thinking about economies with incomplete
+markets.
+
+
+\appendix{B}{Computing stochastic discount factors\label{sec:sdf_risk_sens}}
+This appendix sketches how to evaluate stochastic discount factors for ordinary
+time-separable preferences and for the  risk-sensitive preferences described in section
+\use{sec:recursivepref}.
+Suppose that consumption is a function of a Markov state $x$.  Let $U(x)$ be
+a value function that satisfies the recursion
+$$ U_t = \log C_t +  \beta E_t U_{t+1} $$
+or
+$$ U(x_i) = \log C(x_i) + \beta \sum_{j=1}^n  P_{ij} U (x_j) .$$
+Let $C_{t+1,j} = C(x_j)$ be consumption next period in state $j$.
+Compute
+$$ {\partial U_t \over \partial C_t} = {1 \over C_t }$$
+and
+$$ {\partial U_t \over \partial C_{t+1,j}} = \beta {1 \over C_{t+1, j}} P_{ij} $$
+Then the marginal rate of substitution  of $C_t$ for $C_{t+1,j}$ is
+$$ {{\partial U_t \over \partial C_{t+1,j}} \over {\partial U_t \over \partial C_t} }
+= \beta \left({C_t \over C_{t+1,j} } \right)P_{ij} $$
+Dividing by the conditional probability $P_{ij}$ gives the stochastic discount factor
+$m_{t+1,j} = \beta \left({C_t \over C_{t+1,j} } \right)$.
+
+Now take another value function $U(x)$ satisfying the risk-sensitive recursion
+$$ U(x_i) = \log C(x_i) - \beta \theta \log \sum_{j=1}^n P_{ij} \exp\left( - \theta^{-1} U(x_j) \right) $$
+In this case,
+$$ {\partial U_t \over \partial C_{t+1,j}} = \beta { \exp( - \theta^{-1} U(x_j)) {1 \over C_{t+1,j}} P_{ij} \over \sum_{k=1}^n \exp( - \theta^{-1} U(x_k)) P_{ik}} $$
+It follows that
+%\autoparensoff
+$$ {{\partial U_t \over \partial C_{t+1,j}} \over {\partial U_t \over \partial C_t} }  =
+\beta \left( {C_t \over C_{t+1,j}} \right) \left({ \exp( - \theta^{-1} U(x_j))  P_{ij} \over \sum_{k=1}^n \exp( - \theta^{-1} U(x_k))P_{ik}} \right) .$$
+Dividing  the right side by the conditional  probability $P_{ij}$ implies that the stochastic discount factor is
+$$ m_{t+1,j} = \beta \left({C_t \over C_{t+1,j}} \right) \left( { \exp( - \theta^{-1} U(x_j))  \over \sum_{k=1}^n \exp( - \theta^{-1} U(x_k))P_{ik}} \right)$$
+or
+$$ m_{t+1,j} = \beta \left( {C_t \over C_{t+1,j}} \right) \left({ \exp( - \theta^{-1} U(x_j))  \over E_t \exp( - \theta^{-1} U(x_{t+1}))} \right). $$
+%\autoparenson
+
+\appendix{C}{A log normal bond pricing model}\label{sec:backus}%
+Following Backus and Zin (1994), we study the following
+ log normal bond pricing model that is a special case of the affine term structure
+model of section \use{sec:expaffine}.
+   A one-period stochastic discount  factor
+at $t$ is $m_{t+1}$ and an $n$-period stochastic discount factor at $t$ is
+$m_{t+1} m_{t+2}  \cdots m_{t+n}$.\NFootnote{Some authors use
+the notation $m_{t+j,t}$ to denote a $j$-period stochastic discount
+factor at time $t$.  The transformation between that notation  and ours
+is $m_{t+1,t} = m_{t+1}, \ldots,
+m_{t+j,t} = m_{t+1} \cdots m_{t+j}$.}   The logarithm of
+the one-period stochastic discount factor
+follows the stochastic process
+$$\EQNalign{ \log m_{t+1} & = -\delta - \ez z_{t+1}    \EQN backus1;a \cr
+             z_{t+1} & = A_z z_t + C_z  w_{t+1} \EQN backus1;b  \cr}$$
+where $w_{t+1}$ is an i.i.d.\ Gaussian random vector with $E
+w_{t+1} = 0$, $E w_{t+1} w_{t+1}' = I$, and $\Az$ is an $m \times
+m$ matrix all of whose eigenvalues are bounded by unity in
+modulus. Soon we shall describe a particular  process for the log of the
+nominal stochastic discount factor that Backus and Zin (1994) used
+to emulate the term structure of nominal interest rates in the
+United States
+ during the post-World War II period.
+ \auth{Backus, David K.}\auth{Zin, Stanley E.}
+
+
+ This can be viewed as a special case of the section \use{sec:affine_term_structure1} model
+ with the following settings mapping the general model into the special model:
+  $$
+ \eqalign{ (\mu, \phi, C, \lambda_0', \lambda_z,  \delta_1' )     & = (0, C_z,  e_z C_z, 0,
+ e_z A_z) \cr
+ \delta_0 +{\frac{1}{2}} \lambda_0' \lambda_0 & =\delta. } $$
+ Then formulas \Ep{affinef1} and \Ep{affinef2} can be applied to compute the coefficients $\bar A_n, \bar B_n$ that appear in the price of an $n$ period zero coupon bond
+ of the form  \Ep{eq:affine1}, namely, $ p_t(n) = \exp\left( \bar A_n + \bar B_n z_t \right)$, so that yields are of the form
+$$ y_t(n) = A_n + B_n' z_t $$
+where $A_n = - \bar A_n/n, B_n = - \bar B_n/n$.
+Here we will proceed to obtain formulas of this form by working directly with representation
+\Ep{backus1;a}-\Ep{backus1;b}.  We do this partly to give practice in applying some of the formulas
+from chapter \use{timeseries}.
+
+%At time $t$,
+%an $n$-period risk-free nominal bond promises to pay one dollar
+%for sure in period $t+n$. According to  \Ep{backuso11},
+%the price at $t$  of this bond is
+%the conditional expectation of the product of the
+% $n$-period stochastic discount factor
+%times the unit payout.\NFootnote{That is, the price of the bond
+%is the price of the payouts  times their quantities added across states
+%via the expectation operator.}
+%%$$ p_{nt} = E_t [ m_{t+1} \cdots m_{t+n}] \EQN backus2 $$
+%Applying  \Ep{backus3} to \Ep{backuso11} gives
+%$$ y_{nt} = - n^{-1} \log E_t[m_{t+1} \cdots m_{t+n}]. \EQN backus4 $$
+
+%To evaluate the right side of \Ep{backus4}, we use the following property
+%of log normal distributions:
+%
+%\specsec{Log Normal Distribution:}
+%If $\log m_{t+1} \sim {\cal N}(\mu, \sigma^2)$ (i.e.,
+%$\log m_{t+1}$  is Gaussian with mean $\mu$ and variance $\sigma^2$),
+%then $$ \log E m_{t+1} = \mu + {\sigma^2\over 2}.  \EQN logmean $$
+
+Applying  the  properties of the log normal distribution to the conditional distribution of $m_{t+1}$ induced
+by \Ep{backus1} gives
+$$ \log E_t m_{t+1} = -\delta -\ez \Az z_t + {\ez \Cz \Cz' \ez' \over 2} .
+\EQN backus5 $$
+By iterating on \Ep{backus1}, we can obtain the following expression
+that  is useful for characterizing the conditional distribution of $\log(m_{t+1} \cdots
+m_{t+n})$:
+$$ \eqalign{- (\log(m_{t+1}) + \cdots \log(m_{t+n}) ) &
+= n \delta + \ez(\Az + \Az^2 + \cdots \Az^n) z_t \cr
+&+ \ez \Cz w_{t+n} + \ez [\Cz + \Az \Cz] w_{t+n-1} \cr
+& + \cdots + \ez [ \Cz +  \Az \Cz + \cdots + \Az^{n-1} \Cz ] w_{t+1}
+\cr} \EQN backus6 $$
+The distribution of $\log m_{t+1} +\cdots  + \log m_{t+n}$
+conditional on $z_t$ is thus ${\cal N}(\mu_{nt},\sigma_n^2)$, where\NFootnote{For
+ the purpose of programming these formulas,
+it is useful to note that $(I+ \Az + \cdots + \Az^{n-1})
+=(I-\Az)^{-1} (I - \Az^n)$.}
+$$\EQNalign{ \mu_{nt} & = -[n \delta + \ez (\Az + \cdots \Az^n) z_t]
+\EQN backus7;a \cr
+\sigma_1^2  &= \ez \Cz \Cz' \ez' \EQN backus7;b \cr
+\sigma_n^2 & = \sigma_{n-1}^2 + \ez [I  + \cdots + \Az^{n-1}]
+  \Cz \Cz' [ I  + \cdots + \Az^{n-1}]' \ez' \hskip1cm
+  \EQN backus7;c \cr}$$
+where the recursion \Ep{backus7;c} holds for $n \geq 2$.
+Notice that the conditional means $\mu_{nt}$ vary over time but that the
+conditional covariances $\sigma_n^2$ are constant over time. %\NFootnote{The
+%celebrated {\it affine\/}   term structure model generalizes the log normal
+%model by allowing $\sigma_n^2$ to depend on time by
+%feeding back on parts  of the state vector. See Ang and Piazzesi (2003) for
+%recent estimates of an affine term structure model.}%
+%\auth{Ang, Andrew}%
+%\auth{Piazzesi, Monika}%
+Applying  \Ep{yielddef}  or $ y_{t}(n)  = - n^{-1} \log E_t[m_{t+1} \cdots m_{t+n}]$ and  the formula   for the  log
+of the expectation of a log normally distributed random variable gives
+the following formula for bond yields:
+$$ y_{t}(n) = (\delta  - {\sigma_n^2\over 2\times n}) +n^{-1}
+ \ez (\Az + \cdots + \Az^n) z_t. \EQN backus8 $$
+
+
+\index{expectations!theory of the
+term structure}
+ The vector $y_t = \left[\matrix{y_{1t} & y_{2t} & \cdots & y_{nt}}\right]'$
+is called the term structure of nominal  interest rates at time $t$.
+A specification known as the {\it expectations theory of the
+term structure\/}
+resembles but differs from \Ep{backus8}. The expectations
+theory asserts that  $n$-period yields are averages of expected future
+values of  one-period yields,
+which translates to
+$$ y_{t}(n) = \delta  + n^{-1}
+ \ez (\Az + \cdots + \Az^n) z_t \EQN backus8a $$
+because evidently
+the conditional expectation $E_t y_{1t+j} = \delta + e_z A_z^j z_t$.
+The expectations theory \Ep{backus8a} can be viewed as an approximation to
+the log normal yield model \Ep{backus8} that neglects the contributions
+of the variance terms $\sigma_n^2$ to the constant terms.
+
+
+Returning to the log normal  bond pricing model, we evidently
+have the following compact state-space representation for the
+term structure of interest rates and its dependence on the law of motion
+for the stochastic
+discount factor:
+$$\EQNalign{X_{t+1} &= A_o X_t + C w_{t+1} \EQN backus9;a \cr
+            Y_t & \equiv \left[\matrix{y_t  \cr \log ( m_t) \cr}\right]
+ = G X_t \EQN backus9;b \cr }$$
+where
+$$ X_t = \left[\matrix{1 \cr z_t \cr}\right] \quad
+A_o = \left[\matrix{1 & 0 \cr
+                  0 & \Az \cr}\right]
+\quad
+C = \left[ \matrix{0 \cr C_z\cr}\right] $$
+and
+$$ G = \left[\matrix{ \delta - {\sigma_1^2 \over 2} & \ez \Az \cr
+      \delta - {\sigma_2^2\over 2\times 2} &  2^{-1} \ez (\Az + \Az^2) \cr
+       \vdots & \vdots \cr
+      \delta -{\sigma_n^2 \over 2 \times n } & n^{-1} \ez(\Az + \cdots + \Az^n) \cr
+     - \delta & - \ez \cr}
+\right]  .   $$
+%We can use all of our machinery to compute first and second moments
+%of the term structure of interest rates $y_t$ and how they
+%depend on the parameters $A_z, C_z, \delta$ for the logarithm of the
+%stochastic discount factor.
+
+
+\subsection{Slope of yield curve depends on serial correlation of $\log m_{t+1}$}
+
+From \Ep{backus9}, it follows immediately that the unconditional
+mean
+of the term structure is
+$$ E y_t'  =\left[\matrix{ \delta - {\sigma_1^2 \over 2} & \cdots &
+   \delta - {\sigma_n^2 \over 2 \times n} \cr}\right]', $$
+so that the term structure  on average rises with  horizon only
+if $\sigma_j^2/j$ falls as $j$ increases.
+By interpreting our formulas for the $\sigma_j^2$'s, it is
+possible to show that a term structure that on average {\it rises\/}
+with maturity implies that the log of the stochastic   discount
+factor is {\it negatively\/} serially correlated.
+  Thus, it can be verified from \Ep{backus6}
+that the term $\sigma_j^2$ in \Ep{backus7}       and \Ep{backus8}
+satisfies
+$$ \sigma_j^2 = {\rm var}_t(\log m_{t+1} + \cdots + \log m_{t+j}) $$
+where ${\rm var}_t $ denotes a variance conditioned on time $t$ information
+$z_t$. Notice, for example, that
+$$ \eqalign{{\rm var}_t(\log m_{t+1} + \log m_{t+2})
+ & = {\rm var}_t(\log m_{t+1}) + {\rm var}_t(\log m_{t+2})
+   \cr &+ 2 {\rm cov}_t(\log m_{t+1}, \log m_{t+2})\cr} \EQN backus8b $$
+where ${\rm cov}_t$ is a conditional covariance.
+It can then be established that  $\sigma_1^2 > {\sigma_2^2\over 2}$ can occur
+only if $ {\rm cov}_t(\log m_{t+1}, \log m_{t+2}) < 0$.  Thus, a yield
+curve that is upward
+sloping on average reveals that the log of the stochastic
+discount factor is negatively serially correlated.  (See the spectrum
+of the log stochastic discount factor in Figure  \Fg{backus5f}.)
+
+\subsection{Backus and Zin's stochastic discount factor}
+For a specification of  $A_z, C_z, \delta$ for which the
+eigenvalues of $A_z$ are all less than unity, we can use the
+formulas presented above to compute moments of the stationary
+distribution $E Y_t$, as well as the autocovariance function ${\rm
+Cov}_Y(\tau)$ and the impulse response function given in
+\Ep{dsoln2} or \Ep{dsoln3}. For the term structure of nominal U.S.
+interest rates over much of the post-World War II period, Backus and Zin
+(1994)  provide us with an empirically plausible  specification of
+$A_z, C_z, e_z$. In particular, they specify that $\log m_{t+1}$
+is a stationary  autoregressive moving average process
+$$- \phi(L) \log m_{t+1} = \phi(1) \delta + \theta(L) \sigma w_{t+1} $$
+where   $w_{t+1}$ is a scalar Gaussian white noise with $E w_{t+1}^2 =1$ and
+$$\EQNalign{\phi(L) &  = 1 - \phi_1 L - \phi_2  L^2 \EQN backus11;a \cr
+           \theta(L) & = 1 + \theta_1 L + \theta_2 L^2 + \theta_3 L^3.
+  \EQN backus11;b \cr}$$
+Backus and Zin specified parameter values  that imply that all of
+ the zeros
+of both $\phi(L)$ and $\theta(L)$  {\it exceed\/}
+ unity in modulus,\NFootnote{A complex
+variable $z_0$ is said to be a zero of $\phi(z)$ if $\phi(z_0)=0$.} a condition
+that ensures that the eigenvalues of $A_o$ are all {\it less than\/} unity
+in modulus.
+Backus and Zin's specification can be captured by setting
+$$z_t = \left[\matrix{\log m_t  &\log m_{t-1} & w_t &
+  w_{t-1} & w_{t-2}\cr}
+\right]$$ and
+$$ \Az = \left[\matrix{ \phi_1 & \phi_2 &\theta_1 \sigma & \theta_2\sigma
+                  & \theta_3 \sigma \cr
+                         1 & 0 & 0 & 0 & 0 \cr
+                         0 & 0 & 0 & 0 & 0 \cr
+                         0 & 0 & 1 & 0 & 0 \cr
+                         0 & 0 & 0 & 1 & 0 \cr} \right] $$
+and $C_z = \left[\matrix{\sigma  & 0 & 1  & 0 & 0\cr}\right]'$
+where $\sigma >0$ is the standard deviation of the innovation to
+$\log m_{t+1}$ and $\ez=\left[\matrix{ 1 & 0 & 0 & 0 & 0
+\cr}\right]$. \auth{Backus, David K.}\auth{Zin, Stanley E.}
+
+
+
+\subsection{Reverse engineering a stochastic discount factor}
+Backus and Zin use time series data on $y_t$ together with
+the restrictions implied by the log normal bond pricing
+model  to deduce implications about the
+stochastic discount factor $m_{t+1}$. They call this procedure
+``reverse engineering the yield curve,'' but what they really do is
+use time series observations on the {\it yield curve\/} to
+reverse engineer a {\it stochastic discount factor\/}.
+They used the generalized method of moments
+%(see chapter \use{calibrate})
+ to estimate (some people say ``calibrate'')
+the following values for monthly United States nominal interest rates
+on pure discount bonds:
+$ \delta=.528, \sigma=1.023$,
+$\theta(L) = 1 -1.031448L + .073011L^2  + .000322L^3 $,
+$\phi(L)=1-1.031253L +.073191L^2$.
+Why do Backus and Zin carry along
+so many digits? To explain why, first notice
+that with these particular values ${\theta(L)  \over \phi(L)} \approx 1$, so that
+the log of the stochastic discount factor is well approximated by
+an i.i.d.\ process:
+$$ -\log m_{t+1} \approx \delta + \sigma w_{t+1}. $$
+This means that fluctuations in the log stochastic discount factor are
+difficult to predict.
+Backus and Zin argue convincingly that  to match observed
+features that are summarized   by estimated first and second moments of the
+nominal term structure $y_t$ process and for yields on other risky
+assets for the United States after World War II,
+it is important that $\theta(L), \phi(L)$
+have two properties: (a) first, $\theta(L) \approx \phi(L)$, so that
+the stochastic discount factor is a volatile variable whose fluctuations are
+difficult to predict
+variable; and (b) nevertheless that $\theta(L) \neq \phi(L)$, so that
+the stochastic discount factor has subtle predictable components.
+ Feature (a) is needed to match observed prices of risky securities, as we
+shall discuss in chapter \use{assetpricing2}.  In particular, observations
+on returns on risky securities can be used to calculate  a
+so-called market price of risk  that in theory should equal
+${\sigma_t(m_{t+1})\over E_t m_{t+1}}$, where $\sigma_t$ denotes
+a conditional standard deviation and $E_t$ a conditional mean, conditioned
+on time $t$ information.  Empirical estimates of the stochastic discount factor
+from the yield curve and other asset returns suggest a value of
+the market price of risk that is relatively large,
+in a sense that we explore in depth in chapter \use{assetpricing2}.
+A high volatility of $m_{t+1}$ delivers a high market price of risk.
+Backus and Zin use feature (b) to match
+the shape of the yield curve over time.
+   Backus and Zin's estimates of
+$\phi(L), \theta(L)$ imply term structure
+outcomes that display both features (a) and (b).
+%Here is a simple example of this type of reasoning.
+%  The postwar U.S. data show  on an average an upward
+%sloping yield curve. If we use this evidence to conclude that
+%$E b_2  - E(b_1)^2 <0$.
+For  their values of $\theta(L), \phi(L), \sigma$,
+Figures \Fg{backus1f}--\Fg{backus5f} show various
+aspects of the theoretical yield curve.
+Figure \Fg{backus1f} shows the theoretical value of the
+ mean term structure of interest rates, which we
+have calculated by applying our chapter \use{timeseries}  formula for $\mu_Y
+= G \mu_X$ to \Ep{backus9}. The theoretical value of the
+yield curve is on average upward sloping, as is true
+also in the data.   For yields of durations
+  $j=1,3,6,12,24,36,48,60,120,360$,
+where duration is measured in {\it months\/},
+Figure \Fg{backus2f} shows the impulse response of $y_{jt}$   to a shock
+$w_{t+1}$ in the log of the stochastic discount factor. We use
+formula \Ep{dsoln3} to compute this impulse response function.
+ In Figure \Fg{backus2f}, bigger impulse response
+functions are associated with {\it shorter\/} horizons.
+The shape of the impulse response function for the short rate
+differs from the others: it is the only one with a humped shape.
+Figures \Fg{backus3f} and \Fg{backus4f} show the impulse response function
+of the log of the stochastic discount factor. Figure \Fg{backus3f} confirms that
+$\log m_{t+1}$ is approximately i.i.d.\ (the impulse response occurs mostly
+at zero lag), but Figure \Fg{backus4f} shows the impulse response coefficients
+for lags of 1 and greater and confirms that the stochastic discount factor
+is not quite i.i.d.  Since the initial response   is a large
+negative number, these small positive responses for positive lags
+impart {\it negative\/}
+serial correlation to the log stochastic
+discount factor.  As noted above and as stressed by
+Backus and Zin (1992),  negative
+serial correlation of the stochastic discount factor is needed to
+account for a yield curve that is  upward sloping on average.
+
+%%% Resize this one
+\midfigure{backus1f}
+\centerline{\epsfxsize=2.25true in\epsffile{backus1.eps}}
+ \caption{Mean term structure of interest rates with Backus-Zin
+stochastic discount factor (months on horizontal axis).}
+\infiglist{Beware of free parameters.}
+\endfigure
+
+
+
+\midfigure{backus2f}
+\centerline{\epsfxsize=2.25true in\epsffile{backus2.eps}}
+ \caption{Impulse response of yields $y_{nt}$ to innovation in
+stochastic discount factor.  Bigger responses are for shorter maturity
+yields.}
+\endfigure
+
+
+
+\midfigure{backus3f}
+\centerline{\epsfxsize=2.25true in\epsffile{backus3.eps}}
+ \caption{Impulse response of log of stochastic discount factor.}
+\infiglist{Beware of free parameters.}
+\endfigure
+
+\midfigure{backus4f}
+\centerline{\epsfxsize=2.25true in\epsffile{backus4.eps}}
+ \caption{Impulse response of log stochastic discount factor from lag
+$1$ on.}
+\infiglist{Beware of free parameters.}
+\endfigure
+
+\midfigure{backus5f}
+\centerline{\epsfxsize=3true in\epsffile{backus5.eps}}
+ \caption{{\tt bigshow3} for Backus and Zin's log stochastic discount factor.}
+\infiglist{Beware of free parameters.}
+\endfigure
+
+Figure \Fg{backus5f} applies the Matlab program {\tt bigshow3} to Backus and Zin's
+   specified
+values of $(\sigma, \delta, \theta(L), \phi(L))$.  The panel on the upper left
+is the impulse
+response again.  The panel on the lower left shows the covariogram,
+ which as expected is very close
+to that for an i.i.d.\ process. The spectrum of the
+log stochastic discount factor is not completely
+flat and so reveals that the log stochastic discount factor
+is serially correlated.
+ (Remember that the spectrum for a serially uncorrelated
+process, a white noise, is perfectly flat.) That the
+spectrum is generally rising as frequency
+increases from $\omega=0$ to $\omega=\pi$ indicates that the
+log stochastic discount factor is {\it negatively\/} serially correlated.
+But the negative serial correlation is subtle, so that the
+realization  plotted in the panel on the lower right is difficult to distinguish from
+a white noise.
+
+
+
+
+
+%\section{Exercises}
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+\noindent{\it Exercise \the\chapternum.1}  \quad {\bf Hansen-Jagannathan bounds}
+\medskip
+\noindent
+ Consider the following annual data  for annual gross
+returns on
+ U.S. stocks
+and U.S. Treasury bills from 1890 to 1979.   These are the
+data used by Mehra and Prescott.  The mean returns
+are $\mu= \left[\matrix{1.07  & 1.02\cr}\right]$ and
+the covariance  matrix of returns is
+$ \left[\matrix{.0274 & .00104 \cr .00104 & .00308\cr}\right] $.
+
+\medskip
+
+% \noindent{\bf a.}  For data on  the excess
+% return of stocks over bonds, compute Hansen and Jagannathan's bound
+% on the stochastic discount  factor $y$.   Plot the bound
+% for $ E(y)$ on the interval $[.9, 1.02]$.
+% \medskip
+
+\noindent{\bf a.}   Using data on both returns,  compute Hansen and Jagannathan's bound
+ on the stochastic discount  factor $y$ and plot it
+for $E(y)$ on the interval $[.9,1.02]$.
+\medskip
+\noindent{\bf b.} At
+$<$www.tomsargent.com/source\_code/mitbook.zip$>$,
+%
+%$<$https://files.nyu.edu/ts43/public/books.html$>$,
+ there is
+a Matlab file epdata.m with Kydland and Prescott's  time series.
+The series epdata(:,4) is the annual growth
+rate of aggregate consumption $C_t / C_{t-1}$.
+Assume that $\beta=.99$ and that $m_t = \beta u'(C_t)/ u'(C_{t-1})$,
+where $u(\cdot)$ is the CRRA utility function.
+   For the three values of $\gamma = 0, 5, 10$, compute
+the standard deviation and mean of $m_t$ and plot
+them on the  figure  you constructed in part a.  What do you
+infer?
+
+\medskip
+\noindent{\it Exercise \the\chapternum.2}
+\quad {\bf The term structure and regime switching},
+donated by Rodolfo Manuelli
+\medskip\noindent
+Consider a pure exchange economy in which  the stochastic process for per capita  consumption is given by
+$$ C_{t+1} = C_t \exp[\alpha_0 - \alpha_1 s_t + \varepsilon_{t+1}],
+ $$
+where
+\medskip
+\noindent{(i)}  $\alpha_0>0$, $\alpha_1>0$, and $\alpha_0-\alpha_1>0$.
+\medskip
+\noindent{(ii)}  ${\varepsilon_t}$ is a sequence of i.i.d.\ random variables
+distributed ${\cal N}(\mu, \tau^2)$.  Note: given this specification, it
+follows that $E[e^\varepsilon] = \exp[\mu + \tau^2/2]$.
+%If this does
+%not look familiar check your favorite statistics book.}
+\medskip
+
+\noindent{(iii)}  ${s_t}$ is a Markov process independent from
+${\varepsilon_t}$ that can take only two values, $\{0,1\}$.  The
+transition probability matrix is completely summarized by
+
+$$\eqalign{&{\rm Prob}[s_{t+1} = 1|s_t = 1] = \pi(1),  \cr
+           &{\rm Prob}[s_{t+1} = 0|s_t = 0] = \pi(0).  \cr} $$
+
+\noindent{(iv)}  The information set at time $t$,$\Omega_t$,
+ contains $\{C_{t-j}, s_{t-j}, \varepsilon_{t-j}; j \geq 0\}$.
+\medskip
+
+There is a large number of identical individuals, each a representative agent, with the following utility function
+$$ U = E_0{\sum_{t=0}^\infty \beta^t u(C_t)}, $$
+where $u(C) = C^{(1-\gamma)}/(1-\gamma)$.  Assume that $\gamma>0$
+and $0<\beta<1$.
+%the discount factor is between zero and one.
+As usual, $\gamma=1$
+corresponds to the log utility function.
+\medskip
+
+\noindent{\bf a.} Compute the ``short-term'' (one-period) risk-free interest rate.
+\medskip
+
+\noindent{\bf b.} Compute the ``long-term'' (two-period) risk-free interest rate measured in the
+same time units as the rate you computed in {\bf a}. (That is, take the
+appropriate square root.)
+\medskip
+
+\noindent{\bf c.} Note that the log of the rate of growth of consumption is given by
+$$ \log(C_{t+1}) - \log(C_t) = \alpha_0 - \alpha_1 s_t + \varepsilon_{t+1}.
+ $$
+Thus, the conditional expectation of this growth rate is just $\alpha_0 -
+\alpha_1 s_t + \mu$.  Note that when $s_t=0$, growth is high, and
+when $s_t=1$, growth is low.  Thus, loosely speaking, we can identify
+$s_t=0$ with the peak of the cycle (or good times) and $s_t=1$ with
+the trough of the cycle (or bad times).  Assume $\mu>0$.  Go as far
+as you can describing the implications of this model for the cyclical
+behavior of the term structure of interest rates.
+\medskip
+
+\noindent{\bf d.} Are short term rates pro- or countercyclical?
+\medskip
+
+\noindent{\bf e.} Are long rates pro- or countercyclical?  If you cannot give a definite
+answer to this question, find conditions under which they are either pro-
+or countercyclical, and interpret your conditions in terms of the
+``permanence'' (you get to define this) of the cycle.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.3} \quad
+  {\bf Growth slowdowns and stock market crashes},
+donated by Rodolfo Manuelli\NFootnote{See also Joseph Zeira (1999).}
+\auth{Zeira, Joseph}
+\medskip\noindent
+Consider a simple one-tree pure exchange economy.  The only source of
+consumption is the fruit that grows on the tree.  This fruit is called
+dividends by the tribe inhabiting this island.  The stochastic process
+for dividend ${d_t}$ is described as follows:
+If $d_t$ is not equal to $d_{t-1}$, then $d_{t+1}=\gamma d_t$ with
+probability $\pi$, and $d_{t+1}=d_t$ with probability $(1-\pi)$.
+If in any pair of periods $j$ and $j+1$, $d_j=d_{j+1}$, then for all
+$t>j$, $d_t=d_j$.  In words, if not stopped, the process grows at
+a  gross rate $\nu$ in every period.  However, once it stops growing
+for one period, it remains constant forever after.  Let $d_0$ equal $1$.
+\medskip
+
+Preferences over stochastic processes for consumption are given by
+$$ U = E_0 {\sum_{t=0}^\infty \beta^t u(C_t)}, $$
+where $u(C)=C^{(1-\gamma)}/(1-\gamma)$.  Assume that $\gamma>0$,
+$0<\beta<1$, % the discount factor is between zero and one,
+$\nu>1$, and
+ $\beta \nu^{(1-\gamma)}<1$.
+\medskip
+
+\noindent{\bf a.} Define a competitive equilibrium in which shares to this tree are traded.
+\medskip
+ \noindent{\bf b.} Display the equilibrium process for the price of
+shares in this tree ${p_t}$ as a function of the history of
+dividends.  Is the price process a Markov process in the sense
+that it depends just on the last period's dividends?
+\medskip
+
+\noindent{\bf c.} Let $T$ be the first time in which $d_{T-1}=d_T=\gamma^{(T-1)}$.
+Is $p_{T-1}>p_T$?  Show conditions under which this is true.  What
+is the economic intuition for this result?  What does it say about
+stock market declines or crashes?
+\medskip
+
+\noindent{\bf d.} If this model is correct, what does it say about the behavior
+of the aggregate value of the stock market in economies that switched
+from high to low growth (e.g., Japan)?
+\medskip
+
+\noindent{\it Exercise \the\chapternum.4} \quad
+  {\bf The term structure and consumption}, donated
+by Rodolfo Manuelli
+\medskip\noindent
+Consider an economy populated by a large number of identical households.
+The (common) utility function is
+$$ \sum_{t=0}^\infty \beta^t u(C_t), $$
+where $0<\beta<1$, and $u(x)=x^{(1-\gamma)}/(1-\gamma)$, for some
+ $\gamma > 0$.  (If $\gamma = 1$, the utility is logarithmic.)
+Each household owns one tree.  Thus, the number of households and the number
+of trees
+coincide.  The amount of consumption that grows in a tree satisfies
+$$ C_{t+1} = C^* C_t^\varphi \varepsilon_{t+1}, $$
+where $0<\varphi<1$, and $\varepsilon_t$ is a sequence of i.i.d.\ log
+normal random variables with mean $1$, and variance $\sigma^2$.  Assume
+that, in addition to shares in trees, in this economy bonds of all
+maturities are traded.
+\medskip
+
+\noindent{\bf a.} Define a competitive equilibrium.
+\medskip
+
+\noindent{\bf b.} Go as far as you can calculating the term structure of interest rates,
+$\tilde R_{jt}$, for $j = 1, 2, \ldots$.
+\medskip
+
+\noindent{\bf c.} Economist A argues that economic theory predicts that the variance
+of the log of short-term interest rates (say, one-period) is always
+lower than the variance of long-term interest rates, because short
+rates are ``riskier.'' Do you agree?  Justify your answer.
+\medskip
+
+\noindent{\bf d.} Economist B claims that short-term interest rates, i.e., $j = 1$,
+are ``more responsive'' to the state of the economy, i.e., $C_t$, than
+are long-term interest rates, i.e., $j$ large.  Do you agree?  Justify
+your answer.
+\medskip
+
+\noindent{\bf e.} Economist C claims that the Fed should lower interest rates because
+whenever interest rates are low, consumption is high.  Do you agree?  Justify
+your answer.
+\medskip
+
+\noindent{\bf f.} Economist D claims that in economies in which output (consumption
+in our case) is very persistent %(in our case this corresponds to
+($\varphi \approx 1$), changes in output (consumption) do not affect
+interest rates.  Do you agree?  Justify your answer and, if possible,
+provide economic intuition for your argument.
+
+
+
+\medskip
+\input asset_exercise_new

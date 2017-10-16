@@ -1,0 +1,307 @@
+%% robustin.tex
+%% borrowed from inputs2 to reform table of contents
+%% in robustness book
+%%
+
+
+
+
+%%%%  \input Txsf1gs
+%%%%%% (3)  table of contents
+
+
+
+%%++ 9 pt fonts:
+% family sc: small capitals [9]
+\def\sc{\fam\scfam\tensc}
+\newfam\scfam
+\font\tensc=cmcsc10
+\font\ninesc=cmcsc9
+\font\eightsc=cmcsc8
+\font\sevensc=cmcsc8 at 7pt
+\font\sixsc=cmcsc8 at 6pt
+
+
+
+\font\twelvesc=cmcsc10 at 12pt
+\font\elevensc=cmcsc10 at 10.95pt
+
+
+
+%%++ 8 pt fonts:
+\def\eightfonts{%
+   \global\font\eightrm=cmr8
+   \global\font\eighti=cmmi8
+   \global\font\eightsy=cmsy8
+   \global\font\eightex=cmex10
+   \global\font\eightbf=cmbx8
+   \global\font\eightsl=cmsl8
+   \global\font\eighttt=cmtt8
+   \global\font\eightit=cmti8
+   \skewchar\eighti='177
+   \skewchar\eightsy='60
+   \hyphenchar\eighttt=-1
+   \moreeightfonts                               % any custom fonts
+   \gdef\eightfonts{\relax}}
+
+\def\moreeightfonts{\relax}                      % User customization hook
+
+
+%       Switch to 8 point type
+\message{8pt,}
+\def\eightpoint{\eightfonts               % load  8pt fonts if needed
+   \def\rm{\fam0\eightrm}%
+   \textfont0=\eightrm\scriptfont0=\sevenrm\scriptscriptfont0=\fiverm
+   \textfont1=\eighti\scriptfont1=\seveni\scriptscriptfont1=\fivei
+   \textfont2=\eightsy\scriptfont2=\sevensy\scriptscriptfont2=\fivesy
+   \textfont3=\eightex\scriptfont3=\eightex\scriptscriptfont3=\eightex
+   \textfont\itfam=\eightit\def\it{\fam\itfam\eightit}%
+   \textfont\slfam=\eightsl\def\sl{\fam\slfam\eightsl}%
+   \textfont\ttfam=\eighttt\def\tt{\fam\ttfam\eighttt}%
+   \textfont\bffam=\eightbf
+   \scriptfont\bffam=\sevenbf
+   \scriptscriptfont\bffam=\fivebf\def\bf{\fam\bffam\eightbf}%
+   \def\mib{\relax}%
+   \def\scr{\relax}%
+   \tt\ttglue=.5emplus.25emminus.15em
+   \normalbaselineskip=11pt
+   \setbox\strutbox=\hbox{\vrule height 8pt depth 3pt width 0pt}%
+   \normalbaselines\rm\singlespaced}%
+
+\font\chapfont=cmbx10  at 14pt
+\font\chapsfont=cmti10 at 12pt
+\font\secfont=cmbx10 at 12pt
+\font\subsecfont=cmti10 at 12pt
+\font\headlinefont=cmti10 at 10pt % font for headlines
+\font\foliofont=cmti10 at 9pt    % font for page numbers
+\font\titlesmall=cmti10 at 20pt   % for title and half-title pages
+\font\titlebig=cmti10 at 24pt     %
+%\font\partfont=cmti10 at 16pt     % for parts
+\edef\Tbf{\chapfont}    % those are the corresponding macros in TeXsis
+\edef\tbf{\secfont}
+\edef\Tbfs{\chapsfont}
+
+%%%%% modify footnote size  from txsmacs.tex  June 4, 2004
+%
+\def\FootFont{\eightpoint\rm}
+%\newcount\footnum \footnum=0
+%\let\footnotemark=\empty                % for # marks and such
+%
+%\def\NFootnote{% consecutively numbered footnotes
+%  \advance\footnum by 1
+%  \xdef\lab@l{\the\footnum}%
+%  \Footnote{\footnotemark\the\footnum}}
+%
+%%%%% end of NFootnote modification
+
+
+
+
+\TOCmargin=1cm
+
+
+% kludge to modify table of contents entries
+
+
+\def\fakeaddTOC#1#2#3{\relax}
+\def\realaddTOC#1#2#3{\relax}
+
+\catcode`\@=11                                  % let's use @ as a letter here
+
+
+% redefine TOCitem to change the entries written to the Table of Contents
+%     The chapter entries are pretty much the same, except that small font
+%     starts after them.  The section and subsection entries are just the
+%     name of the section (no page numbers, no leaders, no separate line)
+
+
+\newif\ifwriteTOC \writeTOCtrue
+
+
+\def\TOCitem#1#2#3{%          process a Table of Contents item
+   \ifcase#1%\bigskip
+     \vskip16pt plus6pt minus2pt\goodbreak                  % chapters: \bigskip ,
+   \begingroup                                  %
+     \twelvepoint
+     \advance\leftskip by #1\parindent          % indent sub-items
+     \raggedright\tolerance=1700                % don't justify
+     \advance\rightskip by \TOCmargin           % right margin comes in, but
+     \parfillskip=-\TOCmargin                   % page number at edge of page
+     \hangindent=1.41\parindent\hangafter=1     % hanging indentation
+     \noindent #2%\hskip 0pt plus 10pt           % the text
+     \hfil%\leaddots                                  % leaders to edge
+     \hbox to 2em{\hss #3}%                     % the page number
+     \vskip 0pt                                 % end paragraph
+   \endgroup                                    %
+     \medskip\tenpoint\rightskip=3pc\noindent%                % smaller font
+     \or                                        % sections:
+     #2\                                    % the text alone
+     \or                                        % subsections:
+     \ifwriteTOC #2\                      % if switch off, text alone
+      \else \writeTOCtrue\fi                  % else nothing, switch back on
+\fi
+   }
+
+%\font\partfont=cmr10 at 18pt
+%\font\partfont=cmti10 at 22pt
+\font\partfont=cmti10 at 20pt  % changed May 14, 2012
+\def\topblankline{\hbox{\vrule height10.675pt depth5.325pt width0pt}\nobreak}
+
+% some section or subsection titles should not be followed by a period:
+% introduce the following control sequence at the end of the title
+% preceded by \string
+\def\ignoreperiod#1{\if#1.\relax\else#1\fi}
+
+
+%%%%% (4) redefine macros for list of illustrations
+
+\long\def\FIGLitem#1#2#3\@endFIGLitem#4{% process a Figure or Table list item
+   %\medskip                             % some space between items
+   \begingroup                          %
+ %%    \raggedright\tolerance=1700        % don't justify
+     \ifx\TOCmargin\undefined\skip0=\parindent % sans \TOCmargin use \parindent
+     \else\skip0=\TOCmargin\fi          % but use \TOCmargin if it's there
+     \advance\rightskip by \skip0       % right margin comes in, but
+     \parfillskip=-\skip0               % page number at edge of page
+     \hangindent=1.41\parindent\hangafter=1 % hanging indentation
+     \noindent \ifshowsectID #1\ \fi #2 % show section numbers
+        #3 \hskip 0pt plus 10pt         % text of ``caption''
+     %\leaddots                          % leaders to edge
+     \hbox to 2em{\hss\linkto{page.#4}{#4}}%  page number (could be a link)
+     \vskip 0pt                         % end paragraph
+   \endgroup
+   }
+
+
+
+%\def\FIGLitem#1#2#3#4{% process a Figure or Table list item
+%   %\medskip                                     % some space between items
+%   \begingroup                                  %
+%     \raggedright\tolerance=1700                % don't justify
+%     \advance\rightskip by \TOCmargin           % right margin comes in, but
+%     \parfillskip=-\TOCmargin                   % page number at edge of page
+%     \hangindent=2\parindent\hangafter=1     % hanging indentation
+%     \noindent \ifshowsectID #1\ \fi #2         % show section numbers
+%        #3 \hskip 0pt plus 10pt                 % text of ``caption''
+%     \hfil %     \leaddots                                  % leaders to edge
+%     \hbox to 2em{\hss #4}%                     % the page number
+%     \vskip 0pt                                 % end paragraph
+%   \endgroup                                    %
+%   }
+
+
+
+
+%%%%%%%%%%% (7) macro to make the single pages with "Part I", "Part II"
+
+
+\newif\ifpartpage
+\partpagefalse
+\def\makepart#1#2{%
+\nosechead{} \global\edef\HeadText{}\ifodd\pageno\relax
+\else\advance\pageno by 1\fi
+\nopagenumbers
+\normalbottom
+\let\ChapterTitle=\relax \let\SectionTitle=\relax
+\partpagetrue
+\centerline{
+\hbox{\vrule height45pt depth0pt width0pt}
+\vbox{\partfont\noindent #1\hfil\break \vskip4pt \noindent #2}}
+\TOCwrite{\vskip0pt\penalty -200\topblankline} % decrease the penalty to push a part's TOC entry to the next page (FRV)
+%\addTOC{0}{{\bf #1: #2}}{} \partpagefalse\hbox{}\newpage\pagenumbers\hbox{}\newpage}
+\addTOC{0}{{\bf #1: #2}}{} \partpagefalse\hbox{}\newpage\hbox{}\newpage\pagenumbers}
+%\addTOC{0}{{\bf #1: #2}}{} \partpagefalse\hbox{}\newpage\pagenumbers}
+\addTOC{0}{{\fam \bffam \twelvebf #1: #2}}{}
+
+
+%%%%% (2)  headline macros  (copied from small change format file inputs2.tex, 12/2/03)
+
+% modify TeXsis macros to have the chapter name on even pages
+% and section name on odd pages
+
+
+% define a parallel set of macros for the left headline
+\def\setLHeadline#1{\@setLHeadline#1\n\endlist}   % set the \HeadText
+\def\@setLHeadline#1\n#2\endlist{% #1 is everything up to first \n
+      \global\edef\LHeadText{#1}%                % No: just use #1
+}
+
+
+\newif\ifrightnom   \rightnomtrue
+\def\HeadLine{%
+   \edef\firstm{{\XA\iffalse\firstmark\fi}}%    % chapternumber of \firstmark
+   \edef\topm{{\XA\iffalse\topmark\fi}}%        % chapternumber of \topmark
+%   \ifRunningHeads                              % print running heads?
+%     \def\He@dText{\HeadText}%                  % define head text
+%   \else\def\He@dText{\relax}\fi                % or nothing
+\ifnum\sectionnum=0\relax\def\LHeadText{\HeadText}% use chapter title
+\else\setLHeadline{\SectionTitle}\fi%
+   \ifbookpagenumbers                           % book-like numbering
+      \ifodd\pageno\rightnomtrue                %   odd numbers right
+      \else\rightnomfalse\fi                    %   even numbers left
+   \else\rightnomtrue\fi                        % or always right
+   \ifx\topm\firstm                             % Marks the same?
+     \ifrightnom                                % number on right?
+{\noindent{\headlinefont\hss\LHeadText}\hss\llap{\PageNumber}}% display section title (FRV)
+     \else%                                      % or on left
+{\noindent\rlap{\PageNumber}\hss\headlinefont
+%\ifnum\chapternum=0\relax \else
+%  \ifshowchaptID Chapter \the\chapternum:\
+%\fi%
+%\fi%
+\HeadText\hss}%%   display chapter title (FRV)
+      \fi%                                       % for \ifrightnom
+   \else \hfill \fi}%                           % NOTHING ON FIRST PAGE
+
+%%%% 8.  dsection{}{}
+
+
+\def\dsection#1#2{%        create a new section of a document (2d arg added FRV)
+  \ignorespaces
+   \vskip\sectionskip                           % make some space
+   \goodbreak\pagecheck\sectionminspace         % new page if needed
+   \global\advance\sectionnum by \@ne           % increment section counter
+%
+%  Section ID:
+%
+   \edef\lab@l{\@chaptID\SectionStyle{\the\sectionnum}}% For \label
+   \ifshowsectID                                % show section number?
+     \global\edef\@sectID{\SectionStyle{\the\sectionnum}.}% save for later
+     \global\edef\@fullID{\lab@l.\space\space}% % what we will use here
+     \r@set                                     %   and reset counters
+   \else\gdef\@fullID{}\fi                      % otherwise  section ID is empty
+   \everysection%                                % user customization here
+%
+%  Print the Section title:
+%
+   \ifx\tbf\undefined\def\tbf{\bf}\fi           % default \tbf is \bf
+   \vbox{%                                      % keep heading in \vbox
+     {\raggedright\pretolerance=2000\hyphenpenalty=2000 % no hyphenation
+     \setbox0=\hbox{\noindent\tbf\@fullID}%     % find width of ID
+     \hangindent=\wd0 \hangafter=1              % ... for hanging indent
+     \noindent\unhbox0{\tbf{#1}}\relax          % number and title
+     %\medskip}}%                                % FRV
+     }}%                      % FRV
+   \nobreak                                     %
+%
+%  Table of Contents and Running Headlines:
+%
+   \begingroup                                  % group for \contents, etc.
+     \def\label##1{}%                           % disable \label
+   \def\@arg{#2}\ifx\@arg\empty                 % Is there a 2d arg?     (FRV)
+     \global\edef\SectionTitle{#1}%             % no, use title for head (FRV)
+   \else                                        % there was, so...       (FRV)
+     \global\edef\SectionTitle{#2}%             % use it for running head(FRV)
+   \fi%                                         %                        (FRV)
+     \def\n{}\def\nl{}\def\mib{}%               % turn off \n, etc
+     \ifnum\chapternum=0\setHeadline{#1}\fi     % no chap. number -> set headine
+     \emsg{Section \@fullID #1}%                % announce in log file
+     \def\@quote{\string\@quote\relax}%         % in case of \quoteon
+     \addTOC{1}{\TOCsID{\lab@l.}#1}{\folio}% % Table of Contents entry
+   \endgroup                                    % end group
+   \nobreak                                     %
+  \vskip\baselineskip%                          % FRV
+   \nobreak                                     %
+   \s@ction%                                    % checkenv, etc..
+   \aftersection%                               % user can customize
+}

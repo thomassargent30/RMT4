@@ -1,0 +1,214 @@
+
+\input grafinp3
+%\input grafinput8
+\input psfig
+%
+%\showchaptIDtrue
+%\def\@chaptID{21.}
+%\input form1
+%\chapternum=28
+\def\cov{\mathop{\rm cov}\nolimits} \overfullrule=0pt
+%\hbox{}
+\footnum=0
+\Appendix{B}{Linear Projections and Hidden Markov Models\label{lincontrol}}
+%
+%
+\section{Linear projections} %to Chapter 2}
+
+For reference we state the following theorems about linear least-squares
+projections.  We let $Y$ be an $(n \times 1)$ vector of random variables and
+$X$ be an $(h \times 1)$ vector of random variables.  We assume that the
+following first and second moments exist:
+$$\eqalign{EY &= \mu_Y,\ EX = \mu_X , \cr
+EXX^\prime &= S_{XX},\ EYY^\prime = S_{YY},\ EYX^\prime = S_{YX} .\cr}$$
+Letting $x=X - EX$ and $y = Y - EY$, we define the following covariance matrices
+$$Exx^\prime = \Sigma_{xx},\ E_{yy}^\prime = \Sigma_{yy},\ Eyx^\prime =
+\Sigma_{yx}.$$
+
+We are concerned with estimating $Y$ as a linear function of $X$.  The
+estimator of $Y$ that is a linear function of $X$ and that minimizes the
+mean squared error between each component $Y$ and its estimate is called the
+{\it linear projection of $Y$ on $X$.}
+\medskip\noindent
+%\specsec{Definition 21.2:}
+\definition{def21.2} The {\it linear projection\/} of $Y$ on $X$ is the
+affine
+function $\hat Y = AX + a_0$ that minimizes $E\hbox{ trace } \{(Y-\hat Y)\,
+(Y-\hat Y)^\prime\}$ over all affine functions $a_0+AX$ of $X$.  We denote
+this linear
+projection as $\widehat E [Y \mid X]$, or sometimes as $\widehat E\, [Y\mid x,
+\, 1]$ to emphasize that
+a constant is included in the ``information set.''
+\enddefinition
+\par
+The linear projection of $Y$ on $X$, $\widehat E \, [Y \mid X]$ is also
+sometimes called the {\it wide sense expectation of $Y$ conditional on $X$.}
+We have the following theorems:
+\medskip \noindent
+%\specsec{Theorem 21.1:}
+\theorem{th21.1}
+$$\widehat E\,[Y \mid X] = \mu_y + \Sigma_{yx} \Sigma^{-1}_{xx} (X-\mu_x) .
+\EQN A1$$
+\endtheorem
+\medskip \noindent
+%\specsec{Proof:}
+\proof
+The theorem follows immediately by writing out $E\, {\rm trace}
+\ (Y-\hat Y) (Y - \hat
+Y)^\prime$ and completing the square, or else by writing out $E \, {\rm trace}
+(Y-\hat Y) (Y - \hat Y)^\prime$ and obtaining first-order necessary conditions
+(``normal equations'') and solving them. \endproof %\qed
+\medskip \noindent
+%\specsec{Theorem 21.2:}
+\theorem{th21.2}
+$$\widehat E\,\biggl[\bigl(Y - \widehat E [Y \mid x]\bigr) \mid X^\prime
+\biggr] = 0.$$
+\endtheorem
+\noindent This equation states that the errors from the projection are orthogonal to each
+variable included in $X$.
+\medskip\noindent
+%\specsec{Proof:}
+\proof Immediate from the normal equations.\endproof % \qed
+\medskip\noindent
+%\specsec{Theorem 21.3:}
+\theorem{th21.3} \quad (Orthogonality principle)
+$$E\Bigl[ [Y-\widehat E\,(Y\mid x)]\,x^\prime\Bigr]=0 .$$
+\endtheorem
+\medskip\noindent
+%\specsec{Proof:}
+\proof Follows from Theorem 21.3. \endproof %\qed
+
+%\specsec{Theorem 21.4:}
+\theorem{th21.4} \quad (Orthogonal regressors)
+\medskip \noindent
+ Suppose that\hfil\break
+$X^\prime = (X_1, X_2, \ldots, X_h)^\prime, EX^\prime= \mu^\prime = (\mu_{x1},
+\ldots, \mu_{xh})^\prime$, and $E (X_i - \mu_{xi})\, (X_j-\mu_{xj}) = 0$
+for $i \not= j$.  Then
+$$\widehat E \, [Y \mid x_1,\ldots, x_n, 1] = \widehat E\,[Y \mid x_1]+\widehat
+E\,[Y\mid x_2] + \ldots + \widehat E\, [Y\mid x_n]-(n-1) \mu_y . \EQN A2$$
+\endtheorem
+\medskip\noindent
+%\specsec{Proof:}
+\proof Note that from the hypothesis of orthogonal regressors, the
+matrix $\Sigma_{xx}$ is diagonal.  Applying equation
+\Ep{A1} then gives equation \Ep{A2}. \endproof %\qed
+\index{Markov chain!hidden}
+\index{filter!nonlinear}
+\section{Hidden Markov models}\label{sec:HMM}%
+This section gives a brief introduction to hidden Markov models,
+a tool that is useful to study a variety of nonlinear filtering
+problems in finance and economics.  We display a solution to
+a nonlinear filtering problem that a reader might want
+to compare to the linear filtering problem described earlier.
+
+    Consider an $N$-state Markov chain.   We can represent the
+state space in terms of the unit vectors
+$S_x = \{e_1,\ldots, e_N\}$, where $e_i$  is the $i$th
+ $N$-dimensional unit vector.  Let the $N \times N$ transition
+matrix be $P$, with $(i,j)$ element
+$$P_{ij} = {\rm Prob}(x_{t+1} = e_j\mid x_t = e_i).$$
+With these definitions, we have
+$$E x_{t+1} \mid x_t = P^\prime x_t.$$
+%
+Define the ``residual''
+$$v_{t+1} = x_{t+1} - P^\prime x_t,$$
+which implies the linear ``state-space'' representation
+$$x_{t+1} = P^\prime x_t + v_{t+1}.$$
+Notice how it follows that
+$E \ v_{t+1} \mid x_t = 0 ,$ which qualifies $v_{t+1}$ as a ``martingale
+difference process adapted to $x_t$.''\index{martingale difference}%
+
+  We want to append a ``measurement equation.''   \index{measurement equation}%
+Suppose that $x_t$ is not observed, but that $y_t$, a   noisy function
+of $x_t$, is observed.  Assume that $y_t$ lives in the $M$-dimensional
+space $S_y$, which we represent in terms of
+$M$ unit  vectors:
+$S_y = \{f_1,\ldots, f_M\}$, where $f_i$ is the $i$th $M$-dimensional
+unit vector.
+To specify a  linear measurement equation $y_t = C(x_t, u_t)$, where
+$u_t$ is a measurement noise, we begin by defining the $N \times M$
+matrix $Q$ with
+$$\hbox{Prob } (y_t = f_j \mid x_t = e_i) = Q_{ij}.$$
+It follows that
+ $$E\ (y_t\mid x_t) = Q^\prime x_t.$$
+Define the residual
+$$u_t \equiv y_t - E\ y_t\mid x_t,$$
+which suggests the ``observer equation''  \index{observer equation}
+$$y_t = Q^\prime x_t + u_t.$$
+It follows from the definition of $u_t$ that $E \ u_t \mid x_t = 0$.
+Thus, we have the linear state-space system
+$$\eqalign{ x_{t+1} &= P' x_t + v_{t+1} \cr
+             y_t &= Q' x_t + u_t. \cr}  $$
+Using the definitions,
+it is straightforward to calculate the conditional second moments
+of the error processes
+ $v_{t+1},u_t$.\NFootnote{Notice that
+ $$\eqalign{x_{t+1} x_{t+1}^\prime &= P' x_t (P' x_t)' + P' x_t v'_{t+1}\cr
+&+ v_{t+1} (P' x_t)' + v_{t+1} v'_{t+1}\cr}$$
+Substituting into this equation the facts that
+$x_{t+1} x^\prime_{t+1} = \hbox{diag } x_{t+1} = \hbox{diag } (P^\prime
+x_t) + \hbox{diag } v_{t+1}$ gives
+$$\eqalign{v_{t+1} v^\prime_{t+1}&= \hbox{diag } (P^\prime x_t) + \hbox{diag }
+(v_{t+1}) - P^\prime \hbox{diag } x_t P \cr
+&- P^\prime x_t v^\prime_{t+1} (P^\prime x_t)^\prime.\cr}$$
+It follows that
+$$E\  [v_{t+1} v^\prime_{t+1} \mid x_t] = \hbox{diag } (P^\prime x_t) -
+P^\prime \hbox{diag } x_t P.$$
+Similarly,
+$$E\ [u_t\ u^\prime_t \mid x_t] = \hbox{diag } (Q^\prime x_t) - Q^\prime
+\hbox{diag } x_t Q.$$}
+
+
+
+\section{Nonlinear filtering}
+We seek a recursive formula for  computing the conditional
+distribution of the hidden state:
+%
+%
+$$\rho_i (t) = {\rm Prob}\{x_t = i\mid y_1=\eta_1, \ldots, y_t = \eta_t\}.$$
+%$$P_{ij} (t) = {\rm Prob}\{x_t = j\mid x_{t-1}=i\}$$
+%$$\sum_j P_{ij}(t) = 1\ ,\quad P_{ij} (t) \geq 0$$
+%$$q_{ij} = {\rm Prob} \{y_t =
+%    j\mid x_t=i\}\ ,\quad \sum_j q_{ij}=1,\quad q_{ij}\geq
+%0$$
+   Denote the history of observed $y_t$'s up to $t$ as
+$\eta^t = \hbox{ col } (\eta_1,\ldots,\eta_t).$
+Define the conditional probabilities
+$$p(\xi_t,\eta_1,\ldots,\eta_t) = {\rm Prob} \ (x_t=\xi_t, y_1= \eta_1,\ldots,
+y_t=\eta_t),$$
+and assume $p(\eta_1,\ldots, \eta_t)\not= 0$.
+Then apply the calculus of conditional expectations to compute\NFootnote{Notice
+ that
+$$\eqalign{p(\xi_t,\eta_t \mid \eta^{t-1}) &= \sum_{\xi_{t-1}}
+ p(\xi_t, \eta_t,
+\xi_{t-1}\mid \eta^{t-1}) \cr\noalign{\medskip}
+&= \sum_{\xi_{t-1}} p (\xi_t, \eta_t\mid \xi_{t-1}, \eta^{t-1})
+p (\xi_{t-1}\mid \eta^{t-1})\cr}$$
+
+$$\eqalign{p(\xi_t,\eta_t \mid \xi_{t-1}, \eta^{t-1}) &=
+p(\xi_t \mid \xi_{t-1}, \eta^{t-1}) p(\eta_t \mid \xi_t,\ \xi_{t-1},
+\eta^{t-1})\cr \noalign{\smallskip}
+&= p(\xi_t\mid \xi_{t-1}) p(\eta_t\mid \xi_t) . \cr}$$
+Combining these results gives the formula in the text.}
+$$\eqalign{p(\xi_t\mid \eta^t) &= {p(\xi_t, \eta_t\mid \eta^{t-1})\over
+p (\eta_t\mid \eta^{t-1})}\cr
+        & = { \sum_{\xi_{t-1}} p(\eta_t \mid \xi_t)\ p(\xi_t
+\mid \xi_{t-1}) p(\xi_{t-1}\mid \eta^{t-1})\over
+\sum_{\xi_t} \sum_{\xi_{t-1}} p(\eta_t\mid \xi_t) p(\xi_t \mid \xi_{t-1})
+p(\xi_{t-1}\mid \eta^{t-1})} .\cr}$$
+This result can be written
+$$\rho_i (t+1) = {\sum_s Q_{ij} P_{si} \rho_s(t)\over \sum_s \sum_i Q_{ij}
+P_{si} \rho_s(t)},  $$
+where $\eta_{t+1} = j$ is the value of $y$ at $t+1$
+%$$\rho_i(t+1) = \hbox{Prob } \{x_{t+1} = i\mid y_{t+1} = j, \eta^{t-1}\}$$
+We can represent  this recursively as
+$$\eqalign{\tilde \rho(t+1) &= \hbox{ diag } (Q_j) P^\prime
+ \rho(t)\cr \rho(t+1) &=
+{\tilde \rho(t+1)\over < \tilde \rho(t+1), \underline{1}>} . \cr}$$
+where $Q_j$ is the $j$th column of $Q$, and diag$(Q_j)$ is a diagonal matrix
+with $Q_{ij}$ as the $i$th diagonal element; here $< \cdot, \cdot >$ denotes
+the inner product of two vectors, and $\underline 1$ is the
+unit vector.
+
+\chapternum=0

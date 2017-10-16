@@ -1,0 +1,2618 @@
+%  revised by Tom, March 9, 2003
+
+
+\input grafinp3
+\input psfig
+%\eqnotracetrue
+\footnum=0
+%\showchaptIDtrue
+
+
+%\def\@chaptID{17.}
+%\def\tone{{t+1}}
+%
+%\psdraft    % drop this when doing for real
+
+
+%\hbox{}
+
+
+\chapter{Fiscal-Monetary Theories of Inflation\label{fiscalmonetary}}
+
+\section{The issues}
+This chapter introduces some issues in monetary theory that mostly
+revolve around coordinating monetary and fiscal policies. We start from
+the observation that \index{complete markets!no role for money}
+complete markets models have no role for inconvertible currency, and
+therefore assign zero value to it.\NFootnote{In complete markets models,
+money holdings would only serve as a store of value. The following
+transversality condition would hold in a nonstochastic economy:
+$$\lim_{T\to\infty} \prod_{t=0}^{T-1} R_t^{-1} {m_{T+1}\over p_T} = 0.
+$$
+The real return on money, $p_t/p_{t+1}$, would have
+to equal the return $R_t$ on other assets, which, substituted into the
+transversality condition, yields
+$$\lim_{T\to\infty} \prod_{t=0}^{T-1} {p_{t+1} \over p_t}
+{m_{T+1}\over p_T} = \lim_{T\to\infty} {m_{T+1}\over p_0} = 0.  $$
+That is,  an inconvertible money (i.e., one for which
+$\lim_{T\to\infty} m_{T+1} > 0$) must be valueless, $p_0=\infty$.}
+  We  describe  one way to alter
+a complete markets economy so that a positive value is assigned to an
+inconvertible currency: we impose a transaction technology
+with shopping time and real money balances as inputs.\NFootnote{See Bennett
+McCallum (1983) for an early shopping time specification.}  We
+\auth{McCallum, Bennett T.}
+use the model to illustrate $10$ doctrines in monetary economics.
+Most of these doctrines transcend many of the details of
+the model. The important thing about the transactions
+technology is that it makes demand for currency a decreasing
+function of the rate of return on currency.  Our monetary
+doctrines mainly emerge from manipulating that demand function
+and the government's intertemporal budget constraint under
+alternative assumptions about government monetary and fiscal
+policy.\NFootnote{Many of the doctrines were originally developed
+in setups differing in details from the one in this chapter.}
+
+
+  After describing our $10$ doctrines, we  use the model to analyze
+two important issues: the validity of Friedman's rule in the
+presence of distorting taxation, and its sustainability in the
+face of a \idx{time consistency} problem. Here, we use the methods
+for solving an optimal taxation problem with commitment in chapter
+\use{optax}, and for characterizing a credible government policy
+in chapter \use{credible}.
+
+
+
+
+\section{A shopping time monetary economy}
+Consider an endowment economy with no uncertainty.
+A representative household has one unit of time.
+There is a single good  of constant amount $y>0$ each period $t \geq 0$.
+The good can be divided between private consumption $\{c_{t}\}_{t=0}^\infty$
+and government purchases $\{g_t\}_{t=0}^\infty$, subject to
+$$ c_{t} + g_t = y.                   \EQN doc_resource$$
+The preferences of the household are ordered by
+$$ \sum_{t=0}^\infty \beta^t u(c_{t},\ell_t)  ,        \EQN doc_pref$$
+where $\beta \in (0,1)$, $c_t\geq 0$ and $\ell_t\geq 0$ are
+consumption and leisure at time $t$, respectively, and
+$u_c$, $u_\ell > 0$, $u_{cc}$, $u_{\ell \ell} < 0$, and $u_{c \ell} \geq 0$.
+With one unit of time per period, the household's
+time constraint becomes
+$$1\,=\, \ell_t + s_t.                \EQN doc_time
+$$
+We use $u_c(t)$ and so on to denote  time $t$ values of
+the indicated objects, evaluated at an allocation to be understood from the
+context.
+
+
+To acquire the consumption good,
+the household allocates time to shopping.
+The amount of shopping time $s_t$ needed
+to purchase a particular level of consumption $c_t$ is negatively related
+to the household's holdings of real money balances $m_{t+1}/p_t$.
+Specifically, the shopping or transaction technology is
+\index{shopping technology}
+$$
+s_t\,=\,H\!\left(c_t,\, {m_{t+1} \over p_t} \right),             \EQN doc_shop
+$$
+where $H,\, H_c,\, H_{cc},\, H_{m/p,m/p}\geq 0$, $H_{m/p}, H_{c,m/p}\leq 0$.  A parametric example of this
+transaction technology is
+$$
+H\!\left(c_t,\, {m_{t+1} \over p_t} \right) \,=\, {c_t \over m_{t+1}/p_t }
+\epsilon,
+       \EQN doc_shop1 $$
+where $\epsilon >0$.  This corresponds to a transaction cost that would
+arise in the frameworks of Baumol (1952) and Tobin (1956).
+When a household spends money holdings for consumption purchases at a
+constant rate $c_t$ per unit of time, $c_t (m_{t+1}/p_t)^{-1}$ is the
+number of trips to the bank, and $\epsilon$ is the time cost per trip
+to the bank.
+\auth{Baumol, William J.} \auth{Tobin, James}
+
+\subsection{Households}
+The household maximizes expression \Ep{doc_pref} subject to
+the transaction technology \Ep{doc_shop} and the sequence of budget
+constraints
+$$ c_t + {b_{t+1} \over R_t} + {m_{t+1} \over p_t} =
+   y - \tau_t + b_t + {m_t \over p_t}.                 \EQN doc_bc
+$$
+Here, $m_{t+1}$ is nominal balances held between times $t$ and $t+1$;
+$p_t$ is the price level; $b_t$ is the real value of one-period government
+bond holdings that mature at the beginning
+of period $t$, denominated in units of time $t$ consumption;
+$\tau_t$ is a lump-sum tax at $t$; and $R_t$ is the real gross
+rate of return on one-period bonds held from
+$t$ to $t+1$.  Maximization of expression \Ep{doc_pref} is subject
+to $m_{t+1} \geq 0$ for all $t \geq 0$,\NFootnote{Households cannot
+issue money.}
+no restriction on the sign of $b_{t+1}$ for all $t \geq 0$,
+and given initial stocks $m_0,\, b_0$.
+
+
+After consolidating two consecutive budget constraints given by
+equation \Ep{doc_bc}, we arrive at
+$$\EQNalign{
+c_t + {c_{t+1} \over R_t} +
+& \left(1 - {p_t \over p_{t+1}}\, {1\over R_t} \right) {m_{t+1} \over p_t}
++ {b_{t+2} \over R_t R_{t+1}} + {m_{t+2}/ p_{t+1} \over R_t}      \cr
+\noalign{\vskip.2cm}
+    &=  y - \tau_t + {y - \tau_{t+1} \over R_t} + b_t + {m_t \over p_t}.
+                                                        \EQN doc_bc2 \cr}
+$$
+To ensure a bounded budget set, the expression in parentheses multiplying
+nonnegative holdings of real balances must be greater than or equal to zero.
+Thus, we have the arbitrage condition,
+$$
+1 - {p_t \over p_{t+1}} {1\over R_t} = 1- {R_{mt} \over R_t} =
+{i_{t} \over 1+i_{t}} \geq 0,                \EQN doc_arbitrage
+$$
+where $R_{mt}\equiv p_t/p_{t+1}$ is the real gross return on money
+held from $t$ to $t+1$, that is, the inverse of the inflation rate,
+and $1+i_{t}\equiv R_t/R_{mt}$ is the gross nominal interest rate.
+The real return on money $R_{mt}$ must be less than or equal to the
+return on bonds $R_t$, because otherwise  agents would be able to make
+arbitrarily large profits by choosing arbitrarily large money holdings
+financed by issuing
+bonds. In other words, the net nominal interest rate $i_{t}$
+cannot be negative.
+
+
+The Lagrangian for the household's optimization problem is
+$$\EQNalign{
+\sum_{t=0}^\infty \beta^t \Biggl\{ u(c_{t}, \ell_{t})  + \lambda_t
+& \Bigl(y - \tau_t + b_t + {m_t \over p_t}  - c_t - {b_{t+1} \over R_t}
+          - {m_{t+1} \over p_t} \Bigr)\Biggr.  \cr
+&\Biggl. + \mu_t \Bigl[1 - \ell_t - H\!\Bigl(c_t,\, {m_{t+1}\over p_t}\Bigr)
+                                                     \Bigr]\Biggr\}. \cr}
+$$
+At an interior solution, the first-order conditions with respect to
+$c_{t}$, $\ell_{t}$, $b_{t+1}$, and $m_{t+1}$ are
+$$\EQNalign{
+u_c(t) - \lambda_{t} - \mu_t \,H_c(t)&= 0,            \EQN doc_foc1 \cr
+u_{\ell}(t) - \mu_t &= 0,                             \EQN doc_foc2 \cr
+- \lambda_{t} {1 \over R_t} + \beta \lambda_{t+1} &= 0,
+                                                       \EQN doc_foc3 \cr
+- \lambda_{t} {1\over p_t}- \mu_t \, H_{m/p}(t) {1\over p_t}
++  \beta \lambda_{t+1} {1 \over p_{t+1}}  &= 0.      \EQN doc_foc4 \cr }
+$$
+From equations \Ep{doc_foc1} and \Ep{doc_foc2},
+$$
+\lambda_{t} = u_c(t) - u_{\ell}(t) \, H_c(t).        \EQN doc_res1
+$$
+The Lagrange multiplier on the budget constraint is equal to the
+marginal utility of consumption reduced by the marginal disutility of
+having to shop for that increment in consumption. By substituting
+equation \Ep{doc_res1} into equation \Ep{doc_foc3}, we obtain an
+expression for the real interest rate,
+$$
+R_t \,=\; {1 \over \beta} \
+{ u_c(t) - u_{\ell}(t) \, H_c(t)
+\over
+u_c(t+1) - u_{\ell}(t+1) \, H_c(t+1) }.                        \EQN doc_R
+$$
+
+
+The combination of equations
+\Ep{doc_foc3} and \Ep{doc_foc4} yields
+$$
+{R_t - R_{mt} \over R_t}\, \lambda_t
+  \,=\, -\mu_t \, H_{m/p}(t),        \EQN doc_res2
+$$
+which sets the cost equal to the benefit of the marginal unit of
+real money balances
+held from $t$ to $t+1$, all expressed in time $t$ utility.
+The cost of holding money balances instead of bonds is lost interest
+earnings $(R_t-R_{mt})$ discounted at the rate $R_t$ and expressed in
+time $t$ utility when multiplied by the shadow price $\lambda_t$.
+The benefit of an
+additional unit of real money balances is the savings in shopping
+time $-H_{m/p}(t)$ evaluated at the shadow price $\mu_t$.
+By substituting equations \Ep{doc_foc2} and \Ep{doc_res1} into
+equation \Ep{doc_res2}, we get
+$$
+\Bigl(1- {R_{mt} \over R_t}\Bigr)\,
+\Bigl[ {u_c(t) \over u_{\ell}(t) }
+      - H_c(t)     \Bigr]    + H_{m/p}(t)\,=\,0,
+                                                    \EQN doc_Md
+$$
+with $u_c(t)$ and $u_{\ell}(t)$ evaluated at $\ell_t=1-H(c_t,\, m_{t+1}/p_t)$.
+Equation \Ep{doc_Md} implicitly defines a money demand function
+\index{money!demand function}
+$$
+{m_{t+1} \over p_t} \,=\, F(c_t, R_{mt}/R_t),             \EQN doc_Md2
+$$
+which is increasing in both of its arguments, as can be shown by
+applying the implicit function rule to expression \Ep{doc_Md}.
+
+
+
+
+\subsection{Government}
+The government finances the purchase of the stream $\{g_t\}_{t=0}^\infty$ subject to the
+sequence of budget constraints
+$$ g_t = \tau_t + {B_{t+1} \over R_t} - B_t + {M_{t+1} - M_t \over p_t},
+                                                              \EQN doc_gov $$
+where $B_0$ and $M_0$ are given.  Here $B_t$ is government
+indebtedness to the private sector, denominated in time $t$ goods,
+maturing at the beginning of period $t$, and
+$M_t$ is the stock of currency that
+the government has issued as of the beginning of period $t$.
+
+
+
+
+\subsection{Equilibrium}
+We use the following definitions:
+\medskip
+\noindent{\sc Definition:} A {\it price system\/} is a pair of positive
+sequences $\{R_t, p_t\}_{t=0}^\infty$.
+%% \hfil\break \{p_t\}_{t=0}^\infty$.
+\index{price system}
+\medskip
+\noindent{\sc Definition:}
+ We take as  exogenous sequences $\{g_t, \tau_t\}_{t=0}^\infty$.  We
+also take $B_0=b_0$ and $M_0=m_0> 0$ as  given. An {\it equilibrium\/} is
+a price system,  a consumption sequence $\{c_t\}_{t=0}^\infty$, a sequence for
+government indebtedness $\{B_t\}_{t=1}^\infty$, and a positive
+sequence for the money supply $\{M_t\}_{t=1}^\infty$ for which the
+following statements are true: (a) given the price system and taxes, the
+household's optimum problem is solved with $b_t=B_t$ and $m_t = M_t$;
+(b) the government's budget constraint is satisfied for all $t \geq 0$;
+and (c) $c_t + g_t = y$.           \index{equilibrium}
+
+
+
+
+\subsection{``Short run'' versus ``long run''}
+ We shall study government policies designed to ascribe a definite
+meaning to a distinction between outcomes in the ``short run'' (initial date)
+and the ``long run'' (stationary equilibrium).
+We assume
+$$ \eqalign{ g_t &= g, \hskip.3cm \forall t \geq 0; \cr
+             \tau_t &= \tau, \hskip.3cm \forall t \geq 1; \cr
+             B_t &= B , \hskip.3cm  \forall t \geq 1. \cr} \EQN doc_stat1 $$
+We permit $\tau_0 \neq \tau$ and $B_0 \neq B$.
+
+
+   These settings of policy variables are designed to let us study
+circumstances in which the economy is in a stationary
+equilibrium for $t \geq 1$, but starts from some other
+position at $t=0$.  We have enough free policy variables
+to discuss two alternative meanings that the theoretical
+literature has attached to the phrase ``open market operations.''
+\index{open market operation}
+
+
+
+
+\subsection{Stationary equilibrium}
+   We seek an equilibrium for which
+$$\eqalign{p_t/p_{t+1} &= R_m, \hskip.3cm \forall t \geq 0; \cr
+            R_t &=R,\hskip.3cm \forall t \geq 0; \cr
+            c_{t} &= c,\hskip.3cm \forall t \geq 0; \cr
+            s_{t} &= s, \hskip.3cm \forall t \geq 0 .\cr} \EQN doc_stat2
+$$
+Substituting equations \Ep{doc_stat2} into equations \Ep{doc_R}
+and \Ep{doc_Md2} yields
+$$\eqalign{
+R &\,=\, \beta^{-1},        \cr
+{m_{t+1} \over p_t} &\,=% \, F(c, R_m/R) =
+   f(R_m),   \cr} \EQN doc_stat3
+$$
+where we define $f(R_m) \equiv F(c,R_m/R)$ and
+we have suppressed the constants $c$ and $R$ in the money
+demand function  $f(R_m)$ in a stationary equilibrium.
+Notice that $f'(R_m) \geq 0$, an inequality  that plays
+an important role below.
+
+
+Substituting equations \Ep{doc_stat1}, \Ep{doc_stat2}, and \Ep{doc_stat3}
+into the government budget constraint \Ep{doc_gov}, using the
+equilibrium condition $M_t = m_t$, and rearranging gives
+$$ g - \tau+ B(R-1)/R = f(R_m)(1-R_m),\hskip.3cm \forall t \geq 1 .  \EQN doc_govLR
+$$
+Given the policy variables $(g,\tau,B)$, equation \Ep{doc_govLR}
+determines the stationary rate of return on
+currency $R_m$.  In \Ep{doc_govLR}, $g - \tau$ is the
+net of interest deficit, sometimes called the operational
+deficit; $g - \tau + B(R-1)/R$ is the gross of interest government
+deficit; and $f(R_m) (1-R_m)$ is  the rate of seigniorage revenues
+from printing currency.\NFootnote{The stationary value of seigniorage per period
+is given by
+$$
+{M_{t+1} - M_t \over p_t} = {M_{t+1} \over p_t} - {M_t \over p_{t-1}}
+{p_{t-1} \over p_t} = f(R_m) (1-R_m).$$} %
+   The inflation tax rate is $(1-R_m)$ and
+the quantity of real balances $f(R_m)$ is the base of the inflation tax.
+
+
+\subsection{Initial date (time 0)}
+Because $M_1/p_0 = f(R_m)$, the government budget constraint
+at $t=0$ can be written
+$$ M_0 / p_0  = f(R_m) - (g +B_0 -\tau_0) + B / R. \EQN doc_govSR $$
+
+
+
+
+\subsection{Equilibrium determination}
+Given the policy parameters $(g,\tau,\tau_0,B)$, the initial
+stocks $B_0$ and $M_0$, and the equilibrium gross real interest
+rate $R=\beta^{-1}$, equations \Ep{doc_govLR} and \Ep{doc_govSR}
+determine $(R_m,p_0)$.
+%%%\NFootnote{Notice that $B_0$ is a real stock of debt,
+%%%and $M_0$ is a nominal stock.  Taking $B_0$ as exogenous is something
+%%%that Woodford (1995) changed in his fiscal theory of the price
+%%%level (see doctrine 9 below).}
+The two equations are recursive: equation \Ep{doc_govLR} determines
+$R_m$, then equation \Ep{doc_govSR} determines $p_0$.
+
+
+It is useful to illustrate the determination of an equilibrium
+with a parametric example. Let the utility function and the transaction
+technology be given by
+$$\eqalign{
+u(c_{t},l_t) \,&=\, {c_t^{1-\delta} \over 1-\delta} +
+                    {l_t^{1-\alpha} \over 1-\alpha},     \cr
+H(c_t,\, m_{t+1}/p_t) \,&=\, {c_t \over 1 + m_{t+1}/p_t }, \cr}
+$$
+where the latter is a modified version of equation \Ep{doc_shop1}, so
+that transactions can be carried out even in the absence of money.
+
+
+For parameter values $(\beta, \delta, \alpha, c) =
+(0.96, 0.7, 0.5, 0.4)$,
+%Figure 17.1
+Figure \Fg{mon1af} displays the
+stationary gross of
+interest deficit $g- \tau+B(R-1)/R$ and the stationary seigniorage
+$f(R_m)(1-R_m)$;\NFootnote{For our parameterization in
+Figure \Fg{mon1af},
+%%Figure \Fg{mon1af}  %Figure 17.1
+%%shows the stationary value of seigniorage per period,
+%%$$
+%%{M_{t+1} - M_t \over p_t} = {M_{t+1} \over p_t} - {M_t \over p_{t-1}}
+%%{p_{t-1} \over p_t} = f(R_m) (1-R_m).
+%%$$
+ households choose to hold zero money balances
+for $R_m < 0.15$, so at these rates there is no seigniorage
+collected.  Seigniorage turns negative for $R_m>1$ because the government
+is then continuously withdrawing money from circulation to raise the
+real return on money above $1$.}
+%
+%Figure 17.2
+Figure \Fg{mon1bf} shows $f(R_m) - (g +B_0 -\tau_0) + B / R$. %%%$M_0/p_0$.
+ Stationary equilibrium is
+determined as follows:  name constant values $\{g,\tau,B\}$ which
+imply a stationary gross of interest
+deficit $g-\tau+ B(R-1)/R$, then read an associated stationary
+value $R_m$
+from %Figure 17.1
+Figure \Fg{mon1af} that satisfies equation \Ep{doc_govLR}; for this
+value of $R_m$, find the value of $f(R_m) - (g +B_0 -\tau_0) + B / R$
+in Figure \Fg{mon1bf} which is equal to $M_0/p_0$ by equation
+\Ep{doc_govSR}. Thus, the initial price level $p_0$ is
+determined because $M_0$ is given in period $0$.
+
+%compute $f(R_m) - (g +B_0 -\tau_0) + B / R$, then
+%read the associated equilibrium value $M_0/p_0$ from Figure \Fg{mon1bf}
+%  %Figure 17.2
+%that
+%satisfies equation \Ep{doc_govSR}.
+
+
+
+%%%%%%%%%%%%%%%%%%%
+%\topinsert $$
+%\grafone{mon1a.ps,height=2in}{{\bf Figure 17.1}
+%Stationary seigniorage $f(R_m)(1-R_m)$
+%as a function of the stationary rate of return on currency, $R_m$.
+%An intersection of the stationary gross of interest
+%deficit $g- \tau+B(R-1)/R$ with $f(R_m)(1-R_m)$ in this figure
+%determines $R_m$.}$$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\midfigure{mon1af}
+\centerline{\epsfxsize=2.8truein\epsffile{mon1a_new.ps}}
+\caption{The stationary rate of return on currency, $R_m$, is determined by
+the intersection between the stationary gross of
+interest deficit $g- \tau+B(R-1)/R$ and the stationary seigniorage
+$f(R_m)(1-R_m)$.}
+%
+%Stationary seigniorage $f(R_m)(1-R_m)$ as a function of the stationary
+%rate of return on currency, $R_m$.  An intersection of the stationary gross of
+%interest deficit $g- \tau+B(R-1)/R$ with $f(R_m)(1-R_m)$ in this figure
+%determines $R_m$.}
+\infiglist{mon1af}
+\endfigure
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%$$\grafone{mon1b.ps,height=2in}{{\bf Figure 17.2}
+%Real value of initial money balances $M_0/p_0$ as a function
+%of the price level $p_0$. Given $R_m$, an
+%intersection of $f(R_m) - (g +B_0 -\tau_0) + B / R$
+%with $M_0/p_0$ in this figure determines $p_0$.}
+%$$\endinsert
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\midfigure{mon1bf}
+\centerline{\epsfxsize=2.9truein\epsffile{mon1b_new.ps}}
+\caption{Given $R_m$, the real value
+of initial money balances $M_0/p_0$ is determined by
+$f(R_m) - (g +B_0 -\tau_0) + B / R$. Thus, the price
+level $p_0$ is determined because $M_0$ is given.}
+%Real value of initial money balances $M_0/p_0$ as a function
+%of the price level $p_0$. Given $R_m$, an intersection of
+%$f(R_m) - (g +B_0 -\tau_0) + B / R$ with $M_0/p_0$ in this figure
+%determines $p_0$.}
+\infiglist{mon1bf}
+\endfigure
+
+
+\section{Ten monetary doctrines}\label{sec:10Mdoctrines}%
+We now use equations \Ep{doc_govLR} and \Ep{doc_govSR} to explain
+some important doctrines about money and government finance.
+\index{quantity theory of money}%
+\subsection{Quantity theory of money}
+  The classic ``quantity theory of money'' experiment is to increase
+$M_0$ by some factor $\lambda >1$ (a ``helicopter drop'' of money),
+leaving all of the other parameters of the model fixed (including the
+fiscal policy parameters ($\tau_0, \tau,g, B$)).  The effect is to
+multiply the initial equilibrium price and money supply sequences
+by $\lambda$ and to leave all other variables unaltered.
+\index{deficit finance!as cause of inflation}
+\subsection{Sustained deficits cause inflation}
+The parameterization in Figures \Fg{mon1af} and \Fg{mon1bf} % 17.1 and 17.2
+shows that there can be
+multiple values of $R_m$ that solve equation \Ep{doc_govLR}.
+As can be seen in Figure \Fg{mon1af}, %17.1,
+ some values of the gross-of-interest deficit
+$g - \tau + B(R-1)/R$ can be financed with either a low or high
+rate of return on money. The tax rate on real money balances
+is $(1-R_m)$ in a stationary equilibrium, so the higher $R_m$ that solves
+equation \Ep{doc_govLR} is on the good side of a ``Laffer curve'' in
+the inflation tax rate.
+\index{Laffer curve}
+
+
+   If there are multiple values of $R_m$ that solve equation
+\Ep{doc_govLR}, we
+shall always select the highest one for the purposes of doing our
+comparative dynamic exercises.\NFootnote{In chapter \use{ogmodels}, we
+studied the perfect-foresight dynamics of a closely related system and
+saw that the stationary equilibrium selected here was {\it not\/} the
+limit point of those dynamics.  Our selection of the higher rate of
+return equilibrium can be defended by appealing to various forms of
+``adaptive'' (nonrational) dynamics.  See Bruno and Fischer (1990),
+Marcet and Sargent (1989), and Marimon and Sunder (1993).  Also,
+see exercise {\it \the\chapternum.2.\/}} %%17.2.}
+  The stationary equilibrium with the higher rate of
+return on currency is associated with classical comparative dynamics:
+an increase in the stationary gross-of-interest government budget
+deficit causes a {\it decrease\/} in the rate of return on
+currency (i.e., an increase in the inflation rate).  Notice how the
+stationary equilibrium associated with the lower rate of return on
+currency  has ``perverse'' comparative dynamics, from the point of view
+of the classical doctrine that sustained government deficits
+cause inflation.
+\auth{Bruno, Michael}  \auth{Fischer, Stanley}
+\auth{Marcet, Albert}  \auth{Sargent, Thomas J.}
+\auth{Marimon, Ramon}  \auth{Sunder, Shyam}
+\index{zero inflation policy}
+\subsection{Fiscal prerequisites of zero inflation policy}
+ Equation \Ep{doc_govLR} implies a restriction on fiscal policy that
+is necessary and sufficient to sustain a zero inflation ($R_m = 1$)
+equilibrium:
+$$ g - \tau + B (R-1)/R =0 ,$$
+or
+$$ B = {R \over R-1} (\tau -g) = \sum_{t=0}^\infty R^{-t} (\tau -g).$$
+This equation states that the real value of interest-bearing
+government indebtedness equals the present value of the net-of-interest
+ government {\it surplus}, with zero revenues being contributed by
+an inflation tax. In this case, increased government debt implies a flow
+of future government
+surpluses, with complete abstention from the inflation tax.
+\index{unpleasant monetarist arithmetic}
+\subsection{Unpleasant monetarist arithmetic}
+This doctrine describes the paradoxical effects of an open market operation
+defined in the standard way that withholds from the monetary authority
+the ability to alter taxes or expenditures.
+   Consider an open market sale of bonds at time $0$, defined
+as a {\it decrease\/} in $M_1$ accompanied by an {\it increase\/}
+ in $B$, with all other government fiscal policy variables constant, including
+($\tau_0, \tau$).  This policy can be analyzed
+by increasing $B$ in equations \Ep{doc_govLR} and \Ep{doc_govSR}.
+The effect of the policy
+is to shift the permanent gross-of-interest deficit {\it upward\/}
+by $(R-1)/R$ times the increase in $B$, which {\it decreases\/}
+the real return on money $R_m$ in Figure \Fg{mon1af}. %17.1.
+That is, the effect is unambiguously to
+{\it increase\/} the stationary inflation rate (the inverse
+of $R_m$). However, the effect on the initial price level $p_0$
+can go either way,
+depending on the slope of the revenue curve $f(R_m) (1-R_m)$;
+the decrease in $R_m$ reduces the right-hand side of equation
+\Ep{doc_govSR}, $f(R_m) - (g +B_0 -\tau_0) + B / R$, while the
+increase in $B$ raises the value. Thus, the upward shift of the
+curve in Figure \Fg{mon1bf} due to the higher value of $B$,
+and the downward movement along that new curve due to the
+lower equilibrium value of $R_m$, can cause $M_0/p_0$ to
+move up or down,
+that is, a decrease or an increase in the initial price
+level $p_0$.
+% Thus, the new equilibrium can
+%move us to the left or the right along the curve $M_0 /p_0$ in
+%Figure \Fg{mon1bf}, %17.2,
+%that is, a decrease or an increase in the initial price
+%level $p_0$.
+
+
+\index{open market operation!one definition}
+   The effect of a decrease in the money supply $M_1$ accomplished
+through such an open market operation is at best temporarily to drive
+the price level downward, at the cost of causing the inflation
+rate to be permanently higher.  Sargent and Wallace (1981) called
+this ``unpleasant monetarist arithmetic.''
+\index{open market operation!another definition}
+
+
+\subsection{An ``open market'' operation delivering neutrality}
+We now alter the definition of open market operations for the purpose of
+disarming  unpleasant monetarist arithmetic.   We supplement
+ the fiscal powers of the monetary authority in a way that lets open
+market operations have effects like those in the quantity theory experiment.
+Let there be an initial equilibrium with policy values denoted by bars
+over variables. Consider an open market sale or purchase defined as a
+decrease in $M_1$ and simultaneous increases in $B$ and $\tau$ sufficient
+to satisfy
+$$ (1 -1/R)(\hat B -\bar B) = \hat \tau - \bar \tau , \EQN oe38$$
+where variables with hats denote the new values of the corresponding
+variables.  We assume that $\hat \tau_0 = \bar \tau_0$.
+
+
+   As long as the tax rate from time $1$ on is adjusted
+according to equation \Ep{oe38}, equation \Ep{doc_govLR} will be
+satisfied at the initial value of $R_m$.  Equation \Ep{oe38}
+imposes a requirement that the lump-sum tax $\tau$ be adjusted by
+just enough to  service whatever additional interest payments are
+associated with the alteration in $B$ resulting from the exchange
+of $M_1$ for $B$.\NFootnote{This definition of an ``open market''
+operation imputes unrealistic power to a monetary authority: on
+earth, central banks don't set tax rates.} Under this definition
+of an open market operation, reductions in $M_1$ achieved by
+increases in $B$ and the taxes needed to service $B$ cause
+proportionate decreases in the paths of the money supply and the
+price level, and leave $R_m$ unaltered. In this way, we have salvaged a
+version of
+the pure quantity theory of money.
+\index{optimal quantity of money}
+\auth{Friedman, Milton}
+\subsection{The ``optimum quantity'' of money}
+Friedman's (1969) ideas about the optimum quantity of money can
+be represented in Figures \Fg{mon1af} and \Fg{mon1bf}. %17.1 and 17.2.
+Friedman noted that, given the stationary levels
+of ($g,B$), the representative household prefers
+stationary equilibria with higher rates of return on currency.
+In particular, the higher the stationary level of real
+balances, the better the household likes it.  By running
+a sufficiently large gross-of-interest surplus, that is, a
+negative value of  $g - \tau + B(R-1)/R$,
+the government can attain any  value
+ of $R_m \in (1,\beta^{-1})$.  Given $(g,B)$ and the target
+value of $R_m$ in this interval, a tax rate $\tau$ can
+be chosen to assure the required surplus.  The proceeds of the
+tax are used to retire currency from circulation, thereby
+generating a deflation that  makes the rate of return on
+currency equal to the target value of  $R_m$.  According to Friedman, the optimal
+policy is to satiate the system with real balances, insofar
+as it is possible to do so.
+
+
+The social value of real money balances in our model is that
+they reduce households' shopping time. The optimum quantity
+of money is the one that minimizes the time allocated to
+shopping. For the sake of argument, suppose there is
+a satiation point in real balances $\psi(c)$ for any consumption
+level $c$, that is, $H_{m/p}(c,\, m_{t+1}/p_t)=0$ for
+$m_{t+1}/p_t \geq \psi(c)$.
+According to condition \Ep{doc_res2}, the government can
+attain this optimal allocation only by choosing $R_m=R$, since
+$\lambda_t, \, \mu_t >0$. (Utility is assumed to be strictly
+increasing in both consumption and leisure.) Thus, welfare
+is at a maximum when the economy is satiated with real balances.
+For the transaction technology given by equation \Ep{doc_shop1},
+the \idx{Friedman rule} can  be attained only approximately
+because money demand is insatiable.
+
+
+\index{legal restrictions}
+\subsection{Legal restrictions to boost demand for currency}
+If the government can somehow force households to increase their
+real money balances to $\tilde f(R_m)>f(R_m)$, it can finance a
+given stationary gross
+of interest deficit $g - \tau + B(R-1)/R$ at a higher stationary
+rate of return on currency $R_m$.  The increased demand for money
+balances shifts the seigniorage curve in Figure \Fg{mon1af} %17.1
+upward to
+$\tilde f(R_m)(1-R_m)$, thereby increasing  the higher of the
+two intersections of the curve $\tilde f(R_m)(1-R_m)$ with the
+gross-of-interest deficit line in Figure \Fg{mon1af}. %17.1.
+  By increasing the
+base of the inflation tax, the rate $(1-R_m)$ of inflation
+taxation can be diminished.
+Examples of legal restrictions to increase the demand for government
+issued currency include (a) restrictions on the rights of banks and
+other intermediaries to issue bank notes or other close substitutes
+for government issued currency,\NFootnote{In the U.S. Civil War, the U.S. Congress
+taxed out of existence the notes that state-chartered banks had
+issued, which before the war had been the country's paper currency.}
+(b) arbitrary limitations on trading other assets that are close substitutes with
+currency, and (c) reserve requirements.
+
+
+   Governments intent on raising revenues through the inflation
+tax have frequently resorted to legal restrictions and threats
+designed to promote the demand for its currency.  In chapter
+\use{townsend}, we shall study a version of Bryant and Wallace's
+(1984) theory of some of those restrictions.  Sargent and Velde
+(1995) describe  the sharp tools used to enforce such restrictions during ``the Terror'' during the French
+Revolution.
+\auth{Bryant, John}  \auth{Wallace, Neil} \auth{Velde, Fran\c
+cois} \index{legal restrictions!Terror}
+
+
+To assess the welfare effects of policies forcing households to hold higher
+real balances, we must go beyond the incompletely articulated
+transaction process underlying equation \Ep{doc_shop}.
+We need an explicit model of how money facilitates transactions and
+how the government interferes with markets to increase the demand for
+real balances.  In such a model, there would be opposing effects on
+social welfare. On the one hand, our discussion of the optimum quantity
+of money says that a higher real return on money $R_m$ tends to improve
+welfare. On the other hand, the imposition of legal restrictions aimed
+at forcing households to hold higher real balances might elicit socially
+wasteful activities devoted to evading those
+restrictions.
+\index{open market operation!one big one}
+\auth{Lucas, Robert E., Jr.}  \auth{Wallace, Neil}
+\auth{Paal, Beatrix}
+\subsection{One big open market operation}
+Lucas (1986) and Wallace (1989) describe  a  large open market
+purchase of private indebtedness at time 0.  The purpose of the
+operation is to provide the government with a portfolio of
+interest-earning claims on the private sector, one that is
+sufficient to permit it to run a gross-of-interest surplus.  The
+government uses the surplus to reduce the money supply each
+period, thereby engineering a deflation that raises the gross rate of
+return on money above $1$. That is, the government uses its own
+lending to reduce the gap in rates of return between its money and
+higher-yield bonds. As we know from our discussion of the optimum
+quantity of money, the increase in the real return on money $R_m$
+will lead to higher
+ welfare.\NFootnote{Beatrix Paal (2000) describes how the stabilization of
+the second Hungarian hyperinflation had some features
+of ``one big open market operation.''  After the stabilization
+ the government lent the one-time seigniorage revenues gathered from
+remonetizing the economy.  The severe hyperinflation
+(about $4 \times 10^{24}$ in the previous year) had
+reduced real balances of fiat currency virtually to zero.
+Paal argues that the  fiscal aspects of the stabilization, dependent
+as they were on those one-time seigniorage revenues, were foreseen and
+shaped the dynamics of the preceding hyperinflation.}
+
+
+To highlight the effects of the described open market policy, we
+impose a nonnegative net-of-interest deficit, $g-\tau\geq 0$,
+which prevents financing deflation by direct taxation.
+The proposed operation is then to
+increase $M_1$ and decrease $B$, with $B<0$ indicating
+private indebtedness to the government. We generate a candidate
+policy as follows:
+Given values of ($g,\tau$), use equation \Ep{doc_govLR}
+to pick a value of $B$ that solves equation
+\Ep{doc_govLR} for a desired level of $R_m$, with
+$1 < R_m \leq \beta^{-1}$.  Notice that
+a negative level of $B$ will be required, since $g-\tau\geq 0$.
+Substituting equation \Ep{doc_govSR} into equation \Ep{doc_govLR}
+[by eliminating $f(R_m)$] and rearranging gives
+$$ M_0/p_0 = \left({R-R_m\over 1-R_m}\right){B\over R} +
+         \left({1\over 1-R_m}\right) (g-\tau) -
+             (g+B_0-\tau_0) . \EQN oe39$$
+The first term on the right side is positive,
+while the remainder may be positive or negative.  The candidate
+policy is  consistent with an equilibrium only if
+$g,\tau,\tau_0,$ and $B_0$ assume values for which the
+entire right side is positive.  In this case, there exists
+a positive price level $p_0$ that solves equation \Ep{oe39}.
+
+
+As an example,
+assume that $g-\tau = 0$ and that $g + B_0 - \tau_0 =0$,
+so that the government budget net of interest is balanced
+from time $t=1$ onward.  Then we know that the right-hand side of
+equation \Ep{oe39} is positive.  In this case it is feasible to operate
+a scheme like this to support any return on currency
+$1 < R_m < 1/\beta$. In the limit, when conducting an arbitrarily
+large open market operation, the stationary return on money $R_m$ would
+approach $1/\beta=R$ and, hence, $M_0/p_0$ in equation \Ep{oe39} would
+approach zero. This means that the government is
+engineering a hyperinflation in period $0$ that makes the
+initial nominal money stock $M_0$ practically worthless.
+But how is it that the government after such a hyperinflation
+in period $0$, can support a stationary return on money of $R$
+for the indefinite future? The explanation is as follows.
+Since the hyperinflation in period $0$ has made the initial money holdings
+almost worthless, the private sector's real balances at the end of
+period $0$, $M_1/p_0$, come almost entirely from that period's
+open-market operation. The government  injects that money stock
+into the economy in exchange for interest-earning claims on the
+private sector, $B/R \approx - M_1/p_0$. In future periods, the government
+keeps those bond holdings constant while using the net interest earnings to
+reduce the money supply in each future period. The government
+passes  the interest earnings on to money holders by engineering a deflation
+that yields a return on money equal to $R_m \approx R$.
+
+
+
+\index{fiscal theory of inflation}
+\subsection{A fiscal theory of the price level}
+The preceding sections have illustrated what might be
+called  a fiscal theory of {\it inflation}.   This theory
+assumes that at time $t=0$ the government commits to a specific sequence of exogenous variables
+ranging over $t \geq 0$. In particular, the government sets $g, \tau_0, \tau$, and $B$, while
+$B_0$ and $M_0$ are inherited from the past. The  model then determines $R_m$ and $p_0$ via equations
+\Ep{doc_govLR} and \Ep{doc_govSR}.  This system of equations determining equilibrium values is
+recursive:
+given $g, \tau$, and $B$, equation \Ep{doc_govLR} determines the rate of
+return on currency $R_m$ (and therefore, in light of equation \Ep{doc_arbitrage}, inflation); then,  given $g, \tau, B$, and $R_m$, equation
+\Ep{doc_govSR} determines $p_0$.  After $p_0$ is
+determined, $M_1$ is determined from $M_1 / p_0 = f(R_m)$.
+In this setting, the government  commits to a long-run gross-of-interest
+ government deficit $g - \tau + B(R-1)/R$, and then the market
+determines $p_0, R_m$.
+\auth{Woodford, Michael} \auth{Sims, Christopher A.}%
+
+  Woodford (1995) and Sims (1994)
+ have converted  a version
+of the same model into a fiscal theory of the {\it price level\/} by
+altering  assumptions about the variables that the government sets.
+ Rather than assuming that the government sets $B$, and thereby
+the gross-of-interest government deficit, Woodford assumes
+that $B$ is endogenous and that instead the government sets in advance
+ a present value of seigniorage $f(R_m) (1-R_m)/(R-1)$.  This assumption
+is equivalent to saying that the government commits  to fix either  the nominal interest rate or the gross
+rate of inflation $R_m^{-1}$ (the nominal interest rate and $R_m$ are locked together by equation \Ep{doc_arbitrage}).
+Woodford emphasizes that in the present setting, such a
+nominal interest rate peg
+\index{interest rate peg}
+leaves the equilibrium price level process determinate.\NFootnote{Woodford (1995)
+interprets this finding against the background of
+a literature that occasionally asserted a different result,
+namely, that interest rate pegging
+led to price level indeterminacy because of the
+associated  money supply endogeneity.
+That other literature focused on the homogeneity properties of
+conditions  \Ep{doc_R} and \Ep{doc_Md}:
+the only ways in which the price level enters are as ratios to
+the money supply or to the price level at another date.
+This property suggested
+that a policy regime that leaves
+the money supply, as well as the price level, endogenous will
+will determine neither.}
+To illustrate Woodford's  argument in our setting,
+ rearrange equation \Ep{doc_govLR} to
+obtain
+$$\eqalign{B/R
+   &= {1\over R-1} \bigl[ (\tau-g) + f(R_m) (1-R_m) \bigr] \cr
+   &= \sum^\infty_{t=1} R^{-t}(\tau-g) \,+\, f(R_m) {1-R_m \over R-1},\cr}
+      \EQN Beqn  $$
+which when substituted into equation \Ep{doc_govSR}  yields
+$$\EQNalign{
+&{M_0 \over p_0} \,+\, B_0 = \sum^\infty_{t=0} R^{-t} (\tau_t - g_t)
+ \,+\, f(R_m) \Bigl( 1 + {1-R_m\over R-1}\Bigr)     \cr
+& \quad = \sum^\infty_{t=0} R^{-t} (\tau_t - g_t) \,+\,
+\sum^\infty_{t=1} R^{-t} f(R_m) (R-R_m) . \EQN doc_govPV \cr}
+$$
+
+
+In a stationary equilibrium, the real interest rate is equal to
+$1/\beta$, so by multiplying the
+nominal interest rate by $\beta$ we obtain the inverse of
+the corresponding value for $R_m$.   Thus, pegging a nominal
+rate is equivalent to pegging the inflation rate and
+the steady-state flow of seigniorage $f(R_m)(1-R_m)$.
+Woodford uses such
+equations as follows: The government chooses $g, \tau, \tau_0$,
+ and $R_m$ (or equivalently, $f(R_m)(1-R_m)$).  Then
+equation \Ep{Beqn} determines $B$ as the present
+value of the government surplus from time $1$ on, including seigniorage
+revenues.   Equation \Ep{doc_govPV} then determines $p_0$.
+Equation \Ep{doc_govPV}
+says that the price level
+is set to equate  the real value of {\it total\/} initial
+government indebtedness to the present value of the
+net-of-interest government surplus, including seigniorage revenues.
+Finally, the endogenous quantity of real money balances is determined by the
+demand function for money \Ep{doc_Md2},
+$$
+M_1/p_0 = f(R_m).  % F(y-g,\ R_m/R).
+                       \EQN doc_demandM1
+$$
+
+
+Woodford uses this experiment to emphasize that without saying much
+more, the mere presence of a ``quantity theory'' equation of the
+form \Ep{doc_demandM1} does not imply the ``monetarist'' conclusion
+that it is necessary to make the money supply exogenous in order
+to determine the path of the  price level.
+
+
+\auth{Buiter, Willem H.}
+%\auth{Marimon, Ramon}
+\auth{McCallum, Bennett T.}
+    Several commentators
+ have remarked that the Sims-Woodford
+use of these equations puts the government on a different setting
+than the private agents.\NFootnote{See Buiter (2002) %, Marimon (1998)
+and McCallum (2001).} %
+  Private agents' demand
+curves are constructed by requiring their budget constraints
+to hold for {\it all\/} hypothetical price processes, not just the
+equilibrium  one.   However, under Woodford's assumptions
+about what the government has already chosen
+{\it regardless\/} of the $(p_0, R_m)$ it faces, the only way
+an equilibrium can exist is if $p_0$ adjusts to make
+equation \Ep{doc_govPV}  satisfied.  The government budget
+constraint would not be satisfied unless $p_0$
+adjusts to satisfy \Ep{doc_govPV}.
+
+
+\auth{Sargent, Thomas J.} \auth{Wallace, Neil} By way of contrast,
+in the fiscal theory of {\it inflation\/} described by Sargent and
+Wallace (1981) and Sargent (2013), embodied in our description of
+unpleasant monetarist arithmetic, the focus is on how the  one tax
+rate that is assumed to be free to adjust, the inflation tax,
+responds to fiscal conditions that the government inherits.  Sims
+and Woodford forbid  the inflation tax from  adjusting, having set
+it once and all for by pegging the nominal interest rate. They
+thereby force other aspects of fiscal policy and the price system
+to adjust. \index{exchange rate!indeterminacy}\auth{Kareken, John}
+\auth{Wallace, Neil}
+\subsection{Exchange rate indeterminacy}\label{Kareken-Wallace}%
+  Kareken and Wallace's (1981)
+%%%%and Helpman's (1981)
+exchange rate indeterminacy result provides a good laboratory for
+putting the fiscal theory of the price level to work. First, we
+will describe a version of  Kareken and Wallace's result. Then, we
+will show how it can be overturned by changing the assumptions
+about policy to ones like Woodford's.
+
+
+To describe the theory of exchange rate indeterminacy, we change
+the preceding model so that there are two countries with identical
+technologies and preferences. Let $y_i$ and $g_i$ be the endowment
+of the good and government purchases for country $i=1,2$; where
+$y_1+y_2=y$ and $g_1+g_2=g$. Under the assumption of complete
+markets, equilibrium consumption $c_i$ in country $i$
+is constant over time and $c_1+c_2=c$.
+
+
+Each country issues currency. The government
+of country $i$ has $M_{it+1}$  units of its currency
+outstanding at the end of period $t$.  The price level in
+terms of currency $i$ is $p_{it}$, and the exchange rate $e_t$ satisfies
+the purchasing power parity condition
+$p_{1t} = e_t p_{2t}$.   The household is indifferent
+about which currency to use so long as both currencies
+bear the same rate of return, and will not hold one with
+an inferior rate of return.  This fact implies
+that $p_{1t} / p_{1t+1}  =  p_{2t} / p_{2t+1}$, which
+in turn implies that $e_{t+1} = e_t = e$.
+Thus, the exchange rate is constant in a nonstochastic  equilibrium with
+two currencies being valued.  We let
+$M_{t+1} = M_{1t+1} + e M_{2t+1}$.
+For simplicity, we assume that the money demand function is linear in the
+transaction volume, $F(c,R_m/R) = c \hat F(R_m/R)$. It then follows that
+the equilibrium condition in the world money market is
+ $$ {M_{t+1} \over p_{1t}}  = f(R_m).    \EQN KW1  $$
+
+
+In order to study stationary equilibria where all real variables remain
+constant over time, we restrict attention to
+identical monetary growth rates in the
+two countries, $M_{it+1}/M_{it}=1+\epsilon$ for $i=1,2$.
+We let $\tau_i$ and $B_i$ denote constant steady-state values
+for lump-sum taxes, and real government
+indebtedness for government $i$.
+The budget constraint of government $i$ is
+$$ \tau_i = g_i -  B_{i}{(1-R)\over R}
+   -{M_{it+1} - M_{it} \over p_{it} } .  \EQN Budgi $$
+
+
+
+
+  Here is a version of Kareken and Wallace's exchange rate
+indeterminacy result:  Assume
+that the governments of each country set $g_i$, $B_i$,
+and $M_{it+1}=(1+\epsilon) M_{it}$, planning to adjust the
+lump-sum tax $\tau_i$ to raise whatever revenues are needed to finance their
+budgets. Then the constant monetary growth rate implies
+$R_m = (1+\epsilon)^{-1}$ and equation \Ep{KW1} determines
+the worldwide demand for real balances. But the exchange rate is not
+determined under these policies. Specifically, the market clearing
+condition for the money market at time 0 holds for {\it any} positive
+$e$ with a price level $p_{10}$ given by
+ $$ { M_{11} + e M_{21} \over p_{10}}  = f(R_m).    \EQN KW1_0  $$
+For any such pair $(e, p_{10})$ that satisfies equation \Ep{KW1_0} with
+an associated value for $p_{20}=p_{10}/e$,
+governments' budgets are financed by setting lump-sum taxes
+according to \Ep{Budgi}.   Kareken and Wallace
+conclude that under such settings for government
+policy variables, something more is needed to determine the exchange
+rate.   With policy as specified here, the exchange rate
+is indeterminate.\NFootnote{See Sargent and Velde (1990)
+for an application of this theory to events surrounding
+German monetary unification.}
+
+
+
+
+\index{exchange rate!determinacy}
+\subsection{Determinacy of the exchange rate retrieved}\label{Kareken-Wallace-fiscal}%
+  A version of Woodford's assumptions about the variables
+ that governments choose can render the exchange rate determinate.
+Thus,  suppose that each
+government sets a real level of seigniorage
+$x_i = (M_{it+1} - M_{it} ) / p_{it}$ for all $t \geq 1$.
+The budget constraint of government $i$ is then
+$$ \tau_i = g_i -  B_{i}{(1-R)\over R}
+   - x_i .  \EQN Budgi_2 $$
+In order to study stationary equilibria where all real variables remain
+constant over time, we allow for three cases with respect to
+$x_1$ and $x_2$: they are both strictly positive, strictly negative, or
+equal to zero.
+
+
+To retrieve exchange rate determinacy,  we assume
+that the governments of each country set $g_i$, $B_i$,
+$x_i$, and $\tau_i$ so that budgets are financed according
+to \Ep{Budgi_2}.
+Hence, the endogenous inflation rate is pegged to deliver the
+targeted levels of seigniorage,
+$$ x_1 +   x_2 = f(R_m)(1-R_m).  \EQN Ret_money $$
+The implied return on money $R_m$ determines the endogenous
+monetary growth rates in a stationary equilibrium,
+$$ R_m^{-1} =  {M_{it+1} \over M_{it}}\equiv  1+\epsilon ,
+                 \hskip1cm \hbox{\rm for\ \ }i=1,2.   \EQN Money_growth$$
+That is, nominal supplies of both monies grow at the rate of
+inflation so that real money supplies remain constant over time.
+The levels of those real money supplies satisfy the equilibrium
+condition that the real value of net monetary growth is equal to
+the real seigniorage chosen by the government,
+$$ { \epsilon M_{it} \over p_{it} } = x_i,
+                 \hskip1cm \hbox{\rm for\ \ }i=1,2.      \EQN Price_lev  $$
+Equations \Ep{Price_lev} determine the price levels in the two countries
+so long as the chosen amounts of seigniorage are not equal to zero,
+which in turn determine a unique exchange rate,
+$$
+e = { p_{1t} \over p_{2t} } = { M_{1t} \over M_{2t} } { x_2 \over x_1 }
+= { (1+\epsilon)^t M_{10} \over (1+\epsilon)^t M_{20} } { x_2 \over x_1 }
+= { M_{10} \over M_{20} } { x_2 \over x_1 }.
+$$
+Thus,
+with this  Sims-Woodford structure of government commitments (i.e., setting
+of exogenous variables), the exchange rate is determinate. It is only the
+third case of stationary equilibria with $x_1$ and $x_2$ equal to zero
+where the exchange rate is indeterminate, because then there is no
+relative measure of seigniorage levels that is needed to pin down the
+denomination of the world {\it real} money supply for the purpose
+of financing governments' budgets.
+
+
+%%\note{If there were
+%%outstanding government
+%%debt denominated in nominal terms, exchange rate determinacy can be
+%%retrieved even when $x_1$ and $x_2$ are zero.}
+%%  ANY SUCH FOOTNOTE NEED TO BE ELABORATED UPON
+
+
+
+\section{An example of exchange rate (in)determinacy}\label{sec:FTPL_KW_SW}%
+As an illustration of the Kareken-Wallace exchange rate indeterminacy and
+the Sims-Woodford fiscal theory of the price level, consider the following
+version of the two-country environment in section \use{Kareken-Wallace}:
+$$\EQNalign{
+y_1 &= y_2 = y/2,   \EQN K_W1;a \cr
+g_1 &= g_2 = 0,     \EQN K_W1;b \cr
+B_1 &= B_2 = 0,     \EQN K_W1;c \cr
+M_{10} &= M_{20},     \EQN K_W1;d \cr
+{M_{1t+1} \over M_{1t}} &= {M_{2t+1} \over M_{2t}} = 1+\epsilon >1,
+                     \hskip.5cm \forall t \geq 0. \EQN K_W1;e \cr}
+$$
+The governments in the two countries have no purchases to finance and
+no bond holdings. The seigniorage raised by printing money is handed
+over as lump-sum transfers to the households in each country, respectively.
+The budget constraint of government $i$ is
+$$ -\tau_i =  {M_{it+1} - M_{it} \over p_{it} } = x_i,  \EQN K_W2 $$
+where the negative lump-sum tax, $-\tau_i$, is equal to the real value
+of the country's seigniorage, $x_i$.
+
+To operationalize the concept of exchange rate indeterminacy, we
+assume that there is a `sunspot' variable that can take on three
+values at the start of the economy.\NFootnote{Sunspots were
+introduced by Cass and Shell (1983) to explain ``excess market
+volatility.'' Sunspots represent extrinsic uncertainty not related
+to the fundamentals of the economy.\index{sunspots}
+\auth{Cass, David} \auth{Shell, Karl} } %
+Each realization of the sunspot variable is associated with a
+particular belief about the equilibrium value of the exchange rate
+$e \in \{0, 1, \infty\}$ that will prevail in period $0$ and
+forever thereafter. That is, depending on the sunspot realization,
+all households will coordinate on one of the following three
+beliefs about the equilibrium outcome in the world money market:
+\itemitem{{\it i)} } the currency of country 2 is worthless
+                               ($e=0$ and $p_{2t}=\infty, \forall t\geq0$);
+\itemitem{{\it ii)} } the two currencies are traded one for one
+                               ($e=1$ and $p_{1t}=p_{2t}, \forall t\geq0$);
+\itemitem{{\it iii)} } the currency of country 1 is worthless
+                               ($e=\infty$ and $p_{1t}=\infty,  \forall t\geq0$).
+
+\noindent We assume that all households share the same belief
+about the sunspot process, and that each sunspot realization is
+perceived to occur with the same probability equal to $1/3$.
+
+We also postulate that all households are risk-averse with
+identical preferences and as stated in \Ep{K_W1;a} that they have
+the same constant endowment stream. As initial conditions, the
+representative household in country $i$ owns the
+beginning-of-period money stock $M_{i0}$ of its country.
+
+
+\subsection{Trading before sunspot realization}
+The equilibrium allocation in this economy will depend on whether
+or not households can trade before observing the sunspot
+realization. In chapter \use{recurge}, we assumed that all trade
+took place after any uncertainty had been resolved in the first
+period. In our current setting, this would translate into
+households trading after the sunspot realization, i.e., after the
+agents have seen the sunspot and therefore after the coordination
+of beliefs about the equilibrium value of the exchange rate. In
+cases {\it i)} and {\it iii)}, this implies that the households in
+the country with a valued currency will be better off because
+their initial money holdings are valuable and they will receive
+lump-sum transfers equal to their government's revenue from
+seigniorage in each period. In case {\it ii)}, all households are
+equally well off in the world economy because of identical budget
+constraints.
+
+Alternatively, we can assume that households can trade in markets
+before the sunspot realization. In a complete market world, agents
+would be able to trade in contingent claims with payoffs
+conditional on the sunspot realization. Given the symmetries in
+the environment with respect to preferences, endowment and
+expected asset/transfer outcomes associated with the sunspot
+process, the equilibrium allocation will be one of perfect pooling
+with each household consuming $y/2$ in every period.\NFootnote{See
+Lucas (1982) for a perfect pooling equilibrium in a two-country
+world with two currencies. However, Lucas considers only {\it
+intrinsic\/} uncertainty arising from stochastic endowment
+streams.
+\auth{Lucas, Robert E., Jr.}} %
+Hence, the
+households will use security markets to pool the risks associated
+with the sunspot process. Given the {\it ex ante} symmetry in
+possible sunspot realizations, it follows that equilibrium
+contingent-claim prices will be such that a household in country $i$
+can afford to trade half of its initial money holdings, $M_{i0}/2$,
+and half of the entitlement to its future stream of lump-sum
+transfers, $x_i/2$,
+in exchange for the corresponding quantities from a household in
+the other country. As a result, these diversified portfolios enable each
+household to finance a smooth consumption stream equal to $y/2$
+in every period regardless of the sunspot realization.
+
+We have constructed a rational expectations equilibrium where the
+equilibrium exchange rate is influenced by a sunspot process. But
+even though the exchange rate can take on three different values
+in this example, the households are insulated from any real
+effects because of their trades in complete markets prior to the
+sunspot realization. In this world, each government is assumed
+ to print more of its currency each period at the net rate
+$\epsilon>0$ and hand over the newly printed money to its
+households as lump-sum transfers. The households in turn have
+entered into contingent-claim contracts that oblige them to hand
+over half of this newly printed currency to a household in the
+other country, while receiving half of that other household's
+government transfer. Given a sunspot realization that is
+associated with either case {\it i)} or case {\it iii)} above, it
+follows that these deliveries of newly printed currencies between
+households are valuable in one direction but not in the other
+direction.
+
+
+
+\subsection{Fiscal theory of the price level}\label{sec:FTPL_take1}%
+How can a fiscal theory of the price level overcome this
+indeterminacy of the exchange rate? In the spirit of section
+\use{Kareken-Wallace-fiscal}, suppose that each government sets a
+real level of seigniorage given by
+$$
+x_1 = x_2 = 0.5 \cdot f\!\left({1\over 1+\epsilon}\right)
+              \left[1 - {1\over 1+\epsilon}\right].
+$$
+From equations \Ep{Ret_money} and \Ep{Money_growth}, we
+see that the governments  split the total world seigniorage
+associated with a gross money growth rate equal to $1+\epsilon$.
+Given such policies, both governments can satisfy their budget
+constraints only if the equilibrium exchange rate is indeed $e=1$.
+Hence, the fiscal theory of the price level here would  claim that
+case {\it ii)} is the only viable rational expectations
+equilibrium. In the words of Kocherlakota and Phelan (1999), ``the
+fiscal theory of the price level is, at its core, a device for
+selecting equilibria from the continuum which can exist in
+monetary models.''
+
+ Kocherlakota and Phelan (1999) are
+ skeptical about this recommendation for selecting an equilibrium.
+The fiscal theory proposes to rule out other  equilibria by
+specifying government policies in such a way that government
+budget constraints
+ hold only for  one particular exchange rate. But what would happen
+if the sunspot realization signals case {\it i)} or case {\it
+iii)} to the households so that they actually abandon one
+currency, making it worthless? The fiscal theory formulated by
+Sims and Woodford contains no answer to this
+question.
+%\NFootnote{See Bassetto (2002) for a reformulation of the
+%fiscal theory  that is careful to keep track of the way past
+%actions of private agents influence the actions available to the
+%government at
+%each time $t$.} \auth{Bassetto, Marco}%
+ Critics of the fiscal
+theory of the price level instead prefer  to specify government
+policies so that a government's budget constraint is satisfied for
+{\it all\/} hypothetical outcomes, including $e\in\{0,\infty\}$.
+For example, a government that finds itself issuing a worthless
+currency could surrender its aspiration to make lump-sum transfers
+with strictly positive value
+ to its citizens, while  the other government
+ would accept that the value of the  transfer of newly printed money to its citizens
+has doubled in real terms. But of course, this remedy to the
+puzzle would refute the fiscal theory of the price level and once
+again render the  exchange rate indeterminate. \auth{Kocherlakota,
+Narayana R.} \auth{Phelan, Christopher} %\auth{Buiter, Willem H.}
+%\auth{McCallum, Bennett T.}
+
+
+
+\subsection{A game theoretic view of the fiscal theory of the price level}\label{sec:BassettoFTPL}%
+Bassetto (2002) agrees with criticisms of the fiscal theory of
+the price level that question how the government can adopt a fiscal
+policy  without being concerned about
+outcomes that could make the policy infeasible. Bassetto  reformulates
+the fiscal theory of the price level in terms of a game. The essence of his argument
+is that in order to select an equilibrium, a government must specify
+strategies for all arbitrary outcomes so that its desired outcome is the
+only one that can be supported as an equilibrium outcome, merely on the
+basis of individual rationality of private actors.
+\auth{Bassetto, Marco}%
+
+Bassetto (2002) studies  a government that seeks to
+finance occasional deficits by issuing debt in a model with
+`trading posts.' In such a trading environment it
+might happen that not all government debt can be sold because private
+agents fail to submit enough bids. What would  the equilibrium
+outcome be then? The fiscal theory formulated by Sims and Woodford contains
+no answer since it presupposes that the government budget constraint
+will be satisfied for the specified fiscal policy. Bassetto provides
+an answer by arguing that the government should formulate a strategy
+for that and all other arbitrary outcomes. Specifically, the following
+government strategy supports the desired fiscal policy as a unique
+equilibrium outcome. If some debt cannot be sold,
+the government responds by increasing taxes to make up for the present
+shortfall, but without altering future taxes. Thus, ``the onset of a debt crisis
+would be accompanied by an increase in the amount of resources that are
+offered in repayment of debt and hence an increase in the rate of return
+of government debt. As a consequence, any rational household would respond
+to a debt crisis by lending the government {\it more}, rather than
+less, which ensures that no such crisis can occur in an
+equilibrium.''\NFootnote{A similar strategy would
+establish Bassetto's version of the fiscal theory of the price level
+in section \use{sec:FTPL_take1}. For example, suppose that each government
+promises to increase taxation in order to purchase its currency if it turns
+worthless, say, at the price level that would have prevailed in
+case {\it ii)}. Such strategies can effectively rule out cases {\it i)}
+and {\it iii)} as equilibrium outcomes, and make exchange rate $e=1$
+the only possible equilibrium.}
+
+\auth{Atkeson, Andrew}
+\auth{Chari, V.V.}
+\auth{Kehoe, Patrick J.}
+Because Bassetto's argument works equally well in a real economy, the preceding paragraph did not mention money or nominal prices.
+Moreover, our omission of money seems appropriate since Bassetto studies
+a cashless economy where the relative price of goods and
+nominal bonds merely determines the value of the unit of account
+(the `dollar'). Atkeson et al. (2010) extend the analysis
+to a monetary economy, and
+%%%This  raises a modelling challenge when
+%%%seeking to analyze incongruities that can arise between
+%%%a government's desired outcome and  private agents  optimal actions.
+%%% In Bassetto's cashless economy, it was straightforward
+%%%to analyze how households might not submit enough bids at a trading
+%%%post and therefore cause some government debt to be left unsold, because such
+%%%`deviations' would not affect returns on past actions taken by private
+%%%actors. In contrast, deviations in a monetary economy that affect
+%%%the price level would in general overturn the optimality of past actions.
+%%%To stay clear of that, Atkeson et al.\ (2009)
+follow the same approach to multiplicity of equilibria that we took in the
+cash-in-advance model in section \use{sec:SW_interestpeg}. %in chapter \use{optax}.
+While theirs is a new-Keynesian model, they
+analyze sunspot equilibria that satisfy a constraint similar to ours
+when we imposed an unchanged value for the denominator of
+equation \Ep{money_interest}, without any constraint on each individual
+next-period price level. In the analysis of
+Atkeson et al.\ (2010), the
+corresponding restriction on sunspot equilibria is that the
+expected inflation is unchanged when perturbing the sunspot-driven
+uncertainty in next period's price level.
+
+Note that  different versions of the fiscal theory of the price level
+share the same key assumption that a government can fully commit to
+its policy or strategy. In chapters \use{credible} and \use{chang},
+we study credible government policies -- policies that a government
+would like to enact under all circumstances.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Exchange rate (in)determinacy}
+%Kareken and Wallace's (1981)
+%exchange rate indeterminacy result provides a good laboratory for putting
+%the fiscal theory of the price level to work.  First, we will describe a
+%version of the Kareken-Wallace result.  Then we will show how it can be
+%overturned by changing the assumptions about policy to ones like Woodford's.
+%
+%To describe the theory of exchange rate indeterminacy, we change
+%the preceding model so that two governments each issue currency.
+%The government of country $i$ has $M_{it+1}$ units of its currency
+%outstanding at the end of period $t$.  The price level in
+%terms of currency $i$ is $p_{it}$, and the exchange rate $e_t$ satisfies
+%the purchasing power parity condition
+%$p_{1t} = e_t p_{2t}$.   The household is indifferent
+%about which currency to use so long as both currencies
+%bear the same rate of return, and will not hold one with
+%an inferior rate of return.  This fact implies
+%that ${p_{1t} \over  p_{1t+1} } = { p_{2t} \over p_{2t+1} }$, which
+%in turn implies that $e_{t+1} = e_t = e$.
+%Thus, the exchange rate is constant in a nonstochastic  equilibrium with
+%two currencies being valued.  We let
+%$M_{t+1} = M_{1t+1} + e M_{2t+1}$.
+%The equilibrium condition in the money market is
+%now
+% $$ {M_{t+1} \over p_{1t}}  = f(R_m).    \EQN KW1  $$
+%
+%We let $g_i, \tau_i$, and $B_i$ denote constant steady-state values
+%for government purchases, lump-sum taxes, and real government
+%indebtedness for government $i=1,2$. We assume that $g_i$, and
+%$\tau_i$ are the expenditure and tax rates for government $i$ for
+%all $t \geq 0$.   The budget constraint of government $i$ is
+%$$ g_i = \tau_i  +  B_{it+1}/R - B_{it}
+%   +{M_{it+1} - M_{it} \over p_{it} } .  \EQN Budgi $$
+%We use variables without subscripts to denote worldwide totals.
+%Then the sum of the government budget constraints for
+%$t \geq 1$ can be written
+%as
+%$$ g  - \tau + B(R-1)/R = f(R_m) (1-R_m), \EQN KW2 $$
+%and
+%$$ g = \tau + B/R - B_0 + f(R_m) - {M_{10} +e M_{20} \over p_{10}}
+%  , \EQN KW3 $$
+%for $t=0$.
+%
+%  Here is a version of Kareken and Wallace's exchange rate
+%indeterminacy result:  Assume
+%that the governments of each country set $g_i, \tau_i$, and
+%$B_i$, planning to adjust their rates of money creation
+%to raise whatever revenues are needed to finance their
+%budgets.   Then equation \Ep{KW2} determines
+%$R_m$, and equation \Ep{KW3} is left to determine
+%two variables, $p_{10}$ and $e$.   The system is underdetermined:
+%if there is a solution of equation \Ep{KW3}
+%with  positive $(p_{10}, e)$, then   for {\it any}
+%positive $e$ there is another solution.  Kareken and Wallace
+%conclude that under such settings for government
+%policy variables, something more is needed to set the exchange
+%rate.   With policy as specified here, the exchange rate
+%is indeterminate.\NFootnote{See Sargent and Velde (1990)
+%for an application of this theory to events surrounding
+%German monetary unification.}
+%\index{exchange rate!determinacy}
+%\subsection{Determinacy of the exchange rate retrieved}
+%A version of Woodford's assumptions about the variables
+% that governments choose can render the exchange rate determinate.
+%Thus,  suppose that rather than setting $B_i$, each
+%government sets a constant rate of seigniorage
+%$x_i = {M_{it+1} - M_{it} \over p_{it}}$ for all $t \geq 0$.
+%Then $B_i / R$ is determined by the following version
+%of equation \Ep{Beqn}:
+%$$B_i / R =\sum_{\tau =1}^\infty R^{-t}\bigl[(\tau_i - g_i) + x_i\bigr]
+%  \EQN Beqni $$
+%and
+%$$ x_1 +   x_2 = f(R_m)(1-R_m).  $$
+%The time-$0$ worldwide budget constraint becomes
+%$$ {M_0 \over p_{10}} + B_0 = \tau - g + B/R
+%     + f(R_m). \EQN Budgworld $$
+%The time-$0$ budget constraint for country $2$ can be
+%written
+%$$  e {M_{20} \over p_{10}} + B_{20} =
+%  \tau_2 - g_2 + B_2 /R + \Bigl[f(R_m) - {M_{11} \over p_{10}}\Bigr],
+%$$
+%or
+%$$  e {M_{20} \over p_{10}} + B_{20} =
+%  \tau_2 - g_2 + B_2 /R + \Bigl[f(R_m) - \Bigl(x_1+ {M_{10} \over p_{10}}
+%\Bigr)\Bigr] ,
+%   \EQN Budgcount2 $$
+%Equations \Ep{Budgworld} and \Ep{Budgcount2} are two independent equations
+
+%in $e, p_{10}$ that can determine these two variables.  Thus,
+%with Sims--Woodford's structure of government commitments (i.e., setting
+%of exogenous variables), the exchange rate is determinate.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \index{optimal inflation tax} \index{optimal quantity
+of money!Friedman rule}
+%%\index{optimal quantity of money!|see{Friedman rule}}
+\index{Friedman rule}
+\section{Optimal inflation tax:  the Friedman rule}
+Given lump-sum taxation, the sixth monetary doctrine (about
+the ``optimum quantity'' of money) establishes the optimality of the Friedman
+rule. The optimal policy is to satiate the economy with real balances by
+generating a deflation that drives the net nominal interest rate to zero.
+In a stationary economy, there can be deflation only if the government
+retires currency with a
+government surplus. We now ask if such a costly scheme remains
+optimal when all government revenues must be raised through distortionary
+taxation. Or would the Ramsey plan then include an inflation tax on
+money holdings whose rate depends on the interest elasticity of money demand?
+
+
+\auth{Correia, Isabel H.} \auth{Teles, Pedro}
+Following Correia and Teles (1996),
+we show that even with distortionary
+taxation the Friedman rule is the optimal policy under a transaction
+technology \Ep{doc_shop} that satisfies a  homogeneity condition.
+
+
+Earlier analyses of the optimal tax on money in models with
+transaction technologies include Kimbrough (1986), Faig (1988),
+and Guidotti and Vegh (1993).
+Chari, Christiano, and Kehoe (1996) also develop conditions for the optimality
+of the Friedman rule in models with cash and credit goods (see
+section \use{sec:nom_into_real}), and money in the
+utility function.
+\auth{Kimbrough, Kent P.} \auth{Faig, Miguel} \auth{Guidotti, Pablo E.} \auth{Vegh, Carlos A.}
+\auth{Chari, V.V.} \auth{Christiano, Lawrence J.} \auth{Kehoe, Patrick J.}
+
+
+\subsection{Economic environment}
+We convert our
+shopping time monetary economy into a production economy
+with labor $n_t$ as the only input in a linear technology:
+$$ c_{t} + g_t = n_t.                   \EQN doc_resource2$$
+The household's time constraint becomes
+$$
+1\,=\, \ell_t + s_t + n_t.      \EQN doc_time2
+$$
+
+
+The shopping technology
+is now assumed to be homogeneous of degree $\nu\geq 0$
+in consumption $c_t$ and real money balances $\hat m_{t+1}\equiv m_{t+1}/p_t$;
+$$
+s_t = H(c_t,\, \hat m_{t+1})
+    = c_t^{\nu} H\!\left(1, {\hat m_{t+1} \over c_t}\right),
+                                         \hskip1cm \hbox{\rm for\ \ }c_t>0.
+                                                             \EQN doc_shop2
+$$
+By Euler's theorem we have
+$$
+H_c(c, \hat m) c + H_{\hat m}(c, \hat m) \hat m \,=\, \nu H(c, \hat m). \EQN doc_shop2b
+$$
+For any consumption level $c$, we also assume a point of satiation in real
+money balances $\psi c$ such that
+$$
+H_{\hat m}(c, \hat m) = H(c, \hat m) =  0, \hskip1.5cm
+                       \hbox{\rm for\ \ }\hat m \geq \psi c.     \EQN doc_shop2c
+$$
+
+
+
+
+\subsection{Household's optimization problem}
+After replacing net income $(y-\tau_t)$ in equation \Ep{doc_bc2}
+by $(1-\tau_t) (1 - \ell_t -s_t)$, consolidation of budget
+constraints yields the household's present-value budget constraint
+
+$$
+\sum_{t=0}^{\infty} q^0_t \left( c_t +
+                          {i_{t} \over 1+i_{t}} \hat m_{t+1} \right) =
+\sum_{t=0}^{\infty} q^0_t (1-\tau_t) (1 - \ell_t -s_t)
+   + b_0 + {m_0 \over p_0},
+                                                              \EQN doc_optbc
+$$
+where we have used equation \Ep{doc_arbitrage}, and $q^0_t$ is
+the Arrow-Debreu price
+$$
+q^0_t = \prod_{i=0}^{t-1} R_i^{-1}
+$$
+with the numeraire $q^0_0=1$. We have also imposed the transversality
+conditions,
+$$\EQNalign{
+&\lim_{T\to\infty} q^0_{T}
+                   {b_{T+1} \over R_{T}} \,=\, 0,    \EQN doc_TVC;a \cr
+&\lim_{T\to\infty} q^0_{T} \hat m_{T+1} \,=\, 0.
+                                                       \EQN doc_TVC;b \cr
+}$$
+Given the satiation point in equation \Ep{doc_shop2c}, real money
+balances held for
+transaction purposes are bounded from above by $\psi$. Real balances may also
+be held purely for savings purposes if money is not dominated in rate
+of return by bonds, but an agent would never find it optimal to accumulate
+balances that violate the transversality condition.
+Thus, for whatever reason money is being held, condition \Ep{doc_TVC;b} must
+hold in an equilibrium.
+
+
+Substitute $s_t = H(c_t, \hat m_{t+1})$ into equation \Ep{doc_optbc},
+and let $\lambda$ be the Lagrange multiplier on this present-value
+budget constraint.  At an interior solution, the first-order conditions
+of the household's optimization problem become
+$$\EQNalign{
+c_t\rm{:}&\quad \beta^t u_c(t) - \lambda q^0_t \bigl[(1-\tau_t) H_c(t) +
+1 \bigr] =0,
+                 \EQN shop_foc;a \cr
+\ell_t\rm{:}&\quad \beta^t u_{\ell}(t) - \lambda q^0_t (1-\tau_t) =0,
+                 \EQN shop_foc;b \cr
+\hat m_{t+1}\rm{:}&\quad - \lambda  q^0_t \Bigl[(1-\tau_t) H_{\hat m}(t) +
+{i_{t} \over 1+i_{t}} \Bigr] = 0. \EQN shop_foc;c \cr}
+$$
+From conditions \Ep{shop_foc;a} and \Ep{shop_foc;b}, we obtain
+$$
+{ u_\ell(t) \over 1-\tau_t } = u_c(t) - u_{\ell}(t) H_c(t).    \EQN shop_focX1
+$$
+The left side of equation \Ep{shop_focX1} is the utility of extra
+leisure obtained from
+giving up one unit of disposable labor income, which at the optimum should
+equal the marginal utility of consumption reduced by the disutility of
+shopping for the marginal unit of consumption, given by the right side
+of equation \Ep{shop_focX1}.  Using condition
+\Ep{shop_foc;b} and the corresponding expression for $t=0$ with the
+numeraire $q^0_0=1$, the Arrow-Debreu price $q^0_t$ can be expressed as
+$$
+q^0_t = \beta^t {u_\ell(t) \over u_\ell (0) }\,{1-\tau_0 \over 1-\tau_t};
+                                                          \EQN shop_focX2
+$$
+and by condition \Ep{shop_foc;c},
+$$
+{i_{t} \over 1+i_{t}} = - (1-\tau_t) H_{\hat m}(t).    \EQN shop_focX3
+$$
+This last condition equalizes the cost of holding one unit of real balances
+(the left side) with  the opportunity value
+of the shopping time that is released by an additional unit of real balances,
+measured on the right side by the extra after-tax labor income that
+can be generated.
+\index{Ramsey plan}
+\subsection{Ramsey plan}
+Following the method for solving a Ramsey problem in chapter
+\use{optax}, we use the household's first-order conditions to
+eliminate prices and taxes from its present-value budget
+constraint. Specifically, we substitute equations \Ep{shop_focX2}
+and \Ep{shop_focX3} into equation \Ep{doc_optbc}, and then
+multiply by $u_\ell (0)/(1-\tau_0)$. After also using equation
+\Ep{shop_focX1}, the implementability condition becomes
+%{\ninepoint
+$$
+\sum_{t=0}^\infty \beta^t \bigl\{ \bigl[ u_c(t) - u_{\ell}(t) H_c(t)\bigr]
+c_t \,-\, u_\ell(t)  H_{\hat m}(t) \hat m_{t+1}
+\,-\, u_\ell(t) (1 - \ell_t -s_t) \bigr\} = 0,
+$$%}%endninepoint
+where we have assumed zero initial assets, $b_0 = m_0 = 0$.
+Finally, we substitute $s_t = H(c_t, \hat m_{t+1})$ into this
+expression and invoke Euler's theorem \Ep{doc_shop2b}, to arrive at
+$$
+\sum_{t=0}^{\infty} \beta^t \left\{ u_c(t) c_t
+\,-\, u_{\ell}(t) \left[ 1 - \ell_t - (1-\nu) H(c_t,\, \hat m_{t+1})  \right]
+                                                    \right\} = 0.  \EQN shop_adjbc
+$$
+
+
+The \idx{Ramsey problem} is to maximize expression \Ep{doc_pref} subject to
+equation \Ep{shop_adjbc} and a feasibility constraint that combines
+equations \Ep{doc_resource2} through \Ep{doc_shop2}:
+$$
+1 - \ell_t - H(c_t,\, \hat m_{t+1}) - c_{t} - g_t = 0.    \EQN shop_feasible
+$$
+Let $\Phi$ and $\{\theta_t\}_{t=0}^\infty$ be a Lagrange multiplier
+on equation \Ep{shop_adjbc} and a sequence of Lagrange multipliers on
+equation \Ep{shop_feasible}, respectively. First-order conditions for
+this problem are
+%{\ninepoint
+$$\EQNalign{
+c_t\rm{:}& \ \  u_c(t) + \Phi \left\{ u_{cc}(t) c_t + u_c(t) \right.  \cr
+&
+- u_{\ell c}(t)\left[ 1 - \ell_t - (1-\nu) H(c_t,\, \hat m_{t+1})\right]   \cr
+& + \left. (1-\nu) u_{\ell}(t) H_c(t) \right\}
+                  - \theta_t \left[ H_c(t) +1 \right] = 0,
+                                                          \EQN shop_Rfoc;a \cr
+\ell_t\rm{:}&\ \ \ u_{\ell}(t) + \Phi \left\{ u_{c \ell}(t) c_t + u_\ell (t)
+\right. \cr
+& \left.
+-\, u_{\ell \ell}(t)\left[ 1 - \ell_t - (1-\nu) H(c_t,\, \hat m_{t+1})\right]
+                                    \right\}=-\theta_t,   \EQN shop_Rfoc;b \cr
+\hat m_{t+1}\rm{:}&\ \ \ H_{\hat m}(t) \left[ \Phi (1-\nu) u_\ell (t) -
+\theta_t \right] =0.
+                                              \EQN shop_Rfoc;c \cr}
+$$
+%}%endninepoint
+The first-order condition for real money balances \Ep{shop_Rfoc;c} is satisfied
+when either  $H_{\hat m}(t) = 0$ or
+$$
+\theta_t = \Phi (1-\nu) u_{\ell}(t).                           \EQN shop_false
+$$
+We now show that equation \Ep{shop_false} cannot be a solution
+of the problem. Notice that when $\nu > 1$, equation \Ep{shop_false}
+implies that the multipliers $\Phi$ and $\theta_t$ will either
+be zero or have opposite signs. Such a solution is excluded because
+$\Phi$ is nonnegative, while the insatiable utility function implies
+that $\theta_t$ is strictly positive. When $\nu = 1$, a strictly
+positive $\theta_t$ also excludes equation \Ep{shop_false} as a
+solution. To reject equation \Ep{shop_false} for $\nu \in [0,1)$,
+we substitute equation \Ep{shop_false} into equation \Ep{shop_Rfoc;b},
+%{\ninepoint
+$$
+u_\ell (t) + \Phi \left\{ u_{c \ell}(t) c_t + \nu u_\ell (t) -
+   u_{\ell \ell}(t)\left[ 1 - \ell_t - (1-\nu) H(c_t,\, \hat m_{t+1})\right]
+                                                 \right\}=0,
+$$ %}%endninepoint
+which is a contradiction because the left side is strictly positive,
+given our assumption that $u_{c \ell}(t) \geq 0$. We
+conclude that equation \Ep{shop_false} cannot characterize the
+solution of the Ramsey
+problem when the transaction technology is homogeneous of degree $\nu \geq 0$,
+so the solution has to be $H_{\hat m}(t) = 0$. In other words, the social
+planner follows the Friedman rule and satiates the economy with real
+balances. According to condition \Ep{shop_foc;c}, this aim can be
+accomplished with a monetary policy that sustains a zero net nominal
+interest rate.
+
+
+As an illustration of how the Ramsey plan is implemented, suppose that
+$g_t=g$ in all periods. Example 1 of chapter \use{optax} presents the Ramsey
+plan for this case if there were no transaction technology and no money
+in the model. The optimal outcome is characterized by a constant allocation
+$(\hat c, \hat n)$ and a constant tax rate $\hat \tau$ that
+supports a balanced government budget. We conjecture that the Ramsey
+solution to the present monetary economy shares that real
+allocation. But how can it do so in the present economy with its
+additional constraint in the form of a transaction technology? First, notice
+that the preceding Ramsey solution calls for satiating the economy
+with real balances, so there will be no time allocated to shopping in
+the Ramsey outcome. Second, the real balances needed to satiate the
+economy are constant over time and equal to
+$$
+{M_{t+1} \over p_t} = \psi \hat c,  \hskip1.5cm \forall t \geq 0,  \EQN shop_case1
+$$
+and the real return on money is equal to the constant real interest rate,
+$$
+{ p_t \over p_{t+1} } = R,         \hskip1.5cm \forall t \geq 0.  \EQN shop_case2
+$$
+Third, the real balances in equation \Ep{shop_case1} also equal the
+real value of assets acquired by the government in period $0$ from
+selling the money supply $M_1$ to the households. These government
+assets earn a net real return in each future period equal to
+$$
+(R-1) \psi \hat c = R \,{M_{t} \over p_{t-1} } - {M_{t+1} \over p_t}
+= {p_{t-1} \over p_t } \,{M_{t} \over p_{t-1} } - {M_{t+1} \over p_t}
+= {M_{t} - M_{t+1} \over p_t},
+$$
+where we have invoked equations \Ep{shop_case1} and \Ep{shop_case2}
+to show that the interest earnings just equal the funds for retiring
+currency from circulation in all future periods needed
+ to sustain an equilibrium
+in the money market with a zero net nominal interest rate.
+It is straightforward to verify that households
+would be happy to incur the indebtedness of the initial period. They
+use the borrowed funds to acquire money balances and meet
+future interest payments by surrendering some of these money balances.
+Yet  their real money balances are unchanged over time because of the
+falling price level. In this way, money holdings are costless to the
+households, and their optimal decisions with respect to consumption
+and labor are the same as in the nonmonetary version of this economy.
+\index{time consistency}
+
+
+\section{Time consistency of monetary policy}
+The optimality of the Friedman rule was derived in the previous
+section under the assumption that the government can commit to a
+plan for its future actions. The Ramsey plan is not time
+consistent and requires that the government have a technology to
+bind itself to it. In each period along the Ramsey plan, the
+government is tempted to levy an unannounced inflation tax in
+order to reduce future distortionary labor taxes. Rather than
+examine this time consistency problem due to distortionary
+taxation, we now turn to another time consistency problem arising
+from a situation where surprise inflation can reduce unemployment.
+
+
+\auth{Kydland, Finn E.} \auth{Prescott, Edward C.} \auth{Barro, Robert J.}
+\auth{Gordon, David B.}%
+Kydland and
+Prescott (1977) and Barro and Gordon (1983a, 1983b)
+study the time consistency
+problem and credible monetary policies in reduced-form models with a
+trade-off between surprise inflation and unemployment. In their spirit,
+Ireland (1997)
+\auth{Ireland, Peter N.}%
+proposes a model with microeconomic foundations that gives
+rise to such a trade-off because monopolistically competitive firms
+set nominal goods prices before the government sets
+monetary policy.\NFootnote{Ireland's model takes most of its structure from
+those developed by Svensson (1986) and Rotemberg (1987). See
+Rotemberg and Woodford (1997) and King and Wolman (1999)
+for empirical implementations of related models.
+\auth{King, Robert G.}
+\auth{Woodford, Michael}
+\auth{Wolman, Alexander L.}
+\auth{Svensson, Lars E.O.} \auth{Rotemberg, Julio J.}}
+ The government is here tempted to create surprise inflation that erodes
+firms' markups and stimulates employment above a suboptimally low level.
+But any anticipated inflation has negative welfare effects that arise as
+a result of a postulated cash-in-advance constraint. More specifically,
+anticipated inflation reduces the real value of nominal labor income
+that can be spent or invested first in the next period, thereby distorting
+incentives to work.
+
+
+The following setup modifies Ireland's model and assumes that each
+household has some market power with respect to its labor supply while a
+single good is produced by perfectly competitive firms.
+
+
+\index{monopolistic competition}
+\subsection{Model with monopolistically competitive wage setting}
+There is a continuum of households indexed on the unit interval,
+$i \in [0,1]$. At time $t$, household $i$ consumes $c_{it}$ of a
+single consumption good and supplies labor $n_{it} \geq 0$.\NFootnote{For
+analytical simplicity, we assume that the households can supply any
+nonnegative amount of labor. When we imposed a finite
+time endowment in the first edition of this book, we had to confront
+the issue of labor rationing across firms along some equilibrium
+paths.}
+ The
+preferences of the household are
+$$
+\sum_{t=0}^\infty \beta^t \left( {c_{it}^\gamma \over \gamma} -n_{it}
+                                                          \right), \EQN m_pref
+$$
+where $\beta \in (0,1)$ and $\gamma \in (0,1)$. The parameter restriction on
+$\gamma$ ensures that the household's utility is well defined at zero
+consumption.
+
+
+The technology for producing the single consumption good is
+$$
+y_t \,=\, \left( \int_0^1 n_{it}^{{1-\alpha \over 1+\alpha}} {\rm d}i
+    \right)^{{1+\alpha \over 1-\alpha}},
+%%%\;=\; \int_0^1 c_t(i) {\rm d}i \equiv C_t,
+                                                     \EQN m_tech
+$$
+where $y_t$ is per capita output and $\alpha \in (0,1)$. The technology has
+constant returns to scale in labor inputs, and if all types of labor
+are supplied in the same quantity $n_t$, we have $y_t=n_t$. The
+marginal product of labor of type $i$ is
+$$
+{\partial \, y_t \hfill \over \partial \, n_{it} } =
+\left( \int_0^1 n_{it}^{{1-\alpha \over 1+\alpha}} {\rm d}i
+    \right)^{{2\alpha \over 1-\alpha}} n_{it}^{{-2\alpha \over 1+\alpha}}
+\;=\;
+\left({ y_t \over n_{it} }\right)^{{2\alpha \over 1+\alpha}}
+\equiv \hat w_(y_t, n_{it}).                                 \EQN m_MP
+$$
+The single good is produced by a large number of competitive firms
+that are willing to pay a real wage to labor of type $i$ equal to the
+marginal product in equation \Ep{m_MP}.
+
+
+The definition of the function $\hat w(y_t, n_{it})$ with its two
+arguments $y_t$ and $n_{it}$ is motivated by the first of the
+following two assumptions on households' labor-supply
+behavior.\NFootnote{Analogous assumptions are made implicitly by
+Ireland (1997), who takes the aggregate price index as given in the
+monopolistically competitive firms' profit maximization problem, and
+ disregards
+firms' profitability when computing the output effect of a monetary
+policy deviation.}
+\medskip
+\item{1.} When maximizing the rent of its labor supply,
+household $i$ perceives that it can affect the marginal product
+$\hat w(y_t, n_{it})$ through the second argument, while $y_t$ is
+taken as given.
+\medskip
+\item{2.} The nominal wage for labor of type $i$ at time $t$ is
+chosen by household $i$ at the very beginning of period $t$.
+Given the nominal wage $w_{it}$, household $i$ is
+obliged to deliver any amount of labor $n_{it}$ that is demanded in
+the economy.
+%%%%%%%%% with feasibility as the sole constraint, $n_{it}\leq 1$.
+\index{predetermined wage}
+
+
+\vskip.3cm
+
+
+The government's only task is to increase or decrease
+the money supply by making lump-sum transfers $(x_t-1)M_t$ to the
+households, where $M_t$ is the per capita money supply at the
+beginning of period $t$ and $x_t$ is the gross growth rate of
+money in period $t$:
+$$ M_{t+1} = x_t M_t.                                     \EQN m_msupply
+$$
+Following Ireland (1997),
+we assume that $x_t \in [\beta, \bar x]$. These bounds on money growth
+ensure the existence of a monetary equilibrium. The lower bound will be
+shown to yield a zero net nominal interest rate in a stationary
+equilibrium, whereas the upper bound $\bar x < \infty$
+guarantees that households never abandon the use of money altogether.
+
+
+During each period $t$, events unfold as follows for household $i$:
+The household starts
+period $t$ with money $m_{it}$ and real private bonds $b_{it}$, and the
+household sets the nominal wage $w_{it}$ for its type of labor.
+After the wage is determined, the government chooses a nominal transfer
+$(x_t-1)M_t$ to be handed over to the household. Thereafter,
+the household enters the asset market to settle maturing bonds $b_{it}$
+and to pick a new portfolio composition with money and real bonds $b_{i,t+1}$.
+After the asset market has closed, the household splits into
+a shopper and a worker.\NFootnote{The interpretation that the household splits
+into a shopper and a worker follows Lucas's (1980b) cash-in-advance
+framework.   It embodies the constraint on transactions
+recommended by Clower (1967).
+\auth{Clower, Robert}
+\auth{Lucas, Robert E., Jr.}}
+During period $t$, the shopper purchases $c_{it}$ units of the single good
+subject to the \idx{cash-in-advance constraint},
+$$
+{m_{it} \over p_t} + {(x_t-1) M_t \over p_t} + b_{it} - {b_{i,t+1} \over R_t}
+\geq c_{it},                                                \EQN m_cia
+$$
+where $p_t$ and $R_t$ are the price level and the real interest
+rate, respectively. Given the household's predetermined nominal
+wage $w_{it}$,
+the worker supplies all the labor $n_{it}$ demanded by firms.
+At the end of period $t$ when the goods market has closed,
+the shopper and the worker reunite, and the household's money holdings
+$m_{i,t+1}$ now equal the worker's labor income
+$w_{it} n_{it}$ plus any unspent cash from the shopping round. Thus,
+the budget constraint of the household becomes\NFootnote{%%As long as the
+%%labor supply constraint $n_{it}\leq 1$ is not binding for any $i$,
+The assumptions of constant returns
+to scale and perfect competition in the goods market imply that profits of
+firms are zero.}
+%%If any labor supply constraints were strictly binding, labor
+%%would have to be rationed among firms, and there would be strictly
+%%positive profits.
+%%But binding labor supply constraints cannot be part of a perfect foresight
+%%equilibrium because households would not be maximizing labor rents.
+%%When we later consider monetary surprises, we assume
+%%that monetary deviations are never so expansive that labor supply constraints
+%%become strictly binding.}
+$$
+{m_{it} \over p_t} + {(x_t-1) M_t \over p_t} + b_{it} +
+{w_{it} \over p_t} n_{it}
+= c_{it} + {b_{i,t+1} \over R_t} + {m_{i,t+1} \over p_t}.       \EQN m_bc
+$$
+
+
+
+
+\subsection{Perfect foresight equilibrium}
+We first study household $i$'s optimization problem under perfect
+foresight. Given initial assets $(m_{i0},b_{i0})$ and sequences of
+prices $\{p_t\}_{t=0}^\infty$, real interest rates
+$\{R_t\}_{t=0}^\infty$, output levels $\{y_t\}_{t=0}^\infty$, and
+nominal transfers $\{(x_t-1)M_t\}_{t=0}^\infty$, the household
+maximizes expression \Ep{m_pref} by choosing sequences of
+consumption $\{c_{it}\}_{t=0}^\infty$, labor supply
+$\{n_{it}\}_{t=0}^\infty$, money holdings
+$\{m_{i,t+1}\}_{t=0}^\infty$, real bond holdings
+$\{b_{i,t+1}\}_{t=0}^\infty$, and nominal wages
+$\{w_{it}\}_{t=0}^\infty$ that satisfy cash-in-advance constraints
+\Ep{m_cia} and budget constraints \Ep{m_bc}, with the real wage
+equaling the marginal product of labor of type $i$ at each point
+in time, $w_{it}/p_t = \hat w(y_t,n_{it})$. The last constraint
+ensures that the household's choices of $n_{it}$ and $w_{it}$ are
+consistent with competitive firms' demand for labor of type $i$.
+Let us incorporate this constraint into budget constraint
+\Ep{m_bc} by replacing the real wage $w_{it}/p_t$ by the marginal
+product $\hat w(y_t, n_{it})$. With $\beta^t \mu_{it}$ and
+$\beta^t \lambda_{it}$ as the Lagrange multipliers on the time $t$
+cash-in-advance constraint and budget constraint, respectively,
+the first-order conditions at an interior solution are
+$$\EQNalign{
+c_{it}\rm{:}&\ \ \ c_{it}^{\gamma -1} - \mu_{it} - \lambda_{it} = 0,
+                                                               \EQN m_foc;a \cr
+n_{it}\rm{:}&\ \ \ -1 + \lambda_{it}
+\left[{\partial \, \hat w(y_t,n_{it}) \over \partial \, n_{it} \hfill} n_{it}
+\,+\, \hat w(y_t,n_{it}) \right] = 0, \hskip.8cm \EQN m_foc;b \cr
+m_{i,t+1}\rm{:}&\ \ \ -\lambda_{it} {1 \over p_t}
+     + \beta \left(\lambda_{i,t+1} + \mu_{i,t+1} \right)
+{1 \over p_{t+1}} =0,  \EQN m_foc;c \cr
+b_{i,t+1}\rm{:}&\ \ \ -\left(\lambda_{it} + \mu_{it} \right){1 \over R_t}
+                 + \beta \left(\lambda_{i,t+1} + \mu_{i,t+1} \right)=0.
+                                                      \EQN m_foc;d \cr}
+$$
+
+
+The first-order condition \Ep{m_foc;b} for the rent-maximizing labor
+supply $n_{it}$ can be rearranged to read
+$$\EQNalign{
+\hat w(y_t,n_{it}) &= { \lambda_{it}^{-1} \over 1+ \epsilon_{it}^{-1}}
+                    = {1+ \alpha \over 1- \alpha} \lambda_{it}^{-1} ,
+                                                          \EQN m_markup \cr
+\noalign{\vskip.3cm} \hbox{\rm where} \hskip.5cm
+\epsilon_{it} &= \Bigl[{\partial \, \hat w(y_t,n_{it}) \over \partial \,
+n_{it} \hfill}
+                {n_{it} \over \hat w(y_t,n_{it})} \Bigr]^{-1}
+                 = -{ 1+\alpha \over 2 \alpha} <0.              \cr}
+$$
+The Lagrange multiplier $\lambda_{it}$ is the shadow value of
+relaxing the budget constraint in period $t$ by one unit,
+measured in ``utils'' at time $t$.
+Since preferences \Ep{m_pref} are linear in the disutility of labor,
+$\lambda_{it}^{-1}$ is the value of leisure in period $t$ in
+terms of the units of the budget constraint at time $t$. Equation \Ep{m_markup}
+is then the familiar expression that the monopoly price $\hat w(y_t,n_{it})$
+should be set as a markup above marginal cost $\lambda_{it}^{-1}$,
+and the markup is inversely related to the absolute value of the
+demand elasticity of labor type $i$,
+$|\epsilon_{it}|$. %
+%(Compare to equation XXX in chapter 12.)
+
+
+First-order conditions \Ep{m_foc;c} and \Ep{m_foc;d} for asset decisions can
+be used to solve for rates of return,
+$$\EQNalign{
+{p_t \over p_{t+1}} &= {\lambda_{it} \over
+                        \beta \left(\lambda_{i,t+1} + \mu_{i,t+1} \right)},
+                                                  \EQN m_asset;a \cr
+\noalign{\smallskip}
+R_t &= { \lambda_{it} + \mu_{it} \over
+                        \beta \left(\lambda_{i,t+1} + \mu_{i,t+1} \right)}.
+                                                  \EQN m_asset;b \cr}
+$$
+Whenever the Lagrange multiplier $\mu_{it}$ on the cash-in-advance constraint
+is strictly positive, money has a lower rate of return than bonds, or,
+equivalently, the net nominal interest rate is strictly positive, as shown
+in equation \Ep{doc_arbitrage}.
+
+
+Given initial conditions $m_{i0}=M_0$ and $b_{i0}=0$, we now turn to
+characterizing an equilibrium under the additional assumption that the
+cash-in-advance constraint \Ep{m_cia} holds with equality, even when
+it does not bind.
+Since all households are perfectly symmetric, they will make
+identical consumption and labor decisions,  $c_{it}=c_t$ and $n_{it}=n_t$,
+so by goods market clearing and the constant-returns-to-scale technology
+\Ep{m_tech}, we have
+$$
+c_t = y_t = n_t,                                               \EQN m_eq;a
+$$
+and from the expression for the marginal product of labor
+in equation \Ep{m_MP},
+$$
+\hat w(y_t,n_t) = 1.                                         \EQN m_eq;b
+$$
+Equilibrium asset holdings
+satisfy $m_{i,t+1}=M_{t+1}$ and $b_{i,t+1}=0$. The substitution of equilibrium
+quantities into the cash-in-advance constraint \Ep{m_cia} at equality yields
+$$
+{M_{t+1} \over p_t} = c_{t},                                  \EQN m_eq;c
+$$
+where a version of the ``quantity theory of money''
+\index{quantity theory of money}%
+ determines the price level, $p_t=M_{t+1}/c_t$.  We now
+substitute this expression and conditions \Ep{m_foc;a} and \Ep{m_markup}
+into equation \Ep{m_asset;a}:
+$$
+{M_{t+1}/c_t \over M_{t+2}/c_{t+1}} =
+  { \displaystyle \Bigl[{1- \alpha \over 1+ \alpha} \,
+\hat w(y_t,n_{t})\Bigr]^{-1}
+        \over \beta \, c_{t+1}^{\gamma -1} },
+$$
+which can be rearranged to read
+$$
+c_t = {1- \alpha \over 1+ \alpha}\, {\beta \over x_{t+1}}\, c_{t+1}^{\gamma},
+$$
+where we have used equations \Ep{m_msupply} and \Ep{m_eq;b}.
+After taking the logarithm of this expression, we get
+
+$$
+\log(c_t) = \log\left({1- \alpha \over 1+ \alpha}\,\beta\right)
+            + \gamma \log(c_{t+1}) - \log(x_{t+1}).
+$$
+Since $0<\gamma<1$ and $x_{t+1}$ is bounded, this linear difference equation
+in $\log(c_t)$ can be solved forward to obtain
+$$
+\log(c_t) = { \log\left( {\displaystyle 1-\alpha \over
+\displaystyle 1+\alpha}\,
+                          \beta \right) \over 1-\gamma }
+          - \sum_{j=0}^{\infty} \gamma^j \log(x_{t+1+j}),    \EQN m_difflog
+$$
+where equilibrium considerations have prompted us to choose the particular
+solution that yields a bounded sequence.\NFootnote{See the appendix
+to chapter \use{timeseries}
+ for the solution of scalar linear difference equations.}
+ \index{Ramsey plan}
+
+
+\subsection{Ramsey plan}
+The Ramsey problem is to choose a sequence of monetary growth rates
+$\{x_t\}_{t=0}^\infty$
+that supports the perfect foresight equilibrium with the highest possible
+welfare; that is, the optimal choice of $\{x_t\}_{t=0}^\infty$
+maximizes the representative household's utility in expression \Ep{m_pref}
+subject to expression \Ep{m_difflog} and $n_t=c_t$.
+From the expression \Ep{m_difflog} it is apparent that
+the constraints on money growth, $x_t \in [\beta, \bar x]$, translate into
+ lower and  upper bounds on consumption,
+$c_t \in [\underline c, \bar c]$, where
+$$
+\underline c = \left({\beta \over \bar x} \, {1-\alpha \over 1+\alpha}
+                            \right)^{1 \over 1-\gamma}, \hskip1cm
+\hbox{\rm and} \hskip1cm
+\bar c = \left( {1-\alpha \over 1+\alpha}
+                          \right)^{1 \over 1-\gamma} \;<\;1.   \EQN m_bounds
+$$
+The Ramsey plan then follows directly from inspecting the one-period return
+of the Ramsey optimization problem,
+$$
+ {c_{t}^{\gamma} \over \gamma } -c_{t},                        \EQN m_oneperiod
+$$
+which is strictly concave and reaches a maximum at $c=1$. Thus,
+the Ramsey solution calls for $x_{t+1}=\beta$ for $t\geq 0$
+in order to support $c_t=\bar c$ for $t\geq 0$. Notice that the Ramsey
+outcome can be supported by any initial money growth $x_0$. It is only future
+money growth rates that must be equal to $\beta$ in order to eliminate labor
+supply distortions that would otherwise arise from the cash-in-advance
+constraint if the return on money were to fall short of the return
+on bonds. The Ramsey outcome equalizes the returns on money and
+bonds; that is, it implements the \idx{Friedman rule} with a zero net
+nominal interest rate.
+
+
+It is instructive to highlight the inability of the Ramsey monetary policy
+to remove the distortions coming from monopolistic wage setting. Using the
+fact that the equilibrium real wage is unity, we solve for $\lambda_{it}$ from
+equation \Ep{m_markup} and substitute into equation \Ep{m_foc;a},
+$$
+c_{it}^{\gamma -1} = \mu_{it} + {1+ \alpha \over 1- \alpha} > 1.   \EQN m_distort
+$$
+The left side of equation \Ep{m_distort} is the marginal utility of
+consumption.
+Since technology \Ep{m_tech} is linear in labor, the marginal utility of
+consumption should equal the marginal utility of leisure in a first-best
+allocation.  But the right side of equation \Ep{m_distort} exceeds unity,
+which is the marginal utility of leisure given preferences \Ep{m_pref}.
+While the Ramsey monetary policy succeeds in removing distortions
+from the cash-in-advance constraint by setting the
+Lagrange multiplier $\mu_{it}$ equal to zero, the policy cannot
+undo the distortion of monopolistic wage setting manifested in the
+``markup'' $(1+ \alpha)/(1- \alpha)$.\NFootnote{The government would need to use
+fiscal instruments, that is, subsidies and taxation, to correct the distortion
+from monopolistically competitive wage setting.} Notice that the Ramsey
+solution converges to the first-best allocation when the parameter
+$\alpha$ goes to zero, that is, when households' market power goes to zero.
+
+
+To illustrate the time consistency problem, we now solve for the Ramsey plan
+when the initial nominal wages are taken as given,
+$w_{i0}=w_0 \in [\beta M_0, \bar x M_0]$.
+First, setting the initial period $0$ aside,
+it is straightforward to show that the solution for $t\geq 1$ is
+the same as before. That is, the optimal policy calls for $x_{t+1}=\beta$ for
+$t\geq 1$ in order to support $c_t=\bar c$ for $t\geq 1$. Second, given $w_0$,
+the first-best outcome $c_0=1$ can be attained in the initial period by
+choosing $x_0=w_0/M_0$. The resulting money supply $M_1=w_0$ will then serve to
+transact $c_0=1$ at the equilibrium price $p_0=w_0$. Specifically,
+firms are happy to hire any number of workers at the wage $w_0$ when
+the price of the good is $p_0=w_0$. At the price $p_0=w_0$, the goods
+market clears at full employment,
+since shoppers seek to spend their real balances $M_1/p_0=1$. The labor
+market also clears because workers are obliged to deliver the demanded
+$n_0=1$. Finally, money growth $x_1$ can be chosen freely and
+does not affect the real allocation of the Ramsey solution. The reason is
+that, because of the preset wage $w_0$, there cannot be any labor
+supply distortions at time $0$ arising from a low return
+on money holdings between periods $0$ and $1$.
+\index{Friedman rule!credibility}
+\subsection{Credibility of the Friedman rule}
+Our comparison of the Ramsey equilibria with or without a preset
+initial wage $w_0$ hints at the government's temptation to create
+positive monetary surprises that will increase employment. We now
+ask if the Friedman rule is credible when the government lacks the
+commitment technology implicit in the Ramsey optimization problem.
+Can the Friedman rule be supported with a trigger strategy where a
+government deviation causes the economy to revert to the worst
+possible subgame perfect equilibrium?
+
+
+Using the concepts and notation of chapter \use{credible},
+we specify the objects of a strategy
+profile and state the definition of a \idx{subgame perfect equilibrium} (SPE).
+Even though households possess market power with respect to their
+labor type, they remain atomistic vis-\`a-vis the government. We
+therefore stay within the framework of chapter \use{credible}
+ where the government
+behaves strategically, and the households' behavior can now be summarized as
+a ``monopolistically competitive equilibrium'' that responds nonstrategically
+to the government's choices. At every date $t$ for all possible histories,
+a strategy of the households $\sigma^h$ and a strategy of the government
+$\sigma^g$ specify actions $\tilde w_t\in \tilde W$ and
+$x_t \in X \equiv [\beta, \bar x]$, respectively, where
+$$
+\tilde w_t = {w_t \over M_t},  \hskip1cm \hbox{\rm and} \hskip1cm
+x_t        = {M_{t+1} \over M_t}.
+$$
+That is, the actions multiplied by the beginning-of-period money supply $M_t$
+produce a nominal wage and a nominal money supply. (This scaling of nominal
+variables is used by Ireland, 1997, throughout his analysis, since the
+size of the nominal money supply at the beginning of a period has no
+significance
+{\it per se}.)
+
+\smallskip
+\noindent{\sc Definition:}  A strategy profile $\sigma = (\sigma^h,\sigma^g)$
+is a {\it subgame perfect equilibrium\/} if, for each
+$t\geq 0$ and each history $(\tilde w^{t-1},\, x^{t-1})
+\in \tilde W^t\times X^t$,\medskip
+\noindent
+\noindent{(1)}  Given the trajectory of money growth rates
+$\{x_{t-1+j}= %%\hfil\break
+ x(\sigma\vert_{(\tilde w^{t-1},x^{t-1})})_j \}_{j=1}^\infty$,
+the wage-setting outcome $\tilde w_t =  %%\hfil\break
+\sigma^h_t\, (\tilde w^{t-1},x^{t-1})$
+constitutes a monopolistically competitive equilibrium.
+\smallskip
+\noindent{(2)}  The government cannot strictly improve the households'
+welfare by deviating from $x_t = \sigma^g_t\, (\tilde w^{t-1},x^{t-1})$,
+that is, by choosing some other money growth rate $\eta \in X$ with
+the implied continuation strategy profile
+$\sigma\vert_{(\tilde w^t; x^{t-1},\eta)}$.
+
+\smallskip
+\medskip\noindent
+Besides changing to a ``monopolistically competitive equilibrium,'' the
+main difference from Definition 6 of chapter \use{credible}
+ lies in requirement (1).
+The equilibrium in period $t$ can no longer be stated in terms of an isolated
+government action at time $t$ but requires the trajectory of the current and
+all future money growth rates, generated by the strategy profile
+$\sigma\vert_{(\tilde w^{t-1},x^{t-1})}$. The monopolistically competitive
+equilibrium in requirement (1) is understood to be the perfect
+foresight equilibrium described previously.  When the government
+is contemplating a deviation in requirement (2),
+the equilibrium is constructed as follows: In period $t$
+when the deviation takes place, equilibrium consumption $c_t$
+is a function of $\eta$ and $\tilde w_t$
+as implied by the cash-in-advance constraint at equality,
+$$
+c_t = {\eta M_t \over p_t} =  {\eta M_t \over w_t}
+    = {\eta \over \tilde w_t},          \EQN m_deviate
+$$
+%%$$
+%%c_t = {\eta M_t \over p_t} = \min\left\{ {\eta M_t \over w_t},\,1\right\}
+%%    = \min\left\{ {\eta \over \tilde w_t},\,1\right\},         \EQN m_deviate
+%%$$
+where we use the equilibrium condition $p_t = w_t$.
+%%$p_t\geq w_t$ that holds with strict
+%%equality unless labor is rationed among firms at full employment.\NFootnote{Notice
+%%that all $\eta \geq \tilde w_t$ yield full employment.
+%%Under the assumption that firm profits are evenly distributed among households,
+%%it also follows that all $\eta \geq \tilde w_t$ share the same welfare
+%%implications.
+%%Without loss of generality, we can therefore restrict attention to choices of
+%%$\eta$ that are no larger than $\tilde w_t$, that is, the assumption
+%%referred to previously stating that monetary deviations are never so expansive
+%%that labor supply constraints become strictly binding.}
+Starting in period $t+1$, the deviation has triggered a switch to a new
+perfect foresight equilibrium with a trajectory of money growth rates given by
+$\{x_{t+j}=x(\sigma\vert_{(\tilde w^t;x^{t-1},\eta)})_j\}_{j=1}^\infty$.
+
+
+We conjecture that the worst SPE has $c_t=\underline c$ for all
+periods, and the candidate strategy profile $\hat \sigma$ is
+$$\eqalign{
+\hat \sigma^h_t &= {\bar x \over \underline c}
+              \qquad \forall\ t\ , \quad \forall\ (\tilde w^{t-1}, x^{t-1});\cr
+\hat \sigma^g_t &= \bar x
+              \qquad \forall\ t\ ,\quad \forall\ (\tilde w^{t-1}, x^{t-1}).\cr}$$
+The strategy profile instructs the government to choose the highest
+permissible money growth rate $\bar x$ for all periods and for all
+histories. Similarly, the households are instructed to set the nominal
+wages that would constitute a perfect foresight equilibrium when
+money growth will always be at its maximum.
+Thus, requirement (1) of an SPE is clearly satisfied. It remains to
+show that the government has no incentive to deviate. Since
+the continuation strategy profile is $\hat \sigma$ regardless
+of the history, the government needs only to find the best
+response in terms of the one-period return \Ep{m_oneperiod}.
+After substituting the household's action
+$\tilde w_t = \bar x/ \underline c$ into equation \Ep{m_deviate}, we get
+$c_t=\underline c \eta / \bar x$, so the best response of the government
+is to follow the proposed strategy $\bar x$. We conclude that the strategy
+profile $\hat \sigma$ is indeed an SPE, and it is the worst,
+since $\underline c$ is the lower bound on consumption in any
+perfect foresight equilibrium.
+
+
+We are now ready to address the credibility of the Friedman rule. The best
+chance for the Friedman rule to be credible is if a deviation
+triggers a reversion to the worst possible subgame perfect equilibrium
+given by $\hat \sigma$. The condition for credibility becomes
+$$
+{ {\displaystyle \bar c^{\gamma} \over \displaystyle \gamma } - \bar c \over 1-\beta }
+\;\geq \; \left( {1 \over \gamma} -1\right) + \beta \,
+{ {\displaystyle \underline c^{\gamma} \over \displaystyle \gamma }
+                         - \underline c \over 1-\beta } .          \EQN m_Ramseycred1
+$$
+By following the Friedman rule, the government removes the labor supply
+distortion coming from a binding cash-in-advance constraint and keeps
+output at $\bar c$. By deviating from the Friedman rule, the government
+creates a positive monetary surprise that increases output to its efficient
+level of unity, thereby eliminating the distortion caused by monopolistically
+competitive wage setting as well. However, this deviation destroys the
+government's reputation, and the economy reverts to an equilibrium
+that induces the government to inflate at the highest possible rate
+thereafter, and output falls to $\underline c$. Hence, the Friedman
+rule is credible if and only if equation \Ep{m_Ramseycred1} holds.
+
+
+The Friedman rule is the more likely to be credible,
+the higher is the exogenous upper bound on money growth $\bar x$,
+since $\underline c$ depends negatively on $\bar x$. In other words,
+a higher $\bar x$ translates into a larger penalty for deviating,
+so the government becomes more willing to adhere to the Friedman
+rule to avoid this penalty. In the limit when $\bar x$ becomes
+arbitrarily large, $\underline c$ approaches zero and condition
+\Ep{m_Ramseycred1} reduces to
+$$
+\left({1-\alpha \over 1+\alpha}\right)^{\gamma \over 1-\gamma}
+\left( {1 \over \gamma} - {1-\alpha \over 1+\alpha} \right)
+\geq (1-\beta) \left( {1 \over \gamma} -1\right),
+$$
+where we have used the expression for $\bar c$ in equations \Ep{m_bounds}.
+The Friedman rule can be sustained for a
+sufficiently large value of $\beta$. The government has less incentive
+to deviate when households are patient and put a high weight on future
+outcomes. Moreover, the Friedman rule is credible for
+a sufficiently small value of $\alpha$, which is equivalent to
+households having little market power. The associated small distortion from
+monopolistically competitive wage setting means that the potential welfare gain
+of a monetary surprise is also small, so the government is less
+tempted to deviate from the Friedman rule.
+
+
+
+
+\section{Concluding remarks}
+Besides shedding light on a number of monetary doctrines, this chapter
+has brought out the special importance of the initial date $t=0$
+in the analysis. This point is especially pronounced in Woodford's (1995)
+model where the initial interest-bearing government debt $B_0$ is
+not indexed but rather denominated in nominal terms. So, although
+the construction
+of a perfect foresight equilibrium ensures that all future issues of nominal
+bonds will {\it ex post} yield the real rates of return that are needed to
+entice the households to hold these bonds, the realized real return on
+the initial nominal bonds can be anything, depending on the price level
+$p_0$. Activities at the initial date were also
+important when we considered dynamic optimal taxation in chapter
+\use{optax}.
+ %We will then revisit the question of an optimum quantity of money,
+%by asking whether or
+%not real money balances should be subject to an inflation tax when there
+%are only distortionary taxes available for financing government
+%expenditures. The question will be addressed in both a version of the
+%shopping-time model of this chapter and a cash-in-advance model with
+%cash and credit goods.
+
+
+Monetary issues are also discussed in other chapters of the book.
+Chapters \use{ogmodels} and \use{incomplete}
+ study money in overlapping generations models and
+Bewley models, respectively.
+Chapters \use{townsend} and \use{search2}
+ present other explicit environments that give
+rise to a positive value of fiat money: Townsend's turnpike model and
+the Kiyotaki-Wright search model.
+
+
+%\section{Exercises}
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+\medskip\noindent
+{\it Exercise \the\chapternum.1} \quad  {\bf Why deficits in Italy and Brazil
+were once extraordinary proportions of GDP}
+\index{Italy and Brazil!inflation and measured deficits}
+\medskip\noindent
+%Consider a version of our model with money in the utility
+%function.
+The government's budget constraint can be written as
+$$ g_t - \tau_t +{b_t \over R_{t-1}} (R_{t-1} -1)
+   = {b_{t+1} \over R_t} - {b_t \over R_{t-1}} +
+      {M_{t+1} \over p_t } - {M_t \over p_{t}}  . \eqno(1)$$
+The left side is the real gross-of-interest government
+deficit; the right side is change in the real value of government
+liabilities between $t-1$ and $t$.
+
+
+  Government budgets often report the {\it nominal\/}
+gross-of-interest government deficit, defined as
+$$ p_t (g_t - \tau_t) + p_t b_t \left(1 - {1 \over R_{t-1} p_t /p_{t-1}}
+\right),$$
+and their ratio to nominal GNP, $p_t y_t$, namely,
+$$ \left[(g_t - \tau_t) + b_t \Bigl(1 - {1 \over R_{t-1} p_t / p_{t-1}}\Bigr)
+\right] \, / y_t.$$
+For countries with a large $b_t$ (e.g., Italy),
+this number can be very big even
+with a moderate rate of inflation.   For countries
+with a rapid inflation rate, like Brazil in 1993, this
+number  sometimes comes in at 30 percent of GDP.
+Fortunately, this number overstates the magnitude of the
+government's ``deficit problem,'' and there is a simple
+adjustment to the interest component of the deficit that
+renders a more accurate picture of the problem.  In particular,
+notice that the real values of the interest component of the
+real and  nominal deficits are related by
+$$ b_t \left(1 - {1 \over R_{t-1}}\right) = \alpha_t b_t \left(1 -
+         {1 \over R_{t-1} p_t / p_{t-1}}\right),$$
+where
+$$ \alpha_t = {R_{t-1} -1 \over R_{t-1} - p_{t-1}/p_t}.$$
+Thus, we should multiply the real value of nominal
+interest payments $b_t [1 - p_{t-1} / (R_{t-1} p_t) ]$
+by $\alpha_t$ to get the real interest component of the
+debt that appears on the left side of equation (1).
+\medskip
+\noindent
+{\bf a.}
+   Compute $\alpha_t$ for a country that has a $b_t /y$ ratio
+of .5, a gross real interest rate of 1.02, and a zero net inflation
+rate.
+
+\medskip\noindent
+{\bf b.}
+Compute $\alpha$ for a country that has a $b_t/y$ ratio of .5, a gross
+real interest rate of 1.02, and a 100 percent per year net inflation rate.
+
+
+\medskip\noindent
+{\it Exercise \the\chapternum.2}\quad  {\bf A strange example of Brock (1974)}
+\auth{Brock, William A.}
+
+
+\medskip\noindent
+  Consider an economy consisting of a government
+and a representative household.  There is one consumption
+good, which is not produced and not storable.  The exogenous
+supply of the good at time $t \geq 0$ is $y_t = y > 0$.  The household
+owns the good.  At time $t$ the representative household's
+preferences are ordered by
+$$ \sum_{t=0}^\infty \beta^t \{ \ln c_t + \gamma \ln (m_{t+1}/p_t) \},
+\eqno(1)$$    %\EQN old1$$
+where $c_t$ is the household's consumption at $t$, $p_t$ is the
+price level at $t$, and $m_{t+1}/p_t$ is the real balances that
+the household carries over from time $t$ to $t+1$.  Assume that
+$\beta \in (0,1)$ and $\gamma > 0$.  The household maximizes
+equation (1)  %\Ep{old1}
+over choices of $\{c_t, m_{t+1} \}$ subject
+to the sequence of budget constraints
+$$ c_t + m_{t+1}/p_t = y_t
+- \tau_t + m_t/p_t, \quad t \geq 0, \eqno(2)$$  %\EQN old2$$
+where $\tau_t$ is a lump-sum tax due at $t$.  The household
+faces the price sequence $\{p_t\}$ as a price taker and
+has given initial value of nominal balances $m_0$.
+
+
+   At time $t$ the government faces the budget constraint
+$$ g_t = \tau_t + (M_{t+1} - M_t)/p_t,\quad t \geq 0, \eqno(3)$$  %\EQN old3  $$
+where $M_t$ is the amount of currency that the government
+has outstanding at the beginning of time $t$ and $g_t$ is
+government expenditures at time $t$.  In equilibrium, we
+require that $M_t = m_t$ for all $t \geq 0$.
+  The government chooses sequences of $\{g_t, \tau_t,
+   M_{t+1} \}_{t=0}^\infty $
+subject to the budget constraints (3)  %\Ep{old3}
+being satisfied for
+all $t \geq 0$ and subject to the given initial value
+$M_0 = m_0$.
+
+
+\medskip
+\noindent
+{\bf a.}  Define a {\it competitive equilibrium}.
+
+
+\medskip
+For the remainder of this problem assume that $g_t = g < y$ for
+all $t \geq 0$, and that $\tau_t = \tau$ for all $t \geq 0$.
+Define a {\it stationary equilibrium\/} as an equilibrium
+in which the rate of return on currency is constant for all
+$t \geq 0$.
+\medskip
+\noindent{\bf b.}  Find conditions under which there exists
+a  stationary equilibrium for which $p_t > 0$ for all
+$t \geq 0$. Derive formulas for real balances and the
+rate of return on currency in that equilibrium, given
+that it exists.  Is the stationary equilibrium unique?
+\medskip
+\noindent{\bf c.}  Find a first-order difference equation
+in the equilibrium level of real balances $h_t = M_{t+1}/p_t$
+whose satisfaction ensures equilibrium (possibly nonstationary).
+\medskip
+\noindent{\bf d.}  Show that there is a fixed point of
+this difference equation with positive real balances, provided
+that the condition that you derived in part b is satisfied.
+Show that this fixed point agrees with the level of real balances
+that you computed in part b.
+%\medskip
+%\noindent{\bf e.}  Under what conditions is the
+%following statement true:  If there exists a stationary equilibrium,
+%then there also exist many other nonstationary equilibria.  Describe
+%these other equilibria.  In particular, what is happening to real
+%balances and the price level in these other equilibria?  Among
+%these other equilibria, within which one(s) are consumers better off?
+%
+%
+%\medskip
+%\noindent{\bf f.}  Within which of the equilibria that you found in parts b
+%and e is the following ``old-time religion'' true:  ``Larger
+%sustained government deficits imply permanently larger inflation rates''?
+%
+
+\medskip\noindent
+{\it Exercise \the\chapternum.3} \quad  {\bf Optimal inflation tax in a
+cash-in-advance model}
+
+
+\medskip\noindent
+Consider the version of Ireland's (1997) model described in the text,
+but assume perfect competition (i.e., $\alpha=0$) with flexible
+market-clearing wages.  Suppose now that the government must finance
+a constant amount of purchases $g$ in each period by levying flat-rate
+labor taxes and raising seigniorage. Solve the optimal taxation problem
+under commitment.
+
+%\vfil\eject
+\medskip
+
+
+\noindent
+{\it Exercise \the\chapternum.4} \quad {\bf Deficits, inflation, and
+anticipated monetary shocks}, donated by Rodolfo Manuelli
+\medskip\noindent
+Consider an economy populated by a large number of identical individuals.
+Preferences over consumption and leisure are given by
+$$ \sum_{t=0}^\infty \beta^t c_t^\alpha \ell_t^{1-\alpha}, $$
+where $0 < \alpha < 1$.  Assume that leisure is positively related --
+this is just a reduced form of a shopping-time model -- to the
+stock of real money balances, and negatively related to a measure
+of transactions:
+$$ \ell_t = A(m_{t+1}/p_t)/c_t^\eta ,\quad A > 0, $$
+and $\alpha-\eta(1-\alpha) > 0$.  Each individual owns a tree that
+drops $y$ units of consumption per period (dividends).  There is
+a government that issues one-period real bonds, money, and collects
+taxes (lump-sum) to finance spending.  Per capita spending is equal
+to $g$.  Thus, consumption equals $c=y-g$.  The government's budget
+constraint is:
+$$ g_t + B_t = \tau_t + B_{t+1}/R_t + (M_{t+1}-M_t)/p_t.  $$
+Let the rate of return on money be $R_{mt} = p_t/p_{t+1}$.  Let the
+nominal interest rate at time $t$ be $1+i_t = R_t p_{t+1}/p_t = R_t
+\pi_t$.
+\medskip
+
+
+\noindent{\bf a.}  Derive the demand for money, and show that it decreases
+with the nominal interest rate.
+\medskip
+
+
+\noindent{\bf b.}  Suppose that the government policy is such that $g_t = g$, $B_t = B$
+and $\tau_t = \tau$.  Prove that the real interest rate, $R$, is constant
+and equal to the inverse of the discount factor.
+\medskip
+
+
+\noindent{\bf c.}  Define the deficit as $d$, where $d = g + (B/R)(R-1)-\tau$.
+What is the highest possible deficit that can be financed in this economy?
+An economist claims that increases in $d$, which leave
+$g$ unchanged, will result in increases in the inflation rate.
+Discuss this view.
+\medskip
+
+
+\noindent{\bf d.}  Suppose that the economy is open to international capital
+flows and that the world interest rate is $R^* = \beta^{-1}$.  Assume
+that $d = 0$, and that $M_t = M$.  At $t=T$, the government increases
+the money supply to $M' = (1+\mu) M$.  This increase in the money supply
+is used to purchase (government) bonds.  This, of course, results in
+a smaller deficit at $t > T$.  (In this case, it will result in
+a surplus.)  However, the government also announces its intention to
+cut taxes (starting at $T+1$) to bring the deficit back to zero.  Argue
+that this open market operation will have the effect of increasing prices
+at $t=T$ by $\mu$; %.  That is, prices at $t=T, p'$, will satisfy
+$p'=(1+\mu)p$, where $p$ is the price level from $t=0$ to $t=T -1$.
+\medskip
+
+
+\noindent{\bf e.}  Consider the same setting as in d.  Suppose now that
+the open market operation is announced at $t=0$ (it still takes
+place at $t=T$).  Argue that prices will increase at $t=0$ and,
+in particular, that the rate of inflation between $T-1$ and $T$
+will be less than $1+\mu$.
+
+\vfil\eject
+\medskip
+\noindent
+{\it Exercise \the\chapternum.5}\quad  {\bf Interest elasticity of the
+ demand for money}, donated by Rodolfo Manuelli
+\medskip\noindent
+Consider an economy in which the demand for money satisfies
+$$ m_{t+1}/p_t = F(c_t, R_{mt}/R_t), $$
+where $R_{mt} = p_t/p_{t+1}$ and $R_t$ is the one-period interest rate.
+Consider the following open market operation: At $t=0$, the government
+sells bonds and ``destroys'' the money it receives in exchange for those bonds.
+No other real variables, e.g., government spending or taxes, are changed.
+Find conditions on the income elasticity of the demand for money such
+that the decrease in money balances at $t=0$ results in an increase in
+the price level at $t=0$.
+
+
+\medskip\noindent
+{\it Exercise \the\chapternum.6} \quad  {\bf Dollarization}, donated by Rodolfo
+Manuelli
+\medskip\noindent
+In recent years, several countries, e.g., Argentina and countries
+hit by the Asian crisis, have considered the possibility of
+giving up their currencies in favor of the U.S. dollar.  Consider a country,
+say $A$, with deficit $d$ and inflation rate $\pi = 1/R_m$.  Output and
+consumption are constant, and hence the real interest rate is fixed,
+with $R = \beta^{-1}$.  The (gross-of-interest-payments) deficit is $d$, with
+$$ d = g - \tau + (B/R)(R-1).  $$
+Let the demand for money be $m_{t+1}/p_t = F(c_t, R_{mt}/R_t)$, and assume
+that $c_t = y - g$.  Thus, the steady-state government budget constraint is
+$$ d = F(y-g, \beta R_m)(1-R_m) > 0.  $$
+Assume that the country is considering, at $t=0$, the retirement of its money
+in exchange for dollars.  The government promises to give to each person who
+brings a ``peso''
+ to the Central Bank $1/e$ dollars, where $e$ is the exchange
+rate (in pesos per dollar) between the country's currency and the U.S. dollar.
+Assume that the U.S. inflation rate (before and after the switch) is given
+and equal to $\pi^* = 1/R_m^* < \pi$, and that the country is on the ``good''
+part of the Laffer curve.
+\medskip
+
+
+\noindent{\bf a.} If you are advising the government of $A$, how much would you
+say that it should demand from the U.S. government to make the switch?  Why?
+\medskip
+
+
+\noindent{\bf b.} After the dollarization takes place, the government understands
+that it needs to raise taxes.  Economist 1 argues that the increase in taxes
+(on a per period basis) will equal the loss of revenue from
+inflation -- $F(y-g, \beta R_m)(1-R_m)$ -- while Economist 2 claims that this is an
+overestimate.  More precisely, he or she claims that if the government is a
+good negotiator vis-\`a-vis the U.S. government, taxes need only increase by
+$F(y-g, \beta R_m)(1-R_m) - F(y-g, \beta R_m^*)(1 -R_m^*)$
+per period.  Discuss
+these two views.
+
+
+\medskip\noindent
+{\it Exercise \the\chapternum.7}\quad  {\bf Currency boards}, donated by Rodolfo Manuelli
+\medskip\noindent
+In the last few years, several countries, e.g., Argentina (1991),
+Estonia (1992), Lithuania (1994), Bosnia (1997) and Bulgaria (1997),
+  have adopted the currency board model of monetary policy.
+  In a nutshell, a currency board is a
+commitment on the part of the country to fully back its domestic
+currency with foreign-denominated assets.  For simplicity,
+assume that the foreign asset is the U.S. dollar.
+\medskip
+The government's budget constraint is given by
+$$ g_t + B_t + B^*_{t+1}e/(Rp_t) = \tau_t + B_{t+1}/R + B^*_te/p_t +
+(M_{t+1} - M_t)/p_t,  $$
+where $B^*_t$ is the stock of one-period bonds, denominated in dollars,
+held by this country, $e$ is the exchange rate (pesos per dollar), and
+$1/R$ is the price of one-period bonds (both domestic and dollar denominated).
+  Note that the budget constraint equates the real value of income and
+liabilities in units of consumption goods.
+\medskip
+The currency board ``contract'' requires that the money supply be fully backed.
+One interpretation of this rule is that the domestic money supply is
+$$ M_t = eB^*_t.  $$
+Thus, the right side is the local currency value of foreign
+reserves (in bonds) held by the government, while the left side
+is the stock of money.  Finally, let the law of one price hold:
+$p_t = ep^*_t$, where $p^*_t$ is the foreign (U.S.) price level.
+\medskip
+
+
+\noindent{\bf a.} Assume that $B_t = B$, and that foreign inflation is zero, $p^*_t =
+ p^*$.  Show that even in this case, the properties of the demand for
+money -- which you may take to be given by $F(y-g, \beta R_m)$ --
+ are important in determining total revenue.  In particular,
+ explain how a permanent increase in $y$,
+income per capita, allows the government to lower taxes (permanently).
+\medskip
+
+
+\noindent{\bf b.} Assume that $B_t = B$.  Let foreign inflation be positive,
+that is,
+ $\pi^* > 1$.  In this case, the price in dollars of a one-period
+dollar-denominated bond is $1/(R\pi^*)$.  Go as far as you can describing
+the impact of foreign inflation on domestic inflation, and on per
+capita taxes, $\tau$.
+\medskip
+
+
+\noindent{\bf c.} Assume that $B_t = B$.  Go as far as you can describing the
+effects of a once-and-for-all surprise devaluation, i.e., an unexpected and
+permanent increase in $e$, on the level of per capita taxes.
+\medskip
+
+
+\noindent{\it Exercise \the\chapternum.8} \quad {\bf Growth and inflation}, donated
+by Rodolfo Manuelli
+\medskip\noindent
+Consider an economy populated by identical individuals with instantaneous
+utility function given  by
+$$ u(c,\ell) = [c^\varphi \ell^{1-\varphi}]^{(1-\sigma)}/(1-\sigma).  $$
+Assume that shopping time is given by  $s_t = \psi c_t/(m_{t+1}/p_t)$.
+Assume that in this economy, income grows exogenously at the rate $\gamma > 1$.
+Thus, at time $t$, $y_t = \gamma^t y$.  Assume that government spending
+also grows at the same rate, %%.  This implies that
+$g_t = \gamma^t g$.
+Finally, $c_t = y_t - g_t$.
+\medskip
+
+
+\noindent{\bf a.} Show that for this specification, if the demand for money at
+$t$ is $x = m_{t+1}/p_t$, then the demand at $t+1$ is $\gamma x$.  Thus,
+the demand for money grows at the same rate as the economy.
+\medskip
+
+
+\noindent{\bf b.} Show that the real rate of interest depends on the growth rate.
+(You may assume that $\ell$ is constant for this calculation.)
+\medskip
+
+
+\noindent{\bf c.} Argue that even for monetary policies that keep the price
+level constant, that is, $p_t = p$ for all $t$, the government raises
+positive amounts of revenue from printing money. Explain.
+
+\medskip
+
+
+\noindent{\bf d.} Use your finding in c to discuss why, following monetary
+reforms that generate big growth spurts, many countries manage to
+``monetize'' their economies (this is just jargon for increases in
+the money supply) without generating inflation.

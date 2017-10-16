@@ -1,0 +1,485 @@
+%  appendix
+
+%\input gayejnl.txt
+\input gayedef.txt
+%\def\prob{{\rm prob}}
+%\showchaptIDtrue
+%\def\@chaptID{20.}
+%
+%\hbox{}\footnum=0
+\footnum=0
+\chapternum=27
+\Appendix{A}{Functional Analysis\label{functional}}
+This appendix provides an introduction to the analysis of functional equations
+(functional analysis).  It describes the contraction mapping theorem,
+a workhorse for studying dynamic programs.
+
+\section{Metric spaces and operators}
+
+We begin with the definition of a metric space, which is a pair of objects, a
+set $X$, and a function $d$.\NFootnote{General references on the %
+mathematics described in this appendix are Luenberger (1969) and Naylor %
+and Sell (1982).}
+\medskip
+%\specsec{Definition:}
+\definition{def20.1}
+{\it A metric space is a set $X$ and a function $d$
+called a metric, $d$: $X\times X\to R$.  The metric $d(x,y)$ satisfies the
+following four properties:}
+\medskip
+\itemitem{M1.} {\it Positivity: $d(x,y)\ge 0$ for all $x,y\in X$.}
+\medskip
+\itemitem{M2.} {\it Strict positivity: $d(x,y)=0$ if and only if $x=y$.}
+\medskip
+\itemitem{M3.} {\it Symmetry: $d(x,y)=d(y,x)$ for all $x,y\in X$.}
+\medskip
+\itemitem{M4.} {\it Triangle inequality: $d(x,y)\le d(x,z)+d(z,y)$ for all $x,
+y$,
+and $z\in X$.}
+\enddefinition
+\medskip
+
+We give some examples of the metric spaces with which we will be working:
+\medskip
+\noindent
+{\bf Example A.1.}\quad  $l_p[0,\infty)$.  We say that $X=l_p[0,\infty)$ is
+the set of all sequences of complex numbers $\{x_t\}_{t=0}^\infty$ for which
+$\sum_{t=0}^\infty |x_t|^p$ converges, where $1\le p<\infty$.  The function
+$d_p(x,y)=(\sum_{t=0}^\infty |x_t-y_t|^p)^{1/p}$ is a metric.  Often, we will
+say that $p=2$ and will work in $l_2[0,\infty)$.
+\medskip
+\noindent{\bf Example A.2.}\quad  $l_\infty[0,\infty)$.  The set
+$X=l_\infty[0,\infty)$ is the set of bounded sequences $\{x_t\}_{t=0}^\infty$
+of real or complex numbers.  The metric is $d_\infty(x,y) = {\rm
+sup}_t|x_t-y_t|$.
+\medskip
+\noindent{\bf Example A.3.}\quad $l_p(-\infty,\infty)$ is the set
+of ``two-sided''
+sequences $\{x_t\}_{t=-\infty}^\infty$ such that $\sum_{t=-\infty}^\infty
+|x_t|^p<+\infty$, where $1\le p<\infty$.  The associated metric is $d_p(x,y) =
+(\sum_{t=-\infty}^\infty |x_t-y_t|^p)^{1/p}$.
+\medskip
+\noindent{\bf Example A.4.}\quad $l_\infty(-\infty,\infty)$ is the
+set of bounded
+sequences $\{x_t\}_{t=-\infty}^\infty$ with metric $d_\infty(x,y)={\rm sup}
+|x_t-y_t|$.
+\medskip
+\noindent{\bf Example A.5.}\quad  Let $X=C[0,T]$ be the set of all continuous
+functions mapping the interval $[0,T]$ into $R$.  We consider the metric
+$$d_p(x,y) = \left[ \int_0^T |x(t) -y(t)|^p dt\right]^{1/p},$$
+where the integration is in the Riemann sense.
+\medskip
+\noindent{\bf Example A.6.}\quad  Let $X=C[0,T]$ be the set of all continuous
+functions mapping the interval $[0,T]$ into $R$.  We consider the metric
+$$d_\infty(x,y) =\sup\limits_{0\le t\le T} |x(t)-y(t)|.$$
+\medskip
+We now have the following important definition:
+\medskip
+%\specsec{Definition:}
+\definition{def20.2}
+{\it A sequence $\{x_n\}$ in a metric space $(X,d)$
+is said to be a Cauchy sequence if for each $\eps>0$ there exists an $N(\eps)$
+such that $d(x_n,x_m)<\eps$ for any $n,m\ge N(\eps)$.  Thus a sequence
+$\{x_n\}$ is said to be Cauchy if $\lim_{n,m\to\infty} d(x_n,x_m)=0$.}
+\enddefinition
+\medskip
+We also have the following definition of convergence:
+\medskip
+%\specsec{Definition:}
+\definition{def20.3}
+{\it A sequence $\{x_n\}$ in a metric space $(X,d)$
+is said to converge to a limit $x_0\in X$ if for every $\eps>0$ there exists an
+$N(\eps)$ such that $d(x_n,x_0)<\eps$ for $n\ge N(\eps)$.}
+\enddefinition
+\medskip
+The following lemma asserts that every convergent sequence in $(X,d)$ is a
+Cauchy sequence:
+\medskip
+\lemma{lemma20.1}  {\it Let $\{x_n\}$ be a convergent sequence in a metric
+space $(X,d)$. Then $\{x_n\}$ is a Cauchy sequence.}\endlemma
+\medskip
+%\specsec{Proof:}
+\proof Fix any $\eps>0$.  Let $x_0 \in X$
+ be the limit of $\{x_n\}$.  Then for
+all $m,n$ one has
+$$d(x_n,x_m)\le d(x_n,x_0)+d(x_m,x_0)$$
+by virtue of the triangle inequality.  Because $x_0$ is the limit of $\{x_n\}$,
+there exists an $N$ such that $d(x_n,x_0)<\eps/2$ for $n\ge N$.  Together with
+the preceding inequality, this statement implies that $d(x_n,x_m)<\eps$
+ for $n,m\ge N$.  Therefore, $\{x_n\}$ is a Cauchy sequence.  \endproof %\qed
+\medskip
+
+We now consider two examples of sequences in metric spaces.  The examples are
+designed to illustrate aspects of the concept of a Cauchy sequence.  We first
+consider the metric space $\{C[0,1],d_2(x,y)\}$.  We let $\{x_n\}$ be the
+sequence of continuous functions $x_n(t)=t^n$.  Evidently this sequence
+converges pointwise to the function
+$$x_0(t)=\cases{ 0, & $0\le t<1$\cr
+1,& $t=1$.\cr}$$
+Now, in $\{C[0,1], d_2(x,y)\}$, the sequence $x_n(t)$ is a Cauchy sequence.  To
+verify this claim, calculate
+$$d_2(t^m,t^n)^2 =\int_0^1 (t^n-t^m)^2 dt = {1\over 2n+1} +{1\over 2m+1}
+-{2\over m+n+1}.$$
+Clearly, for any $\eps>0$, it is possible to choose an $N(\eps)$ that makes the
+square root of the right side less than $\eps$ whenever $m$ and $n$ both exceed
+$N$.  Thus $x_n(t)$ is a Cauchy sequence.  Notice, however, that the limit
+point $x_0(t)$ does {\it not\/} belong to $\{C[0,T],d_2(x,y)\}$ because it is
+not a continuous function.
+
+As our second example, we consider the space $\{C[0,T],d_\infty(x,y)\}$.  We
+consider the sequence $x_n(t)=t^n$.  In $(C[0,1],d_\infty)$, the sequence
+$x_n(t)$ is {\it not\/} a Cauchy sequence.  To verify this claim, it is
+sufficient to establish that, for any fixed $m>0$, there is a $\de >0$ such
+that
+$$\sup\limits_{n>0} \sup\limits_{0\le t\le 1} |t^n-t^m|>\de.$$
+Direct calculations show that, for fixed $m$,
+$$\sup\limits_{n} \sup\limits_{0\le t\le 1} |t^n-t^m|=1.$$
+Parenthetically we may note that
+$$\eqalign{\sup\limits_{n>0} \sup\limits_{0\le t\le 1} |t^n-t^m| &=
+\sup\limits_{0\le t\le 1} \sup\limits_{n>0} |t^n-t^m| =\sup\limits_{0\le t\le
+1} \lim_{n\to\infty} |t^n-t^m|\cr
+&= \sup\limits_{0\le t\le 1} \lim_{n\to\infty} t^m|t^{n-m} -1|
+=\sup\limits_{0\le t\le 1} t^m=1.\cr}$$
+Therefore, $\{t^n\}$ is not a Cauchy sequence in $(C[0,1],d_\infty)$.
+
+These examples illustrate the fact that whether a given sequence is Cauchy
+depends on the metric space within which it is embedded, in particular on the
+metric that is being used.  The sequence $\{t^n\}$ is Cauchy in $(C[0,1],d_2)$,
+and more generally in $(C[0,1],d_p)$ for $1\le p<\infty$.  The sequence
+$\{t^n\}$, however, is {\it not\/} Cauchy in the metric space
+$(C[0,1],d_\infty)$.  The first example also illustrates the fact that a Cauchy
+sequence in $(X,d)$ need {\it not\/} converge to a limit point $x_0$ belonging
+to the metric space.  The property that Cauchy sequences converge to points
+lying in the metric space is desirable in many applications.  We give this
+property a name.
+\medskip
+%\specsec{Definition:}
+\definition{def20.4} {\it A metric space $(X,d)$ is said to be complete
+if each Cauchy sequence in $(X,d)$ is a convergent sequence in $(X,d)$.  That
+is, in a complete metric space, each Cauchy sequence converges to a point
+belonging to the metric space.} \enddefinition
+\medskip
+The following metric spaces are complete:
+$$\eqalign{ & (l_p[0,\infty),d_p),\qquad 1\le p<\infty\cr
+&(l_\infty [0,\infty),d_\infty)\cr
+&(C[0,T],d_\infty). \cr}$$
+The following metric spaces are not complete:
+$$(C[0,T],d_p),\qquad 1\le p<\infty.$$
+\medskip
+Proofs that $(l_p[0,\infty),d_p)$ for $1\le p\le \infty$ and
+$(C[0,T],d_\infty)$ are complete are contained in Naylor and Sell (1982,
+chap. 3).  In effect, we have already shown by counterexample that the space
+$(C[0,1],d_2)$ is not complete, because we displayed a Cauchy sequence that did
+not converge to a point in the metric space.  A definition may now be stated:
+\medskip
+%\specsec{Definition:}
+\definition{def20.5} {\it A function $f$ mapping a metric space $(X,d)$
+into itself is called an operator.}\enddefinition
+\medskip
+We need a notion of continuity of an operator.
+\medskip
+%\specsec{Definition:}
+\definition{def20.6} {\it Let $f:X\to X$ be an operator on a metric
+space $(X,d)$.  The operator $f$ is said to be continuous at a point $x_0\in X$
+if for every $\eps>0$ there exists a $\de >0$ such that $d[f(x),f(x_0)]<\eps$
+whenever $d(x,x_0)<\de$.  The operator $f$ is said to be continuous if it is
+continuous at each point $x\in X$.}
+\enddefinition
+\medskip
+We shall be studying an operator with a particular property,
+the application of which to
+any two distinct points $x,y\in X$ brings them closer together.
+\medskip
+%\specsec{Definition:}
+\definition{def20.7}{\it Let $(X,d)$ be a metric space and let $f:X\to
+X$.  We say that $f$ is a contraction or contraction mapping if there is a real
+number $k,0\le k<1$, such that}
+$$d[f(x),f(y)]\le kd(x,y)\qquad{\rm for\ all}\quad x,y\in X.$$
+It follows directly from the definition that a contraction mapping is a
+continuous operator.
+\medskip
+We now state the following theorem:
+
+%\specsec{Theorem 20.1:}
+\theorem{th20.1}
+{\it Contraction Mapping}
+\medskip
+\noindent
+{\it Let $(X,d)$ be a complete metric space and let $f:X\to X$ be a
+contraction.  Then there is a unique point $x_0\in X$ such that $f(x_0)=x_0$.
+Furthermore, if $x$ is any point in $X$ and $\{x_n\}$ is defined inductively
+according to $x_1=f(x), x_2=f(x_1),\ldots,x_{n+1}=f(x_n)$, then $\{x_n\}$
+converges to $x_0$.}\endtheorem
+\medskip
+%\specsec{Proof:}
+\proof Let $x$ be any point in $X$. Define $x_1=f(x),x_2=f(x_1),\ldots$.
+Express this as $x_n=f^n(x)$.  To show that the sequence $x_n$ is Cauchy, first
+assume that $n>m$.  Then
+$$\eqalign{ d(x_n,x_m) &= d[f^n(x),f^m(x)]=d[f^m(x_{n-m}),f^m(x)]\cr
+&\le kd [f^{m-1} (x_{n-m}),f^{m-1}(x)]\cr}$$
+By induction, we get
+$$d(x_n,x_m) \le k^md(x_{n-m},x).\leqno(*)$$
+When we repeatedly use the triangle inequality, the preceding inequality implies
+that
+$$d(x_n,x_m)\le k^m[d(x_{n-m}, x_{n-m-1})+\ldots + d(x_2,x_1) +d(x_1,x)].$$
+Applying ($*$) gives
+$$d(x_n,x_m) \le k^m(k^{n-m-1} +\ldots+ k+1)d(x_1,x).$$
+Because $0\le k<1$, we have
+$$d(x_n,x_m) \le k^m\sum_{i=0}^\infty k^id(x_t,x) ={k^m\over 1-k}
+d(x_1,x).\leqno(\dagger)$$
+The right side of $(\dagger)$ can be made arbitrarily small by choosing $m$
+sufficiently large.  Therefore, $d(x_n,x_m)\to 0$ as $n,m\to \infty$.  Thus
+$\{x_n\}$ is a Cauchy sequence.  Because $(X,d)$ is complete, $\{x_n\}$
+converges to an element of $(X,d)$.
+
+The limit point $x_0$ of $\{x_n\}=\{f^n(x)\}$ is a fixed point of $f$.  Because
+$f$ is continuous, $\lim_{n\to\infty} f(x_n)=f(\lim_{n\to\infty} x_n)$.  Now
+$f(\lim_{n\to\infty} x_n)=f(x_0)$ and $\lim_{n\to\infty} f(x_n)
+=\lim_{n\to\infty} x_{n+1} =x_0$.  Therefore $x_0=f(x_0)$.
+
+To show that the fixed point $x_0$ is unique, assume the  contrary.  Assume
+that $x_0$ and $y_0$, $x_0\not=y_0$, are two fixed points of $f$.  But then
+$$0<d(x_0,y_0) =d[f(x_0), f(y_0)]\le kd(x_0,y_0) <d(x_0,y_0),$$
+which is a contradiction.  Therefore $f$ has a unique fixed point.  \endproof %\qed
+\medskip
+
+ We now restrict ourselves to sets $X$ whose elements are functions.  The
+spaces $C[0,T]$ and $l_p[0,\infty)$ for $1\le p\le \infty$ are examples of
+spaces of functions.  Let us define the notion of inequality of two functions.
+
+%\specsec{Definition:}
+\definition{def20.8} {\it Let $X$ be a space of functions, and let
+$x,y\in X$.  Then $x\ge y$ if and only if $x(t)\ge y(t)$ for every $t$ in the
+domain of the functions.}\enddefinition
+\medskip
+Let $X$ be a space of functions.  We use the $d_\infty$ metric, defined as
+$d_\infty(x,y)=\sup_t |x(t)-y(t)|$, where the supremum is over the domain of
+definition of the function.
+
+A pair of conditions that are sufficient for an operator $T:(X,d_\infty)\to
+(X,d_\infty)$ to be a contraction appear in the following
+theorem:\NFootnote{See Blackwell's (1965) Theorem 5.  This theorem is %
+used extensively by Stokey and Lucas with Prescott (1989).}
+\medskip
+%\specsec{Theorem 20.2:}
+\theorem{thm20.2} {\it Blackwell's Sufficient Conditions for $T$ to
+be a Contraction}
+\medskip
+\noindent
+{\it Let $T$ be an operator on a metric space $(X,d_\infty)$, where $X$ is a
+space of functions.  Assume that $T$ has the following two
+properties:}\hfil\break
+\noindent(a) {\it Monotonicity:  For any $x,y\in X$, $x\ge y$ implies $T(x) \ge
+T(y)$}.\hfil\break
+\noindent(b) {\it Discounting:  Let $c$ denote a function that is constant at the
+real value $c$ for all points in the domain of definition of the functions in
+$X$.  For any positive real $c$ and every $x\in X$, $T(x+c)\le T(x)+\be c$ for
+some $\be$
+satisfying $0\le \be <1$.}\hfil\break
+\noindent
+{\it Then $T$ is a contraction mapping with modulus $\be$.}\endtheorem
+\medskip
+%\specsec{Proof:}
+\proof For all $x,y \in X$, $x \leq y + d(x,y)$.  Applying
+properties (a) and  (b) to this inequality gives
+$$T(x) \leq T(y+d(x,y)) \leq T(y) + \beta d(x,y). $$
+Exchanging the roles of $x$ and $y$ and using the same logic
+implies
+$$ T(y) \leq T(x) + \beta d(x,y). $$
+Combining  these two inequalities gives $|T(x) - T(y)| \leq \beta
+d(x,y)$ or
+$$ d(T(x), T(y)) \leq \beta d(x,y) .$$\endproof %\qed
+
+\medskip
+
+\section{Discounted dynamic programming}
+
+We study the functional equation associated with a discounted dynamic
+programming problem:
+$$v(x)=\max_{u\in R^k} \{r(x,u)+\be v(x')\},\qquad x'\le g(x,u),\qquad
+0<\be<1.  \EQN A46 $$
+We assume that $r(x,u)$ is real valued, continuous, concave, and bounded and
+that the set $[x',x,u:x'\le g(x,u),u\in R^k]$ is convex and compact.
+
+We define the operator
+$$Tv=\max_{u\in R^k} \{r(x,u)+\be v(x')\},\qquad x'\le g(x,u),\quad x\in X.$$
+We work with the space of continuous bounded functions mapping $X$ into the
+real line.  We use the %$d_\infty$
+ metric
+$d_\infty(v,w) =\sup_{x\in X} |v(x)-w(x)|.$
+This metric space is complete.
+
+The operator $T$ maps a continuous bounded function $v$ into a continuous
+bounded function $Tv$.  (For a proof, see Stokey and Lucas
+with Prescott, 1989.)\NFootnote{The assertions in the preceding two
+paragraphs are the most difficult  pieces of the argument to prove.}
+
+We now establish that $T$ is a contraction by verifying Blackwell's pair of
+sufficient conditions.  First, suppose that $v(x)\ge w(x)$ for all $x\in X$.
+Then
+$$\eqalign{ Tv&=\max_{u\in R^k} \{r(x,u)+\be v(x')\},\qquad x'\le g(x,u)\cr
+&\ge \max_{u\in R^k} \{r(x,u)+\be w(x')\},\qquad x'\le g(x,u)\cr
+&=Tw.\cr}$$
+Thus, $T$ is monotone.  Next, notice that for any positive constant $c$,
+$$\eqalign{ T(v+c) &=\max_{u\in R^k} \{r(x,u)+\be [v(x')+c]\},\qquad x'\le
+g(x,u)\cr
+&=\max_{u\in R^k} \{r(x,u)+\be v(x')+\be c\},\qquad x'\le g(x,u)\cr
+&=Tv+\be c.\cr}$$
+Thus, $T$ discounts.  Therefore, $T$ satisfies both of Blackwell's conditions.
+It follows that $T$ is a contraction on a complete metric space.  Therefore the
+functional equation \Ep{A46}, which can be expressed as $v=Tv$, has a unique
+fixed point in the space of bounded continuous functions.  This fixed point is
+approached in the limit in the $d_\infty$ metric by iterations $v^n=T^n(v^0)$
+starting from any bounded and continuous $v^0$.  Convergence in the $d_\infty$
+metric implies uniform convergence of the functions $v^n$.
+
+Stokey and Lucas with Prescott (1989) show that $T$ maps concave functions
+into concave functions.  It follows that the solution of $v=Tv$ is a concave
+function.
+
+
+\subsection{Policy improvement algorithm}
+
+For ease of exposition, in this section we shall assume that the
+constraint $x' \leq g(x,u)$ holds with equality.  For the
+purposes of describing an alternative way to solve dynamic
+programming problems, we introduce a new operator.
+We use one step of iterating on the Bellman equation to
+define the new operator $T_\mu$ as follows:
+$$T_\mu (v) = T(v)$$
+or
+$$T_\mu (v) = r [x,\, \mu(x)] + \beta v \{g [x,\, \mu(x)]\}\ , $$
+where $\mu (x)$ is the policy function that attains $T(v) (x)$.
+For a fixed $\mu (x)$, $T_\mu$ is an operator that maps bounded
+continuous functions into bounded continuous functions. Denote
+by $C$ the space of bounded continuous
+functions mapping $X$ into $X$.
+
+For any admissible policy function $\mu (x)$,
+the operator $T_\mu$ is a contraction mapping.
+This fact can be established by verifying
+Blackwell's pair of sufficient conditions:
+
+\item{1.}   $T_\mu$ is monotone.
+Suppose that $v(x)\geq w(x)$.  Then
+$$\eqalign{T_\mu v &= r [x,\, \mu(x)] + \beta v \{g [x,\,\mu(x)]\}\cr
+&\geq r [x, \, \mu (x)] + \beta w \{g [x,\,\mu(x)]\} = T_\mu w\ .\cr}$$
+\medskip
+\item{2.} $T_{\mu}$ discounts.
+For any positive constant $c$
+$$\eqalign{T_\mu (v + c) &= r (x,\mu) +\beta \left(v \{g [x,\mu(x)] + c\} \right) \cr
+&= T_\mu v +\beta c\ .\cr}$$
+\medskip
+\noindent Because $T_\mu$ is a contraction operator, the functional equation
+$$v_\mu (x) = T_\mu [v_\mu (x)]$$
+has a unique solution in the space of bounded continuous functions.  This
+solution  can be computed as a limit of iterations on $T_\mu$ starting
+from any bounded continuous function $v_0 (x) \in C$,
+$$v_\mu (x) = \lim_{k\to\infty} T^k_\mu (v_0)\, (x)\ .$$
+The function $v_\mu(x)$ is the value of the objective function that would be
+attained by using the stationary policy $\mu (x)$ each period.
+
+The following proposition describes the {\it policy iteration\/} or
+{\it Howard improvement\/} algorithm.
+\medskip\noindent
+%\specsec{Proposition:}
+\theorem{thm20.3} Let $v_\mu (x) = T_\mu [v_\mu (x)]$.  Define a  new
+policy $\bar \mu$ and an associated operator $T_{\bar\mu}$ by
+$$T_{\bar\mu} [v_\mu (x)] = T[v_\mu (x)]\ ;$$
+that is, $\bar\mu$ is the policy that solves a one-period problem with
+$v_\mu (x)$ as the terminal value function.  Compute the fixed point
+$$v_{\bar\mu} (x) = T_{\bar\mu} [v_{\bar\mu} (x)]\ .$$
+Then $v_{\bar\mu} (x) \geq v_\mu (x)$.  If $\mu (x)$ is not optimal, then
+$v_{\bar\mu} (x) > v_\mu (x)$ for at least one $x \in X$. \endtheorem
+\medskip\noindent
+%\specsec{Proof:}
+\proof  From the definition of $\bar\mu$ and $T_{\bar\mu}$, we have
+$$\eqalign{T_{\bar\mu} [v_\mu (x)] &=
+r [x,\, \bar\mu (x)] + \beta v_\mu \{g[x,\, \bar\mu (x)]\} =\cr
+ T(v_\mu) (x) &\geq r [x,\,\mu (x)] +\beta v_\mu \{g[x,\,\mu(x)]\}\cr
+\hskip.75in &= T_\mu [v_\mu (x) ] = v_\mu (x)\cr}$$
+or
+$$T_{\bar\mu} [v_\mu (x)] \geq v_\mu (x)\ .$$
+Apply $T_{\bar\mu}$ repeatedly to this inequality and use the monotonicity of
+$T_{\bar\mu}$ to conclude
+$$v_{\bar\mu}(x) = \lim_{n\to\infty}\, T^n_{\bar\mu}\, [v_\mu (x)] \geq v_\mu (x)\ .$$
+This establishes the asserted inequality $v_{\bar\mu}(x)\geq v_\mu (x)$.  If
+$v_{\bar\mu} (x) = v_\mu (x)$ for all $x\in X$, then
+$$\eqalign{v_\mu (x) &= T_{\bar\mu} [v_\mu (x)]\cr
+&= T[v_\mu (x)]\ ,\cr}$$
+where the first equality follows because $T_{\bar\mu} [v_{\bar\mu} (x)] =
+v_{\bar\mu} (x)$, and the second equality follows from the definitions of
+$T_{\bar\mu}$ and $\bar\mu$.  Because $v_\mu (x) = T[v_\mu (x)]$,
+ the Bellman equation is satisfied by $v_\mu (x)$. \endproof%\ \qed
+\medskip
+
+The {\it policy improvement\/} algorithm starts from an
+arbitrary feasible policy and  iterates to convergence
+on the two following steps:\NFootnote{A policy $\mu(x)$ is said to
+be {\it unimprovable\/} if it is optimal to follow it for the
+first period, given a terminal value function $v(x)$.  In effect, the policy
+improvement algorithm starts with an arbitrary value function,
+then by solving a one-period problem, it generates an improved policy
+and an improved value function.  The proposition states that  optimality
+is characterized by the features, first, that there is no incentive
+to deviate from the policy during the first period, and second,
+that the terminal value function is the one associated with
+continuing the policy.}
+
+Step 1. For a feasible policy $\mu(x)$, compute
+$ v_{\mu} = T_{\mu}(v_{\mu})$.
+
+Step 2. Find ${\bar \mu}$ by computing $T(v_{\mu})$.  Use $\bar \mu$
+as the policy in step 1.
+
+\noindent In many applications, this algorithm proves to be much faster
+than iterating on the Bellman equation.
+
+\subsection{A search problem}
+
+We now study the functional equation associated with a search problem of
+chapter \use{search1}.  The functional equation is
+$$v(w)=\max \left\{ {w\over 1-\be}, \be \int v(w') dF(w')\right\}, \qquad 0<\be
+<1. \EQN A47 $$
+Here, the wage offer drawn at $t$ is $w_t$.  Successive offers $w_t$ are
+independently and identically distributed random variables.  We assume that
+$w_t$ has cumulative distribution function $\prob\{w_t\le w\}=F(w)$, where
+$F(0)=0$ and $F(\bar w) =1$ for some $\bar w<\infty$.  In equation \Ep{A47}, $v(w)$ is the
+optimal value function for a currently unemployed worker who has offer $w$ in
+hand.  We seek a solution of the functional equation \Ep{A47}.
+
+We work in the space of bounded continuous functions $C[0,\bar w]$ and use the
+$d_\infty$ metric
+$$d_\infty(x,y) =\sup_{0\le w\le \bar w} |x(w)-y(w)|.$$
+The metric space $(C[0,\bar w],d_\infty)$ is complete.
+
+We consider the operator
+$$T(z)=\max \Bigl\{ {w\over 1-\be},\be \int z(w') dF(w')\Bigr\}.\EQN A48$$
+Evidently the operator $T$ maps functions $z$ in $C[0,\bar w]$ into
+functions $T(z)$ in
+$C[0,\bar w]$.  We now assert that the operator $T$ defined by
+equation \Ep{A48} is a
+contraction.  To prove this assertion, we verify Blackwell's sufficient
+conditions.  First, assume that $f(w)\ge g(w)$ for all $w\in [0,\bar w]$.  Then
+note that
+$$\eqalign{ Tg&=\max \left\{ {w\over 1-\be},\be \int g(w') dF(w')\right\}\cr
+\noalign{\smallskip}
+&\le \max \left\{ {w\over 1-\be} ,\be \int f(w') dF(w')\right\}\cr
+&=Tf.\cr}$$
+Thus, $T$ is monotone.  Next, note that for any positive constant $c$,
+$$\eqalign{ T(f+c) &= \max \left\{ {w\over 1-\be},\be \int [f(w')+c]
+dF(w')\right\}\cr
+\noalign{\smallskip}
+&=\max \left\{ {w\over 1-\be},\be \int f(w') dF(w')+\be c\right\}\cr
+\noalign{\smallskip}
+&\le \max \left\{ {w\over 1-\be},\be \int f(w') dF(w')\right\}+\be c\cr
+\noalign{\smallskip}
+&=Tf+\be c.\cr}$$
+Thus, $T$ satisfies the discounting property and is therefore a contraction.
+
+Application of the contraction mapping theorem, then, establishes that the
+functional equation $Tv=v$ has a unique solution in $C[0,\bar w]$, which is
+approached in the limit as $n\to \infty$ by $T^n(v^0)=v^n$, where $v^0$ is any
+point in $C[0,\bar w]$.  Because the convergence in the space $C[0,\bar w]$ is
+in terms of the metric $d_\infty$, the convergence is uniform.
+

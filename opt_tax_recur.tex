@@ -1,0 +1,632 @@
+\input grafinp3
+%\input grafinput8
+\input psfig
+
+\showchaptIDtrue
+\def\@chaptID{12.}
+
+%\eqnotracetrue
+
+%\hbox{}
+
+\def\toone{{t+1}}
+\def\ttwo{{t+2}}
+\def\tthree{{t+3}}
+\def\Tone{{T+1}}
+\def\TTT{{T-1}}
+\def\rtr{{\rm tr}}
+\footnum=0
+\chapter{Two  Ramsey Problems Revisited}\label{optaxrecur}
+\index{optimal taxation!commitment}%
+\medskip
+\section{Introduction}\label{Ramsey_appa1}%
+This chapter formulates    Ramsey problems recursively for  the Lucas and Stokey (1983) economy with complete markets
+  studied in section \use{Lucas-Stokey}  of chapter \use{optax}  and the Aiyagari, Marcet, Sargent, and Sepp\"al\"a (2002) (AMSS)
+economy  with only a risk-free bond being traded studied in section \use{sec:AMSS}. As in chapter \use{stackel}, to apply dynamic programming
+we   define  state vectors artfully. A key state variable will be a   forward-looking variable that summarizes
+optimal responses of private agents to a Ramsey plan.
+\auth{Aiyagari, Rao}\auth{Marcet, Albert}%
+\auth{Sargent, Thomas J.}\auth{Sepp\" al\" a, Juha}%
+\auth{Lucas, Robert E., Jr.} \auth{Stokey, Nancy L.}%
+
+Recursive formulations can  deepen  understandings. We describe  a sense in which
+the dimension of the state is lower in the Lucas Stokey model than in the AMSS model.  Accompanying that difference in dimension are  different dynamics of government debt.
+
+
+\section{The Lucas-Stokey economy}\label{sec:appLS}%
+We begin with the Lucas-Stokey (1983) economy.
+Throughout this chapter we  assume that  $s$ is governed by a finite state Markov chain with
+states $s\in \{1, \ldots, S\} = {\cal S} $, initial distribution $\pi_0(s_0)$,
+and  transition matrix $\Pi$, where $\Pi(s'|s) = {\rm Prob}(s_{t+1} = s'| s_t =s)$.
+Government purchases $g(s)$ are an exact time-invariant function  of
+$s$.
+The representative household's preferences are ordered by
+$$
+\sum_{t=0}^\infty\ \ \sum_{s^t} \beta^t \pi_t(s^t) u[c_t(s^t), \ell_t(s^t)] ,
+                                                            \EQN TS_prefr $$
+where $\pi_t(s^t)$ is a joint density over $s^t$ induced by $\pi_0, \Pi$.
+ Feasibility requires $n_t(s^t) + \ell_t(s^t) = 1 $ and
+ $$
+c_t(s^t) + g_t(s_t) = n_t(s^t).                        \EQN TSs_techr
+$$
+The government faces a sequence of budget constraints whose time $t \geq 0$ component is
+ $$ g(s_t) =   \tau^n_t(s^t)  n_t(s^t)
+              + \sum_{s_{t+1}} p_t(s_{t+1} | s^t) b_{t+1}(s_{t+1} | s^t)
+               - b_t(s_t | s^{t-1}),   \EQN TS_govr $$
+where  the technology pins down the pre-tax wage rate to unity, $p_t(s_{t+1}|s^t)$ is the competitive equilibrium price of
+one-period Arrow state-contingent securities, and $b_t(s_t|s^{t-1})$ is government debt falling due at time $t$, history $s^t$.
+The representative household confronts a sequence of budget constraints whose time $t\geq 0$ component is
+$$c_t(s^t) + \sum_{s_{t+1}} p_t(s_{t+1} | s^t) b_{t+1}(s_{t+1} | s^t)
+=  \left[1-\tau^n_t(s^t)\right]  n_t(s^t) + b_t(s_t | s^{t-1}) .
+         \EQN TS_bcr
+$$
+First-order conditions for the household's  problem imply
+
+$$ (1 - \tau_t^n(s^t)) = {\frac{u_l(s^t)}{u_c(s^t)} }  \EQN LSA_taxr $$
+$$ p_{t+1}(s_{t+1}| s^t) = \beta \Pi(s_{t+1} | s_t) {\frac{u_c(s^{t+1})}{u_c({s^t})}} .\EQN LSA_Arrowr $$
+% $$\EQNalign{
+% { u_\ell(s^t) \over u_c(s^t) } =& [1-\tau^n_t(s^t)] w_t(s^t),  \EQN TS_focXr;a \cr
+% p_t(s_{t+1} | s^t) =& \beta { \pi_{t+1}(s^{t+1}) \over \pi_t(s^t) }
+%                         { u_c(s^{t+1}) \over u_c(s^{t}) }, \EQN TS_focXr;b \cr}
+% $$
+% where $E_{t}$ is the mathematical expectation conditional on
+% information available at time $t$, i.e., history $s^t$:
+The single implementability condition constraining the Ramsey planner's choice of an allocation, equation \Ep{TSs_cham15},
+is
+$$ \sum_{t=0}^\infty\  \sum_{s^t} \beta^t \pi_t(s^t)
+         [u_c(s^t) c_t(s^t) - u_\ell(s^t) n_t(s^t)]
+      - u_c(s^0) b_0 = 0.                                    \EQN TSs_cham15r $$
+%It is useful to repeat equations \Ep{TSs_tech}, \Ep{LSA_tax}, and \Ep{LSA_Arrow} here:
+
+
+\subsubsection{Finding the state is an art}
+% It is useful to write the household's budget constraint in a sequential version of
+% the model in which one-period Arrow securities are traded:
+% $$ c_t(s^t) + \sum_{s_{t+1}} p_{t+1}(s_{t+1}|s^t) b_{t+1}(s_{t+1}| s^t) = (1-\tau_t^n(s^t)) n_t(s^t) + b_t(s_t | s^{t-1}). $$
+ Define  the level of government debt
+scaled by the marginal utility of consumption  today as
+$$ x_t(s^t) \equiv u_c(s^t) b_t(s_t | s^{t-1}). $$
+  Substituting from \Ep{LSA_taxr},  \Ep{LSA_Arrowr},  and the feasibility condition \Ep{TSs_techr}
+into \Ep{TS_bcr} gives
+$$   x_t(s^t)  = u_c(s^t) [ n_t(s^t) - g_t(s^t)]  - u_l (s^t) n_t(s^t) + \beta \sum_{s_{t+1}\in {\cal S}} \Pi (s_{t+1}| s_t) x_{t+1}(s^{t+1})
+ \EQN LSA_budget1r $$
+%$$ \eqalign{ u_c(s^t) [ n_t(s^t) - g_t(s^t)] &+ \beta \sum_{s_{t+1}\in {\cal S}} \Pi (s_{t+1}| s_t)  u_c(s^{t+1}) b_{t+1}(s_{t+1} | s^t)
+% \cr & = u_l (s^t) n_t(s^t) + u_c(s^t) b_t(s_t | s^{t-1}) . } \EQN LSA_budget1r $$
+  % Notice that $x_t(s^t)$ appears on the right side of \Ep{LSA_budget1} while
+%  $\beta$ times the conditional expectation of $x_{t+1}(s^{t+1})$ appears on the left side,
+ As noted in chapter \use{optax},   equation \Ep{LSA_budget1r} shares  the structure of
+ a simple asset pricing equation with $x_t$ being analogous to the price of an asset at time $t$ that appears to be  a purely ``forward-looking'' variable.
+   But using a logic encountered in chapter \use{stackel}, we shall use $x_t$ as a state variable
+ that at dates $t \geq 1$ confronts what we shall call a continuation Ramsey planner.  % at dates $t \geq 1$ as part of a Ramsey plan designed at time $t=0$.
+
+We can think of $x_t$ as indexing a competitive equilibrium with distorting taxes.  Equation \Ep{LSA_budget1r} shows implicitly how $x_t$ depends on
+on future government policy, via  marginal utilities $u_c$ and $u_l$  linked to government policies through the household's first-order necessary
+conditions \Ep{LSA_taxr} and \Ep{LSA_Arrowr}. Roberto Chang (1998) extensively used a counterpart of $x_t$ to index competitive equilibria in this way in a model that we
+discuss in chapter \use{chang}.
+\auth{Chang, Roberto}%
+
+%  Equation \Ep{LSA_budget1r}  will be an ingredient of a recursive formulation of a Ramsey problem for the % section \use{Lucas-Stokey}
+%  Lucas-Stokey (1983) model.
+
+
+%
+% \subsection{Digression on risk-free debt only issued}
+%   Assume  that $s_t$ is Markov with transition matrix $\Pi$ and that $g_t$ is a time-invariant function of $s_t$.
+% In this case, it  turns out that, as we saw in section  \use{Lucas-Stokey}, the Ramsey planner chooses to make $(c_t,n_t)$
+% time invariant functions of $s_t$ for $t \geq 1$.
+% Temporarily suppose that the Ramsey planner  happens to choose always to issue  risk-free debt only, which means that it chooses to make $b_{t+1}(s_{t+1}|s^t)$ independent
+% of $s_{t+1}$  for all $t, s^t$ and let $b_{t+1}(s_{t+1} | s_t) \equiv \tilde b(s_t)$.
+% In this special  case of risk-free debt only, equation \Ep{LSA_budget1} would become
+% $$ \eqalign{ u_c(s_t) [ n_t(s_t) - g_t(s_t)] &+ \beta \tilde b(s_t) \sum_{s_{t+1}} \Pi (s_{t+1}| s_t) u_c(s_{t+1})
+%   \cr & = u_l (s_t) n_t(s_t) + u_c(s_t) \tilde b(s_{t-1}) } \EQN LSA_budget150 $$
+% or
+% $$ \tilde b(s_{t-1}) + - g(s_t) = [1 - {\frac{u_l(s_t)}{u_c(s_t)}}] n(s_t) + R(s_t)^{-1} \tilde b(s_t) \EQN RFreebud1 $$
+% where
+% $$ R(s_t)^{-1} =  {\frac{\beta \sum_{s_{t+1}} \Pi (s_{t+1}| s_t) u_c(s_{t+1})}{u_c(s_t)}} . \EQN RFreerate $$
+% The left  side of equation \Ep{RFreebud1} equals the government's total expenditures in state $t$ including repayment of maturing bonds while the right side
+% denotes its total revenues that consist of taxes raised on labor and  revenues raised from issuing risk-free debt at the  one-period gross interest rate from
+% $t$ to $t+1$ equal  to $R(s_t)$.
+% Now let's assume that  $S=2$ and that the Ramsey planner chooses
+% to  issue a constant amount of risk-free debt always, so that $\tilde b(s_t) = \tilde b$ independently of $s_t$.  In that case,
+% equation \Ep{RFreebud1} becomes
+% $$   g(s_t) + \tilde b  = \left(1 - {\frac{u_l(s_t)}{u_c(s_t)}} \right) n(s_t) + R(s_t)^{-1} \tilde b .\EQN RFreebud2 $$
+% Here the government rolls over a constant level of  debt (or assets).
+% %The left  side of equation \Ep{RFreebud2} equals the government's total expenditures in state $t$ including repayment of maturing bonds while the right side
+% %denotes its total revenues that consist of taxes raised on labor and  revenues raised from rolling over its debt at one-period gross interest rate from
+% %$t$ to $t+1$ equal  to $R(s_t)$.
+%
+%  There exist Markov economies with $S=2$ in which the quantities chosen by a Lucas-Stokey Ramsey planner satisfy equation \Ep{RFreebud2} for a
+%  unique constant
+% risk-free government debt $\tilde b$.  In these economies, the Ramsey planner chooses not to issue or acquire state-contingent debt because  state-contingent
+% fluctuations in
+% the risk-free interest rate
+% $R(s_t)$ can deliver
+%  all of the risk-sharing with the private sector that it wants.  In such an equilibrium, $\tilde b <0$, meaning that the government
+% perpetually purchases one-period risk-free claims on the private sector.
+% When government expenditures are high  today, the risk-free interest rate between today and tomorrow is high.
+% Therefore, purchasing the same constant level of cum-interest-rate assets $- \tilde b$  is cheaper when $g$ is high.
+% The consequent fluctuations in  interest payments exactly offset the fluctuations in $g$.
+%
+
+
+
+
+\subsubsection{Intertemporal delegation}
+  To express a Ramsey plan recursively,
+we  imagine that  a time $0$ Ramsey planner is followed by a sequence of continuation Ramsey planners at times
+$t = 1, 2, \ldots$. A ``continuation Ramsey planner''  has a different objective function and faces
+different constraints than a Ramsey planner.
+%A continuation Ramsey  planner
+% faces different state variables than does a Ramsey planner because
+A key step in representing a Ramsey plan recursively is
+ to regard the marginal utility scaled government debts $x_t(s^t) = u_c(s^t) b_t(s_t|s^{t-1})$  as  predetermined quantities
+ that   continuation Ramsey planners at times $t \geq 1$ are obligated to attain.
+ A time $t\geq 1$ continuation Ramsey planner  delivers $x_t$  by choosing a suitable $n_t$ and a list of $s_{t+1}$-contingent
+continuation quantities $x_{t+1}$ to impose on   a time $t+1$ continuation Ramsey planner. A time $t \geq 1$ continuation Ramsey
+planner faces $x_t, s_t$ as state variables.
+A time $0$ Ramsey planner faces $b_0$,
+not $x_0$, as a state variable. Furthermore,  the Ramsey planner cares about $(c_0(s_0), \ell_0(s_0))$, while continuation Ramsey planners do not.
+The time $0$ Ramsey planner hands $x_1$ as a function of $s_1$  to a time
+$1$ continuation Ramsey planner.
+%; and each  time $t \geq 1$
+%continuation Ramsey planner is authorized to require that the time $t+1$ continuation Ramsey planner deliver the value of $x_{t+1}$ as a function of the  shock $s_{t+1}$.
+%The time $0$ Ramsey planner is not a continuation Ramsey planner.
+%, a key difference between a Ramsey planner and what we have chosen to call  a continuation Ramsey planner.
+These assignments of  preferences, authorities, and responsibilities across time    express the continuation Ramsey planners' obligations to
+implement their parts of  a  Ramsey plan that in chapter \use{optax}  we  designed  once-and-for-all  at time $0$.
+
+
+
+
+
+\subsubsection{Bellman equations}
+%  At time $0$, after $s_0$ has been realized, the state variables confronting the
+% Ramsey planner
+% are $b_0, s_0$, where $b_0$ is an initial level of government debt.
+Thus, as in chapter \use{stackel}, we can frame the Ramsey problem posed by Lucas and Stokey in terms of two triples, each of which consists of a Bellman equation, a set of state variables, and a set of choice variables. One triple characterizes the decisions of the Ramsey planner at  $t=0$, while the other  describes the decisions faced by each of a sequence of continuation Ramsey planners at dates $t \geq 1$.
+Thus, as in chapter \use{stackel}, we characterize the Ramsey problem recursively in terms of two subproblems.
+%
+%\medskip
+%
+% \item{} Subproblem 1: after $s_t$ has been realized at time $t \geq 1$, the state variables confronting the
+%time $t$ continuation Ramsey planner  are $(x_t, s_t)$.  Let $V(x, s)$ be the  value of a continuation
+%Ramsey plan at $x_t = x, s_t =s$ for $t \geq 1$.
+%\medskip
+%\item{} Subproblem 2: Let $W(b, s)$ be the value of a Ramsey plan at time $0$ at $b_0=b$ and $s_0 = s$. We now present Bellman equations
+%to be satisfied by the continuation Ramsey plan value function  $V(x,s)$ and the Ramsey plan value function $W(b,s)$.
+%
+%\medskip
+%  We work  backwards by   constructing $V(x,s)$ first, then $W(b,s)$.
+
+\subsubsection{Subproblem 1: Continuation Ramsey problem}
+ After $s_t$ has been realized at time $t \geq 1$, the state variables confronting the
+time $t$ continuation Ramsey planner  are $(x_t, s_t)$.  Let $V(x, s)$ be the  value of a continuation
+Ramsey plan at $x_t = x, s_t =s$ for $t \geq 1$.
+The  Bellman equation for a time $t \geq 1$ continuation Ramsey planner is
+$$ V(x, s) = \max_{n, \{x'(s')\}} u(n-g(s), 1-n) + \beta \sum_{s'\in S} \Pi(s'| s) V(x', s') \EQN LSA_Bellman1 $$
+where  maximization over $n$ and the  $S$ elements of $x'(s')$ is subject to the
+single implementability constraint for $t \geq 1$
+$$ x = u_c(n-g(s)) -  u_l n + \beta \sum_{s' \in {\cal S}} \Pi(s'|s) x'(s')   \EQN LSA_Bellman1cons $$
+coming from restriction \Ep{LSA_budget1}.
+Here $u_c$ and $u_l$ are today's  marginal utilities.\NFootnote{Equation \Ep{LSA_Bellman1cons} expresses a competitive equilibrium $x$ today
+in terms of a current period allocation $(c,n)$ and a continuation competitive equilibrium $x'$ for each state $s'$ tomorrow. See
+Chang (1998) and chapter \use{chang} for another application of this idea.}
+%$u_{c,t}$ and $u_{l,t}$, respectively, and
+%$u_c(n-g)$ again denotes $u_c n - u_c g$, i.e., the marginal utility of consumption times $n$ minus the marginal utility of consumption times $g$.
+For each given value of $x, s$, the continuation Ramsey planner chooses $n$ and  one $x'(s')$ for each $s' \in {\cal S}$.
+Associated with a value function $V(x,s)$ that solves  Bellman equation \Ep{LSA_Bellman1} are $S+1$ time-invariant  policy functions
+$$ \eqalign{ n_t & = f(x_t, s_t), \quad t \geq 1 \cr
+             x_{t+1}(s_{t+1}) & = h(s_{t+1}; x_t, s_t), \, s_{t+1} \in  {\cal S}, \, t \geq 1.} \EQN RRpolicyt $$
+
+\subsubsection{Subproblem 2:  Ramsey problem}
+ Let $W(b, s)$ be the value of a Ramsey plan at time $0$ at $b_0=b$ and $s_0 = s$.
+Let $x'(s_1)$ be the value of $x$ next period when next period's value of $s$ is $s_1$.
+The Bellman equation for the time $0$ Ramsey planner is
+$$ W(b_0, s_0) = \max_{n_0, \{x'(s_1)\}} u(n_0 - g_0, 1 - n_0) + \beta \sum_{s_1 \in {\cal S}} \Pi(s_1| s_0) V( x'(s_1), s_1)  \EQN LSA_Bellman2 $$
+where  maximization over $n_0$ and the $S $ elements of $x'(s_1)$ is subject to the time $0$ implementability constraint
+$$   u_{c,0} b_0 = u_{c,0} (n_0 - g_0) - u_{l,0} n_0  + \beta \sum_{s_1\in {\cal S}} \Pi(s_1 | s_0) x'(s_1) \EQN Bellman2cons $$
+coming from restriction \Ep{LSA_budget1} at time $0$.
+Associated with a value function $W(b_0, n_0)$ that solves Bellman equation \Ep{LSA_Bellman2} are $S +1 $
+time $0$ policy functions
+$$ \eqalign{ n_0 &= f_0(b_0, s_0) \cr
+             x_1(s_1) & = h_0(s_1; b_0, s_0). } \EQN RRpolicy0 $$
+Notice the appearance of  state variables $(b_0, s_0)$ in the time $0$ policy functions
+\Ep{RRpolicy0} for a Ramsey planner versus  $(x_t, s_t)$ in the policy functions for   time $t \geq 1$ continuation  Ramsey planners.
+As we shall discuss below, the presence of these distinct state variables is the device that allows
+us to represent and compute a  Ramsey plan  recursively despite its  time inconsistency.\NFootnote{Please recall our discussion
+of Edward C.
+ Prescott's 1977 paper
+entitled ``Should Control  Theory Be Used for Economic Stabilization?'' in chapter \use{overview} and how Prescott's pessimism about the applicability
+of recursive approaches to optimal policy design problems
+did not survive for long. % eventually led to ``dynamic programming squared'' (to be covered in detail in chapters
+% \use{stackel}-% \use{socialinsurance}, \use{socialinsurance2}, \use{uninsur1}, \use{credible}, \use{chang}  and
+% \use{wldtrade}).
+Kydland and Prescott (1980) corrected Prescott (1977) by
+ constructing  a Bellman equation for continuation Ramsey planners at times $t \geq 1$.}
+%in the spirit of the ones we are studying here.}
+\index{dynamic programming squared}%
+\auth{Prescott, Edward C.}%
+\auth{Kydland, Finn}%
+
+
+
+\specsec{Remark:} The value function $V(x_t, s_t)$ of the time $t$ continuation Ramsey planner   equals
+$E_t \sum_{\tau = t}^\infty \beta^{\tau - t} u(c_t, l_t)$, where  consumption and leisure processes are evaluated along the original time $0$ Ramsey plan.
+
+
+
+
+
+\subsubsection{First-order conditions}
+
+Attach a Lagrange multiplier $\Phi_1(x,s)$ to constraint \Ep{LSA_Bellman1cons} and a Lagrange multiplier
+$\Phi_0$ to constraint \Ep{Bellman2cons}.  Working backwards, the first-order conditions for the time $t \geq 1$ constrained maximization
+problem on the right side of  the continuation Ramsey planner's Bellman equation \Ep{LSA_Bellman1} are
+$$ \beta \Pi(s'|s) V_x (x', s') - \beta \Pi(s' | s) \Phi_1 = 0 \EQN LSARxt $$
+for $x'(s')$ and
+$$ (1 + \Phi_1) (u_c - u_l ) + \Phi_1 \left[ n (u_{ll} - u_{lc}) + (n-g(s)) (u_{cc} - u_{lc})  \right] = 0  \EQN LSARnt $$
+for $n$.
+Given $\Phi_1$, equation \Ep{LSARnt} is one equation to be solved for $n$ as a function of $s$ (or of $g(s)$).
+Equation \Ep{LSARnt} implies $ V_x(x', s')= \Phi_1$, while an envelope condition is $V_x(x,s) = \Phi_1$, so it follows that
+$$ V_x(x', s') = V_x(x,s) = \Phi_1(x,s) . \EQN LSAenv $$
+
+
+For the time $0$ problem on the right side of the Ramsey planner's Bellman equation \Ep{Bellman2cons}, the first-order conditions
+are
+$$ V_x(x(s_1), s_1) = \Phi_0 \EQN LSAx0 $$
+for $x(s_1), s_1 \in  {\cal S}$, and
+%$$  u_{c,0} - u_{n,0}  + \Phi_0 \bigl[ u_{l,0} - u_{c,0} + n_0 (u_{lc,0} - u_{ll,0})  \quad  - (n_0 - g_0) (u_{cc,0} - u_{cl, 0}) + (u_{cc,0} - u_{cl,0} ) b_0  \bigr] =0  \EQN LSAn0
+%$$
+\offparens
+$$ \EQNalign{  (1 + \Phi_0) (u_{c,0} - u_{n,0}) & + \Phi_0 \bigl[ n_0 (u_{ll,0} - u_{lc,0} ) +  (n_0 - g(s_0)) (u_{cc,0} - u_{cl,0}) \Bigr] \cr &
+  \quad \quad \quad -  \Phi_0 (u_{cc,0} - u_{cl,0}) b_0  =  0 \EQN LSAn0}  $$
+\autoparens
+Compare  first-order conditions
+\Ep{LSARnt} for $t \geq 1$ and \Ep{LSAn0} for $t=0$.  An additional term is  present in \Ep{LSAn0} except in
+the three special cases in which  (a) $b_0 = 0$, or (b) $u_c$ is constant (i.e., preferences are quasi-linear  in consumption),  or
+(c) initial government assets are sufficiently large to finance all government purchases with interest earned from those assets, so that $\Phi_0= 0$.
+Except in these special cases, %s means that when $b_0  \neq  0$ and $\Phi_0 \neq 0$,
+the  allocation  and the labor tax rate as functions
+of $s_t$ differ between dates $t=0$ and subsequent dates $t \geq 1$.
+The presence of the extra term $\Phi_0 (u_{cc,0} - u_{cl,0}) b_0 $ in the first-order condition at time $0$ expresses the incentive for the Ramsey planner
+to manipulate Arrow-Debreu prices in order to affect $u_{c, 0} b_0 = x_0$.
+
+
+Thankfully, the first order conditions  here   agree with  first-order conditions  \Ep{TSs_foc}  derived
+ when we   formulated
+a Ramsey plan in the space of sequences in section \use{Lucas-Stokey} of chapter \use{optax}.
+
+\subsubsection{State variable degeneracy}
+Equations \Ep{LSAenv} and \Ep{LSAx0}   imply that
+$$ \Phi_0 = \Phi_1$$
+and that
+$$ V_x(x_t, s_t) = \Phi_0   \EQN FONCx $$
+for all $t \geq 1$.
+% When $V$ is concave in $x$, equations \Ep{LSAenv} and  imply that there is a single function $\psi$ such that $x' = \psi(s')$ and $x = \psi(s)$.
+When $V$ is concave in $x$, equation \Ep{FONCx} implies  ``state-variable degeneracy'' along a Ramsey plan in the sense that
+ for $t \geq 1$,
+$x_t$ will be a time-invariant function of $s_t$.  Given $\Phi_0$, this function mapping $s_t$
+into $x_t$  can be expressed as a vector $\vec x$ that solves
+equation \Ep{LSA_xsoln} for  $n$ and $c$ as functions of $g$ that are associated
+with $\Phi = \Phi_0$.
+
+
+
+
+
+\subsubsection{Symptom and source  of time inconsistency}
+
+While the marginal utility adjusted level of government debt $x_t$ is  a key state variable for the continuation Ramsey planners at  $t \geq 1$,
+it is  not a state variable at time $0$.  The time $0$ Ramsey planner faces $b_0$,  not $x_0 = u_{c,0} b_0$, as a state variable.
+The discrepancy in state variables faced by the time $0$ Ramsey planner and the  time $t \geq 1$ continuation
+Ramsey planners captures the differing obligations and incentives
+faced by the time $0$ Ramsey planner and the time $t \geq 1$ continuation Ramsey planners.  While the time $0$ Ramsey
+planner is obligated to honor government  debt $b_0$  measured in time $0$ consumption goods,
+its choice of a policy  can alter the marginal utility of time $0$ consumption goods.  Thus, the time $0$ Ramsey planner can manipulate
+the {\it value\/} of government debt as measured by $u_{c,0} b_0$.  In contrast, time $t \geq 1$ continuation Ramsey planners
+are obligated {\it not\/} to alter  values of  debt, as measured by $u_{c,t} b_t$, that they inherit from an earlier Ramsey planner or continuation Ramsey planner.
+
+When  government expenditures  $g_t$ are  a time invariant function of a Markov state $s_t$, a Ramsey plan and associated Ramsey allocation
+feature marginal utilities of consumption  $u_c(s_t)$
+that, given $\Phi$, for $t \geq 1$  depend only on $s_t$, but that for $t=0$ depend on $b_0$ as well.  This means that $u_c(s_t)$ will be a time invariant
+function of $s_t$ for $ t\geq 1$, but except when $b_0 = 0$, a different function for $t=0$.  This in turn means that prices of one-period Arrow securities
+$p_t(s_{t+1} | s_t) = p(s_{t+1}|s_t)$ will be the {\it same\/} time invariant functions of $(s_{t+1}, s_t)$ for $t \geq 1$, but a different function $p_0(s_1|s_0)$
+for $t=0$, except when $b_0=0$.  The differences between these time $0$ and time $t \geq 1$ objects reflect the workings of the Ramsey planner's incentive
+to manipulate Arrow security prices and, through them, the value of initial government debt $b_0$.
+
+%
+%
+% \subsubsection{Absence of history dependence}
+% %XXXXXX {\bf Tom: check this statement of the logical implication.}
+% %Equations \Ep{LSA_xsoln} and \Ep{LSA_bsoln} have the striking implication that for $t \geq 1$,
+% Under a Ramsey plan, for $t \geq 1$ the level $b_t$  of government debt
+% depends exclusively on $s_t$ and is   independent of the history $s^{t-1}$ of shocks to government expenditures. Of course, as intermediated
+% through the Lagrange multiplier $\Phi$ on the time $0$ implementability constraint,
+%  $b_t$ does depend on the function  $g(s)$ and on the  probability distributions $\Pi_t(s^t)$ through their influence on  the
+%  stochastic process for $g_t$; but it does
+%  not depend on the particular history $s^t$ leading to $s_t$.
+
+
+%\section{Bellmanizing a Ramsey plan}
+
+
+\section{Recursive formulation of AMSS model}
+
+We now describe a recursive version of  the Aiyagari, Marcet, Sargent, and Sepp\"al\"a (2002)
+economy %without capital and with only a risk-free bond being traded,  the model
+that we studied in section \use{sec:AMSS}.
+\auth{Aiyagari, Rao}\auth{Marcet, Albert}%
+\auth{Sargent, Thomas J.}\auth{Sepp\" al\" a, Juha}%
+The AMSS economy is identical with the Lucas-Stokey (1983) economy except that instead of trading history-contingent securities or Arrow securities,
+the government and household are allowed to trade only a one-period risk-free bond. As we saw in section \use{sec:AMSS}, from the point of view
+of the Ramsey planner, the restriction to one-period risk-free securities leaves intact the single implementability constraint on allocations in the
+Lucas-Stokey economy, while adding  measurability constraints on functions of tails of  allocations at each
+time and history, functions that represent the present values of government surpluses. In this section, we explore how these
+measurability  constraints alter the Bellman equations for a time $0$ Ramsey planner and for time $t \geq 1$, history $s^t$ continuation Ramsey planners.
+
+
+\subsubsection{Recasting state variables}
+
+In the AMSS setting, the government  faces a sequence of  budget constraints
+$$   \tau_t^n(s^t) n_t(s^t) + T_t(s^t) +  b_{t+1}(s^t)/ R_t (s^t) =  g_t + b_t(s^{t-1})  ,$$
+where $R_t(s^t)$ is the gross risk-free rate of interest between $t$ and $t+1$ at history $s^t$ and $T_t(s^t)$ are nonnegative transfers.
+In most of this chapter, we shall set transfers   to zero.
+%{\bf XXXXX Tom: add appropriate qualifications and refinements here.}
+When $T_t(s^t) \equiv 0$,
+the household faces a sequence of budget constraints
+$$ b_t(s^{t-1}) + (1-\tau_t(s^t)) n_t(s^t) = c_t(s^t) + b_{t+1}(s^t)/R_t(s^t)  .  \EQN eqn:AMSSapp1  $$
+As we saw in section \use{sec:AMSS},  the household's first-order conditions are
+$u_{c,t} = \beta R_t E_t u_{c,t+1}$ and $(1-\tau_t^n) u_{c,t} = u_{l,t}$.  Using these to eliminate
+$R_t$ and $\tau_t^n$ from \Ep{eqn:AMSSapp1} gives
+$$ b_t(s^{t-1}) + { \frac{u_{l,t}(s^t)}{u_{c,t}(s^t)}} n_t(s^t) = c_t(s^t) + {\frac{\beta (E_t u_{c,t+1}) b_{t+1}(s^t)}{u_{c,t}}}
+  \EQN eqn:AMSSapp2a $$
+or
+$$ u_{c,t}(s^t) b_t(s^{t-1}) + u_{l,t}(s^t) n_t(s^t) = u_{c,t}(s^t) c_t(s^t) + \beta (E_t u_{c,t+1}) b_{t+1}(s^t) . \EQN eqn:AMSSapp2 $$
+For the purpose of posing a recursive version of the Ramsey problem, define
+$$ x_t \equiv \beta b_{t+1}(s^t) E_t u_{c,t+1} = u_{c,t} (s^t) {\frac{b_{t+1}(s^t)}{R_t(s^t)}} \EQN eqn:AMSSapp3 $$
+and represent the household's budget constraint \Ep{eqn:AMSSapp2} at time $t$, history $s^t$  as
+% the value of government debt
+% $ {\frac{b_{t+1}(s^t)}{R_t(s^t)}}$ at time $t$.}
+$$ {\frac{u_{c,t} x_{t-1}}{\beta E_{t-1} u_{c,t}}} = u_{c,t} c_t - u_{l,t} n_t + x_t   \EQN eqn:AMSSapp4 $$
+for $t \geq 1$.
+
+\subsubsection{Measurability constraints}
+% Recall that in the Lucas-Stokey model, we defined
+% $ x_t(s^t) = u_{c,t}(s^t) b_t(s^t)$ where the Ramsey planner chooses $b_t(s^t)$ at time $t-1$.
+% {\bf XXXXXX: Tom -- the following statement seems wrong. } By way of contrast, for the AMSS model
+% we define $x_t = u_{c,t}(s^t) {\frac{b_{t+1}(s^t)}{R_t(s^t)}} $, where here the time $0$ Ramsey planner or time $t \geq 1$ continuation Ramsey
+% planner predetermines $x_t$ as a function of variables known at $t-1$, namely, $(x_{t-1}, s_{t-1})$.
+Write equation \Ep{eqn:AMSSapp2a} as
+$$ b_t(s^{t-1})  = c_t(s^t) -  { \frac{u_{l,t}(s^t)}{u_{c,t}(s^t)}} n_t(s^t) + {\frac{\beta (E_t u_{c,t+1}) b_{t+1}(s^t)}{u_{c,t}}} .
+  \EQN eqn:AMSSapp2b $$
+The right side of equation \Ep{eqn:AMSSapp2b}
+ expresses the time $t$ value of government debt in terms of a linear combination of terms whose individual components are
+measurable with respect to $s^t$
+but whose sum has to equal $b_t(s^{t-1})$ and so be measurable with respect to $s^{t-1}$.
+These are the measurability constraints, described in
+section \use{sec:AMSS},   that the AMSS model
+adds  to  the single implementation constraint \Ep{LSA_Bellman1cons} imposed  by the Lucas and Stokey model.\NFootnote{These measurability constraints put the equilibrium allocation in a ``marketable subspace'' in the sense of Duffie and Shafer (1985).}
+\index{measurability constraints!AMSS model}%
+
+
+\subsubsection{Bellman  equations}
+% We continue to assume that the Markov state $s$ has transition matrix $\Pi(s' | s)$ and that government purchases
+% are an exact function of $s$.
+Let $V(x_-, s_-)$ be the  continuation value of a continuation
+Ramsey plan at $x_{t-1} = x_-, s_{t-1} =s_-$ for $t \geq 1$.
+Let $W(b, s)$ be the value of the Ramsey plan at time $0$ at $b_0=b$ and $s_0 = s$.
+
+For $t \geq 1$, the value function for a continuation Ramsey planner satisfies the Bellman equation
+$$ V(x_-,s_-) = \max_{\{n(s), x(s)\}} \sum_s \Pi(s|s_-) \left[ u(n(s) - g(s), 1-n(s)) + \beta V(x(s),s) \right] \EQN eqn:AMSSapp5 $$
+subject to the following collection of implementability constraints, one for each $s \in {\cal S}$:
+$$ {\frac{u_c(s) x_- }{\beta  \sum_{\tilde s} \Pi(\tilde s|s_-) u_c(\tilde s) }} = u_c(s) (n(s) - g(s)) - u_l(s) n(s) + x(s) . \EQN eqn:AMSSapp6 $$
+We attach a distinct  Lagrange multiplier $\mu(s)$  to implementability  constraint \Ep{eqn:AMSSapp6} for each $s$.
+ A continuation  Ramsey planner solves an {\it ex ante\/} problem.  A continuation  Ramsey planner at $t \geq 1$ takes
+$(x_{t-1}, s_{t-1}) = (x_-, s_-)$ as given and chooses $(n_t(s_t), x_t(s_t)) = (n(s), x(s))$ for $s \in  {\cal S}$ before $s_t$ is realized.
+%By way of contrast, at $t=0$, the Ramsey planner solves an {\it ex post\/} problem in the sense that he
+The Ramsey planner takes
+$(b_0, s_0)$ as given and chooses $(n_0, x_0)$.
+The Bellman equation for the time $t=0$ Ramsey planner is
+$$ W(b_0, s_0) = \max_{n_0, x_0} u(n_0 - g_0, 1-n_0) + \beta V(x_0,s_0) \EQN eqn:AMSSapp100 $$
+subject to
+$$ u_{c,0} b_0 = u_{c,0} (n_0-g_0) - u_{l,0} n_0 + x_0 . \EQN eqn:AMMSSapp101 $$
+
+% \medskip
+%
+% \specsec{Remark:} The continuation Ramsey planner in the Lucas Stokey economy faces an {\it ex post\/} problem while the
+% continuation Ramsey planner in the AMSS economy  faces an {\it ex ante\/}  problem. {\bf Tom XXXXX: add to, elaborate, and possibly move to
+% summary section.}
+
+
+\subsubsection{Martingale replaces state-variable degeneracy}
+
+Let $\mu(s|s_-) \Pi(s|s_-)$ be a Lagrange multiplier on constraint \Ep{eqn:AMSSapp6} for state $s$.  The continuation Ramsey planner's first-order condition
+with respect to $x(s)$ is
+$$ \beta V_x(x(s),s) = \mu(s|s_-) .\EQN eqn:AMSSapp7  $$
+Applying the envelope theorem to  Bellman equation \Ep{eqn:AMSSapp5} gives
+$$ V_x(x_-,s_-) = \sum_s \Pi(s|s_-) \mu(s|s_-) {\frac{u_c(s)}{\beta \sum_{\tilde s} \Pi(\tilde s|s_-) u_c(\tilde s) }} . \EQN eqn:AMSSapp8 $$
+Equations \Ep{eqn:AMSSapp7} and \Ep{eqn:AMSSapp8} imply that
+$$ V_x(x_-, s_-) = \sum_{s} \left( \Pi(s|s_-) {\frac{u_c(s)}{\sum_{\tilde s} \Pi(\tilde s| s_-) u_c(\tilde s)}} \right) V_x(x(s), s) ,\EQN eqn:AMSSapp9 $$
+which states that $V_x(x, s)$ is a `risk-adjusted martingale', meaning that it is  a martingale with respect to the probability distribution over $s^t$ sequences
+generated by the twisted transition probability matrix:\NFootnote{It is easy to verify that $\check \Pi(s| s_-)$ is a legitimate Markov transition matrix, in particular,
+that the transition probabilities are nonnegative and sum  to $1$ for each $s_-$.}
+$$ \check \Pi(s|s_-) \equiv \Pi(s|s_-) {\frac{u_c(s)}{\sum_{\tilde s} \Pi(\tilde s| s_-) u_c(\tilde s)}}.  $$
+
+\medskip
+
+\specsec{Remark:}  Suppose that instead of imposing $T_t = 0$, we impose
+a nonnegativity constraint $T_t\geq 0$ on  transfers and consider the special case of quasi-linear preferences,
+$u(c,l)= c + H(l)$.   In this case,  $V_x(x,s)\leq 0$  is a non-positive martingale.  By the martingale convergence
+ theorem, $V_x(x,s)$ converges almost surely.\NFootnote{For a discussion of the martingale convergence theorem see  the appendix to chapter \use{selfinsure}.}
+\index{martingale!convergence theorem}%
+When  the Markov chain $\Pi(s| s_-)$ and the function $g(s)$ are such that $g_t$ is perpetually random,
+$V_x(x, s)$ almost surely converges to zero.  %\medskip
+%\noindent
+For  quasi-linear preferences, the first-order condition with respect to $n(s)$ becomes
+$$ (1-\mu(s|s_-) ) (1 - u_l(s)) + \mu(s|s_-) n(s) u_{ll}(s) =0  .$$
+Since $\mu(s|s_-) = \beta V_x(x(s),x) $ converges to zero, in the limit $u_l(s)= 1 =u_c(s)$, so that $\tau(x(s),s) =0$. In the limit, the government
+accumulates sufficient assets
+to finance all expenditures from earnings on those assets, returning any excess revenues to the household as nonnegative lump sum transfers.
+
+\medskip
+
+
+\specsec{Remark:} Along a Ramsey plan, the state variable $x_t = x_t(s^t, b_0)$  becomes a function of the history $s^t$ and also
+the initial government debt $b_0$.
+
+
+\medskip
+
+\specsec{Remark:} In our recursive formulation of the  Lucas-Stokey model in section \use{sec:appLS}, we found that the counterpart to $V_x(x,s)$ is time invariant
+and equal to
+the Lagrange multiplier on the single time $0$ implementability constraint present in the original version of that model cast in terms of choice of sequences.
+We saw that the time invariance of $V_x(x,s)$ in the Lucas-Stokey model is the source of the state variable degeneracy (i.e., $x_t$ is an exact function of
+$s_t$), a key feature of the Lucas-Stokey model.
+% Here $V_x(x_t,s_t)$, which from equation \Ep{eqn:AMSSapp7} equals a scaled (by transition probabilities
+% and discount factor) version of the Lagrange multiplier on the state $(x(s),s)$ Lagrange multiplier confronting the state $(x_-,s_-)$
+% continuation Ramsey planner.
+That $V_x(x,s)$ varies over time according to a twisted martingale means that there is no state-variable degeneracy in the AMSS model.
+Both $x$ and $s$ are needed to describe the state.  This property of the
+AMSS model is what transmits a twisted martingale-like component  to consumption, employment, and the tax rate.
+\medskip
+
+
+\subsection{Special case of AMSS model}\label{sec:specialcaseAMSS}%
+That the  Ramsey allocation for the AMSS model differs from the Ramsey allocation of the Lucas-Stokey model is a symptom that the measurability
+constraints \Ep{eqn:AMSSapp6} bind.
+Following Bhandari, Evans, Golosov, and Sargent (2017) (henceforth BEGS), we now consider a special case of the AMSS model in which these constraints don't bind.
+Here  the AMSS Ramsey planner chooses not to issue state-contingent debt, though he is free to do so.  The environment is one in which
+fluctuations in the risk-free interest rate provide all  the insurance that the Ramsey planner wants.
+
+Following BEGS, we set $S=2$ and assume that
+the state $s_t$ is i.i.d., so that the transition matrix $\Pi(s'|s) = \Pi(s')$ for $s=1,2$.
+Following BEGS, it is useful to consider  the following special case of the implementability constraints  \Ep{eqn:AMSSapp6} evaluated at the constant
+value  of the state variable  $x_-= x(s) = \check x$:
+$$ {\frac{u_c(s) \check x}{\beta \sum_{\tilde s} \Pi(\tilde s) u_c(\tilde s) }} = u_c(s) (n(s) - g(s) ) - u_l(s) n(s) + \check x, \ s=1,2. \EQN eqn_AMSS_app_100 $$
+We   guess and verify that the scaled Lagrange multiplier $\mu(s)=\mu$ is a constant independent of $s$. At a fixed $x$,  because $V_x(x, s)$ must be independent of $s_-$, equation \Ep{eqn:AMSSapp9} becomes
+$ V_x(\check x) = \sum_{s} \left( \Pi(s) {\frac{u_c(s)}{\sum_{\tilde s} \Pi(\tilde s) u_c(\tilde s)}} \right) V_x(\check x) = V_x(\check x) ,$%QN eqn:AMSSapp109 $$
+which confirms that equation \Ep{eqn:AMSSapp7} becomes  $\mu = \beta V_x(\check x)$ for a  constant  $\mu$.
+For the continuation Ramsey planner facing implementability constraints \Ep{eqn_AMSS_app_100}, the first-order conditions with respect to $n(s)$ become
+$$ \EQNalign{ & u_c(s) - u_l(s)  \mu \Bigl\{ {\frac{\check x}{\beta \sum_{\tilde s} \Pi(\tilde s) u_c(\tilde s)}} (u_{cc}(s) - u_{cl}(s) ) - u_c(s) \cr
+       &  \ \ - n(s) (u_{cc}(s) - u_{cl}(s)) - u_{lc}(s) n(s) + u_l(s) \Bigr\}  = 0.\EQN eqn:AMSSapp101 }  $$
+Equations  \Ep{eqn_AMSS_app_100} and \Ep{eqn:AMSSapp101}  are four equations in the four  unknowns $n(s), s=1,2$, $\check x$, and $\mu$. Under some regularity conditions
+on  the period utility function  $u(c,l)$, BEGS show that these equations have a unique solution featuring a negative value of $\check x$.
+Consumption $c(s)$ and the flat-rate tax on labor $\tau(s)$ can then be constructed
+as history-independent functions of $s$.
+\auth{Evans, David G.}%
+\auth{Bhandari, Anmol}%
+\auth{Golosov, Mikhail}%
+\auth{Sargent, Thomas J.}%
+In this AMSS economy, $\check x = x(s) = u_c(s) {\frac{b_{t+1}(s)}{R_t(s)}}$.  The risk-free interest rate, the tax rate, and the marginal
+utility of consumption fluctuate with $s$, but $x$ does not and neither does  $\mu(s)$. The labor tax rate and
+the allocation depend only on the current value of $s$.
+
+For this special AMSS economy to be in a steady state from time $0$ onward, it is necessary that  initial debt $b_0$ satisfy the
+time $0$ implementability
+constraint \Ep{eqn:AMMSSapp101} at the value $\check x$ and the realized value of $s_0$.  We can solve for this level of $b_0$ by
+plugging the $n(s_0)$ and $\check x$
+that solve our four equation system  \Ep{eqn_AMSS_app_100}-\Ep{eqn:AMSSapp101}  into
+$ u_{c,0} b_0 = u_{c,0} (n_0-g_0) - u_{l,0} n_0 + \check x $ and solving for $b_0$.
+This  $b_0$ assures that a steady state $\check x$ prevails from time $0$ on.
+
+
+\subsubsection{Relationship to a Lucas-Stokey economy}
+The constant value $\mu$ of the Lagrange multipliers $\mu(s)$ across states $s$  in the Ramsey plan for our special AMSS economy is a tell tale sign that
+the measurability restrictions imposed on the Ramsey allocation by the requirement that government debt must be risk free are slack.
+When they bind, those
+measurability restrictions  cause the AMSS tax policy and allocation to be history dependent -- that's what activates flucations in the risk-adjusted martingale.
+Because  those measurability conditions are  slack in  this special AMSS economy, the same Ramsey allocation is attained in a corresponding complete markets
+ a Lucas-Stokey economy that starts
+from a particular initial  government debt.  The setting of  $b_0$ for the corresponding Lucas-Stokey
+implementability constraint \Ep{Bellman2cons} solves
+$ u_{c,0} b_0 = u_{c,0}(n_0 - g_0) - u_{l,0} + \beta \check x$.
+In this Lucas-Stokey economy, although the Ramsey planner is free to issue state-contingent debt, it chooses not to and instead  issues  only risk-free debt.
+It achieves the
+ risk-sharing with the private sector that it wants by altering the amounts of one-period risk-free debt that it issues at each current state,
+  while taking advantage of  the fluctuations in the  equilibrium interest
+rate that its tax policy induces.
+
+\subsubsection{Convergence to the special case}
+In an  i.i.d., $S=2$  AMSS economy in which  the initial $b_0$ does not equal the special value described in the previous subsection, $x$ fluctuates and is history-dependent.
+%namely, a value at the implied stationary distribution of risk free government debt
+%affiliated with the fixed  $\check x$ determined above,
+The Lagrange multiplier $\mu_s(s^t)$ is a non trivial risk-adjusted martingale and the allocation and distorting tax rate
+are both  history dependent.  However, BEGS describe conditions  under which such an i.i.d., $S=2$ AMSS economy in which
+the representative agent dislikes consumption risk  converges to a
+Lucas-Stokey economy in the sense that $x_t \rightarrow \check x$ as $t \rightarrow \infty$.
+The  following subsection  displays a numerical example that exhibits convergence.
+
+
+
+\subsection{Computed examples}%\label{sec:AMSSexamples}}
+
+Figures \Fg{AMSS1}, \Fg{AMSS2}, and \Fg{AMSS3} report features of a Ramsey plan for an AMSS economy with
+one-period utility function
+$$ u(c,l) = {\frac{c^{1-\sigma}}{1-\sigma}} - {\frac{l^{1+\gamma}}{1+\gamma}} . $$
+We set $\beta = .96, \gamma = 2$, and $\sigma$ equal to either $0$ (this is the
+quasi-linear case of AMSS) or $1.5$ (here the representative consumer is averse to
+consumption fluctuations).  We set
+$S=2$ with $g(s_1) = .05$ and $g(s_2) = .15$ and assume that $s_t$ is an iid process with
+the probability of both states equalling $.5$.  We computed the objects shown in figures \Fg{AMSS1}--\Fg{AMSS3}
+by numerically solving  Bellman equations \Ep{eqn:AMSSapp5} and \Ep{eqn:AMSSapp6}.
+
+
+\midfigure{AMSS1}
+\centerline{\epsfxsize=3true in\epsffile{AMSS1.eps}}
+\caption{Two AMSS economies. Dashed line: $\sigma=0$; solid line: $\sigma = 1.5$. Outcomes converge to those associated with  first-best allocation for the
+quasi-linear ($\sigma =0$) economy, while they converge to an allocation associated with a complete markets economy for the economy with risk-aversion ($\sigma=1.5$).}
+\infiglist{AMSS1}
+\endfigure
+
+
+\midfigure{AMSS2}
+\centerline{\epsfxsize=3true in\epsffile{AMSS2.eps}}
+\caption{Decision rule for $x_{t+1}- x_t$ as a function of $x_t$ and $s_t$ for AMSS $\sigma=0$ economy.
+Dashed line: $g_t$ is high; solid line, $g_t$  is low.}
+\infiglist{AMSS2}
+\endfigure
+
+
+
+\midfigure{AMSS3}
+\centerline{\epsfxsize=3true in\epsffile{AMSS3.eps}}
+\caption{Decision rule for $x_{t+1}- x_t$ as a function of $x_t$ and $s_t$ for AMSS $\sigma=1.5$ economy.
+Dashed line: $g_t$  is high; solid line, $g_t$  is low. }
+\infiglist{AMSS3}
+\endfigure
+
+%
+%
+Figure \Fg{AMSS1} reports outcomes from
+long simulations of the two AMSS economies, the quasi-linear ($\sigma=0)$ economy shown in the dashed line and the
+ $\sigma=1.5$ economy in the solid line.  As expected from the AMSS results summarized in section \use{sec:AMSS} of chapter \use{optax}, outcomes in the  quasi-linear economy
+converge to those
+associated with a first-best allocation. The government accumulates sufficient risk-free claims on the private sector  to finance all subsequent government expenditures
+with interest earned from those claims. After accumulating enough assets,
+the government sets the tax rate to zero and rebates excess earnings
+from assets in the form of  lump sum transfers to the representative agent.
+
+Asymptotic outcomes  for the $\sigma = 1.5$ economy display the striking outcome that they too converge, but not to a first-best allocation.  Instead, they converge to the
+fixed point in $x$  associated with a Lucas-Stokey complete markets allocation.
+
+Figure \Fg{AMSS2} displays the Ramsey plan decision rule for $x_{t+1}$  for the $\sigma=0$ quasi-linear AMSS economy,  while \Fg{AMSS3} displays
+ the decision rule for the $\sigma =1.5$ economy.  The figures display $x_{t+1} - x_t$ as a function of $x_t$ and $g_t$.   Rest points  for $x$ occur where the branch of
+the decision rule affiliated with  high $g$ intersects the branch affiliated with low $g$ at  $x_{t+1} - x_t$ equal to zero.
+For the quasi-linear economy, the branches intersect at a value of  $x$ and an implied
+level of government debt that is sufficient to finance all subsequent government expenditures. Further, when
+$x_t$ exceeds this level,  the decision rules on average point downward, imparting a negative drift to $x_t$ until it reaches the level associated with enough
+government assets capable of sustaining a first-best allocation.  Notice that after $x_t$ reaches this level,  the tax rate equals zero.
+
+
+For the figure \Fg{AMSS3} AMSS economy with $\sigma=1.5$, the branches of the decision rule for $x_{t+1} -x_t$ intersect at coordinate  value  zero at an ordinate value of $x$ that,
+while negative, exceeds the
+level for the quasi-linear  economy.  This $x$ is affiliated with a Lucas-Stokey economy.  After $x_t$ has converged to this level,
+the tax rate is positive and constant. That it does not fluctuate
+with $g$ is partly a consequence of the specification of the one-period utility function.
+
+\section{Concluding remarks}
+
+The next several chapters  construct Bellman equations for diverse applications in which  implementability conditions inherited from various frictions  require
+us to choose state variables artfully.
+
+

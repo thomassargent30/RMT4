@@ -1,0 +1,714 @@
+
+%\input grafinp3
+
+%\input grafinput8
+%\input psfig
+%\eqnotracetrue
+
+
+%\showchaptIDtrue
+%\def\@chaptID{3.}
+
+%\eqnotracetrue
+
+%\hbox{}
+
+\def\toone{{t+1}}
+\def\ttwo{{t+2}}
+\def\tthree{{t+3}}
+\def\Tone{{T+1}}
+\def\TTT{{T-1}}
+\def\rtr{{\rm tr}}
+
+ \index{curse of dimensionality}
+\footnum=0
+\chapter{Practical Dynamic Programming \label{practical}}
+\section{The curse of dimensionality}
+We often encounter problems where
+it is impossible
+to attain closed forms for iterating on the
+Bellman equation.  Then we have to adopt  numerical
+approximations.  This chapter  describes two
+popular methods for obtaining numerical approximations.  The first
+method replaces the original problem with another problem
+that forces the state vector to live on a finite and
+discrete grid of points, then applies discrete-state dynamic
+programming to this problem.  The ``curse of dimensionality''
+impels us to keep the number of points in the discrete state
+space small.  The second approach uses polynomials to approximate
+the value function.  Judd (1998) is   a comprehensive reference
+about numerical analysis of dynamic economic models and contains
+many insights about ways to compute  dynamic models.
+
+ \index{discretization!of state space}
+\section{Discrete-state dynamic programming}
+
+We introduce the method of discretization of the state
+space  in the context of a particular
+discrete-state version of an \idx{optimal savings problem}.  An
+infinitely lived household likes to consume one good that
+it can acquire by spending labor income or accumulated savings.
+The household has an endowment of labor at time $t$, $s_t$, that
+evolves according to an $m$-state  Markov chain with transition
+matrix $\cal P$ and state space $[\bar s_1, \bar s_2, \ldots, \bar s_m]$.
+  If the  realization of the process at $t$ is
+$\bar s_i$, then at time $t$ the household receives labor income
+of amount $w \bar s_i$.  The wage $w$ is fixed over time.
+We shall sometimes assume that $m$ is $2$, and that $s_t$
+takes on value  0 in an unemployed state and 1 in an
+employed state.  In this case, $w$ has the interpretation of
+being the wage of employed workers.
+
+  The household can choose to hold a single asset in
+discrete amounts
+$a_t \in {\cal A}$ where
+${\cal A}$ is a grid
+$[a_1 < a_2 < \cdots < a_n]$.
+How the model builder chooses the end points of the
+grid ${\cal A}$ is important, as we describe in detail
+in chapter \use{incomplete} on incomplete market models.  The asset bears
+a gross rate of return $r$ that is fixed over time.
+
+The household's maximum problem, for given values of ($w,r$)
+and given initial values ($a_0, s_0$), is to choose a policy for
+ $\{a_{t+1}\}_{t=0}^\infty$ to maximize
+$$ E \sum_{t=0}^\infty \beta^t u(c_t)  , \EQN ob1 $$
+subject to
+$$\eqalign{ c_t + a_{t+1} &= (r+1) a_t + w s_t  \cr
+             c_t& \geq 0 \cr
+             a_{t+1} &\in {\cal A}\cr }\EQN ob2$$
+where
+$\beta \in (0,1)$ is a discount factor and $r$ is fixed
+rate of return on the assets.  We assume that
+$\beta (1+r) < 1$.  Here $u(c)$ is a strictly
+increasing, concave one-period utility function.  % Associated with
+%this problem is the Bellman equation
+%$$ v(a,s) = \max_{a' \in {\cal A}} \{u[(r+1)a +ws - a'] + \beta
+%       E v(a',s') \vert s \} ,$$
+%or for each $i \in [1, \ldots, m]$ and each $h \in [1, \ldots, n]$,
+%$$ v(a_h, \bar s_i) = \max_{a' \in {\cal A}} \{u[(r+1)a_h+w \bar s_i - a']
+% + \beta  \sum_{j=1}^m {\cal P}_{ij} v(a',\bar s_j)\} ,\EQN ob3$$
+%where $a'$ is next period's value of asset holdings, and $s'$ is
+%next period's value of the shock; here $v(a,s)$ is
+%the optimal value of the objective function, starting
+%from asset, employment state ($a,s$).  We seek a value function $v(a,s)$ that satisfies equation
+%\Ep{ob3} and an associated policy function
+%$a' = g (a,s)$ mapping this period's ($a,s$) pair into an optimal
+%choice of assets to carry into next period.
+ Associated with
+this problem is the Bellman equation
+$$ v(a,s) = \max_{a' \in {\cal A}} \biggl\{u[(r+1)a +ws - a'] + \beta
+       E v(a',s') \vert s \biggr\} ,$$
+       where $a$ is next period's value of asset holdings, and $s'$ is
+next period's value of the shock; here $v(a,s)$ is
+the optimal value of the objective function, starting
+from asset, employment state ($a,s$).  We seek a value function $v(a,s)$ that satisfies equation
+\Ep{ob3} and an associated policy function
+$a' = g (a,s)$ mapping this period's ($a,s$) pair into an optimal
+choice of assets to carry into next period.
+Let assets live on the grid ${\cal A} = [a_1, a_2, \ldots, a_n]$. Then we can  express the Bellman equation as
+$$ v(a_i, \bar s_j) = \max_{a_h \in {\cal A}} \biggl\{u[(r+1)a_i+w \bar s_j - a_h]
+ + \beta  \sum_{l=1}^m {\cal P}_{j l} v(a_h,\bar s_l)\biggr\} ,\EQN ob3$$
+for each $i \in [1, \ldots, n]$ and each $j \in [1, \ldots, m]$.
+\auth{Hansen, Gary D.} \auth{Imrohoro\u glu, Selahattin}\auth{Wei,
+Chao} \auth{Hall, George} \index{dynamic programming! discrete
+state space}
+
+
+\section{Bookkeeping}
+
+For a discrete state space of small size, it is easy to solve the
+Bellman equation numerically by manipulating matrices. Here is how
+to write a computer program to iterate on the Bellman equation in
+the context of the preceding model of asset
+accumulation.\NFootnote{Matlab versions of the program have been
+written by Gary Hansen, Selahattin \.Imrohoro\u glu, George Hall,
+and Chao Wei.}
+  Let there be $n$ states $[a_1, a_2, \ldots, a_n]$ for assets
+and two states $[s_1,s_2]$ for employment status.  For $j=1,2$, define  $n \times 1$
+vectors $v_j, j=1,2$, whose $i$th rows are determined
+by $v_j(i) = v(a_i,s_j), i=1, \ldots, n$.  Let ${\bf 1}$ be the
+$n \times 1$ vector consisting entirely of ones. For $j=1,2$, define two
+$n \times n$ matrices $R_j$ whose $(i,h)$ elements are
+$$ R_j(i,h) = u[(r + 1) a_i +w s_j - a_h],\quad i=1, \ldots, n, h= 1,
+\ldots, n.$$
+Define an operator $T([v_1,v_2])$ that maps a pair of $n \times 1$ vectors
+$[v_1, v_2]$ into a pair of $n \times 1$ vectors $[tv_1, tv_2]$:\NFootnote{Programming
+ languages like Python, Julia,  and Matlab execute maximum operations
+over vectors very efficiently. For example,
+for an $n \times m$ matrix $A$, the Matlab command {\tt [r,index]
+=max(A)} returns
+% $n \times 2$ matrix whose $i$th row
+%is the vector $[\max_j A(i,j), j_{\max}]$, where $j_{\max}$ is
+%the column where the maximizing element is located.
+    the two $(1 \times m)$ row vectors {\tt r,index}, where
+$r_j= \max_i A(i,j)$ and ${\rm index}_j$ is the row $i$
+that attains $\max_i A(i,j)$ for column $j$ [i.e.,
+${\rm index}_j = {\rm argmax}_i A(i,j)$].
+This command  performs $m$ maximizations simultaneously.}
+%$$\eqalign{ tv_j(i) & = \max_h \biggl\{ \bmatrix{R_j(i,1) & R_j(i,2) & \cdots & R_j(i,n) }\cr
+%   &+ \beta {\cal P}_{j1} \bmatrix{ v_1(1) & v_1(2) & \cdots & v_1(n)}\cr
+%   & +\beta {\cal P}_{j2} \bmatrix{ v_2(1) & v_2(2) & \cdots & v_2(n)} \biggr\} }$$
+$$ tv_j(i) = \max_h \biggl\{ R_j(i,h) + \beta {\cal P}_{j1} v_1(h) + \beta {\cal P}_{j2} v_2(h) \biggr\}$$
+for $j=1,2$,
+   or
+$$\eqalign{tv_1 &= \max\{ R_1 + \beta {\cal P}_{11} {\bf 1} v_1'
+      + \beta {\cal P}_{12} {\bf 1} v_2' \} \cr
+\noalign{\smallskip}
+ tv_2 &= \max\{ R_2 + \beta {\cal P}_{21} {\bf 1} v_1'
+      + \beta {\cal P}_{22} {\bf 1} v_2' \} .\cr} \EQN obB1$$
+Here it is understood that the ``max'' operator
+applied to an $(n \times m)$ matrix $M$ returns  an
+$(n \times 1)$ vector whose $i$th element is the
+maximum of the $i$th row of the matrix $M$.
+These two equations can be written compactly as
+$$ \left[\matrix{tv_1 \cr tv_2 \cr} \right]
+   = \max \left\{ \left[\matrix{R_1 \cr R_2 \cr} \right]
+       + \beta ({\cal P} \otimes {\bf 1}) \left[\matrix{v_1' \cr
+           v_2' \cr } \right] \right\} ,\EQN obB2$$
+where $\otimes$ is the Kronecker product.\NFootnote{If A is an m-by-n matrix and B is a p-by-q matrix, then the Kronecker product $A \otimes B$ is the mp-by-nq block matrix
+$ A \otimes B = \bmatrix{ a_{11} B & \cdots & a_{1n}B \cr \vdots & \ddots & \vdots \cr a_{m1} B & \cdots & a_{mn} B }$.}
+
+    The Bellman equation $ [v_1 v_2] = T([v_1, v_2])$
+  can be solved by iterating to convergence on
+$ [v_1, v_2]_{m+1} = T([v_1, v_2]_m).$
+
+\index{policy improvement algorithm}
+
+\section{Application of Howard improvement algorithm}
+
+Often computation speed is important.  Exercise 3.1 showed
+that the policy improvement algorithm can
+be much faster than iterating on the Bellman equation.
+It is also easy to implement the Howard improvement algorithm
+in the present setting.
+At time $t$, the system resides in one of $N$ predetermined positions,
+denoted $x_i$ for $i=1,2,\ldots, N$.  There exists a predetermined set
+$\cal M$ of $(N\times N)$ stochastic matrices $P$ that are the objects of
+choice.  Here $P_{ij}={\rm Prob}\,[x_{t+1} = x_j\mid x_t=x_i]$, $i=1,\ldots,
+N;\ j=1,\ldots, N$.
+
+The matrices $P$ satisfy $P_{ij}\geq 0$, $\sum^N_{j=1}\, P_{ij} = 1$, and
+additional restrictions dictated by the problem at hand that determine the
+set $\cal M$.  The one-period return function is represented as $c_P$, a
+vector of length $N$, and is a function of $P$.  The $i$th entry of $c_P$
+denotes the one-period return when the state of the system is $x_i$ and the
+transition matrix is $P$.  The Bellman equation is
+$$v_P (x_i)=\max_{P\in{\cal M}}\, \{c_P(x_i) + \beta \sum^N_{j=1}\, P_{ij}\,
+v_P(x_j)\}$$
+or
+$$v_P=\max_{P\in{\cal M}}\, \{c_P + \beta Pv_P\}\ .\EQN obC1$$
+We can express this as
+$$v_P = T v_P\ ,$$
+where $T$ is the operator defined by the right side of \Ep{obC1}.  Following
+Putterman and Brumelle (1979) and Putterman and Shin (1978), define the
+operator
+\auth{Putterman, Martin L.}  \auth{Brumelle, Shelby}  \auth{Shin, M.C.}
+%
+$$B=T-I,$$
+so that
+$$B v = \max_{P\in{\cal M}}\, \{c_P + \beta P v\}-v .$$
+In terms of the operator $B$, the Bellman equation is
+$$Bv=0 . \EQN obC2$$
+
+The \idx{policy improvement algorithm} consists of iterations on the
+following two steps.
+\medskip
+\item{1.}  For fixed $P_n$, solve
+$$(I-\beta\, P_n)\, v_{P_n}= c_{P_n}\EQN obC3$$
+for $v_{P_n}$.
+\medskip
+\item{2.}  Find $P_{n+1}$ such that
+$$c_{P_{n+1}} + (\beta P_{n+1} - I)\, v_{P_n} = Bv_{P_n}\EQN obC4$$
+\medskip
+\noindent Step 1 is accomplished by setting
+$$v_{P_n} = (I-\beta P_n)^{-1} c_{P_n} .\EQN obC5$$
+\medskip\noindent
+Step 2 amounts to finding a policy function
+ (i.e., a stochastic matrix $P_{n+1}
+\in {\cal M}$) that solves a two-period problem with $v_{P_n}$ as the terminal
+value function.
+
+Following Putterman and Brumelle, the \idx{policy improvement algorithm} can
+be interpreted as a version of Newton's method for finding the zero of $Bv=v$.
+Using equation
+ \Ep{obC3} for $n+1$ to eliminate $c_{P_{n+1}}$ from equation \Ep{obC4} gives
+$$(I-\beta P_{n+1})\, v_{P_{n+1}} + (\beta P_{n+1}-I)\, v_{P_n} = Bv_{P_n}$$
+which implies
+$$v_{P_{n+1}} = v_{P_n} + (I-\beta P_{n+1})^{-1} B v_{P_n} .\EQN obC6$$
+From equation \Ep{obC4}, $(\beta P_{n+1} - I)$ can be regarded as the
+gradient of
+$B v_{P_n}$, which supports the interpretation of equation
+ \Ep{obC6} as implementing
+Newton's method.\NFootnote{Newton's method for finding the solution of
+$G(z)=0$ is to iterate on
+$z_{n+1} = z_n - G^\prime (z_n)^{-1}\, G(z_n).$}
+
+% Previous version ==========================================
+%  I altered indexes
+%\section{Numerical implementation}
+%  We shall illustrate Howard's \idx{policy improvement algorithm} by
+%applying it to our savings example.  Consider
+%a given feasible policy function $k'=f(k,s)$.
+%For each $h$, define the $n \times n$ matrices $J_h$ by
+%$$J_h(a,a') = \cases{ 1 &  if \ $g(a,s_h) = a'$ \cr
+%                      0 &  otherwise .} $$
+%Here $h = 1, 2, \ldots, m$ where $m$ is the number
+%of possible values for $s_t$, and $J_h(a,a')$ is
+%the element of $J_h$ with
+%rows corresponding to initial assets $a$ and columns to
+%terminal assets $a'$.  For a given policy function
+%$a'=g(a,s)$ define the $n \times 1$ vectors $r_h$ with
+%rows corresponding to
+%$$ r_h(a) = u[(r+1)a + w s_h - g(a,s_h)] , \EQN obC7$$
+%for $h = 1, \ldots ,m$.
+%
+%  Suppose the policy function $a'=g(a,s)$ is used forever.
+%Let the value associated with using $g(a,s)$ forever
+%be represented by the $m$ $(n \times 1)$ vectors
+%$[v_1, \ldots, v_m]$, where $v_h(a_i)$ is the
+%value starting from state $(a_i, s_h)$.  Suppose that
+%$m=2$.  The vectors $[v_1,v_2]$ obey
+%$$\left[\matrix{v_1 \cr v_2}\right]
+%   = \left[\matrix{ r_1  \cr
+%                     r_2 \cr}\right]
+%    +\left[\matrix{ \beta {\cal P}_{11} J_1 & \beta {\cal P}_{12} J_1 \cr
+%           \beta {\cal P}_{21} J_2 & \beta {\cal P}_{22} J_2 \cr}\right]
+%           \left[\matrix{v_1 \cr v_2 \cr}\right]     .$$
+%Then
+%$$ \left[\matrix{v_1 \cr v_2 \cr }\right] =
+%   \left[I - \beta \left(\matrix{{\cal P}_{11} J_1 & {\cal P}_{12} J_1 \cr
+%          {\cal P}_{21} J_2 & {\cal P}_{22} J_2 \cr }\right)\right]^{-1}
+%          \left[\matrix{r_1  \cr
+%                        r_2 \cr }\right]  .\EQN obC8$$
+%\medskip
+%\index{policy improvement algorithm}
+%\noindent Here is how to implement the Howard policy improvement algorithm.
+%\medskip
+%
+%\item{} Step 1.  For an initial feasible policy function $g_j(k,j)$
+%for $j=1$,
+%form the $r_h$ matrices using equation
+% \Ep{obC7}, then use equation \Ep{obC8} to evaluate the
+%vectors of values  $[v_1^j, v_2^j]$ implied by using that
+%policy forever.
+%
+%\medskip
+%\item{} Step 2.  Use $[v_1^j, v_2^j]$ as the terminal value
+%vectors in equation \Ep{obB2}, and perform one step on the Bellman equation
+%to find a new policy function $g_{j+1}(k,s)$ for $j+1=2$.  Use
+%this policy function, update $j$, and repeat step 1.
+%
+%\medskip
+%\item{}Step 3.  Iterate to convergence on steps 1 and 2.
+%\index{policy improvement algorithm! modified}
+%
+%\subsection{Modified policy iteration}
+%   Researchers have had success using the following modification
+%of policy iteration:  for $k \geq 2$, iterate $k$ times
+%on Bellman's equation.  Take the resulting policy function
+%and use equation \Ep{obC8} to produce a new candidate value function.  Then
+%starting from this terminal value function, perform another
+%$k$ iterations on the Bellman equation.  Continue in this
+%fashion until the decision rule
+%converges.
+
+
+\section{Numerical implementation}
+  We shall illustrate Howard's \idx{policy improvement algorithm} by
+applying it to our savings example.  Consider
+a  feasible policy function $a'=g(k,s)$.
+For each $j$, define the $n \times n$ matrices $J_j$ by
+$$J_j(a,a') = \cases{ 1 &  if \ $g(a,s_j) = a'$ \cr
+                      0 &  otherwise .} $$
+Here $j = 1, 2, \ldots, m$ where $m$ is the number
+of possible values for $s_t$, and $J_j(a,a')$ is
+the element of $J_j$ with
+rows corresponding to initial assets $a$ and columns to
+terminal assets $a'$.  For a given policy function
+$a'=g(a,s)$ define the $n \times 1$ vectors $r_j$ with
+rows corresponding to
+$$ r_j(a) = u[(r+1)a + w s_j - g(a,s_j)] , \EQN obC7$$
+for $j= 1, \ldots ,m$.
+
+  Suppose the policy function $a'=g(a,s)$ is used forever.
+Let the value associated with using $g(a,s)$ forever
+be represented by the $m$ $(n \times 1)$ vectors
+$[v_1, \ldots, v_m]$, where $v_j(a_i)$ is the
+value starting from state $(a_i, s_j)$.  Suppose that
+$m=2$.  The vectors $[v_1,v_2]$ obey
+$$\left[\matrix{v_1 \cr v_2}\right]
+   = \left[\matrix{ r_1  \cr
+                     r_2 \cr}\right]
+    +\left[\matrix{ \beta {\cal P}_{11} J_1 & \beta {\cal P}_{12} J_1 \cr
+           \beta {\cal P}_{21} J_2 & \beta {\cal P}_{22} J_2 \cr}\right]
+           \left[\matrix{v_1 \cr v_2 \cr}\right]     .$$
+Then
+$$ \left[\matrix{v_1 \cr v_2 \cr }\right] =
+   \left[I - \beta \left(\matrix{{\cal P}_{11} J_1 & {\cal P}_{12} J_1 \cr
+          {\cal P}_{21} J_2 & {\cal P}_{22} J_2 \cr }\right)\right]^{-1}
+          \left[\matrix{r_1  \cr
+                        r_2 \cr }\right]  .\EQN obC8$$
+\medskip
+\index{policy improvement algorithm}
+\noindent Here is how to implement the Howard policy improvement algorithm.
+\medskip
+
+\item{} Step 1.  For an initial feasible policy function $g_\tau(a,j)$
+for $\tau=1$,
+form the $r_j$ matrices using equation
+ \Ep{obC7}, then use equation \Ep{obC8} to evaluate the
+vectors of values  $[v_1^\tau, v_2^\tau]$ implied by using that
+policy forever.
+
+\medskip
+\item{} Step 2.  Use $[v_1^\tau, v_2^\tau]$ as the terminal value
+vectors in equation \Ep{obB2}, and perform one step on the Bellman equation
+to find a new policy function $g_{\tau+1}(a,s)$ for $\tau+1=2$.  Use
+this policy function, increment $\tau$ by 1, and repeat step 1.
+
+\medskip
+\item{}Step 3.  Iterate to convergence on steps 1 and 2.
+\index{policy improvement algorithm! modified}
+
+\subsection{Modified policy iteration}
+   Researchers have had success using the following modification
+of policy iteration:  for $k \geq 2$, iterate $k$ times
+on the Bellman equation.  Take the resulting policy function
+and use equation \Ep{obC8} to produce a new candidate value function.  Then
+starting from this terminal value function, perform another
+$k$ iterations on the Bellman equation.  Continue in this
+fashion until the decision rule
+converges.
+
+
+\section{Sample Bellman equations}
+This section presents some examples.  The first two examples
+involve no optimization, just  computing discounted expected utility.
+Appendix \use{searchA} of chapter \use{search1} describes some related examples based
+on search theory.
+
+\subsection{Example 1: calculating expected utility}
+ Suppose that the one-period utility function is the constant relative
+risk  aversion form
+$ u(c) = c^{1-\gamma}/(1-\gamma)$.   Suppose that
+$c_{t+1} = \lambda_{t+1} c_t$ and that $\{\lambda_t\}$
+is an $n$-state Markov process
+ with transition matrix $P_{ij} = {\rm Prob} (\lambda_{t+1} =
+\bar \lambda_j \vert \lambda_t = \bar \lambda_i)$.    Suppose
+that we want to evaluate     discounted expected
+utility
+$$ V(c_0, \lambda_0) = E_0 \sum_{t=0}^\infty \beta^t u(c_t), \EQN util1 $$
+where $\beta \in (0,1)$.
+We can express this equation recursively:
+$$ V(c_t, \lambda_t) = u(c_t) + \beta
+ E_t  V(c_{t+1}, \lambda_{t+1}) \EQN util3$$
+    We use a guess-and-verify
+technique to solve equation \Ep{util3} for $V(c_t,\lambda_t)$.   Guess
+that $V(c_t,\lambda_t) = u(c_t) w(\lambda_t)$ for some
+function $w(\lambda_t)$. Substitute the  guess into
+equation \Ep{util3}, divide both sides by $u(c_t)$, and rearrange to
+get
+$$ w(\lambda_t) = 1   + \beta E_t \left({c_{t+1} \over c_t}\right)^{1-\gamma}
+                  w(\lambda_{t+1}) $$
+or
+$$ w_i = 1 + \beta \sum_j P_{ij} \left(\lambda_j\right)^{1-\gamma} w_j.
+    \EQN util2 $$
+Equation \Ep{util2} is a system of linear equations
+in  $w_i, i=1, \ldots , n$ whose solution can be expressed
+as
+$$ w = \left[1-\beta P \ {\rm diag}(\lambda_1^{1-\gamma}, \ldots, \lambda_n^{1-\gamma})\right]^{-1}
+  {\bf 1} $$
+  where ${\bf 1}$ is an $n\times 1$ vector of ones.
+
+
+\subsection{Example 2: risk-sensitive preferences}
+
+   Suppose we modify the preferences of the previous example to
+be of the recursive form
+$$ V(c_t, \lambda_t) = u(c_t) +\beta {\cal R}_t V(c_{t+1}, \lambda_{t+1}),
+ \EQN util4 $$
+where $${\cal R}_t(V) = \left({2 \over \sigma}\right) \log E_t
+\left[ \exp\left({\sigma V_{t+1} \over 2} \right) \right] \EQN
+util6 $$ is an operator used by Jacobson (1973), Whittle (1990),
+and Hansen and Sargent (1995) to induce a preference for
+robustness to model misspecification.\NFootnote{Also see  Epstein
+and Zin (1989) and Weil (1989) for a version of the ${\cal R}_t$
+operator.}  Here $\sigma\leq 0$; when $\sigma < 0$, it represents
+a concern for model misspecification, or an extra sensitivity to
+risk.
+
+  We leave it to the reader to propose a method for computing an
+  approximation to a value function that solves the functional equation
+  \Ep{util4}.  (Hint: the method used in example 1 will not apply
+  directly because the homogeneity property exploited there fails
+  to prevail now.)
+
+ % \vfil\eject
+
+     % Let's apply our guess-and-verify method again.
+%If we make a guess of the same form as before, we now find
+%$$ w(\lambda_t) = 1 + \beta\left({2\over \sigma}\right) \log E_t \left\{
+%   \exp\left[{\sigma\over 2} \left({c_{t+1}\over c_t}\right)^{1-\gamma}
+%    w(\lambda_{t+1}) \right]\right\} $$
+%or
+%$$ w_i = 1 + \beta {2 \over \sigma} \log \sum_j P_{ij}
+%      \exp \left({\sigma \over 2} \lambda_j^{1-\gamma} w_j \right).
+% \EQN util6$$
+%Equation \Ep{util6} is a nonlinear system of equations in
+%the $n \times 1$ vector  of $w$'s.   It can be solved by an iterative
+%method: guess at an $n \times 1$ vector $w^0$,  use
+%it on the right side of equation  \Ep{util6}  to compute a new guess
+%$w^1_i, i=1, \ldots , n$, and iterate.
+
+
+
+\subsection{Example 3:  costs of business cycles}
+Robert E. Lucas, Jr.,  (1987) proposed that the cost of
+business cycles be measured in terms of a proportional
+upward shift  in the consumption process that would be required
+to make  a representative consumer indifferent between  its
+random consumption allocation and a nonrandom consumption
+allocation with the same mean.     This measure of business
+cycles is the  fraction $\Omega$ that satisfies
+$$ E_0 \sum_{t=0}^\infty \beta^t u[(1+\Omega) c_t ]
+         = \sum_{t=0}^\infty \beta^t u[E_0(c_t)]. \EQN costbus1  $$
+Suppose that the utility function and the consumption process
+are as in example 1.   Then for given $\Omega$,    the
+calculations in example 1 can be used to calculate
+the left side of  equation \Ep{costbus1}.   In particular,  the left
+side just equals $u[(1+\Omega) c_0] w(\lambda)$, where
+$w(\lambda)$  is calculated from equation \Ep{util2}.    To calculate
+the right side, we have to evaluate
+$$ E_0 c_t = c_0 \sum_{\lambda_t,  \ldots  ,\lambda_1}
+     \lambda_t \lambda_{t-1} \cdots \lambda_1 \pi(\lambda_t
+     |  \lambda_{t-1}) \pi(\lambda_{t-1} | \lambda_{t-2})
+     \cdots \pi(\lambda_1 | \lambda_0), \EQN costbus2 $$
+where the summation is  over all possible {\it paths\/} of growth
+rates between $0$  and $t$. In the case of i.i.d.\ $\lambda_t$,
+this expression simplifies to
+ $$  E_0 c_t = c_0 (E \lambda)^t, \EQN  costbus3 $$
+where $E \lambda_t$ is the unconditional mean of $\lambda$.
+Under equation \Ep{costbus3}, the right side of  equation \Ep{costbus1}
+is easy to evaluate.
+
+  Given $\gamma, \pi$, a procedure for constructing the cost of cycles---more
+precisely, the costs of deviations from mean trend---to the
+representative consumer is first to compute the right side
+of equation \Ep{costbus1}.
+Then we solve the following equation for $\Omega$:
+$$ u[(1+  \Omega)c_0] w(\lambda_0) =
+          \sum_{t=0}^\infty \beta^t u[E_0(c_t)].  $$
+%%%%
+
+
+    Using a closely related but somewhat different stochastic
+specification, Lucas (1987)   calculated $\Omega$.  He assumed
+that   the endowment is a geometric trend with
+growth rate $\mu$ plus an i.i.d.\ shock with
+mean zero and variance $\sigma_z^2$.  Starting
+from a base $\mu = \mu_0$, he  found
+$\mu, \sigma_z$ pairs to which the household
+is indifferent, assuming
+various values of $\gamma$ that he judged to be within a reasonable
+range.\NFootnote{See chapter \use{assetpricing2}
+ for a discussion of reasonable values of
+$\gamma$. See Table 1 of Manuelli and Sargent (1988) for a correction
+to Lucas's calculations.}  Lucas found that  for reasonable
+values of $\gamma$, it takes a very small
+adjustment in the trend rate of growth
+$\mu$ to compensate for even a substantial increase
+in the ``cyclical noise'' $\sigma_z$, which meant to him
+that the costs of business cycle fluctuations are small.
+
+ Subsequent researchers have studied
+how other preference specifications   would affect the calculated
+costs.  Tallarini (1996, 2000) used a version of the preferences
+described in example 2 and found larger costs of business cycles
+when parameters are calibrated to match data on asset prices.
+Hansen, Sargent, and Tallarini (1999) and Alvarez and Jermann
+(1999) considered local measures of the cost of business cycles
+and provided ways to link them to the \idx{equity premium} puzzle,
+to be studied in chapter
+\use{assetpricing2}.
+\auth{Hansen, Lars P.}
+ \auth{Tallarini, Thomas} \auth{Alvarez,
+Fernando} \auth{Jermann, Urban}
+
+\section{Polynomial approximations}
+Judd (1998) describes a method for iterating on the Bellman
+equation  using a polynomial to approximate the value function and
+a numerical optimizer  to perform the optimization at each
+iteration. We describe this method in the context of the Bellman
+equation for a  particular problem that we shall encounter later.
+
+
+\auth{Hopenhayn, Hugo A.}
+\auth{Nicolini, Juan Pablo}
+In chapter \use{socialinsurance}, we
+shall study Hopenhayn and Nicolini's (1997)
+model of optimal unemployment insurance. A planner wants to
+provide incentives to an unemployed worker to search for a new job
+while also partially  insuring the worker  against bad luck
+in the search process.  The planner seeks to
+deliver discounted expected utility $V$ to an unemployed worker
+at minimum cost while providing proper incentives to search for work.
+Hopenhayn and Nicolini   show that the minimum cost $C(V)$ satisfies
+the  Bellman equation
+$$ C(V)  = \min_{V^u} \left\{ c + \beta [1 - p(a)] C(V^u) \right\} \EQN hugo23 $$
+where $c,a$ are given by
+$$ c = u^{-1}\left[ \max\left(0,
+     V+a -\beta \{p(a)V^e + [1-p(a)]V^u\} \right)  \right]. \EQN hugo21$$
+and
+$$ a = \max\left\{0, {\log[r \beta (V^e - V^u)] \over r } \right\}.
+             \EQN hugo22 $$
+Here $V$ is a discounted present value   that an insurer
+has promised to an unemployed  worker, $V_u$ is a value for next
+period that the insurer promises the worker if he
+remains unemployed, $1-p(a)$ is the probability
+of remaining unemployed if the worker exerts search effort $a$,
+and $c$ is the worker's consumption level.   Hopenhayn and
+Nicolini assume that
+$p(a) = 1 - \exp(ra)$, $r >0$.
+%   Equation
+%\Ep{hugo23} is the Bellman equation associated with a cost
+%minimization problem for the insurer.
+
+\tag{compstra1}{\the\pageno}
+\subsection{Recommended computational strategy}
+To approximate the solution of the Bellman
+equation \Ep{hugo23}, we apply a computational procedure   described
+by Judd (1996, 1998).
+The method uses a
+ polynomial to approximate the $i$th iterate
+$C_i(V)$ of  $C(V)$.
+This polynomial is stored on the computer in terms
+of  $n+1$ coefficients.  Then at each iteration, the Bellman equation
+is to be solved at a  small number $m \geq n+1$
+ values of
+$V$.   This procedure gives values of the $i$th iterate of the value
+function
+$C_i(V)$ at those particular $V$'s.  Then we interpolate
+(or ``connect
+the dots'') to fill in the  continuous function $C_i(V)$.
+Substituting this approximation $C_i(V)$ for $C(V)$ in equation \Ep{hugo23},
+we pass  the minimum problem on
+the right
+side of  equation \Ep{hugo23} to a numerical minimizer.   Programming
+languages like Matlab and Gauss  have easy-to-use algorithms for
+minimizing continuous functions of several variables.
+We solve one such numerical problem  minimization for each node value for
+$V$. Doing so yields optimized value $C_{i+1}(V)$ at those node points.
+We then interpolate to build up
+$C_{i+1}(V)$.  We iterate on this scheme to convergence.
+Before summarizing the algorithm,
+we provide a brief description of Chebyshev polynomials.
+
+
+\subsection{Chebyshev polynomials}
+ Where $n$ is a nonnegative  integer and $x \in \bbR$,
+ the $n$th \idx{Chebyshev polynomial}, is
+$$ T_n(x) = \cos(n \cos^{-1} x). \EQN cheb1 $$
+Given coefficients $c_j, j = 0, \ldots, n$,
+ the $n$th-order Chebyshev polynomial approximator is
+$$ C_n(x) =  c_0 + \sum_{j=1}^n c_j T_j(x). \EQN cheb2 $$
+
+We are given a real-valued function $f$ of a single variable
+ $x \in [-1, 1]$. For computational purposes,
+we want to form an approximator to $f$ of the form \Ep{cheb2}.
+Note that we can store  this approximator simply as
+the $n+1$ coefficients  $c_j, j= 0, \ldots , n$.
+To form the approximator, we evaluate $f(x)$ at
+$n+1$ carefully chosen points, then use a least-squares formula
+to form the $c_j$'s   in   equation \Ep{cheb2}.
+Thus, to interpolate a function of a single variable   $x$ with domain
+$x \in [-1, 1]$,  Judd (1996, 1998) recommends  evaluating
+the function at the $m \geq n+1$ points $x_k, k= 1, \ldots, m$,
+where
+$$ x_k = \cos\left({2 k - 1 \over 2 m } \pi\right) , k=1, \ldots , m .
+        \EQN cheb3 $$
+Here $x_k$ is the zero of the $k$th Chebyshev polynomial
+on $[-1, 1]$.
+Given the $m \geq   n+1 $ values of     $f(x_k)$ for $k= 1, \ldots , m$,
+choose the least-squares values of $c_j$
+$$ c_j = { \sum_{k=1}^m f(x_k) T_j(x_k) \over
+ \sum_{k=1}^m T_j(x_k)^2  }, \ j= 0, \ldots , n  \EQN cheb4 $$
+
+\subsection{Algorithm: summary}\label{HNalgorithm}%
+In summary, applied to the
+Hopenhayn-Nicolini model, the numerical procedure consists of the following steps:
+\medskip
+
+\item{1.}  Choose upper and lower bounds for $V^u$, so
+that $V$ and $V^u$ will be understood to
+reside in the interval $[\underline V^u, \overline V^u]$.  In particular,
+set $\overline V^u = V^e - {1 \over
+\beta p'(0) }$, the bound required to
+assure positive search effort,  computed in chapter \use{socialinsurance}.
+Set $\underline V^u = V_{rm aut}$.
+
+
+\item{2.}  Choose a degree $n$ for the approximator, a Chebyshev polynomial,
+and a  number $m \geq n+1$ of nodes or grid points.
+
+\item{3.}  Generate the $m$ zeros of the  Chebyshev polynomial
+on the set $[1, -1]$, given by \Ep{cheb3}.
+
+\item{4.} By a change of scale,  transform  the $z_i$'s to
+corresponding points $V^u_\ell$ in $[\underline V^u, \overline V^u]$.
+
+\item{5.} Choose initial values of the $n+1$ coefficients in
+the Chebyshev polynomial, for example, $c_j =0, \ldots, n$.
+ Use these coefficients to
+define the function $C_i(V^u)$ for iteration number $i=0$.
+
+\item{6.}   Compute the  function   $\tilde C_i(V)
+\equiv c + \beta [1-p(a)] C_i(V^u)$, where
+$c,a$ are determined as functions of $(V, V^u)$
+ from equations \Ep{hugo21} and \Ep{hugo22}.
+This computation builds in the functional forms and parameters
+of $u(c)$ and $p(a)$, as well as $\beta$.
+
+
+\item{7.}  For each point $V^u_\ell$, use a numerical
+minimization program to find
+$C_{i+1}(V^u_\ell) =  \min_{V^u} \tilde C_i(V_u)$.
+
+\item{8.}   Using these $m$ values of $C_{j+1}(V^u_\ell)$, compute
+new values of the coefficients in the Chebyshev polynomials
+by using ``least squares'' [formula \Ep{cheb4}].
+     Return to step 5 and iterate to convergence.
+
+\mtlb{schumaker.m}
+\subsection{Shape-preserving splines}
+Judd (1998) points out that because they do not
+preserve concavity,  using Chebyshev polynomials  to approximate
+value functions can cause problems.
+He recommends the Schumaker quadratic shape-preserving spline.  It ensures
+\index{spline!shape preserving}%
+that the objective in the maximization step  of iterating on
+a Bellman equation  will be concave
+and differentiable (Judd,  1998, p. 441).
+Using Schumaker splines  avoids the type of internodal
+oscillations associated with other polynomial approximation methods. The
+exact interpolation procedure is described in Judd (1998, p. 233). A
+relatively small number of  nodes usually is sufficient.
+ Judd and
+Solnick (1994) find that this approach outperforms  linear interpolation and
+discrete-state approximation methods in a deterministic optimal growth
+problem.\NFootnote{The Matlab program {\tt schumaker.m}
+(written by Leonardo Rezende of the
+University of Illinois) can be used to compute the spline.  Use the
+Matlab command {\tt ppval} to evaluate the spline.}
+\tag{compstra2}{\the\pageno}
+\section{Concluding remarks}
+This chapter has described two of three standard methods for
+approximating solutions of
+dynamic programs numerically: discretizing the  state
+space and using polynomials to approximate the value function.
+  The next chapter describes the third method: making
+the problem have a quadratic return function and linear
+transition law.   A  benefit of making the  restrictive
+linear-quadratic assumptions is that they make solving a dynamic
+program easy by exploiting the ease with which
+stochastic linear difference equations can be manipulated.

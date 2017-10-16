@@ -1,0 +1,1463 @@
+% Note to Tom:  Must fix the parenthesis and brackets in the expression
+% for the Lagrangian.  Here texsis is causing problems. Ask Francois.
+% See marker below
+
+
+
+
+%\input texsis
+%\book
+%\input robustin
+%\input grafinp3
+%\input grafinput8
+%\input psfig
+%\eqnotracetrue
+
+
+
+
+%\showchaptIDtrue
+%\def\@chaptID{4.}
+
+
+%\eqnotracetrue
+
+
+%\hbox{}
+\def\sumst{{\sum_{t=0}^\infty \sum_{s^t}}}
+\def\Ast{{A_t(s^t)}}
+\def\cst{{c_t(s^t)}}
+\def\kst{{k_t(s^{t-1})}}
+\def\kstone{{k_{t+1}(s^t)}}
+\def\nst{{n_t(s^t)}}
+\def\xst{{x_t(s^t)}}
+\def\qst{{q_t^0(s^t)}}
+\def\qstone{{q_{t-1}^0(s^{t-1})}}
+\def\wst{{w_t^0(s^t)}}
+\def\rst{{r_t^0(s^t)}}
+\def\rstilde{{r_t^0(\tilde s^t)}}
+\def\pist{{\pi_t(s^t)}}
+\def\must{{\mu_t(s^t)}}
+\def\mustone{{\mu_{t+1}(s^{t+1})}}
+
+\def\thetast{{\theta_{t}(s^{t})}}
+\def\thetastilde{{\theta_{t}(\tilde s^{t})}}
+\def\thetastone{{\theta_{t-1}(s^{t-1})}}
+\def\lhake{{\Bigl[}}
+
+
+
+
+\chapter{Recursive Competitive Equilibrium: II\label{growth1}}
+\footnum=0
+\section{Endogenous aggregate state variable}  %%Introduction}
+For pure endowment stochastic economies, chapter \use{recurge}  described
+two types of competitive equilibria, one  in the style of Arrow and Debreu
+with markets that convene
+at time $0$ and trade
+a complete set of history-contingent securities, another with markets
+that meet each period and trade a complete set
+of one-period-ahead state-contingent securities called  Arrow
+securities.  Though their price systems and trading protocols
+differ, both types of equilibria support identical
+equilibrium allocations.
+Chapter \use{recurge} described how to transform the Arrow-Debreu price
+system into one for pricing Arrow securities.
+ The key
+step in transforming an equilibrium with time $0$ trading into one
+with sequential trading was to account for how individuals' wealth
+evolve as time passes in a time $0$ trading economy.
+In a time $0$ trading economy, individuals do not make any
+ trades other than those executed in period $0$, but the present
+value of those portfolios change as time passes and as uncertainty gets
+resolved.
+So in period $t$ after some history $s^t$, we used the Arrow-Debreu
+prices to compute the value of an individual's purchased
+claims to current and future goods net of his outstanding liabilities.
+We could then show that these wealth levels (and the
+associated consumption choices) could also be attained in a sequential-trading
+economy where there are only markets in one-period Arrow securities that reopen in each period.
+
+
+In chapter \use{recurge} we also demonstrated how to obtain a
+recursive formulation of the equilibrium with sequential trading.
+This required us to assume that individuals' endowments
+were governed by a Markov process. Under that assumption
+we could identify a state vector
+in terms of which the Arrow securities could be cast.  This
+(aggregate)
+state vector  then became a component of the state
+vector for each individual's problem.
+This transformation of price systems is easy in
+    the pure exchange economies of chapter \use{recurge}
+because in equilibrium,  the relevant state variable, wealth, is a
+function solely of the
+current realization of the exogenous Markov state variable.
+%%%history of an exogenous Markov state variable.
+The transformation is more subtle in economies in which
+part of the aggregate state is endogenous in the sense that it
+emerges from the
+{\it history}
+of
+equilibrium interactions of agents' decisions. In
+this chapter, we use the basic stochastic growth model (sometimes
+also called the real business cycle model) as a laboratory for
+moving from an equilibrium with time $0$ trading to a sequential
+equilibrium with trades of Arrow securities.\NFootnote{The stochastic
+growth model was formulated and fully analyzed by Brock and Mirman (1972).  It
+is a workhorse for studying macroeconomic fluctuations.
+Kydland and Prescott (1982) used the framework to study quantitatively
+the importance of persistent technology shocks for business cycle
+fluctuations. Other researchers have used the stochastic
+growth model as a point of departure when exploring the implications of
+injecting various frictions into that otherwise frictionless environment.} %
+We also formulate  a
+recursive competitive equilibrium with trading in Arrow securities
+by using a version of
+  the ``Big $K$, little $k$'' device that is often used
+in macroeconomics.
+
+\index{growth model!stochastic}
+\auth{Brock, William A.}
+\auth{Mirman, Leonard J.}
+\index{real business cycle model}
+\auth{Kydland, Finn E.}
+\auth{Prescott, Edward C.}
+
+
+
+
+
+
+
+\section{The stochastic growth model}
+Here we spell out the basic ingredients of the stochastic growth model:
+preferences, endowment, technology, and information. The
+environment is the same as in chapter \use{linappro} except
+that we now allow for a stochastic technology level.
+In each period $t\geq 0$, there is a realization of a stochastic
+event $s_t \in S$. Let the history of events up to time $t$
+be denoted $s^t = [s_t, s_{t-1}, \ldots, s_0]$. The unconditional
+probability of observing a particular sequence of events $s^t$ is
+given by a probability measure $\pi_t(s^t)$. We write conditional
+probabilities as $\pi_\tau(s^\tau\vert s^t)$, which is the probability
+of observing $s^\tau$ conditional on the realization of $s^t$.
+In this chapter, we assume that the state $s_0$ in period 0 is
+nonstochastic, and hence $\pi_0(s_0)=1$ for a particular
+$s_0\in{\bf S}$. We use $s^t$ as a commodity space in which
+goods are differentiated by histories.
+
+
+A representative household has preferences over nonnegative
+streams of consumption $\cst$ and leisure $\ell_t(s^t)$ that
+are ordered by
+$$ \sum_{t=0}^\infty \sum_{s^t} \beta^t u[\cst,\ell_t(s^t) ]\pist  \EQN gr1 $$
+where $\beta \in (0,1)$ and $u$ is strictly increasing in its
+two arguments, twice continuously differentiable, strictly concave,
+and satisfies the Inada conditions
+$$
+\lim_{c\to 0} u_c(c,\ell)   \,=\,
+\lim_{\ell\to 0} u_\ell(c,\ell)   \,=\, \infty.
+$$
+
+In each period, the representative household is endowed with one
+unit of time that can be devoted to leisure $\ell_t(s^t)$
+or labor $\nst$:
+$$             1     = \ell_t(s^t) +\nst.      \EQN gr2_endow $$
+The only other endowment is a capital stock $k_0$ at the
+beginning of period $0$.
+
+
+The technology is
+$$\EQNalign{\cst + \xst& \leq A_t(s^t) F(\kst, \nst), \EQN gr2;a \cr
+            \kstone & = (1-\delta) \kst + \xst, \EQN gr2;b \cr}$$
+%             1      & = \ell_t(s^t) +\nst,      \EQN gr2;c \cr
+%            \Ast & =  s_0 s_1 \cdots s_t  A_0 , \EQN gr2;d \cr
+%            &\hskip-1cm \cst, \ell_t(s^t), \nst, k_{t+1}(s^t) \geq 0,\cr
+%            &\hskip-1cm \hbox{\rm given} \;\, k_0.\cr}$$
+where $F$ is a twice continuously differentiable,
+constant-returns-to-scale production function  with inputs capital
+$\kst$ and labor $\nst$, and $A_t(s^t)$ is a stochastic process of
+Harrod-neutral technology shocks. Outputs are the consumption good
+$\cst$ and the investment good $\xst$.  In \Ep{gr2;b}, the
+investment good augments a capital stock that is depreciating at
+the rate $\delta$. Negative values of $\xst$ are permissible, which
+means that the capital stock can be reconverted into the
+consumption good.
+
+
+
+
+We assume that the production function satisfies standard assumptions
+of positive but diminishing marginal products,
+$$
+F_i(k,n)>0, \quad F_{ii}(k,n)<0, \quad {\rm for}\; i=k,n;
+$$
+and the \idx{Inada condition}s,
+$$\EQNalign{
+\lim_{k\to 0}F_k(k,n) \,&=\, \lim_{n\to 0}F_n(k,n) =\infty, \cr
+\lim_{k\to \infty}F_k(k,n) \,&=\, \lim_{n\to \infty}F_n(k,n) =0. \cr}
+$$
+Since the production function has constant returns to scale, we
+can define
+$$
+F(k,n) \,\equiv\, n f(\hat k) \quad {\rm where} \quad
+                               \hat k\equiv {k \over n}.   \EQN ff_fratio
+$$
+Another property of a linearly homogeneous
+function $F(k,n)$ is that its first derivatives are homogeneous of degree 0,
+and thus the first derivatives are functions only of the ratio $\hat k$. In
+particular, we have
+$$\EQNalign{
+&F_k(k,n) = {\partial \, n f\left({k / n}\right) \over \partial \, k }
+         = f'(\hat k),                                  \EQN ff_partial1;a   \cr
+\noalign{\vskip.3cm}
+&F_n(k,n) = {\partial \, n f\left({k / n}\right) \over \partial \, n }
+         = f(\hat k) - f'(\hat k) \hat k.            \EQN ff_partial;b  \cr}
+$$
+
+
+
+
+
+
+\section{Lagrangian formulation of the planning problem}
+The  planner chooses an allocation
+$\{\cst, \ell_t(s^t), \xst,  \nst, k_{t+1}(s^t)\}_{t=0}^{\infty}$ to
+maximize \Ep{gr1} subject to \Ep{gr2_endow} and \Ep{gr2},
+the initial capital stock $k_0$, and the stochastic process for the
+technology level $A_t(s^t)$.
+To solve this planning problem, we
+form the Lagrangian
+%% Ask Francois how to fix this!
+\offparens
+$$\eqalign{ L & = \sumst \beta^t \pist  \{ u(\cst,1-\nst) \cr
+   &+ \must [ \Ast F(\kst,\nst)
+ + (1-\delta)\kst   -\cst -\kstone ]\} \cr} $$
+\autoparens
+where $\mu_t(s^t)$ is a process of Lagrange multipliers  on
+the technology constraint.
+First-order conditions with respect to $\cst$, $\nst$, and $\kstone,$ respectively,
+are
+$$\EQNalign{  u_c(s^t) & = \must, \EQN pp1;a \cr
+           u_\ell(s^t) & = u_c(s^t) \Ast F_n(s^t), \EQN pp1;b \cr
+          u_c(s^t) \pist & = \beta \sum_{s^{t+1} \vert s^t}
+             u_c(s^{t+1}) \pi_{t+1}(s^{t+1}) \cr
+    & \hskip1cm\left[A_{t+1}(s^{t+1})
+     F_k(s^{t+1}) + (1-\delta)\right], \EQN pp1;c \cr}$$
+where the summation over
+$s^{t+1} \vert s^t$ means that we sum
+over all possible histories $\tilde s^{t+1}$ such that
+$\tilde s^t=s^t$.
+
+
+%%\section{Decentralization after Arrow-Debreu}
+\section{Time $0$ trading: Arrow-Debreu securities}
+In the style of Arrow and Debreu, we can support the allocation
+that solves the planning problem by a competitive equilibrium with
+time $0$ trading of a complete set of date- and
+history-contingent securities.  Trades occur among a
+representative household and two types of representative
+firms.\NFootnote{
+One can also support the allocation that solves the planning
+problem with a less decentralized setting with only the first of
+our two types of firms, and in which the decision for making
+physical investments is assigned to the household. We assign that
+decision to a second type of firm because we want to price more
+items, in particular, the capital stock.}
+
+
+We let $[q^0,  w^0, r^0, p_{k0}]$ be a price system where
+$p_{k0}$ is the price of a unit of the initial capital stock, and
+each of $q^0$, $w^0$, and $r^0$ is a stochastic process of prices for
+output and for renting labor and capital, respectively, and   the
+time $t$ component of each is indexed by the history $s^t$. A
+representative household purchases consumption goods from a type I
+firm and sells labor services to the type I firm that operates
+the production technology \Ep{gr2;a}.
+The household owns the initial capital stock $k_0$ and at date
+$0$ sells it to a type II firm.  The type II firm operates the
+capital storage technology \Ep{gr2;b}, purchases new investment
+goods $x_{t}$ from a type I firm, and rents stocks of capital back
+to the type I firm.
+
+
+ We now describe the problems of the
+representative household and the two types of firms in the economy
+with time $0$ trading.
+
+
+\subsection{Household}
+The household maximizes
+$$ \sum_t\sum_{s^t} \beta^t u\left[\cst, 1-\nst\right]\,\pist  \EQN hh1 $$
+subject to
+$$ \sumst \qst \cst \leq \sumst \wst \nst + p_{k0} k_0. \EQN hh2  $$
+First-order conditions with respect to $\cst$ and $\nst$, respectively,
+are
+$$\EQNalign{ \beta^t u_c(s^t) \pist & = \eta\qst, \EQN hhh1;a \cr
+                   \beta^t u_\ell(s^t) \pist & = \eta \wst, \EQN hhh1;b \cr}$$
+where $\eta>0$ is a multiplier on the budget constraint
+\Ep{hh2}.
+
+
+\subsection{Firm of type I}
+The representative firm of type I operates the production technology
+ \Ep{gr2;a}
+with capital and labor that it rents at market prices. For each period
+$t$ and each realization of history $s^t$, the firm enters into
+state-contingent contracts at time $0$ to rent capital $k^{I}_t(s^t)$
+and labor services $n_t(s^t)$. The type I firm
+seeks to maximize
+$$ \sumst \left\{\qst [\cst +\xst]   -\rst k^I_t(s^t)
+   -\wst \nst \right\} \EQN fff1 $$
+subject to
+$$ \cst +\xst \leq \Ast F(k^I_t(s^t), \nst). \EQN fff2 $$
+After substituting \Ep{fff2} into \Ep{fff1} and invoking
+\Ep{ff_fratio}, the firm's objective function can be
+expressed alternatively as
+$$ \sumst \nst\left\{\qst \Ast f\!(\hat k^I_t(s^t))
+    -\rst \hat k^I_t(s^t)  -\wst \right\} \hskip-.1cm\EQN fff1prime $$
+and the maximization problem can then be decomposed into two parts.
+First, conditional on operating the production technology
+in period $t$ and history $s^t$, the firm solves for the
+profit-maximizing capital-labor ratio, denoted $k^{I\star}_t(s^t)$.
+Second, given that capital-labor ratio $k^{I\star}_t(s^t)$,
+the firm determines the profit-maximizing level of its operation
+by solving for the optimal employment level, denoted
+$n^\star_t(s^t)$.
+
+
+The firm finds the profit-maximizing capital-labor
+ratio by maximizing the expression
+in curly brackets in \Ep{fff1prime}. The first-order condition
+with respect to $\hat k^{I}_t(s^t)$ is
+$$ \qst \Ast f^\prime(\hat k^I_t(s^t))
+    -\rst   = 0 \,.                          \EQN ff_focIk
+$$
+At the optimal capital-labor ratio $\hat k^{I\star}_t(s^t)$
+that satisfies \Ep{ff_focIk}, the firm evaluates
+the expression in curly brackets in \Ep{fff1prime} in order
+to determine the optimal level of employment $n_t(s^t)$.
+In particular, $n_t(s^t)$ is optimally set equal to zero or
+infinity if the expression in curly brackets in \Ep{fff1prime}
+is strictly negative or strictly positive, respectively. However,
+if the expression in curly brackets is zero in some period $t$ and
+history $s^t$, the firm would be indifferent to the level of
+$n_t(s^t)$, since profits are then equal to zero for all levels of
+operation in that period and state. Here, we summarize the optimal
+employment decision by using equation \Ep{ff_focIk} to eliminate
+$r^0_t(s^t)$ in the expression in curly brackets in \Ep{fff1prime};
+$$\EQNalign{\hbox{\rm if}\hskip.2cm
+&\left\{\qst \Ast \left[ f\!(\hat k^{I\star}_t(s^t))
+       - f^\prime(\hat k^{I\star}_t(s^t))\,\hat k^{I\star}_t(s^t)\right]
+                                                 -\wst \right\} \cr
+ &\hskip2.5cm \cases{\,<0, &then $n^{\star}_t(s^t)=0$; \cr
+                        \,=0, &then $n^{\star}_t(s^t)$ is indeterminate; \cr
+                        \,>0, &then $n^{\star}_t(s^t)=\infty$. \cr}
+                                                      \hskip1cm\EQN fff_nstar }
+$$
+In an equilibrium, both $k^{I}_t(s^t)$ and $n_t(s^t)$ are strictly positive
+and finite, so expressions \Ep{ff_focIk} and \Ep{fff_nstar}
+imply the following equilibrium prices:
+$$\EQNalign{\qst \Ast F_k(s^t) & = \rst \EQN fff3;a \cr
+            \qst \Ast F_n(s^t) & = \wst  \EQN fff3;b \cr} $$
+where we have invoked \Ep{ff_partial1}.
+
+
+
+
+\subsection{Firm of type II}
+The representative firm of type II operates technology \Ep{gr2;b}
+to transform output into capital. % then rents capital  to a type I firm.
+The type II firm purchases
+capital at time
+$0$ from the household sector and thereafter invests in new capital,
+earning revenues by renting capital to the type I firm.  It maximizes
+$$ - p_{k0}k_0^{II} +
+\sumst \left\{ \rst  k_t^{II}(s^{t-1}) - \qst \xst \right\}
+                                         \EQN f2f1 $$
+subject to
+$$ k_{t+1}^{II}(s^t) = (1-\delta) k_t^{II}(s^{t-1}) + x_t(s^t). \EQN f2f2 $$
+Note that the firm's capital stock in period $0$, $k_0^{II}$, is bought
+without any uncertainty about the rental price in that period while
+the investment in capital for a future period $t$, $k_t^{II}(s^{t-1})$,
+is conditioned on the realized history $s^{t-1}$.
+Thus, the type II firm manages the risk associated with technology
+constraint \Ep{gr2;b} that states that capital must be assembled one
+period prior to becoming an input for production.
+In contrast, the type I firm of the previous
+subsection can choose how much capital $k_t^{I}(s^{t})$ to rent
+in period $t$ conditioned on history $s^t$.
+
+
+
+
+After substituting \Ep{f2f2} into \Ep{f2f1} and rearranging,
+the type II firm's objective function can be written as
+$$\EQNalign{&   k_0^{II}\left\{-p_{k0}
+         +r_0^0(s_0) + q_0^0(s_0)(1-\delta)\right\}
++ \sum_{t=0}^\infty \sum_{s^{t}} k_{t+1}^{II}(s^{t})    \cr
+  &  \hskip.5cm \cdot\Biggl\{-q^0_{t}(s^{t})
++ \sum_{s^{t+1} \vert s^{t}} \left[r^0_{t+1}(s^{t+1})
+              + q^0_{t+1}(s^{t+1}) (1-\delta) \right]\Biggr\} ,
+                                         \hskip1cm               \EQN ff_IIk \cr}
+$$
+where the firm's profit is a linear function of investments in
+capital. The profit-maximizing level of the capital stock
+$k^{II}_{t+1}(s^{t})$ in expression \Ep{ff_IIk} is equal to
+zero or infinity if the associated multiplicative term in
+curly brackets is strictly negative or strictly positive,
+respectively. However, for any expression in curly brackets
+in \Ep{ff_IIk} that is zero, the firm would be
+indifferent to the level of $k^{II}_{t+1}(s^{t})$, since profits
+ then equal  zero for all levels of investment.
+In an equilibrium, $k^{II}_0$ and $k^{II}_{t+1}(s^{t})$ are
+strictly positive and finite, so each expression in curly brackets
+in \Ep{ff_IIk} must equal zero, and hence equilibrium prices must satisfy
+$$\EQNalign{  p_{k0} &=r_0^0(s_0) + q_0^0(s_0)(1-\delta), \EQN ffprice;a \cr
+\noalign{\vskip.2cm}
+    q^0_{t}(s^{t})& =\sum_{s^{t+1} \vert s^{t}}
+      \left[r^0_{t+1}(s^{t+1}) + q^0_{t+1}(s^{t+1}) (1-\delta) \right]. \EQN ffprice;b \cr}
+$$
+
+
+\subsection{Equilibrium prices and quantities}
+According to equilibrium conditions \Ep{fff3}, each input
+in the production technology is paid its marginal product,
+and hence profit maximization of the type I firm ensures an efficient
+allocation of labor services and capital. But nothing is said about
+the equilibrium quantities of labor and capital.
+Profit maximization of the type II firm imposes no-arbitrage restrictions
+\Ep{ffprice} across prices $p_{k0}$ and $\{r^0_t(s^t), q^0_t(s^t)\}$.
+But nothing is said about the specific equilibrium value of an
+individual price. To solve for equilibrium prices and quantities, we
+turn to the representative household's first-order conditions \Ep{hhh1}.
+
+
+After substituting \Ep{fff3;b} into the household's first-order condition
+\Ep{hhh1;b}, we obtain
+$$\EQNalign{
+ \beta^t u_\ell(s^t) \pist  &= \eta q^0_{t}(s^{t})
+    A_{t}(s^{t}) F_n(s^{t}) ;           \EQN ff_final;a \cr
+%\noalign{\vskip.3cm}
+\noalign{\noindent \rm  and then by substituting \Ep{ffprice;b} and
+\Ep{fff3;a} into \Ep{hhh1;a},}
+\noalign{\vskip.3cm}
+\beta^t u_c(s^t) \pist  &= \eta \sum_{s^{t+1} \vert s^{t}}
+    \left[r^0_{t+1}(s^{t+1}) + q^0_{t+1}(s^{t+1}) (1-\delta) \right] \cr
+=\eta \sum_{s^{t+1} \vert s^{t}} &q^0_{t+1}(s^{t+1})
+    \left[A_{t+1}(s^{t+1}) F_k(s^{t+1}) + (1-\delta) \right]. \hskip1cm
+                                                       \EQN ff_final;b\cr}
+$$
+Next, we use $q^0_t(s^t) =\beta^t u_c(s^t) \pist/\eta$ as given
+by the household's first-order condition \Ep{hhh1;a} and the
+corresponding expression for $q^0_{t+1}(s^{t+1})$ to substitute
+into \Ep{ff_final;a} and \Ep{ff_final;b}, respectively. This step
+produces expressions identical to the planner's first-order
+conditions \Ep{pp1;b} and \Ep{pp1;c}, respectively. In this way,
+we have verified that the allocation in the competitive
+equilibrium with time $0$ trading is the same as the allocation
+that solves the planning problem.
+
+
+Given the equivalence of allocations, it is standard to compute
+the competitive equilibrium allocation by solving the
+planning problem since the latter problem is a simpler one.
+We can compute equilibrium  prices by substituting
+the allocation from the planning problem into the household's and
+firms' first-order conditions. All relative prices are then
+determined, and in order to pin down absolute prices, we would also
+have to pick a numeraire. Any such normalization of prices is
+tantamount to setting the multiplier $\eta$ on the
+household's present value budget constraint equal to an
+arbitrary positive number. For example, if we set $\eta=1$,
+we are measuring prices in units of marginal utility of the
+time $0$ consumption good.  Alternatively, we can set $q_0^0(s_0) =1$
+by setting
+$\eta = u_c(s_0)$.  We can compute $q_t^0(s^t)$ from \Ep{hhh1;a},
+$w_t^0(s^t)$ from \Ep{hhh1;b}, and $r_t^0(s^t)$ from
+\Ep{fff3;a}.  Finally, we can compute $p_{k0}$
+from
+\Ep{ffprice;a}  to get
+$p_{k0} = r_0^0(s_0) + q_0^0(s_0)(1-\delta)$.
+
+
+
+
+\subsection{Implied wealth dynamics}
+Even though trades are only executed at time $0$ in the Arrow-Debreu
+market structure, we can study how the representative household's
+wealth evolves over time. For that purpose, after a given
+history $s^t$, we convert all prices, wages, and rental rates that
+are associated with current and future deliveries so that they
+are expressed in terms of time $t$, history $s^t$ consumption goods,
+i.e., we change the numeraire:
+$$ \EQNalign{  q^t_\tau(s^\tau) &\equiv
+{q_\tau^0(s^\tau) \over q_t^0(s^t)}
+         = \beta^{\tau - t} {u_c(s^\tau) \over u_c(s^t)}
+          \,\pi_\tau\!(s^\tau|s^t),     \EQN price_renorm;a \cr
+w^t_\tau(s^\tau) &\equiv
+{w_\tau^0(s^\tau) \over q_t^0(s^t)}, \EQN price_renorm;b \cr
+r^t_\tau(s^\tau) &\equiv
+{r_\tau^0(s^\tau) \over q_t^0(s^t)}. \EQN price_renorm;c \cr}
+$$
+%$$ \EQNalign{  q^t_\tau(s^\tau) &\equiv
+%{q_\tau^0(s^\tau) \over q_t^0(s^t)}
+%         = \beta^{\tau - t} {u'[c_\tau(s^\tau)] \over u'[c_t(s^t)]}
+%          \,\pi_\tau\!(s^\tau|s^t),     \EQN price_renorm;a \cr
+%w^t_\tau(s^\tau) &\equiv
+%{w_\tau^0(s^\tau) \over q_t^0(s^t)}, \EQN price_renorm;b \cr
+%r^t_\tau(s^\tau) &\equiv
+%{r_\tau^0(s^\tau) \over q_t^0(s^t)}. \EQN price_renorm;c \cr}
+%$$
+
+
+In chapter \use{recurge} we asked the question, what is
+the implied wealth of a household at time $t$ after history
+$s^t$ when excluding the endowment stream?
+Here we ask the same question except  that now instead of
+endowments, we exclude
+the value of labor. For example, the household's net claim
+to delivery of goods in a future period $\tau \geq t$,
+contingent on history $s^\tau$, is given by
+$[q_\tau^t(s^\tau)c_\tau(s^\tau) - w_\tau^t(s^\tau)n_\tau(s^\tau)]$,
+as expressed in terms of time $t$, history $s^t$ consumption
+goods. Thus, the household's wealth, or the value of all its
+current and future net claims, expressed in terms of the date $t$,
+history $s^t$ consumption good, is
+\offparens
+$$\EQNalign{
+&\Upsilon_t(s^t) \equiv
+\sum_{\tau=t}^\infty \; \sum_{s^\tau \vert s^t} \Bigl\{
+    q_\tau^t(s^\tau) c_\tau(s^\tau) - w_\tau^t(s^\tau)n_\tau(s^\tau)\Bigr\}\cr
+&=
+\sum_{\tau=t}^\infty \; \sum_{s^\tau \vert s^t} \Bigl\{
+q_\tau^t(s^\tau) \Bigl[ A_\tau(s^\tau) F(k_\tau(s^{\tau-1}), n_\tau(s^\tau)) \cr
+&\hskip4cm     + (1-\delta) k_\tau(s^{\tau-1}) - k_{\tau+1}(s^\tau) \Bigr]
+             - w_\tau^t(s^\tau)n_\tau(s^\tau) \Bigr\}\cr
+&=
+\sum_{\tau=t}^\infty \; \sum_{s^\tau \vert s^t} \Bigl\{
+ q_\tau^t(s^\tau) \Bigl[ A_\tau(s^\tau)
+ \Bigl( F_k(s^\tau) k_\tau(s^{\tau-1}) + F_n(s^\tau) n_\tau(s^\tau) \Bigr)     \cr
+&\hskip4cm     + (1-\delta) k_\tau(s^{\tau-1}) - k_{\tau+1}(s^\tau) \Bigr]
+             - w_\tau^t(s^\tau)n_\tau(s^\tau) \Bigr\}\cr
+&=
+\sum_{\tau=t}^\infty \; \sum_{s^\tau \vert s^t} \Bigl\{
+    r_\tau^t(s^\tau) k_\tau(s^{\tau-1}) +
+    q_\tau^t(s^\tau) \Bigl[ (1-\delta) k_\tau(s^{\tau-1})
+                            - k_{\tau+1}(s^\tau) \Bigr] \Bigr\} \cr
+\noalign{\vskip.2cm}
+&=  r_t^t(s^t) k_t(s^{t-1}) + q_t^t(s^t) (1-\delta) k_t(s^{t-1})   \cr
+\noalign{\vskip.2cm}
+&\hskip.5cm   + \sum_{\tau=t+1}^\infty \; \sum_{s^{\tau-1} \vert s^t}
+    \biggl\{ \sum_{s^{\tau} \vert s^{\tau-1}}
+    \Bigl[r_\tau^t(s^\tau) +
+    q_\tau^t(s^\tau) (1-\delta) \Bigr] - q_{\tau-1}^t(s^{\tau-1}) \biggr\}
+                            k_{\tau}(s^{\tau-1})  \cr
+\noalign{\vskip.2cm}
+&=  \Bigl[ r_t^t(s^t) + (1-\delta) \Bigr] k_t(s^{t-1}),   \EQN seq_wealth \cr}
+$$
+where the first equality uses the equilibrium outcome that consumption
+is equal to the difference between production and investment in each period,
+the second equality follows from Euler's theorem on linearly homogeneous
+functions,\NFootnote{According to Euler's theorem on linearly
+homogeneous functions, our constant-returns-to-scale production function
+satisfies
+$$
+ F(k,n) = F_k(k,n)\,k +  F_n(k,n)\,n.
+$$}
+the third equality invokes equilibrium input
+prices in \Ep{fff3}, the fourth equality is merely a rearrangement of
+terms, and the final, fifth equality acknowledges that $q_t^t(s^t) = 1$
+and that each term in curly brackets is zero because of equilibrium price
+condition \Ep{ffprice;b}.
+
+
+
+
+\section{Sequential trading: Arrow securities}
+As in chapter \use{recurge}, we now demonstrate that sequential
+trading in one-period Arrow securities provides an alternative
+market structure that preserves the allocation from
+the time $0$ trading equilibrium.
+In the production economy with sequential trading, we
+will also have to include markets for labor and capital services
+that reopen in each period.
+
+
+We guess that at time $t$ after history $s^t$, there exist a
+wage rate $\tilde w_t(s^t)$, a rental rate $\tilde r_t(s^t)$,
+and Arrow security prices $\tilde Q_t(s_{t+1} | s^t)$.
+The {\it pricing kernel} $\tilde Q_t(s_{t+1} | s^t)$ is to be
+interpreted as follows:
+$\tilde Q_t(s_{t+1} | s^t)$ gives the price of one unit of
+time $t+1$ consumption,
+contingent on the realization $s_{t+1}$ at $t+1$, when the
+history at $t$ is $s^t$.
+
+
+\subsection{Household}
+At each date $t \geq 0$ after history $s^t$,
+the representative household buys consumption
+goods $\tilde c_t(s^t)$, sells labor services $\tilde n_t(s^t)$, and
+trades claims to date $t+1$ consumption,
+whose payment is  contingent
+on the realization of $s_{t+1}$.   Let $\tilde a_t(s^t)$ denote the
+claims to time $t$ consumption
+that the household brings into time $t$ in history $s^t$. Thus,
+the household faces a sequence of budget constraints
+for $t \geq 0$, where the time $t$, history $s^t$ budget constraint is
+$$ \tilde c_t(s^t) + \sum_{s_{t+1}} \tilde a_{t+1}(s_{t+1},s^t)
+\tilde Q_t(s_{t+1} | s^t)
+     \leq  \tilde w_t(s^t) \tilde n_t(s^t) + \tilde a_t(s^t) , \EQN seq_hh0   $$
+ where
+$\{\tilde a_{t+1}(s_{t+1},s^t)\}$  is a vector of claims on
+time $t+1$ consumption,
+one element of the vector for each  value of the time $t+1$ realization of
+$s_{t+1}$.
+
+
+To rule out Ponzi schemes, we must impose borrowing constraints on
+the household's asset position. We could follow the approach of
+chapter \use{recurge} and compute state-contingent
+{\it natural debt limits,\/} where the counterpart to the earlier present
+value of the household's endowment stream would be the present
+value of the household's time endowment. Alternatively, we  just
+impose that the household's indebtedness in any state
+next period, $-\tilde a_{t+1}(s_{t+1},s^t)$, is bounded by some
+arbitrarily large constant. Such an arbitrary debt limit works
+well for the following reason. As long as the household is constrained
+so that it cannot run a true Ponzi scheme with an unbounded budget
+constraint, equilibrium forces will ensure that the representative
+household willingly holds the market portfolio. In the present setting, we
+can for example set that arbitrary debt limit equal to zero, as will
+become clear as we go along.
+
+
+Let $\eta_t(s^t)$ and $\nu_t(s^t;s_{t+1})$ be the nonnegative
+Lagrange multipliers on the budget constraint \Ep{seq_hh0} and the
+borrowing constraint with an arbitrary debt limit of zero,
+respectively, for time $t$
+and history $s^t$. The Lagrangian can then be formed as \offparens
+$$ \eqalign{ L =
+ &\sum_{t=0}^\infty \sum_{s^t}
+   \Bigr\{  \beta^t u(\tilde c_t(s^t), 1 - \tilde n_t(s^t) ) \,\pi_t(s^t)  \cr
+ & +\eta_t(s^t) \Bigl [\tilde w_t(s^t) \tilde n_t(s^t)
+                               + \tilde a_t(s^t) - \tilde c_t(s^t)
+ - \sum_{s_{t+1}} \tilde a_{t+1}(s_{t+1},s^t) \tilde Q_t(s_{t+1} | s^t) \Bigr] \cr
+ & +\nu_t(s^t;s_{t+1})  \tilde a_{t+1}(s^{t+1})
+                                                             \Bigl\}, \cr} $$
+for a given initial wealth level $\tilde a_0$. In an equilibrium,
+the representative
+household will choose interior solutions for
+$\{\tilde c_t(s^t), \, \tilde n_t(s^t)\}_{t=0}^\infty$ because of
+the assumed Inada conditions. The Inada conditions on the utility function
+ensure that the household will  set neither $\tilde c_t(s^t)$
+nor $\ell_t(s^t)$ equal to zero, i.e., $\tilde n_t(s^t)<1$. The Inada
+conditions on the production function guarantee that the
+household will always find it desirable to supply some labor,
+$\tilde n_t(s^t)>0$. Given these interior solutions,
+the first-order conditions for maximizing $L$ with respect to
+$\tilde c_t(s^t)$, $\tilde n_t(s^t)$ and
+$\{\tilde a_{t+1}(s_{t+1},s^t)\}_{s_{t+1}}$ are
+$$\EQNalign{
+\beta^t u_c(\tilde c_t(s^t),1 - \tilde n_t(s^t)  ) \,\pi_t(s^t)
+                              -\eta_t(s^t) &=0\,,\EQN seq_hhFOC;a \cr
+\noalign{\vskip.2cm}
+-\beta^t u_\ell(\tilde c_t(s^t),1 - \tilde n_t(s^t)  ) \,\pi_t(s^t)
+             +\eta_t(s^t) \tilde w_t(s^t) &=0\,,\EQN seq_hhFOC;b \cr
+\noalign{\vskip.2cm}
+-\eta_t(s^t) \tilde Q_t(s_{t+1} | s^t) + \nu_t(s^t;s_{t+1})
++ \eta_{t+1}(s_{t+1},s^t)  &=0\,, \hskip1cm \EQN seq_hhFOC;c \cr}
+$$
+for all $s_{t+1}$, $t$, $s^t$. Next, we proceed under the
+conjecture that the arbitrary debt limit of zero will not
+be binding, and hence the Lagrange multipliers $\nu_t(s^t;s_{t+1})$
+are all equal to zero.  After
+setting those multipliers equal to zero in equation \Ep{seq_hhFOC;c}, the
+first-order conditions imply the following conditions for the
+optimal choices of consumption and labor:
+$$\EQNalign{
+\tilde w_t(s^t) &= { u_\ell(\tilde c_t(s^t),1 - \tilde n_t(s^t)  ) \over
+                       u_c(\tilde c_t(s^t),1 - \tilde n_t(s^t)  ) },
+         \EQN seq_hhFOCc;a \cr
+\noalign{\vskip.2cm}
+ \tilde Q_t(s_{t+1} | s^t) &= \beta
+{ u_c(\tilde c_{t+1}(s^{t+1}),\, 1-\tilde n_{t+1}(s^{t+1}) ) \over
+  u_c(\tilde c_t(s^t),\, 1-\tilde n_t(s^t) ) }\,
+\pi_t(s^{t+1} | s^t),                                \EQN seq_hhFOCc;b \cr}
+$$
+for all $t$, $s^t$, and $s_{t+1}$.
+
+
+
+
+\subsection{Firm of type I}\label{sec:FirmI}%
+At each date $t \geq 0$ after history $s^t$,
+a type I firm is a production firm that
+chooses a quadruple $\{\tilde c_t(s^t),\, \tilde x_t(s^t), \,
+\tilde k_t^I(s^t),\, \tilde n_t(s^t)\}$
+to solve a static optimum problem:
+$$ \max\Bigl\{ \tilde c_t(s^t) + \tilde x_t(s^t)
+- \tilde r_t(s^t) \tilde k^I_t(s^t)
+- \tilde w_t(s^t) \tilde n_t(s^t) \Bigr\}      \EQN seq_f1a  $$
+subject to
+$$ \tilde c_t(s^t) + \tilde x_t(s^t) \leq  A_t(s^t)
+F( \tilde k^I_t(s^t),\, \tilde n_t(s^t) ). \EQN seq_f1b $$
+The zero-profit conditions are
+$$ \EQNalign{ \tilde r_t(s^t) & = A_t(s^t) F_k(s^t),  \EQN seq_f1c;a \cr
+              \tilde w_t(s^t) & = A_t(s^t) F_n(s^t).  \EQN seq_f1c;b \cr} $$
+If conditions \Ep{seq_f1c} are violated, the type I firm
+either makes infinite profits by hiring infinite capital
+and labor, or else it makes negative profits for any positive
+output level, and therefore shuts down.  If conditions \Ep{seq_f1c}
+are satisfied, the firm makes zero profits and its size is
+indeterminate.  The firm of type I is willing to produce
+any quantities of $\tilde c_t(s^t)$ and $\tilde x_t(s^t)$ that the
+market demands, provided
+that conditions \Ep{seq_f1c} are satisfied.
+
+
+
+
+\subsection{Firm of type II}\label{sec:FirmII}%
+A type  II firm transforms output into capital, stores capital,
+ and earns its revenues by renting
+capital to the type I firm. Because of the technological
+assumption that capital can be converted back into the consumption
+good, we can without loss of generality consider a
+two-period optimization problem where a type II firm decides how
+much capital $\tilde k_{t+1}^{II}(s^t)$ to store at the end of
+period $t$ after history $s^t$ in order to earn a stochastic
+rental revenue $\tilde r_{t+1}(s^{t+1}) \,\tilde k_{t+1}^{II}(s^t)$
+and liquidation value $(1-\delta) \,\tilde k_{t+1}^{II}(s^t)$
+in the following period. The firm finances itself by issuing state-contingent
+ debt to the households, so future income streams can
+be expressed in today's values by using prices
+$\tilde Q_t(s_{t+1} | s^t)$.  Thus, at each date $t \geq 0$ after
+history $s^t$, a type II firm chooses $\tilde k_{t+1}^{II}(s^t)$
+to solve the optimum problem
+$$ \max   \; \tilde k_{t+1}^{II}(s^t) \Bigl\{ -1 +
+\sum_{s_{t+1}} \tilde Q_t(s_{t+1} | s^t)
+\left[ \tilde r_{t+1}(s^{t+1}) + (1-\delta)
+                           \right]\Bigr\} .    \EQN seq_f2a  $$
+The zero-profit condition is
+$$ 1 = \sum_{s_{t+1}} \tilde Q_t(s_{t+1} | s^t)
+\Bigl[ \tilde r_{t+1}(s^{t+1}) + (1-\delta)
+                           \Bigr]. \EQN seq_f2b $$
+
+
+The size of the type II firm is indeterminate.
+So long as condition \Ep{seq_f2b} is satisfied, the firm breaks even
+at any level of $\tilde k_{t+1}^{II}(s^t)$.
+If condition \Ep{seq_f2b} is not satisfied, either it
+can earn infinite profits by setting $\tilde k_{t+1}^{II}(s^t)$
+to be  arbitrarily large (when
+the right side exceeds the left),
+or it earns negative profits for any positive level of capital (when
+the right side falls short of the left), and
+so chooses to shut down.
+
+
+
+
+\subsection{Equilibrium prices and quantities}
+We leave it to the reader to follow the approach taken in
+chapter \use{recurge} to show the equivalence of
+allocations attained in the sequential equilibrium and the
+time $0$ equilibrium,
+$\{\tilde c_t(s^t), \tilde \ell_t(s^t), \tilde x_t(s^t),
+\tilde n_t(s^t), \tilde k_{t+1}(s^t)\}_{t=0}^{\infty}=
+\{\cst, \ell_t(s^t), \xst, $ $\nst, k_{t+1}(s^t)\}_{t=0}^{\infty}$.
+The trick is to guess that the prices in the sequential
+equilibrium satisfy
+$$ \EQNalign{\tilde Q_t(s_{t+1} | s^t) &= q^t_{t+1}(s^{t+1}),\EQN price_seq;a \cr
+             \tilde w_t(s^t) &= w_t^t(s^t),                \EQN price_seq;b \cr
+             \tilde r_t(s^t) &= r_t^t(s^t).                \EQN price_seq;c \cr}
+$$
+The other set of guesses is that the representative household
+chooses asset portfolios given by
+$\tilde a_{t+1}(s_{t+1},s^t) = \Upsilon_{t+1}(s^{t+1})$ for all
+$s_{t+1}$. When showing that the household can afford these asset
+portfolios together with the prescribed quantities of consumption
+and leisure, we will find that the required initial wealth is equal to
+$$
+\tilde a_0 = [r^0_0(s_0) + (1-\delta) ] k_0 = p_{k0} k_0,
+$$
+i.e., the household in the sequential equilibrium starts out
+at the beginning of period $0$ owning
+the initial capital stock, which is then sold to a type II firm at the
+same competitive price as in the time $0$ trading equilibrium.
+
+
+
+
+
+
+\subsection{Financing a type II firm}
+A type II firm finances purchases of $\tilde k_{t+1}^{II}(s^t)$
+units of capital in period $t$ after history $s^t$ by issuing
+one-period state-contingent claims that promise
+to pay
+$$\left[ \tilde r_{t+1}(s^{t+1}) + (1-\delta) \right]
+                                 \tilde k_{t+1}^{II}(s^t)$$
+consumption goods tomorrow in state
+$s_{t+1}$.  In units of today's time $t$ consumption good,
+these payouts are worth \hfil\break
+$$\sum_{s_{t+1}} \tilde Q_t(s_{t+1} | s^t)
+\left[ \tilde r_{t+1}(s^{t+1}) + (1-\delta) \right]
+                                \tilde k_{t+1}^{II}(s^t)$$
+(by virtue of \Ep{seq_f2b}).
+The firm breaks even by issuing these claims.
+Thus, the firm of type II is entirely owned by its creditor, the
+household, and it earns zero profits.
+
+
+Note that the economy's end-of-period wealth as embodied
+in $\tilde k_{t+1}^{II}(s^t)$ in period $t$ after history $s^t$
+is willingly held by the representative household. This follows
+immediately from fact that the household's desired
+beginning-of-period wealth next period is given by
+$\tilde a_{t+1}(s^{t+1})$ and is equal to $\Upsilon_{t+1}(s^{t+1})$,
+as given by \Ep{seq_wealth}. Thus, the equilibrium prices entice the
+representative household to enter each future period with
+a strictly positive net asset level that is equal to the value
+of the type II firm. We have then confirmed the correctness
+of our earlier conjecture that the arbitrary
+debt limit of zero is not binding in the household's optimization
+problem.
+
+
+
+
+
+
+\section{Recursive formulation}
+Following the approach taken in chapter \use{recurge},
+we have established that the
+equilibrium allocations are the same in the Arrow-Debreu
+economy with complete markets at time $0$ and in a
+sequential-trading economy with complete one-period
+Arrow securities. This finding holds for an arbitrary
+technology process $A_t(s^t)$, defined as a measurable
+function of the history of events $s^t$ which in turn are
+governed by some arbitrary probability measure $\pi_t(s^t)$.
+At this level of generality,
+all prices $\{\tilde Q_t(s_{t+1} | s^t),\, \tilde w_t(s^t),\,
+\tilde r_t(s^t)\}$ and the capital stock $k_{t+1}(s^t)$
+in the
+sequential-trading economy depend on the history $s^t$. That is,
+these objects are time-varying functions of all past events
+$\{s_\tau\}_{\tau=0}^t$.
+
+
+In order to obtain a recursive formulation and solution to both the
+social planning problem and the sequential-trading equilibrium,
+we make the following specialization of the
+exogenous forcing process for the technology level.
+
+
+
+
+\subsection{Technology is governed by a Markov process}
+Let the stochastic event $s_t$ be governed by a Markov process,
+$[s\in {\bf S}, \pi(s'|s),$ $\pi_0(s_0)]$. We keep our earlier
+assumption that the state $s_0$ in period 0 is
+nonstochastic and hence $\pi_0(s_0)=1$ for a particular
+$s_0\in{\bf S}$. The sequences of probability measures $\pi_t(s^t)$
+on histories $s^t$ are induced by the Markov
+process via the recursions
+$$ \pi_t(s^t) = \pi(s_t | s_{t-1}) \pi(s_{t-1} | s_{t-2}) \ldots
+       \pi(s_1 | s_0)   \pi_0(s_0).  $$
+
+
+Next, we assume that the aggregate technology level $A_t(s^t)$
+in period $t$ is a time-invariant measurable function of its
+level in the last period and the current stochastic event $s_t$,
+i.e., $A_t(s^t) = A\left( A_{t-1}(s^{t-1}),\, s_t\right)$. For
+example, here we will proceed with the multiplicative version
+$$
+A_t(s^t) = s_t A_{t-1}(s^{t-1}) =  s_0 \,s_1 \cdots s_t \, A_{-1},
+$$
+given the initial value $A_{-1}$.
+
+
+
+
+
+
+\subsection{Aggregate state of the economy}
+The specialization of the technology process enables us to
+adapt the recursive construction of chapter \use{recurge} to incorporate
+additional components of the state of the economy. Besides information
+about the current value of the stochastic event $s$, we need to know
+last period's technology level, denoted $A$, in order to determine
+current technology level, $s\,A$, and to forecast future technology
+levels. This additional element $A$ in the aggregate state vector
+does not constitute any conceptual change from what we did in
+chapter \use{recurge}. We are merely including one more state
+variable that is a direct mapping from exogenous stochastic events,
+and it does not depend on any endogenous outcomes.
+
+
+But we also need  to expand the aggregate state vector with
+an endogenous component of the state of the economy, namely, the
+beginning-of-period capital stock $K$. Given the new state
+vector $X\equiv \left[ K \;  A \; s\right]$, we are ready to
+explore recursive formulations of both the planning problem
+and the sequential-trading equilibrium. This state vector is
+a complete summary of the economy's current position. It is
+all that is needed for a planner to compute an optimal
+allocation and it is all that is needed for the ``invisible hand''
+to call out prices and implement the first-best
+allocation as a competitive equilibrium.
+
+
+We proceed as follows. First, we display the Bellman equation
+associated with a recursive formulation of the planning problem.  Second, we
+use the
+same state vector $X$
+for the planner's problem as a state vector
+in which to cast the Arrow securities in a competitive economy with sequential
+trading.    Then we define a competitive equilibrium
+and show how the prices for the sequential equilibrium are embedded in
+the decision rules and the value function of the planning problem.
+
+
+
+
+%We want to decentralize the solution of the planning problem via
+%a competitive equilibrium with sequential trading in current period
+%commodities and one-period Arrow securities.   Accomplishing this requires
+%that we adapt the construction of chapter \use{recurge}  to incorporate
+%an endogenous component of the state of the economy, namely, the
+%capital stock.
+%We proceed as follows. First, we display the Bellman equation
+%associated with a recursive formulation of the planning problem.  We
+%use the state vector for the planner's problem to define a state vector
+%in which to cast the Arrow securities in a competitive economy with sequential
+%trading.    Then we define a competitive equilibrium
+%and show how the prices for the sequential equilibrium are embedded in
+%the decision rules and the value function of the planning problem.
+
+
+
+
+\section{Recursive formulation of the planning problem}
+We use capital letters $C,N,K$ to denote objects in the planning problem
+that correspond to $c,n,k$, respectively, in the household's and firms'
+problems.  We shall eventually equate them, but not until we have
+derived an appropriate formulation of the household's and firms' problems
+in a recursive competitive equilibrium.
+The Bellman equation for the planning problem is
+$$ v(K,A,s) = \max_{C,N, K'} \left\{  u(C,1-N)
+   +\beta \sum_{s'} \pi(s'|s) v(K', A', s') \right\} \EQN plan1 $$
+subject to
+$$\EQNalign{  K' + C &  \leq A s F(K, N) + (1-\delta )K , \EQN plan2;a \cr
+            A' & = A s. \EQN plan2;b \cr} $$
+Using the definition of the state vector
+$X = \left[ K \;  A \; s\right]$, we denote  the optimal
+policy functions as
+$$ \EQNalign{ C  & = \Omega^C(X), \EQN plan3;a \cr
+              N & = \Omega^N(X), \EQN plan3;b \cr
+             K' & = \Omega^K(X) .  \EQN plan3;c \cr} $$
+Equations  \Ep{plan2;b}, \Ep{plan3;c}, and the Markov transition
+density $\pi(s'|s)$ induce a transition density $\Pi(X'|X)$ on the
+state $X$.
+
+
+  For convenience, define  the functions
+$$ \EQNalign{ U_c(X) & \equiv u_c(\Omega^C(X), 1 - \Omega^N(X)), \EQN plan4;a \cr
+   U_\ell(X) & \equiv u_\ell(\Omega^C(X), 1 - \Omega^N(X)), \EQN plan4;b \cr
+   F_k(X) & \equiv F_k(K, \Omega^N(X)), \EQN plan4;c \cr
+   F_n(X) & \equiv F_n(K, \Omega^N(X)). \EQN plan4;d \cr}$$
+The  first-order conditions for the planner's problem can be represented
+as\NFootnote{We are using the envelope condition
+$$v_K(K,A,s) = U_c(X)[A s F_k(X) +(1-\delta)].$$}%
+$$ \EQNalign{ U_\ell(X) &  = U_c(X) A s F_n(X), \EQN plan5;a \cr
+         1&  =  \beta \sum_{X'} \Pi(X'| X) {U_c(X') \over U_c(X)}
+    [A' s' F_K(X') + (1-\delta)]. \hskip1cm   \EQN
+      plan5;b \cr} $$
+
+
+
+
+
+\section{Recursive formulation of sequential trading}\label{sec:bigKlittlek}%
+We seek a competitive equilibrium with sequential trading of
+one-period-ahead state-contingent securities (i.e., Arrow securities).
+To do this, we must use a ``Big $K$, little $k$'' trick of the type used in
+chapter \use{recurpe}. \index{Big $K$, little $k$}%
+
+
+\subsection{A ``Big $K$, little $k$'' device}
+Relative to the setup described in chapter \use{recurge}, we have
+augmented the time $t$ state of the economy by both last period's
+technology level $A_{t-1}$ and the current aggregate value of
+the endogenous state variable $K_t$.  We assume that decision
+makers act as if their decisions do not affect current or future prices. In a
+sequential market setting, prices depend on the state, of which
+$K_t$ is part. Of course, {\it in the aggregate\/}, decision
+makers choose the motion of $K_t$, so that we  require a device
+that makes them ignore this fact when they solve their decision
+problems (we want them to behave as perfectly competitive price
+takers, not monopolists). This consideration induces us to carry
+along both ``Big $K$'' and ``little $k$'' in our computations.
+Big $K$ is  an endogenous
+state variable\NFootnote{More generally, Big $K$ can be a vector  of
+endogenous state variables that impinge on equilibrium prices.}
+that is useful for forecasting  prices.
+Big $K$ is a component of the state that agents
+regard as beyond their control when solving their optimum
+problems. Values of little $k$ are chosen by firms and consumers.
+While we distinguish $k$ and $K$
+ when posing the decision problems of the household and firms,
+to impose equilibrium we set $K=k$ {\it after\/} firms
+and consumers have optimized.
+
+
+\subsection{Price system}
+To decentralize the economy in terms of one-period Arrow securities,
+we need a description of the aggregate state in terms of which one-period
+state-contingent payoffs are defined.  We proceed by guessing that the
+appropriate description of the state is the same vector $X$ that
+constitutes the state for the planning problem.  We temporarily forget
+about the optimal policy functions for the planning problem and focus
+on a decentralized economy with sequential trading and one-period
+prices that depend on $X$. We specify {\it price functions\/}
+$r(X), w(X), Q(X'|X)$, that represent, respectively, the rental price
+of capital, the wage rate for labor, and the price of a claim to one
+unit of consumption next period when next period's state is $X'$ and
+this period's state is $X$.
+(Forgive us for recycling the notation
+for $r$ and $w$ from the previous sections on the formulation of
+history-dependent competitive equilibria with commodity space
+$s^t$.)
+%%%%%in the space of sequences.)
+The prices are
+all measured in units of this period's consumption good.
+We also take as given an arbitrary candidate for the law of
+motion for $K$:
+$$ K' = G(X). \EQN Kmotion $$
+Equation \Ep{Kmotion}  together with \Ep{plan2;b} and a given
+subjective transition
+density $\hat \pi(s'|s)$ induce a subjective transition
+density $\hat \Pi(X' |X)$ for the state $X$.
+For now, $G$ and $\hat \pi(s'|s)$ are arbitrary. We wait until
+later to impose other equilibrium conditions, including rational
+expectations in the form of some restrictions on $G$ and $\hat \pi$.
+
+
+\subsection{Household problem}
+The perceived law of motion \Ep{Kmotion}
+for $K$ and the induced transition probabilities $\hat \Pi(X'|X)$
+describe the beliefs of a representative household.  The Bellman
+equation of the household is
+$$ J(a,X) = \max_{c,n, \overline a(X')} \left\{ u(c,1-n) + \beta
+  \sum_{X'} J(\overline a(X'), X') \hat \Pi(X'| X) \right\} \EQN hh1 $$
+subject to
+$$ c + \sum_{X'} Q(X'| X) \overline a(X') \leq w(X) n + a. \EQN hh2  $$
+Here $a$ represents the wealth of the household denominated in
+units of current consumption goods and $\overline a(X')$ represents
+next period's wealth denominated in units of next period's consumption
+good.
+Denote the household's optimal policy functions as
+$$ \EQNalign{ c &= \sigma^c(a,X), \EQN hh3;a \cr
+             n& = \sigma^n(a,X), \EQN hh3;b \cr
+             \overline a(X') & = \sigma^a(a, X;X').   \EQN hh3;c \cr }
+$$
+Let
+$$ \EQNalign{ \overline u_c(a,X) & \equiv u_c(\sigma^c(a,X), 1-\sigma^n(a,X)),
+   \EQN hh10;a \cr
+ \overline u_\ell(a,X) & \equiv  u_\ell(\sigma^c(a,X), 1-\sigma^n(a,X)).
+   \EQN hh10;b \cr  } $$
+Then we can represent the first-order conditions for the household's
+problem as
+$$\EQNalign{ \overline u_\ell(a,X) & = \overline u_c(a,X)  w(X), \EQN hh11;a \cr
+\noalign{\vskip.2cm}
+ Q(X'|X)  & =  \beta  {\overline u_c(\sigma^a(a,X;X'), X') \over \overline
+   u_c(a,X)} \hat \Pi(X'|X) .\EQN hh11;b\cr} $$
+
+
+
+
+\subsection{Firm of type I}
+Recall from subsection \use{sec:FirmI} the static optimum problem
+of a type I firm in a sequential equilibrium. In the recursive
+formulation of that equilibrium, the optimum problem of a type I
+firm can be written as
+$$ \max_{c,x,k,n}  \left\{ c+x -r(X) k - w(X)n \right\}  \EQN f11  $$
+subject to
+$$ c + x \leq A s F(k,n). \EQN f12 $$
+The zero-profit conditions are
+$$ \EQNalign{ r(X) & = A s F_k(k,n),  \EQN f13;a \cr
+              w(X) & = A s F_n(k,n). \EQN f13;b \cr} $$
+
+
+
+
+\subsection{Firm of type II}
+Recall from subsection \use{sec:FirmII} the optimum problem
+of a type II firm in a sequential equilibrium. In the recursive
+formulation of that equilibrium, the optimum problem of a type II
+firm can be written as
+%A type  II firm transforms output into capital, stores capital,
+% and earns its revenues by renting
+%capital to the type I firm. Because of the technological
+%assumption that capital can be converted back into the consumption
+%good, we can without loss of generality consider a sequence of
+%two-period optimization problems where a type II firm decides how
+%much capital $k'$ to store at the end of each period, in order to earn
+%a rental revenue $r(X')k$ and liquidation value $(1-\delta)k'$
+%in the following period. The firm finances itself by issuing state
+%contingent debt to the households, so future income streams can
+%be expressed in today's values by using prices $Q(X'|X)$.  The
+%associated optimum problem of a type II firm becomes
+$$ \max_{k'}   \; k' \left\{ -1 + \sum_{X'} Q(X'|X) \left[r(X') + (1-\delta)
+                           \right]\right\} .    \EQN f21  $$
+The zero-profit condition is
+$$ 1 = \sum_{X'} Q(X'|X) \left[r(X') +  (1-\delta) \right]. \EQN f26 $$
+
+
+
+
+
+
+
+
+\section{Recursive competitive equilibrium}
+So far, we have taken the price functions
+$r(X)$, $w(X)$, $Q(X'|X)$ and the perceived law of motion \Ep{Kmotion} for $K'$
+and the associated induced  state transition probability $\hat \Pi(X'|X)$
+as given arbitrarily. We now
+impose equilibrium conditions on these objects and make
+them outcomes of the analysis.\NFootnote{An important
+function of the rational expectations hypothesis is to
+remove agents' expectations in the form of $\hat \pi$
+and $\hat \Pi$ from the list of free parameters of the model.}
+
+
+When solving their optimum problems, the household and firms take
+the endogenous state variable $K$ as given.  However, we want $K$
+to be determined by the equilibrium interactions of households
+and firms.  Therefore, we impose $K=k$ {\it after\/} solving the
+optimum problems of the household and the two types of firms.
+Imposing equality afterward makes the household and the firms
+be price takers.
+
+
+\subsection{Equilibrium restrictions across decision rules}
+We shall soon define an equilibrium as a set of pricing functions,
+a perceived law of motion for the $K'$, and an associated
+$\hat \Pi(X'| X)$ such that when the firms and the household take
+these as given, the household's and firms' decision rules {\it imply\/}
+the law of motion for $K$ \Ep{Kmotion} after substituting $k=K$
+and other market clearing conditions.  We shall remove the
+arbitrary nature of both $G$ and $\hat \pi$ and therefore
+also $\hat \Pi$ and thereby impose rational expectations.
+
+
+We now proceed to find the restrictions that this notion of
+equilibrium imposes across agents' decision rules, the pricing
+functions, and the perceived law of motion \Ep{Kmotion}. If the
+state-contingent debt issued by the type II firm is to match that
+demanded by the household, we must have
+%$$\EQNalign{
+%\overline a(X') &= [r(X') + (1-\delta)]K', \EQN ff_equil;a \cr
+%\noalign{\noindent \rm and consequently beginning-of-period assets in
+%a household's budget constraint \Ep{hh2} have to satisfy}
+%a &= [r(X) + (1-\delta)]K.           \EQN ff_equil;b \cr}
+%$$
+$$\overline a(X') = [r(X') + (1-\delta)]K', \EQN ff_equil;a $$
+and consequently beginning-of-period assets in
+a household's budget constraint \Ep{hh2} have to satisfy
+$$a = [r(X) + (1-\delta)]K.           \EQN ff_equil;b
+$$
+
+
+By substituting equations \Ep{ff_equil} into a household's
+budget constraint \Ep{hh2}, we get
+$$\EQNalign{\sum_{X'} Q(X'|X)  &[r(X') + (1-\delta)]K' \cr
+\noalign{\vskip.2cm}
+         &= [r(X) + (1-\delta)]K + w(X) n - c. \EQN ff_equilbc \cr}$$
+Next, by recalling equilibrium condition \Ep{f26} and the fact that
+$K'$ is a predetermined variable when entering next period, it follows
+that the left side of \Ep{ff_equilbc} is equal to $K'$. After also
+substituting equilibrium prices \Ep{f13} into the right side
+of \Ep{ff_equilbc}, we obtain
+$$\EQNalign{
+K' &= \left[A s F_k(k,n) + (1-\delta)\right]K + A s F_n(k,n) n  - c \cr
+%\noalign{\vskip.2cm}
+   &= A s F(K,\sigma^n(a,X) ) + (1-\delta)K  - \sigma^c(a,X),\EQN mat0  \cr}
+$$
+where the second equality invokes Euler's theorem on linearly homogeneous
+functions and equilibrium conditions $K=k$, $N=n=\sigma^n(a,X)$ and
+$C=c=\sigma^c(a,X)$.
+To express the right side of equation \Ep{mat0} solely as a function of
+the current aggregate state
+$X = \left[K \;  A \; s \right]$, we also impose equilibrium
+condition \Ep{ff_equil;b}
+$$\EQNalign{
+K' &= A s F\left(K,\sigma^n([r(X) + (1-\delta)]K,X) \right) \cr
+%\noalign{\vskip.2cm}
+     &+ (1-\delta)K
+- \sigma^c([r(X) + (1-\delta)]K,X) .   \EQN mat1  \cr}$$
+Given the arbitrary
+perceived law of motion \Ep{Kmotion} for $K'$ that underlies
+the household's optimum problem,
+the right side of \Ep{mat1} is the {\it actual\/} law of motion
+for $K'$ that is implied by the household's and firms' optimal decisions.
+In equilibrium, we want $G$ in \Ep{Kmotion} not to be arbitrary
+but to be an {\it outcome\/}.  We want
+to find an equilibrium perceived law of motion \Ep{Kmotion}.
+By way of imposing rational expectations, we require that
+the perceived and actual laws of motion be identical.
+Equating the right sides of \Ep{mat1} and the perceived law
+of motion \Ep{Kmotion} gives
+$$\EQNalign{
+G(X) = &A s F\left(K,\sigma^n([r(X) + (1-\delta)]K,X) \right) \cr
+%\noalign{\vskip.2cm}
+     &+ (1-\delta)K
+- \sigma^c([r(X) + (1-\delta)]K,X) .   \EQN mat2  \cr}$$
+Please remember that the right side of this equation is
+itself implicitly a function of $G$, so that \Ep{mat2}
+is to be regarded as instructing us to find a fixed point equation of
+a mapping from a perceived $G$ and a price
+system  to an actual $G$.
+This functional equation requires that the perceived law of motion
+for the capital stock $G(X)$ equals the actual law of motion
+for the capital stock that is determined jointly by the
+decisions of the household and the firms in a competitive equilibrium.
+
+
+
+
+\medskip\noindent{\sc Definition:}
+A {\it recursive competitive equilibrium with Arrow securities\/}
+is a price system
+$r(X)$, $w(X)$, $Q(X'|X)$, a  perceived law of motion $K'=G(X) $
+and associated induced transition density $\hat \Pi(X'|X)$,
+  a household value function  $J(a,X)$,
+and decision rules $\sigma^c(a,X)$,
+$\sigma^n(a,x)$,  $\sigma^a(a,X;X')$ such that:
+\medskip
+\noindent {\bf a.}  Given $r(X)$, $w(X)$, $Q(X'|X)$, $\hat \Pi(X'|X)$, the
+functions
+ $\sigma^c(a,X)$, $\sigma^n(a,X)$, $\sigma^a(a,X;X')$ and the value
+function $J(a,X)$ solve
+ the household's optimum problem;
+\medskip
+\noindent {\bf b.} For all $X$, \hskip.2cm
+ $r(X) = A F_k \!\Bigl(K, \sigma^n([r(X) + (1-\delta) ]K, X) \Bigr)$, and
+\vskip.2cm
+\noindent{} \hskip2.2cm
+ $w(X) = A F_n  \!\Bigl(K, \sigma^n([r(X) + (1-\delta) ]K, X) \Bigr);$
+\medskip
+\noindent{\bf c.} $Q(X'|X)$ and $r(X)$ satisfy \Ep{f26};
+\medskip
+\noindent{\bf d.}
+ The functions $G(X)$, $r(X)$, $\sigma^c(a,X)$, $\sigma^n(a,X)$ satisfy
+\Ep{mat2};
+\medskip
+\noindent{\bf e.}  $\hat \pi  = \pi$.
+
+
+\medskip
+Item a enforces optimization by the household, given the prices
+it faces and its expectations.  Item b requires that the type I firm break even
+at every capital stock and at the labor supply chosen by
+the household.  Item c requires that the type II firm break even.
+Market clearing is implicit when item d
+requires that the perceived and actual laws of motion of
+capital  are equal. Item e and the equality of the perceived and actual
+$G$ imply that $\hat \Pi  = \Pi$. Thus, items d and e impose
+rational expectations.
+
+
+\medskip
+\subsection{Using the planning problem}
+Rather than directly attacking the fixed point problem
+\Ep{mat2} that is the heart of the equilibrium definition, we'll
+guess a candidate $G$  as well as a price system, then describe
+how to verify that they form an equilibrium. As our candidate for
+$G$, we choose the decision rule \Ep{plan3;c} for  $K'$ from the
+planning problem. As sources of candidates for the pricing
+functions, we again turn to the planning problem and
+ choose:
+$$\EQNalign{ r(X) & =  A F_k(X), \EQN plan6;a \cr
+      w(X) & = A F_n(X), \EQN plan6;b \cr
+     Q(X'|X) & = \beta \Pi(X'|X) {U_c(X') \over U_c(X)}
+   [A' s' F_K(X')+(1-\delta)]. \hskip1cm\EQN plan6;c} $$
+In an equilibrium it will turn out that the household's decision rules
+for consumption and labor supply will match those chosen by the
+planner:\NFootnote{The two functional equations \Ep{plan7} state
+restrictions that a recursive competitive equilibrium imposes
+across the household's decision rules $\sigma$ and the planner's
+decision rules $\Omega$.}
+$$\EQNalign{ \Omega^C(X) & = \sigma^c
+([r(X)+(1-\delta)]K, X), \EQN plan7;a  \cr
+           \Omega^N(X) & = \sigma^n([r(X)+(1-\delta)]K, X). \EQN plan7;b  \cr  }
+$$
+
+
+ The key to verifying these guesses is to show that the first-order
+conditions for both types of firms and the household are
+satisfied at these guesses.  We leave the details to an exercise.
+Here we are exploiting some consequences of the welfare
+theorems, transported this time to a recursive setting with an
+endogenous aggregate state variable.
+
+
+\section{Concluding remarks}
+  The notion of a recursive competitive equilibrium was introduced
+by Lucas and Prescott (1971) and Mehra and Prescott (1979).
+The application in this chapter is in the spirit of those papers
+but differs substantially in details.  In particular, neither of
+those papers worked with Arrow securities, while the focus of this
+chapter has been to manage an endogenous state vector in terms of
+which it is appropriate to cast Arrow securities.
+
+\auth{Lucas, Robert E., Jr.}%
+\auth{Mehra, Rajnish}%
+\auth{Prescott, Edward C.}%
+
+
+\index{permanent income model!general equilibrium version}%
+
+\appendix{A}{The permanent income model revisited}\label{sec:perm_income_ge}%
+This appendix is a variation on the theme that `many single agent models can
+be reinterpreted as general equilibrium models'.
+\subsection{Reinterpreting the single-agent model}\label{sec:pricesystemLQ}%
+In this appendix, we cast the single-agent linear quadratic  permanent income model
+of section \use{sec:LQmodel} of chapter \use{timeseries} as a competitive equilibrium
+with time $0$ trading of a complete set of history-contingent securities.
+We begin by reformulating the model in that chapter as a planning problem.
+The planner has  utility functional
+$$  E_0 \sum_{t=0}^\infty \beta^t u(\bar c_t)  \EQN  sprob100 $$
+where $E_t$ is the mathematical expectation conditioned
+on the consumer's time $t$ information,  $\bar c_t$ is time $t$ consumption,
+$u(c)= -.5 (\gamma - \bar c_t)^2$, and
+$\beta \in (0,1)$ is a discount factor.  The planner maximizes
+\Ep{sprob100} by choosing a consumption, borrowing plan
+ $\{\bar c_t, b_{t+1}\}_{t=0}^\infty$ subject to the sequence of budget constraints
+$$ \bar c_t + b_t = R^{-1} b_{t+1}  + y_t \EQN sprob200 $$
+where $y_t$ is an exogenous
+ stationary endowment process, $R$ is a constant gross
+risk-free interest rate, $-R^{-1} b_t \equiv \bar k_t$ is the stock of an asset that bears a risk free one-period
+gross return of $R$, and $b_0$ is a given initial condition.  We  assume
+that $R^{-1} = \beta$ and  that the endowment
+process has the state-space representation
+$$ \EQNalign{ z_{t+1} & = A_{22} z_t + C_2 w_{t+1} \EQN sprob150;a \cr
+               y_t & = U_y  z_t \EQN sprob150;b \cr}$$
+where $w_{t+1}$ is an i.i.d.\ process with mean zero and
+identity contemporaneous covariance matrix, $A_{22}$ is a stable matrix,
+its eigenvalues being strictly below unity in modulus, and
+$U_y$ is a selection vector that identifies $y$ with a particular
+linear combination of  $z_t$.  As shown in chapter \use{timeseries},
+the solution of what we now interpret as a planning problem
+can be represented as the following versions of equations
+\Ep{sprob8} and \Ep{debt_evolution}, respectively:
+$$\EQNalign{% \bar c_t & = (1-\beta)
+%\left[ \sum_{j=0}^\infty \beta^j E_t y_{t+j} - R \bar k_t\right]
+% \EQN sprob800   \cr
+ \bar c_t & = (1-\beta)
+\left[ U_y (I-\beta A_{22})^{-1} z_t  - R \bar k_t\right]
+ \EQN sprob800   \cr
+ \bar k_{t+1} & = \bar k_t +  R U_y (I - \beta A_{22})^{-1} (A_{22} - I) z_t . \EQN debt_evolution100 } $$
+We can represent the optimal consumption, capital accumulation path  compactly as
+$$\EQNalign{ \bmatrix{ \bar k_{t+1} \cr z_{t+1} } &= A \bmatrix{ \bar k_t \cr z_t } + \bmatrix{ 0 \cr C_2 } w_{t+1} \EQN kc_solnk \cr
+   \bar c_t & = S_c \bmatrix{ \bar k_t \cr z_t} \EQN kc_solnc} $$
+   where the matrices $A, S_c$ can readily be constructed from the solutions and specifications just mentioned.
+In addition, it is   useful to have at our disposal the marginal utility of consumption process
+$p_t^0 \equiv (\gamma - \bar c_t)$, which can be represented as
+$$ p_t^0 (z^t) = S_p \bmatrix{ \bar k_t \cr z_t } \EQN eq:pLQrepres  $$
+and where $S_p$ can be constructed easily from $S_c$.  Solving equation \Ep{debt_evolution100} recursively shows that  $k_{t+1}$ is a function
+$k_{t+1}(z^t; k_0)$ of  history $z^t$.   In equation \Ep{eq:pLQrepres}, $\bar k_t$ encodes the history dependence of $p_t^0(z^t)$.
+
+Equations \Ep{kc_solnk}, \Ep{kc_solnc}, \Ep{eq:pLQrepres} together with the equation $r_t^0 = \alpha$ to be explained
+below
+turn out to be representations of the equilibrium price system in the competitive equilibrium to which we
+turn next.
+
+\subsection{Decentralization and scaled prices}
+
+Let $q_t^0(z^t)$ the time $0$ price of a unit of time $t$ consumption at history $z^t$.  Let
+$\pi_t(z^t)$ the probability density of the history $z^t$ induced by the state-space
+representation \Ep{sprob150}.  Define the adjusted  Arrow-Debreu price scaled by discounting and probabilities
+as
+$$ p_t^0(z^t) = {\frac{q_t^0(z^t)}{\beta^t \pi_t(z^t) }}. \EQN scaled_price $$
+We find it convenient to express a representative  consumer's problem and a representative
+firm's problem  in terms of these scaled Arrow-Debreu prices.
+
+Evidently, the present value of consumption, for example,  can be represented as
+$$ \eqalign{ \sum_{t=0}^\infty \sum_{z^t} q_t^0(z^t) c_t(z^t) & = \sum_{t=0}^\infty \sum_{z^t} \beta^t p_t^0(z^t) c_t(z^t) \pi_t(z^t) \cr
+     & = E_0 \sum_{t=0}^\infty \beta^t p_t(z^t) c_t(z^t) .}$$
+Below, it will be  convenient for us to represent present values as conditional expectations of discounted sums as is done
+in the second  line.
+
+We let $r_t^0(z^t)$ be the rental rate on capital, again scaled analogously to \Ep{scaled_price}.
+Both the consumer and the firm take these processes as given.
+
+The consumer owns and operates the technology for accumulating capital.  The consumer  owns the endowment process $\{y_t \}_{t=0}^\infty$, which
+it sells to a firm that operates a production technology.  The consumer  rents capital to the firm.  The firm uses the endowment and
+capital to produce output that it sells to the consumer at a competitive price. The consumer divides his time $t$ purchases between
+consumption $c_t$ and gross investment $x_t$.
+\subsubsection{The consumer}
+Let $\{p_t^0(z^t), r_t^0(z^t)\}_{t=0}^\infty$ be a price system, each component of which takes the form of a `scaled
+Arrow-Debreu price' (attained by dividing a time-$0$  Arrow-Debreu price by a discount factor times a probability, as in the previous
+subsection).    The representative consumer's
+problem is to choose processes $\{c_t, k_{t+1}\}_{t=0}^\infty$ to maximize
+$$ -.5 E_0 \sum_{t=0}^\infty \beta^t (\gamma- c_t)^2 \EQN obj_c $$
+subject to
+$$ \EQNalign{ E_0 \sum_{t=0}^\infty \beta^t  p_t^0(z^t) o_t(z^t) & = E_0 \sum_{t=0}^\infty \beta^t \bigl( p_t^0(z^t) y_t + r_t^0(z^t) k_t(z^t) \bigr) \EQN eqn:budgetLQ \cr
+      k_{t+1} & = (1-\delta) k_t + x_t \EQN eqn:capmotion \cr
+      o_t(z^t) & = c_t(z^t) + x_t(z^t) \EQN eqn:defocx } $$
+where $k_0$ is a given initial condition. Here $x_t$ is gross investment and $k_t$ is physical capital owned by the household and rented
+to firms.  The consumer purchases output $o_t = c_t + x_t$ from competitive firms.  The consumer sells its endowment $y_t$ and rents its
+capital $k_t$ to firms at prices $p_t^0(z^t)$ and $r_t^0(z^t)$.  Equation \Ep{eqn:capmotion} is the law of motion for physical capital, where $\delta \in (0,1)$
+is a depreciation rate.
+
+\subsubsection{The firm}
+
+A competitive representative firm chooses processes $\{k_t, c_t, x_t\}_{t=0}^\infty$ to maximize
+$$ E_0 \sum_{t=0}^\infty \beta^t \bigl\{ p_t^0(z^t) o_t(z^t) - p_t^0(z^t) y_t - r_t^0(z^t) k_t  \bigr\} \EQN firm_objLQ $$
+subject to the physical technology
+$$  o_t(z^t) = \alpha k_t + y_t(z_t), \EQN eqn:technologyLQ $$
+where $\alpha >0$.  Since the marginal product of capital is $\alpha$,
+a good guess is that
+$$ r_t^0(z^t) = \alpha .\EQN eqnMPK $$
+
+
+\subsection{Matching equilibrium and planning allocations}
+
+We impose the condition
+ $$\alpha + (1-\delta) = R . \EQN eqn:Rmatch $$
+This makes the gross rates of return in investment identical in the planning and decentralized economies.
+In particular, if we substitute equation \Ep{eqn:capmotion} into equation \Ep{eqn:technologyLQ} and
+remember that $b_t \equiv R k_t$, we obtain \Ep{sprob200}.
+
+It is straightforward to verify that the allocation $\{\bar k_{t+1}, \bar c_t\}_{t=0}^\infty$ that solves the planning problem
+is a competitive equilibrium allocation.
+
+As in chapter \use{recurpe},
+we have distinguished between the planning allocation $\{\bar k_{t+1}, \bar c_t\}_{t=0}^\infty$ that determines the equilibrium
+price functions  defined in subsection \use{sec:pricesystemLQ} and the allocation chosen by the representative firm and the
+representative consumer who face those prices as price takers. This is yet another example of the `big K, little k' device
+from chapter   \use{recurpe}.
+
+
+
+\subsection{Interpretation}
+
+As we saw in section \use{sec:LQmodel} of chapter \use{timeseries} and also in
+representation \Ep{sprob800}
+\Ep{debt_evolution100} here, what is now {\it equilibrium\/} consumption is a random walk.
+Why, despite his preference for a {\it smooth\/} consumption path,  does the representative consumer accept
+fluctuations in his consumption?   In the complete markets economy of this appendix, the consumer believes that it is possible for him
+ completely to smooth consumption over time and across histories by purchasing and selling
+history contingent claims. But at the equilibrium prices facing him, the consumer prefers to tolerate
+ fluctuations in consumption over time and across histories.
+
+
+\medskip
+

@@ -1,0 +1,2964 @@
+\input grafinp3
+\input psfig
+%\eqnotracetrue
+\offparens
+
+\footnum=0
+\overfullrule=0pt
+
+\def\bull{\vrule height .9ex width .8ex depth -.1ex}
+\def\bh{\penalty-100}
+\footnum=0
+\chapter{Equilibrium without Commitment \label{socialinsurance2}}
+%%%%%%%%%%%\chapter{Enforcement and Equilibrium \label{socialinsurance2}}
+
+\index{commitment!two-sided lack of}
+\section{Two-sided lack of commitment}
+In section \use{sec:moneylender1} of the previous chapter, we studied
+insurance without commitment. That was a ``small open economy''  analysis
+since the moneylender could borrow or lend resources outside
+of the village at a given interest rate. Recall also the asymmetry
+in the environment where villagers could not make any commitments while
+the moneylender was assumed to be able to commit.
+We will now study a closed system without access to an outside credit
+market. Any household's consumption in excess of its own endowment
+must then come from the endowments of  other households in the
+economy. We will also adopt the symmetric assumption that no one
+is able to make
+commitments. That is, any contract prescribing an exchange of goods
+today in anticipation of future exchanges of goods represents a
+sustainable allocation only if current and future exchanges satisfy participation constraints
+for all households involved in the contractual
+arrangement. Households are free to walk away from the arrangement
+at any point in time and thereafter to live in autarky. Such a contract design
+problem with participation constraints on both sides of an exchange
+represents a problem with two-sided lack of commitment, as compared to
+the problem with one-sided lack of commitment in
+section \use{sec:moneylender1}.
+%% MOVED to black15.tex \NFootnote{For an earlier two-period
+%%                      model of a one-sided
+%%commitment problem, see Holmstr\"om (1983).} \auth{Holmstr\"om,
+%%Bengt}
+
+This chapter draws on the work of Thomas and Worrall (1988,
+1994) and Kocherlakota (1996b). At the end of the chapter, we also
+discuss market arrangements for decentralizing the constrained
+Pareto optimal allocation, as studied by Kehoe and Levine (1993)
+and Alvarez and Jermann (2000).
+
+
+
+\section{A closed system}\label{sec:closed}%
+Thomas and Worrall's (1988) model
+\auth{Thomas, Jonathan}\auth{Worrall, Tim}%
+of self-enforcing wage contracts is an
+antecedent to our villager-moneylender environment.
+  The counterpart to our moneylender  in their model is  a risk-neutral firm that forms a long-term relationship
+with a risk-averse worker. In their model, there is also a competitive spot
+market for labor where a worker is paid $y_t$ at time $t$. The
+worker is always free to walk away from the firm and work in that
+spot market.  But if he does, he can never again enter into a long-term
+relationship with another firm.  The firm seeks to maximize the
+discounted stream of expected future profits by designing a
+long-term wage contract that is self-enforcing in the sense that it never gives
+the worker
+an incentive to quit.  In a contract that
+stipulates a wage $c_t$ at time $t$, the firm earns time $t$
+profits of $y_t - c_t$
+(as compared to hiring a worker in the spot market for labor).
+If Thomas and Worrall had assumed a commitment problem only on the part of
+the worker, their model  would be formally identical to our
+villager-moneylender environment.
+  However, Thomas and Worrall also assume that
+the firm itself can renege on a wage contract and buy labor at the
+random spot market wage. Hence, they require that a self-enforcing wage contract
+ be one in which neither party ever has an incentive to
+renege.
+
+Kocherlakota
+\auth{Kocherlakota, Narayana R.}%
+(1996b) studies a model that has important features in common with
+Thomas and Worrall's.\NFootnote{The working paper of Thomas and Worrall
+(1994) also analyzed a multiple agent closed model like Kocherlakota's.
+Thomas and Worrall's (1994) analysis evolved into an article by
+Ligon, Thomas, and Worrall (2002) that we discuss in section \use{LTW2002}.} %
+ Kocherlakota's  counterpart to Thomas and Worrall's   firm is  a  risk-averse second household.
+  In Kocherlakota's  model, two
+ households
+receive stochastic endowments. The \idx{contract design} problem
+is  to find an insurance/transfer arrangement that reduces
+consumption risk while respecting participation constraints: both households must be induced each period not
+to walk away from the arrangement. Kocherlakota
+uses his model in an interesting way to help interpret empirically
+estimated conditional consumption-income covariances that seem to
+violate the hypothesis of complete risk sharing. Kocherlakota
+investigates the extent to which those failures reflect
+impediments to enforcement that are captured by his participation
+constraints. \auth{Thomas, Jonathan}
+\auth{Worrall, Tim}
+
+
+For the purpose of studying those conditional covariances in a stationary stochastic environment,
+Kocherlakota's use of an environment with two-sided lack of commitment is important.
+In our model of villagers facing a moneylender in section \use{sec:moneylender1},
+imperfect risk
+sharing is temporary and so would not prevail in a stochastic steady state.
+In Kocherlakota's model, imperfect risk sharing can be perpetual.
+There are equal numbers of two types of households in
+the village.  Each of the households has the preferences,
+endowments, and autarkic utility possibilities described
+in chapter \use{socialinsurance}. %%earlier.
+%%In addition,  we now impose an Inada condition $$
+%%\lim_{c \searrow 0} u'(c) = +\infty$$ that is designed to keep
+%%consumers off corners.
+Here we assume that the endowments of the two types of households
+are perfectly negatively correlated. Whenever a household of type
+1 receives $\overline y_s$, a household of type 2 receives $1 -
+\overline y_s$. We assume that  $y_t$ is independently and
+identically distributed according to the discrete probability
+distribution ${\rm Prob} (y_t = \overline y_s) = \Pi_s$, where we
+assume that $\overline y_s \in [0,1]$. We also assume  that the
+$\Pi_s$'s are such that the distribution of $y_t$ is identical to
+that of $1-y_t$.
+%%\NFootnote{This last assumption guarantees an
+%%identical reservation value $v_{\rm aut}$ for both types of
+%%consumer; it is easy to  relax this assumption.}
+  Also, now the planner has
+access to neither borrowing nor lending opportunities,
+and is confined to reallocating consumption goods
+between the two types of households. This limitation leads to two
+participation constraints.  At time $t$, the type 1 household
+receives endowment $y_t$ and consumption $c_t$,
+while the type 2 household receives $1-y_t$ and
+$1-c_t$.
+
+  In this setting, an allocation is said to be
+{\it sustainable\/}\NFootnote{Kocherlakota says
+{\it subgame perfect\/}   rather than
+{\it sustainable}.}
+if for all $t\geq 0$ and for all histories $h_t$
+$$ \EQNalign{
+ u(c_t) - u(y_t) + &\beta E_t \sum_{j=1}^\infty \beta^{j-1}
+\left[ u(c_{t+j}) - u(y_{t+j}) \right] \geq 0,       \EQN sustain1;a \cr
+    u(1-c_t) -  u(1-y_t) + &\beta E_t \sum_{j=1}^\infty \beta^{j-1}
+\left[ u(1-c_{t+j}) - u(1-y_{t+j}) \right] \geq 0. \hskip1.3cm \EQN sustain1;b \cr}$$
+
+Let $\Gamma$ denote the set of sustainable allocations.
+%Denote by $v_{\rm max}$ the maximal expected utility to agent 1 among
+%all sustainable allocations.
+We seek the following function:
+$$ \EQNalign { Q(\triangle)  = &\max_{\{c_t\}} E_{-1}  \sum_{t=0}^\infty
+  \beta^t \left[ u(1-c_t) - u(1-y_t) \right] \EQN Pdef;a   \cr
+\noalign{\hbox{\rm subject to }}
+ \ &  \{c_t\}  \in \Gamma, \EQN Pdef;b \cr
+       \ & E_{-1} \sum_{t=0}^\infty \beta^t \left[ u(c_t) - u(y_t) \right]
+                                          \geq \triangle.
+  \EQN Pdef;c  \cr} $$
+The function $Q(\triangle)$  depicts a (constrained) Pareto
+frontier by  portraying the maximized value of the expected
+lifetime utility of the type 2 household subject to  the type 1 household receiving an
+expected lifetime utility that exceeds its autarkic welfare level
+by at least $\triangle$ utils. To find this Pareto frontier, we
+first solve for the consumption dynamics that characterize all
+efficient contracts. From these optimal consumption dynamics, it
+will be straightforward to compute the {\it ex ante} division of
+ gains from an efficient contract.
+
+
+ \index{contract
+design!dynamic program}
+\section{Recursive formulation}
+We choose to study Kocherlakota's model using the approach %a method like that
+proposed by Thomas and Worrall.\NFootnote{Kocherlakota instead extended the approach that we used in the
+villager-moneylender model of section
+\use{sec:moneylender1} to an environment with two-sided lack of commitment. We followed Kocherlakota
+in chapter 15 of the first edition of this book.
+%For some special examples with two-sided lack of commitment, this approach
+%encounters a technical difficulty associated with possible kinks in the Pareto frontier.
+However, when applied to problems with two-sided lack of commitment,
+this approach encounters a technical difficulty associated with possible
+kinks in the Pareto frontier.
+(We first encountered this difficulty when we assigned a version of exercise
+{\it \the\chapternum.3\/} to our students.)
+%We seem to side-step this non-differentiability
+%problem  by using Thomas and Worrall's approach.
+Thomas and Worrall's approach avoids this nondifferentiability
+problem by using conditional Pareto frontiers, one for each
+realization of the endowment.} %
+Thomas and Worrall (1988) formulate
+the contract design problem as a dynamic program, where the state
+of the system {\it prior} to the current period's endowment
+realization is given by a vector $[x_1 \; x_2 \; \ldots \;x_s\;
+\ldots \; x_S]$.
+% $\{x_s\}_{s=1}^S$.
+Here $x_s$ is the value of the expression on the left side of
+\Ep{sustain1;a} that is promised to a type 1 agent conditional on
+the current period's endowment realization being $\overline y_s$.
+Let $Q_s(x_s)$ then denote the corresponding value of expression
+\Ep{sustain1;b} that is promised to a type 2
+agent.\NFootnote{$Q_s(\cdot)$ is a Pareto frontier conditional on
+the endowment realization $\overline y_s$, while $Q(\cdot)$ in
+\Ep{Pdef;a} is an {\it ex ante} Pareto frontier before observing
+any endowment realization.} When the endowment realization
+$\overline y_s$ is associated with a promise to a type 1 agent
+equal to $x_s=x$, we can write the Bellman equation as
+$$ Q_s(x) = \max_{c,\,\{\chi_j\}_{j=1}^S}
+\bigl\{ u(1 - c) - u(1 - \overline y_s)
+                  + \beta   \sum_{j=1}^S \Pi_j Q_j(\chi_j) \bigr\} \EQN new1;a  $$
+subject to
+$$\EQNalign{  & u(c) - u(\overline y_s) + \beta \sum_{j=1}^S \Pi_j  \chi_j  \geq x,
+                                                                         \EQN new1;b \cr
+             & \chi_j \geq 0,       \hskip1.5cm    j=1, \ldots, S;          \EQN new1;c \cr
+          &    Q_j(\chi_j) \geq 0,  \hskip.8cm j=1, \ldots, S;  \EQN new1;d   \cr
+             &  c \in [0, 1],  \EQN new1;e \cr}
+$$
+where expression \Ep{new1;b} is the promise-keeping constraint,
+expression \Ep{new1;c} is the participation constraint for the
+type 1 agent, and expression \Ep{new1;d} is the participation constraint
+for the type 2 agent. The set of feasible $c$ is given by
+expression \Ep{new1;e}.
+
+\auth{Thomas, Jonathan} \auth{Worrall, Tim}
+ Thomas and Worrall
+prove the existence of a compact interval that contains all
+permissible continuation values $\chi_j$:
+$$
+\chi_j  \in [0, \overline x_j] \ \hbox{\rm for }\;j = 1, 2, \ldots, S.
+                                                                \EQN new1;f
+$$
+Thomas and Worrall also show that the Pareto-frontier $Q_j(\cdot)$
+is decreasing, strictly concave, and continuously differentiable
+on $[0, \overline x_j]$. The bounds on $\chi_j$ are motivated as
+follows. The contract cannot award the type 1 agent a value of
+$\chi_j$ less than zero because that would correspond to an
+expected future lifetime utility below the agent's autarky level.
+There exists an upper bound $\overline x_j$ above which the
+planner would never find it optimal to award the type 1 agent a
+continuation value conditional on next period's endowment
+realization being $\overline y_j$. It would simply be impossible
+to deliver  a higher continuation value because of the
+participation constraints. In particular, the upper bound
+$\overline x_j$ is such that
+$$ Q_j(\overline x_j) = 0.                                  \EQN neww1
+$$
+Here a type 2 agent  receives an expected lifetime utility
+equal to his autarky level if the next period's endowment
+realization is $\overline y_j$ and a type 1 agent is
+promised the upper bound $\overline x_j$. Our two- and three-state examples
+in sections \use{sec:thekink} and \use{sec:3state} illustrate what
+determines $\overline x_j$.
+
+
+   Attach Lagrange multipliers $\mu$, $\beta \Pi_j \lambda_j$,
+and $\beta \Pi_j \theta_j$ to expressions \Ep{new1;b},
+\Ep{new1;c}, and \Ep{new1;d}, then get the following first-order conditions for $c$
+and $\chi_j$:\NFootnote{Here we are proceeding under the
+conjecture that the nonnegativity constraints on consumption in
+\Ep{new1;e}, $c\geq 0$ and $1-c\geq 0$, are not binding. This
+conjecture is confirmed below when it is shown that optimal
+consumption levels satisfy $c\in[\overline y_1,\, \overline y_S]$.\label{nonneg}}
+$$\EQNalign{ c\,\rm{:}& \hskip.25cm
+     -u'(1-c) + \mu u'(c) =0,
+                \EQN ffonc1;a \cr
+             \chi_j\,\rm{:}& \hskip.25cm
+              \beta \Pi_j Q'_j(\chi_j) + \mu \beta \Pi_j + \beta \Pi_j \lambda_j
+              +\beta \Pi_j \theta_j Q'_j(\chi_j) = 0 .
+                  \EQN ffonc1;b \cr }$$
+By the envelope theorem,
+$$ Q'_s(x)=-\mu.       \EQN envel
+$$
+After substituting \Ep{envel} into \Ep{ffonc1;a} and
+\Ep{ffonc1;b}, respectively, the optimal choices of $c$ and
+$\chi_j$ satisfy
+$$\EQNalign{
+ Q'_s(x) & =  -{u'(1 - c) \over u'(c)},\EQN marg1;a \cr
+ Q'_s(x) & =  (1+\theta_j) Q'_j(\chi_j) + \lambda_j . \EQN marg1;b \cr}
+$$
+
+\section{Equilibrium consumption}\label{sec:equil_consumption}%
+\vskip-.5cm
+\subsection{Consumption dynamics}\label{sec:consdynamic}%
+From equation \Ep{marg1;a}, the consumption $c$ of a type 1 agent
+is an increasing function of the promised value $x$. The
+properties of the Pareto frontier $Q_s(x)$ imply that $c$ is a
+differentiable function of $x$ on $[0, \overline x_s]$. Since
+$x\in[0,\overline x_s]$, $c$ is contained in
+the nonempty compact interval $[\underline c_s, \overline c_s]$,
+where
+$$
+Q'_s(0) = -{u'(1 - \underline c_s) \over u'(\underline c_s)}
+\hskip1cm \hbox{\rm and } \hskip1cm
+Q'_s(\overline x_s) = -{u'(1 - \overline c_s) \over u'(\overline c_s)} .
+$$
+Thus, if $c=\underline c_s$, $x=0$, so that a type 1 agent gets no
+gain from the contract from then on. If
+$c=\overline c_s$, $Q_s(x) = Q_s(\bar x_s)=0$, so that a type 2
+agent gets no gain.
+
+
+Equation \Ep{marg1;a} can be expressed as
+$$
+c = g\!\left(Q'_s(x)\right),                      \EQN g_func
+$$
+where $g$ is a continuously and strictly decreasing function.
+By substituting the inverse of that function into equation \Ep{marg1;b},
+we obtain the expression
+$$
+g^{-1}(c) = (1+\theta_j) \,g^{-1}(c_j) + \lambda_j,  \EQN c_func
+$$
+where $c$ is  again the current consumption of a type 1 agent
+and $c_j$ is his next period's consumption when next
+period's endowment realization is $\overline y_j$. The optimal
+consumption dynamics implied by an efficient contract are
+evidently governed by whether or not agents' participation
+constraints are binding. For any given endowment realization
+$\overline y_j$  next period, only one of the participation
+constraints in \Ep{new1;c} and \Ep{new1;d} can bind. Hence, there
+are three regions of interest for any given realization $\overline
+y_j$:
+
+\medskip
+\noindent{1.} Neither participation constraint binds.  When
+$\lambda_j = \theta_j =0$, the consumption dynamics in \Ep{c_func}
+satisfy
+$$
+g^{-1}(c) = g^{-1}(c_j) \hskip1cm \Longrightarrow \hskip1cm c=c_j ,
+$$
+where $c=c_j$ follows from the fact that $g^{-1}(\cdot)$ is a
+strictly decreasing function. Hence, consumption is independent of
+the endowment and the agents are offered full insurance against
+endowment realizations so long as there are no binding
+participation constraints. The constant consumption allocation is
+determined by the ``temporary relative Pareto weight'' $\mu$
+in equation \Ep{ffonc1;a}.
+
+\medskip
+\noindent{2.}   The participation constraint of a type 1 person
+binds ($\lambda_j > 0$), but $\theta_j =0$. Thus,
+condition \Ep{c_func} becomes
+$$
+g^{-1}(c) = g^{-1}(c_j) + \lambda_j  \hskip.5cm \Longrightarrow
+\hskip.5cm g^{-1}(c) > g^{-1}(c_j)  \hskip.5cm \Longrightarrow
+\hskip.5cm c<c_j.
+$$
+The planner raises the consumption of the type 1 agent in order
+to satisfy his participation constraint. The strictly positive Lagrange
+multiplier, $\lambda_j>0$, implies that \Ep{new1;c} holds with
+equality, $\chi_j=0$.  That is, the planner raises the welfare of
+a type 1 agent just enough to make her indifferent between
+choosing autarky and staying with the optimal insurance contract.
+In effect, the planner minimizes the change in last period's
+relative welfare distribution that is needed to induce the type 1
+agent not to abandon the  contract. The welfare of the type 1
+agent is raised both through the mentioned higher consumption
+$c_j>c$ and through the expected higher future consumption. Recall
+our earlier finding that implies that the new higher consumption
+level will remain unchanged so long as there are no binding
+participation constraints. It follows that the contract for agent
+1 displays {\it amnesia\/}  when agent 1's participation
+constraint is binding, because the previously promised value $x$
+becomes irrelevant for the consumption allocated to agent 1 from
+now on.
+\index{amnesia!of risk-sharing contract}%
+
+
+
+
+\medskip
+\noindent{3.}   The participation constraint of a type 2 person
+binds ($\theta_j > 0$), but $\lambda_j =0$. Thus,
+condition \Ep{c_func} becomes
+$$
+g^{-1}(c) = (1+\theta_j) \,g^{-1}(c_j)  \hskip.5cm \Longrightarrow
+\hskip.5cm g^{-1}(c) < g^{-1}(c_j) \hskip.5cm \Longrightarrow
+\hskip.5cm c>c_j,
+$$
+where we have used the fact that $g^{-1}(\cdot)$ is a negative
+number. This situation is the mirror image of the previous case.
+When the participation constraint of the type 2 agent binds, the
+planner induces the agent to remain with the optimal contract by
+increasing her consumption $(1-c_j)>(1-c)$ but only by enough that
+she remains indifferent to the alternative of choosing autarky,
+$Q_j(\chi_j)=0$. And once again, the change in the welfare
+distribution  persists in the sense that the new consumption level
+will remain unchanged so long as there are no binding
+participation constraints.  The amnesia property prevails again.
+
+\vskip.3cm
+
+We can assemble  these results to characterize the contract by
+arguing that when $c < \underline c_j$, the participation
+constraint of the type 1 agent binds, while if $c > \overline
+c_j$, the participation constraint of a type 2 agent binds. Thus,
+assume that $c < \underline c_j$.  Then since it must be that $c_j
+\geq \underline c_j$, it follows that $c \leq \underline c_j$, so
+we must be in the region where the participation constraint of the
+type 1 agent binds, which in turn implies that $c_j= \underline
+c_j$.  A symmetric argument that applies when the participation
+constraint of a type 2 argument applies, allowing us to summarize
+the consumption dynamics of an efficient contract as follows.
+Given the current consumption $c$ of the type 1 agent, next
+period's consumption conditional on next period's  endowment realization
+$\overline y_j$ satisfies
+$$
+c_j = \cases{ \underline c_j &if $c<\underline c_j$ \hskip1cm (p.c. of type 1 binds), \cr
+              c              &if $c\in[\underline c_j, \overline c_j]$
+                                        \hskip.35cm (p.c. of neither type binds), \cr
+              \overline c_j &if $c>\overline c_j$  \hskip1cm (p.c. of type 2 binds). \cr}
+ \EQN c_update
+$$
+
+
+\subsection{Consumption intervals cannot contain
+  each other}\label{sec:intervals_contain}%
+  We will show that
+$$
+\overline y_k > \overline y_q \hskip.5cm \Longrightarrow \hskip.5cm
+\overline c_k > \overline c_q \hskip.25cm \hbox{\rm and} \hskip.25cm
+\underline c_k > \underline c_q.                                 \EQN c_intervals
+$$
+Hence, no consumption interval can contain another. Depending on
+parameter values, the consumption intervals can  be
+either overlapping or disjoint.
+
+As an intermediate step, it is useful to first verify that the
+following assertion is correct for any $k, q = 1, 2, \ldots, S$,
+and for any $x\in[0, \overline x_q]$:
+$$ Q_k\!\left(x+u(\overline y_q) - u(\overline y_k) \right)
+= Q_q(x) + u(1-\overline y_q) - u(1-\overline y_k).    \EQN intermediate_step
+$$
+After invoking  functional equation \Ep{new1}, the left side of
+\Ep{intermediate_step} is equal to
+$$ Q_k\!\left(x+u(\overline y_q) - u(\overline y_k) \right) = \max_{c,\,\{\chi_j\}_{j=1}^S}
+\bigl\{ u(1 - c) - u(1 - \overline y_k)
+                  + \beta   \sum_{j=1}^S \Pi_j Q_j(\chi_j) \bigr\}   $$
+%\vskip-.3cm
+subject to        %$$\EQNalign{  \hbox{subject to} \hskip1cm
+$$
+ u(c) - u(\overline y_k) + \beta \sum_{j=1}^S \Pi_j  \chi_j \geq
+x  +u(\overline y_q) - u(\overline y_k) $$
+and \Ep{new1;c} -- \Ep{new1;e};
+and the right side of \Ep{intermediate_step} is equal to
+$$\EQNalign{
+&Q_q(x) + u(1-\overline y_q) - u(1-\overline y_k)  \cr
+         &= \max_{c,\,\{\chi_j\}_{j=1}^S}
+\bigl\{ u(1 - c) - u(1 - \overline y_q)
+                  + \beta   \sum_{j=1}^S \Pi_j Q_j(\chi_j) \bigr\}
+                           + u(1-\overline y_q) - u(1-\overline y_k) \cr}
+$$
+%\vskip-.3cm
+subject to     %$$\EQNalign{  \hbox{subject to} \hskip1cm
+$$
+ u(c) - u(\overline y_q) + \beta \sum_{j=1}^S \Pi_j  \chi_j \geq
+x   $$
+and \Ep{new1;c} -- \Ep{new1;e}.
+We can then verify  \Ep{intermediate_step}.\NFootnote{The
+two optimization problems on the left  and
+the right sides of expression \Ep{intermediate_step}
+share the common objective of maximizing the expected utility of
+the type 2 agent, minus an identical constant. The optimization is
+subject to the same constraints, $u(c) - u(\overline y_q) + \beta
+\sum_{j=1}^S \Pi_j \chi_j \geq x$ and \Ep{new1;c} -- \Ep{new1;e}.
+Hence, they are identical  well-defined optimization problems. The
+observant reader should not be concerned with the fact that
+$Q_k(\cdot)$ on the left side of \Ep{intermediate_step} might be
+evaluated at a promised value outside of the range $[0, \bar
+x_k]$. This causes no problem because  the
+optimization problem  imposes no  participation constraint
+in the current period, in contrast to the restrictions on future
+continuation values in \Ep{new1;c} and \Ep{new1;d}.} And after
+differentiating that expression with respect to $x$,
+$$ Q'_k\!\left(x+u(\overline y_q) - u(\overline y_k) \right)
+= Q'_q(x)  .                                              \EQN intermediate_step2
+$$
+
+To show that $\overline y_k > \overline y_q$ implies
+$\overline c_k > \overline c_q$,\ set $x=\overline x_q$ in expression
+\Ep{intermediate_step},
+$$ Q_k\!\left(\overline x_q +u(\overline y_q) - u(\overline y_k) \right)
+= u(1-\overline y_q) - u(1-\overline y_k) > 0,           \EQN intermediate_step3
+$$
+where we have used $Q_q(\overline x_q) = 0$. After also invoking
+$Q_k(\overline x_k) = 0$ and the fact that $Q_k(\cdot)$ is
+decreasing, it follows from
+$ Q_k\!\left(\overline x_q +u(\overline y_q) - u(\overline y_k) \right) > 0$
+that
+$$
+\overline x_k > \overline x_q +u(\overline y_q) - u(\overline y_k).
+$$
+So by the strict concavity of $Q_k(\cdot)$, we have
+$$
+Q'_k(\overline x_k) < Q'_k\!\left(\overline x_q +u(\overline y_q) - u(\overline y_k)\right)
+= Q'_q(\overline x_q),                         \EQN intermediate_extra
+$$
+where the equality is given by \Ep{intermediate_step2}.
+Finally, by using function \Ep{g_func} and the present
+finding that $Q'_k(\overline x_k) < Q'_q(\overline x_q)$, we can verify our
+assertion that
+$$
+\overline c_k = g\!\left(Q'_k(\overline x_k)\right) \; > \;
+g\!\left(Q'_q(\overline x_q)\right) = \overline c_q.
+$$
+
+
+ We leave it to the reader as an
+exercise to construct a symmetric argument to show that $\overline
+y_k > \overline y_q$ implies $\underline c_k > \underline c_q$.
+
+
+
+\subsection{Endowments are contained in the consumption intervals}\label{sec:y_in_c}%
+We will show that
+$$
+\overline y_s \in [\underline c_s, \overline c_s], \hskip.25cm
+\forall s; \hskip.5cm \hbox{\rm and} \hskip.5cm
+\overline y_1 = \underline c_1 \hskip.25cm \hbox{\rm and} \hskip.25cm
+\overline y_S = \overline c_S.                          \EQN y_c_intervals
+$$
+First, we show that $\overline y_s \leq \overline c_s$ for all $s$; and
+$\overline y_S = \overline c_S$. Let $x=\overline x_s$ in the functional
+equation \Ep{new1}, then $c=\overline c_s$ and
+$$ u(1 - \overline c_s) - u(1 - \overline y_s)
+                  + \beta   \sum_{j=1}^S \Pi_j Q_j(\chi_j) = 0  \EQN optimum
+$$
+with $\{\chi_j\}_{j=1}^S$ being optimally chosen. Since $Q_j(\chi_j)\geq 0$, it
+follows immediately that
+$$ u(1 - \overline c_s) - u(1 - \overline y_s) \leq 0
+\hskip.5cm \Longrightarrow \hskip.5cm \overline y_s \leq \overline c_s.
+$$
+%{\bf XXX: Lars. A student spotted that the inequalities below should be reversed (as I have done)
+%from what is in RMT2. Agree?}
+To establish strict equality for $s=S$, we note that
+$$
+Q'_j(\chi_j) \geq Q'_j(\overline x_j) \geq  Q'_S(\overline x_S) ,
+$$
+where the first weak inequality follows from the fact that all
+permissible $\chi_j \leq \overline x_j$ and $Q_j(\cdot)$ is
+strictly concave, and the second weak inequality is given by
+\Ep{intermediate_extra}. In fact, we showed above that the second
+inequality holds strictly for $j<S$ and therefore, by the
+condition for optimality in \Ep{marg1;b},
+$$
+ Q'_S(\overline x_S) =  (1+\theta_j) Q'_j(\chi_j)
+\hskip.5cm \hbox{\rm with} \hskip.5cm \theta_j>0, \hskip.15cm\hbox{\rm for } j<S;
+\hskip.5cm \hbox{\rm and} \hskip.5cm \theta_S=0,
+$$
+which imply $\chi_j=\overline x_j$ for all $j$. After also invoking the corresponding
+expression \Ep{optimum} for $s=S$, we can complete the argument:
+$$
+\beta \sum_{j=1}^S \Pi_j Q_j(\overline x_j) = 0
+\hskip.5cm \Longrightarrow \hskip.5cm
+ u(1 - \overline c_S) - u(1 - \overline y_S) = 0
+\hskip.5cm \Longrightarrow \hskip.5cm \overline y_S = \overline c_S.
+$$
+
+We leave it as an exercise for the reader to construct a symmetric
+argument showing that $\overline y_s \geq \underline c_s$ for all
+$s$; and $\overline y_1 = \underline c_1$.
+
+
+
+\subsection{All consumption intervals are nondegenerate
+ (unless autarky is the only sustainable allocation)}\label{sec:c_nondeg}%
+Suppose that the consumption interval associated with endowment
+realization $\overline y_k$ is degenerate, i.e., $\underline c_k =
+\overline c_k = \overline y_k$. (The last inequality follows from
+section \use{sec:y_in_c}, where we established that the endowment
+is contained in the consumption interval.) Since the consumption
+interval is degenerate, it follows that the range of permissible
+continuation values associated with endowment realization
+$\overline y_k$ is also degenerate, i.e., $\chi_k  \in [0,
+\overline x_k]= \{0\}$. Recall that $\chi_k$ is the number of
+utils awarded to the type 1 household over and above its autarkic
+welfare level, given endowment realization $\overline y_k$:
+$$
+0=\chi_k = u(\overline y_k) - u(\overline y_k)
+           + \beta \sum_{j=1}^S \Pi_j \,\chi_j ,
+$$
+where we have invoked the degenerate consumption interval,
+$c=\overline y_k$,
+and where $\chi_j$ are optimally chosen subject to the constraints
+$\chi_j\geq 0$ for all $j\in {\bf S}$. It follows immediately that
+$\chi_j=0$ for all $j\in {\bf S}$, given the current endowment
+realization $\overline y_k$.
+
+Due to the degenerate range of continuation values associated
+with endowment realization $\overline y_k$, i.e.,
+$\chi_k  \in \{0\}$, it must be the case that the type 2
+household also receives its autarkic welfare level, given
+endowment realization $\overline y_k$:\NFootnote{Obviously, there
+would be a contradiction if the type 2 household were to receive
+$Q_k(\chi_k)>0$. The reason is that then it would be possible to transfer current
+consumption from the type 2 household to the type 1 household without
+violating the type 2 household's participation constraint,
+and hence the consumption interval associated with
+endowment realization $\overline y_k$ could not be degenerate.}
+$$
+0=Q_k(\chi_k) = u(1-\overline y_k) - u(1-\overline y_k)
+           + \beta \sum_{j=1}^S \Pi_j \,Q_j(\chi_j)
+$$
+where we have invoked the degenerate consumption interval,
+and where continuation values $Q_j(\chi_j)$ are subject to the constraints
+$Q_j(\chi_j)\geq 0$ for all $j\in {\bf S}$. It follows immediately that
+$Q_j(\chi_j)=0$ for all $j\in {\bf S}$, given the current endowment
+realization $\overline y_k$.
+Hence, given endowment realization $\overline y_k$, we have
+continuation values of the type 2 household
+satisfying $Q_j(\chi_j)=0$, so it must be the case that
+the optimally chosen $\chi_j$ are set at their maximum
+permissible values, $\chi_j = \overline x_j$. Moreover,
+we know from above that the optimal values also satisfy $\chi_j=0$, and
+therefore we can conclude that $\overline x_j=0$ for all $j\in {\bf S}$.
+
+We have shown that if one consumption interval is degenerate, then
+all consumption intervals must be degenerate, i.e., $\underline
+c_s = \overline c_s = \overline y_s$ for all $s\in {\bf S}$. This
+finding seems rather intuitive. A degenerate consumption interval
+associated with any endowment realization $\overline y_k$ implies
+that, given the realization of $\overline y_k$, none of the
+households has anything to gain from the optimal contract,
+neither from current transfers nor from future risk sharing. That
+can only happen if autarky is the only sustainable allocation.
+
+
+
+\section{Pareto frontier and ex ante division of the gains}\label{sec:Koch_Pareto1}%
+We have characterized the optimal consumption dynamics of any
+efficient contract. The consumption intervals $\{[\underline c_j,
+\overline c_j]\}_{j=1}^S$ and the updating rules in \Ep{c_update}
+are identical for all efficient contracts. The {\it ex ante}
+division of  gains from an efficient contract can be viewed as
+being determined by an implicit past consumption level,
+$c_{\triangle}\in[\underline c_1, \overline c_S]$: by
+\Ep{y_c_intervals}, this can also be written as
+$c_{\triangle}\in[\overline y_1, \overline y_S]$). A contract with
+an implicit past consumption level $c_{\triangle}=\underline c_1$ gives
+all of the surplus to the type 2 agent and none to the type 1
+agent. This follows immediately from the updating rules in
+\Ep{c_update} that prescribe a first-period consumption level
+equal to $\underline c_j$ if the endowment realization is
+$\overline y_j$. The corresponding promised value to the type 1
+agent, conditional on endowment realization $\overline y_j$, is
+$\chi_j = 0$. Thus, the {\it ex ante} gain to the type 1 agent in
+expression \Ep{Pdef;c} becomes
+$$
+\triangle \Bigl|_{c_{\triangle}=\underline c_1}
+   = \sum_{j=1}^S \Pi_j \chi_j \Bigl|_{c_{\triangle}=\underline c_1}= 0.
+$$
+Similarly, we can  show that a contract with an implicit consumption
+level $c_{\triangle}=\overline c_S$ gives all of the surplus to
+the type 1 agent and none to the type 2 agent. The updating rules
+in \Ep{c_update} will then prescribe a first-period consumption
+level equal to $\overline c_j$ if the endowment realization is
+$\overline y_j$ with a corresponding promised value of $\chi_j =
+\overline x_j$. We can compute the {\it ex ante} gain to the type
+1 agent as
+$$
+\triangle \Bigl|_{c_{\triangle}=\overline c_S}
+          = \sum_{j=1}^S \Pi_j \overline x_j \equiv \triangle_{\rm max}.
+$$
+
+For these two endpoints of the interval
+$c_{\triangle}\in[\underline c_1, \overline c_S]$, the {\it ex ante}
+gains attained by the type 2 agent in expression \Ep{Pdef;a} become
+$$\EQNalign{
+Q(\triangle) \Bigl|_{c_{\triangle}=\underline c_1}
+          &= Q(0) = \sum_{j=1}^S \Pi_j Q_j(0) = \triangle_{\rm max}, \cr
+Q(\triangle) \Bigl|_{c_{\triangle}=\overline c_S}
+          &= Q(\triangle_{\rm max}) = \sum_{j=1}^S \Pi_j Q_j(\overline x_j) = 0,  \cr}
+$$
+where the equality $Q(0) = \triangle_{\rm max}$ follows from the
+symmetry of the environment with respect to the type 1 and type 2 agents'
+preferences and endowment processes.
+
+
+\section{Consumption distribution}
+\vskip-.5cm
+\subsection{Asymptotic distribution}\label{sec:Koch_asympdist}%
+The asymptotic consumption distribution depends sensitively on
+whether  there exists a first-best sustainable allocation.
+  We say that a sustainable allocation
+is {\it first best\/} if the participation constraint of neither
+agent ever binds.  As we have seen, nonbinding participation
+constraints imply that consumption remains constant over time.
+Thus, a first-best sustainable allocation can  exist only if the
+intersection of all the consumption intervals $\{[\underline c_j,
+\overline c_j]\}_{j=1}^S$ is nonempty. Define the following two
+critical numbers
+$$\EQNalign{
+\overline c_{\rm min} &\equiv \min \{\overline c_j\}_{j=1}^S
+                                       = \overline c_1, \EQN c_int_bound;a \cr
+\underline c_{\rm max}&\equiv \max \{\underline c_j\}_{j=1}^S
+                                       = \underline c_S, \EQN c_int_bound;b \cr}
+$$
+where the two equalities are implied by \Ep{c_intervals}. A
+necessary and sufficient condition for the existence of a
+first-best sustainable allocation is that $\overline c_{\rm min}
+\geq \underline c_{\rm max}$. Within a first-best sustainable
+allocation, there is complete risk sharing.
+
+ For high enough values of $\beta$, sufficient endowment
+risk, and  enough curvature of $u(\cdot)$, there will exist a set
+of first-best sustainable allocations, i.e., $\overline c_{\rm
+min} \geq \underline c_{\rm max}$. If the {\it ex ante} division
+of the gains is then given by an implicit initial consumption
+level $c_{\triangle}\in[\underline c_{\rm max},\,\overline c_{\rm
+min}]$, it follows by the updating rules in \Ep{c_update} that
+consumption remains unchanged forever, and therefore the
+asymptotic consumption distribution is  degenerate.
+
+But what happens if the {\it ex ante} division of gains is
+associated with an implicit initial consumption level outside of
+this range, or if there does not exist any first-best sustainable
+allocation ($\overline c_{\rm min} < \underline c_{\rm max}$)? To
+understand the convergence of consumption to an asymptotic
+distribution in general, we make the following observations.
+According to the updating rules in \Ep{c_update}, any increase in
+the consumption of a type 1 person
+ between two consecutive periods has
+consumption attaining the lower bound of some consumption
+interval. It follows that in periods of increasing consumption,
+the consumption level is bounded above by $\underline c_{\rm max}$
+($=\underline c_S$) and hence increases can occur only  if the
+initial consumption level is less than $\underline c_{\rm max}$.
+Similarly,  any decrease in consumption  between two consecutive
+periods has consumption attain the upper bound of some
+consumption interval. It follows that in periods of decreasing
+consumption,  consumption  is bounded below by $\overline
+c_{\rm min}$ ($=\overline c_1$) and hence decreases can only occur
+if  initial consumption is higher than $\overline c_{\rm
+min}$. Given a current consumption level $c$, we can then
+summarize the permissible range for next-period consumption $c'$
+as follows:
+$$\EQNalign{
+\hbox{\rm if} \hskip.25cm c \leq \underline c_{\rm max}&
+\hskip.25cm \hbox{\rm then } \hskip.25cm
+c'\in \left[\min \{c, \overline c_{\rm min}\},\; \underline c_{\rm max}\right],
+                                                              \EQN c_range;a \cr
+\hbox{\rm if} \hskip.25cm c \geq \overline c_{\rm min}&
+\hskip.25cm \hbox{\rm then } \hskip.25cm
+c'\in \left[\overline c_{\rm min}, \; \max \{c, \underline c_{\rm max}\}\right].
+                                                              \EQN c_range;b \cr}
+$$
+\subsection{Temporary imperfect risk sharing}
+We now return to the case that there exist first-best sustainable
+allocations, $\overline c_{\rm min} \geq \underline c_{\rm max}$,
+but we let the {\it ex ante} division of gains be given by an
+implicit initial consumption level
+$c_{\triangle}\not\in[\underline c_{\rm max},\,\overline c_{\rm
+min}]$. The permissible range for next-period consumption, as
+given in \Ep{c_range}, and the support of the asymptotic
+consumption becomes
+$$\EQNalign{
+\hbox{\rm if} \hskip.25cm c \leq \underline c_{\rm max}&
+\hskip.5cm \hbox{\rm then } \hskip.5cm
+c'\in \left[c,\, \underline c_{\rm max}\right] \hskip.5cm \hbox{\rm and}
+\hskip.5cm \lim_{t \rightarrow \infty} c_t = \underline c_{\rm max}
+             =\underline c_S,  \hskip1.5cm                \EQN c_rangeFB;a  \cr
+\hbox{\rm if} \hskip.25cm c \geq \overline c_{\rm min}&
+\hskip.5cm \hbox{\rm then } \hskip.5cm
+c'\in \left[\overline c_{\rm min}, \, c\right]  \hskip.5cm \hbox{\rm and}
+\hskip.5cm \lim_{t \rightarrow \infty} c_t = \overline c_{\rm min}
+             =\overline c_1.  \hskip1.5cm                  \EQN c_rangeFB;b  \cr}
+$$
+We have monotone convergence in \Ep{c_rangeFB;a} for two
+reasons. First, consumption is bounded from above by $\underline
+c_{\rm max}$. Second, consumption cannot decrease when $c \leq
+\overline c_{\rm min}$ and by assumption $\overline c_{\rm min}
+\geq \underline c_{\rm max}$, so consumption cannot decrease when
+$c \leq \underline c_{\rm max}$. It follows immediately that
+$\underline c_{\rm max}$ is an absorbing point that is attained as
+soon as the endowment $\overline y_S$ is realized with its
+consumption level $\underline c_S = \underline c_{\rm max}$.
+Similarly, the explanation for monotone convergence in
+\Ep{c_rangeFB;b} goes as follows. First, consumption is bounded
+from below by $\overline c_{\rm min}$. Second, consumption cannot
+increase when $c \geq \underline c_{\rm max}$ and by assumption
+$\overline c_{\rm min} \geq \underline c_{\rm max}$, so
+consumption cannot increase when $c \geq \overline c_{\rm min}$.
+It follows immediately that $\overline c_{\rm min}$ is an
+absorbing point that is attained as soon as the endowment
+$\overline y_1$ is realized with its consumption level $\overline
+c_1 = \overline c_{\rm min}$.
+
+These convergence results assert that imperfect risk sharing is at
+most temporary if the set of first-best sustainable allocations is
+nonempty. Notice that when  an economy begins with an implicit initial
+consumption outside of the interval of sustainable constant
+consumption levels, the subsequent monotone convergence to the
+closest endpoint of that interval is reminiscent  of our earlier
+analysis  of the moneylender and the villagers with one-sided lack
+of commitment in section \use{sec:moneylender1}. In the current setting, the agent who is relatively
+disadvantaged under the initial welfare assignment will see her
+consumption weakly increase over time until she has experienced
+the endowment realization that is most favorable to her. From
+there on, the consumption level remains constant forever, and the
+participation constraints will never bind again.
+
+\subsection{Permanent imperfect risk sharing}
+If the set of first-best sustainable allocations is empty
+($\overline c_{\rm min} < \underline c_{\rm max}$), it breaks the
+ monotone convergence to a constant consumption level.
+The updating rules in \Ep{c_update} imply that the permissible
+range for next-period consumption in \Ep{c_range} will ultimately
+shrink to $\left[\overline c_{\rm min},\, \underline c_{\rm
+max}\right]$, regardless of the initial welfare assignment. If the
+ implicit initial consumption lies outside of that set, consumption
+is bound to converge to it, again because of the monotonicity of
+consumption when $c \leq \overline c_{\rm min}$ or $c \geq
+\underline c_{\rm max}$. And as soon as there is a binding
+participation constraint with an associated consumption level that
+falls inside of the interval $\left[\overline c_{\rm min},\,
+\underline c_{\rm max}\right]$, the updating rules in
+\Ep{c_update} will never take us outside of this interval again.
+Thereafter, the only observed consumption levels belong to the
+ergodic set
+$$
+%\hbox{\rm the ergodic consumption set,} \hskip.4cm
+\left\{\left[\overline c_{\rm min},\, \underline c_{\rm max}\right]
+\bigcap \, \{\underline c_j,\, \overline c_j\}_{j=1}^S\right\}, \EQN c_ergodic
+$$
+with a unique asymptotic distribution. Within this invariant set,
+the participation constraints of both agents occasionally bind,
+reflecting imperfections in risk sharing.
+
+If autarky is the only sustainable allocation, then each consumption
+interval is degenerate with
+$\underline c_j =\overline c_j = \overline y_j$ for all $j\in {\bf S}$,
+as discussed in section \use{sec:c_nondeg}. Hence, the ergodic
+consumption set in \Ep{c_ergodic} is then trivially equal to the set
+of endowment levels, $\{\overline y_j\}_{j=1}^{S}$.
+
+
+
+\section{Alternative recursive formulation}
+Kocherlakota (1996b)
+\auth{Kocherlakota, Narayana R.}%
+used an alternative recursive formulation of the
+contract design problem, one that more closely resembles our treatment of the moneylender
+villager economy of section \use{sec:moneylender1}.   After replacing the argument in the function of
+\Ep{Pdef;a} by the expected utility of the type 1 agent, Kocherlakota
+writes the Bellman equation as
+$$ P(v) = \max_{\{c_s,w_s\}_{s=1}^S}
+  \sum_{s=1}^S \Pi_s \bigl\{ u(1 - c_s) + \beta P(w_s) \bigr\} \EQN newKoch0;a  $$
+subject to
+$$\EQNalign{  & \sum_{s=1}^S \Pi_s [u(c_s) + \beta w_s]  \geq v,   \EQN newKoch0;b \cr
+             & u(c_s) + \beta w_s  \geq u(\overline y_s) + \beta v_{\rm aut},
+       \hskip2cm   s=1, \ldots, S;  \hskip1cm
+                  \EQN newKoch0;c \cr
+          &    u(1 - c_s) + \beta P(w_s)  \geq u(1-\overline y_s) +
+                  \beta v_{\rm aut},
+             \ s=1, \ldots, S;  \EQN newKoch0;d \cr
+             &  c_s \in [0, 1],  \EQN newKoch0;e \cr
+              & w_s  \in [v_{\rm aut}, v_{\rm max}] .\EQN newKoch0;f \cr}$$
+Here the planner comes into a period with a state variable $v$
+that is a promised expected utility to the type 1 agent. Before
+observing the current endowment realization, the planner chooses a
+consumption level $c_s$ and a continuation value $w_s$ for each
+possible realization of the current endowment. This
+state-contingent portfolio $\{c_s, w_s\}_{s=1}^S$ must deliver
+at least the promised value $v$ to the type 1 agent, as stated in
+\Ep{newKoch0;b}, and must also be consistent with the agents' participation
+constraints in \Ep{newKoch0;c} and \Ep{newKoch0;d}.
+
+Notice the difference in timing with our presentation, which we
+have based on  Thomas and Worrall's (1988) analysis.
+Kocherlakota's planner leaves the current period with only one
+continuation value $w_s$ and postpones the question of how to
+deliver that promised value across future states until the
+beginning of next period  but {\it  before\/} observing next
+period's endowment. In contrast, in our setting, in the current
+period the planner chooses a state-contingent set of continuation
+values for the next period, $\{\chi_j\}_{j=1}^S$, where $\chi_j$
+is the number of utils that the type 1 agent's expected utility
+should exceed her autarky level in the next period if that
+period's endowment is $\overline y_j$. We can evidently express
+Kocherlakota's one state variable in terms of our state vector,
+$$
+w_s = \sum_{j=1}^S \Pi_j \left[\chi_j + u(\overline y_j) + \beta v_{\rm aut} \right]
+    = v_{\rm aut} + \sum_{j=1}^S \Pi_j \chi_j ,
+$$
+where $v_{\rm aut}$ is the {\it ex ante} welfare level in autarky as given by
+\Ep{autarky_value}. Similarly, Kocherlakota's
+upper bound on permissible  values of next period's continuation value in \Ep{newKoch0;f}
+is related to our upper bounds $\{\overline x_j\}_{j=1}^S$,
+$$
+v_{\rm max} =  v_{\rm aut} +  \sum_{j=1}^S \Pi_j \overline x_j
+            = v_{\rm aut} + \triangle_{\rm max}.
+$$
+
+
+
+\section{Pareto frontier revisited}\label{sec:Koch_Pareto2}%
+Given our earlier characterization of the optimal solution, we can
+map Kocherlakota's promised value $v$ into an implicit promised
+consumption level $c_{\triangle}\in[\underline c_1, \overline c_S]
+= [\overline y_1, \overline y_S]$. Let that mapping be encoded in
+the function $v(c_{\triangle})$. Hence, given a promised a value
+$v(c_{\triangle})$, the optimal consumption dynamics in section
+\use{sec:consdynamic} instruct us to set Kocherlakota's choice
+variables, $\{c_s,w_s\}_{s=1}^S$, as follows:
+$$\EQNalign{
+c_s &= c_{\triangle} + \max\{0,\, \underline c_s - c_{\triangle} \}
+           - \max\{0,\, c_{\triangle}  - \overline c_s \},   \EQN optstar;a \cr
+w_s &= v(c_s).                                   \EQN optstar;b \cr}
+$$
+
+
+For a given value of $c_{\triangle}$, we define the following
+three sets that partition the set ${\bf S}$ of endowment
+realizations:
+$$\EQNalign{
+{\bf S}^o(c_{\triangle}) &\equiv \Bigl\{j\in {\bf S}: \, c_{\triangle}\in
+                    (\underline c_j, \overline c_j) \Bigr\}, \EQN Sdef;a \cr
+{\bf S}^-(c_{\triangle}) &\equiv \Bigl\{j\in {\bf S}: c_{\triangle}\geq
+                    \overline c_j \Bigr\}, \EQN Sdef;b \cr
+{\bf S}^+(c_{\triangle}) &\equiv \Bigl\{j\in {\bf S}: c_{\triangle}\leq
+                    \underline c_j \Bigr\}.                  \EQN Sdef;c \cr}
+$$
+According to our characterization of consumption intervals in
+\Ep{c_intervals}, these three sets are mutually exclusive and their
+union is equal to ${\bf S}$.
+${\bf S}^o(c_{\triangle})$ is the set of states, i.e.,
+endowment realizations, for which
+the optimal consumption level is $c_s = c_{\triangle}$.
+But if the endowment realization falls outside of ${\bf S}^o(c_{\triangle})$,
+the optimal consumption $c_s$ is
+determined by either the upper or lower bound of the consumption interval
+associated with that endowment realization.
+In particular, for $s\in {\bf S}^-(c_{\triangle})$, consumption should drop
+to the upper bound of the consumption interval, $c_s = \overline c_s$;
+and for
+$s\in {\bf S}^+(c_{\triangle})$, consumption should increase
+to the lower bound of the consumption interval, $c_s = \underline c_s$.
+
+The continuation value $v(c_{\triangle})$ can then be expressed as
+$$\EQNalign{
+v(c_{\triangle}) = & \sum_{s\in {\bf S}^o(c_{\triangle})}
+\Pi_s \Bigl[u(c_{\triangle}) + \beta v(c_{\triangle}) \Bigr]
+                                + \sum_{s\in {\bf S}^-(c_{\triangle})}
+\Pi_s \Bigl[u(\overline c_s) + \beta v(\overline c_s) \Bigr]      \hskip1cm  \cr
+                              &+    \sum_{s\in {\bf S}^+(c_{\triangle})}
+\Pi_s \Bigl[u(\underline c_s) + \beta v(\underline c_s) \Bigr] \EQN Koch_value1 \cr}
+$$
+which can be rewritten as
+$$\EQNalign{
+v(c_{\triangle}) &=
+\left( 1- \beta \sum_{s\in {\bf S}^o(c_{\triangle})} \Pi_s \right)^{-1}
+\left\{  u(c_{\triangle}) \sum_{s\in {\bf S}^o(c_{\triangle})} \Pi_s  \right.\cr
+%\noalign{\vskip.2cm}
+                      &\left. + \sum_{s\in {\bf S}^-(c_{\triangle})}
+\Pi_s \Bigl[u(\overline c_s) + \beta v(\overline c_s) \Bigr]
+                       +    \sum_{s\in {\bf S}^+(c_{\triangle})}
+\Pi_s \Bigl[u(\underline c_s) + \beta v(\underline c_s)
+                                   \Bigr]\right\}. \hskip1.3cm \EQN Koch_value2 \cr}
+$$
+Similarly, the promised value to the type 2 household can be expressed
+as
+\offparens
+$$\EQNalign{
+P\!\left(v(c_{\triangle})\right) &=
+\left( 1- \beta \sum_{s\in {\bf S}^o(c_{\triangle})} \Pi_s \right)^{-1}
+\left\{  u(1-c_{\triangle}) \sum_{s\in {\bf S}^o(c_{\triangle})} \Pi_s  \right.\cr
+\noalign{\vskip.2cm}
+                      &\hskip3cm + \sum_{s\in {\bf S}^-(c_{\triangle})}
+\Pi_s \Bigl[u(1-\overline c_s) + \beta P\!\left(v(\overline c_s)\right) \Bigr] \cr
+                      &\left. \hskip3cm +    \sum_{s\in {\bf S}^+(c_{\triangle})}
+\Pi_s \Bigl[u(1-\underline c_s) + \beta P\!\left(v(\underline c_s)\right)
+                                   \Bigr]\right\}. \hskip1.3cm \EQN Koch_pareto\cr}
+$$
+
+\subsection{Values are continuous in implicit consumption}\label{sec:Koch_continuous_c}%
+Both $v(c_{\triangle})$ and
+$P\!\left(v(c_{\triangle})\right)$ are continuous in the implicit
+consumption level $c_{\triangle}$. From \Ep{Koch_value2} and \Ep{Koch_pareto}
+this is trivially true when variations
+in $c_{\triangle}$ do not change the partition of states given by
+the sets ${\bf S}^o(\cdot)$, ${\bf S}^-(\cdot)$ and
+${\bf S}^+(\cdot)$. It can also be shown to be true when variations in
+$c_{\triangle}$ do involve changes in the partition of states.
+As an illustration, let us compute the limiting values of
+$v(c_{\triangle})$ when $c_{\triangle}$ approaches $\overline c_k$
+from below and from above, respectively, where we recall that
+$\overline c_k$ is the upper bound of the consumption interval
+associated with endowment $\overline y_k$.
+
+We can choose a sufficiently small $\epsilon>0$ such that
+$$
+\{\underline c_s,\, \overline c_s\}_{s=1}^S \bigcap \,
+[\overline c_k - \epsilon, \, \overline c_k + \epsilon] = \overline c_k.
+$$
+In particular,
+the findings in \Ep{c_intervals} ensure that we can choose
+a sufficiently small $\epsilon$ so that this intersection contains
+no upper bounds on consumption intervals other than $\overline c_k$.
+Similarly, $\epsilon$ can be chosen sufficiently small  that
+the intersection does not contain any lower bound on consumption
+intervals {\it unless} there exists a consumption interval with
+a lower bound that is exactly equal to $\overline c_k$, i.e., if for
+some $j\geq 1$, $\underline c_{k+j} = \overline c_k$.
+We will have to keep this possibility in mind as we proceed in our
+characterization of the sets ${\bf S}^o(\cdot)$, ${\bf S}^-(\cdot)$
+and ${\bf S}^+(\cdot)$.
+
+All three sets are constant for an implicit consumption
+$c_{\triangle}\in[\overline c_k-\epsilon,\, \overline c_k)$ with
+$\max\{{\bf S}^-(c_{\triangle} )\}=k-1$. For an implicit consumption
+$c_{\triangle} \in[\overline c_k,\, \overline c_k+\epsilon]$, the set
+${\bf S}^-(c_{\triangle})$ is constant with
+$\max\{{\bf S}^-(c_{\triangle})\}=k$, while
+the configuration of the other two sets depends on which one
+of the following two possible cases applies.
+
+
+
+\vskip.5cm
+\noindent
+{\it Case a:} $\overline c_k \not= \underline c_s$ for all $s\in {\bf S}$.
+Here it follows that the set ${\bf S}^+(c_{\triangle})$ is constant for any
+implicit consumption
+$c_{\triangle}\in[\overline c_k-\epsilon,\, \overline c_k+\epsilon]$. Using
+\Ep{Koch_value1}, the
+limiting values of
+$v(c_{\triangle})$ when $c_{\triangle}$ approaches $\overline c_k$
+from below and from above, respectively, are then equal to
+$$\EQNalign{
+\lim_{ c_{\triangle} \uparrow \overline c_k}
+v(c_{\triangle}) = & \sum_{s\in {\bf S}^o(\overline c_k - \epsilon)}
+\Pi_s \Bigl[u(\overline c_k) + \beta v(\overline c_k) \Bigr]
+                                + \sum_{s=1}^{k-1}
+\Pi_s \Bigl[u(\overline c_s) + \beta v(\overline c_s) \Bigr]            \cr
+                   &+   \sum_{s\in {\bf S}^+(\overline c_k - \epsilon)}
+\Pi_s \Bigl[u(\underline c_s) + \beta v(\underline c_s) \Bigr]          \cr
+                   = & \sum_{s\in {\bf S}^o(\overline c_k + \epsilon)}
+\Pi_s \Bigl[u(\overline c_k) + \beta v(\overline c_k) \Bigr]
+                                + \sum_{s=1}^{k}
+\Pi_s \Bigl[u(\overline c_s) + \beta v(\overline c_s) \Bigr]            \cr
+                   &+   \sum_{s\in {\bf S}^+(\overline c_k + \epsilon)}
+\Pi_s \Bigl[u(\underline c_s) + \beta v(\underline c_s) \Bigr]
+%\hskip1cm
+=   \lim_{ c_{\triangle} \downarrow \overline c_k}
+v(c_{\triangle}) .                                   \EQN Koch_continuous \cr}
+$$
+
+
+
+
+\vskip.5cm
+\noindent
+{\it Case b:} $\overline c_k = \underline c_{k+j}$ for some $j\geq 1$.
+Here it follows that the set ${\bf S}^+(c_{\triangle})$ is constant
+with $\min\{{\bf S}^+(c_{\triangle} )\}=k+j$ for any
+implicit consumption
+$c_{\triangle}\in[\overline c_k-\epsilon,\, \overline c_k]$;
+and ${\bf S}^+(c_{\triangle})$ is constant
+with $\min\{{\bf S}^+(c_{\triangle} )\}=k+j+1$ for any
+implicit consumption
+$c_{\triangle}\in(\overline c_k,\, \overline c_k+\epsilon]$. Using
+\Ep{Koch_value1} and invoking  the fact that $\underline c_{k+j}=\overline c_k$, the limiting values of
+$v(c_{\triangle})$ when $c_{\triangle}$ approaches $\overline c_k$
+from below and from above, respectively, are then equal to
+$$\EQNalign{
+\lim_{ c_{\triangle} \uparrow \overline c_k}
+v(c_{\triangle}) = & \sum_{s=k}^{k+j-1}
+\Pi_s \Bigl[u(\overline c_k) + \beta v(\overline c_k) \Bigr]
+                                + \sum_{s=1}^{k-1}
+\Pi_s \Bigl[u(\overline c_s) + \beta v(\overline c_s) \Bigr]            \cr
+                   &+   \sum_{s=k+j}^S
+\Pi_s \Bigl[u(\underline c_s) + \beta v(\underline c_s) \Bigr]          \cr
+                 = & \sum_{s=k+1}^{k+j}
+\Pi_s \Bigl[u(\overline c_k) + \beta v(\overline c_k) \Bigr]
+                                + \sum_{s=1}^{k}
+\Pi_s \Bigl[u(\overline c_s) + \beta v(\overline c_s) \Bigr]            \cr
+                   &+   \sum_{s=k+j+1}^S
+\Pi_s \Bigl[u(\underline c_s) + \beta v(\underline c_s) \Bigr]
+%\hskip1cm
+=   \lim_{ c_{\triangle} \downarrow \overline c_k}
+v(c_{\triangle}) .                                   \EQN Koch_continuous \cr}
+$$
+
+
+
+We have shown that $v(c_{\triangle})$ is continuous at the upper
+bound of any consumption interval even though the partition of states
+changes at such a point. Similarly, we can show that $v(c_{\triangle})$ is
+continuous at the lower bound of any consumption interval. And in
+the same manner, we can also establish that
+$P\!\left(v(c_{\triangle})\right)$ is continuous in the implicit
+consumption $c_{\triangle}$.
+
+
+
+
+\subsection{Differentiability of the Pareto frontier}\label{sec:Koch_nondiff}%
+Consider an implicit consumption level $c_{\triangle} \in
+[\overline y_1, \overline y_S]$ that falls strictly inside at
+least one consumption interval. We can then use expressions
+\Ep{Koch_value2} and \Ep{Koch_pareto} to compute the derivative of
+the Pareto frontier at $v(c_{\triangle})$ by differentiating with
+respect to $c_{\triangle}$:
+$$ P'\!\left(v(c_{\triangle})\right) =
+{ \displaystyle {\displaystyle d P\!\left(v(c_{\triangle})\right)
+\over
+   \displaystyle d c_{\triangle}  }           \over
+  \displaystyle {\displaystyle d v(c_{\triangle}) \over
+   \displaystyle d c_{\triangle} }   }
+=  -{u'(1 -c_{\triangle})
+   \over u'(c_{\triangle}) }.                      \EQN Koch_diff
+$$
+It can be verified that \Ep{Koch_diff} is the derivative of the
+Pareto frontier so long as the set ${\bf S}^o(c_{\triangle})$
+remains nonempty. That is, changes in the set
+${\bf S}^o(c_{\triangle})$ induced by varying $c_{\triangle}$
+do not affect the expression for the
+derivative in \Ep{Koch_diff}. This follows from the fact that
+the derivatives are the same to the left and to the right of an
+implicit consumption level where the set ${\bf S}^o(c_{\triangle})$
+changes, and the fact that $v(c_{\triangle})$ and
+$P\!\left(v(c_{\triangle})\right)$ are continuous in
+the implicit consumption level, as shown in section
+\use{sec:Koch_continuous_c}.
+%%{\bf Tom and Lars: please rewrite the following
+%%sentence.}  Changes in the set ${\bf S}^o(c_{\triangle})$ induced
+%%by varying $c_{\triangle}$ do not affect the expression for the
+%%derivative in \Ep{Koch_diff} because the consumption intervals
+%%make transitions smoothly  in and out of the sets ${\bf
+%%S}^-(c_{\triangle})$ and ${\bf S}^+(c_{\triangle})$, i.e., without
+%%causing any jumps in $P\!\left(v(c_{\triangle})\right)$ and
+%%$v(c_{\triangle})$.
+It can also be verified that the derivative in
+\Ep{Koch_diff} exists in the knife-edged case that occurs when
+${\bf S}^o(c_{\triangle})$ becomes empty at a single point because
+two adjacent consumption intervals share only one point, i.e.,
+when $\overline c_k = \underline c_{k+1}$, which implies that ${\bf
+S}^o(\overline c_k) = {\bf S}^o(\underline c_{k+1}) =\emptyset$.
+
+The Pareto frontier becomes nondifferentiable when two adjacent
+consumption intervals are disjoint. Consider such a situation
+where an implicit consumption level $c_{\triangle} \in [\overline
+y_1, \overline y_S]$ does not fall inside any consumption
+interval, which implies that the set ${\bf S}^o(c_{\triangle})$ is
+empty. Let $\overline y_k$ and $\overline y_{k+1}$ be the
+endowment realizations associated with the consumption interval to
+the left and to the right of $c_{\triangle}$, respectively. That
+is,
+$$
+\overline c_k < c_{\triangle} < \underline c_{k+1}.
+$$
+ According to
+\Ep{Koch_value1}, the continuation value for any implicit
+consumption level $c\in[\overline c_k,\, \underline c_{k+1}]$ is
+then constant and equal to
+$$
+\hat v = \sum_{s\in {\bf S}^-(c_{\triangle})}
+\Pi_s \Bigl[u(\overline c_s) + \beta v(\overline c_s) \Bigr]
+                             +    \sum_{s\in {\bf S}^+(c_{\triangle})}
+\Pi_s \Bigl[u(\underline c_s) + \beta v(\underline c_s) \Bigr]. \EQN constant_v
+$$
+By using expression \Ep{Koch_diff}, we can compute the derivative
+of the Pareto frontier on the left side and the right side of
+$\hat v$,
+$$\EQNalign{
+\lim_{v \uparrow \hat v}
+P'\!\left(v\right) &=
+\lim_{c \uparrow \overline c_k}
+{ \displaystyle {\displaystyle d P\!\left(v(c)\right) \over
+   \displaystyle d c  }           \over
+  \displaystyle {\displaystyle d v(c) \over
+   \displaystyle d c  }   }
+=  -{u'(1 -\overline c_k)
+   \over u'(\overline c_k) },                      \cr
+\noalign{\vskip.2cm}
+\lim_{v \downarrow \hat v}
+P'\!\left(v\right) &=
+\lim_{c \downarrow \underline c_{k+1}}
+{ \displaystyle {\displaystyle d P\!\left(v(c)\right) \over
+   \displaystyle d c  }           \over
+  \displaystyle {\displaystyle d v(c) \over
+   \displaystyle d c  }   }
+=  -{u'(1 -\underline c_{k+1})
+   \over u'(\underline c_{k+1}) }.                      \cr}
+$$
+Since $\overline c_k < \underline c_{k+1}$, it follows that
+$$
+\lim_{v \uparrow \hat v} P'\!\left(v\right) >
+\lim_{v \downarrow \hat v} P'\!\left(v\right)
+$$
+and hence, the Pareto frontier is not differentiable at $\hat
+v$.\NFootnote{Kocherlakota (1996b) prematurely assumed that Thomas
+and Worrall's (1988) demonstration of the differentiability of the
+Pareto frontier $Q_s(\cdot)$ would imply that his conceptually
+different frontier $P(\cdot)$ would be differentiable. Koeppl
+(2003) uses the approach of Benveniste and Scheinkman (1979) to
+establish a sufficient condition for differentiability of the
+Pareto frontier $P(v)$. For a given value of $v$, the sufficient
+condition is that there exists at least one realization of the
+endowment such that the participation constraints are not binding
+for any household in that state, i.e., our set ${\bf
+S}^o(c_{\triangle})$ should be nonempty for the implicit
+consumption level $c_{\triangle}$ associated with that particular
+value of $v$. That condition is  sufficient but not  necessary,
+since we have seen above that $P(v)$ is also differentiable at a
+knife-edged case with $c_{\triangle} = \overline c_k = \underline
+c_{k+1}$, even though the set ${\bf S}^o(c_{\triangle})$ would
+then be empty.
+%In terms of our consumption intervals,
+%that sufficient condition translates into at least one endowment
+%realization with an optimal consumption level that lies strictly
+%inside the consumption interval associated with that endowment.
+}
+\auth{Koeppl, Thorsten V.}
+\auth{Benveniste, Lawrence}  \auth{Scheinkman, Jose}%
+
+
+\section{Continuation values {\`a la} Kocherlakota}
+\vskip-.5cm
+\subsection{Asymptotic distribution is nondegenerate for imperfect
+risk sharing (except when $S=2$)}\label{sec:Koch_distnondeg}%
+Here we assume that there exist sustainable allocations other than
+autarky but that first-best outcomes are not attainable, i.e.,
+there exist sustainable allocations with imperfect risk sharing.
+Kocherlakota (1996b, Proposition 4.2) states that the continuation
+values will then converge to a unique nondegenerate distribution.
+Here we will verify that the claim of a nondegenerate asymptotic
+distribution is correct except for when there are only two states
+($S=2$).
+
+The assumption that the distribution of $y_t$ is identical to that
+of $1-y_t$ means that
+$$\EQNalign{
+\Pi_j &= \Pi_{S+1-j},                    \EQN symmetry;a \cr
+\overline y_j &= 1- \overline y_{S+1-j}, \EQN symmetry;b \cr}
+$$
+for all $j\in {\bf S}$. The symmetric environment bestows symmetry
+on the consumption intervals of section
+\use{sec:equil_consumption}
+$$
+\overline c_j = 1 - \underline c_{S+1-j}, \EQN symmetry;c
+$$
+for all $j\in {\bf S}$, and symmetry on the continuation values of
+the type 1 and type 2 household
+$$
+v(c_{\triangle}) =  P\!\left(v(1-c_{\triangle})\right). \EQN symmetry;d
+$$
+
+
+As discussed in section \use{sec:Koch_asympdist}, the condition
+for the nonexistence of first-best sustainable allocations is that
+$\overline c_{\rm min} < \underline c_{\rm max}$, which by
+\Ep{c_int_bound} is the same as
+$$
+\overline c_1 < \underline c_S \hskip1cm \Longrightarrow
+\hskip1cm       \underline c_S > 0.5               \EQN symmetry2
+$$
+where the implication follows from using $\overline c_1 = 1
+-\underline c_S$ as given by \Ep{symmetry;c}. It is quite
+intuitive that the consumption interval $[\underline c_S,\,
+\overline c_S]$ associated with the highest endowment realization
+$\overline y_S$ cannot contain the average value of the stochastic
+endowment, $\sum_{i=1}^{S} \Pi_i \overline y_i = 0.5$. Otherwise,
+there would certainly exist first-best sustainable allocations,
+ a contradiction.
+
+To prove the existence of a nondegenerate asymptotic distribution
+of continuation values, it is sufficient to show that the
+continuation value of an agent experiencing the highest endowment,
+say, the type 1 household, exceeds the continuation value of the
+other agent who is then experiencing the lowest endowment, say,
+the type 2 household. Given her current realization of the highest
+endowment $\overline y_S$, the type 1 household is awarded the
+highest consumption level $\underline c_S$ ($= \underline c_{\rm
+max}$) in the ergodic consumption set of \Ep{c_ergodic}.
+Conditional on next period's endowment realization $\overline
+y_i$, the type 1 household's consumption $\hat c_i$ in the next
+period is determined by \Ep{optstar;a}, where $c_{\triangle} =
+\underline c_S$. From \Ep{c_intervals} we know that $\underline
+c_S \geq \underline c_i$ for all $i\in {\bf S}$, so next period's
+consumption of the type 1 household as determined by
+\Ep{optstar;a} can be written as
+$$
+\hat c_i = \min \{ \overline c_i, \, \underline c_S \}.   \EQN symmetry3
+$$
+Given the vector $\{\hat c_i\}_{i=1}^{S}$ for next period's consumption,
+we can use \Ep{Koch_value1} to compute the type 1
+household's outgoing continuation value in the current period,
+$$
+v(\underline c_S) = \sum_{i=1}^{S} \Pi_i \Bigl[u(\hat c_i) + \beta v(\hat c_i)
+                                                                         \Bigr].
+$$
+Next, we are interested in computing the difference between the
+continuation values of the type 1 and the type 2 households,
+$$\EQNalign{
+v(\underline c_S) - &P\!\left(v(\underline c_S))\right)
+= \sum_{i=1}^{S} \Pi_i \Bigl[u(\hat c_i) + \beta v(\hat c_i)
+                 -u(1-\hat c_i) - \beta P\!\left(v(\hat c_i)\right) \Bigr] \cr
+&= \sum_{i=1}^{S} \Pi_i \Bigl[u(\hat c_i) + \beta v(\hat c_i)
+       -u(1-\hat c_{S+1-i}) - \beta P\!\left(v(\hat c_{S+1-i})\right) \Bigr]\cr
+&= \sum_{i=1}^{S} \Pi_i \Bigl[u(\hat c_i) + \beta v(\hat c_i)
+       -u(1-\hat c_{S+1-i}) - \beta v(1-\hat c_{S+1-i}) \Bigr],\hskip1cm
+                                                            \EQN symmetry4 \cr}
+$$
+where the second equality emerges from the symmetric probabilities
+in \Ep{symmetry;a}, and the third equality follows from \Ep{symmetry;d}.
+To establish that the difference in \Ep{symmetry4} is strictly positive,
+it is sufficient to show that
+$$
+\hat c_i \geq 1- \hat c_{S+1-i},
+$$
+or, by using \Ep{symmetry3},
+$$
+\min \{ \overline c_i, \, \underline c_S \} \geq
+           1 - \min \{ \overline c_{S+1-i}, \, \underline c_S \} \EQN symmetry5
+$$
+for all $i\in {\bf S}$, and at least one of them holds with strict
+inequality. The proof proceeds by considering four possible cases
+for each $i\in {\bf S}$.
+
+\vskip.5cm
+\noindent
+{\it Case a:} $\overline c_i \leq \underline c_S$ and
+$\overline c_{S+1-i} \leq \underline c_S$. According to
+\Ep{symmetry;c} $\overline c_{S+1-i} = 1-\underline c_i$,
+so inequality \Ep{symmetry5} can then be written as
+$$
+\overline c_i \geq 1 - \overline c_{S+1-i} = \underline c_i
+\ \hbox{\rm which is true since} \
+\overline c_i > \underline c_i \hskip.3cm \hbox{\rm for all}
+\hskip.3cm  i\in {\bf S},
+$$
+as established in section \use{sec:c_nondeg}.
+
+
+\vskip.5cm
+\noindent
+{\it Case b:} $\overline c_i \leq \underline c_S$ and
+$\overline c_{S+1-i} > \underline c_S$. According to
+\Ep{symmetry;c} $\overline c_i = 1-\underline c_{S+1-i}$,
+so inequality \Ep{symmetry5} can then be written as
+$$
+\overline c_i = 1 - \underline c_{S+1-i}
+\geq 1 - \underline c_S
+\ \hbox{\rm which is true since} \
+\underline c_{S+1-i} < \underline c_S \hskip.3cm \hbox{\rm for all}
+\hskip.3cm  i\not=1,
+$$
+as established in section \use{sec:intervals_contain}.
+
+
+\vskip.5cm
+\noindent
+{\it Case c:} $\overline c_i > \underline c_S$ and
+$\overline c_{S+1-i} \leq \underline c_S$. According to
+\Ep{symmetry;c} $\overline c_{S+1-i} = 1-\underline c_i$,
+so inequality \Ep{symmetry5} can then be written as
+$$
+\underline c_S \geq 1 - \overline c_{S+1-i} = \underline c_i
+\ \hbox{\rm which is true since} \
+\underline c_S > \underline c_i \hskip.3cm \hbox{\rm for all}
+\hskip.3cm  i\not=S,
+$$
+as established in section \use{sec:intervals_contain}.
+
+
+\vskip.5cm
+\noindent
+{\it Case d:} $\overline c_i > \underline c_S$ and
+$\overline c_{S+1-i} > \underline c_S$.
+The inequality \Ep{symmetry5} can then be written as
+$$
+\underline c_S \geq 1 - \underline c_S
+\ \hbox{\rm which is true since} \
+\underline c_S > 0.5
+$$
+as established in \Ep{symmetry2}.
+
+\vskip.5cm
+
+We can conclude that the inequality \Ep{symmetry5} holds with {\it
+strict} inequality with only two exceptions: (1) when $i=1$
+and case b applies; and (2) when $i=S$ and case c applies.
+It follows that the difference in \Ep{symmetry4} is definitely
+strictly positive if there are more than two states, and hence the
+asymptotic distribution of continuation values is nondegenerate.
+But what about when there are only two states ($S=2$)? Since
+$\overline c_1 < \underline c_S$ by \Ep{symmetry2} and $\overline
+c_S > \underline c_S$, it follows that case b applies when $i=1$
+and case c applies when $i=2=S$. Therefore, the difference in
+\Ep{symmetry4} is zero, and thus the continuation value of an
+agent experiencing the highest endowment is equal to that  of the
+other agent who is then experiencing the lowest endowment. Since
+there are no other continuation values in an economy with only two
+possible endowment realizations, it follows that the asymptotic
+distribution of continuation values is degenerate when there are
+only two states ($S=2$).
+
+A two-state example in section \use{sec:thekink} illustrates our
+findings. The intuition for the degenerate asymptotic distribution
+of continuation values is straightforward. On the one hand,
+the planner would
+like to vary continuation values and thereby avoid large changes
+in current consumption that would otherwise be needed to satisfy
+binding participation constraints. But, on the other hand,
+different continuation
+values presuppose that there exist ``intermediate'' states in
+which a higher continuation value can be  awarded. In our
+two-state example, the participation constraint  of either one or
+the other type of agent always  binds, and the asymptotic
+distribution is degenerate with only one continuation value.
+
+
+
+\subsection{Continuation values do not always respond to binding
+participation constraints}
+Evidently, continuation values will eventually not respond to
+binding participation constraints in a two-state economy, since we
+have just shown that the asymptotic distribution is degenerate
+with only one continuation value. But the outcome that
+continuation values might not respond to binding participation
+constraints occurs even with more states when endowments are
+i.i.d. In fact, it is present whenever the consumption intervals
+of two adjacent endowment realizations, $\overline y_k$ and
+$\overline y_{k+1}$, do not overlap, i.e., when $\overline c_k <
+\underline c_{k+1}$. Here is how the argument goes.
+
+Since $\overline c_k < \underline c_{k+1}$ it follows from
+\Ep{c_ergodic} that both $\overline c_k$ and $\underline c_{k+1}$
+belong to the ergodic set of consumption. Moreover,
+\Ep{c_intervals} implies that ${\bf S}^o(\overline c_k) = {\bf
+S}^o(\underline c_{k+1}) = \emptyset$, where ${\bf S}^o(\cdot)$ is
+defined in \Ep{Sdef;a}. Using expression \Ep{Koch_value1}, we can
+compute a common continuation value $v(\overline c_k)=v(\underline
+c_{k+1}) = \hat v$, where $\hat v$ is given by \Ep{constant_v}
+when that expression is evaluated for any $c_{\triangle} \in
+[\overline c_k,\, \underline c_{k+1}]$. Given this identical
+continuation value, it follows that there are situations where
+households' continuation values will not  respond to binding
+participation constraints.
+
+As an example, let the current consumption and continuation value
+of the type 1 household be $\overline c_k$ and $v(\overline c_k) =
+\hat v$, and suppose that the household next period realizes the
+endowment $\overline y_{k+1}$. It follows that the participation
+constraint of the type 1 household is binding and that the optimal
+solution in \Ep{optstar} is to award the household a consumption
+level $\underline c_{k+1}$ and continuation value $v(\underline
+c_{k+1})$. That is, the household is induced not to defect into
+autarky by increasing its consumption, $\underline c_{k+1} >
+\overline c_k$, but its continuation value is kept unchanged,
+$v(\underline c_{k+1}) = \hat v$. Suppose next that the type 1
+household experiences $\overline y_k$ in the following period.
+This time it will be the participation constraint of the type 2
+households that binds and the optimal solution in \Ep{optstar}
+prescribes that the type 1 household is awarded consumption
+$\overline c_k$ and continuation value $v(\overline c_k)=\hat v$.
+Hence, only consumption levels but not continuation values are
+adjusted in these two realizations with alternating binding
+participation constraints.
+
+We use a three-state example in section \use{sec:3state} to
+elaborate on the point that even though an incoming continuation
+value lies in the interior of the range of permissible
+continuation values in \Ep{newKoch0;f}, a binding participation
+constraint still might  not trigger a change in the outgoing
+continuation value because there may not exist any efficient way
+to deliver a changed continuation value. Continuation values that
+do not respond to binding participation constraints are a
+manifestation of the possibility that the Pareto frontier
+$P(\cdot)$ need not be differentiable everywhere on the interval
+$[v_{\rm aut}, v_{\rm max}]$, as shown in section
+\use{sec:Koch_nondiff}.
+
+
+
+
+
+%When computing efficient allocations in our two- and three-state examples below,
+%it will be useful to refer to Kocherlakota's continuation value but rely on
+%Thomas and Worrall's characterization of the optimal consumption dynamics.
+%Our examples will also serve as counterexamples to two assertions of
+%Kocherlakota.\NFootnote{The small technical glitches that prevent Kocherlakota's analysis
+%from applying to our two-- and three--state examples  do nothing to diminish
+%the value of Kocherlakota's main contribution in analyzing the conditions
+%under which occasionally binding enforcement constraints can lead to empirically
+%interesting conditional covariances of consumption and income.}
+%We like these counterexamples because they help illuminate the workings of
+%Kocherlakota's model both under the situations that prevail in the counterexamples and also
+%in the less pathological cases that  he had in mind.  Thus, it is instructive
+%to understand why the following two claims must be qualified:
+%\vskip.2cm
+%\item{1. } If there exist no first-best sustainable allocation, then the continuation
+%values will converge to a unique non-degenerate distribution. [Kocherlakota (1996b),
+%Proposition 4.2 on page 603]
+
+%\item{2. } If the participation constraint of the type 1 agent
+%binds and $v<v_{\rm max}$, then $w_s > v$. On the other hand, if
+%the participation constraint of the type 2 agent binds and
+%$v>v_{\rm aut}$, then $w_s<v$. [Kocherlakota (1996b), page 600]
+%\vskip.2cm \noindent The first claim that there is a {\it non-degenerate}
+%asymptotic distribution does not hold in our two-state example.
+%The intuition for this is straightforward. Yes, the planner would
+%like to vary continuation values and thereby avoid large changes
+%in current consumption that would otherwise be needed to satisfy
+%binding participation constraints. However, different continuation
+%values presuppose that there exist ``intermediate'' states in
+%which a higher continuation value can be  awarded. In our
+%two-state example, the participation constraint  of either one or
+%the other type of agent always  binds and the asymptotic
+%distribution is degenerate with only one continuation value. Thus,
+%the two-state example serves as a counterexample not  only to the first
+%claim but also to the second claim. We use a three-state example
+%to  elaborate on the point that even though an incoming
+%continuation value lies in the interior of the range of
+%permissible continuation values, a binding participation
+%constraint still might  not trigger a change in the outgoing
+%continuation value because there may not exist any efficient way
+%to deliver a changed continuation value. A manifestation of the
+%failure of the second claim is that the Pareto frontier $P(\cdot)$
+%is not differentiable everywhere on the interval $[v_{\rm aut},
+%v_{\rm max}]$.\NFootnote{Kocherlakota prematurely assumed that Thomas and
+%Worrall's (1988) demonstration of the differentiability of the Pareto frontier
+%$Q_s(\cdot)$ %that is conditional on $y_s$
+%would imply that his conceptually
+%different frontier $P(\cdot)$ would be differentiable.  The counterexamples seem to say
+%that unfortunately this
+%is not true in general.}
+
+
+
+
+\section{A two-state example: amnesia overwhelms
+memory}\label{sec:thekink}%
+In this example and the three-state example of the following
+section, we use the term ``continuation value'' to denote the
+state variable of Kocherlakota (1996b) as described in the
+preceding section.\NFootnote{See Krueger and Perri (2003b) for
+another analysis of a two-state example.} That is, at the end of a
+period, the continuation value $v$ is the promised expected
+utility to the type 1 agent that will be delivered at the start of the next
+period.
+\auth{Krueger, Dirk}\auth{Perri, Fabrizio}%
+
+Assume that there are only two possible endowment realizations,
+$S=2$, with $\{\overline y_1, \overline y_2\}=\{1-\overline y,
+\overline y\}$, where $\overline y \in (.5,1)$. Each endowment
+realization is equally likely to occur, $\{\Pi_1, \Pi_2\}=\{0.5,
+0.5\}$. Hence, the two types of agents face the same {\it ex ante}
+welfare level in autarky,
+$$v_{\rm aut} = {.5 \over 1-\beta}\left[ u(\overline y) +
+  u(1-\overline y)\right].
+$$
+We will focus on parameterizations for which there exist no
+first-best sustainable allocations (i.e., $\overline c_{\rm min} <
+\underline c_{\rm max}$, which here amounts to $\overline c_1 <
+\underline c_2$). An efficient allocation will then asymptotically
+enter the ergodic consumption set in \Ep{c_ergodic} that here is
+given by two points, $\{\overline c_1, \underline c_2\}$. Because
+of the symmetry in preferences and endowments, it must be true
+that $\underline c_2 = 1 - \overline c_1 \equiv \overline c$,
+%% (and for that matter, $\overline c_2 = 1- \underline c_1$).
+where we let $\overline c$ denote the consumption allocated to an
+agent whose participation constraint is binding and $1 -\overline
+c$ be the consumption allocated to the other agent.
+
+Before determining the optimal values $\{1-\overline c, \overline
+c\}$, we will first verify that any such stationary allocation
+delivers the same continuation value to both types of agent. Let
+$v^+$ be the continuation value for the consumer who last received
+a high endowment and let $v^-$ be the continuation value for the
+consumer who last received a low endowment. The promise-keeping
+constraint for $v^+$ is
+$$v^+ = .5[u(\overline c) + \beta v^+] +
+  .5[u(1-\overline c) + \beta v^- ]  $$
+and  the promise-keeping constraint for
+$v^-$ is
+$$v^- = .5[u(\overline c) + \beta v^+] +
+  .5[u(1-\overline c) + \beta v^- ].
+$$
+Notice that the promise-keeping constraints make  $v^+$ and
+$v^-$  identical.
+Therefore, there is a unique
+stationary continuation value $\overline v \equiv v^+ =v^-$ that is independent
+of the current period endowment, as established in section
+\use{sec:Koch_distnondeg} for $S=2$.
+  Setting $v^+ = v^- = \overline v$
+ in one of the two equations above
+and solving gives the stationary continuation value:
+$$ \overline v = {.5\over 1-\beta}
+\left[u(\overline c) + u(1-\overline c)\right].  \EQN kochex1  $$
+
+
+To determine the optimal $\overline c$ in this two-state example,
+we use the following two facts. First, $\overline c$ is the lower
+bound of the consumption interval $[\underline c_2, \overline
+c_2]$; $\overline c$ is the consumption level that should be
+awarded to the type 1 agent when she experiences the highest
+endowment $\overline y_2 = \overline y$ and we want to maximize
+the welfare of the type 2 agent subject to the type 1 agent's
+participation constraint. Second, $\overline c$ belongs also to
+the ergodic set $\{\overline c_1, \underline c_2\}$ that
+characterizes the stationary efficient allocation, and we know
+that the associated efficient continuation values are then the
+same for all agents and given by $\overline v$ in \Ep{kochex1}.
+The maximization problem above can therefore be written as
+$$\EQNalign{
+\max_{\overline c}\hskip.2cm &u(1-\overline c) + \beta \overline v  \EQN kochex2;a \cr
+\hbox{\rm subject to }
+\hskip.2cm  &u(\overline c) + \beta \overline v  - \left[ u(\overline y)
+  + \beta v_{\rm aut} \right] \geq 0,                        \EQN kochex2;b \cr
+%%%%           &\overline c\in[0.5, 1], \cr
+}$$ where $\overline v$ is given by \Ep{kochex1}. We graphically
+illustrate how $\overline c$ is chosen in order to maximize
+\Ep{kochex2;a} subject to \Ep{kochex2;b} in Figures \Fg{koch2s1bf}
+and  \Fg{koch2s1af} for utility function $(1-\gamma)^{-1}
+c^{1-\gamma}$ and
+ parameter values $(\beta, \gamma, \overline y)
+= (.85, 1.1, .6)$. It can be verified numerically
+that $\overline c  = .536$.
+Figure  \Fg{koch2s1bf}
+     shows \Ep{kochex2;a} as a decreasing
+function of $\overline c$ in the interval $[.5,.6]$.
+Figure
+\Fg{koch2s1af} plots the left side of \Ep{kochex2;b} as a function of
+$\overline c$.  Values
+of $\overline c$ for which the expression is negative are not sustainable
+(i.e., values less than .536).  Values of $\overline c$ for
+which the expression is nonnegative are sustainable.  Since the welfare
+of the agent with a low endowment realization in \Ep{kochex2;a} is
+decreasing as a function of $\overline c$ in the interval
+$[.5,.6]$, the best sustainable value of $\overline c$ is the
+lowest value for which the expression in \Ep{kochex2;b} is nonnegative.
+This value for $\overline c$ gives the  most
+risk sharing that is compatible with the participation constraints.
+
+%%%%%%%%%%%
+%\midinsert
+%$$\grafone{koch2s1b.eps,height=2.25in}{{\bf Figure XXX.} Continuation value
+%as function of $\overline c$.}
+%$$ \endinsert
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%
+%\midinsert $$
+%\grafone{koch2s1a.eps,height=2in}{{\bf Figure XXX.} The participation
+%constraint is satisfied for values of  $\overline c$ for which
+%the difference $u(\overline c) + \beta v -\left(u(\overline y)
+%+ \beta v_{\rm aut}\right) $ plotted here is positive.}
+%$$
+%\endinsert
+%%%%%%%%%%%%
+
+
+\midfigure{koch2s1bf}
+\centerline{\epsfxsize=3.1truein\epsffile{koch2s1b.ps}}
+\caption{Welfare of the agent with low endowment as a function of $\overline c$.}
+\infiglist{koch2s1bf}
+\endfigure
+
+\midfigure{koch2s1af}
+\centerline{\epsfxsize=3.1truein\epsffile{koch2s1a.ps}}
+\caption{The participation constraint is satisfied for values of $\overline c$
+for which the difference $u(\overline c) + \beta \overline v -\left[u(\overline y)
++ \beta v_{\rm aut}\right]$ plotted here is positive.}
+\infiglist{koch2s1af}
+\endfigure
+
+
+
+\subsection{Pareto frontier}
+It is instructive to find the entire set of sustainable values
+$V$. In addition to the value $\overline v$ above associated with
+a stationary sustainable allocation, other values can be sustained, for
+example,  by
+promising a value $\hat v >  \overline v$ to a type 1 agent who has
+yet to receive a low endowment realization.  Thus, let $\hat v$ be
+a promised value to such a consumer and let $c^+$ be the
+consumption assigned to that consumer in the event that his endowment is
+high.  Then promise keeping for the two types of agents requires
+$$\EQNalign{\hat v & = .5[ u(c^+) + \beta \hat v ]
+    + .5[ u(1-\overline c) + \beta \overline v], \EQN pk1;a \cr
+   P(\hat v) & = .5[u(1-c^+) + \beta P(\hat v) ]
+    + .5[ u(\overline c)  + \beta \overline v] . \EQN pk1;b  \cr} $$
+If the type 1 consumer receives the high endowment,
+sustainability of the allocation requires
+$$\EQNalign{ u(c^+) + \beta \hat v    &\geq u(\overline y) + \beta
+       v_{\rm aut}, \EQN sust1;a \cr
+     u(1-c^+) + \beta P(\hat v) & \geq u(1-\overline y) + \beta v_{\rm aut}.
+  \EQN sust1;b \cr}  $$
+If the type 2 consumer receives the high endowment, awarding him
+$\overline c,\overline v$    automatically satisfies the sustainability
+requirements because these are already built into the construction
+of the stationary sustainable value $\overline v$.
+
+Let's solve for the {\it highest\/} sustainable initial value  of
+$\hat v$, namely, $v_{\rm max}$.
+To do so, we must solve the three equations formed
+by the  promise-keeping constraints
+\Ep{pk1;a} and  \Ep{pk1;b}    and the participation
+constraint \Ep{sust1;b}
+of a type 2 agent when it receives $1-\overline y$ at equality:
+$$ u(1-c^+) + \beta P(\hat v) = u(1-\overline y) + \beta v_{\rm aut} .
+\EQN number3
+$$
+Equation \Ep{pk1;b} and \Ep{number3} are two equations
+in $(c^+, P(v_{\rm max}))$. After solving them, we can solve
+\Ep{pk1;a} for $v_{\rm max}$.
+Substituting \Ep{number3} into \Ep{pk1;b} gives
+$$P(v_{\rm max}) = .5[u(1-\overline y) +\beta v_{\rm aut}]
+   + .5 [u(\overline c) + \beta \overline v].  \EQN number4 $$
+But from the participation constraint of a high endowment
+household in a stationary allocation,  recall that
+$u(\overline c) + \beta \overline v = u(\overline y) + \beta v_{\rm aut}$.
+Substituting this into \Ep{number4} and rearranging gives
+$$ P(v_{\rm max}) = v_{\rm aut}  $$
+and therefore by \Ep{number3}, $c^+ = \overline
+y$.\NFootnote{According to our general characterization of
+the {\it ex ante} division of the gains of an efficient contract
+in section \use{sec:Koch_Pareto1},
+it can be viewed as determined by an implicit initial consumption
+level $c_{\triangle}\in [\overline y_1, \overline y_S]$. Notice
+that the present calculations have correctly computed the upper
+bound of that interval for our two-state example, $\overline y_S =
+\overline y_2 \equiv \overline y$.} Solving \Ep{pk1;a} for $v_{\rm
+max}$ we find
+$$v_{\rm max} = {1 \over 2-\beta}[u(\overline y)  +u(1-\overline c)
+    + \beta \overline v] .  \EQN maxhatv $$
+
+%%\subsubsection{A kink}
+
+  Now let us study what happens when we set $v \in
+  (\overline v, v_{\rm max})$ and drive
+$v $ toward $\overline v$ from above.  Totally differentiating \Ep{pk1;a}
+and \Ep{pk1;b}, we find
+$$ {d P(\hat v) \over d \hat v} = -{u'(1-c^+) \over u'(c^+) } . $$
+Evidently
+$$\lim_{v \downarrow \overline v}
+{d P(v) \over d v}
+= -{u'(1 -\overline c)
+   \over u'(\overline c)} < -1.  $$
+By symmetry,
+$$\lim_{v \uparrow \overline v}
+{d P(v) \over d v}
+  = -{ u'(\overline c) \over u'(1-\overline c)
+  } > -1 .$$
+Thus, there is  a kink in the value function $P(v)$ at $v=\overline v$.
+At $\overline v$, the value function is not differentiable as
+established in section \use{sec:Koch_nondiff} when two adjacent consumption
+intervals are disjoint.
+At $\overline v$, $P'(v)$ exists only in the sense of
+a subgradient in the interval $\left[
+ -u'(1 -\overline c) / u'(\overline c),\;
+  - u'(\overline c) / u'(1-\overline c)\right]$.
+Figure \Fg{rm1f} %15.rm1XXX
+depicts the kink in $P(v)$.
+
+
+%%Figures 15.rm1XXX and 15.rm2XXX depict
+%%the kink in $P(v)$  and
+%%the consequent flat spot in the function that depicts the tradeoff
+%%between $w_s$ and $c_s$.  The flat spot reflects the fact that
+%%$P'(v)$ is defined as a subgradient at the stationary value
+%%of $v$.
+
+%%%%%%%%%
+%\midinsert
+%$$\grafone{rm1.ps,height=3.25in,angle=90}{{\bf Figure 15.rm1XXX.}
+%The kink in $P(v)$ at the stationary value of $v$ for the two-state
+%symmetric example.}
+%$$ \endinsert
+%%%%%%%%%%%%%
+
+%%%%%%%%%%%
+%\topinsert$$
+%\grafone{rm2.ps,height=3.25in,angle=90}{{\bf Figure 15.rm2XXX.}
+%Tradeoff between continuation value and consumption in the two-state
+%symmetric example.  The kink in $P(v)$ at $v$ leads to a flat spot in
+%the function expressing $w_s$ as a function of $y_s$.}
+%$$ \endinsert
+%%%%%%%%%%%%
+
+
+\midfigure{rm1f}
+\centerline{\epsfxsize=3truein\epsffile{rm1.eps}}
+\caption{The kink in $P(v)$ at the stationary value of $v$ for the two-state symmetric
+example.}
+\infiglist{rm1f}
+\endfigure
+
+%\midfigure{rm2f}
+%\centerline{\epsfxsize=3.5truein\epsffile{rm2.eps}}
+%\caption{Tradeoff between continuation value and consumption in the two-state symmetric
+%example.  The kink in $P(v)$ at $v$ leads to a flat spot in the function expressing
+%$w_s$ as a function of $y_s$.}
+%\infiglist{rm2f}
+%\endfigure
+
+\subsection{Interpretation}
+Recall our characterization of the optimal consumption dynamics in
+\Ep{c_update}. Consumption remains unchanged between periods when
+neither participation constraint binds, and hence the efficient
+contract displays memory or history dependence. When either of the
+participation constraints binds, history dependence is limited to
+ selecting either the lower or the upper bound of a
+consumption range $[\underline c_j, \overline c_j]$, where the
+range and its bounds are functions of the current endowment
+realization $\overline y_j$. After someone's participation
+constraint has once been binding, history becomes irrelevant,
+because past consumption has no additional impact on the level of
+current consumption. %Kocherlakota calls this feature
+\index{amnesia}%
+
+Now, in the case of our two-state example, there are only two
+consumption ranges, $[\underline c_1, \overline c_1]$ and
+$[\underline c_2, \overline c_2]$. And as a consequence, the
+asymptotic consumption distribution has only two points,
+$\overline c_1$ and $\underline c_2$ (or in our notation,
+$1-\overline c$ and $\overline c$). It follows that history
+becomes  irrelevant because consumption is then determined by the
+endowment realization. Thus, it can be said that ``amnesia
+overwhelms memory'' in this example, and the asymptotic
+distribution of continuation values becomes degenerate with a
+single point $\overline v$.\NFootnote{If we adopt the recursive
+formulation of Thomas and Worrall in \Ep{new1},  amnesia manifests
+itself as a time-invariant state vector $[x_1, x_2]$ where
+$x_1 = u(1-\overline c) - u(1-\overline y) + \beta [\overline v - v_{\rm aut} ]
+$ and $
+x_2 = u(\overline c) - u(\overline y) + \beta [\overline v - v_{\rm aut} ]$.}
+
+We further explore the variation or the lack of variation
+in continuation values in the three-state example of the following
+section.
+
+
+
+
+\section{A three-state example}\label{sec:3state}%
+As the two-state example stresses, any variation of continuation values
+in an efficient allocation requires that
+%%the graphical presentation
+%%in Figure 15.XXXX (from Kocherlakota (1996b) implicitly assumes that
+ the environment be such that when a household's participation constraint
+is binding, the planner has room to increase both the current
+consumption {\it and\/} the continuation value of that household.
+In the stationary allocation in the two-state example, there is no
+room to adjust the continuation value because of the restrictions
+that promise keeping imposes. We now analyze the stationary
+allocation of a three-state $(S=3)$ example in which
+%%the small number of states
+the environment still limits the planner's ability to manipulate
+continuation values, but nevertheless sometimes allows adjustments
+in the continuation value.
+
+Thus, consider an environment in which $S=3$. We assume
+that the distributions of $y_t$ and $1-y_t$ are identical.  In particular,
+we let $\{\overline y_1,\overline y_2,\overline y_3\}=
+\{1-\overline y, 0.5, \overline y\}$ and
+$\{\Pi_1, \Pi_2, \Pi_3\}=\{\Pi/2, 1-\Pi, \Pi/2\}$ where
+$\overline y\in(.5, 1]$ and $\Pi\in[0,1]$.
+Given parameter values such that there is no first-best
+sustainable allocation
+(i.e., $\overline c_1 < \underline c_3$),
+we will study the efficient allocation that is attained
+asymptotically. According to \Ep{c_ergodic}, this ergodic
+consumption set is given by
+$$
+\left\{\left[\overline c_1,\, \underline c_3\right]
+\bigcap \, \{\overline c_1,\, \underline c_2,\, \overline c_2,
+           \, \underline c_3\} \right\}, \EQN c_ergodic3
+$$
+which contains at least two points ($\overline c_1$, $\underline c_3$)
+and maybe two additional points ($\underline c_2$, $\overline c_2$).
+
+When there are no first-best sustainable allocations, the
+efficient stationary allocation must be such that the
+participation constraints of a type 1 person and a type 2 person
+bind in state 3 and state 1, respectively. Let $\overline
+c\in[0.5, 1]$ and $\bar w^+$ be the consumption and continuation
+value allocated to the agent whose participation constraint is
+binding because his endowment is equal to $\overline y$:
+$$ u(\overline c) + \beta \bar w^+ = u(\overline y)
+  + \beta v_{\rm aut} . \EQN koch3ex1 $$
+In such a state, the agent whose participation constraint
+is {\it not\/} binding consumes $1-\overline c$ and is assigned
+continuation value
+$\bar w^-$. Because of the assumed symmetries with respect to
+preferences and endowments, we have
+$\overline c = \underline c_3 = 1-\overline c_1$.
+
+The consumption allocation in state 2 depends on
+the different promised continuation values with which
+agents enter a period.
+The symmetry in our
+environment and the existence of only three states imply that
+there is a single consumption level $\hat c$ that is granted to
+the type of person that last realized the highest endowment
+$\overline y$.
+Let  $\hat w^+$ be the continuation
+value that in state 2 is
+allocated to the type of person that last received endowment
+$\overline y$.
+ According to our earlier characterization of an
+efficient allocation, the agents who realize the highest endowment
+$\overline y$ are induced not to defect into autarky by granting them
+both higher current consumption and a higher continuation value.
+Hence, state 2 is ``payback time'' for the agents who were promised
+a higher continuation value and it must be true that
+$\hat c \in [0.5, 1]$. In state 2, the type of person that
+did not last receive $\overline y$ is
+allocated consumption $1-\hat c$ and continuation value
+$\hat w^-$. The participation constraint of this type of person
+might conceivably be binding in state 2,
+$$u(1-\hat c) + \beta \hat w^- \geq u(0.5)
+  + \beta v_{\rm aut} . \EQN koch3ex2 $$
+According to the optimal consumption dynamics in \Ep{c_update},
+we know that $\hat c = \min \{\overline c, \overline c_2\}$. That is,
+a person who had the highest endowment realization $\overline y$
+with associated consumption level $\overline c$ will retain
+that consumption level when moving into state 2
+($\hat c = \overline c$) unless
+the participation constraint of the other agent becomes binding
+in state 2. In the latter case, the person who had the highest
+endowment realization is awarded consumption
+$\hat c = \overline c_2$ in state 2
+and the participation constraint for the other person in \Ep{koch3ex2}
+will hold with strict equality.
+
+
+While there can exist four different consumption levels in the
+efficient stationary allocation, $\{1-\overline c, 1-\hat c, \hat
+c, \overline c\}$, it is possible to have at most two distinct
+continuation values:
+$$\EQNalign{
+\bar w^+ = \hat w^+  = &
+(\Pi/2) \left[u(\overline c)+\beta \bar w^+ \right]
++(1-\Pi) \left[u(\hat c)+\beta \hat w^+\right] \cr
+& + (\Pi/ 2) \left[u(1-\overline c)+\beta \bar w^-\right],
+                                                   \EQN koch3ex3;a\cr
+\noalign{\vskip.3cm}
+\bar w^- = \hat w^-  = &
+(\Pi/ 2) \left[u(\overline c)+\beta \bar w^+ \right]
++(1-\Pi) \left[u(1-\hat c)+\beta \hat w^-\right]            \cr
+& + (\Pi/ 2) \left[u(1-\overline c)+\beta \bar w^-\right].
+                                                  \EQN koch3ex3;b\cr}
+$$
+As can be seen on the right side of \Ep{koch3ex3;a}, the
+expressions for $\bar w^+$ and $\hat w^+$ are the same, and so
+$\bar w^+ = \hat w^+\equiv w^+$. The same holds true for $\bar
+w^-$ and $\hat w^-$ in \Ep{koch3ex3;b}, and hence $\bar w^- = \hat
+w^-\equiv w^-$. By manipulating equations \Ep{koch3ex3}, we can
+express the two continuation values in terms of $(\overline c,
+\hat c)$:
+$$\EQNalign{
+w^+ &= \Bigl\{ (\Pi/2) \left[1+\beta \kappa \Pi/2 \right]
+          \left[u(\overline c) + u(1-\overline c)\right]             \cr
+     &\hskip1cm + (1-\Pi) \left[u(\hat c)
+                    +\beta \kappa \Pi u(1-\hat c)/2\right] \Bigr\}   \cr
+     &\hskip.5cm \cdot \Bigl\{ \left[1-\beta(1-\Pi)\right]
+              (1-\beta)\kappa \Bigr\}^{-1}         \EQN koch3ex4;a \cr
+w^- &= w^+ \,-\, {1-\Pi \over 1-\beta(1-\Pi) }
+       \left[u(\hat c) - u(1-\hat c)\right] ,  \EQN koch3ex4;b \cr}
+$$
+where $\kappa = [1-(1-\Pi/2)\beta]^{-1}$.
+
+To determine the optimal $\{\overline c, \hat c\}$ in this
+three-state example, it is helpful to focus on a state in which
+the agents realize different endowments,  say, state 3 in which
+the type 1 agent realizes the highest endowment $\overline y$ and
+is awarded consumption level $\overline c$. We can then exploit
+the following two facts. First, $\overline c$ is the lower bound
+of the consumption interval $[\underline c_3, \overline c_3]$, so
+$\overline c$ is the consumption level that should be awarded to
+the type 1 agent when she experiences the highest endowment
+$\overline y_3 = \overline y$ and we want to maximize the welfare
+of the type 2 agent subject to the type 1 agent's participation
+constraint. Second, $\overline c$ belongs also to the ergodic set
+in \Ep{c_ergodic3} that characterizes the stationary efficient
+allocation, and we know that the associated efficient continuation
+values are $w^+$ for the agents with high endowment and $w^-$ for
+the other agents. By invoking functions \Ep{koch3ex4} that express
+these continuation values in terms of $\{\overline c, \hat c\}$
+and by using participation constraint \Ep{koch3ex1} that
+determines permissible values of $\hat c$, the optimization
+problem above becomes:
+$$\EQNalign{
+\max_{\overline c,\,\hat c}\hskip.2cm &u(1-\overline c) + \beta w^-  \EQN koch3ex5;a \cr
+\hbox{\rm subject to }
+\hskip.2cm  &u(\overline c) + \beta w^+  - \left[ u(\overline y)
+  + \beta v_{\rm aut} \right] \geq 0                        \EQN koch3ex5;b \cr
+&u(1-\hat c) + \beta w^- - \left[ u(0.5)
+  + \beta v_{\rm aut} \right] \geq 0,                        \EQN koch3ex5;c \cr
+%%%%            &\overline c, \hat c \in[0.5, 1], \cr
+}$$
+where $w^-$ and $w^+$ are given by \Ep{koch3ex4}.
+
+To  illustrate graphically how an efficient stationary allocation
+$\{\overline c, \hat c\}$ can be computed from optimization problem
+\Ep{koch3ex5}, we assume a utility function $c^{1-\gamma}/(1-\gamma)$ and
+parameter values $(\beta, \gamma, \Pi, \overline y)
+= (0.7, 1.1, 0.6, 0.7)$. It should now be evident that
+we can restrict attention
+to consumption levels $\overline c\in[0.5, \overline y]$
+and $\hat c\in[0.5, \overline c]$. Figure
+%15.XXX.a and 15.XXX.b
+%\Fg{icpairs }a and \Fg{icpairs}b
+shows the sets
+$(\overline c, \hat c)\in [0.5, \overline y]
+\times[0.5, \overline c]$ that
+satisfy participation constraint \Ep{koch3ex5;b}
+and \Ep{koch3ex5;c}, respectively. The intersection of these
+sets is depicted in Figure %Figure 15.XXX.c
+\Fg{ic_bothf} where the
+circle indicates the efficient stationary allocation
+that maximizes \Ep{koch3ex5;a}.
+
+
+%%%%%%% GGGGG Here is one of the April 2017 problems
+
+%%%% Here is the attempted fix
+
+
+
+\midfigure{icpairs}
+\centerline{\epsfxsize=2.0truein\epsffile{ic_high.ps}, \epsfxsize=2.0truein\epsffile{ic_low.ps}}
+\caption{Left panel: Pairs
+of $(\overline c, \hat c)$ that satisfy
+$u(\overline c) + \beta w^+ \geq u(\overline y)
+  + \beta v_{\rm aut}$.  Right panel: Pairs of
+$(\overline c, \hat c)$ that satisfy $u(1-\hat c) + \beta w^- \geq
+u(0.5)
+  + \beta v_{\rm aut}$. }
+\infiglist{icpairs}
+\endfigure
+\medskip
+%
+%%\midinsert
+%\midfigure{icpairs}
+%$$\graftwo{ic_high.ps,height=1.8in}{{\bf Figure \Fg{icpairs}a:} Pairs
+%of $(\overline c, \hat c)$ that satisfy
+%$u(\overline c) + \beta w^+ \geq u(\overline y)
+%  + \beta v_{\rm aut}$.}
+%{ic_low.ps,height=1.8in}{{\bf Figure \Fg{icpairs}b:} Pairs of
+%$(\overline c, \hat c)$ that satisfy $u(1-\hat c) + \beta w^- \geq
+%u(0.5)
+%  + \beta v_{\rm aut}$.} $$
+%\endfigure
+%%\endinsert
+
+
+
+
+%%%%%%%%%%%%%
+%$$\grafone{ic_both.ps,height=2in}{{\bf Figure 15.XXX.c} Pairs
+%of $(\overline c, \hat c)$ that satisfy
+%$u(\overline c) + \beta w^+ \geq u(\overline y)
+%  + \beta v_{\rm aut}$ and $u(1-\hat c) + \beta w^- \geq u(0.5)
+%  + \beta v_{\rm aut}$. The social maximun within this set is
+%marked with a circle.}$$
+%%%%%%%%%%%%%%%%%
+
+\midfigure{ic_bothf}
+\centerline{\epsfxsize=3truein\epsffile{ic_both.ps}}
+\caption{Pairs of $(\overline c, \hat c)$ that satisfy
+$u(\overline c) + \beta w^+ \geq u(\overline y)
+  + \beta v_{\rm aut}$ and $u(1-\hat c) + \beta w^- \geq u(0.5)
++ \beta v_{\rm aut}$.  The efficient stationary allocation
+within this set is marked with a circle.}
+\infiglist{ic_bothf}
+\endfigure
+
+\subsection{Perturbation of parameter values}
+
+We also compute efficient stationary allocations for different
+values of $\Pi\in[0,1]$ while retaining all other parameter
+values. As a function of $\Pi$, the two panels of Figure \Fg{contvpi}
+  depict consumption levels and continuation values,
+respectively. For low values of $\Pi$, we see that there cannot be
+any risk sharing among the agents, so that autarky is the only
+sustainable allocation. The explanation for this is as follows.
+Given a low value of $\Pi$, an agent who has realized the high
+endowment $\overline y$ is heavily discounting the insurance value
+of any transfer in a future state when her endowment might drop to
+$1-\overline y$ because such a state occurs only with a small
+probability equal to $\Pi/2$. Hence, in order for that agent to
+surrender some of her endowment in the current period, she must be
+promised a significant combined payoff in that unlikely event of a
+low endowment in the future and a positive transfer in the most
+common state 2. But such promises are difficult to make compatible
+with participation constraints, because all agents will be
+discounting the value of any insurance arrangement as soon as the
+common state 2 is realized since then there is once again only a
+small probability of experiencing anything else.
+
+When the probability of experiencing extreme values of the
+endowment realization is set sufficiently high, there exist
+efficient allocations that deliver risk sharing. When $\Pi$
+exceeds $0.4$ in
+the left panel of Figure %15.XXXX.a
+\Fg{contvpi}, the lucky agent is persuaded to surrender some
+of her endowment, and her consumption becomes $\overline c < \overline y$.
+The lucky agent is compensated for her sacrifice not only
+through the insurance value of being entitled to an equivalent transfer
+in the future when she herself might realize the low endowment
+$1-\overline y$ but also through a higher consumption level in
+state 2, $\hat c > 0.5$.\NFootnote{Recall that we established in
+section \use{sec:c_nondeg} that {\it all} consumption intervals are
+nondegenerate if there is risk sharing. We can use this fact to
+prove that as soon as the parameter value for $\Pi$ exceeds the
+critical value where risk sharing becomes viable, it follows that
+$\hat c = \overline c_2 > \overline y_2=0.5$.}
+ In fact, if the consumption smoothing motive
+could operate unhindered in this situation, the lucky agent's
+consumption would indeed by equalized across states. But what hinders
+such an outcome is the participation constraint of the unlucky agent
+when entering state 2. It must be incentive compatible for that
+earlier unlucky agent to give up parts of her endowment in state 2
+when both agents now have the same endowment and the value of the insurance
+arrangement lies in the future. Notice that this participation constraint of
+the earlier unlucky agent is no longer binding in our example when
+$\Pi$ is greater than $0.94$, because the efficient allocation prescribes
+$\hat c = \overline c$.
+In terms of Thomas and Worrall's characterization of the optimal
+consumption dynamics, the parameterization is then such that
+$\overline c_2 > \underline c_3$ and the ergodic set in
+\Ep{c_ergodic3} is given by $\{\overline c_1, \underline c_3\}$
+or, in our notation, by $\{1-\overline c, \overline c\}$.
+
+
+
+%%%%%%% GGGGG Here another one of the April 2017 problems
+
+%% here is the fixed version
+
+\midfigure{contvpi}
+\centerline{\epsfxsize=2.0truein\epsffile{c07.ps}, \epsfxsize=2.0truein\epsffile{v07.ps}}
+\caption{Left panel:  Consumption
+levels as a function of $\Pi$.
+The solid line depicts $\overline c$, i.e., consumption in
+states 1 and 3 of a person who realizes the highest
+endowment $\overline y$. The dashed line depicts
+$\hat c$, i.e., consumption in state 2 of the type of person
+that was the last one to have received $\overline y$. Right panel: Continuation values
+as a function of $\Pi$.
+The solid line depicts $w^+$, i.e., continuation value of the
+type of person that was the last one to have received
+$\overline y$. The dashed line is the continuation value of
+the other type of person, i.e., $w^-$.}
+\infiglist{contvpi}
+\endfigure
+\medskip
+%
+%
+%%\vfil\eject
+%%\vskip.2cm%
+%%\midinsert
+%\midfigure{contvpi}
+%$$\graftwo{c07.ps,height=1.7in}{{\bf Figure \Fg{contvpi}a:} Consumption
+%levels as a function of $\Pi$.
+%The solid line depicts $\overline c$, i.e., consumption in
+%states 1 and 3 of a person who realizes the highest
+%endowment $\overline y$. The dashed line depicts
+%$\hat c$, i.e., consumption in state 2 of the type of person
+%that was the last one to have received $\overline y$.}
+%{v07.ps,height=1.7in}{{\bf Figure \Fg{contvpi}b:} Continuation values
+%as a function of $\Pi$.
+%The solid line depicts $w^+$, i.e., continuation value of the
+%type of person that was the last one to have received
+%$\overline y$. The dashed line is the continuation value of
+%the other type of person, i.e., $w^-$.}  $$
+%\endfigure
+%\endinsert
+
+
+
+The fact that the efficient allocation raises the consumption of
+the lucky agent in future realizations of state 2 is reflected in
+the
+spread of continuation values in the right panel of Figure %15.XXX.b
+\Fg{contvpi}. The spread vanishes only in the limit when $\Pi=1$
+because then the three-state example turns into our two-state
+example of the preceding section where there is only a single
+continuation value. But while the planner is able to vary
+continuation values in the three-state example, there remains an
+important limitation to when those continuation values can be
+varied. Consider a parameterization with $\Pi\in(0.4,\, 0.94)$ for
+which we know that $\hat c < \overline c$ in  Figure
+\Fg{contvpi}. The agent who last experienced the highest
+endowment $\overline y$ is consuming $\hat c$ in state 2 in the
+efficient stationary allocation, and is awarded continuation value
+$w^+$. Suppose now that agent  once again realizes the highest
+endowment $\overline y$ and his participation constraint becomes
+binding. To prevent him from defecting to autarky, the planner
+responds by raising his consumption to $\overline c$ ($> \hat c$)
+{\it but\/} keeps his continuation value unchanged at $w^+$. In
+other words, the optimal consumption dynamics in the efficient
+stationary allocation leaves no room for increasing the
+continuation value  further.
+%%%Kocherlakota's erroneous claim above
+%%%that $w^+$ should be raised in response to a binding participation
+%%%constraint so long as $w^+<v_{\rm max}$, is associated with his
+%%%mistaken assertion that the Pareto frontier $P(v)$ is
+%%%differentiable.
+The unchanging continuation value is a reflection of the
+nondifferentiability of the Pareto frontier at $v=w^+$.
+%%%Next we shall  compute the Pareto frontier to show
+%%%that it is not differentiable at $v=w^+$.
+
+
+\subsection{Pareto frontier}
+As described in section \use{sec:Koch_Pareto2},
+the {\it ex ante} division of the gains from
+an efficient contract can be viewed as determined by an implicit
+initial  consumption level, $c_{\triangle}\in[\overline y_1,
+\overline y_S]$. In our symmetric environment, it is
+sufficient to focus on half of this range because the other half
+will just be the mirror image of those computations. Let us
+therefore compute the Pareto frontier for $c_{\triangle}\in[0.5,
+\overline y_3]\equiv[0.5, \overline y]$. We assume a
+parameterization such that the consumption intervals,
+$\{[\underline c_j, \overline c_j]\}_{j=1}^3$, are disjoint, i.e.,
+the parameterization is such that $\hat c < \overline c$, which
+corresponds to a parameterization with $\Pi\in(0.4,\, 0.94)$
+in the left panel of Figure %15.XXX.
+\Fg{contvpi}.
+
+First, we study the formulas for computing $v$ and $P(v)$ in the
+range $c_{\triangle} \in [0.5, \hat c]$:
+$$\EQNalign{
+v & = {\Pi\over2} \Bigl\{u(1-\overline c) + \beta w^-\Bigr\}
+    + (1-\Pi) \Bigl\{u(c_{\triangle}) + \beta v \Bigr\}
+    +  {\Pi\over2} \Bigl\{u(\overline c) + \beta w^+\Bigr\},    \cr
+P(v) & = {\Pi\over2} \Bigl\{u(\overline c) + \beta w^+\Bigr\}
+    + (1-\Pi) \Bigl\{u(1-c_{\triangle}) + \beta P(v) \Bigr\}   \cr
+&    +  {\Pi\over2} \Bigl\{u(1-\overline c) + \beta w^-\Bigr\}. \cr}
+$$
+When the type 1 agent is assigned an implicit initial  consumption
+level $c_{\triangle} \in [0.5, \hat c]$, her consumption is indeed
+equal to $c_{\triangle}$ for any initial uninterrupted string of
+realizations of state 2 with some continuation value $v$, and the
+corresponding consumption of the type 2 agent is $1-c_{\triangle}$
+with an associated continuation value $P(v)$. But as soon as
+either state 1 or state 3 is realized for the first time, the
+updating rules in \Ep{c_update} imply that the economy enters the
+ergodic set of the efficient stationary allocation. In particular,
+if state 1 is realized and the participation constraint of the
+type 2 agent becomes binding, the type 1 agent is awarded
+consumption $\overline c_1 \equiv 1-\overline c$ and continuation
+value $w^-$ while the type 2 agent consumes $1-\overline c_1\equiv
+\overline c$ with continuation value $P(w^-)=w^+$. But if state 3
+is realized and the participation constraint of the type 1 agent
+becomes binding, the type 1 agent is awarded consumption
+$\underline c_3 \equiv \overline c$ and continuation value $w^+$
+while the type 2 agent consumes $1-\underline c_3\equiv
+1-\overline c$ with continuation value $P(w^+)=w^-$. Given the
+implicit initial  consumption level $c_{\triangle}$, it is
+straightforward to solve for the initial welfare assignment $\{v,
+P(v)\}$ from the equations above.
+
+Similarly, we can use the updating rules \Ep{c_update} to get
+formulas for computing $v$ and $P(v)$ in the range $c_{\triangle}
+\in [\overline c, \overline y]$:
+$$\EQNalign{
+v = & {\Pi\over2} \Bigl\{u(1-\overline c) + \beta w^-\Bigr\}
+    + (1-\Pi) \Bigl\{u(\hat c) + \beta w^+ \Bigr\}
+    +  {\Pi\over2} \Bigl\{u(c_{\triangle}) + \beta v\Bigr\},    \cr
+P(v) = & {\Pi\over2} \Bigl\{u(\overline c) + \beta w^+\Bigr\}
+    + (1-\Pi) \Bigl\{u(1-\bar c) + \beta w^- \Bigr\}              \cr
+&    +  {\Pi\over2} \Bigl\{u(1-c_{\triangle}) + \beta P(v)\Bigr\}. \cr}
+$$
+Concerning the remaining range of implicit initial consumption
+levels $c_{\triangle} \in (\hat c, \overline c)$, we can
+immediately verify that either pair of equations above can be used
+ when setting $c_{\triangle}=\hat c$ in the first pair of
+equations or $c_{\triangle}=\overline c$ in the second pair of
+equations. Hence, the initial welfare assignment is the same for
+implicit initial consumption $c_{\triangle} \in [\hat c, \overline
+c]$, and it is
+given by $\{w^+, P(w^+)\}$. At this point in Figure \Fg{pareto3f} %16.XXXX,
+the Pareto frontier becomes nondifferentiable.
+
+
+\topfigure{pareto3f}
+\centerline{\epsfxsize=3.5truein\epsffile{pareto3.ps}}
+\caption{Pareto frontier $P(v)$ for the three-state symmetric example.
+Kinks occur at coordinates $(v, P(v)) = (w^-, w^+)$ and
+$(v, P(v)) = (w^+, w^-)$.}
+\infiglist{pareto3f}
+\endfigure
+
+
+
+
+\section{Empirical motivation}
+Kocherlakota was interested in the case of perpetual imperfect
+risk sharing because he wanted to use his model to think about the
+empirical findings from panel studies by Mace (1991), Cochrane
+(1991), and Townsend (1994). Those studies found that,
+ after conditioning
+on aggregate income, individual consumption  and earnings are
+positively correlated, belying the risk-sharing implications of
+the complete markets models with recursive utility of the type we
+studied in chapter \use{recurge}.   %When continuation utilities
+%converge to a unique nontrivial invariant distribution,
+So long as no first-best allocation is sustainable, the action of
+the occasionally binding participation constraints lets the model
+with two-sided lack of commitment reproduce that positive
+conditional covariation. In recent work, Albarran and Attanasio
+(2003) and Kehoe and Perri (2003a, 2003b) pursue more implications
+of models like Kocherlakota's. \auth{Cochrane, John H.}
+\auth{Mace, Barbara}\auth{Townsend, Robert M.} \auth{Attanasio,
+Orazio} \auth{Albarran, Pedro} \auth{Krueger, Dirk} \auth{Perri,
+Fabrizio}
+
+
+
+%%By the way, you write on page 708 that if promised utility converges to a nontrivial invariant distribution, then consumption and income have a positive conditional correlation.  This is true - but perhaps a little imprecise.  Actually, as long as no first-best allocation is sustabinable, then consumption and income have a positive conditional correlation.  The nondenegeracy of the invariant distribution is necessary to guarantee that consumption is positively conditionally correlated with PAST income.
+
+
+\section{Generalization}\label{LTW2002}%
+Our formal analysis has followed the approach taken by Thomas and
+Worrall (1988). We have converted the risk-neutral firm
+into a risk-averse household, as suggested by Kocherlakota (1996b).
+Another difference is that our analysis is cast in a general
+equilibrium setting while Thomas and Worrall formulate a partial
+equilibrium model where the firm  implicitly has access
+to an outside credit market with a given gross interest rate
+of $\beta^{-1}$ when maximizing the expected present value of
+profits. However, this difference is not material, since
+an efficient contract is such that wages never exceed
+output.\NFootnote{The outcome that efficient wages do not
+exceed output in Thomas and Worrall's (1988) analysis is
+related to our ability to solve optimization problem
+\Ep{new1} without imposing nonnegativity constraints on
+consumption. See footnote \use{nonneg}.}
+Hence, Thomas and Worrall's (1988)
+analysis can equally well be thought of as a general equilibrium
+analysis.
+
+Ligon, Thomas, and Worrall (2002) further generalize the environment
+by assuming that the endowment follows a Markov process.
+This allows for the possibility of both aggregate and idiosyncratic
+risk and serial correlation. The efficient contract is characterized
+by an updating rule for the ratio of the marginal utilities of the
+two households that resembles our updating rule for consumption
+in \Ep{c_update}. Each state of nature is associated with a particular
+interval of permissible ratios of marginal utilities. Given the current
+state and the previous period's ratio of marginal utilities, the new
+ratio lies within the interval associated with the current state, such
+that the change is minimized. That is, if last period's ratio falls
+outside of the current interval, then the ratio must
+change to an endpoint of the current interval, and one of the
+households will be constrained. But whenever possible, the ratio is
+kept constant over time. This is consistent with
+our analysis in chapter \use{recurge} of competitive equilibria with complete
+markets (and full commitment). Expression \Ep{eq5}
+states that these unconstrained first-best allocations are such that
+ratios of marginal utilities between pairs of agents are constant
+across all histories and dates.
+
+
+
+\section{Decentralization}
+By imposing constraints on each household's budget sets
+above and beyond those imposed
+by the standard household's budget constraint,
+  Kehoe and Levine (1993)
+\auth{Kehoe, Timothy}\auth{Levine, David K.}%
+describe how to decentralize the optimal allocation
+in an economy like   Kocherlakota's
+with complete competitive markets at time $0$.
+ Thus,
+let $q^0_t(h_t)$ be the Arrow-Debreu time $0$ price of a unit of
+time $t$ consumption after history $h_t$.
+The two households' budget constraints
+are
+$$\EQNalign{
+ \sum_{t=0}^\infty \sum_{h_t} q_t^0(h_t) c_t(h_t) &  \leq
+ \sum_{t=0}^\infty \sum_{h_t} q_t^0(h_t) y_t \EQN kl1;a \cr
+ \sum_{t=0}^\infty \sum_{h_t} q_t^0(h_t) (1- c_t(h_t)) & \leq
+ \sum_{t=0}^\infty \sum_{h_t} q_t^0(h_t) (1-y_t) .\EQN kl1;b \cr}$$
+Kehoe and Levine augment these standard budget constraints with
+what were the planner's  ``participation constraints''
+\Ep{sustain1;a}, \Ep{sustain1;b}, but which now have to be
+interpreted as exogenous restrictions on the households' budget
+sets, one restriction for each consumer for each $t\geq 0$
+for each history $h_t$.
+
+ Adding those restrictions leaves the household's   budget
+sets convex.   That allows all of the assumptions of
+the second welfare theorem to be fulfilled. That then
+ implies that a competitive equilibrium (defined
+in the standard way to include optimization and
+market clearing, but with household budget sets being
+further restricted by \Ep{sustain1}) will implement the
+planner's optimal allocation.
+
+%  Although mechanically this decentralization  works like a charm, it
+%can nevertheless
+%be argued that it conflicts with the
+%spirit that at every time and contingency, households should be free
+%to walk away from the contract.  In Kehoe and Levine's
+%decentralization, all decisions and trades are
+%made at time $0$:  households cannot
+%renege on those time $0$ contracts because
+%they confront no choices after date $0$.
+%Partly because of this controversial feature of the
+%Kehoe-Levine decentralization,
+%Alvarez and Jermann use another  decentralization, one that is
+%cast in terms of sequential trading of Arrow securities.
+%\index{Arrow securities}%
+%We turn to their work in the next section.
+
+
+  Although mechanically this decentralization  works like a charm, it
+can nevertheless
+be argued that it conflicts with the
+spirit of a competitive equilibrium in which agents take prices
+as given and budget constraints are the only restrictions on agents'
+consumption sets. In contrast,
+participation constraints \Ep{sustain1;a} and \Ep{sustain1;b}
+are now modelled as direct restrictions on agents' consumption possibility sets.
+Partly because of this controversial feature of the
+Kehoe-Levine decentralization,
+Alvarez and Jermann use another  decentralization, one that
+imposes portfolio/solvency constraints and is cast in terms of sequential
+trading of Arrow securities.
+\index{Arrow securities}%
+The endogenously determined solvency constraints are agent and
+state specific and ensure that the participation constraints are
+satisfied. We turn to the Alvarez-Jermann decentralization in the next section.
+
+
+In all fairness, one could argue that the alternative decentralization solely
+converts one set of participation constraints into another one.
+For both specifications we have a substantial departure from a decentralized
+equilibrium under full commitment. When
+removing the assumption of commitment, we are assigning a very demanding
+task to the ``invisible hand'' who must not only look for market-clearing
+prices but also check participation/solvency
+constraints for all agents and all states of the world.
+
+
+\section{Endogenous borrowing constraints}
+Alvarez and Jermann (2000) alter Kehoe and Levine's
+decentralization to attain a model with sequentially complete
+markets in which households face what can be interpreted as
+endogenous borrowing constraints.
+\index{borrowing constraint!endogenous}%
+Essentially, they accomplish this by showing how the standard
+quantity constraints on Arrow securities (see chapter
+\use{recurge}) can be appropriately tightened  to implement the
+optimal allocation as constrained by the participation
+constraints.  Their idea is to find borrowing constraints tight
+enough to make the highest endowment agents adhere to the
+allocation, while letting prices alone prompt lower endowment
+agents to go along with it.\auth{Kehoe, Timothy} \auth{Levine,
+David K.} \auth{Alvarez, Fernando} \auth{Jermann, Urban}
+
+ For expositional simplicity,
+we let $y^i(y)$ denote the endowment of a household of type $i$
+when a representative household of type 1 receives
+$y$. Recall the earlier assumption
+that $[y^1(y), y^2(y)]=(y,1-y)$.
+The state of the economy
+is the current endowment realization $y$ and the
+beginning-of-period asset holdings $A=(A_1, A_2)$, where
+$A_i$ is the asset holding of a household of type $i$ and $A_1+A_2=0$.
+Because asset holdings add to zero, it is sufficient to use $A_1$ to
+characterize the wealth distribution.
+Define the {\it state\/} of the economy as $X = \left[\matrix{y & A_1\cr}
+\right]'$.
+There is a
+complete set of  markets in
+one-period Arrow securities.
+  In particular, let   $Q(X'|X)$
+be the price of one unit of consumption in state $X'$ tomorrow
+given state $X$ today. A household of type $i$ with
+beginning-of-period assets $a$ can purchase and sell these securities
+subject to the budget constraint
+$$ c + \sum_{X'} Q(X' | X) a(X') \leq y^i(y) + a , \EQN budconstr$$
+where $a(X')$ is the quantity purchased (if positive) or sold (if negative)
+of Arrow securities that pay one unit
+of consumption tomorrow if $X'$ is realized, and also
+subject to the borrowing constraints
+$$ a(X') \geq B^i(X') .  \EQN bconstr $$
+Notice that
+there is one constraint for each next period
+state $X'$ and that
+ the borrowing constraints reflect
+history dependence through the presence of
+$A'$.
+
+ The Bellman equation for the household in the decentralized
+economy is
+$$ V^i(a,X) = \max_{c,\{a(X')\}_{X' \in {\bf X}}} \Bigl\{
+               u(c) + \beta \sum_{X'} V^i[a(X'),X'] \Pi(X'|X) \Bigr\}
+$$
+subject to the budget constraint \Ep{budconstr} and   borrowing
+constraints \Ep{bconstr}.
+The equilibrium law of motion for the
+asset distribution, $A_1$ is embedded in the conditional
+distribution $\Pi(X'|X)$.
+
+
+
+Alvarez and Jermann define a competitive equilibrium
+with borrowing constraints in a standard way,
+with the qualification that among the equilibrium
+objects are the borrowing constraints $B^i(X')$,
+functions that the households take
+as given.  Alvarez and Jermann show how to choose the borrowing constraints
+to make the allocation that solves the planning
+problem be an equilibrium allocation.   They do so by construction,
+identifying the elements of the borrowing constraints that are binding
+from having identified the states in the planning problem where
+one or another agent's participation constraint is binding.
+
+  It is easy for Alvarez and Jermann to compute the equilibrium
+pricing kernel from the allocation that solves the planning
+problem.  The pricing kernel satisfies
+$$ q(X' | X) = \max_{i=1,2} \beta {u'[c^i(a',X')] \over
+                             u'[c^i(a,X)] } \Pi(X'|X) , \EQN AJ10 $$
+where $c^i(a,X)$ is the consumption decision rule of a household
+of type $i$ with beginning-of-period assets $a$.\NFootnote{For the
+two-state example with $\beta=.85, \gamma =1.1, \overline
+y=.6$, described in Figure \Fg{koch2s1bf}, we computed that
+$\overline c=.536$, which implies that the risk-free
+interest rate is
+%claim to consumption next period is
+ $1.0146$.  Note that with complete markets the risk-free
+claim would be  $\beta^{-1} = 1.1765$.}
+  People with the highest valuation of an asset {\it buy\/} it.  Buyers
+of state-contingent securities are unconstrained, so they equate
+their marginal rate of substitution to the price of the asset. At
+equilibrium prices, sellers of state-contingent securities will occasionally like
+to issue more, but are constrained from doing so by state-by-state
+restrictions on the amounts that they can sell.  Thus, the intertemporal
+marginal rate of substitution of an agent whose participation constraint
+(or borrowing constraint) is {\it not\/} binding determines the
+pricing kernel. % {\bf XXXX: Lars: I have added the following sentences in response to a student's
+% suggestion that they help clarify matters.  }
+A binding {\it participation\/} constraint translates
+  into a binding {\it borrowing\/} constraint in the previous period.  A participation constraint for some state
+  at $t$ restricts the amount of state-contingent debts that can be issued for that state at $t-1$.
+   In effect, constrained and unconstrained agents have
+their own ``personal interest rates'' at which they are just indifferent
+between borrowing or lending a infinitesimally more.  A constrained
+agent wants to consume {\it more\/} today at equilibrium prices
+(i.e., at the shadow prices \Ep{AJ10} evaluated at the solution of the
+planning problem), and thus has a high personal interest rate.  He
+would like to sell more of the state-contingent security than he is
+allowed to at the equilibrium state-date prices.  An agent would like
+to {\it sell\/} state-contingent claims on consumption tomorrow in those
+states in which he will be well endowed tomorrow.  But those high
+endowment states are also the ones in which he will have an incentive
+to default.  He must be restrained from doing so by limiting the volume
+of debt that he is able to carry into those high endowment states.
+This limits his ability to smooth consumption across high and low endowment
+states.
+%  \NFootnote{However, this statement has
+%to be modified in the steady state allocation in the two-state
+%example described above, because there is not enough room to move the
+%continuation value.}
+Thus, his consumption and continuation
+value increases when  he enters one of those high endowment states
+precisely because he has been prevented from selling enough
+claims to smooth his consumption over time and across states.
+%But an increased
+%continuation value means that his consumption can be
+%anticipated to increase over time, which the constrained agent
+%would like to smooth out by borrowing.  He is deterred from doing so
+%by the state-by-state quantity constraints on the amount that he can  credibly
+%promise to repay next period.
+
+
+From a general equilibrium perspective, when sellers of a state-contingent security are constrained with respect to the quantities that they can issue, it follows that the price is bid up when unconstrained buyers are competing for a smaller volume of that security. This tendency of lowering the yield on individual Arrow securities explains Alvarez and Jermann's result that interest rates are lower, when compared to a corresponding complete markets economy, a property shared with the Bewley economies studied in chapter 18.\NFootnote{In exercise {\it \the\chapternum.4,\/} we ask the reader
+to compute the allocation and interest rate in such an economy.}
+
+
+%XXXXX deleted in response to Lars's recommendation, May 2, 2012
+% The quantity constraints do not bind for the agents who receive
+%a low endowment and a declining continuation value.  Price signals
+%in the form of {\it low\/} interest rates can reconcile them to
+%accept the declining consumption allocations that they face.  Quantity
+%constraints for the unconstrained agents  don't bind, but the
+%unconstrained agents must be induced to accept a consumption trajectory
+%that they expect to be {\it decreasing\/},  i.e., their
+%continuation values must decrease as the planner moves continuation
+%values along the Pareto frontier $P(v)$ in order to increase
+%the continuation values of the constrained agents.  In the decentralization,
+%higher one-period state-contingent prices, or what are the same
+%things, lower state-contingent interest rates (see \Ep{AJ10}),
+%induce the unconstrained agents to accept a decreasing consumption
+%trajectory.  Thus, when compared to a corresponding complete markets
+%economy without enforcement problems, this is a {\it low-interest-rate
+%economy\/}, a property it shares with the Bewley economies studied in
+%chapter \use{incomplete}.\NFootnote{In exercise {\it \the\chapternum.4\/}, we ask the reader
+%to compute the allocation and interest rate in such an economy.}
+
+Alvarez and Jermann study how the state-contingent prices
+\Ep{AJ10} behave as they vary the discount factor and the
+stochastic process for $y$.  They use the additional fluctuation
+in the stochastic discount factor injected by the participation
+constraints to explain some asset pricing puzzles.  See Zhang
+(1997) and Lustig (2000, 2003) for further work along these lines.
+\auth{Lustig, Hanno} \auth{Zhang, Harold}
+
+\section{Concluding remarks}
+
+   The model in this chapter assumes that the economy
+   reverts to an autarkic allocation in the event that a household
+chooses to deviate from the allocation assigned in the contract.
+Of course, assigning  autarky continuation values to {\it
+everyone\/} puts us inside the Pareto frontier and so is
+inefficient. In terms of sustaining an allocation, the important
+feature of  the autarky allocation  is just the continuation value
+that it assigns to an agent who is tempted to default, i.e., an
+agent whose participation constraint binds. Kletzer and Wright
+(2000) recognize that it can be possible to promise an agent who
+is tempted to default an autarky continuation value while giving
+those agents whose participation constraints aren't binding enough
+to stay on the Pareto frontier. Continuation values that lie on
+the Pareto frontier are said to be ``\idx{renegotiation proof}''.
+
+Further thought about how to model the consequences of default in
+these settings is likely to be fruitful. By  permitting coalitions
+of consumers to break away and thereafter share risks among
+themselves, Genicot and Ray (2003)  refine a notion of
+sustainability in
+ a  multi-consumer economy.
+
+\auth{Kletzer, Kenneth M.} \auth{Wright, Brian D.}
+ \auth{Genicot, Garance}\auth{Ray, Debraj}
+ \showchaptIDfalse \showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+\noindent{\it Exercise \the\chapternum.1}\quad {\bf Lagrangian method with
+two-sided no commitment}
+\smallskip
+\noindent
+   Consider the model of Kocherlakota with two-sided
+lack of commitment. Two consumers each
+have preferences $E_0 \sum_{t=0}^\infty \beta^t u[c_i(t)]$,
+where $u$ is increasing, twice differentiable, and strictly
+concave, and
+where $c_i(t)$ is the consumption of consumer $i$.
+The good is not storable, and the consumption allocation must satisfy
+$c_1(t) + c_2(t) \leq 1$.  In period $t$, consumer $1$ receives
+an endowment of
+$y_t \in [0, 1]$, and consumer   2 receives an endowment
+of $1 - y_t$.  Assume that $y_t$ is i.i.d.\ over time and is
+distributed according to the discrete distribution
+${\rm Prob} (y_t = y_s) = \Pi_s$.  At the start of  each period,
+after the realization of $y_s$ but before consumption has occurred,
+each consumer is free to walk away from the loan contract.
+\medskip
+\noindent {\bf a.}    Find expressions for
+the expected value of autarky, before the state $y_s$ is revealed, for
+consumers of each type.  ({\it Note:} These need not be equal.)
+
+\medskip
+\noindent{\bf b.}  Using the Lagrangian method, formulate
+the contract design problem of finding an optimal allocation
+that for each history respects feasibility and the participation constraints
+of the two types of consumers.
+
+\medskip
+\noindent{\bf c.}  Use the Lagrangian method to characterize the
+optimal contract as completely as you can.
+
+\medskip
+
+\noindent{\it Exercise  \the\chapternum.2}\quad {\bf A model of Dixit, Grossman, and Gul (2000)}
+\medskip
+\noindent For each date $t \geq 0$,
+ two political parties divide a ``pie'' of fixed size $1$.  Party
+$1$ receives  a sequence of shares $ y =\{y_t\}_{t \geq 0}$
+and has   utility function
+$E\sum_{t=0}^\infty \beta^t U(y_t)$, where $\beta \in (0,1)$,
+$E$ is  the  mathematical  expectation operator,
+and $U(\cdot)$ is an increasing, strictly concave, twice
+differentiable period utility function. Party $2$ receives
+share $1-y_t$ and has utility function
+$E \sum_{t=0}^\infty \beta^t U(1-y_t)$.   A state variable
+ $X_t$ is governed by  a
+ Markov   process; $X$ resides in one of $K$ states.   There
+is a partition $S_1, S_2$ of the state space.  If     $X_t \in S_1$,
+party $1$ chooses the division $y_t, 1-y_t$, where
+$y_t$ is the share of party $1$.  If $X_t \in S_2$, party
+$2$ chooses the division.
+At each point in  time, each  party has  the option
+of choosing ``autarky,'' in which  case its share is $1$ when
+it is in power and zero when it is not in power.
+\auth{Gul, Faruk}\auth{Grossman, Gene M.}\auth{Dixit, Avinash K.}
+
+  Formulate the optimal history-dependent sharing rule as a
+recursive contract.  Formulate the Bellman equation.
+({\it Hint:} Let $V[u_0(x),x]$ be the optimal value for party $1$ in
+state $x$ when party $2$ is promised value $u_0(x)$.)
+
+\medskip
+\noindent{\it Exercise \the\chapternum.3}\quad {\bf Two-state numerical example of
+social insurance}
+\medskip
+\noindent
+Consider an endowment economy populated by a large number of individuals
+with identical preferences,
+$$
+E \sum_{t=0}^\infty \beta^t u(c_t) =
+E \sum_{t=0}^\infty \beta^t \left(4 c_t - {c_t^2 \over 2}\right),
+\qquad \hbox{with} \ \ \beta=0.8.
+$$
+With respect to endowments, the individuals are divided into two types of
+equal size.  All individuals of a particular type receive zero goods with
+probability 0.5 and two goods with probability 0.5 in any given period.
+The endowments of the two types of individuals are perfectly
+negatively correlated so that the per capita endowment is always one good in
+every period.
+
+The planner attaches the same welfare weight to all individuals.
+Without access to outside funds or borrowing and lending
+opportunities, the planner seeks to provide insurance by simply
+reallocating goods between the two types of individuals. The
+design of the social insurance contract is constrained by a lack
+of commitment on behalf of the individuals. The individuals are
+free to walk away from any social arrangement, but they must then
+live in autarky evermore.
+
+\medskip
+\noindent {\bf a.}   Compute the optimal insurance contract when
+the planner lacks memory; that is, transfers in any given period
+can be a function only of the current endowment realization.
+
+\medskip
+\noindent {\bf b.} Can the insurance contract in part a be
+improved if we allow for history-dependent transfers?
+%(Let the optimal recursive contract be designed prior to seeing
+%the endowment realization.)
+
+\medskip
+\noindent {\bf c.}  Explain how the optimal contract changes when the
+parameter $\beta$ goes to $1$. Explain how the optimal contract
+changes when the parameter $\beta$ goes to zero.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.4} \quad {\bf Kehoe-Levine without risk}
+
+\medskip
+\noindent Consider an economy in which each of two types
+of households has preferences over streams of
+a single good that are ordered by
+$ v= \sum_{t=0}^\infty \beta^t u(c_t) $, where
+$u(c) = (1-\gamma)^{-1} (c+b)^{1-\gamma}$ for $\gamma \geq 1$ and
+$\beta \in (0,1)$, and $b>0$.
+For $\epsilon >0$ and $t\geq 0$,
+households of type 1 are endowed with an endowment stream
+$y_{1,t} = 1+\epsilon$ in even-numbered periods and
+$y_{1,t}=1-\epsilon$ in odd-numbered periods.  Households
+of type 2 own an endowment stream of  $y_{2,t}$ that
+equals $1-\epsilon$ in even periods and $1+\epsilon$ in
+odd periods.  There are equal numbers of the two types of household.
+For convenience, you can assume that there is one of each type of
+household.
+
+\smallskip
+\noindent Assume that $\beta=.8$, $b=5$, $\gamma=2$,  and $\epsilon=.5$.
+
+\medskip
+\noindent{\bf a.}  Compute autarky levels of  discounted
+utility  $v$ for the two types of
+households.  Call them $v_{{\rm aut},h}$ and $v_{{\rm aut}, \ell}$.
+
+\medskip
+\noindent{\bf b.}  Compute the competitive equilibrium allocation
+and prices.  Here assume that there are no enforcement
+problems.
+
+
+\medskip
+\noindent{\bf c.} Compute the  discounted utility to each household for the
+competitive equilibrium allocation.   Denote them
+$v_i^{CE}$ for $i=1,2$.
+
+\medskip
+\noindent{\bf d.}  Verify that the competitive equilibrium
+allocation is not self-enforcing in the sense that at each
+$t >0$, some households  would prefer autarky to the competitive
+equilibrium allocation.
+
+\medskip
+\noindent{\bf e.}   Now assume that there are enforcement problems
+because at the beginning of each period, each  household can
+renege on contracts and other social arrangements  with the consequence
+that it receives the autarkic allocation from that period on.
+ Let $v_i$  be the discounted utility at time $0$ of consumer $i$.
+Formulate the consumption smoothing problem of a planner
+who wants to maximize $v_1$ subject to $v_2 \geq \tilde v_2$,
+and constraints that   make the allocation
+ self-enforcing.
+
+\medskip
+\noindent{\bf f.}   Find an efficient
+ self-enforcing allocation of the periodic form
+$c_{1,t} = \check c, 2- \check c, \check c , \ldots$
+and
+$c_{2,t} = 2- \check c, \check c, 2-  \check c , \ldots$,
+where continuation utilities of the two agents
+oscillate between two values  $v_h$ and $v_\ell$.
+Compute $\check c$.
+Compute discounted utilities $v_h$ for the agent who receives
+$1+\epsilon$ in the period and $v_\ell$ for the agent
+who receives $1-\epsilon$ in the period.
+
+\medskip
+\noindent Plot consumption paths for the two agents for (i) autarky,
+(ii) complete markets without enforcement problems, and
+(iii) complete markets with the enforcement constraint.
+Plot continuation utilities for the two agents for  the
+same three allocations.  Comment on them.
+
+\medskip
+\noindent{\bf  g.}   Compute one-period gross interest rates
+in the complete markets economies with and without enforcement
+constraints.  Plot them over time. In which economy
+is the interest rate higher?  Explain.
+
+\medskip
+\noindent{\bf h.}   Keep all parameters the same, but gradually
+increase the discount factor.   As you raise $\beta$ toward
+$1$, compute interest rates
+ as in part g.  At  what value of $\beta$ do interest rates
+in the two economies become equal? At that value of $\beta$
+is either participation constraint ever binding?
+
+
+\bigskip
+\noindent{\it Exercise \the\chapternum.5} \quad {\bf The kink}
+\medskip
+\noindent A pure endowment  economy consists of two {\it
+ex ante\/} identical consumers each of whom values streams of a
+single nondurable consumption good according to the utility
+functional
+$$ v= E \sum_{t=0}^\infty \beta^t u(c_t), \quad \beta
+\in (0,1)   $$ where $E$  is the mathematical expectation
+operator and $u(\cdot)$ is a strictly concave, increasing, and
+twice continuously differentiable function. The endowment sequence
+ of consumer $1$ is an i.i.d.\ process with ${\rm Prob} (y_t =
+ \overline y )=.5$ and ${\rm Prob} (y_t =
+ 1-\overline y )=.5$ where $\overline y \in [.5,1)$.  The
+ endowment sequence of consumer $2$ is identically distributed
+ with that of consumer $1$, but perfectly negatively correlated
+ with it: whenever consumer $1$ receives $\overline y$, consumer
+ $2$ receives $1 -\overline y$.\vfil\eject
+ \medskip
+ \noindent{\bf Part I. (Complete markets)}
+ \medskip
+ \noindent In this part, please assume that
+there are no enforcement (or commitment) problems.
+ \medskip
+ \noindent{\bf a.} Solve the Pareto problem for this economy,
+ attaching equal weights to the two types of consumer.
+ \medskip
+ \noindent{\bf b.}  Show how to decentralize the allocation that
+ solves the Pareto problem with a competitive equilibrium with
+ {\it ex ante\/} (i.e., before time $0$) trading of a complete set
+ of
+ history-contingent commodities. Please calculate the
+ price of a one-period risk-free security.
+
+ \medskip
+ \noindent {\bf Part II. (Enforcement problems)}
+ \medskip
+ \noindent
+In this part, assume that there are enforcement problems. In
+particular, assume that there is two-sided lack of
+ commitment.
+ \medskip
+ \noindent{\bf c.}
+  Pose an {\it ex ante\/} Pareto problem in which,
+ after having observed its current
+ endowment but before receiving his allocation from the Pareto
+ planner, each
+ consumer is free at any time to defect from the social contract and live thereafter in
+ autarky.  Show how to compute the value of autarky for each type of consumer.
+
+ \medskip\noindent{\bf d.}
+ Call an allocation {\it sustainable\/} if neither
+ household would ever choose to defect to autarky.
+Formulate the enforcement-constrained Pareto problem
+ recursively.  That is, please write a programming problem  that can be used to
+ compute an optimal sustainable allocation.
+ \medskip
+ \noindent{\bf e.}  Under what circumstance will the allocation
+ that you found in part I solve the enforcement-constrained Pareto
+ problem in part d?  I.e., state conditions on $u, \beta,
+ \overline y$ that are sufficient to make the enforcement
+ constraints never bind.
+
+ \medskip
+\noindent{\bf Some useful background:} For the remainder of this
+problem, please assume that $u,\beta, \overline y, $ are such that
+the allocation
+ computed in part I is not sustainable.     Recall that
+the amnesia property  implies that the
+ consumption allocated to an agent whose participation constraint
+ is binding is independent of the  {\it ex ante\/} promised value with which he enters the
+ period.  With the
+ present i.i.d., two-state, symmetric endowment pattern, {\it ex ante\/},
+ each period each of
+ our two agents has an equal chance that it is his participation constraint
+ that is binding.  In a symmetric sustainable allocation, let
+each agent {\it enter\/} the period with the {\it same\/} {\it ex
+ante\/} promised value $v$, and
+   let $\overline c$ be the consumption allocated to
+ the high endowment agent whose participation constraint is binding and let
+ $1-\overline c$ be the consumption allocated to the low endowment agent whose
+ participation constraint is not binding. By the above argument,
+  $\overline c$ is independent of the promised value
+ $v$ that an agent enters the period with, which means that the current allocation
+ to {\it both\/} types of agent does not depend on the promised value with which they entered the period.
+   And in a symmetric stationary sustainable allocation,
+ both consumers enter each period with the same promised value $v$.
+
+ \medskip
+ \noindent{\bf f.}
+ Please give a formula for the promised value $v$ within
+ a symmetric stationary sustainable allocation.
+
+
+\medskip
+\noindent{\bf g.} Use a graphical argument to show how to
+determine the $v, \overline c$ that are associated with an optimal
+stationary symmetric allocation.
+
+\medskip
+\noindent{\bf h.}  In the optimal stationary sustainable
+allocation that you computed in part g, why doesn't the planner
+adjust the continuation value of the consumer whose participation
+constraint is binding?
+
+\medskip
+\noindent{\bf i.} Alvarez and Jermann showed that, provided that
+the usual constraints on issuing Arrow securities are tightened
+enough,  the optimal sustainable allocation can be decentralized
+by trading in a complete set of Arrow securities with price
+$$ q(y' | y) = \max_{i=1,2} \beta {u'(c^i_{t+1}(y')) \over
+                             u'(c^i_t(y)) }.5, $$
+where $q(y'|y)$ is the price of one unit of consumption tomorrow,
+contingent on tomorrow's endowment of the type $1$ person being
+$y'$ when it is $y$ today. This formula has each Arrow security
+being priced by the agent whose participation constraint is {\it
+not\/} binding.  Heuristically, the agent who wants to {\it buy\/}
+the state-contingent security determines its price because the agent who
+wants to sell it is constrained from selling more by a limitation
+on the quantity of Arrow securities that he can promise to deliver
+in that future state. Evidently the gross rate of interest on a
+one-period risk-free security is
+$$ R(y)= {1 \over \sum_{y'} q(y'|y) } ,$$
+for $y= \overline y$ and $y=1-\overline y$.
+\medskip
+ For the case in which the parameters are such that the
+allocation computed in part I is {\it not\/} sustainable (so that
+the participation constraints bind), please compute the risk-free
+rate of interest.  Is it higher or lower than that for the
+complete markets economy without enforcement problems that you
+analyzed in part I?

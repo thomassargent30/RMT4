@@ -1,0 +1,1099 @@
+
+\input grafinp3
+\input psfig
+%\showchaptIDtrue
+%\def\@chaptID{4.}
+%\eqnotracetrue
+%\hbox{}
+\footnum=0
+\chapter{Optimal Unemployment Insurance\label{uninsur1}}
+
+\section{History-dependent unemployment insurance}   %% schemes}
+This chapter applies the recursive contract machinery studied in
+chapters \use{socialinsurance}, \use{socialinsurance2},
+and \use{credible} in contexts that are simple enough that we
+can go a long way toward computing  optimal contracts by hand.
+The contracts encode history dependence by mapping an initial
+promised value and a random time $t$ observation into a time $t$ consumption allocation
+and a continuation value to bring into next period.  We use recursive
+contracts to study good ways of providing consumption insurance  when incentive problems
+ come from the insurance authority's
+inability to observe the effort that an unemployed person exerts
+ searching for a job.  We begin by studying a setup
+of Shavell and Weiss (1979) and Hopenhayn and Nicolini (1997)
+that focuses on a single isolated spell of unemployment followed by permanent employment.  Later we take up settings of Wang and
+Williamson (1996) and Zhao (2001)
+with alternating spells of employment and
+unemployment in which the planner has limited information
+about a  worker's effort while he is on the job, in addition to not
+observing his search effort while he is unemployed.
+Here history dependence manifests itself in
+an optimal contract with intertemporal tie-ins
+across these spells.  Zhao uses her model to rationalize unemployment compensation
+that replaces a fraction of a worker's earnings on his or her previous job.
+
+\auth{Shavell, Stephen}\auth{Weiss, Laurence}
+\auth{Hopenhayn, Hugo A.}  \auth{Nicolini, Juan Pablo}
+\auth{Zhao, Rui}
+\index{unemployment!compensation}
+\section{A one-spell model}
+This section describes a model of optimal unemployment
+compensation along the lines of Shavell and Weiss (1979) and
+Hopenhayn and Nicolini (1997). We shall use the techniques of
+Hopenhayn and Nicolini to analyze a model closer to Shavell and
+Weiss's. An unemployed worker orders stochastic processes of
+consumption and  search effort $\{c_t , a_t\}_{t=0}^\infty$
+according to
+$$ E \sum_{t=0}^\infty \beta^t \left[ u(c_t) - a_t \right] \EQN hugo1 $$
+where $\beta \in (0,1)$ and
+$u(c)$ is strictly increasing, twice differentiable,
+and strictly concave.  We assume that $u(0)$ is well defined.
+  We require
+that $c_t \geq 0$ and $ a_t \geq 0$.
+    All jobs are alike and pay wage
+$w >0$ units of the consumption good each period forever. An unemployed
+worker searches with effort $a$ and with probability
+$p(a)$ receives a permanent job at the beginning
+of the next period. Once
+a worker has found a job, he is beyond the grasp
+of the unemployment insurance agency.\NFootnote{This is Shavell and
+Weiss's assumption, but not Hopenhayn and Nicolini's. Hopenhayn
+and Nicolini allow the unemployment insurance agency to
+impose history-dependent taxes on previously unemployed workers.
+Since there is no incentive problem after the worker has found
+a job, it is optimal for the agency to provide an employed worker with
+a constant level of consumption, and hence, the agency imposes
+a permanent per-period history-dependent tax on a previously
+unemployed worker. See exercise  \the\chapternum.2.}
+%% a permanent per-period history-dependent tax on previously
+%%unemployed workers.}
+Furthermore, $a=0$ when the worker is
+employed.  The probability
+of finding a job  is $p(a)$ where $p$ is an increasing
+and strictly concave and twice differentiable function of $a$, satisfying
+$p(a)   \in [0,1]$ for  $a \geq 0$, $p(0)=0$.
+The consumption good is nonstorable.
+ The unemployed worker has no savings and cannot borrow or lend.
+The  insurance agency is the unemployed worker's only source of consumption
+smoothing over time and across states.
+
+
+\subsection{The autarky problem}
+As a benchmark, we first study the fate of the unemployed worker
+who has no access to unemployment insurance.  Because employment
+is an absorbing state for the worker, we work backward from that
+state.
+  Let $V^e$ be the expected sum of discounted one-period utilities of an employed worker.
+Once the worker is employed, $a=0$, making  his period utility
+be $u(c)-a = u(w)$ forever.
+Therefore,
+$$  V^e = {u(w) \over (1-\beta)}  .  \EQN hugo2  $$
+Now let $V^u$ be the expected present value of utility for an
+unemployed worker who chooses the current period pair $(c,a)$
+optimally.  The Bellman
+equation for $V^u$  is
+$$ V^u = \max_{a \geq 0} \biggl\{ u(0) - a + \beta \left[
+   p(a) V^e + (1-p(a)) V^u \right] \biggr\} .  \EQN hugo3 $$
+The first-order condition for this problem is
+$$ \beta p'(a) \left[V^e - V^u \right] \leq 1\,,  \EQN hugo4   $$
+with equality if $a>0$. Since there is no state variable in this
+infinite horizon problem, there is a time-invariant optimal
+search intensity $a$ and an associated value of being unemployed $V^u$.
+Let $V_{\rm aut} = V^u$ denote the solution of Bellman equation \Ep{hugo3}.
+
+ Equations \Ep{hugo3} and \Ep{hugo4} form the basis for
+an iterative algorithm for computing $V^u = V_{\rm aut}$.  Let $V^u_j$ be
+the estimate of $V_{\rm aut}$ at the $j$th iteration.   Use this value
+in equation \Ep{hugo4} and solve
+for an estimate of effort  $a_j$.  Use this value in a version of equation
+\Ep{hugo3} with $V^u_j$ on the right side
+to compute $V^u_{j+1}$.  Iterate to convergence.
+
+\subsection{Unemployment insurance with full information}
+As another benchmark, we study the provision of insurance with
+full information.  An insurance agency can observe and control
+the unemployed person's consumption and search effort.   The
+agency wants to design an unemployment insurance contract to give
+the unemployed worker expected discounted utility $V > V_{\rm aut}$.
+The planner wants to deliver value $V$ in the most efficient way,
+meaning the way that minimizes expected
+ discounted cost, using $\beta$ as the discount factor.
+We formulate the optimal insurance problem
+recursively.  Let $C(V)$ be the expected discounted cost of giving
+the worker expected discounted utility
+$V$. The cost function is strictly convex because
+a higher $V$ implies a lower marginal utility of the worker;
+that is, additional expected ``utils'' can be awarded to the worker
+only at an increasing marginal cost in terms of the consumption good.
+Given $V$, the planner
+assigns first-period pair   $(c,a)$ and promised
+continuation value $V^u$, should  the worker  be unlucky
+and not find a job; $(c, a, V^u)$ will all be
+chosen to be functions of $V$ and to
+satisfy the Bellman equation
+$$ C(V) = \min_{c, a, V^u} \biggl\{ c  + \beta [1 - p(a)] C(V^u) \biggr\} ,
+\EQN hugo5$$
+where the minimization is subject to the promise-keeping constraint
+$$ V \leq u(c) - a + \beta
+\left\{ p(a) V^e + [1-p(a)] V^u \right\}. \EQN hugo6 $$
+Here $V^e$ is given by equation \Ep{hugo2}, which reflects the
+assumption that once the worker is employed, he is beyond the
+reach of the unemployment insurance agency.
+The right side of  Bellman equation \Ep{hugo5} is attained by
+policy functions
+$c=c(V), a=a(V)$, and $V^u=V^u(V)$.
+The promise-keeping constraint,
+ equation \Ep{hugo6},
+asserts that the 3-tuple $(c, a, V^u)$ attains
+at least $V$.   Let $\theta$ be the Lagrange multiplier
+on constraint \Ep{hugo6}.  At an interior solution, the first-order
+conditions with
+respect to $c, a$, and $V^u$, respectively, are
+$$\EQNalign{ \theta & = {1 \over u'(c)}\,,  \EQN hugo7;a \cr
+             C(V^u) & = \theta \left[ {1 \over \beta p'(a)} -
+                           (V^e - V^u) \right]\,,  \EQN hugo7;b  \cr
+             C'(V^u) & = \theta\,.  \EQN hugo7;c \cr} $$
+
+The envelope condition   $C'(V) = \theta$ and equation
+\Ep{hugo7;c} imply that $C'(V^u) =C'(V)$.  Strict convexity of $C$ then
+implies that $V^u =V$. Applied repeatedly over time,
+$V^u=V$ makes
+the continuation value remain constant during the entire
+spell of unemployment.    Equation
+\Ep{hugo7;a} determines $c$, and equation \Ep{hugo7;b} determines
+$a$, both as functions of the promised $V$.  That $V^u = V$ then
+implies that $c$ and $a$ are held constant during the unemployment
+spell.   Thus, the unemployed worker's consumption $c$ and search effort $a$ are both ``fully smoothed''
+ during the unemployment
+spell.  But
+the worker's consumption is not  smoothed across states of
+employment and unemployment unless $V=V^e$.
+
+\subsection{The incentive problem}
+ The preceding efficient insurance scheme requires that the insurance agency
+control both $c$ and $a$.  It will not do for the insurance agency
+simply to announce $c$ and then allow the worker to choose $a$.
+Here is why.
+The  agency delivers a value $V^u$  higher than
+the autarky value $V_{\rm aut}$ by doing two things.   It
+{\it increases\/}
+the unemployed worker's consumption $c$ and {\it decreases\/} his search
+effort $a$. But the prescribed
+search effort is {\it higher\/} than what the worker would choose
+if he were to be guaranteed consumption level $c$ while he
+remains unemployed.
+This follows from equations \Ep{hugo7;a} and \Ep{hugo7;b} and the
+fact that the insurance scheme is costly, $C(V^u)>0$, which imply
+$[ \beta p'(a) ]^{-1} > (V^e - V^u)$.
+ But look at the worker's
+first-order condition \Ep{hugo4} under autarky.
+It implies that if search effort $a>0$, then
+$[\beta p'(a)]^{-1} = [V^e - V^u]$, which is inconsistent
+with the preceding inequality
+$[ \beta p'(a) ]^{-1} > (V^e - V^u)$ that prevails when $a >0$ under
+the social
+insurance arrangement.
+If he were free to choose $a$, the worker would therefore want to
+fulfill \Ep{hugo4}, either at equality so long as $a >0$, or by setting
+$a=0$ otherwise.  Starting from the  $a$ associated with
+the social insurance scheme,
+he  would establish the desired equality
+in \Ep{hugo4} by {\it lowering\/} $a$, thereby decreasing
+the term $[ \beta p'(a) ]^{-1}$ (which also lowers $(V^e - V^u)$
+when the value of being
+unemployed $V^u$ increases]). If an equality can be established before
+$a$ reaches zero, this would be the worker's preferred search effort;
+otherwise the worker would find it optimal to accept the insurance
+payment, set $a=0$,  and  never work again.
+Thus, since the worker does not take the
+cost of the insurance scheme into account, he would choose a search
+effort below the socially optimal one. The efficient contract
+exploits the agency's ability to control {\it both\/} the unemployed
+worker's consumption {\it and\/} his search effort.
+
+\subsection{Unemployment insurance with asymmetric information}
+Following Shavell and Weiss (1979) and Hopenhayn and Nicolini
+(1997), now assume that  the unemployment insurance agency cannot
+observe or enforce $a$, though it can observe and control $c$.
+The worker is free to choose $a$, which puts expression \Ep{hugo4}, the worker's first-order condition under autarky,
+back in the picture.\NFootnote{We are assuming that the worker's
+best response to the unemployment insurance arrangement is
+completely characterized by the first-order condition  \Ep{hugo4},
+an instance of the so-called ``first-order'' approach to incentive problems.}
+ Given any contract, the individual will choose search effort according to
+the first-order condition \Ep{hugo4}.  This fact leads the insurance agency
+to design the unemployment insurance contract to respect this restriction.
+Thus, the recursive contract design problem is now to minimize the right side of equation
+\Ep{hugo5} subject to expression \Ep{hugo6} and the incentive constraint \Ep{hugo4}.
+
+Since the restrictions \Ep{hugo4} and \Ep{hugo6} are not linear
+and generally do not define a convex set, it becomes difficult
+to provide conditions under which the solution to the dynamic
+programming problem results in a convex function $C(V)$. As
+discussed in Appendix A of chapter \use{socialinsurance},
+this complication can be handled by convexifying
+the constraint set through the introduction of lotteries.
+However, a common finding is that optimal plans do not involve
+lotteries, because convexity of the constraint set is a sufficient
+but not necessary condition for convexity of the cost function.
+Following Hopenhayn and Nicolini (1997), we therefore proceed
+under the assumption that $C(V)$ is strictly convex in order to
+characterize the optimal solution.
+
+Let $\eta$ be the multiplier on constraint \Ep{hugo4}, while
+$\theta$ continues to denote the multiplier on constraint \Ep{hugo6}.
+But now we replace the weak inequality in \Ep{hugo6} by an equality.
+The unemployment insurance agency cannot award a higher utility than
+$V$ because that might violate an incentive-compatibility constraint
+for exerting the proper search effort in earlier periods.
+At an interior solution, the first-order conditions with
+respect to $c, a$, and $V^u$, respectively, are\NFootnote{Hopenhayn and Nicolini
+let the insurance agency also choose $V^e$, the continuation
+value from $V,$ if the worker finds a job.   This approach reflects
+their assumption that the agency can tax a previously unemployed
+worker after he becomes employed. See exercise  \the\chapternum.2.}
+$$\EQNalign{ \theta & = {1 \over u'(c)}\,,  \EQN hugo8;a \cr
+ C(V^u)  & = \theta \left[ {1 \over \beta p'(a)} - (V^e - V^u) \right]
+            \,-\, \eta {p''(a) \over p'(a)} (V^e - V^u)                  \cr
+         & = \,- \eta {p''(a) \over p'(a)} (V^e - V^u) \,,  \EQN hugo8;b \cr
+ C'(V^u) & = \theta \,-\, \eta {p'(a) \over 1-p(a)}\, ,  \EQN hugo8;c \cr}
+$$
+where the second equality in equation \Ep{hugo8;b} follows from strict equality
+of the incentive constraint \Ep{hugo4} when $a>0$. As long as the
+insurance scheme is associated with costs, so that $C(V^u)>0$, first-order
+condition \Ep{hugo8;b} implies that the multiplier $\eta$ is strictly
+positive. The first-order condition \Ep{hugo8;c} and the
+envelope condition $C'(V) = \theta$ together allow us to conclude that
+$C'(V^u) < C'(V)$. Convexity of $C$ then implies that $V^u < V$.
+After we have also used equation \Ep{hugo8;a}, it follows that
+in order to provide  the proper incentives, the consumption
+of the unemployed worker must decrease as the duration of the unemployment
+spell lengthens. It also follows from \Ep{hugo4} at equality that
+search effort $a$ rises as $V^u$ falls, i.e., it rises with the duration
+of unemployment.
+
+  The duration dependence of benefits is  designed to provide
+incentives to search.  To see this, from \Ep{hugo8;c}, notice how
+the conclusion that consumption falls with the duration of
+unemployment depends on the assumption that more search effort
+raises the prospect of finding a job, i.e., that $p'(a) > 0$. If
+$p'(a) =0$, then \Ep{hugo8;c} and the strict convexity of $C$ imply that
+$V^u =V$. Thus, when $p'(a) =0$, there is no reason for the
+planner to make consumption fall with the duration of
+unemployment.
+
+%Hopenhayn and Nicolini (1996) work with first-order conditions
+%for a version of this problem, and coax much qualitative information
+%from them.  We refer the reader to them
+%for analytical results, and turn our attention
+%to formulating a numerical strategy for solving the problem.
+%%%%%%%%%%%%%%%%%%%%%%%%%  insert of Eva-Mike stuff
+
+%%%%%%%%%%%%%%
+%$$\grafone{hugoreplnew.eps,height=2.5in}{{\bf Figure 15.5} Top panel:
+%  replacement
+%ratio $c/w$ as a function of duration of unemployment in Shavell-Weiss
+%model. Bottom panel: effort $a$ as function of duration.}$$
+%%%%%%%%%%%%%%%%
+
+\midfigure{hugoreplnewf}
+\centerline{\epsfxsize=3truein\epsffile{hugoreplnew.eps}}
+\caption{Top panel:  replacement ratio $c/w$ as a function of duration of
+unemployment in the Shavell-Weiss model. Bottom panel: effort $a$ as a function of duration.}
+\infiglist{hugoreplnewf}
+\endfigure
+
+%\mtlb{hugo.m}\mtlb{hugo1a.m}\mtlb{hugofoc1.m}\mtlb{valhugo.m}
+\mtlb{hugo.m} \mtlb{hugo1a.m} \mtlb{hugofoc1.m} \mtlb{hugofoc1.m}
+\mtlb{valhugo.m}
+\subsection{Computed example}
+For parameters chosen by Hopenhayn and Nicolini, Figure \Fg{hugoreplnewf} %15.5
+displays the
+replacement ratio $c / w$ as a function of  the duration of the unemployment
+spell.\NFootnote{This figure was computed using the Matlab programs
+{\tt hugo.m}, {\tt hugo1a.m}, {\tt hugofoc1.m}, {\tt valhugo.m}.
+These are available in the subdirectory {\tt hugo}, which
+contains a readme file.  These programs were composed
+by various members of Economics 233 at Stanford in 1998,
+especially Eva Nagypal, Laura Veldkamp, and Chao Wei.}
+ This schedule was computed by finding the optimal policy functions
+$$ \eqalign{ V^u_{t+1} & = f(V^u_t) \cr
+             c_t & = g(V^u_t). \cr} $$
+and iterating on them, starting from some initial $V^u_0 > V_{\rm aut}$,
+where $V_{\rm aut}$ is the autarky level for an unemployed worker.
+Notice how the replacement ratio declines with duration.
+Figure \Fg{hugoreplnewf} %15.5
+sets $V^u_0$ at 16,942, a number that
+has to be interpreted in the context of Hopenhayn and Nicolini's
+parameter settings.
+
+We computed these numbers using the parametric version studied by Hopenhayn
+and Nicolini.\NFootnote{In  section \use{HNalgorithm}, %of chapter \use{practical},
+we described a computational strategy
+of iterating to convergence on the Bellman equation \Ep{hugo5}, subject
+to expressions \Ep{hugo6} at equality, and \Ep{hugo4}.}
+  Hopenhayn and Nicolini chose parameterizations and parameters as follows:
+They interpreted one  period as one week, which led them
+to set $\beta=.999$.  They took  $u(c) = {c^{(1-\sigma)} \over 1 - \sigma}$
+and set
+$\sigma=.5$.  They set the wage $w=100$ and
+specified the hazard function to be  $p(a) = 1 - \exp(-ra)$, with $r$ chosen
+to give a hazard rate $ p(a^*) = .1$, where
+$a^*$ is the optimal search  effort under autarky. To compute the numbers
+in Figure \Fg{hugoreplnewf} we used
+these same settings.
+
+\subsection{Computational details}
+Exercise {\it \the\chapternum.1\/} asks the reader  to solve the Bellman equation
+numerically.
+In doing so, it is useful to note that there
+%%is a natural upper bound to the set
+%%of continuation values $V^u$.  To  compute it,
+are natural lower and upper bounds to the set
+of continuation values $V^u$. The lower bound is
+the expected lifetime utility in autarky,
+$V_{\rm aut}$. To compute the upper bound,
+represent condition \Ep{hugo4} as
+$$ V^u \geq V^e  - [\beta  p'(a)]^{-1},$$
+with equality if $ a > 0$.
+If there is zero search effort, then $V^u \geq V^e -[\beta p'(0)]^{-1}$.  %% >
+Therefore, to rule out zero search effort we require
+$$ V^u < V^e - [\beta p'(0)]^{-1} .$$                                     %% \leq
+(Remember that $p''(a) < 0$.)  This step gives  our upper bound
+for $V^u$.
+
+To formulate the Bellman equation numerically,
+we suggest using the constraints to eliminate $c$ and $a$ as choice
+variables, thereby reducing the Bellman equation to
+a minimization over the one choice variable $V^u$.
+First express the promise-keeping constraint \Ep{hugo6} as
+$u(c) = V + a - \beta \{p(a) V^e +[1-p(a)] V^u \}$.                       %% \geq
+That is, consumption is equal to
+$$ c = u^{-1}\left(
+     V+a -\beta [p(a)V^e + (1-p(a))V^u] \right). \EQN hugo21$$
+%%For the preceding utility function,
+%%whenever the right side of this
+%%inequality is negative, then this  promise-keeping constraint  is
+%%not binding and can be satisfied with $c=0$.   This observation
+%%allows us to write
+%%$$ c = u^{-1}\left( \max\left\{0,
+%%     V+a -\beta [p(a)V^e + (1-p(a))V^u] \right\} \right). \EQN hugo21$$
+Similarly, solving the inequality \Ep{hugo4} for $a$ and using the
+assumed  functional
+form for $p(a)$  leads to
+$$ a = \max\left\{0, {\log[r \beta (V^e - V^u)] \over r } \right\}.
+             \EQN hugo22 $$
+Formulas \Ep{hugo21} and \Ep{hugo22} express $(c,a)$ as functions
+of $V$ and  the continuation value $V^u$.  Using these functions
+allows us to write the Bellman equation in $C(V)$ as
+$$ C(V)  = \min_{V^u} \left\{ c + \beta [1 - p(a)] C(V^u) \right\} \EQN hugo23 $$
+where $c$ and $a$ are given by equations \Ep{hugo21} and \Ep{hugo22}.
+
+
+\subsection{Interpretations}
+The substantial downward slope in the replacement ratio in Figure \Fg{hugoreplnewf} % Figure 15.5
+comes entirely  from the incentive constraints facing the
+planner.   We saw earlier that without private information, the
+planner would smooth consumption
+%%across unemployment states
+over the unemployment spell by
+keeping the  replacement ratio constant. In the situation depicted in
+Figure \Fg{hugoreplnewf}, the planner can't observe the worker's search effort
+and therefore makes   the replacement ratio  fall and search
+effort rise as the duration of unemployment increases, especially
+early in an unemployment spell.   There is a ``carrot-and-stick''
+aspect to the replacement rate and search effort  schedules: the
+``carrot'' occurs in the forms of high compensation and low search
+effort early in an unemployment spell.  The ``stick''
+occurs in the low compensation and high effort  later in
+the spell.   We shall see  this carrot-and-stick feature in some of the
+credible government policies analyzed in chapters \use{credible}, \use{chang}, and
+\use{wldtrade}.
+\index{carrot and stick}
+
+The planner offers declining benefits and asks for increased search
+effort as the duration of an unemployment spell rises in order to provide
+unemployed workers with proper incentives, not to punish an unlucky worker
+who has been unemployed for a long time.  The planner believes that a
+worker who has been unemployed a long time is unlucky, not that he has
+done anything wrong (i.e., not lived up to the contract).  Indeed, the
+contract is designed to induce the unemployed workers to search in
+the way the planner expects.  The falling consumption and rising
+search effort of the unlucky ones with long unemployment spells are
+simply the prices that have to be paid for the common good of providing
+proper incentives.
+
+
+\subsection{Extension: an on-the-job tax}
+ Hopenhayn and Nicolini allow the planner to tax the worker {\it after\/}
+he becomes employed, and they let the tax depend on the duration of unemployment.
+Giving the planner this additional instrument substantially decreases the
+rate at which the replacement ratio falls during a spell of unemployment.
+Instead, the planner makes use of a more powerful tool: a {\it permanent\/}
+bonus or tax after the worker becomes employed.  Because it endures, this
+tax or bonus is especially potent when the discount factor is high.  In
+exercise {\it \the\chapternum.2\/}, we ask the reader to set up the functional equation for
+Hopenhayn and Nicolini's model.
+
+\subsection{Extension: intermittent unemployment spells}
+In Hopenhayn and Nicolini's model, employment is an absorbing
+state and there are no incentive problems after a job is found.
+There are not multiple spells of unemployment.   Wang and
+Williamson (1996) built a model in which there can be multiple
+unemployment spells, and in which there is also an incentive
+problem on the job.  As in Hopenhayn and Nicolini's model, search
+effort affects the probability of finding  a job.  In addition,
+while on a job, effort affects the probability that the job ends
+and that the worker becomes unemployed again.  Each job pays the
+same wage.   In Wang and Williamson's setup, the promised value
+keeps track of the duration and number of spells of employment as
+well as of the number and duration of spells of unemployment.  One
+contract transcends employment and unemployment.
+
+\section{A multiple-spell model with lifetime contracts}
+  Rui Zhao (2001) modifies and extends features of Wang and Williamson's
+model.  In her model, effort on the job affects output as well as the
+probability that the job will end.  In Zhao's model, jobs randomly end,
+recurrently returning a worker to the state of unemployment.  The
+probability that a job ends depends directly or indirectly
+on the effort that workers expend on the job.  A planner observes
+the worker's output and employment status, but never his effort,
+and  wants to insure the worker.  Using recursive methods,
+Zhao designs  a history-dependent assignment of unemployment benefits,
+if unemployed, and wages, if employed, that balance a planner's
+desire to insure the worker with the need to provide incentives to
+supply effort in work and search.  The planner uses history dependence
+to tie compensation while unemployed (or employed) to earlier outcomes
+that partially inform the planner about the workers' efforts while
+employed (or unemployed).  These intertemporal tie-ins give rise to
+what Zhao interprets broadly as a ``replacement rate'' feature that
+we seem to observe in unemployment compensation systems.
+
+\subsection{The setup}
+In a special case of Zhao's model, there are two effort levels.
+Where $a \in \{a_L, a_H\}$ is a worker's effort   and $\overline y_i >
+\overline y_{i-1}$, an employed worker produces $y_t \in \left[ \overline y_1, \cdots,
+\overline y_n \right]$ with probability
+$$ {\rm Prob}(y_t = \overline y_i) = p(\overline y_i;a ). $$
+Zhao assumes:
+\medskip
+\noindent{\sc Assumption 1:}  $p(\overline y_i;a)$ satisfies the
+{\it monotone likelihood ratio\/} property:
+${p(\overline y­_i;a_H)\over p(\overline y_i;a_L)}$ increases as $\overline y_i$ increases.
+\medskip
+At the end of each period, jobs end with probability
+$\pi_{eu}$.  Zhao embraces one of two alternative assumptions
+about
+the job separation
+rate $\pi_{eu}$, allowing it  to depend on either current output $y$ or
+current work effort $a$.  She assumes:
+\medskip
+\noindent{\sc Assumption 2:} Either  $\pi_{eu} (y)$ decreases with $y$
+or $\pi_{eu}(a)$ decreases with $a$.
+\medskip
+
+
+Unemployed workers produce nothing and search for a job subject to the
+following  assumption about the job finding rate $\pi_{ue}(a)$:
+
+\medskip
+\noindent{\sc Assumption 3:} $\pi_{ue}(a)$ increases with $a$.
+\medskip
+The worker's one-period utility function
+is $U(c,a) = u(c) - \phi(a)$ where
+$u(\cdot)$ is continuously differentiable, strictly increasing and
+strictly concave, and $\phi(a)$ is continuous, strictly increasing,
+and strictly convex.  The worker orders random $\{c_t,a_t\}_{t=0}^\infty$
+ sequences
+according to
+$$ E \sum_{t=0}^\infty \beta^t U(c_t, a_t) , \quad \beta \in (0,1) .
+\EQN zhao2 $$
+
+We shall regard a planner as being
+ a coalition of firms united
+with an unemployment insurance agency.  The planner is risk neutral and can
+borrow and lend at a constant risk-free gross one-period interest rate
+of $R = \beta^{-1}$.
+
+Let the worker's employment state be $s_t \in S = \{e,u\}$
+where $e$ denotes employed, $u$ unemployed.  The worker's
+output at $t$ is
+$$ z_t = \cases{ 0 & if $s_t = u$, \cr
+                 y_t & if $s_t =e $. \cr}
+$$
+For $t \geq 1$,  the time $t$ component of the publicly observed information
+is
+$$ x_t =(z_{t-1}, s_t) , $$
+and $x_0 = s_0$.
+At time $t$, the planner observes
+the history $x^t$ and the worker observes $(x^t, a^t)$.
+
+The transition probability for $x_{t+1} \equiv (z_t, s_{t+1})$
+ can be factored as follows:
+$$ \pi(x_{t+1} | s_t, a_t) = \pi_z(z_t;s_t,a_t) \pi_s(s_{t+1};z_t, s_t, a_t)
+  \EQN zhao5 $$
+where $\pi_z$ is the distribution of output conditioned on
+the state and the action, and $\pi_s$ encodes the transition probabilities
+of employment status conditional on output, current employment
+status, and effort.   In particular, Zhao assumes that
+$$ \eqalign{
+\pi_s(u;0, u, a) & = 1 - \pi_{ue}(a) \cr
+\pi_s(e;0, u, a) & = \pi_{ue}(a) \cr
+\pi_s(u;y,e, a) & = \pi_{eu}(y, a) \cr
+\pi_s(e;y,e, a) & = 1- \pi_{eu}(y, a) . \cr   } \EQN zhao6 $$
+
+
+\subsection{A recursive lifetime contract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Let $v$ be  a promised value of the worker's
+%  expected discounted utility \Ep{zhao2}.
+%For a given  $v$,
+%let $w(z,s')$ be the continuation value of promised utility
+%\Ep{zhao2} for next period when today's output is $z$ and
+%tomorrow's unemployment state is $s'$.  At the beginning
+%of next period, $(z,s')$ will be the  labor market outcome
+%most recently observed by the planner.
+%Let $W = \{W_s\}_{s\in \{u,e\}}$ be two compact sets of continuation
+%values, one set for $s =u$ and another for $s=e$.
+%For each $(v,s)$,  a {\it recursive contract\/} specifies
+%an output-contingent  consumption level $c(z)$  today,
+%a recommended effort level $a$, and continuation values
+%$w(z,s')$ to be used to reset $v$ tomorrow.
+%
+%Zhao imposes the following constraints on the contract:
+%
+%\medskip
+%$$ \sum_z \pi_z(z;s,a) \left(u(c(z)) + \beta \sum_{s'} \pi_s(s';z,s,a)
+%   w(z,s') \right) - \phi(a) \geq v  \EQN zhao7 $$
+%and for all $s, a$,
+%$$ \eqalign{ &
+%\sum_z \pi_z(z;s,a) \left(u(c(z)) + \beta \sum_{s'} \pi_s(s';z,s,a)
+%   w(z,s') \right) - \phi(a) \geq \cr
+%& \sum_z \pi_z(z;s,\tilde a) \left(u(c(z)) + \beta \sum_{s'} \pi_s(s';z,s,\tilde a)
+%   w(z,s') \right) - \phi(\tilde a) \ \ \forall \tilde a. \cr } \EQN zhao8  $$
+%Constraint \Ep{zhao7} entails {\it promise keeping\/},
+%while \Ep{zhao8} are the incentive-compatibility
+%or ``effort-inducing'' constraints.
+%In addition, a contract has to satisfy
+%$\underline c \leq c(z) \leq \overline c $ for all $z$ and
+%$w(z,s') \in W_{s'}$ for all $(z,s')$.
+%A contract is said to be {\it incentive compatible\/} if it satisfies
+%the  incentive compatibility constraints
+%\Ep{zhao8}.\NFootnote{We assume two-sided
+%commitment to the contract and therefore ignore  the participation
+%constraints that Zhao imposes on the contract.    She requires that
+% continuation
+%values $w(z,s')$ be at least as great as the  autarky values
+%$V_{s',{\rm aut}}$   for each $(z,s')$.}
+%
+%\medskip
+%\specsec{Definition:} A recursive contract $(c(z),  w(z,s'), a)$
+%is said to be {\it feasible with respect to $W$\/} for
+%a given $(v,s)$ pair if it is incentive compatible in state
+%$s$, delivers promised value $v$, and $w(z,s') \in W_{s'}$ for
+%all $(z,s')$.
+%\medskip
+%Let $C(v,s)$ be the minimum cost to the planner of delivering promised
+%value  $v$ to a worker in employment state $s$.
+%We can represent the
+%Bellman equation for $C(v,s)$ in terms of the following two-part
+%optimization:
+%$$\EQNalign{ \Psi(v,s,a) &  = \min_{c(z), w(z,s')}
+%  \Biggl\{ \sum_z \pi_z(z;s,a) \bigl(-z + c(z)
+%    \cr & +
+% \beta \sum_{s'} \pi_s(s';z,s,a) C(w(z,s'),s') \bigr) \Bigr\} \EQN zhao9;a \cr
+%  C(v,s) & = \min_{a \in [a_L, a_H]} \Psi(v,s, a).  \EQN zhao9;b \cr} $$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Consider a worker with beginning-of-period employment status $s$ and
+promised value $v$.
+For given  $(v,s)$,
+let $w(z,s')$ be the continuation value of promised utility
+\Ep{zhao2} for next period when today's output is $z$ and
+tomorrow's employment state is $s'$.  At the beginning
+of next period, $(z,s')$ will be the  labor market outcome
+most recently observed by the planner.
+Let $W = \{W_s\}_{s\in \{u,e\}}$ be two compact sets of continuation
+values, one set for $s =u$ and another for $s=e$.
+For each $(v,s)$,  a {\it recursive contract\/} specifies
+a recommended effort level $a$ today,
+an output-contingent  consumption level $c(z)$  today,
+and continuation values
+$w(z,s')$ to be used to reset $v$ tomorrow.
+
+For each $(v,s)$, the contract $(a, c(z), w(z,s'))$ must satisfy:
+%%\medskip
+$$ \sum_z \pi_z(z;s,a) \left(u(c(z)) + \beta \sum_{s'} \pi_s(s';z,s,a)
+   w(z,s') \right) - \phi(a) = v  \EQN zhao7 $$                      %%% \geq
+and                                                                  %%% for all $s, a$,
+$$ \eqalign{ &
+\sum_z \pi_z(z;s,a) \left(u(c(z)) + \beta \sum_{s'} \pi_s(s';z,s,a)
+   w(z,s') \right) - \phi(a) \geq \cr
+& \sum_z \pi_z(z;s,\tilde a) \left(u(c(z)) + \beta \sum_{s'} \pi_s(s';z,s,\tilde a)
+   w(z,s') \right) - \phi(\tilde a) \ \ \forall \tilde a. \cr } \EQN zhao8  $$
+Constraint \Ep{zhao7} entails {\it promise keeping\/},
+while \Ep{zhao8} are the incentive-compatibility
+or ``effort-inducing'' constraints.
+In addition, a contract has to satisfy
+$\underline c \leq c(z) \leq \overline c $ for all $z$ and
+$w(z,s') \in W_{s'}$ for all $(z,s')$.
+A contract is said to be {\it incentive compatible\/} if it satisfies
+the  incentive compatibility constraints
+\Ep{zhao8}.\NFootnote{We assume two-sided
+commitment to the contract and therefore ignore  the participation
+constraints that Zhao imposes on the contract.    She requires that
+ continuation
+values $w(z,s')$ be at least as great as the  autarky values
+$V_{s',{\rm aut}}$   for each $(z,s')$.}
+
+\medskip
+\noindent{\sc Definition:} A recursive contract $(a, c(z),  w(z,s'))$
+is said to be {\it feasible with respect to $W$\/} for
+a given $(v,s)$ pair if it is incentive compatible in state
+$s$, delivers promised value $v$, and $w(z,s') \in W_{s'}$ for
+all $(z,s')$.
+\medskip
+Let $C(v,s)$ be the minimum cost to the planner of delivering promised
+value  $v$ to a worker in employment state $s$.
+We can represent the
+Bellman equation for $C(v,s)$ in terms of the following two-part
+optimization:
+$$\EQNalign{ \Psi(v,s,a) &  = \min_{c(z), w(z,s')}
+  \Biggl\{ \sum_z \pi_z(z;s,a) \Bigl(-z + c(z)
+    \cr &
+ \hskip2cm +\beta \sum_{s'} \pi_s(s';z,s,a) C(w(z,s'),s') \Bigr) \Biggr\}
+                                                       \hskip.5cm \EQN zhao9;a \cr
+\noalign{\noindent \rm subject to constraints \Ep{zhao7} and \Ep{zhao8}, and} \cr
+  C(v,s) & = \min_{a \in [a_L, a_H]} \Psi(v,s, a).  \EQN zhao9;b \cr} $$
+The function $\Psi(v,s,a)$ assumes that the worker  exerts effort level
+$a$.  Later, we shall typically assume that parameters are such that
+$C(v,s)=\Psi(v,s,a_H)$, so that the planner finds it optimal always
+to induce high effort.
+Put a Lagrange multiplier
+$\lambda(v,s,a)$ on the promise-keeping constraint \Ep{zhao7} and
+another multiplier
+$\nu(v,s,a)$ on the  effort-inducing constraint \Ep{zhao8} given $a$,
+ and form
+the Lagrangian:
+$$ \eqalign{L = & \sum_z \pi_z(z;s,a) \Biggl\{ -z + c(z)
+    + \beta \sum_{s'} \pi_s(s';z,s,a) C(w(z,s'),s') \cr
+  & - \lambda(v,s,a)
+\left[ u(c(z)) + \beta \sum_{s'} \pi_s(s';z,s,a)
+   w(z,s') ) - \phi(a) - v \right] \cr
+ & - \nu(v,s,a) \Biggl[ u(c(z)) + \beta \sum_{s'} \pi_s(s';z,s,a)
+   w(z,s')  - \phi(a)    \cr
+ & - {\pi_z(z;s,\tilde a) \over \pi_z(z;s,a)}
+   \left( u(c(z)) + \beta \sum_{s'} \pi_s(s';z,s,\tilde a)w(z,s')  -
+ \phi(\tilde a)   \right) \Biggr] \Biggr\} , \cr }$$
+where $\tilde a \in \{a_L, a_H\}$ and $\tilde a \not= a$.
+First-order conditions for $c(z)$ and $w(z,s')$, respectively, are
+$$\EQNalign{ {1 \over u'(c(z)) }  = &
+  \lambda(v,s,a) + \nu(v,s,a) \left( 1 -
+  {\pi_z(z;s,\tilde a) \over \pi_z(z;s,a) } \right)  \EQN zhao12;a \cr
+\noalign{\vskip.2cm}
+  C_v(w(z,s'),s')  = & \lambda(v,s,a) \cr & +
+  \nu(v,s,a) \left[ 1 - {\pi_z(z;s,\tilde a) \over
+                    \pi_z(z;s,a) }
+       {\pi_s(s';s,z,\tilde a)\over \pi_s(s';z,s,a)} \right] .\hskip.5cm
+ \EQN zhao12;b \cr }$$
+The envelope conditions are
+$$ \EQNalign{ \Psi_v(v,s,a) & = \lambda(v,s,a) \EQN zhao13;a \cr
+        C_v(v,s) & = \Psi_v(v,s, a^*) \EQN zhao13;b \cr}$$
+where $a^*$ is the planner's optimal choice of $a$.
+
+To deduce the dynamics of compensation,
+Zhao's strategy is to study the first-order conditions
+\Ep{zhao12} and envelope conditions \Ep{zhao13} under two  cases,
+$s=u$ and $s=e$.
+
+
+
+
+
+
+
+\subsection{Compensation dynamics when unemployed}
+  In the unemployed state ($s=u$),
+the first-order conditions become
+$$\EQNalign{ & {1 \over u'(c)} = \lambda(v,u,a) \EQN zhao14;a \cr
+   & C_v(w(0,u),u) = \lambda(v,u,a) + \nu(v,u,a)
+ \left[ 1 - {1 - \pi_{ue}(\tilde a)  \over 1 - \pi_{ue}(a)} \right]
+  \EQN zhao14;b \cr
+ & C_v(w(0,e),e) = \lambda(v,u,a) + \nu(v,u,a) \left[1 -
+  {\pi_{ue} (\tilde a) \over \pi_{ue}(a) }\right].  \EQN zhao14;c \cr}  $$
+The effort-inducing constraint \Ep{zhao8} can be rearranged to become
+$$ \beta (\pi_{ue}(a) - \pi_{ue}(\tilde a)) (w(0,e) - w(0,u))
+  \geq \phi(a) - \phi (\tilde a) .$$
+Like Hopenhayn and Nicolini,  Zhao describes how
+compensation and effort depend on the duration
+of unemployment:
+\medskip
+\noindent{\sc Proposition:} To induce high search effort, unemployment
+benefits must {\it fall\/} over an unemployment spell.
+\medskip
+\noindent{\sc Proof:}  When search effort is high, the effort-inducing
+constraint binds.  By assumption 3,
+$$ {1 - \pi_{ue}(a_L) \over  1 - \pi_{ue}(a_H)}
+  > 1 > {\pi_{ue}(a_L) \over \pi_{ue}(a_H) }. $$
+These inequalities and the first-order condition \Ep{zhao14} then imply
+$$ C_v(w(0,e),e) > \Psi_v(v,u,a_H) > C_v(w(0,u),u). \EQN zhao15 $$
+Let $c_u(t), v_u(t)$, respectively,
+ be consumption and the continuation value for an
+unemployed worker.  Equations \Ep{zhao14} and the envelope conditions imply
+$${1 \over u'(c_u(t))} = \Psi_v(v_u(t), u, a_H) > C_v(v_u(t+1), u)
+    = {1 \over u'(c_u(t+1))}. \EQN zhao16 $$
+Concavity of $u$ then implies that $c_u(t) > c_u(t+1)$.
+In addition, notice that
+$$ C_v(w(0,u),u) - C_v(v,u)
+  = \nu(v,u,a_H) \left(1-{1 - \pi_{ue}(a_L) \over 1 - \pi_{ue}(a_H)} \right),
+ \EQN zhao16 $$
+which follows from the first-order conditions \Ep{zhao14} and the envelope
+conditions.  Equation \Ep{zhao16} implies that continuation
+values fall with the duration of unemployment.\qed
+
+\subsection{Compensation dynamics while employed}
+
+When the worker is employed, for each promised value $v$,
+the contract specifies
+output-contingent consumption and continuation values
+a $c(y), w(y,s')$.  When $s=e$,
+the first-order conditions \Ep{zhao12} become
+$$ \EQNalign{  {1 \over u'(c(y))} &= \lambda(v,e,a)
+  + \nu(v,e,a) \left(1 - {p(y;\tilde a) \over p(y;a)} \right)
+\EQN zhao18;a \cr
+  C_v(w(y,u),u)  &= \lambda(v,e,a)   + \nu(v,e,a)
+   \left(1 - {p(y;\tilde a) \over p(y;a)} {\pi_{eu}(y,\tilde a)
+   \over \pi_{eu}(y,a)} \right) \EQN zhao18;b \cr
+ C_v(w(y,e),e) &= \lambda(v,e,a)  + \nu(v,e,a)
+   \left(1 - {p(y;\tilde a) \over p(y;a)} {1-\pi_{eu}(y,\tilde a)
+   \over 1- \pi_{eu}(y,a)} \right). \hskip1.5cm \EQN zhao18;b \cr }$$
+Zhao uses these first-order conditions to characterize
+how compensation depends on  output:
+\medskip
+\noindent{\sc Proposition:}  To induce high work effort, wages and continuation
+values increase with current output.
+\medskip
+\noindent{\sc Proof:}  For any $y > \tilde y$, let
+$d ={p(\tilde y;a_L) \over p(\tilde y; a_H)} -
+    {p(y;a_L) \over p(y;a_H)}. $
+Assumption 1 about $p(y;a)$
+implies that $d >0$. The first-order
+conditions \Ep{zhao18} imply that
+$$\EQNalign{& {1 \over u'(c(y))} - {1 \over u'(c(\tilde y))}
+  = \nu (v,e,a) d >0  , \EQN zhao19;a \cr
+&  C_v(w(y,u),u) - C_v(w(\tilde y,u),u) \propto \nu(v,e,a) d > 0 ,\EQN zhao19;b
+   \cr
+&  C_v(w(y,e),e) - C_v(w(\tilde y,e),e) \propto \nu(v,e,a) d > 0 .\EQN zhao19;c
+  \cr} $$
+Concavity of $u$ and convexity of $C$ give the result. \qed
+\medskip
+
+In the following proposition, Zhao shows how continuation values
+at the start of unemployment   spells should depend on the history
+of the worker's
+outcomes during previous employment and unemployment spells.
+\medskip
+\noindent{\sc Proposition:}  If the job separation rate depends on current
+output, then the replacement rate immediately after a worker loses a job
+is 100\%.  If the job separation rate depends on work effort, then
+the replacement rate is less than 100\%.
+\medskip
+\noindent{\sc Proof:}  If the job separation rate depends on {\it output\/},
+the first-order conditions \Ep{zhao18} imply
+$$ {1 \over u'(c(y))} = C_v(w(y,u),u) = C_v(w(y,e),e)). \EQN zhao20 $$
+This is because $\pi_{eu}(y,\tilde a) = \pi_{eu}(y,a)$ when the job
+separation rate depends on output.  Let $c_e(t), c_u(t)$ be consumption
+of employed and unemployed workers, and let $v_e(t), v_u(t)$ be
+the assigned promised values at $t$.  Then
+$$ {1 \over u'(c_e(t))} = C_v(v_{u,t+1},u) = {1 \over c_u(t+1)} $$
+where the first equality follows from  \Ep{zhao20}  and the
+second from the envelope condition.
+If the job separation rate depends on {\it work effort\/}, then
+the first-order conditions \Ep{zhao18} imply
+$${1 \over u'(c(y))} - C_v(w(y,u),u) = \nu(v,e,a) {p(y;a_L) \over p(y;a_H)}
+  \left(  {\pi_{eu}(a_L) \over \pi_{eu}(a_H)} -1 \right). \EQN zhao21 $$
+Assumption 2 implies that the right side of \Ep{zhao21} is positive,
+which implies that
+  $${1 \over u'(c_e(t))} > C_v(v_u(t+1),u) = {1\over u'(c_u(t+1))}. $$
+\qed
+
+\subsection{Summary}
+ A worker in Zhao's model enters a lifetime contract that makes
+compensation respond to the history of outputs on the current and
+past jobs, as well as on the durations of all previous spells of
+unemployment.\NFootnote{We have analyzed a version of Zhao's model
+in which the worker is committed to obey the contract.  Zhao
+incorporates an enforcement problem in her model by allowing
+the worker to accept an outside option each period.}
+Her model has the outcome that compensation at the beginning
+of an unemployment spell varies directly with the compensation
+attained on the previous job.
+%%  A single contract
+%%governs the employment relation and the unemployment
+%%insurance arrangement.
+   This aspect of her model offers a possible explanation for why
+unemployment insurance systems often feature a ``replacement rate''
+that gives more unemployment insurance payments to workers
+who had higher wages in their prior jobs.
+
+
+\section{Concluding remarks}
+
+  The models that we have studied in this chapter isolate the worker
+from capital markets so that the worker
+cannot   transfer consumption across time
+or states except by adhering to the contract offered by the planner.
+If the worker in the models of this chapter
+were allowed to save or issue a risk-free asset bearing
+a gross one-period rate of return approaching $\beta^{-1}$, it would
+interfere substantially with
+the planner's ability to provide incentives by manipulating
+ the worker's continuation value in response to observed current outcomes.
+In particular, forces identical to those analyzed
+ in the Cole and Kocherlakota setup that we analyzed at length
+in chapter \use{socialinsurance} would circumscribe the planner's
+ability to supply insurance.
+In the context of unemployment insurance models like that of this chapter,
+  this   point has been studied in detail
+in papers by Ivan Werning (2002) and Kocherlakota (2004).
+\auth{Werning, Ivan} \auth{Kocherlakota, Narayana R.} \auth{Cole,
+Harold L.}
+
+Pavoni and Violante (2007) substantially extended models like those in this chapter to perform
+positive and normative analysis of a sequence of government programs  that try efficiently to provide insurance, training, and  proper incentives
+for unemployed and undertrained workers to reenter employment.
+\auth{Pavoni, Nicola}%
+\auth{Violante, Giovanni L.}%
+
+%\endchapter
+%\section{Exercises}
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+\noindent{\it Exercise \the\chapternum.1}\quad {\bf Optimal unemployment compensation}
+
+\medskip
+\noindent{\bf a.}   Write a program
+to compute the autarky solution, and use it to  reproduce
+Hopenhayn and Nicolini's calibration of  $r$, as described in text.
+
+\medskip
+\noindent {\bf b.}  Use your calibration from part a.
+  Write a program to compute the optimum value function $C(V)$ for the
+insurance design problem with incomplete information. Use the program to
+form versions of Hopenhayn and Nicolini's table 1, column 4 for three
+different initial values of $V$, chosen by you to belong to the set
+$(V_{\rm   aut}, V^e)$.
+
+\medskip
+\noindent{\it Exercise  \the\chapternum.2}  \quad {\bf Taxation after employment}
+\medskip
+\noindent Show how the functional equation
+\Ep{hugo5}, \Ep{hugo6} would be modified if the planner
+were permitted to tax workers after   they became employed.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.3}\quad {\bf Optimal unemployment compensation with
+unobservable wage offers}
+\medskip
+\noindent
+Consider an unemployed person with preferences given by
+$$
+    E \sum_{t=0}^\infty \beta^t u(c_t)  \,,
+$$
+where $\beta \in (0,1)$ is a subjective discount factor, $c_t \geq 0$ is
+consumption at time $t$, and the utility function
+$u(c)$ is strictly increasing, twice differentiable,
+and strictly concave. Each period the worker draws one offer $w$
+from a uniform wage distribution on the domain
+$[w_{\scriptscriptstyle L}, w_{\scriptscriptstyle H}]$
+with $0 \leq w_{\scriptscriptstyle L} < w_{\scriptscriptstyle H} < \infty$.
+Let the cumulative density function be denoted
+$F(x)={\rm Prob}\{w\le x\}$, and denote its density by $f$,
+which is constant on the domain
+$[w_{\scriptscriptstyle L}, w_{\scriptscriptstyle H}]$.
+After the worker has accepted a wage offer $w$, he receives the wage $w$
+per period forever.  He is then beyond the grasp of the unemployment
+insurance agency. During the unemployment spell, any consumption smoothing
+has to be done through the unemployment insurance agency because the worker
+holds no assets and cannot borrow or lend.
+\medskip
+\noindent {\bf a.}   Characterize the worker's optimal reservation wage
+when he is entitled to a time-invariant unemployment compensation $b$ of
+indefinite duration.
+
+\medskip
+\noindent {\bf b.}  Characterize the optimal unemployment compensation
+scheme under full information. That is, we assume that the insurance
+agency can observe and control the unemployed worker's consumption
+and reservation wage.
+
+\medskip
+\noindent {\bf c.}  Characterize the optimal unemployment compensation
+scheme under asymmetric information where the insurance agency cannot
+observe wage offers, though it can observe and control the unemployed
+worker's consumption. Discuss the optimal time profile of the
+unemployed worker's consumption level.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.4} \quad {\bf Full unemployment insurance}
+\medskip
+\noindent
+An unemployed worker orders stochastic processes of
+consumption, search effort $\{c_t , a_t\}_{t=0}^\infty$
+according to
+$$ E \sum_{t=0}^\infty \beta^t \left[ u(c_t) - a_t \right]  $$
+where $\beta \in (0,1)$ and
+$u(c)$ is strictly increasing, twice differentiable,
+and strictly concave.  It is required
+that $c_t \geq 0$ and $ a_t \geq 0$.
+    All jobs are alike and pay wage
+$w >0$ units of the consumption good each period forever. After
+a worker has found a job, the unemployment insurance agency can
+tax the employed worker at a rate $\tau$ consumption goods per period.
+The unemployment agency can make $\tau$ depend on the worker's
+unemployment history.
+The probability
+of finding a job  is $p(a)$, where $p$ is an increasing
+and strictly concave and twice differentiable function of $a$, satisfying
+$p(a)   \in [0,1]$ for  $a \geq 0$, $p(0)=0$.
+The consumption good is nonstorable.
+The unemployed person cannot borrow or lend and holds no assets.
+If the unemployed worker is to do any consumption smoothing,
+it has to be through the unemployment insurance agency.
+The insurance agency can observe the worker's search effort and can control
+his consumption.    An employed worker's consumption is $w -\tau$ per period.
+
+\medskip
+\noindent{\bf a.}  Let $V_{\rm aut} $ be the value of an unemployed
+ worker's expected discounted utility when he has no access to unemployment
+insurance.  An unemployment insurance agency wants to insure unemployed
+workers and to deliver expected discounted utility
+$V > V_{\rm aut}$  at minimum expected discounted cost $C(V)$.
+The insurance agency also uses the discount factor $\beta$.
+The insurance agency controls $c,a,\tau$, where $c$ is consumption
+of an unemployed worker.  The worker pays the tax
+$\tau$ only after he becomes employed.
+Formulate the Bellman equation for $C(V)$.
+\medskip
+%\noindent {\bf Answer:}
+%$$ C(V) = \min_{c, a, V^u, V^e } \left\{c + \beta[1-p(a)] C(V^u)
+%     - \beta p(a) \left[ {\tau \over 1 - \beta} \right]\right\} $$
+%where the minimization is subject to the promise keeping constraints
+%$$ \eqalign{ V & \leq u(c) - a + \beta \left[ p(a) V^e +
+%  (1-p(1)) V^u\right] \cr
+%   V^e & = {u(w-\tau) \over 1 -\beta} .   \cr} $$
+%
+%\medskip
+%\noindent{\bf b.}  Prove that the optimal policy of the insurance agency
+%is a policy that satisfies  $c = w -\tau$.
+%
+%\medskip
+%{\bf Answer:}  I have this on yellow sheets.
+
+
+\medskip
+\noindent {\it Exercise \the\chapternum.5}
+\quad { \bf Two effort levels}
+\medskip
+\noindent
+ An unemployment insurance agency wants to
+insure unemployed workers in the most efficient way. An unemployed
+worker receives no income and
+chooses a sequence of search intensities $a_t \in \{0, a\}$
+to  maximize the utility functional
+$$ E_0 \sum_{t=0}^\infty \beta^t \left\{ u(c_t) - a_t \right\}, \quad \beta
+\in (0,1)  \leqno (1) $$
+where $u(c)$ is an increasing,  strictly concave,
+ and twice continuously   differentiable
+function of consumption of a single good. There are two values
+of the search intensity, $0$ and $a$.  The probability
+of finding a job at the beginning of period $t+1$ is
+$$\pi(a_t) = \cases{\pi(a), &   if  $a_t =a $; \cr
+                   \pi(0) < \pi(a), & if $a_t =0 $, \cr} \leqno(2) $$
+where we assume that $a > 0$.   Note that the worker exerts search
+effort in period $t$ and possibly receives a job at the beginning
+of period $t+1$.  Once the worker finds a job, he receives a fixed
+wage $w$ forever, sets $a=0$,  and has continuation utility $V_e
+={u(w) \over 1-\beta} $. The consumption good is not storable and
+workers can neither borrow nor lend. The unemployment agency can
+borrow and lend at a constant one-period risk-free gross  interest
+rate of $R = \beta^{-1}$. The unemployment agency cannot observe
+the worker's effort  level.
+
+\medskip
+\noindent{\bf Subproblem A}
+\medskip
+\noindent{\bf a.}  Let $V$ be the value of (1) that the
+unemployment agency has promised an unemployed
+ worker at the start of a period (before he has made his search decision).
+Let $C(V)$ be  the minimum cost to the unemployment insurance agency
+of delivering promised value $V$. Assume that
+the unemployment insurance agency wants the unemployed worker
+to set $a_t = a$ for as long as he is unemployed (i.e., it wants to promote
+high search effort).
+Formulate a Bellman equation for $C(V)$, being careful to
+specify any promise-keeping and incentive constraints.
+(Assume that there are no participation constraints: the unemployed
+worker must participate in the program.)
+
+\medskip
+\noindent{\bf b.} Show that if the incentive constraint binds,
+then the  unemployment agency offers the worker benefits that
+decline as the duration of unemployment grows.
+\medskip
+\noindent{\bf c.}  Now alter assumption (2) so that $\pi(a) = \pi(0)$.
+Do benefits still decline with increases in the duration of unemployment?
+Explain.
+%\vfil\eject
+\medskip
+\noindent{\bf Subproblem B}
+\medskip
+\noindent {\bf d.}  Now assume that the unemployment insurance agency
+can tax the worker after he has found a job, so that his continuation
+utility upon entering a state of employment is
+${u(w-\tau) \over 1 -\beta}$, where $\tau$ is a tax that is permitted
+to depend on the duration of the unemployment spell.
+Defining $V$ as above, formulate the Bellman equation for $C(V)$.
+\medskip
+\noindent{\bf e.}  Show how the tax $\tau$ responds to the duration
+of unemployment.
+
+
+\medskip
+\noindent {\it Exercise \the\chapternum.6}
+\quad { \bf Partially observed search effort}
+\medskip
+\noindent
+
+\noindent Consider the following modification of a model of Hopenhayn and Nicolini.  An insurance agency wants to insure an infinitely lived unemployed
+worker against the risk that he will not find a job.  With probability $p(a)$, an unemployed worker who searches with effort $a$ this period
+will find a job that earns wage $w$ in consumption units per period. That job will start next period, last forever, and the worker will never quit it.    With probability $1-p(a)$ he will find himself unemployed again at the beginning of next period.  We assume that $p(a)$ is an increasing and strictly concave and twice differentiable function of $a$ with $p(a) \in [0,1]$
+for $a\geq 0$ and $p(0)=0$.  The insurance agency is the worker's only source of consumption (there is no storage or saving available to the worker).
+The worker values consumption according to a twice continuously differentiable and strictly concave utility function $u(c)$ where $u(0)$ is finite.
+While unemployed, the worker's utility is $u(c) -a$; when he is employed it is $u(w)$ (no effort $a$ need be applied when he is working).
+
+
+With exogenous probability $d \in (0,1)$ the insurance agency observes the search effort  of a worker who searched last period but did not find a job.
+With probability $1-d$, the insurance agency  does not observe the last-period search intensity of an unemployed worker who was not successful in finding
+a job  period.
+
+
+Let $V$ be the expected discounted utility of an unemployed worker who is searching for work this period.  Let $C(V)$ be the minimum cost to the unemployment
+insurance agency of delivering $V$ to the unemployed worker.
+
+\medskip
+\noindent{\bf a.}  Formulate a Bellman equation for $C(V)$.
+
+\medskip
+\noindent{\bf b.}  Get as far as you can in analyzing how the unemployment compensation contract offered to the worker depends on the duration
+of unemployment and the history of observed search efforts that are detected by the UI agency.
+
+\medskip
+
+\noindent{\it Hint:} you might want to allow the continuation value when unemployed to depend on last period's search effort when it is observed.
+
+

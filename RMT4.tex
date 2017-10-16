@@ -1,0 +1,477 @@
+% revised by Francois, May 29, 2012
+\input texsis
+\book
+\input index
+\input robustin
+\input grafinp3  %  added for the macro book
+%\input psfig     % added for the macro book
+\SetDate   %  Francois' patch, aug 6, 2001
+\ReadAUX
+\input epsf.tex
+
+%\input inputs2
+\showsectIDtrue
+
+
+
+\input txssectsblack2
+
+
+%\hsize=5.75in
+%\vsize=7.5in
+%\baselineskip=20pt
+%\hoffset=0.375in
+%\voffset=.3in
+% the above looks good;
+
+%%%%%%%  settings for original version -- looked pretty good
+%\hsize=4.25in
+%\vsize=7.1in
+%\baselineskip=20pt  % original was 20pt
+%\hoffset=0.505in
+%\voffset=1in
+%%%% end of original settings
+
+%%%%%%%%%%  values from MIT book second printing:
+%%  The following are Francois's December settings
+%\overfullrule=0pt\mathsurround=1pt\hsize=11truecm %
+%%
+%\vsize=17.75truecm\hoffset=1.1truein \voffset=70pt %\voffset=40pt
+%%
+
+%%  The following are Tom's December settings
+%\overfullrule=0pt\mathsurround=1pt\hsize=13truecm %
+%%
+%\vsize=17.75truecm\hoffset=.55truein \voffset=70pt %\voffset=40pt
+%%
+
+%  Some new settings following 12 March 04 discussion with FRancois
+\overfullrule=0pt\mathsurround=1pt\hsize=12.15truecm %
+%
+\vsize=17.75truecm\hoffset=.735truein \voffset=72pt %\voffset=40pt
+%
+
+
+%
+%\def\Bigskip{\vskip\Bigskipamount}
+%\baselineskip=12pt
+%
+%\overfullrule=0pt
+%\parindent=.5truecm
+%
+%\def\small{\baselineskip=9pt
+%  \setbox\strutbox=\hbox{\vrule height7.5pt depth2.5pt
+%width0pt}}
+
+%%%%%%%%%%%%%  end of values from MIT press book
+
+\Contentstrue
+\elevenpoint
+\tenpoint
+\normalbaselineskip=14pt
+\overfullrule=0pt
+
+\singlespaced
+
+% general macros for mathematics
+
+\def\sci#1#2{$ {#1} \times 10^{{#2}}$}
+\def\bmatrix#1{\left[ \matrix{#1} \right]}
+\def\vmatrix#1{\left| \matrix{#1} \right|}
+\def\abs#1{\left| #1 \right|}
+
+\def\argmax{\mathop{\rm arg\,max}}
+
+\def\prob{{\rm prob}}
+
+\def\a{\alpha}
+\def\be{{\beta}}
+\def\ga{{\gamma}}
+\def\de{{\delta}}
+\def\eps{{\epsilon}}
+\def\ze{{\zeta}}
+\def\th{{\theta}}
+\def\ka{{\kappa}}
+\def\la{\lambda}
+\def\si{{\sigma}}
+\def\ups{{\upsilon}}
+\def\om{{\omega}}
+\def\G{{\Gamma}}
+\def\D{{\Delta}}
+\def\Th{{\Theta}}
+\def\La{{\Lambda}}
+\def\Si{{\Sigma}}
+\def\Ups{{\Upsilon}}
+\def\Om{{\Omega}}
+\def\epb{{\overline\epsilon}}
+\def\chib{{\overline\chi}}
+\def\psib{{\overline\psi}}
+\def\mnrst{{\mu\nu\rho\sigma\tau}}
+\def\munu{{\mu\nu}}
+\def\lbar{{\mathchar'26\mskip-9mu\lambda}}
+
+
+% various math macros
+
+\def\lim{\mathop{\hbox{lim}}}
+\def\max{\mathop{\hbox{max}}}
+\def\min{\mathop{\hbox{min}}}
+\def\sup{\mathop{\hbox{sup}}}
+\def\inf{\mathop{\hbox{inf}}}
+\def\limsup{\mathop{\hbox{lim\,sup}}}
+\def\liminf{\mathop{\hbox{lim\,inf}}}
+\def\log{\mathop{\hbox{log}}}
+\def\ln{\mathop{\hbox{ln}}}
+\def\qed{\hskip6pt\vrule width4pt height8pt depth1.5pt}
+
+\def\ne{\mathrel{{/\hbox{\hglue-5.6pt =}}}}
+\def\nex{\hskip.5pt\mathrel{\scriptstyle
+{/\hbox{\hglue-4.1pt \Psix=}}}}
+
+
+
+%Blackboard Bold R
+\def\bbR{{I\kern-0.3em R}}
+
+
+\def\sq{{\vbox {\hrule height 0.6pt\hbox{\vrule width 0.6pt\hskip 3pt
+\vbox{\vskip 6pt}\hskip 3pt \vrule width 0.6pt}\hrule height 0.6pt}}}
+
+\def\pp{{\prime\prime}}
+
+\def\12{{1\over2}}
+
+
+\def\part{\partial}
+% a macro to help  bibtex
+
+% define some sc fonts
+
+% family sc: small capitals [9]
+%\newfam\scfam
+%\font\tensc=cmcsc10
+%\font\ninesc=cmcsc9
+%\font\eightsc=cmcsc8
+%\font\sevensc=cmcsc8 at 7pt
+%\font\sixsc=cmcsc8 at 6pt
+
+% fix the following
+%\font\sc=cmbsy10 at 11pt
+ \font\elevensc=cmcsc10 at 8.95pt
+\def\mbox#1{\leavevmode\hbox{#1}}
+
+% define special section macro
+%% FIX LATER -sc doesn't work
+%\def\specsec#1{\medskip{\elevensc \noindent{#1}}}
+\def\specsec#1{\medskip{\sc \noindent{#1}}}
+
+\def\bbR{{I\kern-0.3em R}}
+
+
+
+\hfuzz=10pt
+
+% setting for TXS macros
+\NoTrailingSpaces
+\hyphenation{seign-ior-age seign-or-age}
+
+%\def\beginsubsection#1\par{\medbreak\noindent{\it #1}\medskip\par}
+\def\ellipsis{\hskip.33em.\hskip.33em.\hskip.33em.\hskip.33em}
+
+
+
+%%% Francois' indexing macros
+
+
+% If you want more than one index I can't guess how you will want to
+% use them, so all I can do is tell you how to use the macros above to
+% create another (or several other) additional indices:
+%
+% 1) Create another output file and open it, with something like:
+%
+       \newwrite\authorindexout
+       \immediate\openout\authorindexout=authblk.idx
+%
+% 2) Define a macro to make the entry to the second index, following
+%    the pattern of \index and \@index above, but using the other index
+%    file (but don't use @ in a macro name).  For example:
+%
+       \def\auth{\begingroup     % special characters letters
+           \catcode`@=11 \catcode`"=11 \catcode`!=11 \catcode`|=11
+               \catcode`-=11
+           \Oindex}
+
+       \def\Oindex#1{\endgroup    % special characters return
+              \indexwrite\authorindexout{\indexentry{#1}}}
+
+%    Then saying \auth{word} will make an entry into the alternate
+%    index for ``word''.
+
+
+%%  make index for matlab using the above procedure
+
+
+
+       \newwrite\matlabindexout
+       \immediate\openout\matlabindexout=matlblk.idx
+%
+       \def\mtlb{\begingroup     % special characters letters
+           \catcode`@=11 \catcode`"=11 \catcode`!=11 \catcode`|=11
+               \catcode`-=11
+           \0index}
+
+       \def\0index#1{\endgroup    % special characters return
+              \indexwrite\matlabindexout{\indexentry{#1}}}
+
+%    Then saying \mtlb{word} will make an entry into the alternate
+%    index for ``word''.
+
+
+
+
+
+%%%%% (2)  headline macros
+
+% modify TeXsis macros to have the chapter name on even pages
+% and section name on odd pages
+
+%%% NOTE: THE FOLLOWING MACRO BY FRANCOIS "ALMOST" WORKS
+
+% define a parallel set of macros for the left headline
+%\def\setLHeadline#1{\@setLHeadline#1\n\endlist}   % set the \HeadText
+%\def\@setLHeadline#1\n#2\endlist{% #1 is everything up to first \n
+%      \global\edef\LHeadText{#1}%                % No: just use #1
+%}
+%
+%
+%\newif\ifrightnom   \rightnomtrue
+%\def\HeadLine{%
+%   \edef\firstm{{\XA\iffalse\firstmark\fi}}%    % chapternumber of \firstmark
+%   \edef\topm{{\XA\iffalse\topmark\fi}}%        % chapternumber of \topmark
+%%   \ifRunningHeads                              % print running heads?
+%%     \def\He@dText{\HeadText}%                  % define head text
+%%   \else\def\He@dText{\relax}\fi                % or nothing
+%\ifnum\sectionnum=0\relax\def\LHeadText{\HeadText}% use chapter title
+%\else\setLHeadline{\SectionTitle}\fi%
+%   \ifbookpagenumbers                           % book-like numbering
+%      \ifodd\pageno\rightnomtrue                %   odd numbers right
+%      \else\rightnomfalse\fi                    %   even numbers left
+%   \else\rightnomtrue\fi                        % or always right
+%   \ifx\topm\firstm                             % Marks the same?
+%     \ifrightnom                                % number on right?
+%{\no\headlinefont\LHeadText\hss\llap{\PageNumber}}% display section title (FRV)
+%     \else%                                      % or on left
+%{\no\rlap{\PageNumber}\hss\headlinefont \ifnum\chapternum=0\relax
+%\else
+%  \ifshowchaptID\the\chapternum:\
+%\fi%
+%\fi%
+%\HeadText}%%   display chapter title (FRV)
+%      \fi%                                       % for \ifrightnom
+%   \else \hfill \fi}%                           % NOTHING ON FIRST PAGE
+%
+%% this is \FootLine from TXShead.tex
+%\def\FootLine{%
+%   \edef\firstm{%                               %
+%      {\expandafter\iffalse\firstmark\fi}}%     % get first mark
+%   \edef\topm{%                                 %
+%      {\expandafter\iffalse\topmark\fi}}%       % and top mark
+%   \ifx\topm\firstm \hss                        % if not page 1, nothing
+%    \else {\hss \FootText \hss} \fi}            % print \FootText if page 1
+%
+%   \headline={\HeadLine}                        % TeXsis running headlines
+%   \footline={\FootLine}                        %    and footlines
+%
+%   \RunningHeadstrue                    % running headlines
+%   \def\FootText{\foliofont--\ \PageNumber\ --}% % for 1st page of chapter
+%   \bookpagenumbers                     % page numbers for book binding
+
+
+%%%% end of Francois' indexing macros
+
+\hyphenation{Na-ra-ya-na}
+\nopagenumbers
+\newpage
+\input blacktit3
+\newpage
+\input copywrit6
+\vfil\eject
+\pageno=-5
+\pagenumbers\showchaptIDfalse
+\Contentsfalse % this must precede \chapter{Contents} !!
+\chapter{Contents}
+\chapternum=0  % this prevents a chapter number in the running header
+\showchaptIDtrue % show the chapter numbers in the TOC itself
+\Contents\showchaptIDfalse\chapternum=1
+%\vfil\supereject
+
+%\chapter{List of Figures}
+%\Contentstrue\addTOC{0}{List of Figures}{\folio}\Contentsfalse
+%\ListFigures
+%\vfil\supereject
+
+%\chapter{List of Tables}
+%\Contentstrue\addTOC{0}{List of Tables}{\folio}\Contentsfalse
+%\ListTables
+%\vfil\eject
+
+\chapter{Acknowledgments}
+% add TOC entry by hand
+\Contentstrue\addTOC{0}{Acknowledgements}{\folio}\Contentsfalse
+\input blackack
+\vfil\eject
+
+\chapter{Preface to the fourth edition}
+% add TOC entry by hand
+\Contentstrue\addTOC{0}{Preface to the fourth edition}{\folio}\Contentsfalse
+\input blackin
+\vfil\eject
+\pageno=0
+\Contentstrue  % turn contents on from now on
+\makepart{Part I}{Imperialism of Recursive Methods}
+%\hbox{}\newpage
+%\hbox{}\nopagenumbers\newpage\pagenumbers
+\showchaptIDtrue
+%\nopagenumbers\newpage\pagenumbers
+%\advance\pageno by 1
+\chapternum=0  % reset chapter numbers
+
+%\showchaptIDfalse
+%\vfil\eject
+%\input blankpage  % added by Tom May 25, 2012  UNSUCCESSFUL
+\input black0   % \use{overview}
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+
+
+\medskip
+\TOCwrite{\vfil\eject}
+\makepart{Part II}{Tools}
+%\pageno=666
+%\advance\pageno by -1
+\input black1_2017   % %\use{timeseries} nontechnical overview
+\input black2  % \use{dynamicdp1} overview of dynamic programming
+\input black3   % \use{practical} practical dynamic programming
+\input black4  % \use{dplinear}
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\input black5_2010  % \use{seach1}
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\makepart{Part III}{Competitive Equilibria and Applications}
+%\advance\pageno by -1
+\input black6  %\use{recurpe}
+%\input black7before  %\use{recurge}
+%\input black7_new%\use{recurge}
+\input black7_2016  %\use{recurge}
+\input black8  %\use{ogmodels}
+\input black9  %\use{ricardian}
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\advance\pageno by -1
+\input blackpro_5_2012 %\use{linappro}  -- this is experimental, blackpro_4 is the original
+%\input black_keynes
+\vfil\eject
+\vfil\eject
+%\nopagenumbers
+\hbox{}\newpage\pagenumbers
+\nopagenumbers\hbox{}\newpage\pagenumbers
+
+
+\input bgrowth2  %\use{growth1}
+%\vfil\eject
+%\nopagenumbers\hbox{}\newpage\pagenumbers
+%\TOCwrite{\vfil\eject}
+\input black10_part1 %\use{assetpricing1}
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\input black10_part2_new_ver3 %\use{assetpricing2}
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\input black11  %\use{growth}
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\input black12_9  %\use{optax}
+\vfil\eject
+\makepart{Part IV}{The Savings Problem and
+Bewley Models}
+%\advance\pageno by -1
+
+\input black13 %\use{selfinsure}
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\input black14 %\use{incomplete}
+%\vfil\eject
+\vfil\eject
+%\nopagenumbers\hbox{}\newpage\pagenumbers
+\makepart{Part V}{Recursive Contracts}
+%advance\pageno by -1
+\input blkstack_2 %\use{stackel}
+\input opt_tax_recur %\use{optaxrecur}
+\input black15 %\use{socialinsurance}
+\input blk15closed  %\use{socialinsurance2}
+\input blinsur %\use{uninsur1}
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\input black16_2010 %\use{credible}
+%\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\input black_chang %\use{chang}
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\input blktrade  %\use{wldtrade}
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\makepart{Part VI}{Classical Monetary and Labor Economics}
+
+%\advance\pageno by -1
+\input black17_tom_4 %\use{fiscalmonetary}
+\input black18  %\use{townsend}
+\input black19_2011_Dec  %\use{search2}
+\input Matching_new_Tom_7 % \use{mechanics_matching}
+\vfil\eject
+%\input macrolaborI_tom_2  % \use{marcoLaborI}  -- new macro labor chapter
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\input macrolaborII % \use{macrolaborII}
+
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\makepart{Part VII}{Technical Appendices}
+%\advance\pageno by -1
+\input black20  %\use{functional}
+\input black21_a  %\use{lincontrol}
+\vfil\eject
+\vfil\eject
+% end material
+\showchaptIDfalse
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\chapter{References}
+\input blackref
+\vfil\supereject
+\vfil\eject
+\nopagenumbers\hbox{}\newpage\pagenumbers
+\showchaptIDfalse
+\SetDoubleColumns{0.47\hsize}
+\doublecolumns
+\chapter{Subject Index}
+\setHeadline{Subject Index}
+{\eightpoint
+\input rmt4.ind
+}
+\vfil\supereject
+\chapter{Author Index}
+\setHeadline{Author Index}
+{\eightpoint
+\input authblk.ind
+}
+\vfil\supereject
+\chapter{Matlab Index}
+\setHeadline{Matlab Index}
+{\eightpoint
+ \input matlblk.ind
+ }
+% \enddoublecolumns
+\vfil\supereject
+
+\bye

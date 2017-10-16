@@ -1,0 +1,2323 @@
+
+\input grafinp3
+%\input grafinput8
+\input psfig
+%\eqnotracetrue
+
+\input psfig
+
+\def\toone{{t+1}}
+\def\ttwo{{t+2}}
+\def\tthree{{t+3}}
+\def\Tone{{T+1}}
+\def\TTT{{T-1}}
+\def\rtr{{\rm tr}}
+\def\tone{{t+1}}
+
+%\showchaptIDtrue
+%\def\@chaptID{8.}
+
+%\hbox{}
+\footnum=0
+
+  \auth{Samuelson, Paul}%
+\chapter{Overlapping Generations\label{ogmodels}}
+
+This chapter describes the pure exchange overlapping generations
+model of Paul Samuelson (1958).
+ We begin with an
+abstract presentation  that treats the overlapping
+generations model as a special case of the chapter \use{recurge}
+general equilibrium model with complete markets and all
+trades occurring at time $0$.
+A peculiar type of heterogeneity across
+agents distinguishes the model.
+Each individual
+cares about consumption only at  two adjacent dates, and the set of
+individuals who care about consumption at a particular date
+includes some who care about consumption one period earlier and others
+who care about consumption one period later.   We shall study
+how  this
+special preference and demographic  pattern affects some
+of the outcomes of the chapter \use{recurge} model.
+
+  While it  helps to reveal the fundamental structure, allowing
+complete markets with time $0$ trading in
+an overlapping generations model strains
+credulity.
+The formalism envisions that equilibrium price and quantity sequences
+are set at time $0$,
+before the participants who are to execute the trades have been born.
+  For that reason, most applied work with the overlapping generations
+model adopts a sequential-trading arrangement, like
+the sequential trade in Arrow securities described   in chapter
+\use{recurge}.
+The sequential-trading arrangement has all trades
+executed by agents living in the here and now.
+Nevertheless, equilibrium quantities and intertemporal prices
+are  equivalent between these  two trading arrangements.
+Therefore, analytical results found in one
+setting transfer to the other.
+
+
+Later in the chapter,
+  we use versions of the model with
+sequential trading  to tell how the overlapping
+generations model provides  a framework for thinking about equilibria
+with government debt and/or valued fiat currency, intergenerational
+transfers, and fiscal policy.
+
+\section{Endowments and preferences}
+
+Time is discrete, starts at $t=1$,
+and  lasts forever, so $t=1, 2, \ldots$. There is an infinity of agents
+named $i=0, 1, \ldots$.  We can also regard $i$ as agent $i$'s period of
+birth.
+  There is a single good at each date. The good is not storable.  There is no uncertainty.
+  Each agent has a
+strictly concave, twice  continuously
+differentiable, one-period utility function $u(c)$, which
+is strictly increasing in consumption  $c$ of the one good.
+  Agent $i$ consumes
+a vector $c^i = \{c_t^i\}_{t=1}^\infty$ and has the
+special utility function
+$$\EQNalign{U^i(c^i) & = u(c_i^i) + u(c_{i+1}^i), \quad i \geq 1,
+ \EQN olg1;a \cr
+    U^0(c^0) &= u(c_1^0). \EQN olg1;b \cr} $$
+Notice that agent $i$ only wants goods dated $i$ and $i+1$.
+The interpretation of equations \Ep{olg1} is that agent $i$ lives during
+periods $i$ and $i+1$ and wants to consume only when he is alive.
+
+Each household has an endowment sequence $y^i$ satisfying
+$y_i^i \geq 0, y^i_{i+1} \geq 0, y_t^i = 0 \ \forall t \neq i \ {\rm or}
+\ i+1$.
+Thus, households are endowed with goods only when
+they are alive.
+
+
+\section{Time $0$ trading}
+
+We use the definition of competitive equilibrium from chapter \use{recurge}.
+Thus, we temporarily suspend disbelief and proceed in the style
+of Debreu (1959) with time $0$ trading.
+\auth{Debreu, Gerard}%
+Specifically, we imagine that there is a ``clearinghouse'' at
+time $0$ that posts prices and, at those prices, aggregates demands and supplies for goods in different periods.
+An equilibrium price vector makes markets for  all
+periods $t\geq 2$ clear,  but there  may be
+excess supply in period $1$; that is, the clearinghouse might
+end up with goods left over in period $1$. Any such excess supply of
+goods in period $1$ can be given to the initial old
+generation without any effects on the equilibrium price vector,
+since those old  agents optimally consume all
+their wealth in period $1$ and do not want to buy  goods
+in future periods. The reason for our special treatment of
+period $1$  will become clear as we proceed.
+
+
+Thus,
+at date $0$, there are complete markets  in time $t$ consumption goods
+with date $0$ price $q_t^0$.
+A household's budget constraint is
+$$ \sum_{t=1}^\infty q_t^0 c_t^i \leq \sum_{t=1}^\infty q_t^0 y_t^i .
+   \EQN olgbud $$
+Letting  $\mu^i$ be a Lagrange multiplier attached to  consumer $i$'s budget constraint,
+the consumer's first-order conditions
+are
+$$\EQNalign{ \mu^i q_i^0 &= u'(c^i_i), \EQN olg2;a  \cr
+             \mu^i q_{i+1}^0 & = u'(c^i_{i+1}), \EQN olg2;b \cr
+c_t^i & = 0  \ {\rm if} \ t \notin \{i, i+1\} .\EQN olg2;c \cr} $$
+
+ Evidently an allocation is feasible if for all $t \geq 1$,
+$$ c_t^t + c_t^{t-1} \leq y_t^t + y_t^{t-1}. \EQN olg3 $$
+
+\medskip
+\noindent{\sc Definition:} An allocation is {\it stationary} if
+$c^i_{i+1} = c_o, c^i_i = c_y \ \forall i \geq 1$.
+\medskip
+\noindent Here the subscript $o$ denotes old and $y$ denotes young.
+Note that we do not require that $c^0_1 = c_o$.
+We call an equilibrium with a stationary allocation a
+{\it stationary equilibrium}.
+
+\subsection{Example equilibria}
+
+Let $\epsilon \in (0, .5)$.
+The endowments are
+$$ \eqalign{ y_i^i  & = 1 - \epsilon,  \ \forall i \geq 1, \cr
+              y_{i+1}^i & = \epsilon, \ \forall i \geq 0, \cr
+              y_t^i &=  0 \ {\rm otherwise.} \cr} \EQN example1  $$
+
+This economy has many equilibria.    We describe two stationary
+equilibria now, and later we shall describe some
+nonstationary equilibria.  We can use a \idx{guess-and-verify method} to
+confirm the following two equilibria.
+\index{equilibrium!multiple}
+\medskip
+\item{1.}  Equilibrium H: a high-interest-rate
+equilibrium.  Set $q_t^0 =1 \ \forall t \geq 1$ and
+$c^i_i = c^i_{i+1} = .5$ for all $i \geq 1$ and $c^0_1 = \epsilon$.
+   To verify
+that this is an equilibrium, notice that
+each household's first-order conditions are satisfied
+and that the allocation is feasible. Extensive
+intergenerational trade  occurs
+at time $0$ at the equilibrium price vector
+$q_t^0$.   Constraint \Ep{olg3} holds with  equality
+for all $t \geq 2$ but with strict inequality for $t=1$.
+Some of the $t=1$ consumption good is left unconsumed.
+
+\medskip
+\item{2.}  Equilibrium L: a low-interest-rate
+equilibrium.  Set $q_1^0 = 1$, ${q^0_{t+1}  \over
+q^0_t} = {u'(\epsilon) \over u'(1 - \epsilon)} = \alpha > 1$.
+Set $c^i_t = y_t^i$ for all $i, t$.   This equilibrium is autarkic,
+with prices being set to eradicate all trade.
+
+\medskip
+\subsection{Relation to welfare theorems}
+
+As we shall explain in more detail later, equilibrium H Pareto dominates
+equilibrium L.  In equilibrium H every generation after the initial
+old one is better off and no generation is worse off than in equilibrium
+L.
+%As we shall explain more below,
+%the equilibrium  1 Pareto dominates equilibrium 2.  Every generation
+%after the initial old one is better off in the second equilibrium,
+%and no generation is worse off.
+The equilibrium H allocation
+is strange because some of the time $1$ good is not consumed, leaving
+ room to set up a giveaway program to the initial
+old that makes them better off and costs subsequent generations
+nothing.  We shall see how the institution of  either perpetual government debt or of fiat money
+can accomplish this purpose.\NFootnote{See Karl Shell (1971) for an
+investigation that characterizes why some competitive equilibria
+in overlapping generations models fail to be Pareto optimal. Shell
+cites earlier studies that had sought reasons why the welfare
+theorems seem to fail in the overlapping generations structure.}
+\auth{Shell, Karl}
+
+  Equilibrium L is a competitive equilibrium that evidently fails to satisfy
+  one of the assumptions needed to deliver the
+   first fundamental theorem of welfare economics, which identifies conditions under which
+ a competitive equilibrium allocation is Pareto
+optimal.\NFootnote{See Mas-Colell, Whinston, and Green (1995) and Debreu (1954).
+\auth{Mas-Colell, Andreu} \auth{Whinston, Michael D.} \auth{Green, Jerry R.}%
+\auth{Debreu, Gerard}
+}
+  The condition of the theorem that is violated by  equilibrium L
+is the assumption that the value of the aggregate endowment
+at the equilibrium prices is finite.\NFootnote{Note
+that if the horizon of the economy were finite, then the counterpart of
+equilibrium H would not exist and the  allocation of the
+counterpart of equilibrium L would be Pareto optimal.}
+
+\subsection{Nonstationary equilibria}
+
+Our example economy has more  equilibria.
+To construct more equilibria, we summarize preferences and consumption
+decisions in terms
+of an offer curve.   We describe a graphical apparatus proposed
+by David Gale (1973) and used  to good advantage by
+William Brock (1990).
+\auth{Gale, David}%
+\auth{Brock, William A.}%
+
+\medskip
+\noindent{\sc Definition:}  The household's {\it offer curve} is
+the locus of $(c_i^i, c^i_{i+1})$ that solves
+$$ \max_{\{c_i^i, c^i_{i+1}\}} U(c^i)  $$
+subject to
+$$ c_i^i + \alpha_i c_{i+1}^i \leq y_i^i + \alpha_i y^i_{i+1} .$$
+Here $\alpha_i \equiv {q^0_{i+1}\over q^0_i } $,
+ the reciprocal
+of the one-period gross rate of return from period $i$ to $i+1$, is treated
+as a parameter.
+\medskip
+Evidently,
+ the offer curve solves the following pair of equations:
+$$\EQNalign{c^i_i + \alpha_i c^i_{i+1} & = y_i^i + \alpha_i y^i_{i+1} \EQN offer1;a
+            \cr
+            {u'(c_{i+1}^i) \over u'(c^i_i)} & = \alpha_i  \EQN offer1;b  \cr}$$
+for $\alpha_i > 0$.
+We denote the offer curve   by
+$$ \psi(c^i_i, c^i_{i+1}) = 0 .$$
+
+The graphical construction of the offer curve is illustrated in Figure \Fg{graph12f}. %Figure 8.1.
+We trace it out by varying $\alpha_i$ in the household's problem and
+reading tangency points between the household's indifference
+curve and the budget line.  The resulting locus depends
+on the endowment vector and  lies above the indifference curve through
+the endowment vector.  By construction, the following property
+is also true:  at the intersection between the offer curve and a straight
+line through the endowment point, the straight line is tangent to an
+indifference curve.\NFootnote{Given our assumptions on preferences and endowments,
+the conscientious reader will note that  Figure \Fg{graph12f} %Figure 8.1
+appears  distorted because  the offer curve really ought to intersect the feasibility line
+along the 45 degree line  with $c^t_t=c^t_{t+1}$, i.e., at the allocation affiliated with equilibrium H above.}
+
+%It depends implicitly on the endowment. We trace it out by
+%varying $\alpha$ in the household's problem and reading
+%tangency points between the household's indifference curve
+%and the budget line. The offer curve lies
+%above the indifference curve through the initial endowment (because
+%trade is voluntary).  And once again, by construction,
+%an indifference curve through the
+%intersection of the offer curve and
+%a straight line between   a point on the offer curve and the endowment
+%must be tangent to that line (this follows from \Ep{offer1}).
+%  See figure 1.
+
+%%%%%%
+%$$
+%\grafone{graph12.eps,height=2.5in}{{\bf Figure 8.1} The offer curve and
+%feasibility line.}
+%$$
+%%%%%%%
+
+\midfigure{graph12f}
+\centerline{\epsfxsize=3truein\epsffile{graph12.eps}}
+\caption{The offer curve and feasibility line.}
+\infiglist{graf12f}
+\endfigure
+
+\medskip \auth{Gale, David}%
+Following Gale (1973),
+ we can use the offer curve and
+a straight line depicting feasibility in the $(c^i_i, c^{i-1}_i)$ plane
+to construct a machine for computing equilibrium allocations and prices.
+In particular, we  can use the following pair of difference equations to
+solve for an equilibrium allocation.  For $i \geq 1$, the equations
+are\NFootnote{By imposing equation \Ep{equilibr1;b} with
+equality, we are implicitly possibly including a giveaway program
+to the initial old.}
+$$\EQNalign{  \psi(c^i_i, c^i_{i+1}) & = 0, \EQN equilib1;a \cr
+              c^i_i + c^{i-1}_i & = y^i_i + y^{i-1}_i. \EQN equilibr1;b \cr}$$
+We take $c_1^1$ as an initial condition.
+After the allocation has been computed, the equilibrium price
+system can be computed
+from
+$$ q^0_i = u'(c^i_i) $$
+for all $i \geq 1$.
+
+
+\subsection{Computing equilibria}
+
+
+\noindent{\it Example 1:} \quad Gale's equilibrium computation machine:
+%  Figure 8.2 is David Gale's (1973) machine for
+%computing an equilibrium.
+%It works as follows.
+A procedure for constructing an equilibrium is illustrated
+in Figure \Fg{graph22f}, %Figure 8.2,
+which reproduces a version of a graph
+of David Gale (1973).
+  Start with
+a proposed $c_1^1$, a time $1$ allocation to the initial young.
+Then use the feasibility line to  find the {\it maximal\/}
+feasible value for $c_0^1$, the time $1$  allocation to    the
+initial old.  In the Arrow-Debreu equilibrium, the allocation to
+the initial old will be less than this maximal value, so that some
+of the time $1$ good is thrown away.  The reason for this is that
+ the budget constraint of the initial old, $q_1^0( c^0_1 - y^0_1) \leq 0$, implies
+that $c^0_1 = y^0_1$.\NFootnote{Soon we shall discuss another market structure that
+avoids throwing away any of the initial endowment by augmenting the endowment of the
+initial old with a particular zero-dividend infinitely durable asset.}
+The candidate time $1$  allocation is thus feasible, but  the
+time $1$  young will choose $c_1^1$ only if the price $\alpha_1$ is such that
+$(c_2^1, c_1^1)$ lies
+on the offer curve.      Therefore, we choose $c_2^1$ from
+the point on the offer curve that cuts a vertical
+line through  $c_1^1$.   Then we proceed to find $c_2^2$ from
+the intersection of a horizontal line through $c_2^1$
+and the  feasibility line.   We continue recursively in this way,
+choosing $c_i^i$ as the intersection of the feasibility line
+with a horizontal line through $c^{i-1}_i$, then
+choosing $c_{i+1}^i$ as the intersection of a vertical
+line through $c_i^i$   and the offer curve.    We can
+construct a sequence of $\alpha_i$'s from the slope
+of a straight line through the endowment point
+and the sequence of $(c_i^i, c^i_{i+1})$  pairs that
+lie on the offer curve.
+
+ If the offer curve has the shape drawn in Figure \Fg{graph22f}, any %Figure 8.2, any
+$c_1^1$ between the upper and lower intersections
+of the offer curve and the feasibility line is
+an equilibrium setting of $c_1^1$. Each such $c_1^1$ is
+associated with a distinct allocation and $\alpha_i$ sequence, all but
+one of them converging to the {\it low\/}-interest-rate
+ stationary equilibrium allocation and interest rate.
+
+
+%%%%%%%%
+%$$
+%\grafone{graph22.eps,height=2.5in}{{\bf Figure 8.2} A nonstationary
+%equilibrium allocation.}
+%$$
+%%%%%%
+
+\midfigure{graph22f}
+\centerline{\epsfxsize=3truein\epsffile{graph22.eps}}
+\caption{A nonstationary equilibrium allocation.}
+\infiglist{graph22f}
+\endfigure
+
+\medskip
+\noindent{\it Example 2:}  \quad  Endowment at $+\infty$:
+ Take the preference and endowment structure
+of the previous example and modify only one feature. Change the
+endowment of the initial old to be  $y^0_1 =\epsilon>0 $ {\it and}
+``$\delta=1-\epsilon >0$ units of consumption at $t=+\infty$,''
+by which we mean that we take
+$$ \sum_t q_t^0 y_t^0 = q_1^0 \epsilon + \delta \lim_{t\rightarrow
+   \infty} q_t^0.$$
+It is easy to verify that the only competitive equilibrium
+of the economy with this specification of endowments
+has $q_t^0 = 1 \ \forall t\geq 1$, and thus $\alpha_t = 1
+\ \forall t \geq 1$.   The reason is that
+  all  the ``low-interest-rate'' equilibria  that we computed in example 1
+would assign an infinite value to the endowment
+of the initial old.  Confronted with such prices, the
+initial old would demand unbounded consumption. That is
+not feasible.  Therefore, such a price system cannot be an equilibrium.
+
+\medskip
+\index{Lucas tree!in overlapping generations model}
+\noindent{\it Example 3:}\quad  A Lucas tree:
+  Take the preference and endowment
+structure to be the same as example 1 and modify only one feature.
+Endow the initial old with a ``Lucas tree,'' namely, a claim
+to a constant stream of $d >0$ units of consumption for each
+$t\geq 1$.\NFootnote{This is a version of an example of Brock (1990). The `Lucas tree' refers to a colorful interpretation
+of a dividend stream as `fruit' falling from a `tree' in a pure exchange economy studied by Lucas (1978). See chapter \use{assetpricing1}.}
+\auth{Brock, William A.}%
+\auth{Lucas, Robert E., Jr.}%
+   Thus, the budget constraint of the initial old person now becomes
+$$ q_1^0 c_1^0 = d \sum_{t=1}^\infty q_t^0 + q_1^0 y_1^0. $$
+The offer curve of each young agent remains as before,
+but now the feasibility line is
+$$ c_i^i + c^{i-1}_i =  y_i^i + y^{i-1}_i + d $$
+for all $i \geq 1$.  Note that young agents are  endowed
+below the feasibility line.  From Figure \Fg{graph32f}, %Figure 8.3,
+it seems that there
+are  two candidates for stationary equilibria, one
+with constant  $\alpha < 1$, another with constant $\alpha >1$.
+The one with $\alpha  <1$ is associated with the
+steeper budget line in Figure \Fg{graph32f}. %Figure 8.3.
+ However, the candidate stationary
+equilibrium with $ \alpha >1 $ cannot be an equilibrium for a reason
+similar to that encountered in example 2.  At the price
+system associated with an $\alpha >1$, the wealth of the initial
+old would be unbounded, which would prompt them to consume an
+unbounded amount, which is not feasible.
+This argument rules out not only the stationary $\alpha >1$ equilibrium
+but also all nonstationary candidate equilibria that converge to
+that constant $\alpha$.  Therefore, there is a unique equilibrium;
+it is stationary and has $\alpha < 1$.
+
+%%%%%%%
+%\topinsert{
+%$$
+%\grafone{graph32.eps,height=2.8in}{{\bf Figure 8.3} Unique equilibrium with
+%a fixed-dividend asset.}
+%$$
+%}\endinsert
+
+\midfigure{graph32f}
+\centerline{\epsfxsize=3truein\epsffile{graph32.eps}}
+\caption{Unique equilibrium with a fixed-dividend asset.}
+\infiglist{graph32f}
+\endfigure
+
+    If we interpret the gross rate of return on the
+tree as $\alpha^{-1} = {p + d  \over p}$, where $p = \sum_{t=1}^\infty
+q_t^0 d$, we can compute that $p = {d \over R-1}$ where
+$R = \alpha^{-1}$.  Here $p$ is the price of the
+Lucas tree.
+
+    In terms of the logarithmic preference example 5 below, the difference equation
+\Ep{alphadiff1} becomes modified to
+$$ \alpha_i = {1 + 2d \over \epsilon} - {\epsilon^{-1} -1 \over \alpha_{i-1}}.
+    \EQN alphadiff2 $$
+
+\medskip
+\noindent{\it Example 4:} \ \ Government expenditures:
+  Take the preferences and endowments
+to be as in example 1 again, but now alter the feasibility
+condition to be
+$$ c^i_i  + c^{i-1}_i + g = y^i_i + y^{i-1}_i $$
+for all $i \geq 1$ where $g > 0$ is a positive level of government
+purchases. The ``clearinghouse'' is now looking for an equilibrium
+price vector such that this feasibility constraint is satisfied.
+We assume that government purchases do not
+give utility.
+ The offer curve and the feasibility line look
+as   in Figure \Fg{graph42f}. %Figure 8.4.
+ Notice that the endowment point $(y^i_i, y^i_{i+1})$
+lies {\it outside} the relevant feasibility line.  Formally,
+this graph looks like example 3, but with a ``negative dividend $d$.''
+Now there are two stationary equilibria with $\alpha > 1$, and
+a continuum of equilibria converging to the higher $\alpha$ equilibrium
+(the one with the lower slope $\alpha^{-1}$ of the associated budget line).
+Equilibria with $\alpha >1$ cannot be ruled out
+by the argument in example 3 because no one's endowment sequence
+receives infinite value when $\alpha >1$.
+
+\index{deficit finance}
+
+  Later, we shall interpret this example as one in which a government
+finances a constant deficit either by money creation or by
+borrowing at a negative real net interest rate.  We shall discuss this and
+other examples in a setting with sequential trading.
+
+%%%%%%
+%\midinsert{
+%$$
+%\grafone{graph42.eps,height=2.5in}{{\bf Figure 8.4} Equilibria
+%with debt- or money-financed government deficit finance.}
+%$$
+%}\endinsert
+%%%%%%%%%%
+
+\midfigure{graph42f}
+\centerline{\epsfxsize=3truein\epsffile{graph42.eps}}
+\caption{Equilibria with debt- or money-financed government deficit finance.}
+\infiglist{graph42f}
+\endfigure
+
+\medskip
+\noindent{\it Example 5:} \quad Log utility:
+Suppose that $u(c) = \ln c$ and that the
+endowment is described by equations \Ep{example1}.   Then the offer curve
+is given by the recursive formulas $c^i_i = .5(1 - \epsilon + \alpha_i
+\epsilon), c^i_{i+1} = \alpha_i^{-1} c_i^i$.
+Let $\alpha_i$ be the gross rate of return facing   the young
+at $i$.   Feasibility at $i$ and the offer curves then
+imply
+$$ {1 \over 2 \alpha_{i-1}} (1 - \epsilon + \alpha_{i-1} \epsilon)
+    + .5 (1 -\epsilon + \alpha_i \epsilon) =1. \EQN alphadiff $$
+This implies the difference equation
+$$ \alpha_i = \epsilon^{-1} - {\epsilon^{-1} -1 \over \alpha_{i-1}}.
+  \EQN alphadiff1 $$
+See Figure  \Fg{graph22f}. %Figure 8.2.
+ An equilibrium $\alpha_i$ sequence must
+satisfy  equation \Ep{alphadiff} and have $\alpha_i > 0$ for
+all $i$.   Evidently, $\alpha_i =1$ for all $i\geq 1$ is
+an equilibrium $\alpha$ sequence.   So is any $\alpha_i$ sequence  satisfying
+equation \Ep{alphadiff} and $\alpha_1 \geq 1$; $\alpha_1 < 1$ will not work
+because equation
+\Ep{alphadiff} implies that the tail of $\{\alpha_i\}$ is an unbounded
+negative sequence.  The limiting value of $\alpha_i$ for any
+$\alpha_1 >1  $ is ${1-\epsilon \over \epsilon} = u'(\epsilon) /
+u'(1-\epsilon)$,
+which is the interest factor associated with the stationary
+autarkic equilibrium.   Notice that Figure \Fg{graph22f} suggests that   the stationary
+$\alpha_i=1$ equilibrium is not stable, while the autarkic equilibrium is.
+
+
+\section{Sequential trading}
+
+  We now alter the trading arrangement to bring them
+into line with standard presentations of the overlapping
+generations model.   We abandon the time $0$, complete markets
+ trading  arrangement and replace it with sequential
+trading in which a durable asset, either government debt or unbacked fiat money
+or claims on a Lucas tree, is passed from old to young.
+Some cross-generation transfers occur with voluntary exchanges,
+ while others are engineered by government
+tax and transfer programs.
+
+\section{Money}
+\auth{Samuelson, Paul}%
+ In  Samuelson's (1958)  version of the model, trading occurs
+ sequentially through a medium of exchange, an
+inconvertible (or ``fiat'') currency.
+   In Samuelson's model, preferences and  endowments
+are as described above, with one important additional component of the
+endowment.
+At date $t=1$, old agents are endowed in the aggregate
+with $M >0$ units of intrinsically worthless currency.
+No one has promised to redeem the currency for goods.
+The currency is  not ``backed'' by any government promise to redeem it
+for goods.  But as
+Samuelson showed, there  exists a   system of expectations that  makes
+unbacked currency be valued. Currency will be valued today if people expect it
+to be valued tomorrow.  Samuelson thus envisioned a situation in which
+currency is backed
+by expectations without promises.
+\index{expectations!without promises}
+
+For each date $t \geq 1$, young agents purchase
+$m^i_t$ units of currency at a price of $1/p_t$ units
+of the time $t$ consumption good.  Here $p_t \geq 0$ is
+the time $t$ price level. At each $t\geq 1$, each
+old agent exchanges his holdings of currency for the time $t$
+ consumption good.    The budget constraints of a young
+agent born in period $i \geq 1$ are
+$$ \EQNalign{ c_i^i + {m_i^i \over p_i} & \leq y_i^i, \EQN samuels1 \cr
+            c_{i+1}^i & \leq {m_i^i   \over p_{i+1} } + y^i_{i+1},
+                \EQN samuels2 \cr
+           m_i^i & \geq 0. \EQN samuels3 \cr} $$
+If $m_i^i \geq 0$, inequalities \Ep{samuels1} and \Ep{samuels2} imply
+$$ c_i^i + c^i_{i+1} \left( {p_{i+1} \over p_i}\right) \leq y_i^i + y^i_{i+1}
+          \left(  {p_{i+1} \over p_i}\right) . \EQN samuels4 $$
+Provided that we set
+$$ {p_{i+1} \over p_i} = \alpha_i = {q^0_{i+1} \over q^0_i },$$
+ this budget set is identical with equation \Ep{olgbud}.
+
+
+
+  We use  the following definitions:
+\medskip
+\noindent{\sc Definition:}  A nominal price  sequence is a positive
+sequence $\{p_i\}_{i \geq 1}$.
+\medskip
+\noindent{\sc Definition:}  An equilibrium with valued fiat money
+is a feasible allocation and a nominal price sequence with $p_t < +\infty$
+for all $t$
+ such
+that given the price sequence, the allocation solves the household's
+problem for each $i \geq 1$.
+\medskip
+
+
+\noindent The qualification that $p_t < + \infty$ for all $t$  means that
+fiat money is valued. Sometimes we call an equilibrium with valued fiat money
+a `monetary equilibrium'.  If ${\frac{1}{p_t}} = + \infty$, we sometimes  call it a `nonmonetary equilibrium'.
+
+
+
+\subsection{Computing  more equilibria with valued fiat currency}
+
+   Summarize the  household's optimal decisions with
+a saving function
+$$ y_i^i - c_i^i = s(\alpha_i; y_i^i, y_{i+1}^i). \EQN savfn $$
+Then the equilibrium conditions for the model are
+$$ \EQNalign{ {M  \over p_i} & = s(\alpha_i; y_i^i, y_{i+1}^i) \EQN sameq1;a
+                          \cr
+                \alpha_i & = {p_{i+1} \over p_i}, \EQN sameq1;b \cr }$$
+where it is understood that
+$ c_{i+1}^i = y_{i+1}^i + {M \over p_{i+1}} $.
+Equation \Ep{sameq1;a} states that at time $i$  the net of saving of generation $i$ (the expression on the right side) equals
+the net dissaving of generation $i-1$ (the expression on the left side).  To compute an equilibrium, we solve the difference equations
+\Ep{sameq1} for $\{p_i\}_{i=1}^\infty$,  then get the allocation
+from the household's budget constraints evaluated at equality
+at the equilibrium level of real balances.
+As an example, suppose that $u(c) = \ln(c)$,
+and that $(y^i_i, y^i_{i+1}) = (w_1, w_2)$ with $w_1 > w_2$.
+  The saving function is
+$ s(\alpha_i) = .5(w_1 - \alpha_i w_2)$.   Then
+equation \Ep{sameq1;a} becomes
+$$ .5(w_1 - w_2 {p_{t+1} \over p_t}) = {M \over p_t} $$
+or
+$$ p_t = 2 M/ w_1 + \left({w_2 \over    w_1}\right) p_{t+1} .\EQN samdiff1 $$
+This is a difference equation whose solutions
+with a positive price level are
+$$ p_t = {2 M \over w_1 (1 - {w_2 \over w_1})} + c
+  \left({w_1\over w_2}\right)^t, \EQN samsol1 $$
+for any scalar $c >0$.\NFootnote{See the appendix
+to chapter \use{timeseries}.}
+The solution for $c=0$ is the unique stationary solution.  The solutions
+with $c >0$ have uniformly higher price levels than the $c=0$ solution,
+and have the value of currency approaching  zero in the limit as $t \rightarrow +\infty$.
+
+\subsection{Equivalence of equilibria}
+   We briefly look back at the equilibria with
+time $0$ trading and note that  the equilibrium allocations are
+the same under time $0$ and sequential trading.
+Thus, the following proposition
+asserts that  with an adjustment to the endowment and the consumption allocated
+to the initial old, a competitive equilibrium
+allocation with time $0$ trading
+is an equilibrium  allocation in the fiat money economy (with
+sequential trading).
+\medskip
+\noindent{\sc Proposition:}  Let $\overline c^i$ denote a competitive equilibrium
+ allocation (with time $0$ trading)
+  and suppose that it satisfies
+$\overline c^1_1 <  y^1_1$.
+Then there exists
+an equilibrium (with sequential trading) of the monetary economy with
+allocation that satisfies $c^i_i = \overline c^i_i, c^i_{i+1} = \overline
+c^i_{i+1}$ for $i \geq 1$.
+
+\medskip
+\noindent{\sc Proof:}  Take the competitive equilibrium allocation
+and  price system and form $ \alpha_i = q^0_{i+1}/q^0_i$.  Set
+$m_i^i/p_i = y_i^i - \overline c_i^i$. Set $m_i^i = M$ for all $i \geq 1$,
+and   determine $p_1$ from ${M \over p_1} = y_1^1  - \overline c_1^1$.
+This last equation determines a positive initial price level
+$p_1$ provided that $y_1^1 - \overline c_1^1 >0$.  Determine
+subsequent price levels from $p_{i+1} = \alpha_i p_i$.
+Determine the allocation to the initial old from
+$c^0_1 = y^0_1 + {M \over p_1} = y^0_1 +(y_1^1 - \overline c_1^1)$.  \qed
+
+\medskip
+In the monetary equilibrium, time $t$ real balances
+equal the per capita {\it saving\/} of the young and the
+per capita {\it dissaving\/} of the old. To be a monetary equilibrium, both quantities must
+be positive for all $t \geq 1$.
+
+
+A converse of the proposition is true.
+\medskip
+\noindent{\sc Proposition:}  Let    $\overline c^i$ be an
+equilibrium allocation for the fiat money economy.    Then
+there is a competitive equilibrium with time $0$ trading
+with the same allocation, provided that the endowment
+of the initial old is augmented with an appropriate  transfer
+from the clearinghouse.
+\medskip
+
+To  verify this proposition, we have to construct
+the required transfer from the clearinghouse to the initial
+old.  Evidently, it is $y^1_1 - \overline c^1_1$.  We invite
+the reader to complete  the proof.
+
+
+
+%To  verify this proposition, we have to construct
+%the required transfer from the government to the initial
+%old.  Evidently, it is $B =  y^1_1 - \overline c^1_1$.   The
+%government awards  claims of this amount to the initial
+%old.  These claims are denominated in units of time $1$ consumption
+%goods, and are never to be redeemed.   By the mere act of issuing
+%these claims,
+%the government  creates wealth.      The government
+%never has to  tax   to give these claims value.
+%The market simply assigns positive  value  to them.
+%This seems mysterious, because the government bonds
+%are backed by no `fundamentals'.
+%  That government bonds are valued without backing is
+%closely connected to the fact that there is an
+%equilibrium of the economy without government debt
+%in which the equilibrium interest rate is below the
+%growth rate of population.
+%For now, we simply invite the
+%reader to verify that the proposition is true.
+%Later we'll shed more light on how such unbacked claims
+%acquire value.
+
+
+
+
+
+
+\section{Deficit finance}
+For the rest of this chapter, we shall assume sequential trading.
+With sequential trading of fiat currency,
+this section reinterprets one of our earlier examples with time $0$ trading, the example with government spending.
+
+Consider the following overlapping generations model:
+The population is constant.
+At each date $t \geq 1$, $N$ identical young agents are endowed
+with $(y_t^t, y^t_{t+1}) = (w_1, w_2) $, where $w_1 > w_2 >0$.
+A government   levies lump-sum taxes of
+$\tau_1$ on each young agent and $\tau_2$ on each old agent
+  alive at each $t \geq 1$.    There are $N$   old people at
+time $1$ each of whom is endowed with $w_2$ units of the
+consumption good and $M_0>0$ units of inconvertible, perfectly durable
+fiat currency. The initial old have utility function
+$c^0_1$.   The young have utility function
+$u(c^t_t) + u(c^t_{t+1})$.
+ For each date $t \geq 1$ the government
+augments the currency supply according to
+$$ M_t - M_{t-1} = p_t ( g - \tau_1 -   \tau_2), \EQN gbudg1 $$
+where $g$ is a constant stream of government expenditures per capita
+and $0 < p_t \leq + \infty$ is the price level.
+If $p_t = +\infty$, we intend  that    equation
+\Ep{gbudg1} be interpreted as
+$$ g = \tau_1 + \tau_2.  \EQN gbudg2 $$
+
+
+   For each $t \geq 1$, each young person's behavior
+is summarized by
+$$  s_t = f(R_t;\tau_1, \tau_2) = \argmax_{s\geq 0} \left[ u(w_1 - \tau_1
+     -s)+u(w_2-\tau_2 + R_t s)\right] .\EQN savingsprob $$
+
+
+\medskip
+\noindent{\sc Definition:} An equilibrium with valued fiat currency is a pair  of
+positive sequences $\{M_t, p_t\}$  such that (a) given the price level
+sequence, $M_t/p_t =  f(R_t)$ (the dependence on $\tau_1,\tau_2$ being
+understood); (b) $R_t = p_t / p_{t+1}$; and (c) the government budget
+constraint \Ep{gbudg1} is satisfied for all $t\geq 1$.
+\medskip
+
+The condition $f(R_t) = M_t/p_t$  can be written
+as $f(R_t) = M_{t-1} /p_t + (M_t - M_{t-1})/p_t$.  The left side
+is the saving of the young.  The first term on  the right side is the
+dissaving of the old (the real value of currency  that they
+exchange for time $t$ consumption). The second term on the right
+is the dissaving of the government (its deficit), which is
+the real value of the additional currency that the government
+prints at $t$ and uses to purchase time $t$ goods from the young.
+
+   To compute an equilibrium, define $d = g- \tau_1 - \tau_2$ and
+write equation \Ep{gbudg1} as
+$$ {M_t \over  p_t} = {M_{t-1} \over p_{t-1} }  {p_{t-1} \over p_t}
+     + d  $$
+for $t \geq 2$
+and $$ {M_1 \over p_1} = {M_0 \over p_1} + d $$
+for $t=1$.
+Substitute the equilibrium condition $M_t / p_t = f(R_t)$ into these equations to
+get
+$$ f(R_t) = f(R_{t-1})R_{t-1} + d  \EQN money1;a $$
+for $t\geq 2$ and
+$$ f(R_1) =  {M_0 \over p_1} + d. \EQN money1;b $$
+
+
+ Given $p_1$, which determines an initial
+$R_1$ by means of equation
+\Ep{money1;b}, equations \Ep{money1} form an autonomous
+difference equation in $R_t$.    With appropriate transformations of variables, this system can be
+solved using Figure \Fg{graph42f}. %Figure 8.4.
+
+
+\subsection{Steady states and the Laffer curve}
+
+Let's seek a stationary solution of equations  \Ep{money1}, a quest
+ rendered reasonable by the fact that $f(R_t)$ is time
+invariant (because the endowment and the
+tax patterns as well as the government deficit
+$d$  are time-invariant).     Guess that $R_t = R$ for
+$t \geq 1$.  Then equations \Ep{money1} become
+$$\EQNalign{ f(R) (1-R) & = d, \EQN money2;a \cr
+             f(R) &  = {M_0   \over p_1}  + d. \EQN money2;b \cr} $$
+
+For example, suppose that $u(c) = \ln(c)$.  Then
+$ f(R) = {w_1 - \tau_1 \over 2} - {w_2 - \tau_2 \over 2 R}$.  We
+have graphed $f(R)(1-R)$ against $d$ in Figure \Fg{graph52f}. %Figure 8.5.
+Notice that if there is one solution for equation \Ep{money2;a},  then there
+are at least two.
+
+%%%%%%
+%$$
+%\grafone{graph52.eps,height=2.3in,angle=-90}{{\bf Figure 8.5} The Laffer curve
+%in revenues from the inflation tax.}
+%$$
+%%%%%%%%%%%%%%%%%%%
+
+\midfigure{graph52f}
+\centerline{\epsfxsize=3truein\epsffile{graph52new.eps}}
+\caption{The Laffer curve in revenues from the inflation tax.}
+\infiglist{graph52f}
+\endfigure
+
+  Here $(1-R)$ can be interpreted as  a tax rate on  real
+balances, and $f(R)(1-R)$ is a Laffer curve for the inflation
+tax rate.  The high-return (low-tax) $R = \overline R$
+ is associated with
+the good Laffer curve stationary equilibrium, and
+the low-return (high-tax) $R = \underline R$ comes with the bad
+Laffer curve stationary
+equilibrium.  Once $R$ is determined, we can determine
+$p_1$ from equation \Ep{money2;b}.
+
+Figure \Fg{graph52f} %Figure 8.5
+is isomorphic with Figure \Fg{graph42f}. %Figure 8.4.
+  The saving rate function
+$f(R)$ can be deduced from the offer curve. Thus, a version of
+Figure \Fg{graph42f} %Figure 8.4
+ can be used to solve the difference equation \Ep{money1;a}
+graphically. If we do so, we discover a continuum of nonstationary solutions
+of  equation  \Ep{money1;a}, all but one of which  have
+$R_t \rightarrow \underline R$ as $t \rightarrow \infty$.  Thus, the
+bad \idx{Laffer curve} equilibrium is stable.
+
+The stability of the bad Laffer curve equilibrium arises under
+perfect foresight dynamics.
+Bruno and Fischer (1990) and Marcet and Sargent (1989) analyze
+how the system behaves under two different types of adaptive
+dynamics.  They find that either under a crude form
+of  adaptive expectations  or under a least-squares learning scheme,
+$R_t$ converges to  $\overline R$.   This finding  is comforting because
+the comparative dynamics are more plausible at $\overline  R$
+(larger deficits bring higher inflation).  Furthermore,
+Marimon and Sunder (1993) present experimental evidence
+pointing toward the selection  made by the adaptive dynamics.
+Marcet and Nicolini  (2003) build and calibrate an adaptive model of several
+Latin American hyperinflations that rests on this selection. Sargent, Williams, and Zha (2009)
+extend and estimate the model.
+\auth{Williams, Noah}%
+\auth{Zha, Tao}%
+\auth{Marcet, Albert}
+\auth{Nicolini, Juan Pablo}
+\auth{Marimon, Ramon}
+\auth{Sunder, Shyam}
+\auth{Bruno, Michael}
+\auth{Fischer, Stanley}
+\auth{Sargent, Thomas J.}
+
+\section{Equivalent setups}
+
+  This section describes some alternative asset structures
+and trading arrangements that support the
+same equilibrium  allocation.   We take a model with
+a government deficit and show how it can be supported
+with sequential trading in government-indexed bonds,
+sequential trading in fiat currency, or time $0$ trading
+of Arrow-Debreu dated securities.
+
+
+\subsection{The economy}
+
+Consider an overlapping generations economy with one agent
+born at each $t\geq 1$ and an initial old  person at $t=1$.
+Young agents born at date $t$ have endowment
+pattern $(y_t^t, y^t_{t+1})$ and the  utility function described
+earlier.   The initial old person is endowed with $M_0>0$ units
+of unbacked currency and $y^0_1$ units of the consumption good.
+There is a stream of per-young-person government purchases
+$\{g_t\}$.
+
+\medskip
+\noindent{\sc Definition:}  An equilibrium with money-financed
+government deficits is a sequence $\{M_t, p_t\}_{t=1}^\infty$
+with $0 < p_t < +\infty$ and $M_t >0$ that satisfies
+(a) given $\{p_t\}$,
+$$ M_t = \argmax_{\tilde M \geq 0} \left[ u(y_t^t - \tilde M/p_t)
+       + u(y^t_{t+1} + \tilde M/p_{t+1})\right]; \EQN equilib1;a $$
+and (b) $$ M_t - M_{t-1} = p_t g_t. \EQN equilib1;b$$
+
+
+
+\medskip
+Now consider a version  of the same economy in which there is no
+currency but rather indexed government bonds.  The demographics
+and endowments are identical with the preceding economy, but
+now each initial old   person is endowed with
+$B_1$ units of a maturing bond, denominated in units of
+time $1$ consumption good.  In period $t$, the government sells
+new one-period  bonds   to the young to finance its purchases
+$g_t$  of time $t$ goods and to pay off the one-period debt
+falling due at time $t$.  Let $R_t >0$ be the gross real one-period
+rate of return on government debt between $t$ and $t+1$.
+\medskip
+\noindent{\sc Definition:}  An equilibrium with bond-financed government
+deficits is a sequence $\{B_{t+1}, R_t\}_{t=1}^\infty$ that
+satisfies (a) given $\{R_t\}$,
+$$ B_{t+1} = \argmax_{\tilde B} [ u(y_t^t -\tilde B/R_t)
+    + u(y^t_{t+1} + \tilde B)]; \EQN equilib2;a $$
+and (b)
+$$ B_{t+1}/R_t = B_t + g_t,  \EQN equilib2;b $$
+with $B_1 \geq 0$ given.
+
+    These two types of equilibria are isomorphic in the following
+sense:  Take an equilibrium of the economy with money-financed
+deficits and transform it into an equilibrium of the
+economy with bond-financed deficits as follows:  set
+$ B_t = M_{t-1} / p_t, R_t = p_t / p_{t+1}$. It can be verified
+directly that these settings of bonds and interest rates, together
+with the original consumption allocation,
+form an equilibrium of the economy with bond-financed deficits.
+
+  Each of these two types of equilibria is evidently also
+isomorphic to the following equilibrium
+formulated with time $0$ markets:
+\medskip
+\noindent{\sc Definition:} Let $B^g_1$ represent claims to time $1$ consumption
+owed by the government to the old at time $1$.
+An equilibrium with  time $0$ trading
+is an initial level of government
+debt $B^g_1$, a price system $\{q_t^0\}_{t=1}^\infty$, and
+a sequence $\{s_t\}_{t=1}^\infty$ such that (a)
+given the price system,
+%$$ s_t = \argmax_{\tilde s} \Bigl\{ u(y_t^t - \tilde s)
+%     + u \Bigl[y^t_{t+1}
+% + \Bigl({q_t^0 \over q^0_{t+1}}\Bigr) \tilde s \Bigr] \Bigr\};
+%                                                    $$
+$$ s_t = \argmax_{\tilde s} \left\{ u(y_t^t - \tilde s)
+     + u \left[y^t_{t+1}
+ + \left({q_t^0 \over q^0_{t+1}}\right) \tilde s \right] \right\};
+                                                    $$
+and (b)
+$$ q_1^0 B_1^g + \sum_{t=1}^\infty q_t^0 g_t = 0 . \EQN arrowd0 $$
+\medskip
+Condition b is the  Arrow-Debreu version of the
+government budget constraint.  Condition a is the optimality
+condition for the intertemporal consumption decision of the young
+of generation $t$.
+
+  The government budget constraint in condition b
+can be represented recursively as
+$$ q^0_{t+1} B_{t+1}^g = q_t^0 B_t^g + q_t^0 g_t.\EQN arrowd1  $$
+If we solve equation \Ep{arrowd1} forward and impose
+$\lim_{T \rightarrow \infty} q^0_{t+T} B^g_{t+T} = 0$, we obtain
+the budget constraint \Ep{arrowd0}  for $t=1$.
+Condition \Ep{arrowd0} makes it evident that
+when $\sum_{t=1}^\infty q_t^0 g_t >0$, $B_1^g < 0$, so that the
+government has negative net worth.  This negative net worth
+corresponds to  the unbacked
+claims that the market nevertheless values in the sequential-trading
+version of the model.
+
+\subsection{Growth}
+
+  It is easy to extend these models to the case  in which  there is
+growth in the population.  Let there be $N_t = n N_{t-1}$ identical young
+people at time $t$, with $n > 0$.   For example, consider the economy
+with money-financed deficits.  The total money supply
+is $N_t M_t$, and the government budget constraint is
+$$ N_t M_t - N_{t-1} M_{t-1} = N_t p_t g, $$
+where $g$ is per-young-person government   purchases.
+Dividing both sides of the budget constraint by
+$ N_t$ and rearranging gives
+$$ {M_t \over p_{t+1}} { p_{t+1} \over p_t} = n^{-1} {M_{t-1} \over p_t}
+     + g .\EQN equilib1c  $$
+This equation replaces equation \Ep{equilib1;b} in the definition of
+an equilibrium with money-financed deficits.  (Note that
+in a steady state, $R=n$ is the high-interest-rate equilibrium.)
+Similarly, in the economy with bond-financed deficits,
+the government budget constraint would become
+$$ {B_{t+1} \over R_t} = n^{-1} B_t + g_t .$$
+
+  It is also easy to modify things to permit the government to
+tax young and old people at $t$.  In that case, with government
+bond finance the government budget constraint
+becomes
+$$ {B_{t+1} \over R_t} = n^{-1} B_t + g_t - \tau^t_t - n^{-1} \tau^{t-1}_t ,$$
+where $\tau^s_t$ is the time $t$ tax on a person born in period $s$.
+
+
+\section{Optimality and the existence of monetary equilibria}
+
+\auth{Wallace, Neil}%
+Wallace (1980)
+discusses the connection between nonoptimality of
+the equilibrium without valued money and existence of monetary
+equilibria. Abstracting from his assumption of a storage technology,
+we study how the arguments apply to a pure endowment economy. The
+environment is as follows. At any
+date $t$, the population consists of $N_t$ young agents and
+$N_{t-1}$ old agents where $N_t=n N_{t-1}$ with $n > 0$. Each young
+person is endowed with $y_1> 0$ goods, and an old person receives the
+endowment $y_2> 0$. Preferences of a young agent at time $t$ are given
+by the utility function $u(c^t_t,c^t_{t+1})$, which is twice
+differentiable with indifference curves that are convex to the
+origin. The two goods in the utility function are
+normal goods, and $$\theta(c_1,c_2) \equiv u_1(c_1,c_2)/u_2(c_1,c_2),$$
+the marginal rate of substitution function, approaches infinity as
+$c_2/c_1$ approaches infinity and approaches zero as $c_2/c_1$ approaches
+zero. The welfare of the initial old agents at time $1$ is
+strictly increasing in $c^0_1$, and each one of them is endowed with
+$y_2$ goods and $m^0_0> 0$ units of fiat money. Thus, the
+beginning-of-period aggregate nominal money balances in the initial
+period $1$ are $M_0=N_0 m^0_0$.
+
+For all $t \geq 1$, $M_t$, the post-transfer time $t$ stock of fiat
+money obeys $M_t = z M_{t-1}$ with $z > 0$. The time $t$ transfer
+(or tax), $(z-1) M_{t-1}$, is divided equally at time $t$ among the
+$N_{t-1}$ members of the current old generation. The transfers
+(or taxes) are fully anticipated and are viewed as lump-sum: they do
+not depend on consumption and saving behavior. The budget constraints
+of a young agent born in period $t$ are
+$$ \EQNalign{ c_t^t + {m_t^t \over p_t} & \leq y_1, \EQN wall1 \cr
+              c_{t+1}^t & \leq y_2 + {m_t^t \over p_{t+1} }
+               + {(z-1) \over N_t} {M_t \over p_{t+1} }, \EQN wall2 \cr
+              m_t^t & \geq 0,                            \EQN wall3 \cr} $$
+where $p_t> 0$ is the time $t$ price level. In a nonmonetary equilibrium,
+the price level is infinite, so the real values of both money holdings and
+transfers are zero.
+Since all members in a generation are identical, the nonmonetary
+equilibrium is autarky with a marginal rate of substitution equal to
+$$
+\theta_{\rm aut} \equiv { u_1(y_1,y_2) \over u_2(y_1,y_2)}.
+$$
+We ask two questions about this economy. Under what
+circumstances does a monetary equilibrium exist? And, when it exists,
+under what circumstances does it improve matters?
+
+Let $\hat m_t$ denote the equilibrium real money
+balances of a young agent at time $t$,
+$\hat m_t \equiv M_t / (N_t p_t)$. Substitution of equilibrium money
+holdings into budget constraints \Ep{wall1} and \Ep{wall2} at equality
+yield $c^t_t= y_1 - \hat m_t$ and $c^t_{t+1}=y_2 + n \hat m_{t+1}$.
+In a monetary equilibrium, $\hat m_t > 0$ for all $t$ and the
+marginal rate of substitution $\theta(c^t_t,c^t_{t+1})$ satisfies
+$$
+\theta(y_1- \hat m_t, \ y_2 + n \hat m_{t+1}) = { p_t \over p_{t+1} }
+> \theta_{\rm aut},   \quad  \forall t \geq 1 .            \EQN wall5
+$$
+The equality part of \Ep{wall5} is the first-order condition for money
+holdings of an agent born in period $t$ evaluated at the equilibrium
+allocation. Since $c^t_t <y_1$ and $c^t_{t+1} > y_2$ in a monetary
+equilibrium, the inequality in
+\Ep{wall5} follows from the assumption that the two goods in the
+utility function are normal goods.
+
+Another useful characterization of the equilibrium rate of return on
+money, $p_t/p_{t+1}$, can be obtained as follows.
+By the rule generating $M_t$ and the equilibrium condition
+$M_t/p_t=N_t \hat m_t$, we have for all $t$,
+$$
+{p_t \over p_{t+1}} = {M_{t+1} \over z M_t} {p_t \over p_{t+1}}
+= {N_{t+1} \hat m_{t+1} \over z N_t \hat m_t}
+= {n \over z} {\hat m_{t+1} \over \hat m_t}.                 \EQN wall6
+$$
+We are now ready to address our first question, under what circumstances
+does a monetary equilibrium exist?
+
+\medskip
+\noindent{\sc Proposition:}  $\theta_{\rm aut} z < n$ is necessary
+and sufficient for the existence of at least one monetary equilibrium.
+\medskip
+
+\noindent{\sc Proof:}
+We first establish necessity. Suppose to the contrary that there is
+a monetary equilibrium and $\theta_{\rm aut} z / n \geq 1$. Then,
+by the inequality part of \Ep{wall5} and expression \Ep{wall6},
+we have for all $t$,
+$$
+{\hat m_{t+1} \over \hat m_t}  > { z \theta_{\rm aut} \over n} \geq 1. \EQN wallmt
+$$
+If $z \theta_{\rm aut} / n > 1$, one plus the net growth rate of $\hat m_t$ is
+bounded uniformly above one and, hence,
+the sequence $\{\hat m_t\}$ is unbounded, which is
+inconsistent with an equilibrium because real money balances per capita
+cannot exceed the endowment $y_1$ of a young agent.
+If $z \theta_{\rm aut} / n = 1$, the strictly increasing sequence
+$\{\hat m_t\}$ in \Ep{wallmt} might not be unbounded but converge
+to some constant $\hat m_\infty$.
+According to \Ep{wall5} and \Ep{wall6}, the marginal rate
+of substitution will then converge to $n/z$, which by assumption is now
+equal to $\theta_{\rm aut}$, the marginal rate of substitution in
+autarky. Thus, real balances must be zero in the limit, which contradicts
+the existence of a strictly increasing sequence of positive real balances
+in \Ep{wallmt}.
+
+To show sufficiency, we prove the existence of a unique
+equilibrium with constant per capita real money balances when $\theta_{\rm aut} z < n$.
+Substitute our candidate equilibrium,
+$\hat m_t = \hat m_{t+1} \equiv \hat m$,  into \Ep{wall5} and \Ep{wall6},
+which yields two equilibrium conditions,
+$$
+\theta(y_1- \hat m, \ y_2 + n \hat m) = { n \over z } > \theta_{\rm aut}.
+$$
+The inequality part is satisfied under the parameter restriction of
+the proposition, and we only have to show the existence of
+$\hat m \in [0, y_1]$ that satisfies the equality part.
+But the existence (and uniqueness) of such a $\hat m$ is trivial.
+Note that the marginal rate of substitution on the left side of
+the equality is equal to $\theta_{\rm aut}$ when $\hat m=0$.
+Next, our assumptions on preferences imply that the marginal rate
+of substitution is strictly increasing in $\hat m$, and approaches
+infinity when $\hat m$ approaches $y_1$. \qed
+\medskip
+
+The stationary monetary equilibrium in the proof will be referred to
+as the $\hat m$ equilibrium. In general, there are other nonstationary
+monetary equilibria when the parameter condition of the proposition
+is satisfied. For example, in the case of logarithmic preferences and
+a constant population, recall the continuum of equilibria
+indexed by the scalar $c > 0$ in expression \Ep{samsol1}. But here we
+choose to focus solely on the stationary $\hat m$ equilibrium and
+its welfare implications. The $\hat m$ equilibrium will be compared
+to other feasible
+allocations using the Pareto criterion. Evidently, an allocation
+$C = \{c^0_1; (c^t_t,c^t_{t+1}), t\geq 1\}$ is feasible if
+$$ \EQNalign{
+N_t c_t^t + N_{t-1} c_t^{t-1} &\leq N_t y_1 + N_{t-1} y_2,
+                                       \quad  \forall t \geq 1, \cr
+\noalign{\hbox{\rm or, equivalently,}}
+n c_t^t + c_t^{t-1} &\leq n y_1 + y_2, \quad  \forall t \geq 1.
+                                                        \EQN wall7 \cr}
+$$
+The definition of Pareto optimality is:
+
+\medskip
+\noindent{\sc Definition:} A feasible allocation $C$ is Pareto optimal
+if there is no other feasible allocation $\tilde C$ such that
+$$\EQNalign{
+&\tilde c^0_1 \geq c^0_1, \cr
+&u(\tilde c^t_t, \tilde c^t_{t+1}) \geq u(c^t_t,c^t_{t+1}),
+                \quad  \forall t \geq 1, \cr}
+$$
+and at least one of these weak inequalities holds with strict inequality.
+\medskip
+
+We first examine under what circumstances the nonmonetary
+equilibrium (autarky) is Pareto optimal.
+
+\medskip
+\noindent{\sc Proposition:}  $\theta_{\rm aut} \geq n$ is necessary
+and sufficient for the optimality of the nonmonetary equilibrium
+(autarky).
+\medskip
+
+\noindent{\sc Proof:}
+To establish sufficiency, suppose to the contrary that there exists
+another feasible allocation $\tilde C$ that is Pareto superior to
+autarky and $\theta_{\rm aut} \geq n$. Without loss of generality,
+assume that the allocation $\tilde C$ satisfies \Ep{wall7} with
+equality. (Given an allocation that is Pareto superior to autarky but
+that does not satisfy \Ep{wall7}, one can easily construct another
+allocation that is Pareto superior to the given allocation,
+and hence to autarky.) Let period $t$ be the first
+period when this alternative allocation $\tilde C$ differs from the
+autarkic allocation. The requirement that the old generation in this
+period is not made worse off, $\tilde c^{t-1}_t \geq y_2$, implies
+that the first perturbation from the autarkic allocation must be
+$\tilde c^t_t < y_1$, with the subsequent implication that
+$\tilde c^t_{t+1} > y_2$. It follows that the consumption of
+young agents at time $t+1$ must also fall below $y_1$, and we define
+$$
+\epsilon_{t+1} \equiv y_1 - \tilde c^{t+1}_{t+1} > 0.      \EQN wall8
+$$
+Now, given $\tilde c^{t+1}_{t+1}$, we compute the smallest number
+$c^{t+1}_{t+2}$ that satisfies
+$$
+u(\tilde c^{t+1}_{t+1},c^{t+1}_{t+2}) \geq u(y_1,y_2).
+$$
+Let $\overline c^{t+1}_{t+2}$ be the solution to this problem.
+Since the allocation $\tilde C$ is Pareto superior to autarky,
+we have $\tilde c^{t+1}_{t+2} \geq \overline c^{t+1}_{t+2}$. Before using
+this inequality, though, we want to derive a convenient expression
+for $\overline c^{t+1}_{t+2}$.
+
+Consider the indifference curve of $u(c_1,c_2)$ that yields a fixed
+utility equal to $u(y_1,y_2)$.
+In general, along an indifference curve, $c_2=h(c_1)$,
+where $h'=-u_1/u_2=-\theta$ and $h'' > 0$. Therefore, applying the
+intermediate value theorem to $h$, we have
+$$
+h(c_1) = h(y_1) + (y_1-c_1) [-h'(y_1) + f(y_1-c_1)],       \EQN wall9
+$$
+where the function $f$ is strictly increasing and $f(0)=0$.
+
+Now, since $(\tilde c^{t+1}_{t+1},\overline c^{t+1}_{t+2})$ and
+$(y_1,y_2)$ are on the same indifference curve, we can use
+\Ep{wall8} and \Ep{wall9} to write
+$$
+\overline c^{t+1}_{t+2} = y_2 + \epsilon_{t+1} [\theta_{\rm aut}
+                                 + f(\epsilon_{t+1})],
+$$
+and after invoking $\tilde c^{t+1}_{t+2} \geq \overline c^{t+1}_{t+2}$,
+we have
+$$
+\tilde c^{t+1}_{t+2} - y_2 \geq \epsilon_{t+1} [\theta_{\rm aut}
+                                 + f(\epsilon_{t+1})].       \EQN wall10
+$$
+Since $\tilde C$ satisfies \Ep{wall7} at equality, we also have
+$$
+\epsilon_{t+2} \equiv y_1 - \tilde c^{t+2}_{t+2}
+= {\tilde c^{t+1}_{t+2} - y_2 \over n}.                     \EQN wall11
+$$
+Substitution of \Ep{wall10} into \Ep{wall11} yields
+{\ninepoint
+$$\eqalign{ \epsilon_{t+2} & \geq  \epsilon_{t+1}
+                 {\theta_{\rm aut} + f(\epsilon_{t+1}) \over n} \cr
+                & > \epsilon_{t+1},\cr}\EQN wall12
+$$
+}% endninepoint
+where the strict inequality follows from
+$\theta_{\rm aut} \geq n$ and $f(\epsilon_{t+1})>0$ (implied by
+$\epsilon_{t+1}>0$).
+Continuing these computations of successive values of $\epsilon_{t+k}$ yields
+{\ninepoint
+$$
+\epsilon_{t+k} \geq \epsilon_{t+1}
+         \prod_{j=1}^{k-1}
+{\theta_{\rm aut} + f(\epsilon_{t+j}) \over n}
+ > \epsilon_{t+1} \left[{\theta_{\rm aut} +
+ f(\epsilon_{t+1}) \over n} \right]^{k-1},
+\ \hbox{\rm for}\;k>2,
+$$
+}%endninept
+where the strict inequality follows from the fact that $\{\epsilon_{t+j}\}$
+is a strictly increasing sequence.
+Thus, the $\epsilon$ sequence is bounded below by a strictly increasing
+exponential and hence is unbounded. But such an unbounded sequence violates
+feasibility because $\epsilon$ cannot exceed the endowment $y_1$ of a
+young agent. It follows that we can rule out the existence of a
+Pareto superior allocation $\tilde C$, and conclude that
+$\theta_{\rm aut} \geq n$ is
+a sufficient condition for the optimality of autarky.
+
+To establish necessity, we prove the existence of an alternative
+feasible allocation $\hat C$ that is Pareto superior to autarky when
+$\theta_{\rm aut} < n$. First, pick an $\epsilon > 0$ sufficiently
+small so that
+$$
+\theta_{\rm aut} + f(\epsilon) \leq n,                      \EQN wall13
+$$
+where $f$ is defined implicitly by equation \Ep{wall9}.
+Second, set $\hat c^t_t= y_1 - \epsilon \equiv \hat c_1$, and
+$$
+\hat c^t_{t+1} = y_2 + \epsilon [\theta_{\rm aut} + f(\epsilon)]
+               \equiv \hat c_2,    \quad  \forall t \geq 1. \EQN wall14
+$$
+That is, we have constructed a consumption bundle
+$(\hat c_1, \hat c_2)$ that lies on the same indifference curve as
+$(y_1, y_2)$, and from \Ep{wall13} and \Ep{wall14}, we have
+$$
+\hat c_2 \leq y_2 + n \epsilon,
+$$
+which ensures that the condition for feasibility \Ep{wall7} is satisfied
+for $t\geq 2$. By setting $\hat c^0_1 = y_2 + n \epsilon$, feasibility
+is also satisfied in period $1$ and the initial old generation is
+then strictly better off under the alternative allocation $\hat C$.
+\qed
+
+\medskip
+With a constant nominal money supply, $z=1$, the two
+propositions show that a monetary equilibrium exists if and only
+if the nonmonetary equilibrium is suboptimal. In that case, the
+following proposition establishes that the stationary $\hat m$
+equilibrium is optimal.
+
+\medskip
+\noindent{\sc Proposition:}  Given $\theta_{\rm aut} z < n$, then
+$z \leq 1$ is necessary and sufficient for the optimality of the
+stationary monetary equilibrium $\hat m$.
+\medskip
+
+\noindent{\sc Proof:}
+The class of feasible stationary allocations with
+$(c^t_t,c^t_{t+1}) = (c_1,c_2)$ for all $t\geq 1$, is given by
+$$
+c_1 + {c_2 \over n} \leq y_1 + {y_2 \over n},        \EQN wall15
+$$
+i.e., the condition for feasibility in \Ep{wall7}. It follows that
+the $\hat m$ equilibrium satisfies \Ep{wall15} at equality, and
+we denote the associated consumption allocation of an agent born
+at time $t\geq 1$ by $(\hat c_1, \hat c_2)$. It is also the case
+that $(\hat c_1, \hat c_2)$ maximizes an agent's utility subject
+to budget constraints \Ep{wall1} and \Ep{wall2}.
+The consolidation of these two constraints yields
+$$
+c_1 + {z \over n} c_2 \leq y_1 + {z \over n} y_2
+    +  {z \over n} {(z-1) \over N_t} {M_t \over p_{t+1} },
+                                                     \EQN wall16
+$$
+where we have used the stationary rate or return in \Ep{wall6},
+$p_t/p_{t+1}=n/z$. After also invoking $z M_t=M_{t+1}$,
+$n=N_{t+1}/N_t$, and the equilibrium condition
+$M_{t+1}/(p_{t+1} N_{t+1})= \hat m$, expression \Ep{wall16}
+simplifies to
+$$
+c_1 + {z \over n} c_2 \leq y_1 + {z \over n} y_2 + (z-1) \hat m.
+                                                      \EQN wall17
+$$
+
+To prove the statement about necessity, Figure \Fg{graph16f} %Figure 8.6
+depicts the two curves
+\Ep{wall15} and \Ep{wall17} when condition $z \leq 1$ fails to hold,
+i.e., we assume that $z>1$. The point that maximizes utility subject
+to \Ep{wall15} is denoted $(\overline c_1, \overline c_2)$.
+Transitivity of preferences  and the fact that the
+slope of budget line \Ep{wall17} is flatter than that of \Ep{wall15}
+imply that $(\hat c_1, \hat c_2)$ lies southeast of
+$(\overline c_1, \overline c_2)$. By revealed preference, then,
+$(\overline c_1, \overline c_2)$ is preferred to
+$(\hat c_1, \hat c_2)$ and all generations born in period $t \geq 1$
+are better off under the allocation $\overline C$.
+The initial old generation can also be made better off under this
+alternative allocation since it is feasible to strictly
+increase their consumption,
+$$
+\overline c^0_1 = y_2 + n(y_1 - \overline c^1_1)
+                > y_2 + n(y_1 - \hat c^1_1) = \hat c^0_1.
+$$
+Thus, we have established that $z \leq 1$ is necessary for the
+optimality of the stationary monetary equilibrium $\hat m$.
+
+To prove sufficiency, note that \Ep{wall5}, \Ep{wall6} and $z\leq 1$
+imply that
+$$
+\theta(\hat c_1, \hat c_2) = { n \over z} \geq n.
+$$
+We can then construct an argument that is analogous to the sufficiency
+part of the proof to the preceding proposition. \qed
+
+%%%%%%%%%%
+%$$
+%\grafone{graph16.eps,height=2.5in}{{\bf Figure 8.6} The feasibility
+%line \Ep{wall15} and the budget line \Ep{wall17} when $z>1$.
+%The consumption allocation in
+%the monetary equilibrium is $(\hat c_1, \hat c_2)$, and the point
+%that maximizes utility subject to the feasibility line
+%is denoted $(\overline c_1, \overline c_2)$.}
+%$
+%%%%%%%%
+
+\midfigure{graph16f}
+\centerline{\epsfxsize=3truein\epsffile{graph16.eps}}
+\caption{The feasibility line \Ep{wall15} and the budget line \Ep{wall17}
+when $z>1$.  The consumption allocation in the monetary equilibrium is
+$(\hat c_1, \hat c_2)$, and the point that maximizes utility subject to
+the feasibility line is denoted $(\overline c_1, \overline c_2)$.}
+\infiglist{graph16f}
+\endfigure
+
+As pointed out by Wallace (1980), the proposition implies no connection
+between the path of the price level in an $\hat m$ equilibrium and the
+optimality of that equilibrium.  Thus, there may be an optimal monetary
+equilibrium with positive inflation, for example, if
+$\theta_{\rm aut} < n < z \leq 1$; and there may be a nonoptimal
+monetary equilibrium with a constant price level,  for example,
+if $z = n > 1 > \theta_{\rm aut}$.  What counts is the nominal
+quantity of fiat money. The proposition suggests that the quantity
+of money should not be increased. In particular, if $z \leq 1$,
+then an optimal $\hat m$ equilibrium exists whenever the nonmonetary
+equilibrium is nonoptimal.
+
+\auth{Balasko, Yves} \auth{Shell, Karl}\auth{Cass, David}
+\subsection{Balasko-Shell criterion for optimality}
+For the case of constant population, Balasko and Shell (1980) have
+established a convenient general criterion for testing whether
+allocations are optimal.\NFootnote{Balasko and Shell credit David
+Cass (1971) with having authored a version of their criterion.}
+Balasko and Shell permit diversity among agents in terms of
+endowments $[w^{th}_t, w^{th}_{t+1}]$ and utility functions
+$u^{th}(c^{th}_t, c^{th}_{t+1})$, where $w^{th}_s$ is the time $s$
+endowment of an agent named $h$ who is born at $t$ and $c^{th}_s$
+is the time $s$ consumption of agent named $h$ born at $t$.
+Balasko and Shell
+ assume  fixed populations of types $h$ over time. They
+impose several kinds of technical
+conditions that serve to rule out possible pathologies.  The two main
+ones are these.
+First, they assume that indifference curves have neither flat parts nor kinks,
+and they also rule out indifference curves with flat parts or kinks as limits
+of sequences of indifference curves for given $h$ as $t\to\infty$.  Second,
+they assume that the aggregate endowments $\sum_h (w^{th}_t + w^{t-1,h}_t)$
+are uniformly bounded from above and that there exists an $\epsilon>0$
+ such that
+$w^{sh}_t>\epsilon$ for all $s,h$, and for $t\in\{s,s+1\}$.  They consider
+consumption allocations
+uniformly bounded away from the axes.  With these conditions, Balasko and Shell
+consider the class of allocations in which all young agents at $t$ share a
+common marginal rate of substitution $1+r_t
+\equiv u^{th}_1(c^{th}_t,c^{th}_{t+1})
+/u^{th}_2(c^{th}_t,c^{th}_{t+1})$ and in which all of the endowments
+are consumed.  Then Balasko and Shell show that an allocation is Pareto
+optimal if and only if
+$$\sum_{t=1}^\infty\ \prod_{s=1}^t  [1+r_s]=+\infty,
+\EQN balshell$$
+that is, if and only if the infinite sum of $t$-period gross interest rates,
+$\prod_{s=1}^t [1+r_s]$, diverges.
+
+The Balasko-Shell criterion for optimality succinctly summarizes the sense in
+which low-interest-rate economies are not optimal.  We have already encountered
+repeated examples of the situation that, before an equilibrium with valued
+currency can exist, the equilibrium without valued currency must be a
+low-interest-rate economy in just the sense identified by Balasko and Shell's
+criterion, \Ep{balshell}.  Furthermore, by applying the
+Balasko-Shell criterion,
+\Ep{balshell},
+ or  generalizations of it that allow for a positive net growth
+rate of population $n$, it can be shown that, among equilibria with valued
+currency, only equilibria with high rates of return on currency are optimal.
+
+\auth{Smith, Bruce D.}  \auth{Wallace, Neil}
+\section{Within-generation heterogeneity}
+This section describes an overlapping generations
+model having within-generation heterogeneity of
+endowments.  We shall follow Sargent and Wallace  (1982)
+and Smith (1988)
+and use this model as a vehicle for talking about some
+issues  in monetary theory that  require  a setting
+in which government-issued  currency coexists with and is a more-or-less
+ good substitute for
+private IOUs.
+
+We now assume  that
+within each generation born at $t  \geq 1$,
+there are $J$ groups of agents. There
+is a constant number $N_j$ of group $j$ agents.  Agents of group
+$j$ are endowed with $w_1(j)$ when young and
+$w_2(j)$ when old.  The saving function
+of a household of group $j$ born at time $t$
+solves the time $t$ version of  problem
+\Ep{savingsprob}.    We denote this savings
+function $f(R_t,j)$. If we  assume that all
+households of generation $t$  have
+preferences  $U^t(c^t) = \ln c_t^t + \ln c^t_{t+1}$,
+the saving function is
+$$ f(R_t,j) = .5\left( w_1(j) - {w_2(j)  \over R_t} \right).$$
+At $t=1$, there are old people who are endowed in
+the aggregate with $H = H(0)$ units of an inconvertible currency.
+
+For example, assume that $J=2$, that $(w_1(1), w_2(1))  =
+ (\alpha, 0)$ and that $
+(w_1(2), w_2(2))   = (0,  \beta)$, where $\alpha >0, \beta >0$.
+The type 1 people are lenders, while the type 2 are borrowers.
+For the case of log preference we have the savings
+functions
+$f(R,1) = \alpha /2, f(R,2) = - \beta/(2R)$.
+
+\subsection{Nonmonetary equilibrium}
+
+ A nonmonetary equilibrium consists of sequences $(R, s_j)$ of rates of return $R$
+and savings rates for  $j= 1, \ldots , J$  and $t \geq 1$ that satisfy
+(1)$ s_{tj} = f(R_t, j)$, and (2)
+$ \sum_{j=1}^J N_j f(R_t, j) =0   .$
+Condition (1) builds in household optimization; condition
+(2) says that aggregate net savings equals zero (borrowing
+equals lending).
+
+ For the case in which the endowments, preferences, and group
+sizes are constant across time, the interest rate is determined
+at the intersection of the aggregate savings function
+with the $R$ axis, depicted as $R_1$ in Figure \Fg{savings1f}. %Figure 8.7.
+ No intergenerational   transfers occur in the nonmonetary
+equilibrium.  The equilibrium consists of a sequence of separate
+ two-period pure consumption loan economies of a type
+analyzed by Irving Fisher (1907).
+\auth{Fisher, Irving}
+
+\subsection{Monetary equilibrium}
+
+In an equilibrium with valued fiat currency, at each
+date $t \geq 1$ the old receive goods from the young
+in exchange for the currency stock $H$.
+ For any variable $x$,  $\vec x = \{x_t\}_{t=1}^\infty$.
+  An equilibrium with valued fiat money is a set of
+sequences $\vec R, \vec p, \vec s$
+such that (1) $\vec p$ is a positive sequence, (2) $R_t =p_t / p_{t+1}$,
+(3) $s_{jt} = f( R_t,j)$,  and  (4)
+$ \sum_{j=1}^J N_j f(R_t, j) = {H \over p_t}.$
+Condition (1) states that currency is valued at all dates.
+Condition (2) states  that currency and consumption loans
+are perfect substitutes.  Condition (3) requires that saving
+decisions are optimal. Condition (4) equates the
+net saving of the young (the left side) to the net dissaving
+of the old (the right side). The old supply currency inelastically.
+
+We can determine a stationary equilibrium graphically.  A stationary
+equilibrium satisfies $p_t =p$ for all $t$, which implies
+$R =1$ for all $t$.  Thus, if it exists, a stationary equilibrium
+solves
+$$ \sum_{j=1}^J N_j f(1, j) = {H \over p}  \EQN equil4
+ $$
+for a positive price level. (See Figure \Fg{savings1f}.) %Figure 8.7.
+Evidently, a stationary monetary equilibrium exists if the net
+savings of the young are positive for $R=1$.
+
+%%%%%%%%
+%\topinsert{
+%$$  \grafone{savings1.eps,height=2.5in}{{\bf Figure 8.7}
+%The intersection of the aggregate savings function
+%with a horizontal line at $R=1$ determines  a stationary equlibrium value of
+%the price level, if positive.}
+%$$
+%}\endinsert
+%%%%%%%%%%%%%%%
+
+\midfigure{savings1f}
+\centerline{\epsfxsize=3truein\epsffile{savings1.eps}}
+\caption{The intersection of the aggregate savings function with a horizontal
+line at $R=1$ determines  a stationary equilibrium value of the price level,
+if positive.}
+\infiglist{savings1f}
+\endfigure
+
+For the special case of logarithmic preferences and two
+classes of young people, the aggregate savings function of the young is
+time invariant and equal to
+$$ \sum_j f(R,j) = .5(N_1 \alpha - N_2{\beta  \over R}). $$
+Note that the equilibrium condition \Ep{equil4} can be written
+$$ .5 N_1 \alpha = .5 N_2 {\beta  \over R} + {H  \over p}. $$
+The left side is the demand for savings or the demand
+for ``currency'' while the right side is the supply, consisting
+of privately issued IOU's (the first term) and
+government-issued currency.  The right side is thus
+an abstract version of what is called  M1, which is a sum of privately
+issued IOUs (demand deposits) and government-issued reserves and
+currency.\index{M1}%
+
+\subsection{Nonstationary equilibria}
+
+Mathematically, the equilibrium conditions for the
+ model with log preferences and
+two groups have the same structure as the model analyzed
+previously in equations \Ep{samdiff1} and \Ep{samsol1},
+ with simple reinterpretations of
+parameters.  We leave it to the reader here and in an exercise
+to show that if there exists a stationary equilibrium with
+valued fiat currency, then there exists a continuum of
+equilibria with valued fiat currency, all but one of which
+have the real value of government currency approaching
+zero asymptotically.  A linear difference equation
+like \Ep{samdiff1} supports this conclusion.
+
+\subsection{The real bills doctrine}
+
+In nineteenth-century Europe and the early days of the Federal Reserve system
+in the United States, central banks conducted open market operations not by
+purchasing government securities but by purchasing safe (risk-free)
+short-term private IOUs.
+ We now analyze this old-fashioned type of
+open market operation. We allow the government to issue additional
+currency each period.  It uses the proceeds exclusively to purchase
+private IOUs (make loans to private agents) in the amount $L_t$ at time $t$.
+ Such open market
+operations are subject to the sequence of restrictions
+$$L_t = R_{t-1} L_{t-1} + {H_t - H_{t-1} \over p_t} \EQN omo1  $$
+for $t \geq 1$ and $H_0 = H>0$ given, $L_0 = 0$.
+Here $L_t$ is the amount of the time $t$ consumption good that the government
+lends to the private sector from period $t$ to period $t+1$.
+Equation \Ep{omo1} states that the government finances these loans in two ways: first,
+by rolling over the  proceeds
+$R_{t-1} L_{t-1}$ from the repayment of last period's loans, and second, by injecting new  currency  in the
+amount $H_t-H_{t-1}$.  With the government injecting new currency and purchasing loans in this
+way each period, the equilibrium condition in the loan market becomes
+$$ \sum_{j=1}^J N_j f(R_t, j) + L_t = {H_{t-1}\over p_t}
+    + {H_{t}- H_{t-1} \over p_t}   \EQN equil5
+$$
+where the first term on the right is the real dissaving of the
+old at $t$ (their real balances) and the second term
+is the real value of the new money printed by the monetary
+authority to finance purchases of private IOUs issued
+by the young at $t$.  The left side is the net savings of
+the young plus the savings of the government.
+\index{open market operation!in private securities}
+\index{real bills doctrine}
+\auth{Smith, Adam}
+
+ Under several guises, the effects of open market operations
+like this have concerned monetary economists for centuries.\NFootnote{One
+issue concerned the effects on the price
+level of allowing banks to issue private bank notes.  Nothing in our model  makes us
+take seriously that the notes $H_t$ are issued by the government.
+We can also think of them as being issued by a private bank.}
+We  state the following proposition:
+\medskip
+\noindent{\sc Irrelevance of Open Market Operations:}   Open market
+operations are irrelevant: all positive sequences $\{L_t, H_t\}_{t=0}^\infty$
+ that satisfy the constraint
+\Ep{omo1}  are associated with the same equilibrium allocation,
+interest rate, and price level sequences.
+
+\medskip
+\noindent{\sc Proof:}
+Evidently, we can write the equilibrium condition \Ep{equil5} as
+$$ \sum_{j=1}^J N_j f(R_t, j) + L_t = {H_{t}\over p_t}. \EQN equil2 $$
+For $t \geq 1$,
+iterating \Ep{omo1} once  and using $R_{t-1} = {p_{t-1} \over p_t}$
+gives
+$$ L_t = R_{t-1} R_{t-2} L_{t-2} + {H_t - H_{t-2} \over p_t} .$$
+Iterating back to time $0$ and using $L_0 = 0$ gives
+$$ L_t = {H_t - H_0\over p_t }. \EQN omo2 $$
+Substituting \Ep{omo2} into \Ep{equil2} gives
+$$ \sum_{j=1}^J N_j f(R_t, j)  = {H_{0}\over p_t}. \EQN equil3 $$
+This is the same equilibrium condition in the economy with
+no open market operations, i.e., the economy
+with $L_t \equiv 0$ for all $t\geq 1$.   Any price level  and rate of
+return sequence that solves \Ep{equil3} also solves \Ep{equil5} for
+any $L_t$ sequence satisfying \Ep{omo1}. \qed
+
+\medskip
+This proposition captures  the spirit of Adam Smith's
+real bills doctrine, which states that if the
+government issues bank notes to purchase safe evidences
+of private indebtedness, it is not inflationary.
+Sargent and Wallace (1982) go on to analyze
+settings in which the money market is initially separated from
+the credit market by some legal restrictions that inhibit
+intermediation.  Then open market operations are no longer
+irrelevant because they can  partially  undo the
+legal restrictions.  Sargent and Wallace show how those
+legal restrictions can help stabilize the
+price level at a cost in terms of economic efficiency.
+Kahn and Roberds (1998) extend the Sargent and Wallace model  to study
+ issues about regulating electronic payments systems.
+\auth{Roberds, William}
+\auth{Kahn, Charles}
+\auth{Wallace, Neil}
+\auth{Smith, Lones}
+\auth{Kandori, Michihiro}
+\section{Gift-giving equilibrium}
+Michihiro Kandori (1992) and Lones Smith (1992) have used ideas
+from the literature on reputation (see chapter \use{credible})
+to study whether there exist history-dependent sequences of gifts that
+support an optimal allocation. \index{gift-giving game!with overlapping
+generations}
+ Their idea is to set up the economy as a game played with a sequence
+of players.  We briefly describe a gift-giving game for an overlapping
+generations economy in which voluntary intergenerational gifts support
+an optimal allocation.
+Suppose that the consumption of an initial old person is
+$$  c^0_1 = y_1^0 + s_1$$
+ and the utility of each young agent is
+$$ u(y^i_i - s_i) + u(y^i_{i+1} + s_{i+1}), \quad i \geq 1
+  \EQN utility1 $$
+where $s_i\geq 0$ is the gift from a young person
+at $i$ to an old person at $i$.  Suppose that the endowment pattern is
+$y^i_i = 1-\epsilon, y^i_{i+1} = \epsilon$, where
+$\epsilon \in (0,.5)$.
+
+Consider the following system of expectations, to which a young
+person chooses whether to conform:
+$$\EQNalign{ s_i& = \cases{ .5 - \epsilon & if $v_i = \overline v$; \cr
+                             0 &otherwise.\cr } \EQN folk1;a  \cr
+             v_{i+1}& = \cases{ \overline v & if $v_i = \overline v$ and
+                                       $s_i = .5 - \epsilon$; \cr
+                               \underline v & otherwise.\cr} \EQN folk1;b \cr}$$
+Here we  are free  to take
+$ \overline v = 2 u(.5)$ and $\underline v= u(1-\epsilon) +
+u(\epsilon)$.    These are ``promised utilities.'' We make them serve
+as ``state variables'' that summarize the history of intergenerational
+gift giving.   To start, we need an initial value
+$v_1$.   Equations   \Ep{folk1} act as the transition
+laws that young agents face in choosing $s_i$ in
+\Ep{utility1}.
+
+  An initial condition $v_1$ and the rule \Ep{folk1} form a system
+of expectations that tells the young person of each generation
+what he is  expected to give.  His gift is  immediately handed over
+to an old person.
+A system of expectations is called an {\it equilibrium}
+if for each $i \geq 1$, each young   agent chooses
+to conform.
+
+  We can immediately compute two equilibrium systems of
+expectations.  The first  is
+the ``autarky'' equilibrium: give nothing yourself and
+expect  all future generations to give nothing. To  represent
+this equilibrium within equations \Ep{folk1}, set $v_1 \neq \overline v$.
+It is easy to verify that each young person will
+confirm what is expected of him in this equilibrium.
+Given that future generations will not give,  each young
+person chooses not to give.
+
+  For the second equilibrium, set $v_1 = \overline v$.   Here
+each household chooses to give the expected amount, because
+failure to do so causes  the next generation of
+young people not to give; whereas affirming the expectation
+to give passes that expectation along to the next generation,
+which affirms it in turn.
+Each of these equilibria is credible, in the sense
+of subgame perfection, to be studied extensively in chapter
+\use{credible}.
+
+
+\auth{Kocherlakota, Narayana R.}
+ Narayana Kocherlakota (1998) has  compared gift giving and monetary
+equilibria in a variety of environments and has used the comparison to
+provide a  precise sense in which ``money'' substitutes for ``memory''.
+
+\auth{Mankiw, Gregory}
+\auth{Summers, Lawrence}
+\auth{Zeckhauser, Richard}
+\auth{Abel, Andrew}
+\auth{Diamond, Peter A.}
+\section{Concluding remarks}
+The overlapping generations model is a workhorse in
+analyses of  public finance, welfare economics,
+and demographics.  Diamond (1965) studied
+some fiscal policy issues within a version of the model with a neoclassical production.
+He showed that, depending on preference and productivity
+parameters, equilibria of the model can
+ have too much capital, and that such capital
+overaccumulation can be corrected by having the government
+issue and perpetually roll over unbacked debt.\NFootnote{Abel,
+Mankiw, Summers, and Zeckhauser (1989) propose an empirical
+test of whether there is capital overaccumulation in the U.S.
+economy, and conclude that there is not.}
+Auerbach  and  Kotlikoff (1987)  formulated a long-lived overlapping
+generations model with capital, labor, production, and
+various kinds of taxes. They used the model to study
+a host of fiscal issues. Rios-Rull (1994a) used a calibrated
+overlapping generations growth model to examine
+the quantitative importance of market incompleteness for
+insuring against aggregate risk. See Attanasio (2000) for
+a  review of theories and evidence
+about consumption within life-cycle models.
+\auth{Attanasio, Orazio}
+
+Several authors in a 1980 volume edited by John Kareken
+and Neil Wallace argued through example that the overlapping
+generations model is useful for analyzing a variety of issues in
+monetary economics.  We refer to that volume, McCandless
+and Wallace (1992), Champ and Freeman (1994), Brock (1990),
+and Sargent (1987b) for a variety of applications
+of the overlapping generations model to issues in monetary
+economics.
+\auth{Wallace, Neil}
+\auth{Kareken, John}
+\auth{Champ, Bruce}
+\auth{Freeman, Scott}
+\auth{Brock, William A.}
+\auth{McCandless, George T.}
+
+%\section{Exercises}
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\noindent{\it Exercise \the\chapternum.1} \ \  At each date $t \geq 1$, an  economy
+consists of  overlapping generations of  a constant
+number $N$ of two-period-lived agents.  Young
+agents born in $t$ have preferences over consumption streams of
+a single good that are ordered by
+$ u(c_t^t) + u(c^t_{t+1}) $, where
+$u(c) = c^{1 - \gamma} / (1-\gamma)$, and where $c^i_t$ is the
+consumption of an agent born at $i$ in time $t$. It is understood
+that $\gamma >0$, and that when $\gamma = 1$, $u(c) = \ln c$.   Each
+young agent born at $t \geq 1$ has identical preferences and endowment
+pattern
+$(w_1,w_2)$, where $w_1$  is the endowment when young and  $w_2$
+ is the endowment when old.
+Assume $0 < w_2 < w_1$.
+ In addition,
+there are some initial old agents at time $1$ who
+are endowed with $w_2$ of the time $1$ consumption good, and
+who order consumption streams by $c^0_1$.   The initial old
+(i.e., the old  at $t=1$)
+are also endowed with $M$ units of unbacked fiat currency.  The
+stock of currency is constant over time.
+\medskip
+\noindent{\bf a.}    Find the saving function of a young agent.
+\medskip
+\noindent{\bf b.}  Define an equilibrium with valued fiat
+currency.
+\medskip
+\noindent{\bf c.}   Define a stationary equilibrium with valued
+fiat currency.
+\medskip
+\noindent{\bf d.}  Compute a stationary equilibrium with valued
+fiat currency.
+\medskip
+\noindent{\bf e.}  Describe how many equilibria with
+valued fiat currency there are.  (You are not being asked to
+compute them.)
+\medskip
+\noindent{\bf f.}  Compute the limiting value as $t \rightarrow + \infty$
+of the rate of return on currency in each of the nonstationary
+equilibria with valued fiat currency.  Justify your calculations.
+
+\bigskip
+\noindent{\it Exercise \the\chapternum.2} \ \
+  Consider an economy with overlapping generations
+of a constant population of an even number  $N$ of  two-period-lived agents.
+New young agents are born at each date $t\geq 1$.
+Half of the young agents are endowed with
+$w_1$ when young and $0$ when old.  The other half are
+endowed with $0$ when young and  $w_2$ when old.
+Assume $0 < w_2 < w_1$.
+Preferences of all young agents are as in problem
+1, with $\gamma =1$.   Half of the $N$ initial old are endowed
+with $w_2$  units of the consumption good and half are endowed
+with nothing.  Each old  person orders consumption streams by
+$c^0_1$.  Each old person at $t=1$ is endowed with $M$ units
+of unbacked fiat currency. No other generation is endowed with
+fiat currency.  The stock of fiat currency is fixed over time.
+
+\medskip
+\noindent{\bf a.}  Find the saving function of each of the two
+types of young person for $t\geq 1$.
+\medskip\noindent {\bf b.}  Define an equilibrium without valued fiat currency.
+Compute  all such equilibria.
+\medskip
+\noindent{\bf c.}  Define an equilibrium with valued fiat currency.
+\medskip
+\noindent{\bf d.}  Compute all the (nonstochastic) equilibria
+with valued fiat currency.
+\medskip
+\noindent{\bf e.}  Argue that there is a unique stationary equilibrium
+with valued fiat currency.
+\medskip
+\noindent{\bf f.}  How are the various equilibria  with valued
+fiat currency ranked by
+the Pareto criterion?
+
+\bigskip
+\noindent{\it Exercise \the\chapternum.3} \ \   Take the economy of exercise
+{\it \the\chapternum.1\/}, but make
+one change.    Endow the initial old with a tree that
+ yields a constant  dividend of $d >0$ units of the consumption
+good for each $t \geq 1$.
+\medskip
+\noindent{\bf a.}   Compute all  the equilibria with valued
+fiat currency.
+\medskip
+\noindent{\bf b.}  Compute all  the equilibria without valued
+fiat currency.
+\medskip
+\noindent{\bf c.}  If you want,  you can  answer both parts
+of this question in the context of the following
+particular  numerical
+example:  $w_1 =10,   w_2 =5, d=.000001$.
+
+
+\bigskip
+\noindent{\it Exercise  \the\chapternum.4} \ \  Take the economy of exercise {\it \the\chapternum.1\/} and make
+the following two changes. First, assume
+that $\gamma=1$. Second, assume that the number of young
+agents born at $t$ is $N(t) =n N(t-1)$, where $N(0) >0$ is
+given and $n \geq 1$.    Everything else about the economy remains
+the same.
+
+\medskip
+\noindent{\bf a.}  Compute   an equilibrium without valued
+fiat money.
+\medskip
+\noindent{\bf b.}  Compute a stationary equilibrium  with valued
+fiat money.
+\bigskip
+\noindent{\it Exercise \the\chapternum.5} \ \  Consider an economy consisting of overlapping
+generations of two-period-lived consumers.  At each date
+$t\geq 1$ there are born $N(t)$ identical young people each of whom is
+endowed with $w_1 >0$ units of a single consumption good when young
+and $w_2 >0$ units of the consumption good when old.   Assume
+that $w_2 < w_1$.    The consumption good is not storable.
+The population of young people is described by
+$N(t) = n N(t-1)$, where $n > 0$.   Young people
+born at $t$ rank utility streams according to
+$\ln(c^t_t) + \ln(c^t_{t+1})$ where $c^i_t$ is the consumption
+of the time $t$ good of an agent born in $i$.    In addition,
+there are $N(0)$ old people at time $1$, each of whom is
+endowed with $w_2$ units of the time $1$ consumption good.
+The old at $t=1$ are also endowed with one unit of  unbacked
+pieces of infinitely durable but  intrinsically worthless pieces
+of paper called fiat money.
+\medskip
+\noindent {\bf a.}  Define an equilibrium without valued fiat
+currency.   Compute such an equilibrium.
+
+\medskip
+\noindent{\bf b.}  Define an equilibrium with valued fiat currency.
+\medskip
+\noindent{\bf c.}  Compute all equilibria with valued fiat currency.
+\medskip
+\noindent{\bf d.}  Find the limiting rates of return on currency
+as $t \rightarrow + \infty$ in
+each of the equilibria that you found in part   c.  Compare them
+with the one-period  interest rate in the
+equilibrium in part a.
+\medskip
+\noindent{\bf e.}  Are the equilibria in part c ranked according
+to the Pareto criterion?
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.6} \ \  {\bf Exchange rate determinacy}
+\medskip
+\noindent   The world consists of two economies, named $i=1,2$, which
+except for their governments' policies are ``copies'' of
+one another.  At each date $t\geq 1$,
+there is a single consumption good, which is storable, but
+only  for rich people.  Each economy
+consists of overlapping generations of two-period-lived agents.
+For each $t \geq 1$, in economy $i$, $N$ poor people and
+$N$ rich people are born.
+Let $c_t^h(s),y_t^h(s) $
+be the  time $s$ (consumption, endowment) of a type $h$ agent born
+at $t$.  Poor agents are endowed with $[y_t^h(t), y_t^h(t+1)] = (\alpha,0)$;
+rich agents are endowed
+ with $[y_t^h(t), y_t^h(t+1)] = (\beta,0)$, where $\beta > > \alpha$.
+In each country, there are $2N$ initial old who are
+endowed in the aggregate
+with $H_i(0)$ units of an unbacked currency and with
+$2 N \epsilon$ units of the time $1$ consumption good.
+For the rich people, storing $k$ units of the time $t$
+ consumption good produces $R k$ units of the time $t+1$
+ consumption good, where $R >1$ is a fixed gross
+rate of return  on storage.  Rich people can earn
+the rate of return $R$ either by storing goods or by lending to either
+government by means of indexed bonds.
+      We assume that poor people are prevented from storing
+capital or holding indexed government debt by the sort
+of denomination and intermediation restrictions
+described by Sargent and Wallace (1982).
+
+ For each $t\geq 1$, all young agents
+order consumption streams according to
+$\ln c_t^h(t) + \ln c_t^h(t+1)$.
+
+   For $t \geq 1$, the government of country $i$ finances
+a stream of purchases (to be thrown into the ocean)
+of $G_i(t)$ subject to the following budget constraint:
+$$ G_i(t) + R B_i(t-1) = B_i(t) + {H_i(t) - H_i(t-1)\over p_i(t)}
+                        + T_i(t), \leqno(1)$$
+where $B_i(0)=0$;
+$p_i(t)$ is the price level in country $i$;
+ $T_i(t)$ are lump-sum taxes levied by the government
+on the {\it rich} young people at time $t$; $H_i(t)$ is
+the stock of $i$'s fiat currency at the end
+of period $t$; $B_i(t)$ is the stock of indexed government
+interest-bearing debt (held by the rich of either country).   The government
+does not explicitly tax poor people, but might
+tax through an inflation tax.  Each government levies
+a lump-sum tax of $T_i(t)/N$ on each young rich citizen of its
+own country.
+
+
+  Poor people in both countries  are free to hold whichever
+currency they prefer.  Rich people can hold debt of either
+government and can also store; storage and both government debts
+bear a  constant gross rate of return $R$.
+\medskip
+
+\noindent{\bf a.}  Define an {\it equilibrium\/} with valued fiat
+currencies (in both countries).
+\medskip
+\noindent{\bf b.}  In a nonstochastic equilibrium, verify the following
+proposition: if an equilibrium exists in which both fiat currencies
+are valued, the exchange rate between the two currencies must be
+constant over time.
+\medskip
+
+
+\noindent{\bf c.}  Suppose that government policy   in each
+country is characterized by specified (exogenous)
+levels $G_i(t) = G_i, T_i(t) = T_i$,
+$B_i(t) = 0, \forall t \geq 1$. (The remaining elements of government policy
+adjust to   satisfy the government budget constraints.)
+Assume that the exogenous components of policy have
+been set so that an equilibrium with two valued fiat
+currencies exists.    Under this
+description of policy, show that the equilibrium exchange rate
+is indeterminate.
+
+\medskip
+\noindent{\bf d.}  Suppose that government policy in each country is
+described as follows: $G_i(t)=G_i, T_i(t)=T_i, H_i(t+1)=H_i(1),
+B_i(t)=B_i(1) \
+ \forall t \geq 1$.
+Show that if there exists an equilibrium with two valued fiat
+currencies, the exchange rate is determinate.
+
+\medskip
+
+\noindent{\bf e.}  Suppose that government policy in country
+$1$ is specified in terms of exogenous levels of
+$s_1 = [H_1(t) - H_1(t-1)]/p_1(t)  \ \forall t \geq 2$,
+and $G_1(t)=G_1 \ \forall t \geq 1$.  For country $2$,
+government policy consists of exogenous levels
+of $B_2(t)= B_2(1), G_2(t) = G_2 \forall t \geq 1$.  Show that if there
+exists an equilibrium with two valued fiat currencies, then
+the exchange rate is determinate.
+
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.7}\quad {\bf Credit controls}
+\medskip
+\noindent Consider the following overlapping generations model.  At each date $t\ge 1$
+there appear $N$ two-period-lived young people, said to be of generation $t$,
+who live and consume during periods $t$ and $(\toone)$.  At time $t=1$ there
+exist $N$ old people who are endowed with $H(0)$ units of paper ``dollars,''
+which they offer to supply inelastically to the young of generation 1 in
+exchange for goods.  Let $p(t)$ be the price of the one good in the model,
+measured in dollars per time $t$ good.  For each $t\ge 1$, $N/2$ members of
+generation $t$ are endowed with $y>0$ units of the good at $t$ and 0 units at
+$(\tone)$, whereas the remaining $N/2$ members of generation $t$ are endowed
+with 0 units of the good at $t$ and $y>0$ units when they are old.  All members
+of all generations have the same utility function:
+$$u[c_t^h(t), c_t^h(\tone)]=\ln c_t^h(t) +\ln c_t^h(\tone),$$
+where $c_t^h(s)$ is the consumption of agent $h$ of generation $t$ in period
+$s$.  The old at  $t=1$ simply maximize $c_0^h(1)$.  The consumption good is
+nonstorable.  The currency supply is constant through time, so $H(t)=H(0)$,
+$t\ge 1$.
+\medskip
+\noindent{\bf a.} Define a competitive equilibrium without valued currency for this
+model.  Who trades what with whom?
+\medskip
+\noindent{\bf b.} In the equilibrium without valued fiat currency,
+ compute   competitive equilibrium values of the
+gross return on consumption loans, the consumption allocation of the old at
+$t=1$, and that of the ``borrowers'' and ``lenders'' for $t\ge 1$.
+\medskip
+\noindent{\bf c.} Define a competitive equilibrium with valued currency.  Who trades
+what with whom?\medskip
+\noindent{\bf d.} Prove that for this economy there does not exist a competitive
+equilibrium with valued currency.\medskip
+\noindent{\bf e.} Now suppose that the government imposes the restriction that
+$l_t^h(t) [1+r(t)]\ge -y/4$, where $l_t^h(t)[1+r(t)]$ represents claims on
+$(\tone)$--period consumption purchased (if positive) or sold (if negative) by
+household $h$ of generation $t$.  This is a restriction on the amount of
+borrowing.  For an equilibrium without valued currency, compute the consumption
+allocation and the gross rate of return on consumption loans.
+\medskip
+\noindent{\bf f.} In the setup of part  e,
+ show that there exists an equilibrium with
+valued currency in which the price level obeys the quantity theory equation
+$p(t)=qH(0)/N$.  Find a formula for the undetermined coefficient $q$.  Compute
+the consumption allocation and the equilibrium rate of return on consumption
+loans.\medskip
+\noindent{\bf g.} Are lenders better off in economy b or economy f?  What about
+borrowers?  What about the old of period 1 (generation 0)?
+\medskip
+\noindent{\it Exercise \the\chapternum.8}\quad {\bf Inside money and real bills}
+\medskip
+
+\noindent Consider the following overlapping generations model of two-period-lived
+people.  At each date $t\ge 1$ there are born $N_1$ individuals of type 1 who
+are endowed with $y>0$ units of the consumption good when they are young and
+zero units when they are old; there are also born $N_2$ individuals of type 2
+who are endowed with zero units of the consumption good when they are young and
+$Y>0$ units when they are old.  The consumption good is nonstorable.  At time
+$t=1$, there are $N$ old people, all of the same type, each endowed with zero
+units of the consumption good and $H_0/N$ units of unbacked paper called ``fiat
+currency.'' The populations of type 1 and 2 individuals, $N_1$ and $N_2$,
+remain constant for all $t\ge 1$.  The young of each generation are identical
+in preferences and maximize the utility function $\ln c_t^h(t) +\ln
+c_t^h(\tone)$ where $c_t^h(s)$ is consumption in the $s$th period of a member
+$h$ of generation $t$.
+\medskip
+\noindent{\bf a.} Consider the equilibrium without valued currency (that is, the
+equilibrium in which there is no trade between generations).  Let $[1+r(t)]$ be
+the gross rate of return on consumption loans.  Find a formula for $[1+r(t)]$
+as a function of $N_1, N_2,y$, and $Y$.\medskip
+\noindent{\bf b.} Suppose that $N_1,N_2,y$,
+ and $Y$ are such that $[1+r(t)]>1$ in the
+equilibrium without valued currency.  Then prove that there can
+exist no quantity-theory-style equilibrium where fiat currency is
+valued and where the price level $p(t)$ obeys the quantity theory
+equation $p(t)=q\cdot H_0$, where $q$ is a positive constant and
+$p(t)$ is measured in units of currency per unit good.
+\medskip
+\noindent{\bf c.} Suppose that $N_1,N_2,y$, and $Y$ are such that in the
+nonvalued-currency equilibrium $1+r(t)<1$.  Prove that there
+exists an equilibrium in which fiat currency is valued and that
+there obtains the quantity theory equation $p(t)=q\cdot H_0$,
+where $q$ is a constant.  Construct an argument to show that the
+equilibrium with valued currency is not Pareto superior to the
+nonvalued-currency equilibrium.
+\medskip \noindent{\bf d.} Suppose that
+$N_1,N_2,y$, and $Y$ are such that, in the preceding
+nonvalued-currency economy, $[1+r(t)]<1$, there exists an
+equilibrium in  which fiat currency is valued.  Let $\bar p$ be
+the stationary equilibrium price level in that economy.  Now
+consider an alternative economy, identical with the preceding one
+in all respects except for the following feature: a government
+each period purchases a constant amount $L_g$ of consumption loans
+and pays for them by issuing debt on itself, called ``inside
+money'' $M_I$, in the amount $M_I(t)=L_g\cdot p(t)$.  The
+government never retires the inside money, using the proceeds of
+the loans to finance new purchases of consumption loans in
+subsequent periods.  The quantity of outside money, or currency,
+remains $H_0$, whereas the ``total high-power money'' is now
+$H_0+M_I(t)$. \item{(i)} Show that in this economy there
+exists a valued-currency equilibrium in which the price level is
+constant over time at $p(t)=\bar p$, or equivalently, with $\bar
+p=qH_0$ where $q$ is defined in part c. \item{(ii)} Explain
+why government purchases of private debt are not inflationary in
+this economy. \item{(iii)} In many models,
+once-and-for-all government open-market operations in private debt
+normally affect real variables and/or price level.  What accounts
+for the difference between those models and the one in this
+exercise?
+\medskip
+\noindent{\it Exercise \the\chapternum.9}\quad {\bf Social security and the price level}
+\medskip
+\noindent Consider an economy (``economy I'') that consists of overlapping generations of
+two-period-lived people.  At each date $t\ge 1$ there is born a constant
+number $N$ of young people, who desire to consume both when they are young, at
+$t$, and when they are old, at $(\tone)$.  Each young person has the utility
+function $\ln c_t(t)+\ln c_t(\tone)$, where $c_s(t)$ is time $t$ consumption of
+an agent born at $s$.  For all dates $t\ge 1$, young people are endowed with
+$y>0$ units of a single nonstorable consumption good when they are young and
+zero units when they are old.  In addition, at time $t=1$ there are $N$ old
+people endowed in the aggregate with $H$ units of unbacked fiat currency.  Let
+$p(t)$ be the nominal price level at $t$, denominated in dollars per time $t$
+good.
+\medskip\noindent{\bf a.}
+ Define and compute an equilibrium with valued fiat currency for this
+economy.  Argue that it exists and is unique.  Now consider a second economy
+(``economy II'') that is identical to economy I except that economy II
+possesses a social security system.  In particular, at each date $t\ge 1$, the
+government taxes $\tau>0$ units of the time $t$ consumption good away from each
+young person and at the same time gives $\tau$ units of the time $t$
+consumption good to each old person then alive.
+\medskip\noindent{\bf b.} Does economy II possess an equilibrium with valued fiat currency?
+Describe the restrictions on the parameter $\tau$, if any, that are needed to
+ensure the existence of such an equilibrium.
+\medskip\noindent{\bf c.} If an equilibrium with valued fiat currency exists, is it unique?
+\medskip\noindent{\bf d.}
+ Consider the {\it stationary\/} equilibrium with valued fiat currency.
+Is it unique? Describe how the value of currency or price level would vary
+across economies with differences in the size of the social security system, as
+measured by $\tau$.
+\medskip
+\noindent{\it Exercise \the\chapternum.10}\quad {\bf Seignorage}
+\medskip
+\noindent Consider an economy consisting of overlapping generations of two-period-lived
+agents.  At each date $t\ge 1$, there are born $N_1$ ``lenders'' who are
+endowed with $\a>0$ units of the single consumption good when they are young
+and zero units when they are old.  At each date $t\ge 1$, there are also born
+$N_2$ ``borrowers'' who are endowed with zero units of the consumption good
+when they are young and $\be>0$ units when they are old.  The good is
+nonstorable, and $N_1$ and $N_2$ are constant through time.  The economy starts
+at time 1, at which time there are $N$ old people who are in the aggregate
+endowed with $H(0)$ units of unbacked, intrinsically worthless pieces of paper
+called dollars.  Assume that $\a,\be,N_1$, and $N_2$ are such that
+$${N_2\be\over N_1\a} <1.$$
+Assume that everyone has preferences
+$$u[c_t^h(t), c_t^h(\tone)]=\ln c_t^h(t) +\ln c_t^h(\tone),$$
+where $c_t^h(s)$ is consumption of time $s$ good of agent $h$ born at time $t$.
+\medskip\noindent{\bf a.} Compute the equilibrium interest rate on consumption loans in the
+equilibrium without valued currency.
+\medskip\noindent{\bf b.} Construct a {\it brief\/} argument to establish whether or not the
+equilibrium without valued currency is Pareto optimal.
+
+The economy also contains a government that purchases and destroys $G_t$ units
+of the good in period $t$, $t\ge 1$.  The government finances its purchases
+entirely by currency creation.  That is, at time $t$,
+$$G_t ={H(t)-H(t-1)\over p(t)},$$
+where $[H(t)-H(t-1)]$ is the additional dollars printed by the government at
+$t$ and $p(t)$ is the price level at $t$.  The government is assumed to
+increase $H(t)$ according to
+$$H(t)=zH(t-1),\qquad z\ge 1,$$
+where $z$ is a constant for all time $t\ge 1$.
+
+At time $t$, old people who carried $H(t-1)$ dollars between $(t-1)$ and
+$t$ offer these $H(t-1)$ dollars in exchange for time $t$ goods.  Also at $t$
+the government offers $H(t)-H(t-1)$ dollars for goods, so that $H(t)$ is the
+total supply of dollars at time $t$, to be carried over by the young into time
+$(\tone)$.
+\medskip\noindent{\bf c.} Assume that $1/z>N_2\be/N_1\a$.  Show that under this assumption
+there exists a continuum of equilibria with valued currency.
+\medskip\noindent{\bf d.}
+ Display the unique stationary equilibrium with valued currency in the
+form of a ``quantity theory'' equation.  Compute the equilibrium rate of return
+on currency and consumption loans.
+\medskip\noindent{\bf e.} Argue that if $1/z<N_2\be/N_1\a$, then there exists no
+valued-currency equilibrium.  Interpret this result.  ({\it Hint:}
+ Look at the rate
+of return on consumption loans in the equilibrium without valued currency.)
+\medskip\noindent{\bf f.}
+ Find the value of $z$ that {\it maximizes\/} the government's $G_t$ in
+a stationary equilibrium.  Compare this with the largest value of $z$ that is
+compatible with the existence of a valued-currency equilibrium.
+\medskip
+\noindent{\it Exercise \the\chapternum.11} \quad {\bf Unpleasant monetarist arithmetic}
+\medskip
+\noindent Consider an economy in which the aggregate demand for government currency for
+$t\ge 1$ is given by $[M(t)p(t)]^d =g[R_1(t)]$, where $R_1(t)$ is the gross
+rate of return on currency between $t$ and $(\tone)$, $M(t)$ is the stock of
+currency at $t$, and $p(t)$ is the value of currency in terms of goods at $t$
+(the reciprocal of the price level).  The function $g(R)$ satisfies
+$$g(R) (1-R)  =h(R)>0\qquad {\rm for}\ \ R\in (\underline{R},1),
+\leqno(1) $$
+where $h(R)  \le 0$  for $R<\underline{R}, R\ge 1,
+\underline{R}>0$ and
+where
+$h'(R)<0$ for $R>R_m$, $ h'(R)>0$ for $R<R_m$
+$h(R_m)>D$, where $D$ is a positive number to be defined
+shortly.
+The government faces an infinitely elastic demand for its interest-bearing
+bonds at a constant-over-time gross rate of return $R_2>1$.  The government
+finances a budget deficit $D$, defined as government purchases minus explicit
+taxes, that is constant over time.  The government's budget constraint is
+$$D=p(t) [M(t)-M(t-1)] +B(t) -B(t-1) R_2,\qquad t\ge 1,\leqno(2)$$
+subject to $B(0)=0, M(0)>0$.  In equilibrium,
+$$M(t) p(t)=g[R_1(t)].\leqno(3)$$
+The government is free to choose paths of $M(t)$ and $B(t)$, subject to
+equations (2) and (3).
+\medskip\noindent{\bf a.}
+ Prove that, for $B(t)=0$, for all $t>0$, there exist two stationary
+equilibria for this model.
+\medskip\noindent{\bf b.}
+ Show that there exist values of $B>0$, such that there exist
+stationary equilibria with $B(t)=B$, $M(t)p(t)=Mp$.
+\medskip\noindent{\bf c.} Prove a version of the following proposition: among stationary
+equilibria, the lower the value of $B$, the lower the stationary rate of
+inflation consistent with equilibrium. (You will have to make an assumption
+about Laffer curve effects to obtain such a proposition.)
+
+This problem displays some of the ideas used by Sargent and Wallace (1981).
+They argue that, under assumptions like those leading to the
+proposition stated in part c, the ``looser'' money is today [that is, the
+higher $M(1)$ and the lower $B(1)$], the lower the stationary inflation rate.
+\medskip
+\noindent{\it Exercise \the\chapternum.12}\quad {\bf Grandmont-Hall}
+\medskip
+\noindent Consider a nonstochastic, one-good overlapping generations model consisting of
+two-period-lived young people born in each $t\ge 1$ and  an initial group of
+old people at $t=1$ who are endowed with $H(0)>0$ units of unbacked currency at
+the beginning of period 1.  The one good in the model is not storable.  Let the
+aggregate first-period saving function of the young be time-invariant and be
+denoted $f[1+r(t)]$ where $[1+r(t)]$ is the gross rate of return on consumption
+loans between $t$ and $(\tone)$.  The saving function is assumed to satisfy
+$f(0)=-\infty$, $f'(1+r)>0$, $f(1)>0$.
+
+Let the government pay interest on currency, starting in period 2 (to holders
+of currency between periods 1 and 2).  The government pays interest on currency
+at a nominal rate of $[1+r(t)] p(\tone)/\bar p$, where $[1+r(t)]$ is the real
+gross rate of return on consumption loans, $p(t)$ is the price level at $t$,
+and $\bar p$ is a target price level chosen to satisfy
+$$\bar p=H(0)/f(1).$$
+The government finances its interest payments by printing new money, so that
+the government's budget constraint is
+$$H(\tone)-H(t) =\left\{ [1+r(t)] {p(\tone)\over \bar p} -1\right\} H(t),\qquad
+t\ge 1,$$
+given $H(1)=H(0)>0$.  The gross rate of return on consumption loans in this
+economy is $1+r(t)$.  In equilibrium, $[1+r(t)]$ must be at least
+as great as the real rate of return on currency
+$$1+r(t) \geq [1+r(t)] p(t)/\bar p =[1+r(t)] {p(\tone)\over \bar p} {p(t)\over p(\tone)}$$
+with equality if currency is valued,
+$$1+r(t) = [1+r(t)]p(t)/\bar p,\qquad 0<p(t)<\infty.$$
+The loan market-clearing condition in this economy is
+$$f[1+r(t)]=H(t)/p(t).$$
+\medskip\noindent{\bf a.} Define an equilibrium.
+\medskip\noindent{\bf b.}
+ Prove that there exists a unique monetary equilibrium in this economy
+and compute it.
+\medskip
+\noindent{\it Exercise \the\chapternum.13}\quad {\bf Bryant-Keynes-Wallace}
+\medskip
+\noindent Consider an economy consisting of overlapping generations of two-period-lived
+agents.  There is a constant population of $N$ young agents born at each date
+$t\ge 1$.  There is a single consumption good that is not storable.  Each agent
+born in $t\ge 1$ is endowed with $w_1$ units of the consumption good when young
+and with $w_2$ units when old, where $0<w_2<w_1$.  Each agent born at $t\ge 1$
+has identical preferences $\ln c_t^h(t) +\ln c_t^h (\tone)$, where $c_t^h(s)$
+is time $s$ consumption of agent $h$ born at time $t$.  In addition, at time 1,
+there are alive $N$ old people who are endowed with $H(0)$ units of unbacked
+paper currency and who want to maximize their consumption of the time 1 good.
+
+A government attempts to finance a constant level of government purchases
+$G(t)=G>0$ for $t\ge 1$ by printing new base money.  The government's budget
+constraint is
+$$G=[H(t)-H(t-1)]/p(t),$$
+where $p(t)$ is the price level at $t$, and $H(t)$ is the stock of currency
+carried over from $t$ to $(\tone)$ by agents born in $t$.  Let $g=G/N$ be
+government purchases per young person.  Assume that purchases $G(t)$ yield no
+utility to private agents.
+\medskip\noindent{\bf a.} Define a stationary equilibrium with valued fiat currency.
+\medskip\noindent{\bf b.} Prove that, for $g$ sufficiently small, there exists a stationary
+equilibrium with valued fiat currency.
+\medskip\noindent{\bf c.} Prove that, in general, if there exists one stationary equilibrium
+with valued fiat currency, with rate of return on currency $1+r(t)=1+r_1$, then
+there exists at least one other stationary equilibrium with valued currency
+with $1+r(t)=1+r_2 \not=1+r_1$.
+\medskip\noindent{\bf d.} Tell whether the equilibria described in parts  b and c
+ are Pareto
+optimal, among allocations among private agents of what is
+left after the government takes $G(t)=G$ each period. (A proof is not required
+here: an informal argument will suffice.)
+
+Now let the government institute a forced saving program of the following form.
+At time 1, the government redeems the outstanding stock of currency $H(0)$,
+exchanging it for government bonds.  For $t\ge 1$, the government offers each
+young consumer the option of saving at least $F$ worth of time $t$ goods in the
+form of bonds bearing a constant rate of return $(1+r_2)$.  A legal prohibition
+against private intermediation is instituted that prevents two or more private
+agents from sharing one of these bonds.  The government's budget constraint for
+$t\ge 2$ is
+$$G/N =B(t) -B(t-1)(1+r_2),$$
+where $B(t) \ge F$.  Here $B(t)$ is the saving of a young agent at $t$.  At
+time $t=1$, the government's budget constraint is
+$$G/N =B(1) -{H(0)\over Np (1)},$$
+where $p(1)$ is the price level at which the initial currency stock is redeemed
+at $t=1$.  The government sets $F$ and $r_2$.
+
+Consider stationary equilibria with $B(t)=B$ for $t\ge 1$ and $r_2$ and $F$
+constant.
+
+\medskip\noindent{\bf e.}
+ Prove that if $g$ is small enough for an equilibrium of the type
+described in part a to
+exist, then a stationary equilibrium with forced saving exists. (Either a
+graphical argument or an algebraic argument is sufficient.)
+\medskip\noindent{\bf f.} Given $g$, find the values of $F$ and $r_2$ that maximize the utility
+of a representative young agent for $t\ge 1$.
+\medskip\noindent{\bf g.} Is the equilibrium
+ allocation associated with the values of $F$ and
+$(1+r_2)$ found in part f optimal among those allocations that give $G(t)=G$ to
+the government for all $t\ge 1$?  (Here an informal argument will suffice.)

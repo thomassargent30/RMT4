@@ -1,0 +1,802 @@
+\chapter{Credible Government Policies: II\label{chang}}
+\def\frac#1#2{{#1\over #2}}
+%\eqnotracetrue
+\footnum=0
+\section{History-dependent government policies}
+Chapter \use{credible}
+ %u
+ % Thus, to focus attention solely on the government's incentives to confirm  expectations, we
+%analyzed credible public policies in simplified  settings with competitive equilibria in which
+% households and firms face a sequence of static problems.
+ began
+with a static setting in which a pair of (private sector, government) actions  $(x,y)$  belongs to a set $C \in {\bbR}^2$ of competitive equilibria.  We formed
+a dynamic economy by infinitely repeating the static economy for $t =0, 1, \ldots $, so that  a competitive equilibrium for the repeated  economy was simply a sequence $\{x_t, y_t\}_{t=0}^\infty$ with $(x_t, y_t) \in C$  of competitive
+  equilibria for the static economy.
+   We
+   studied dynamics that come from
+     a benevolent continuation government's incentives to confirm private   forecasts of its time $t$
+actions $y_t$
+ on the basis of histories of outcomes observed through time $t-1$.
+
+
+In more general  settings, a competitive equilibrium of an infinite horizon economy is  itself a  sequence having dynamics coming from private agents' decision making.
+%In this more general setting,     dynamics within the competitive equilibrium sequence interact  with dynamics associated
+%with forecasting  government actions.
+%
+ In this chapter, we describe how Chang (1998) and Phelan and Stacchetti (2001) studied credible public policies in such economies, first, by  characterizing a competitive equilibrium
+ recursively as we did in chapters \use{stackel} and  \use{optaxrecur} when we posed Stackelberg problems  and Ramsey problems, and, second, by   adapting
+   arguments of Abreu, Pearce, and Stachetti (APS) that we learned in chapter \use{credible}.
+%So methodologically, this chapter studies interactions of  sources of history-dependent government policies that we encountered in
+%chapters \use{stackel} and  \use{optaxrecur}, on the one hand, and \use{credible}, on the other hand.
+%The chapter \use{stackel} history dependence in government policies is  captured through  the dynamics of a vector of  Lagrange multipliers on implementability %constraints in the form
+% of private
+%sector Euler equations that summarize restrictions that competitive equilibrium imposes on outcomes.
+%This chapters \use{stackel} and \use{optaxrecur} history dependence concisely accounts for  contributions to time $t$ government
+%actions of promises that a time $0$ Ramsey planner makes in order to foster good outcomes at dates $s < t$.
+
+%By way of contrast, in chapter \use{credible}, no internal dynamics come  from private agents' intertemporal problems.  All dynamics come from private agents' rules for forecasting
+% government policy actions.  There is  a sequence of government `administrations' with the time $t$ administration choosing only a time $t$ government action in light of its forecasts of how future governments will act.
+% This timing completely disarms dynamics coming from the chapter \use{stackel} Lagrange multipliers. The   remaining chapter \use{credible} history
+% dependence instead reflects constraints that a system of private agents' expectations imposes on a time $t$ government's opportunities. Here private agents expect
+%  that a time $t$ government will take an action only if it is in its  interest to do so.%
+\auth{Stacchetti, Ennio}%
+\auth{Phelan, Christopher}%
+\auth{Chang, Roberto}%
+\auth{Bassetto, Marco}%
+In the model of this chapter, there are two sources of history dependence, each encoded with its own ``forward looking'' state variable.  One state variable
+indexes  a continuation competitive equilibrium. The other state variable is a discounted present value that an earlier government decision maker had
+promised that  subsequent government decision makers would deliver. These state variables bring   distinct  sources of history dependence.  In this chapter, we describe how recursive methods can be used to analyze both. A key message  is that to represent credible government plans recursively, it is necessary
+ to expand the dimension of the state beyond those used in either chapters \use{stackel} and  \use{optaxrecur}  or in chapter \use{credible}.
+  Roberto Chang's (1998) model is our laboratory.
+
+\section{The setting}
+
+Chang adapts a  model of  Calvo (1978) in which % that exhibits the  time-inconsistency of a Ramsey policy in a simple setting.
+%\NFootnote{Kydland and Prescott (1977) had
+%described the time inconsistency
+%of a Ramsey plan in other contexts.}
+\auth{Calvo, Guillermo A.}%
+%\auth{Kydland, Finn E.}%
+%\auth{Prescott, Edward C.}%
+government actions at time $t$ affect components of a  forward-looking household's  utilities at times  before $t$.
+%The source of time inconsistency in Calvo (1978)  is that
+ A Ramsey planner recognizes these effects  when at time $0$ it designs once-and-for-all a joint tax-collection, money-expansion  plan
+for times $t \geq 0$.%
+ %but a {\it sequence\/} of governments each choosing just a  one-period  action,  there is no incentive for the time $t$ government decision maker  to take them into account.% %\NFootnote{In particular,
+%anticipated {\it future\/} monetary expansions induce the household to choose to reduce its {\it current\/}  stock of nominal balances. But a {\it current\/} monetary expansion is a non-distorting way of raising revenues.}
+%\NFootnote{An informal way to say this is that  ``with commitment'',   when  setting a path for monetary expansion rates, the time $0$ Ramsey planner
+%  takes into account the
+% effects of the household's anticipations on  current household decisions. But ``without commitment'', a successor government in any period has no incentive to remember
+% or value the effects of its {\it current\/} rate of money expansion  on the household's  {\it past\/} decisions about its holdings of real balances.}
+
+
+ For a sequence of scalars $\vec z \equiv \{z_t\}_{t=0}^\infty$, let $\vec z^t = (z_0,  \ldots , z_t)$,
+$\vec z_t = (z_t, z_{t+1}, \ldots )$.
+An infinitely lived representative agent and an infinitely lived government exist at dates $t = 0, 1, \ldots$.
+Objects in play are an initial condition $M_{-1}$ of
+nominal money supplies or demands,  a sequence of inverse money
+growth rates $\vec h$  and an implied  sequence of nominal money
+holdings $\vec M$, a  sequence of inverse price levels also called  values of money  $\vec q$,  a sequence of real money holdings $\vec m$, a sequence of total tax collections $\vec x$, a sequence
+of per capita rates of consumption $\vec c$,
+and a sequence of per capita incomes $\vec y$. A representative household chooses sequences
+$(\vec c, \vec m)$ of consumption and real balances. A  benevolent government chooses  sequences $(\vec M, \vec h, \vec x)$  subject to a sequence of budget constraints
+and  constraints  imposed by the requirement that a competitive equilibrium prevails.   In equilibrium, the price of money sequence  $\vec q$  reconciles  decisions of the government and the representative household.
+
+
+\subsection{The household's problem}
+A representative household
+ brings nominal cash balances $M_{-1}$ into period $0$.
+The household  faces a nonnegative value of money sequence $\vec q$ and sequences $\vec y, \vec x$ of income and total tax collections, respectively.
+The household  chooses nonnegative sequences $\vec c, \vec M$ of consumption and nominal balances, respectively, to maximize
+$$ \sum_{t=0}^\infty \beta^t \left[ u(c_t) + v(q_t M_t ) \right] \EQN eqn_chang1 $$
+subject to
+$$ \EQNalign{ q_t M_t & \leq y_t + q_t M_{t-1} - c_t - x_t \EQN eqn_chang2 \cr
+              q_t M_t & \leq \bar m .\EQN eqn_chang3 } $$
+Here $q_t$ is the reciprocal of the price level at $t$, also known as  the value of money.
+
+
+Chang assumes that $u: {\bbR}_+ \rightarrow {\bbR} $ is twice continuously differentiable, strictly concave, and strictly increasing;
+that $v: {\bbR}_+ \rightarrow {\bbR}$ is twice continuously differentiable and strictly concave; that $u'(c)_{c \rightarrow 0}  =
+\lim_{m \rightarrow 0} v'(m) = +\infty$; and that there is a finite level $m= m^f$ such that $v'(m^f) =0 $.
+
+
+The household takes real balances   $m_t = q_t M_t$ out of period $t$. Inequality \Ep{eqn_chang2} is the household's time $t$ budget constraint. It tells how real balances $q_t M_t$ carried out of period $t$ depend
+on income, consumption, taxes, and real balances $q_t M_{t-1}$ carried into the period. Equation
+\Ep{eqn_chang3} imposes an exogenous upper  bound $\bar m$  on the choice of real balances, where $\bar m \geq m^f$.
+
+
+
+
+\subsection{Government}
+At  each $t \geq 0$, the government  chooses a sequence of inverse money growth rates with time $t$ component $h_t \equiv {M_{t-1}\over M_t} \in \Pi \equiv
+[ \underline \pi, \overline \pi]$, where $0 < \underline \pi < 1 < { 1 \over \beta } \leq \overline \pi$.
+The government faces a sequence of budget constraints with time $t$ component
+$$ - x_t = q_t (M_t - M_{t-1}) ,  $$
+which by using the definitions of $m_t$ and $h_t$ can also be expressed as
+$$ - x_t = m_t (1-h_t).  \EQN eqn_chang2 $$
+The  restrictions $m_t \in [0, \bar m]$ and $h_t \in \Pi$ evidently imply
+that $x_t \in X \equiv [(\underline  \pi -1)\bar m, (\overline \pi -1) \bar m]$.
+We define the set $E \equiv [0,\bar m] \times \Pi \times X$ and require that $(m, h, x) \in E$.
+
+
+To represent the idea that taxes are distorting, Chang assumes that per capita output satisfies
+$$ y_t = f(x_t), \EQN eqn_chang3 $$
+where $f: {\bbR}\rightarrow {\bbR}$ satisfies $f(x)  > 0$, is twice continuously differentiable,  $ f''(x) < 0$, and $ f(x) = f(-x)$ for all $x \in
+\bbR$, so that subsidies and taxes are equally distorting. This approach  summarizes the   consequences of  distorting taxes
+via the function $f(x)$ and abstains from modeling the  distortions more deeply. A key part of the specification is that tax distortions are increasing in the absolute value of tax revenues.
+
+The government is benevolent and chooses a competitive equilibrium that maximizes \Ep{eqn_chang1}.
+Within-period timing of decisions is as follows: %first, the government chooses $h_t$; then given $\vec q$ and its expectations of future values of $x$ and $y$'s,
+% the household chooses $M_t$ and therefore
+%$m_t$ because  $m_t = q_t M_t$; then the government sets tax collections $x_t$ to balance the time $t$ budget; then output $y_t = f(x_t)$ is realized;
+%and  finally $c_t = y_t$. Tom altered the timing from the %'d out above in response to Ignacio's suggestion.
+first, the government chooses $h_t$ and $x_t$; then given $\vec q$ and its expectations of future values of $x$ and $y$'s,
+ the household chooses %$M_t$ and therefore $m_t$ because
+  $m_t$; % = q_t M_t$; % then the government sets tax collections $x_t$ to balance the time $t$ budget;
+then output $y_t = f(x_t)$ is realized;
+and  finally $c_t = y_t$.
+ This within-period timing opens  opportunities for the
+private sector to confront the government with choices framed by  how the private sector responds  whenever the government takes a time $t$ action
+that differs from what the private sector had expected. This consideration will shape  credible government policies in section \use{sec:sustainabilityD}.
+
+The model is designed to focus on  intertemporal trade-offs between  welfare benefits of deflation and  welfare costs associated
+with the high tax collections required to retire money at  rates that cause deflation. To promote  welfare enhancing high real balances, a benevolent government wants  a gradual deflation.
+A time $0$ government
+can promote utility generating  increases in real balances only by  imposing distorting tax collections.
+  %That future higher distorting taxes in the support a path of lower future money creation and therefore inflation rates promotes higher real balances and utility {\it today} is the source of  conflict
+%between a benevolent Ramsey planner (who is confined to competitive equilibrium allocations with distorting taxes) and a representative household (whose preferences are over a set of allocations that extend beyond ones
+%attainable with a competitive equilibrium with distorting taxes).
+
+
+
+\subsection{Analysis of household's problem}
+Given nominal money  balances $M_{-1}$ brought into period $0$, the household's problem is
+$$ \eqalign{{\cal L} & = \max_{\vec c,  \vec M} \min_{\vec \lambda, \vec \mu} \sum_{t=0}^\infty \beta^t \bigl\{ u(c_t) + v(m_t)
+    + \lambda_t [ y_t - c_t - x_t + q_t M_{t-1} - q_t M_t ]  \cr
+     & \quad \quad \quad  + \mu_t [\bar m - q_t  M_t] \bigr\} , }  $$
+where $\{\lambda_t\}_{t=0}^\infty, \{\mu_t\}_{t=0}^\infty$ are sequences of nonnegative Lagrange multipliers.
+First-order conditions with respect to $c_t$ and $M_t$, respectively, are\NFootnote{The special conditions  imposed by Chang  assure that these first-order conditions
+are both necessary and sufficient within a competitive equilibrium. Discounting and a bounded  marginal utility of consumption assure satisfaction of a transversality condition.}
+$$ \eqalign{ u'(c_t) & = \lambda_t \cr
+    q_t [ u'(c_t) - v'(m_t) ] & \leq \beta u'(c_{t+1}) q_{t+1} , \quad = \ {\rm if} \ m_t < \bar m . } $$
+At this point, we  substitute  equilibrium restrictions  $h_t = {M_{t-1}\over M_t}$, $q_t = {m_t \over M_t}$, and $c_t = f(x_t)$  into
+these first-order conditions  to
+ get
+$$ m_t [u'(f(x_t))   - v'(m_t) ] \leq \beta u'(f(x_{t+1})) m_{t+1} h_{t+1}, \quad = \ {\rm if} \ m_t < \bar m. \EQN eqn_chang4 $$
+Define   what Chang calls  the  `marginal utility of real balances'
+$$ \theta_{t+1} \equiv u'(f(x_{t+1})) m_{t+1} h_{t+1},  \EQN eqn_chang5 $$
+so that we can write inequalities \Ep{eqn_chang4} as
+$$ m_t [u'(f(x_t))   - v'(m_t) ] \leq \beta  \theta_{t+1}, \quad = \ {\rm if} \ m_t < \bar m. \EQN eqn_chang4000 $$
+%In a competitive equilibrium $c_t = f(x_t)$ for all $t \geq 0$.  Substituting this expression for $c_t$ into \Ep{eqn_chang5}
+%and
+
+\subsection{$\theta_{t+1}$ as intermediating variable}
+Inequalities \Ep{eqn_chang4}  show  that
+% $\theta_{t+1}$
+%intermediates the influences of $(\vec x_{t+1}, \vec m_{t+1})$ on the household's choice of real balances $m_t$. That is,
+future paths
+$(\vec x_{t+1}, \vec m_{t+1})$   influence $m_t$ entirely through their effects on the scalar $\theta_{t+1}$. The observation that the one dimensional
+promised marginal utility of real balances  $\theta_{t+1}$ functions in this way is an important step in constructing a class of competitive equilibria that have a recursive
+ representation.
+% We used related  constructions in  chapters \use{stackel} and  \use{optaxrecur}. For his model, Chang used next period's value of the marginal utility of money
+% $\theta$ to index all aspects
+% of a competitive equilibrium price system $\vec q$  and government policy $(\vec M, \vec h, \vec x)$  that the representative household cares about when it chooses real balances $m$ this period.
+ Because there is a set of government policies, there is a set of competitive equilibrium
+and therefore a set $\Omega$ of implied $\theta$'s defined by \Ep{eqn_chang5}. How to find and characterize the set $\Omega$  are important parts of Chang's  analysis.
+
+
+\section{Recursive approach to Ramsey problem}\label{sec:Chang_Ramsey_mock0}%
+In this section, we temporarily postpone the question of how it is determined and pretend that we know the set $\Omega$; then
+we formulate the Ramsey problem for the Calvo-Chang model  recursively using a method also employed  in
+chapters \use{stackel} and  \use{optaxrecur}.
+Using the implication of equation \Ep{eqn_chang2} that $m_t h_t = m_t + x_t$ allows us to express $\theta_t$ as
+$$ \theta_t = u'(f(x_t)) (m_t + x_t), \EQN eqn_chang5a $$
+which %Equation \Ep{eqn_chang2}
+allows us to  express inequalities \Ep{eqn_chang4000} as % first-order conditions for the representative household's problem as
+$$ \theta_t \leq u'(f(x_t)) x_t + v'(m_t) m_t + \beta \theta_{t+1}, \quad = {\rm if} \ m_t < \bar m , \ t \geq 0 . \EQN RamChang100 $$
+%where
+%$$ \theta_t = u'(f(x_t)) (m_t + x_t)  \EQN RamChang1000 $$
+%and we have set $c_t = f(x_t)$ for all $t \geq 0$.
+The Ramsey problem is to choose $\{x_t, m_t, h_t, \theta_t\}_{t=0}^\infty$ with $(m_t, h_t, x_t) \in E$ and $\theta_t \in \Omega$ to maximize
+$$ \sum_{t=0}^\infty \beta^t \left\{ u(c_t) + v(m_t) \right\} $$
+subject to  equation \Ep{eqn_chang5a} and  %$\theta_0 = u'(f(x_0)) (m_0 + x_0)$  and
+the budget constraints \Ep{eqn_chang2}  and  Euler   inequalities \Ep{RamChang100}   for $t \geq 0$. As in chapters \use{stackel} and  \use{optaxrecur}, we break this problem  into two
+subproblems.  Subproblem 1 confronts a sequence of continuation Ramsey planners, one for each $t \geq 1$.  Subproblem 1 takes as given a state
+variable  $\theta$ that for $t \geq 2$ was chosen by the preceding continuation Ramsey planner, and for $t =1$, by the Ramsey planner.\NFootnote{We can
+also think of the entire sequence $\{\theta_t\}_{t=0}^\infty$ as having been chosen a Ramsey planner at time $t=0$.}
+Subproblem 2 confronts the Ramsey planner, whose job is to choose $m_0, x_0, h_0$ as well as  a $\theta \in \Omega$ to turn over to a time $1$ continuation Ramsey planner.
+
+
+\subsection{Subproblem 1: Continuation Ramsey problem}
+This problem confronts a continuation Ramsey planner at  each $t \geq 1$. The
+ problem takes $\theta$ as given.  Let $J(\theta)$ be the optimal value function for a continuation Ramsey planner facing $\theta$ as a state variable
+ that he is obligated to deliver by choosing $(m,x)$ that satisfy  equation \Ep{RamChang102;b}.
+The value function $J(\theta)$ satisfies the Bellman equation
+$$ J(\theta) = \max_{x,m, h, \theta'} \left\{ u(f(x)) + v(m) + \beta J(\theta') \right\} \EQN RamChang101 $$
+where  maximization is subject to
+$$ \EQNalign{ \theta  & \leq u'(f(x))x + v'(m)m + \beta \theta',  \ = {\rm if} \ m < \bar m \EQN RamChang102;a \cr
+               \theta & = u'(f(x))(m + x) \EQN RamChang102;b \cr
+                - x & = m (1-h) \EQN RamChang102;c \cr
+                (m,h,x) & \in E  \EQN RamChang102;d \cr
+                 \theta' & \in \Omega \EQN RamChang102;d }$$
+The right side of %Value $J(\theta)$ %solution of
+Bellman equation \Ep{RamChang101}
+ is attained by policy functions
+$$ \eqalign{ x &= x(\theta) \cr
+             m & = m(\theta) \cr
+             h & = h(\theta) \cr
+             \theta' & = g(\theta) . } \EQN RamChang103 $$
+
+\subsection{Subproblem 2: Ramsey problem}
+ A Ramsey planner faces different opportunities and constraints than do  continuation Ramsey planners. The Ramsey planner does not inherit
+   a $\theta_0$ that it must deliver with a suitable choice of $(m_0, h_0, x_0)$ but instead chooses one.  Let $H$ be the value of the
+Ramsey problem.  It satisfies
+$$ H = \max_{h, m, x, \theta } u(f(x)) + v(m) + \beta J (\theta)  \EQN RamChang104 $$
+where  maximization is subject to
+$$ \EQNalign{ m [ u'(f(x)) - v'(m) ] & \leq \beta \theta,  \quad = {\rm if \ } m < \bar m \EQN RamChang1004;a \cr
+- x & = m( 1 - h) \EQN RamChang1004;b \cr
+(m, h, x) & \in E \EQN RamChang1004;c \cr
+ \theta & \in \Omega \EQN RamChang1004;d } $$
+The maximized value  $H$ is attained by a triple  $(h_0, m_0, x_0)$  of time $0$ choices and a continuation  $\theta \in \Omega$ to pass on to
+   a time $1$ continuation Ramsey planner.  To find remaining settings of the Ramsey plan, we iterate on \Ep{RamChang103} starting from the $\theta $
+   chosen by the Ramsey planner to deduce a continuation  Ramsey tax plan $\{x_t\}_{t=1}^\infty$ and associated continuation inverse money growth,  real balance
+sequence $\{h_t, m_t\}_{t=1}^\infty$.
+%, after which we can back out an implied sequence of real balances $\{m_t\}_{t=0}^\infty$ by solving
+%$$ \theta_t = u'(f(x_t)) (m_t + x_t). $$
+%We can find continuation reciprocal money creation rates $\{h_t\}_{t=1}^\infty$ by using the budget constraint \Ep{eqn_chang2}.
+Time inconsistency  manifests itself in  $(x_0, h_0, m_0) \neq (x_1, h_1, m_1)$, so that  a continuation of a Ramsey
+plan is not a Ramsey plan, as encountered in other contexts in  chapters \use{stackel} and  \use{optaxrecur}.
+
+An equivalent way to express subproblem 2 is
+$$ H=  \max_{\theta, m, x, h} J(\theta) \EQN RamChang104a  $$
+where maximization is subject to
+$$  \theta  = u'(f(x))(m + x) \EQN RamChang1006;a $$
+and restrictions \Ep{RamChang1004;b} and \Ep{RamChang1004;c}.\NFootnote{Please note that in equation \Ep{RamChang104}, $\theta$ is  next period's value
+of $\theta$ to be handed over to a continuation Ramsey planner, while in equation \Ep{RamChang104a}, $\theta$ is a time $0$ value of $\theta$.}
+
+\subsection{Finding set  $\Omega$}\label{sec:Chang_set_101}%
+The preceding calculations assume that we know the set $\Omega$.  We describe Chang's method for constructing $\Omega$ later in this chapter, but also provide a   brief sketch  here. Chang uses  backward induction in the style of Abreu, Pearce, and Stacchetti.
+ Thus, Chang starts by guessing a compact set $\Omega_0$ of candidate continuation $\theta$s.  For a reason to be explained momentarily, it is important for Chang to start with
+ guess $\Omega_0$ that contains $\Omega$.
+ He defines  a three-tuple
+  $(x_0, h_0, m_0) \in E$ and a
+ $\theta_1 \in \Omega_0$ that together satisfy time $0$ versions of restrictions \Ep{eqn_chang2} % \Ep{eqn_chang5a} and
+ and \Ep{eqn_chang4000} %and $ - x_t = m_t (1-h_t)$
+    as ``admissible with respect to $\Omega_0$''.  Notice that if the guess $\Omega_0$ happens to  equal $\Omega$, then being admissible with respect to $\Omega_0$ means
+ that $(x_0, h_0, m_0)$ would be    time $t=0$  variables for  a competitive equilibrium that is associated with a continuation competitive equilibrium
+ marginal utility of money $\theta_1$, because $\theta_1$ is in $\Omega$. But  because   $\Omega_0$ might be bigger than  $\Omega$, Chang can't be sure that that  a four-tuple $(x_0, h_0, m_0,\theta_1)$ that is  admissible with respect to $\Omega_0$ represents  a
+ competitive equilibrium.
+ %has given himself too much latitude in choosing continuation
+ %$\theta$, so he may or may not have a
+% He then considers forming all possible four-tuples $(x_0, h_0, m_0, \theta_1)$ such that $(x_0, h_0, m_0) \in E$,
+% $\theta_1 \in \Omega_0$, and restrictions \Ep{eqn_chang5a}  and \Ep{eqn_chang4000} are satisfied at $t=0$.
+ %Given set $\Omega_0$,
+ Therefore,  he proceeds as follows.  He starts by  seeking all four-tuples $(x_0, h_0, m_0)$ that are admissible with respect to $\Omega_0$. For each admissible four-tuple he calculates
+ a value $\theta_0 = u'(f(x_0))(m_0 + x_0)$.  He then constructs a set, call it $\Omega_1$, of all such $\theta_0$'s associated with  four-tuples that
+ are admissible with respect to $\Omega_0$.  In this way, Chang constructs an operator $D$ that maps a set   $\Omega_0$  of candidate continuation $\theta_1$'s into a set $\Omega_1$
+ of  implied time $0$ $\theta_0$'s.  Call this operator $D$.  Chang constructs $\Omega$ by iterating to convergence on $D$. Chang shows that if  he starts with
+ a big enough set $\Omega_0$, this algorithm converges to $\Omega$.  Chang's proof strategy  relies on verifying  that $D$ is
+ monotone. % in the same sense that  Abreu, Pearce, and Stacchetti's used  in the class of models described in  chapter \use{credible}.
+ \auth{Abreu, Dilip}%
+\auth{Stacchetti, Ennio}%
+\auth{Pearce, David}%
+
+\subsection{An example}
+Figures \Fg{chang_gr1}, \Fg{chang_gr2},  \Fg{chang_gr3}, and \Fg{chang_gr4} describe policies that attain Bellman equation \Ep{RamChang101}-\Ep{RamChang102}
+for fundamentals    $ u(c) = \log (c),   v(m) = {\frac{1}{2000} }(m \bar m - .5m^2)^{.5}, f(x) =180 - (.4x)^2$, and $\bar m = 30$,
+$\beta = 9$ with  $h$ is confined to the interval
+ $[.8, 1.3]$. The domain for each of the functions reported in these figures is the set $\Omega$ of marginal utilities of money affiliated with competitive equilibria, which we computed  by the method described in subsection \use{sec:Chang_set_101}.  Figure \Fg{chang_gr1} shows  $\theta_0$, the maximizer of  value function $J(\theta)$ of a continuation Ramsey planner; it also shows the limit point $\theta_\infty \equiv = \lim_{t\rightarrow +\infty} \theta_t$
+that the marginal utility of money under a Ramsey plan approaches as $t \rightarrow +\infty$. Figure \Fg{chang_gr1} shows $\theta'$ as a function of $\theta$.
+ The policy functions in figure   \Fg{chang_gr3} and the time series that they imply displayed in figure \Fg{chang_gr4}  show how  the  Ramsey planner
+gradually raises the tax rate $x_t$ and the inverse   money growth rate $h_t$, measures that cause real balances $m_t$  gradually to rise.
+The Ramsey planner wants to push up real balances $m$ but dislikes the distorting taxes $x$ required to make the inverse money growth rate bigger than $1$.
+The Ramsey planner also understands that the household's forward looking behavior makes its demand for real balances depend inversely on
+ future rates of inflation and therefore on future inverse money growth rates.\NFootnote{See the analysis of a demand function for money that
+ highlights this channel in exercise \use{stackel}.1 of chapter\use{stackel}.}  Therefore, a Ramsey planner who plans to set  high inverse money growth rates at dates $t \geq 1$
+ reaps benefits in terms of higher real balances at time $0$.  By setting time $0$ inverse money growth and distorting taxes to be high, the Ramsey
+  planner reaps no such benefits from higher real balances at date $ t < 0$.  The different structures of payoffs to the Ramsey planner from settings
+  of $x_t, h_t$ at different dates accounts for the Ramsey planner's decision gradually to raise inverse money growth rates and distorting taxes.
+
+
+
+\figure{chang_gr1}
+%\centerline{\epsfxsize=2.75truein\epsffile{timeseparableCRRApreferences.eps}}
+\centerline{\epsfxsize=3.25truein\epsffile{J_theta.eps}}
+\caption{Value function $J(\theta)$ for continuation Ramsey planner.}
+\endfigure
+
+
+
+\figure{chang_gr2}
+%\centerline{\epsfxsize=2.75truein\epsffile{timeseparableCRRApreferences.eps}}
+\centerline{\epsfxsize=3.25truein\epsffile{theta_prime.eps}}
+\caption{$\theta_{t+1}$ as function of $\theta_t$ together with initial condition $\theta_0$ and fixed point $\theta^*$ under Ramsey plan.}
+\endfigure
+
+\figure{chang_gr3}
+%\centerline{\epsfxsize=2.75truein\epsffile{timeseparableCRRApreferences.eps}}
+\centerline{\epsfxsize=3.25truein\epsffile{policy_functions.eps}}
+\caption{Policy functions showing $\theta', m, h$ and $x$ as functions of $\theta$.}
+\endfigure
+
+\figure{chang_gr4}
+%\centerline{\epsfxsize=2.75truein\epsffile{timeseparableCRRApreferences.eps}}
+\centerline{\epsfxsize=3.25truein\epsffile{time_series.eps}}
+\caption{Time series of $\theta, m, h, x$ under Ramsey plan.}
+\endfigure
+
+
+
+
+
+\section{Chang's formulation}
+This section describes Chang's (1998) way of formulating competitive equilibria,  the set $\Omega$ of marginal utilities
+associated with continuation competitive equilibria, and a Ramsey plan.
+
+\subsection{Competitive equilibrium}
+
+\medskip
+
+\specsec{Definition:} A {\it government policy} is a pair of sequences $(\vec h,\vec x)$ where $h_t \in \Pi  \ \forall t \geq 0$. A {\it price system} is a nonnegative  value of money sequence
+$\vec q$.  An {\it allocation\/} is a triple of nonnegative sequences $(\vec c, \vec m, \vec y)$.
+
+\medskip
+
+\noindent It is  required that time $t$ components $(m_t, x_t, h_t) \in E$. % \equiv [0, \bar m] \times X \times \Pi$.
+
+\specsec{Definition:} Given $M_{-1}$, a government policy $(\vec h, \vec x)$, price system $\vec q$, and allocation
+$(\vec c, \vec m, \vec y)$ are said to be  a  {\it competitive equilibrium\/} if
+
+\item{i.} $m_t = q_t M_t $ and $y_t = f(x_t)$.
+
+\item{ii.} The government budget constraint \Ep{eqn_chang2} is satisfied.
+
+\item{iii.} Given $\vec q, \vec x, \vec y$, $(\vec c, \vec m)$ solves the  household's problem.
+
+
+
+
+\section{Inventory of key objects}
+
+Chang constructs the following objects.
+
+
+
+
+\medskip
+\item{1.}  {\it A set $\Omega$ of initial marginal utilities  of money $\theta_0$.}
+\medskip
+\noindent Let $\Omega$ denote the set of initial promised marginal utilities of money  $\theta_0$ associated with competitive equilibria.
+Chang exploits the fact  that a competitive equilibrium consists of a first period outcome $(h_0, m_0, x_0)$ and a continuation competitive equilibrium with marginal utility of money $\theta _1 \in \Omega$.
+
+
+\medskip
+\item{2.}  {\it Competitive equilibria that have a recursive representation.}
+\medskip
+
+
+\noindent A competitive equilibrium with a recursive representation consists of an initial $\theta_0$ and a four-tuple of functions
+$(h, m, x, \Psi)$ mapping $\theta$ into  this period's $(h, m, x)$   and next period's $\theta$, respectively.\NFootnote{Proposition 3 of Chang (1998) establishes that there exists a competitive equilibrium with such a recursive representation that  solves the Ramsey problem.
+ The proposition is silent about whether there exist additional  competitive equilibria not having recursive representations that also solve the Ramsey problem. \tag{Changfoot}{\the\footnum}}  A competitive equilibrium starts from a four-tuple $(x_0, h_0, m_0, \theta_1)$ such that $(x_0, h_0, m_0) \in E$,
+ $\theta_1 \in \Omega$, and  restrictions \Ep{eqn_chang2 } and \Ep{eqn_chang4000}    are satisfied at $t=0$.  Thereafter it can be represented recursively
+by iterating on
+$$ \eqalign{ h_t & = h(\theta_t) \cr
+             m_t & = m(\theta_t) \cr
+             x_t & = x(\theta_t) \cr
+             \theta_{t+1} & = \Psi(\theta_t)}\EQN Chang500 $$
+starting from $\theta_1$ The range and domain of $\Psi(\cdot)$ are both $\Omega$.
+
+
+\medskip
+\item{3.} {\it A recursive representation of a Ramsey plan.}
+\medskip
+
+\noindent A recursive representation of a Ramsey plan is a recursive competitive equilibrium
+$\theta_0, (h, m, x, \Psi)$ that, among all recursive competitive equilibria,   maximizes
+$ \sum_{t=0}^\infty \beta^t \left[ u(c_t) + v(q_t M_t ) \right] $. The Ramsey planner chooses  $\theta_0, (h, m, x, \Psi)$ from
+among the set of recursive competitive equilibria at time $0$.  Iterations on the function $\Psi$ determine subsequent $\theta_t$'s that summarize
+the aspects of the continuation competitive equilibria that influence the household's decisions.  At time $0$, the Ramsey planner
+commits to this implied sequence $\{\theta_t\}_{t=0}^\infty$ and therefore to an associated sequence of continuation competitive equilibria.\NFootnote{In several contexts, Atkeson, Chari, and Kehoe (2010)
+show that to {\it implement\/} a Ramsey plan uniquely, it can be important  to add $m_t$ to the right side of the arguments of the functions $x$ and $\Psi$ determining  $x_t$ and $\theta_{t+1}$ in \Ep{Chang500}.  Adding (what in their model amounts to a counterpart to)
+$m_t$ to these functions allows Atkeson, Chari, and Kehoe  to express how the government would respond if the representative household  were to deviate from the outcome $\hat m_t = m(\theta_t)$  prescribed by the Ramsey plan.   They construct these augmented functions
+to provide incentives that  deter private sector deviations from the Ramsey plan.}
+%
+%\medskip
+%\item{4.} {\it A characterization of time-inconsistency of a Ramsey plan.}
+%\medskip
+%
+%
+%\noindent
+%{\it If\/} after a  `revolution' at time $t \geq 1$,  a new Ramsey planner were to be  given the opportunity to ignore history and
+%solve a brand new Ramsey plan,   this  new planner would want to reset
+%the $\theta_t$ associated with the original Ramsey plan to  $\theta_0$.\NFootnote{$\theta_t$ is the only state variable in Chang's model. If there
+% were other state variables, say an exogenous Markov shock $s_t$, then the post-revolutionary Ramsey planner would want to set $\theta_t$ to the $\theta_0$ that would have been appropriate if the
+% time $0$ exogenous Markov state had been $s_t$.} %The incentive to reinitialize $\theta_t$ associated with this revolutionary experiment
+%%indicates the time-inconsistency of the Ramsey plan.
+% By resetting $\theta$ to $\theta_0$, the new planner avoids the costs at time $t$ that the original Ramsey planner
+%must pay to reap   the beneficial effects that the original Ramsey plan for $s \geq t$ had achieved via its influence on the household's
+%decisions for $s = 0, \ldots, t-1$.
+
+
+\medskip
+\item{4.} {\it A credible government policy with  a recursive representation.}
+\medskip
+\noindent
+Here there is no time $0$ Ramsey planner. Instead there is a sequence of government decision makers. The time $t$ decision maker chooses time $t$ government actions after forecasting
+ what future government decision makers will do.
+ Let $w=\sum_{t=0}^\infty \beta^t \left[ u(c_t) + v(q_t M_t ) \right]$
+ be a value associated with a particular competitive equilibrium.  A recursive representation of a credible government policy is a pair of initial conditions
+ $(w_0, \theta_0)$ and a five-tuple of functions\NFootnote{Again, in the spirit of footnote \use{Changfoot}, there can exist additional credible plans that do not have
+a recursive representation.}
+$$h(w_t, \theta_t), m(h_t, w_t, \theta_t), x(h_t, w_t, \theta_t),
+ \chi(h_t, w_t, \theta_t),\Psi(h_t, w_t, \theta_t)$$
+  mapping $w_t,\theta_t$ and in some cases  $h_t$ into $\hat h_t, m_t, x_t, w_{t+1}$, and $\theta_{t+1}$, respectively.
+ Starting from initial condition $(w_0, \theta_0)$, a credible government policy can be constructed by iterating on these functions in the following
+ order that respects the within-period timing:
+$$\eqalign{ \hat h_t & = h(w_t,\theta_t) \cr
+                 m_t & = m(h_t, w_t,\theta_t) \cr
+                 x_t & = x(h_t, w_t,\theta_t) \cr
+             w_{t+1} & = \chi(h_t, w_t,\theta_t)  \cr
+       \theta_{t+1}  & = \Psi(h_t, w_t,\theta_t) . \cr } \EQN chang501 $$
+Here it is to be understood that $\hat h_t$ is the action that the government policy instructs the government to take, while
+$h_t$ possibly not equal to $\hat h_t$ is some other action that the government is free to take at time $t$.  The plan
+is called credible if it is in the time $t$ government's interest to execute it.  Credibility
+requires that the plan be such that for all possible  choices of  $h_t$ that are consistent with competitive equilibria, %available to the government
+$$\eqalign{ & u(f(x(\hat h_t, w_t,\theta_t))) + v(m(\hat h_t, w_t,\theta_t))  + \beta \chi(\hat h_t, w_t,\theta_t) \cr
+  &  \geq
+  u(f(x( h_t, w_t,\theta_t))) + v(m(h_t, w_t,\theta_t)) + \beta \chi(h_t, w_t,\theta_t) ,}$$
+so that at each instance and circumstance of choice, a government attains a weakly higher lifetime utility for the consumer with  continuation value $w_{t+1}=\Psi(h_t, w_t,\theta_t)$ by adhering to the
+plan and confirming the associated  time $t$ action $\hat h_t$ that the public had expected
+earlier.\NFootnote{The incentive constraint deters the government only from  one-period deviations. But this is a context in which  deterring
+one-period deviations  is sufficient to deter  multi-period deviations.}\index{one-period deviations}%
+
+Please note the subtle change in arguments of the functions used to represent  a competitive equilibrium and a  Ramsey plan, on the one hand,
+and a credible government plan, on the other hand. The extra arguments appearing in the functions used to represent a credible plan
+come from allowing the government to contemplate disappointing the private sector's expectation about its time $t$ choice $\hat h_t$. A credible plan induces
+ the government to confirm the private sector's expectation.  The recursive representation of the plan uses
+the evolution of the  continuation value $w$  to deter the government from disappointing the private sector's expectations.
+
+
+Technically, both the Ramsey plan and the credible plan incorporate history dependence.  For the Ramsey plan, this is encoded in
+the dynamics of the state variable $\theta_t$, a promised marginal utility that the Ramsey plan delivers to the private sector.
+For a credible government plan, the evolution of the two-dimensional state vector $(w_t, \theta_t)$  encodes  history dependence.
+
+
+\section{Analysis}
+
+\specsec{Proposition:}
+A competitive equilibrium  is characterized by a triple of sequences $(\vec m, \vec x, \vec h)  \in E^\infty$ that satisfies
+\Ep{eqn_chang2}, \Ep{eqn_chang3},  and \Ep{eqn_chang4}.
+
+\medskip
+\specsec{Definition:} $CE = \bigl\{ (\vec m, \vec x, \vec h) \in E^\infty $   such  that \Ep{eqn_chang2}, \Ep{eqn_chang3},   and \Ep{eqn_chang4} are satisfied.$\bigr\}$
+
+\medskip
+$CE$ is not empty because there exists a competitive equilibrium with $h_t =1 $ for all $t \geq 1$, namely,  an equilibrium with a constant money supply and
+constant price level.  Chang establishes that $CE$ is also compact.
+Chang makes the following key observation that combines ideas of  APS with insights of Kydland and Prescott (1980).
+
+\medskip
+\specsec{Proposition:} A continuation of a competitive equilibrium is a competitive equilibrium. That is,
+$(\vec m, \vec x, \vec h) \in CE$ implies that $(\vec m_t, \vec x_t, \vec h_t) \in CE \  \forall \ t \geq 1$.
+\medskip
+
+\specsec{Ramsey problem:}
+$$ \max_{(\vec m, \vec x, \vec h) \in E^\infty} \sum_{t=0}^\infty \beta^t \left[ u(c_t) + v(m_t) \right] $$
+subject to \Ep{eqn_chang2},   \Ep{eqn_chang3}, and \Ep{eqn_chang4}.
+Evidently, associated with any competitive equilibrium $(m_0, x_0)$ is an implied value
+of $\theta_0 = u'(f(x_0))(m_0 + x_0)$.
+\medskip
+%{\bf XXXX: Tom add stuff about $\theta$ being key.}
+
+
+To bring out a  recursive structure inherent in the Ramsey problem, Chang defines the set
+$$ \Omega = \left\{ \theta \in {\bbR} \ {\rm such  \ that}   \ \theta = u'(f(x_0)) (m_0 + x_0) \ {\rm  for \ some} \ (\vec m, \vec x, \vec h) \in CE \right\} .$$
+Equation \Ep{eqn_chang4} inherits from the household's Euler equation for money holdings the property that the value of $m_0$ consistent with
+the representative household's choices depends on $(\vec h_1, \vec m_1)$.  This dependence is captured  by making  $\Omega$  be the set
+of first period values of $\theta_0$ satisfying $\theta_0 = u'(f(x_0)) (m_0 + x_0)$ for  first period component  $(m_0,h_0)$ of  competitive
+equilibrium sequences $(\vec m, \vec x, \vec h)$.
+Chang establishes that $\Omega$ is a nonempty and compact subset of ${\bbR}_+$.
+
+Next Chang advances:
+\medskip
+\specsec{Definition:} $ \Gamma(\theta) = \left\{ (\vec m, \vec x, \vec h) \in CE |
+ \theta = u'(f(x_0))(m_0 + x_0) \right\} .$
+
+Thus, $\Gamma(\theta)$ is the set of competitive equilibrium  sequences $(\vec m, \vec x, \vec h)$  whose first period components
+$(m_0, h_0)$ deliver the prescribed value  $\theta$ for first period marginal utility.
+
+\medskip
+If we knew the sets $\Omega, \Gamma(\theta)$, we could use the following version of  the two-subproblem approach described in section
+ \use{sec:Chang_Ramsey_mock0}  to find  the value
+of the  Ramsey outcome
+to the representative household.
+
+\medskip
+
+\item{1.} Find the indirect value function $w(\theta)$ defined as
+$$ w(\theta) = \max_{(\vec m, \vec x, \vec h) \in \Gamma(\theta)} \sum_{t=0}^\infty \beta^t \left[ u(f(x_t)) + v(m_t) \right]. $$
+%where the maximization is over elements of the set $(\vec m, \vec x, \vec h) \in \Gamma(\theta)$.
+
+\item{2.} Compute the value of the Ramsey outcome by solving $\max_{\theta \in \Omega} w(\theta)$.
+
+\medskip
+
+Chang states
+
+\medskip
+\specsec{Proposition:}  $w(\theta)$ satisfies the Bellman equation
+$$ w(\theta) = \max_{x,m,h,\theta'} \bigl\{ u(f(x)) + v(m) + \beta w(\theta') \bigr\} \EQN eqn_chang7 $$
+where the maximization is subject to
+$$ \EQNalign{ (m,x,h) & \in E \  {\rm and} \ \theta' \in \Omega \EQN eqn_chang8 \cr
+     \theta &= u'(f(x)) (m+x) \EQN eqn_chang9 \cr
+     - x &= m(1-h) \EQN eqn_chang10 \cr
+     m \cdot [ u'(f(x)) - v'(m) ] & \leq \beta \theta' , \quad = \ {\rm if} \ m < \bar m . \EQN eqn_chang11 } $$
+
+Note that the proposition relies on
+knowing the set $\Omega$.  To find $\Omega$, Chang uses  a method reminiscent of chapter \use{credible}'s
+APS iteration to convergence  on an operator
+$B$ that maps continuation values into values.  We want an operator that maps a continuation $\theta$ into a current $\theta$. Chang lets $Q$ be a nonempty, bounded subset of ${\bbR}$.  Elements
+of the set $Q$ are  candidates for continuation marginal utilities.  Chang  defines an operator
+$$ B(Q)  = \{ \theta \in {\bbR}: {\rm there \ is } \ (m,x,h, \theta') \in E \times Q \ {\rm such \ that}  $$
+$$ \hbox{\Ep{eqn_chang9},
+\Ep{eqn_chang10}, {\rm and} \  \Ep{eqn_chang11} \ {\rm hold}} \}  $$
+Thus, $B(Q)$ is the set of first period $\theta$'s attainable with $(m,x,h) \in E$ and some $\theta' \in Q$.
+
+
+\medskip
+\specsec{Proposition:}
+\item{i.} $Q \subset B(Q) $ implies $B(Q) \subset \Omega$.  (`self-generation')
+\item{ii.} $\Omega = B(\Omega)$.  (`factorization')
+
+
+\medskip
+The proposition characterizes $\Omega$ as the largest fixed point of $B$.
+It is easy to establish that $B(Q)$ is a monotone operator.  This property allows Chang to compute $\Omega$ as the limit of
+iterations on $B$ provided that iterations begin from a sufficiently large initial set.
+%
+%Now return to proposition XXXX that uses Bellman equation \Ep{eqn_chang7} to  characterize the value of a Ramsey plan
+%associated with $\theta \in \Omega$.  The right side of \Ep{eqn_chang7} is evidently attained by iterating on the  functions
+% depicted above in system \Ep{Chang500}.% that appear in the order of the within-period timing:
+%%$$ \eqalign{ h & = h(\theta) \cr
+%            x & = x(h(\theta)) \cr
+%            m & = m(h(\theta)) \cr
+%            \theta' & = \psi(h(\theta)) .}$$
+%XXXXX say more. This set of functions induce functions that map $\vec h^{t-1}$ into time $t$ Ramsey outcomes $(h_t, x_t, m_t)$.
+%
+
+\subsection{Notation}
+
+Let  $\vec h^t = (h_0, h_1, \ldots, h_t)$ denote a history of inverse money creation rates with time $t$ component $h_t \in \Pi$.
+A {\it government strategy\/}   $\sigma=\{\sigma_t\}_{t=0}^\infty$ is a $\sigma_0 \in \Pi$ and for $ t \geq 1$  a sequence of functions $\sigma_t: \Pi^{t-1} \rightarrow \Pi$.
+Chang restricts the government's choice of strategies to the following space:
+$$ CE_\pi = \{ {\vec h} \in \Pi^\infty: {\rm there \ is \ some } \ (\vec m, \vec x) \ {\rm such \ that } \ (\vec m, \vec x, \vec h) \in CE \} .$$
+In words, $CE_\pi$ is the set of money growth sequences consistent with the existence of competitive equilibria. Chang observes that $CE_\pi$ is
+nonempty and compact.
+
+\medskip
+\specsec{Definition:} $\sigma$ is said to be {\it admissible\/} if for all $t \geq 1$ and  after any history $\vec h^{t-1}$, the continuation
+$\vec h_t$ implied by $\sigma$ belongs to $CE_\pi$.
+\medskip
+Admissibility of $\sigma$ means that  anticipated policy choices associated with $\sigma$ are consistent with the existence
+of competitive equilibria after each possible subsequent history.  After any history $\vec h^{t-1}$, admissibility restricts the government's choice in period $t$   to the set
+$$ CE_\pi^0 = \{ h \in \Pi: {\rm there \ is } \ \vec h \in CE_\pi \ {\rm with } \ h=h_0 \} .$$
+In words, $CE_\pi^0 $ is the set of all first period money growth rates $h=h_0$, each of which is   consistent with the existence of a sequence of money growth rates $\vec h$ starting from $h_0$ in the initial period
+ and for which
+a  competitive equilibrium exists.
+
+\medskip
+\specsec{Remark:} $CE_\pi^0 = \{h \in \Pi: {\rm there \ is } \ (m,\theta') \in [0, \bar m] \times \Omega \ {\rm such \ that } \
+m u'[ f((h-1)m) - v'(m)]  \leq \beta \theta' \ {\rm with \ equality \ if } \  m < \bar m .\}$
+\medskip
+\specsec{Definition:} An {\it allocation rule\/} is a sequence of functions $\vec \alpha = \{\alpha_t\}_{t=0}^\infty$ such that
+$\alpha_t: \Pi^t \rightarrow [0, \bar m] \times X$.
+\medskip
+\noindent Thus, the time $t$ component of $\alpha_t(h^t)$ is a pair of functions $(m_t(h^t), x_t(h^t))$.
+\medskip
+\specsec{Definition:} Given an admissible government strategy $\sigma$, an allocation rule $\alpha$ is called {\it competitive\/} if
+given any history $\vec h^{t-1}$ and $h_t \in CE_\pi^0$, the continuations of $\sigma$ and $\alpha$ after
+$(\vec h^{t-1},h_t)$ induce a  competitive equilibrium sequence.
+\medskip
+
+
+
+\subsection{An operator}\label{sec:firstDZ}%
+At this point it is convenient to   introduce an operator $D$ that can be used to compute a Ramsey plan.  For computing a Ramsey plan,
+this operator is wasteful because it works with a state vector that is bigger than necessary.  We introduce  operator $D$
+because it helps to prepare the way for Chang's operator   $\tilde D(Z)$ that we shall define in section \use{sec:sustainabilityD}.
+It is also useful because a fixed point of the operator $D(Z)$  is a good guess for an initial
+set from which to initiate iterations on Chang's set-to-set operator $\tilde D(Z)$. % to be defined  in section \use{sec:sustainabilityD}.
+
+   Let $S$ be the set of all pairs $(w, \theta)$ of competitive equilibrium values and associated initial marginal utilities.
+    Let $W$ be a bounded set of values in ${\bbR}$.
+  Let $Z $ be a nonempty subset of $W \times \Omega$ and think
+of using pairs $(w', \theta')$ drawn from $Z$ as candidate continuation value, $\theta$  pairs.
+Define the operator
+$$ D(Z) = \Bigl\{ (w,\theta): {\rm there \ is } \ h \in CE_\pi^0 $$
+$$ {\rm and \ a  \ four-tuple } \ (m(h), x(h), w'(h), \theta'(h)) \in [0,\bar m]\times X \times Z  $$
+$$ {\rm such \ that}$$
+$$ w = u(f(x( h))) + v(m( h)) + \beta w'( h) \EQN eqn_chang120 $$
+$$ \theta = u'(f(x( h))) ( m( h) + x( h))\EQN eqn_chang130 $$
+%$$ {\rm and \ for \ all} \ h \in CE_\pi^0 $$
+%$$ w \geq u[f(x(h))] + v[m(h)] + \beta w'(h) \EQN eqn_chang140 $$
+$$ x(h) = m(h) (h-1) \EQN eqn_chang_150 $$
+%$$ {\rm and}$$
+$$ m(h) (u'(f(x(h))) - v'(m(h))) \leq \beta \theta'(h)   \EQN eqn_chang160 $$
+$$ \quad \quad \ {\rm with \ equality \ if } \ m(h) < \bar m .  \Bigr\}   $$
+
+
+\noindent It is possible to establish
+\medskip
+\specsec{Proposition:}
+\item{i.} If $Z \subset D(Z)$, then $D(Z) \subset S$.  (`self-generation')
+\item{ii.} $S = D(S)$. (`factorization')
+
+\medskip
+\specsec{Proposition:}
+\item{i.} Monotonicity of $D$: $Z \subset Z'$ implies $D(Z) \subset D(Z')$.
+\item{ii.} $Z$ compact implies that $D(Z)$ is compact.
+
+\medskip
+It can be shown  that $S$ is compact and that therefore there exists  a $(w, \theta)$ pair within $S$ that attains the highest possible value
+$w$.  This
+ $(w, \theta)$ pair is associated with a Ramsey plan. Further, we can compute $S$ by iterating to convergence on $D$ provided that one begins with a sufficiently large initial
+set $S_0$.
+ As a  useful  by-products, the algorithm that finds the largest fixed point $S = D(S)$
+also produces the Ramsey  plan, its value $w$,   and an associated continuation  marginal of money that the Ramsey planner hands over to
+ the first continuation Ramsey planner.
+
+\figure{chang_graph1_exo}
+%\centerline{\epsfxsize=2.75truein\epsffile{timeseparableCRRApreferences.eps}}
+\centerline{\epsfxsize=3.25truein\epsffile{Chang1_B.eps}}
+\caption{Sets of $(w, \theta)$ pairs  associated with competitive equilibria (the larger set) and with sustainable plans (the smaller set) for $\beta = .3$.
+   The Ramsey plan is associated with the $(w, \theta)$ pair
+ denoted  $R$,  which among points in  the larger set maximizes $w$. Attaining $R$ requires an initial $\theta$ equal to the projection of $R$ onto the vertical axis.}
+\endfigure
+
+
+\figure{chang_graph2_exo}
+%\centerline{\epsfxsize=2.75truein\epsffile{timeseparableCRRApreferences.eps}}
+\centerline{\epsfxsize=3.25truein\epsffile{Chang2_B.eps}}
+\caption{Sets of $(w, \theta)$ pairs  associated with competitive equilibria (the larger set) and with sustainable plans (the smaller set) for $\beta = .8$   The Ramsey plan is associated with the $(w, \theta)$ pair
+ denoted  $R$,  which among points in the larger set maximizes $w$. Attaining $R$ requires an initial $\theta$ equal to the projection of $R$ onto the vertical axis.}
+\endfigure
+
+
+The larger sets in
+figures  \Fg{chang_graph1_exo} and \Fg{chang_graph2_exo} report sets of $(w,\theta)$ pairs associated with competitive equilibria for two parameterizations.
+(We will discuss the smaller sets in the next section about sustainable plans.)
+In both figures, $ u(c) = \log (c),   v(m) = {\frac{1}{2000} }(m \bar m - .5m^2)^{.5}, f(x) =180 - (.4x)^2$, and $\bar m = 30$. In figure \Fg{chang_graph1_exo} $\beta = .3$ and $h$ is confined to the interval $[.9, 2]$.  In figure \Fg{chang_graph2_exo}, $\beta = .8$ and $h$ is confined to the interval
+$[.9, 1/.8]$.    In both figures, the Ramsey outcome is associated   with the $(w,\theta)$ pair
+denoted $R$, which among points in the larger set maximizes $w$. To find the  initial $\theta$ associated with the Ramsey plan, project $R$ onto the vertical axis.\NFootnote{We thank Sebastian Graves for computing these  sets and also the smaller ones to be described below.
+Graves used the outer approximation method of Judd, Yeltekin, and Conklin (2003) to compute this set.
+A public randomization device is  introduced to convexify the set of equilibrium
+   values.} The value of the Ramsey plan is the projection of the point $R$ onto the horizontal axis.
+\auth{Judd, Kenneth L.}%
+\auth{Yeltekin,  Sevin}%
+\auth{Conklin, James}
+
+
+%
+%\figure{chang_graph1}
+%%\centerline{\epsfxsize=2.75truein\epsffile{timeseparableCRRApreferences.eps}}
+%\centerline{\epsfxsize=3.25truein\epsffile{graph_2.eps}}
+%\caption{Set of $(w,\theta)$ pairs  associated with competitive equilibria.  The Ramsey is associated with the $(w,\theta)$ pair
+%denoted $R$, which among points in the set maximizes $w$. The appropriate choice of initial $\theta$ is the projection of $R$ onto the vertical axis.}
+%\endfigure
+
+
+
+
+\section{Sustainable plans}\label{sec:sustainabilityD}%
+\specsec{Definition:} A government strategy $\sigma$ and an allocation rule $\alpha$  constitute a {\it sustainable plan\/} (SP)
+if
+\item{i.} $\sigma$ is admissible.
+\item{ii.}  Given $\sigma$, $\alpha$ is competitive.
+\item{iii.} After any history $\vec h^{t-1}$, the continuation of $\sigma$ is optimal for the government; i.e., the  sequence
+$\vec h_t$ induced by $\sigma$ after $\vec h^{t-1}$ maximizes \Ep{eqn_chang1} over $CE_\pi$ given $\alpha$.
+\medskip
+\specsec{Remark:} Given any history $\vec h^{t-1}$, the continuation of a sustainable plan is a sustainable plan.
+\medskip
+\specsec{Definition:} Let $\Theta = \{ (\vec m, \vec x, \vec h) \in CE : {\rm there \ is \ an \  SP \ whose \ outcome \ is } \ (\vec m, \vec x, \vec h) \}.$
+\medskip
+\medskip \noindent Sustainable outcomes are elements of $\Theta$.
+
+Now consider the set
+$$ S = \Bigl\{ (w,\theta) : {\rm there \ is \ a \ sustainable \ outcome } \ (\vec m, \vec x, \vec h) \in \Theta  \ {\rm with \ value} $$
+$$ \ \ \ \ \ \  w= \sum_{t=0}^\infty \beta^t [u(f(x_t)) + v(m_t)]  \ {\rm and \ such \ that } \ u'(f(x_0)) (m_0 + x_0) = \theta \Bigr\} $$
+Set $S$ is a compact subset of $W \times \Omega$, where $W = [\underline w, \overline w]$ is the set of values associated with
+sustainable plans.  Here $\underline w$ and $\overline w$ are finite bounds on the set of values. Because there is at least one sustainable plan, $S$ is nonempty.
+
+Now recall the within-period timing protocol, which we can depict $(h,x) \rightarrow m=q M \rightarrow y = c$.
+With this timing protocol in mind, the time $0$ component of an SP has the following components:
+
+ \medskip
+
+\item{i.} A period $0$ action $\hat h \in \Pi$ that the public expects the government to take, together with subsequent within-period consequences
+$m(\hat h), x(\hat h)$ when the government  acts as the household had expected.
+\item{ii.} For any first period action $h \neq \hat h$ with $h \in CE_\pi^0$, a pair of within-period  consequences $m(h), x(h)$ when the government does not act
+as the household had expected.
+\item{iii.} For every $h \in \Pi$, a pair $(w'(h), \theta'(h))\in S$ to carry into next period.
+
+\medskip
+These components must be such that it is optimal for the government to choose $\hat h$ as expected; and for every possible $h \in \Pi$, the government budget constraint and
+the household's Euler equation must hold with continuation $\theta $ being $\theta'(h)$.
+
+Given the timing protocol,  the representative household's response to a government deviation to $h \neq \hat h$ from a prescribed  $\hat h$  consists of a first period action $m(h)$ and associated
+subsequent actions, together with future equilibrium prices, captured by $(w'(h), \theta'(h))$.\NFootnote{The prescribed government action $\hat h$
+equals the public's forecast of what the government would do.}
+
+ At this point, Chang introduces an idea of APS.  Let $Z $ be a nonempty subset of $W \times \Omega$ and think
+of using pairs $(w', \theta')$ drawn from $Z$ as candidate continuation value, promised marginal utility of money  pairs.  Define
+the following  operator: %generalization of the $D(Z)$ operator from subsection \use{sec:firstDZ}.
+
+$$ \tilde D(Z) = \Bigl\{ (w,\theta): {\rm there \ is } \ \hat h \in CE_\pi^0 \ {\rm and \ for \ each } \ h \in CE_\pi^0 $$
+$$ {\rm a \ four-tuple } \ (m(h), x(h), w'(h), \theta'(h)) \in [0,\bar m]\times X \times Z  $$
+$$ {\rm such \ that}$$
+$$ w = u(f(x(\hat h)))+ v(m(\hat h)) + \beta w'(\hat h) \EQN eqn_chang12 $$
+$$ \theta = u'(f(x(\hat h))) ( m(\hat h) + x(\hat h)) \EQN eqn_chang13 $$
+$$ {\rm and \ for \ all} \ h \in CE_\pi^0 $$
+$$ w \geq u(f(x(h))) + v(m(h)) + \beta w'(h) \EQN eqn_chang14 $$
+$$ x(h) = m(h) (h-1) \EQN eqn_chang_15 $$
+$$ {\rm and}$$
+$$ m(h) (u'(f(x(h))) - v'(m(h))) \leq \beta \theta'(h)   \EQN eqn_chang16 $$
+$$ \quad \quad \ {\rm with \ equality \ if } \ m(h) < \bar m .  \Bigr\}   $$
+
+
+This operator adds the key incentive constraint \Ep{eqn_chang14} to the conditions that  defined the
+$D(Z)$ operator from subsection \use{sec:firstDZ}. Condition \Ep{eqn_chang14} requires that  the plan  deter  the government from wanting to
+take one-shot deviations when candidate continuation values are drawn from $Z$.
+\medskip
+\specsec{Proposition:}
+\item{i.} If $Z \subset \tilde D(Z)$, then $\tilde D(Z) \subset S$.  (`self-generation')
+\item{ii.} $S = \tilde D(S)$. (`factorization')
+
+\medskip
+\specsec{Proposition:}
+\item{i.} Monotonicity of $\tilde D$: $Z \subset Z'$ implies $\tilde D(Z) \subset \tilde D(Z')$.
+\item{ii.} $Z$ compact implies that $\tilde D(Z)$ is compact.
+
+\medskip
+Chang establishes that $S$ is compact and that therefore there exists  a highest value SP and a lowest value SP. Further, the preceding structure
+allows Chang to compute $S$ by iterating to convergence on $\tilde D$ provided that one begins with a sufficiently large initial
+set $Z_0$.
+
+ The smaller sets in figures  \Fg{chang_graph1_exo} and \Fg{chang_graph2_exo} show sets of $(w,\theta)$ pairs associated with  sustainable plans.
+ Comparing the sets associated with the \Fg{chang_graph1_exo}  economy in which  $\beta =.3$  with those associated with the  \Fg{chang_graph2_exo}  economy
+ in which $\beta = .8$
+ indicates how raising $\beta$ expands the set of values associated with sustainable plans,
+and that for a sufficiently large $\beta < 1$, it is possible to attain a $(w,\theta)$
+pair associated with the Ramsey plan. For the low $\beta$ figure  \Fg{chang_graph1_exo} economy, the Ramsey outcome is not sustainable, while for the
+high $\beta$ figure \Fg{chang_graph2_exo} economy, it is.
+% \NFootnote{We thank Sebastian Graves for computing these sets.
+% Graves used the method of Judd, Yeltekin, and Conklin (2003).}
+%%\auth{Judd, Kenneth L.}%
+%%\auth{Yeltekin,  Sevin}%
+%%\auth{Conklin, James}
+
+
+%
+%\figure{chang_graph2}
+%%\centerline{\epsfxsize=2.75truein\epsffile{timeseparableCRRApreferences.eps}}
+%\centerline{\epsfxsize=3.25truein\epsffile{graph_1.eps}}
+%\caption{Sets of $(w, \theta)$ pairs  associated with competitive equilibria (the larger set) and with sustainable plans (the smaller set).   The Ramsey plan is associated with the $(w, \theta)$ pair
+%denoted  $R$.}
+%\endfigure
+
+This structure delivers the following recursive  representation of a sustainable outcome:
+(1) choose an initial $(w_0, \theta_0) \in S$; (2) generate a sustainable outcome recursively by iterating on
+\Ep{chang501}, which we repeat here for convenience:
+$$\eqalign{ \hat h_t & = h(w_t,\theta_t) \cr
+                 m_t & = m(h_t, w_t,\theta_t) \cr
+                 x_t & = x(h_t, w_t,\theta_t) \cr
+             w_{t+1} & = \chi(h_t, w_t,\theta_t)  \cr
+       \theta_{t+1}  & = \Psi(h_t, w_t,\theta_t) . \cr }  $$
+
+
+
+%$$ \eqalign{ h_t & = h(w_t, \theta_t) \cr
+%          m_t & = m(h(w_t,\theta_t)) \cr
+%          x_t & = x(h(w_t,\theta_t)) \cr
+%          \theta_{t+1} & = \Psi_\theta(h(w_t, \theta_t)) \cr
+%          w_{t+1} & =  \Psi_w (h(w_t, \theta_t)) } $$ 

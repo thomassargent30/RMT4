@@ -1,0 +1,2442 @@
+%%% XXXXX Tom: check whether \bbR and {\bf R} are consistent throughout book
+\input grafinp3
+%\input grafinput8
+\input psfig
+%\eqnotracetrue
+%\ReadAUX
+%\input form1
+
+%\input psfig
+%\input grafinput8
+
+%\showchaptIDtrue
+%\def\@chaptID{14.}
+
+%\hbox{}
+\footnum=0
+\chapter{Incomplete Markets Models\label{incomplete}}
+\offparens
+\section{Introduction}
+
+ In the complete markets model of chapter \use{recurge},
+the optimal consumption allocation is not history dependent; the allocation
+depends on the current value of the  Markov state variable only.  This
+outcome reflects the comprehensive opportunities to insure risks that
+markets provide.   This chapter and chapter \use{socialinsurance}
+describe settings with more impediments to exchanging risks.  These
+reduced opportunities make allocations history dependent.  In this
+chapter, the history dependence is encoded in the dependence
+of a household's  consumption on the household's current asset
+holdings.  In chapter \use{socialinsurance}, history dependence
+is encoded in the dependence of the consumption allocation on a
+continuation value promised by a planner or principal.
+
+\auth{Bewley, Truman}%
+\index{Bewley models}%
+\index{equilibrium!incomplete markets}
+  The present chapter describes a particular type of incomplete
+markets model.
+ The models have a large number of {\it ex ante\/} identical but
+{\it ex post\/} heterogeneous agents who trade a single security.
+For most of this chapter, we study models with no
+aggregate uncertainty and no variation of an aggregate
+state variable over time (so macroeconomic time series
+variation is absent).  But there is much uncertainty at
+the individual level.  Households' only option
+is to ``self-insure'' \index{self-insurance} by managing a
+stock of a single  asset to buffer their consumption against
+adverse shocks.  We study several models that differ mainly
+with respect to the particular asset that is the vehicle
+for \idx{self-insurance},
+\index{risk-sharing mechanisms}
+for example, fiat currency or  capital.
+\auth{Bewley, Truman}%
+\auth{Aiyagari, Rao} \auth{Huggett, Mark}%
+
+The tools for constructing these models are discrete-state
+discounted dynamic programming, used to formulate and solve
+problems of the individuals, and Markov chains, used to
+compute a stationary wealth distribution. The models produce
+a stationary wealth distribution that is determined
+simultaneously with various aggregates that are defined
+as means across corresponding individual-level variables.
+
+We begin by recalling our discrete-state formulation of a
+single-agent infinite horizon savings problem. We then describe
+several economies in which  households face some version of
+this infinite horizon savings problem, and where some of the
+prices taken parametrically in each household's problem
+are determined by the {\it average\/} behavior of
+all households.%\NFootnote{Most of the
+%heterogeneous-agent models in this chapter have been
+%arranged to shut down aggregate variations over time,
+%to avoid the ``curse of dimensionality'' that comes into play
+%in formulating the household's dynamic programming problem when
+%there is an aggregate state variable. But we also describe a  model of
+%Krusell and Smith (1998) that has an aggregate state variable.}
+
+   This class of models was invented by Bewley (1977, 1980, 1983, 1986),
+partly to study a set of classic issues in monetary theory.
+The second half of this chapter joins that enterprise by using
+the model to represent inside and outside money, a free banking
+regime, a subtle limit to the scope of Friedman's optimal quantity
+of money, a model of international exchange rate indeterminacy,
+and some related issues.  The chapter closes by describing work of Krusell and Smith (1998) that extended the domain
+of such models to include a time-varying stochastic aggregate state
+variable.  As we shall see, this innovation makes the state
+of the household's problem include the time $t$ cross-section
+distribution of wealth, an immense object.
+
+  Researchers have used calibrated versions of Bewley models to give
+quantitative answers to questions including the welfare costs of inflation
+(\.Imrohoro\u glu, 1992),
+the risk-sharing benefits of unfunded social security systems
+(\.Imrohoro\u glu, \.Imrohoro\u glu, and Joines, 1995),
+the benefits of insuring unemployed people
+(Hansen and \.Imrohoro\u glu, 1992),
+and the welfare costs of taxing capital (Aiyagari, 1995).  Also see
+Heathcote,  Storesletten, and    Violante (2008), and
+Krueger, Perri,  Pistaferri, and   Violante (2010).
+See Kaplan and  Violante (2010) for a quantitative study of how much insurance consumers seem to attain
+beyond the self-insurance allowed in Bewley models.
+Heathcote, Storesletten, and  Violante (2012) combine ideas of Bewley with those of  Constantinides and Duffie (1996) to build
+a model of partial insurance.  Heathcote,  Perri, and Violante (2010) present an enlightening account  of recent  movements
+in the distributions of   wages, earnings, and consumption across people and across time in the U.S.  \auth{Hansen, Gary D.}
+ % \auth{Imrohoroglu, Selahattin} %\auth{Imrohorouglu, Ayse}
+ \auth{Aiyagari, Rao}
+\auth{Joines, Douglas} \auth{Imrohoro\u glu, Selahattin}
+\auth{Imrohoro\u glu, Ay\c se}
+\auth{Heathcote, Jonathan}
+\auth{Storesletten, Kjetil}
+\auth{Violante, Giovanni L.}
+\auth{Krueger, Dirk}
+\auth{Perri, Fabrizio}
+\auth{Pistaferri,  Luigi}
+\auth{Kaplan, Greg}
+\auth{Constantinides, George M.}%
+\auth{Duffie, Darrell}%
+
+\section{A savings problem}
+
+Recall the discrete-state savings problem
+described in chapters \use{practical}.  % and \use{selfinsure}.
+The household's labor income at time $t$, $s_t$,
+evolves according to an $m$-state Markov chain with transition
+matrix $\cal P$. Think of initiating the process from the invariant distribution
+of $\cal P$ over $\bar s_i$'s.   If the realization of the process at $t$ is
+$\bar s_i$, then at time $t$ the household receives labor income
+$w \bar s_i$.   Thus, employment opportunities determine the
+labor income process.
+We shall sometimes assume that $m$ is 2, and that $s_t$
+takes the value 0 in an unemployed state and 1 in an
+employed state.
+
+We constrain holdings of a single asset to a grid
+${\cal A} = [ 0 <\bar a_1 < \bar a_2 < \cdots < \bar a_n]$.
+For given values
+of ($w,r$) and given initial values ($a_0, s_0$), the household
+chooses a policy for
+ $\{c_t, a_{t+1}\}_{t=0}^\infty$ to maximize
+$$ E_0 \sum_{t=0}^\infty \beta^t u(c_t) , \EQN ob1 $$
+subject to
+$$\eqalign{ c_t + a_{t+1} &= (1+r) a_t + w s_t \cr
+       a_{t+1} &\in {\cal A}\cr }\EQN ob2
+$$
+where
+$\beta \in (0,1)$ is a discount factor; $u(c)$ is a strictly
+increasing, strictly concave, twice continuously
+differentiable one-period utility function satisfying
+the Inada condition $\lim_{c \downarrow 0} u'(c) = +\infty$;
+ and $\beta(1+r) < 1$.\NFootnote{The Inada condition makes consumption
+nonnegative, and this fact plays a role in justifying the
+natural debt limit below.}
+
+%$$ v(a,s) = \max_{a' \in {\cal A}} \{u((1+r)a +ws - a') + \beta
+%    E v(k',s') \vert s \} ,$$
+%or
+The Bellman equation, for each
+$i \in [1, \ldots, m]$ and each $h \in [1, \ldots, n]$,
+is
+$$ v(\bar a_h, \bar s_i) = \max_{a' \in {\cal A}} \{u[(1+r)\bar a_h+w \bar s_i - a']
+ + \beta \sum_{j=1}^m {\cal P}(i,j) v(a',\bar s_j) \} ,\EQN ob3$$
+where $a'$ is next period's value of asset holdings. Here $v(a,s)$
+is the optimal value of the objective function, starting from
+asset-employment state ($a,s$).   Note  that the grid ${\cal A}$
+incorporates upper and lower limits on the quantity that can be
+borrowed (i.e., the amount of the asset that can be issued). The
+upper bound on ${\cal A}$ is restrictive.  In some of our prior
+theoretical discussions, especially in chapter \use{selfinsure},  it  was important to
+dispense with that upper bound.
+
+In chapter \use{practical}, we described how to solve equation \Ep{ob3}
+for a value function $v(a,s)$
+and an associated policy function
+$a' = g (a,s)$ mapping this period's ($a,s$) pair into an optimal
+choice of assets to carry into next period.
+%\vfil\eject
+\index{wealth-employment distributions}
+\subsection{Wealth-employment distributions}
+Define the unconditional distribution of $(a_t,s_t)$ pairs,
+$\lambda_t (a,s) =
+{\rm Prob}(a_t = a,s_t=s)$.
+The exogenous Markov transition matrix ${\cal P}$ on $s$ and the optimal policy function
+$a'=g(a,s)$ induce a law of motion for the distribution $\lambda_t$, namely,
+$$\eqalign{ {\rm Prob}(a_{t+1} &= a', s_{t+1} = s') =
+  \sum_{a_t} \sum_{s_t} {\rm Prob}(a_{t+1} = a'\vert a_t=a, s_{t} = s)\cr
+  &\cdot {\rm Prob}(s_{t+1} = s' \vert s_t = s)
+  \cdot {\rm Prob}(a_t =a, s_t = s),\cr}$$
+or
+$$ \lambda_{t+1} (a',s') = \sum_a \sum_s \lambda_t(a,s) {\rm Prob}
+  (s_{t+1} =s' \vert s_t = s) \cdot {\cal I}(a',s,a),$$
+where we define the
+indicator function ${\cal I} (a',a,s) = 1$ if $a'=g(a,s)$, and $0$
+otherwise.\NFootnote{This construction exploits the fact that
+ the optimal policy is a deterministic function of
+the state, which comes from the concavity of the objective
+function and the convexity of the constraint set.}
+The indicator function  ${\cal I} (a',a,s) = 1$
+identifies the time $t$ states $a,s$ that are sent into
+$a'$ at time $t+1$.
+The preceding equation can be expressed
+as
+$$ \lambda_{t+1} (a',s') = \sum_s \sum_{\{a: a' = g(a,s)\}}
+  \lambda_t(a,s) {\cal P}(s,s'). \EQN steady $$
+A time-invariant probability distribution $\lambda$ that solves equation \Ep{steady}
+(i.e., one for which $\lambda_{t+1} = \lambda_t$) is
+called a {\it stationary distribution}. \index{distribution!stationary}%
+ In chapter \use{timeseries}, we described two ways to compute a stationary distribution for a Markov chain.
+  One way is in effect to iterate to
+convergence on equation \Ep{steady}.  An alternative is
+to create a Markov chain that describes the solution of the
+optimum problem, then to compute an invariant distribution from
+a left eigenvector associated with a unit eigenvalue
+ of the stochastic
+matrix (see chapter \use{timeseries}).
+
+To deduce this \idx{Markov chain}, we map the
+pair ($a,s$) of vectors into a single state vector $x$
+as follows. For $i=1, \ldots ,n$, $h=1, \ldots, m$,
+let the $j$th element of $x$ be the {\it pair\/}
+($a_i, s_h$), where $j= (i-1) m +h$. Denote $x' = [(\bar a_1, \bar s_1), (\bar a_1, \bar s_2), \ldots, (\bar a_1, \bar s_m),
+(\bar a_2, \bar s_1),  \ldots,   (\bar a_2, \bar s_m), \ldots ,(\bar a_n, \bar s_1),
+ \ldots, (\bar a_n,\bar s_m)]$.  \hfil\break
+ The optimal policy function $a' = g(a,s)$
+and the Markov chain $\cal P$ on $s$ induce a Markov
+chain for $x$ via the formula
+%\ninepoint{
+$$\eqalign{ &  {\rm Prob} [(a_{t+1} = a', s_{t+1} = s') \vert (a_t
+= a, s_t = s)] \cr & ={\rm Prob}(a_{t+1} =a' \vert a_t=a, s_t =s )
+\cdot {\rm Prob}( s_{t+1}=s' \vert s_t = s)  \cr
+& = {\cal I} (a',a,s) {\cal P}(s,s'), \cr} $$
+%}%endninepoint
+where ${\cal I} (a',a,s) = 1$ is defined as above.
+%if $k'=g(k,s)$, and $0$ otherwise.
+This formula defines an $N \times N$ matrix $P$, where $N = n \cdot m$.
+This is the Markov chain on the household's state vector
+$x$.\NFootnote{Matlab
+programs to be described later in this chapter create the
+Markov chain for the joint $(a,s)$ state.}
+\mtlb{markov.m}
+
+Suppose that the Markov chain associated with $P$ is asymptotically
+stationary and has a unique
+invariant distribution $\pi_\infty$. Typically,
+all states in the Markov chain will be recurrent, and
+the individual  will occasionally revisit each state.  For
+long samples, the distribution $\pi_\infty$ tells  the fraction
+of time that the household spends in each state.
+We can ``unstack'' the state vector $x$ and use
+$\pi_\infty$ to deduce the stationary probability measure
+$\lambda (\bar a_i, \bar s_h)$ over ($\bar a_i,\bar s_h$) pairs, where
+$$ \lambda(\bar a_i,\bar s_h) = {\rm Prob}(a_t = \bar a_i, s_t = \bar s_h)=\pi_\infty(j),$$
+and where $\pi_\infty(j)$ is the $j$th component of the vector
+$\pi_\infty$, and $j=(i-1)m+h$.
+
+\subsection{Reinterpretation of the distribution $\lambda$}
+The solution of the household's optimum savings
+problem induces a stationary distribution $\lambda(a,s)$ that tells
+the fraction of time that an infinitely lived agent spends
+in state $(a,s)$. We want to reinterpret $\lambda(a,s)$.
+Thus, let $(a,s)$
+index the state of a particular household at a particular time period
+$t$, and assume that there is a cross-section of households distributed
+over states $(a,s)$. We
+start the economy at time $t=0$ with a cross-section
+$\lambda(a,s)$ of households that we want  to repeat
+over time. The models in this chapter
+arrange the initial distribution and other things so that the
+cross-section  distribution of agents over individual state variables
+$(a,s)$ remains constant over time even though the state of the
+individual household is a stochastic process.%
+\index{Bewley models}%
+\auth{Huggett, Mark}%
+
+In a model of this type, for a given interest rate $r$,  the population mean
+$$ E(a)(r) =  \sum_{a,s} \lambda(a,s) g(a,s) $$
+has two interpretations. First, it is the average asset level experienced by a single
+household, where here the average is {\it across time}.  Second, it is the
+average asset level held by the economy as a whole, where here the average is
+across households indexed by $(a,s)$ pairs.  The spirit of what we shall call `Bewley models'
+is to make  $r$ an equilibrium object that adjusts to set  $E (a)(r)$  equal to a particular value.
+ We shall study
+several models of this type, where the models differ in how we formulate the value to which $E(a)(r)$ must be equated through
+an appropriate adjustment of $r$.%
+
+
+\subsection{Example 1: a pure credit model}
+ Mark Huggett (1993) studied a \idx{pure consumption loans economy}.
+\index{pure credit model} Each of a continuum of  households has
+access to a centralized loan market in which it can borrow or lend
+at a constant net risk-free interest rate of $r$.  Each
+household's endowment is governed by the Markov chain $({\cal P},
+\bar s)$. The household can either borrow or lend at a constant
+risk-free rate. However, total borrowing cannot exceed $\phi >0$,
+where $\phi$ is a parameter set by Huggett.
+ A household's
+setting of next period's level of assets is restricted
+to the discrete set ${\cal A} = [\bar a_1, \ldots, \bar a_m]$, where
+the lower bound on assets is $\bar a_1 = -\phi$.  Later we'll discuss
+alternative ways to set $\phi$, and how it relates to
+a natural borrowing limit.\NFootnote{For a related  discussion of
+borrowing limits in economies with sequential trading of IOU's, see chapter \use{recurge}.}
+For now, we simply  note  the fact that  $\phi$ must be set so that it is feasible for the consumer
+to  honor his loans with probability $1$.  Otherwise, it is not coherent to posit that loans are risk-free.
+
+
+The solution of a typical household's problem is a policy
+function $a' = g(a,s)$ that induces a stationary
+distribution $\lambda(a,s)$ over states.
+Huggett uses the following definition:
+
+\index{equilibrium!stationary}
+\medskip\noindent{\sc Definition:} Given a borrowing limit $\phi$, a {\it stationary equilibrium\/}
+is an interest rate $r$, a policy function $g(a,s)$, and a
+ stationary distribution $\lambda(a,s)$ for which
+\medskip
+\noindent(a) Given $r$, the policy function $g(a,s)$ solves the household's
+optimum problem;
+\medskip
+\noindent(b) The probability distribution  $\lambda(a,s)$ is the invariant distribution of the Markov chain on $(a,s)$
+induced by the Markov chain $({\cal P}, \bar s)$ and the optimal policy $g(a,s)$;
+\medskip
+\noindent(c) When $\lambda(a,s)$ describes the cross-section of households at each date, the loan market clears
+$$ \sum_{a,s} \lambda(a,s) g(a,s) = 0 .$$
+
+
+
+\subsection{Equilibrium computation}
+ Huggett computed  equilibria by using an iterative  algorithm that adjusted
+ $r$ to make $\sum_{a,s} \lambda(a,s) g(a,s) = 0$.
+ He fixed an
+$r=r_j$ for $j=0$, and for that $r$ solved the household's problem
+for a policy function $g_j(a,s)$ and an associated stationary
+distribution $\lambda_j(a,s)$. Then he checked to see
+whether the loan market clears at $r_j$ by computing
+$$ \sum_{a,s} \lambda_j(a,s) g(a,s) = e_j^*.$$
+If $e_j^* >0$, Huggett lowered $r_{j+1}$ below $r_j$ and
+recomputed excess demand, continuing these iterations until he
+found an $r$ at which excess demand for loans is zero.
+
+
+
+\subsection{Example 2: a model with capital}
+ The next model
+was created by Rao Aiyagari (1994).   He used
+a version of the savings problem in an economy with
+many agents  and interpreted the single asset
+as homogeneous physical capital, denoted $k$.
+The capital holdings of a household evolve
+according to
+$$ k_{t+1} = (1-\delta) k_t + x_t $$
+where $\delta \in (0,1)$ is a depreciation rate  and
+$x_t$ is gross investment.  The household's consumption
+is constrained by
+$$ c_t + x_t = \tilde r k_t + w s_t,$$
+where $\tilde r$ is the rental rate on capital and $w$ is
+a competitive wage, to be determined later.  The
+preceding two equations can be combined to become
+$$ c_t + k_{t+1} = (1+\tilde r - \delta ) k_t + w s_t, $$
+which agrees with equation \Ep{ob2} if we take $a_t \equiv k_t$
+and $r \equiv \tilde r - \delta $.
+
+There is a large number of households with identical preferences
+\Ep{ob1} whose
+distribution across $(k,s)$ pairs is given by $\lambda(k,s)$,
+and whose average behavior determines $(w,r)$ as follows:
+\auth{Aiyagari, Rao}%
+Households are identical in their preferences,
+the Markov processes governing their employment opportunities,
+and the prices that they face. However, they differ in their
+histories $s^t_0 = \{s_h\}_{h=0}^t$ of employment opportunities,
+ and therefore in the capital that they have
+accumulated. Each household has its own history $s^t_0$ as well
+as its own  initial capital $k_0$. The
+productivity processes are assumed to be independent across
+households. The behavior of the collection of these households
+determines the wage and interest rate ($w,r$).
+
+  Assume an initial distribution {\it across\/} households
+of $\lambda(k,s)$.
+ The average level of capital per
+household $K$ satisfies
+$$ K = \sum_{k,s} \lambda(k,s) g(k,s),$$
+where $k' = g(k,s)$.
+Assuming that we start from the invariant distribution,
+the
+average level of employment is
+$$ N = \xi_\infty' \bar s,$$
+where $\xi_\infty$ is the invariant distribution associated
+with $\cal P$ and $\bar s$ is the exogenously
+specified vector of individual employment rates. The
+average employment rate is exogenous, but
+the average level of capital is endogenous.
+
+There is an aggregate production function whose
+arguments are the average levels of capital and employment.
+The production function determines the rental
+rates on capital and labor from the first-order conditions
+$$\eqalign{ w  & = \partial F(K,N) / \partial N \cr
+      \tilde r   &= \partial F(K,N) / \partial K , \cr} $$
+where $F(K,N)= A K^\alpha N^{1-\alpha}$ and
+$\alpha \in (0,1)$.
+%\NFootnote{We omit $N$ as an explicit argument of $w(\cdot)$ and $r(\cdot)$
+%because it is exogenous. Its presence should be understood.}
+
+We now have identified
+all of the objects in terms of which a stationary equilibrium
+is defined.
+
+\index{equilibrium!stationary}
+\medskip\noindent{\sc Definition of Equilibrium:} A {\it stationary equilibrium\/}
+is a policy function $g(k,s)$, a probability distribution
+$\lambda (k,s)$, and positive real numbers ($K, r,w$) such that
+\medskip
+
+% \beginleftbox Note: no original eq. nos. 4, 5, 6, 7 or 8 \endleftbox
+
+\noindent(a) The prices ($w,r$) satisfy
+$$\eqalign{ w& = \partial F(K,N) / \partial N \cr
+       r &= \partial F(K,N) / \partial K - \delta ; \cr} \EQN ob9 $$
+\medskip
+\noindent(b) The policy function $g(k,s)$ solves the household's
+optimum problem;
+\medskip
+\noindent(c) The probability distribution $\lambda(k,s)$ is a
+stationary distribution associated with $[g(k,s), {\cal P}]$;
+that is, it satisfies
+$$ \lambda(k',s') = \sum_s \sum_{\{ k: k'=g(k,s) \}} \lambda(k,s)
+ {\cal P}(s,s');$$
+\medskip
+\noindent(d) The cross-section average value of $K$ is implied by the average
+of the  households'
+decisions $$ K = \sum_{k,s} \lambda(k,s) g(k,s)  .$$
+
+
+
+\subsection{Computation of equilibrium}
+ Aiyagari computed an equilibrium of the model
+by defining a mapping from $K \in {\bbR}$
+into $\bbR$, with the property that a fixed point of the mapping is
+an equilibrium $K$. Here is
+an algorithm for finding a fixed point:
+\medskip
+\noindent{\bf 1.} For fixed value of $K=K_j$ with $j=0$, compute ($w,r$) from
+equation
+\Ep{ob9}, then solve the household's optimum problem. Use the optimal
+policy $g_j(k,s)$ to deduce an associated stationary distribution
+$\lambda_j(k,s)$.
+\medskip
+\noindent{\bf 2.} Compute the average value of capital associated
+with $\lambda_j(k,s)$, namely,
+$$ K_j^* = \sum_{k,s} \lambda_j(k,s) g_j(k,s)  .$$
+
+\medskip
+\noindent{\bf 3.} For a fixed ``relaxation parameter'' $\xi \in (0,1)$,
+compute a new estimate of $K$ from method\NFootnote{By setting $\xi <1$,
+the  relaxation method often converges to a fixed point
+in cases in which direct iteration (i.e., setting $\xi=0 $)
+fails to converge.}
+\index{relaxation!parameter}
+$$ K_{j+1} = \xi K_j + (1-\xi) K_j^* .$$
+\medskip
+\noindent{\bf 4.} Iterate on this scheme to convergence.
+\index{relaxation!method}
+
+\medskip
+Later, we shall display some computed examples of
+equilibria of both Huggett's model and Aiyagari's model.
+But first we shall analyze some features of both models
+more formally.
+
+\section{Unification and further analysis}\label{sec:unif}%
+     We can display salient features of several models by using
+a graphical apparatus of Aiyagari (1994).  We shall
+show relationships  among several
+models that have identical household sectors but
+make different assumptions about the single asset being traded.
+
+  For convenience, recall the basic savings problem.
+ The household's objective is to maximize
+$$ E_0 \sum_{t=0}^\infty \beta^t u(c_t)  \EQN rao1;a $$
+$$ c_t + a_{t+1} = w s_t + (1+r) a_t  \EQN rao1;b $$
+subject to the borrowing constraint
+$$ a_{t+1} \geq -  \phi . \EQN rao1;c $$
+We now temporarily suppose that $a_{t+1}$ can take any
+real value   exceeding $-\phi$.    Thus, we now suppose
+that $a_t \in [-\phi, + \infty)$.
+We occasionally  find it useful to express the discount factor
+$\beta \in (0,1)$ in terms of a discount {\it rate\/}
+$\rho$ as $\beta = {1 \over 1+ \rho}$.
+In equation \Ep{rao1;b}, we sometimes express $w$ as a given function
+$\psi(r)$ of the net interest rate $r$.
+
+\section{The nonstochastic savings problem when $\beta(1+r) < 1$}
+It is useful briefly to study the nonstochastic version of the
+savings problem when $\beta (1+r) < 1$.   For $\beta(1+r)=1$, we studied
+this problem in chapter \use{selfinsure}.
+To get the nonstochastic
+savings problem, assume that
+$s_t$ is permanently fixed at some positive level $s$.     Associated with
+the household's maximum  problem is the Lagrangian
+%
+%$$ \sum_{t=0}^\infty \beta^t u(c_t)  \EQN save1 $$
+%subject to
+%$$ c_t + a_{t+1} \leq (1+r) a_t + w s  \EQN save2 $$
+%and
+%$$ a_{t+1} \geq - \phi $$
+$$ L =
+ \sum_{t=0}^\infty \beta^t \left\{ u(c_t)
+ + \theta_t \left[ (1+r) a_t + w s  - c_t -a_{t+1}  \right] \right\} ,
+ \EQN save3 $$
+where $\{\theta_t \}_{t=0}^\infty$ is a  sequence of
+ nonnegative Lagrange multipliers on the budget constraint.
+The first-order conditions for this problem are
+%$$ \EQNalign{ u'(c_t) &= \lambda_t , \quad  \EQN foc1 \cr
+%             \lambda_t & \geq \beta(1+r) \lambda_{t+1}, \ \  \quad
+%    = \ {\rm if} \ a_{t+1} > - \phi    \EQN foc2 \cr }   $$
+%$$ \bar a = \cases{ - \phi, & if $r < \rho$; \cr
+%                    a_0 , & if $r + \rho$ , \cr} $$
+$$ u'(c_t)   \geq \beta (1+r) u'(c_{t+1} ),
+            \quad =   {\rm if}  \ a_{t+1} > - \phi.    \EQN foc3   $$
+When $a_{t+1} > - \phi$, the first-order condition implies
+$$u'(c_{t+1}) = {1 \over \beta (1+r) } u'(c_t), \EQN driftc $$
+which because  $\beta (1+r) < 1 $ in turn implies that
+$u'(c_{t+1}) > u'(c_t)$ and
+$c_{t+1} < c_t$.
+Consumption is declining during periods when the household
+is not borrowing constrained, so  $\{c_t\}_{t=0}^\infty$ is a monotone decreasing
+sequence. If  $\{c_t\}_{t=0}^\infty$  is bounded below, either because of an Inada condition
+ $\lim_{c \downarrow 0} u'(c) = +\infty$ % $u(\cdot)$ at $0$
+or a nonnegativity constraint on $c_t$,
+then
+$c_t$ will converge as $t \rightarrow +\infty$.   When it converges,
+the household
+will be ``borrowing constrained''.
+
+ We can compute the steady level of consumption when
+the household eventually becomes permanently stuck at the
+borrowing constraint.
+Set $a_{t+1} = a_t = - \phi$.  This and \Ep{rao1;b} gives
+$$ c_t =  \bar c = w s - r \phi.  \EQN climit $$
+This is the amount of labor income remaining after paying the
+net interest on the debt at the borrowing limit.  The household would like
+to shift consumption from tomorrow to today but can't.
+
+   If we solve the budget constraint \Ep{rao1;b} forward, we obtain
+the present-value budget constraint
+$$  a_0 = (1+r)^{-1} \sum_{t=0}^\infty (1+r)^{-t}(c_t - ws). \EQN budc $$
+ Thus, when $\beta (1+r) < 1$, the household's   consumption plan
+can be found by solving equations \Ep{budc}, \Ep{climit}, and
+\Ep{driftc} for an initial $c_0$ and a date $T$ after which the
+debt limit is binding and $c_t$ is constant.
+
+If consumption is required
+to be nonnegative,\NFootnote{Consumption must be nonnegative,
+for example, if we impose the Inada condition
+discussed earlier.}
+equation \Ep{climit} implies that
+ the  debt limit must satisfy
+$$ \phi \leq {w s   \over r}. \EQN debtlim1 $$
+We call the right side  the {\it natural debt limit}.  If $\phi
+< {w s \over r}$, we say that we have imposed an {\it ad hoc\/} debt limit.
+
+  We have deduced that when $\beta (1+r) < 1$, if a steady-state
+level exists, consumption is given by equation \Ep{climit} and
+assets by $a_t = - \phi$.
+
+  Now turn  to the case that $\beta (1+r) =1$.  Here equation
+\Ep{driftc} implies that $c_{t+1} = c_t$ and the budget constraint
+implies $c_t = w s + r a$ and $a_{t+1} = a_t = a_0$.  So when
+$\beta (1+r) =1$, {\it any} $a_0$ is a stationary value of $a$.
+It is optimal forever to roll over  initial assets.
+
+   In summary, in the deterministic case, the steady-state demand
+for assets is $-\phi$ when $(1+r)< \beta^{-1}$ (i.e., when $r < \rho$);
+and it equals  $a_0$  when $r = \rho$.
+Letting the steady-state level be $\bar a$, we have
+$$ \bar a = \cases{ - \phi, & if $r < \rho$; \cr
+                    a_0 , & if $r = \rho,$ \cr} $$
+where $\beta = (1+\rho)^{-1}$.   When $r=\rho$, we say
+that the steady-state asset level $\bar a$ is indeterminate.
+
+\section{Borrowing limits: natural and ad hoc}
+  We return to the stochastic case and take up the issue
+of debt limits.
+  Imposing $c_t \geq 0$ implies the emergence of
+what Aiyagari calls a natural debt  limit.  Thus,
+imposing $c_t \geq 0$  and solving equation \Ep{rao1;b} forward gives
+$$ a_t \geq -{1 \over 1+r} \sum_{j=0}^\infty
+ w s_{t+j} (1+r)^{-j}.\EQN constr1$$
+Since the right side is a random variable, not known
+at $t$, we have to supplement equation \Ep{constr1} to obtain
+the borrowing constraint.  One possible approach is to
+replace the right side of equation \Ep{constr1} with its conditional
+expectation, and to require equation \Ep{constr1}
+to hold in expected value. But this expected value formulation
+is incompatible with the notion that the
+loan is risk free, and
+that the household can repay it for sure. We want to impose a restriction
+that will guarantee that it is feasible for the household to repay its debt for all
+possible sequences of income realizations.
+      If we insist that equation \Ep{constr1} hold almost surely
+for all $t\geq 0$,
+then  we obtain the constraint that emerges by replacing  $s_t$
+with ${\min s} \equiv \bar s_1$, which yields
+$$ a _t \geq - {\bar s_1 w \over r}.  \EQN constr2 $$
+Aiyagari (1994) calls this the natural debt limit.  To accommodate
+possibly more stringent debt limits, beyond those dictated by
+the notion that it is feasible to repay the debt for sure,
+Aiyagari specifies the debt limit as
+$$ a_t \geq -\phi, \EQN constr3$$
+where
+ $$ \phi =  \min \Bigl[b, {\bar s_1 w\over r}\Bigr] , \EQN constr4 $$
+and $b>0$ is an arbitrary parameter defining an
+``ad hoc'' debt limit.
+
+\subsection{A candidate for a single state variable}
+For the special case in which $s$ is i.i.d., Aiyagari
+showed how to cast the model in terms of a single state
+variable to appear in the household's value function.
+To synthesize a single state  variable, note that
+the ``disposable resources'' available to be allocated at  $t$
+are
+$ z_t = w s_t + (1+r) a_t + \phi$.
+ Thus, $z_t$ is the sum of
+the current endowment, current savings at the beginning of the
+period, and the maximal borrowing capacity
+$\phi$.  This can be rewritten as
+$$z_t = w s_t + (1+r) \hat a_t - r \phi$$
+where  $\hat a_t \equiv a_t +\phi$.
+In terms of the single state variable $z_t$,
+the household's budget set can   be represented recursively as
+$$\EQNalign{ c_t + \hat a_{t+1} &  \leq z_t   \EQN rao3;a \cr
+            z_{t+1} & = w s_{t+1} + (1+r) \hat a_{t+1}  - r \phi
+         \EQN rao3;b \cr}$$
+where we must have $\hat a_{t+1} \geq 0$.
+The Bellman equation is
+$$ v(z_t,s_t) = \max_{\hat a_{t+1} \geq 0} \left\{u(z_t - \hat a_{t+1})
+    + \beta E v(z_{t+1}, s_{t+1})  \right\}. \EQN rao4 $$
+Here $s_t$ appears in the state vector purely as an
+information variable for predicting the
+employment component
+$s_{t+1}$ of next period's disposable resources $z_{t+1}$,
+conditional on the choice of $\hat a_{t+1}$ made this period.
+Therefore, it disappears from both the value function and the decision
+rule in the i.i.d.\ case.
+
+More generally, with a serially correlated state,
+associated with the solution of the Bellman
+equation is a policy function
+$$ \hat a_{t+1} = A(z_t, s_t). \EQN rao5$$
+
+\subsection{Supermartingale convergence again}
+Let's revisit a main issue from chapter \use{selfinsure}, but now
+consider the possible case $\beta (1+r) < 1$.
+From equation \Ep{rao3;a}, optimal consumption satisfies
+$c_t = z_t - A(z_t,s_t)$.
+The optimal policy obeys the Euler inequality:
+$$ u'(c_t) \geq \beta (1+r) E_t u'(c_{t+1}), \quad = {\rm \ if \ }
+     \hat a_{t+1} > 0.  \EQN rao6  $$
+We can use equation \Ep{rao6} to deduce significant aspects of the
+limiting behavior of mean assets as a function of $r$.
+ Following Chamberlain and Wilson (2000) and others,
+  to deduce the effect of $r$ on the mean of assets, we analyze
+the limiting behavior of consumption implied by the Euler inequality
+\Ep{rao6}.
+Define
+ $$M_t = \beta^t (1+r)^t u'(c_t) \geq 0. $$
+Then
+$ M_{t+1} - M_t= \beta^t(1+r)^t[\beta (1+r) u'(c_{t+1}) - u'(c_t)]$.
+Equation \Ep{rao6}  can be written
+$$ E_t (M_{t+1} - M_t) \leq 0, \EQN rao7 $$
+which asserts that $M_t$ is a supermartingale.  Because
+$M_t$ is  nonnegative, the \idx{supermartingale convergence theorem}
+applies.  It
+asserts that $M_t$ converges almost surely to a nonnegative
+random variable $\bar M$: $M_t \rightarrow_{\rm a.s.} \bar M$.
+
+   It is interesting to consider three cases: (1) $\beta(1+r) > 1$;
+(2) $\beta (1+r) < 1$, and (3) $\beta (1+r) =1$.  In case 1,
+the fact
+that $M_t$ converges implies that $u'(c_t)$ converges to
+zero almost surely. % If $u(\cdot)$ is unbounded (has no satiation
+%point),
+Because $u'(c_t)>0$ and $u''(c_t)<0$,
+this fact then implies that $c_t \rightarrow +\infty$ and
+that the consumer's asset holdings diverge
+to $+\infty$.   Chamberlain and Wilson (2000) show
+that such results also characterize the borderline case
+(3) (see chapter \use{selfinsure}).
+  In case 2, convergence of $M_t$ leaves
+open the possibility that $u'(c)$ does not converge almost surely.
+To take a simple example of nonconvergence in case 2, consider the case of a nonstochastic endowment.
+Under the natural borrowing constraint, the consumer chooses to drive $u'(c) \rightarrow +\infty$ as time passes  and so asymptotically  chooses
+to impoverish himself.  The marginal utility $u'(c)$ diverges. %Indeed, when $\beta (1+r) < 1$,
+%the average level of assets remains finite, and so does the level
+%of consumption.
+
+It is easier to analyze the borderline case
+$\beta (1+r)=1$ in the special case that the employment
+process is independently and identically distributed, meaning
+that the stochastic matrix ${\cal P}$ has identical rows.\NFootnote{See chapter
+\use{selfinsure} for a closely related proof.}
+  In this case, $s_t$ provides no information
+about $z_{t+1}$, and so $s_t$ can be dropped as an argument
+of both  $v(\cdot)$ and  $A(\cdot)$.
+For the case in which $s_t$ is i.~i.~d.,
+Aiyagari (1994) uses the following
+argument by contradiction to show that  if $\beta (1+r) =1$, then
+$z_t$ diverges to $+\infty$.  Assume that there is some upper
+limit $z_{\rm max}$ such that $z_{t+1} \leq z_{\rm max} = w s_{\rm max}
++ (1+r) A(z_{\rm max}) - r \phi$.  Then when $\beta (1+r)=1$,
+the strict concavity of the value function, the
+\idx{Benveniste-Scheinkman formula}, and equation \Ep{rao6} imply
+$$\EQNalign{
+v'(z_{\rm max}) &\geq E_t v'\bigl[w s_{t+1} + (1+r)A(z_{\rm max}) - r \phi
+\bigr] \cr
+&> v'\left[w s_{\rm max} + (1+r) A(z_{\rm max}) - r \phi\right] =
+v'(z_{\rm max}), \cr}
+$$
+which is a contradiction.
+
+
+% Assume
+%that there is some $z_{\rm max}$ such that
+%$z_{t+1} \leq A(z_{\rm max}) + (1+r) w s_{\rm max}$   Then
+%when $\beta (1+r)=1$,
+%the strict concavity of the value function, the
+%\idx{Benveniste-Scheinkman formula}, and \Ep{rao6}
+%imply
+%$v_z(z_{\rm max}) \geq E_t v_z(w s_{t+1} + (1+r)A(z_{\rm max})
+%> v_z(w s_{\rm max}) + (1+r) A(z_{\rm max})) = v_z(z_{\rm max})$,
+%which is a contradiction.
+
+\section{Average assets as a function of $r$}
+
+In the next several sections, we use versions of a graph
+of Aiyagari (1994) to analyze several models.  The graph
+plots the average level of assets as a function of $r$.
+In the model with capital, the graph is constructed to
+incorporate the equilibrium dependence of the wage
+$w$ on $r$.  In models without capital, like
+Huggett's, the wage is fixed.  We shall focus on situations
+where $\beta (1+r) < 1$.  We consider cases where
+the optimal decision rule $A(z_t, s_t)$ and the Markov chain
+for $s$ induce a Markov chain jointly for assets and $s$ that
+has a unique invariant distribution.  For fixed $r$, let $E a(r)$
+denote the mean level of assets $a$ and let $ E \hat a(r) = E a(r)+\phi$
+be the mean level of assets plus borrowing capacity $\hat a = a+\phi$, where the mean is taken
+with respect to the invariant distribution.  Here it
+is understood that $E a(r)$ is a function of $\phi$; when
+we want to make the dependence explicit we write
+$Ea(r;\phi)$.  Also, as we have said, where the single
+asset is capital, it is appropriate to
+make the wage $w$ a function of $r$. This approach incorporates
+the way different values of $r$ affect average capital, the
+marginal product of labor, and therefore the wage.
+
+The preceding analysis applying the  supermartingale convergence theorem implies
+that as $\beta (1+r)$ goes to 1 from below (i.e., $r$ goes
+to $\rho$ from below), $Ea (r)$ diverges to $+ \infty$.  This
+feature is reflected in the shape of the $E a(r)$ curve
+in Figure \Fg{rao1f}.\NFootnote{As discussed
+in Aiyagari (1994), $E a(r)$ need not be a monotonically
+increasing function of $r,$ especially because $w$ can be a function of $r$.}
+
+%%%%%%%%
+%%$$
+%\grafone{rao1.eps,height=2.5in}{{\bf Figure 1.}
+%Demand for capital and determination of interest rate.}
+%$$
+%%%%%%%%%%%%%%
+
+\midfigure{rao1f}
+\centerline{\epsfxsize=3truein\epsffile{rao1.eps}}
+\caption{Demand for capital and determination of interest rate. The $E a(r)$
+curve is constructed for a fixed wage that equals the marginal product of labor
+at level of capital $K_1$.  In the nonstochastic version of the model with capital,
+the equilibrium interest rate and capital stock are $(\rho, K_0)$, while in the
+stochastic version they are $(r, K_1)$.  For a version of the model without
+capital in which $w$ is fixed at this same fixed wage, the equilibrium interest
+rate in Huggett's pure credit economy occurs at the intersection of the $E a(r)$
+curve with the $r$-axis.}
+\infiglist{rao1f}
+\endfigure
+
+%%%%%%%%%%%%%%%%%
+%\topinsert{
+%$$\grafone{rao2.eps,height=2.5in}{{\bf Figure 14.1}
+%Demand for capital and determination
+%of interest rate. The $E a(r)$ curve is
+%constructed for a fixed wage that equals
+%the marginal product of labor at level of capital
+%$K_1$.  In the nonstochastic version of the
+%model with capital, the equilibrium interest
+%rate and capital stock are $(\rho, K_0)$,
+%while in the stochastic version they are
+%$(r, K_1)$.  For a version of the model without
+%capital in which $w$ is fixed at this same fixed wage,
+%the equilibrium interest rate in Huggett's pure credit
+%economy occurs at the intersection of the $E a(r)$ curve
+%with the $r$ axis.}
+%$$
+%}\endinsert
+%%%%%%%%%%%%%%%%%%
+%
+%\midfigure{rao2f}
+%\centerline{\epsfxsize=3truein\epsffile{rao2.eps}}
+%\caption{Demand for capital and determination of interest rate. The $E a(r)$
+%curve is constructed for a fixed wage that equals the marginal product of labor
+%at level of capital $K_1$.  In the nonstochastic version of the model with capital,
+%the equilibrium interest rate and capital stock are $(\rho, K_0)$, while in the
+%stochastic version they are $(r, K_1)$.  For a version of the model without
+%capital in which $w$ is fixed at this same fixed wage, the equilibrium interest
+%rate in Huggett's pure credit economy occurs at the intersection of the $E a(r)$
+%curve with the $r$-axis.}
+%\infiglist{rao2f}
+%\endfigure
+
+
+\smallskip
+
+  Figure \Fg{rao1f} assumes that the wage $w$ is fixed in drawing the $E a(r)$
+curve.  Later, we will discuss how to draw a similar curve, making $w$
+adjust as the function of $r$ that is induced by the marginal
+productivity conditions for positive values of $K$. For now, we just assume
+that $w$ is fixed at the value equal to the marginal product of labor
+when $K = K_1$, the equilibrium level of capital in the model.  The
+equilibrium interest rate is determined at the intersection of the
+$E a(r)$ curve with the marginal productivity of capital curve.
+Notice that the equilibrium interest rate $r$ is lower than $\rho$, its
+value in the nonstochastic version of the model, and that the equilibrium
+value of capital $K_1$ exceeds the equilibrium value $K_0$ (determined by
+the marginal productivity of capital at $r=\rho$ in the nonstochastic version
+of the model.)
+
+  For a pure credit version of the model like Huggett's, but the same $E a(r)$
+curve, the  equilibrium interest rate is determined by the intersection of
+the $E a(r)$ curve with the $r$-axis.
+
+\medskip
+
+%%%%%%%%%%%
+%\topinsert{
+%$$\grafone{rao3.eps,height=2.7in}{{\bf Figure 14.2}
+%The effect of a shift in $\phi$ on the $E a(r)$ curve.
+%Both $E a(r)$ curves are drawn assuming that the wage
+%is fixed.}
+%$$
+%}\endinsert
+%%%%%%%%%%%%%%
+
+\midfigure{rao3f}
+\centerline{\epsfxsize=3truein\epsffile{rao3.eps}}
+\caption{The effect of a shift in $\phi$ on the $E a(r)$ curve.  Both $E a(r)$
+curves are drawn assuming that the wage is fixed.}
+\infiglist{rao3f}
+\endfigure
+
+
+For the purpose of comparing some of the models that follow, it is useful to note
+the following aspect of the dependence of
+$E a(0)$ on $\phi$:
+
+\medskip
+\medskip\noindent{\sc Proposition 1:} When $r=0$, the optimal rule
+$ \hat a_{t+1} = A(z_t,s_t)$
+is independent of $\phi$.  This implies that for $\phi >0$, $E a(0;\phi)
+   = Ea(0; 0) - \phi$.
+
+\medskip
+\noindent{\sc Proof:}  It is sufficient to note that
+when $r=0$, $\phi$ disappears  from the right side of equation
+\Ep{rao3;b} (the consumer's budget constraint).
+  Therefore, the optimal rule
+$\hat a_{t+1} = A(z_t,s_t)$ does not depend on $\phi$ when
+$r=0$.  More explicitly,  when $r=0$, add $\phi$ to both sides
+of the household's budget constraint to get
+$$(a_{t+1} + \phi)  + c_t \leq (a_t+ \phi) + w s_t .$$
+If the household's problem with $\phi=0$ is solved by the decision rule
+$a_{t+1} = g(a_t, z_t)$, then the household's problem
+with $\phi >0$ is solved with the same decision rule
+evaluated at $a_{t+1} +\phi = g(a_t +\phi, z_t)$. \qed
+
+\smallskip
+
+Thus, it follows that at $r=0$, an increase in $\phi$ displaces the
+$Ea(r)$ curve to the left by the same amount. See Figure \Fg{rao3f}.
+We shall use this
+result to analyze several models.
+
+In the following sections, we use a version of Figure \Fg{rao1f} to compute equilibria
+of various models.  For models without capital, the figure is drawn
+assuming that the wage is fixed.  Typically, the $E a(r)$ curve will have the
+same shape as Figure \Fg{rao1f}.  In Huggett's model, the equilibrium interest rate
+is determined by the intersection of the $Ea(r)$ curve with the $r$-axis,
+reflecting that the asset (pure consumption loans) is available in zero
+net supply.  In some models with money, the availability of fiat currency as  a perfect substitute
+for consumption loans  creates a positive net supply.
+
+%%%%%%%%%%%%
+%\topinsert{
+%$$\grafone{bewley00w1.eps,height=2.5in}{{\bf Figure 14.3}
+%Two $Ea(r)$ curves, one with $b=6$, the other with $b=3$,
+%with $w$ fixed at $w=1$. Notice that at $r-0$, the difference between
+%the two curves is $3$, the difference in the $b$'s.} $$
+%}\endinsert
+%%%%%%%%%%%%%
+
+\midfigure{bewley00w1f}
+\centerline{\epsfxsize=3truein\epsffile{bewley00w1.eps}}
+\caption{Two $Ea(r)$ curves, one with $b=6$, the other with $b=3$, with $w$ fixed
+at $w=1$. Notice that at $r=0$, the difference between the two curves is $3$, the
+difference in the $b$'s.}
+\infiglist{bewley00w1f}
+\endfigure
+
+%\bye  OK to here
+\section{Computed examples}
+
+  We used some Matlab programs that solve
+ discrete-state dynamic programming problems to compute some
+examples.\NFootnote{The Matlab programs
+used to compute the  $Ea(r)$ functions
+are {\tt bewley99.m}, {\tt bewley99v2.m}, {\tt aiyagari2.m},
+{\tt bewleyplot.m}, and {\tt bewleyplot2.m}.  The program
+{\tt markovapprox.m} implements Tauchen's method for
+approximating a continuous autoregressive process with a Markov
+chain. A program {\tt markov.m} simulates
+a Markov chain.  The programs can be downloaded from
+$<$www.tomsargent.com/source\_code/mitbook.zip$>$.}
+%$<$https://files.nyu.edu/ts43/public/books.html$>$.}
+We discretized the space  of assets from $-\phi$ to
+a parameter $a_{\max} =16$ with step size $.2$.
+\mtlb{bewley99v2.m}
+\mtlb{bewley99.m}
+\mtlb{aiyagari2.m}
+\mtlb{bewleyplot.m}
+\mtlb{bewleyplot2.m}
+\mtlb{markovapprox.m}
+
+ The utility function is $u(c) =(1- \mu)^{-1} c^{1-\mu}$, with $\mu =3$.
+We set $\beta=.96$. We used two specifications of the Markov
+process for $s$.  First, we used Tauchen's (1986) method to
+get a discrete-state Markov chain to approximate a first-order
+autoregressive process
+$$ \log s_t =  \rho \log s_{t-1} + u_t, $$
+where $u_t$ is a sequence of  i.i.d.\ Gaussian  random variables.
+We set $\rho =.2$ and the standard deviation of $u_t$ equal
+to $.4 \sqrt{1-\rho^2}$.  We used Tauchen's method with
+$N=7$ being the number of points in the grid for $s$.
+
+ For the second specification, we assumed that $s$ is i.i.d.\ with
+mean $1.0903$. For this case, we compared two settings for
+the variance: .22 and .68.
+Figures \Fg{bewley00w1f} %14.3
+ and
+ \Fg{newfig5f} % 14.5
+ plot the $Ea(r)$ curves for these various
+specifications.
+%For future reference, they also plot a
+%downward-sloping marginal-productivity-of-capital curve,
+%from a Cobb-Douglas specification of a production function.
+  Figure \Fg{newfig5f} %14.3
+  plots $E a(r)$ for the first case of serially
+correlated $s$.  The two $E [a(r)]$ curves correspond to
+two distinct settings of the ad hoc debt constraint.
+One is for $b=3$, the other for $b=6$.
+Figure \Fg{newfig4f} %14.4
+plots the invariant distribution of asset holdings
+for the case in which $b=3$ and  the interest rate is determined at the
+intersection of the $Ea(r)$ curve and the $r$-axis.
+%curve $F_k - \delta$.    This curve is drawn assuming
+%a production function in Aiyagari's model   $K^\alpha N^{1-\alpha}$
+%with $\alpha =.36$ and $\delta = .08$.
+
+  Figure \Fg{newfig5f} % 14.5
+   summarizes a precautionary savings experiment for
+the i.i.d.\ specification of $s$.  Two $E a(r)$ curves are
+plotted. For each, we set the ad hoc debt limit $b=0$.  The
+$E a(r)$ curve further to the right is the one for the higher
+variance of the endowment shock $s$.  Thus, a larger variance in
+the random shock causes increased savings.
+
+%%%%%%%%%%%%%%%
+%$$\grafone{newfig4.eps,height=2.25in}{{\bf Figure 14.4}
+%The invariant distribution of capital when $b=3$.}$$
+%%%%%%%%%%%
+
+
+
+%\vfill\eject
+
+
+%%%%%%%%%%%%
+%$$\grafone{newfig5.eps,height=2.25in}{{\bf Figure 14.5}
+%Two $E a(r)$ curves
+%when $b=0$ and the endowment shock
+%$s$ is i.i.d.\ but with different variances;
+%the curve with circles
+%belongs to the economy with the higher variance.}$$
+%%%%%%%%%%%%%
+
+\midfigure{newfig5f}
+\centerline{\epsfxsize=3truein\epsffile{newfig5.eps}}
+\caption{Two $E a(r)$ curves when $b=0$ and the endowment shock $s$ is i.i.d.\
+but with different variances; the curve with circles belongs to the economy with
+the higher variance.}
+\infiglist{newfig5f}
+\endfigure
+
+\midfigure{newfig4f}
+\centerline{\epsfxsize=3truein\epsffile{newfig4.eps}}
+\caption{The invariant distribution of capital when $b=3$.}
+\infiglist{newfig4f}
+\endfigure
+
+ Keep these graphs in mind as we turn to analyze
+some particular models in more detail.
+
+
+\section{Several Bewley models}
+
+   We consider several models in which  a continuum of households faces the
+same savings problem.  Their behavior generates the asset demand function $E a(r;\phi)$.
+The models share the same family  of $E a(r;\phi)$ curves as functions of $\phi$, but differ in their
+settings of $\phi$ and in their interpretations of the supply of the asset.
+The models are (1) Aiyagari's (1994, 1995) model in which the risk-free asset
+is either physical capital or private IOUs, with physical capital being the
+net supply of the asset; (2) Huggett's model (1993), where the asset is private
+IOUs, available in zero net supply; (3) Bewley's model of fiat currency;
+(4) modifications of Bewley's model to permit an inflation tax;
+and (5) modifications of Bewley's model to pay interest on currency,
+either explicitly or implicitly through deflation.
+
+
+
+\subsection{Optimal stationary allocation}
+
+Because there is no aggregate
+risk and the aggregate endowment is constant,
+ a stationary optimal  allocation
+would have consumption constant over time for each
+household. Each household's  consumption plan would have constant
+consumption over time.
+The implicit risk-free interest rate associated with such an
+allocation would be  $r = \rho$, where recall that $\beta = (1+\rho)^{-1}$.  In the version
+of the model with capital, the stationary aggregate capital stock
+solves
+$$ F_K(K,N) - \delta =   \rho. \EQN casskoop  $$
+Equation \Ep{casskoop} restricts the stationary
+optimal capital stock in the nonstochastic optimal
+growth model of Cass (1965) and Koopmans (1965).
+%(See equation \Ep{growth0} in the chapter on economic growth.)
+  The stationary
+level of capital is  $K_0$ in Figure \Fg{rao1f}, depicted as the ordinate
+of the intersection
+of the marginal productivity net of depreciation  curve with
+a horizontal line  $r = \rho$.   As we saw before,
+the horizontal line at $r=\rho$ acts as a ``long-run'' demand
+curve for savings for a nonstochastic version of the savings
+problem.
+   The stationary optimal allocation matches the one produced
+by a nonstochastic growth model.
+We shall use the risk-free interest rate $r=\rho$ as a benchmark against
+which to compare some alternative incomplete market allocations.
+    Aiyagari's (1994) model  replaces the horizontal
+line  $r=\rho$ with an upward-sloping curve $E a(r)$, causing the stationary
+equilibrium interest rate to fall  and the  capital stock to rise
+relative to the  savings model with a risk-free endowment sequence.
+
+
+\section{A model with capital and private IOUs}
+
+  Figure \Fg{rao1f} can be used to depict the equilibrium of Aiyagari's model
+described above.  The single asset is capital.
+    There is an aggregate production function
+$Y = F(K,N)$, and $w = F_N(K,N)$, $r + \delta = F_K(K,N)$.
+  We can  invert
+the marginal  condition for capital to deduce
+a downward-sloping curve
+$K=K(r)$. This is drawn as the curve labeled
+$F_K - \delta$ in Figure \Fg{rao1f}.  We can  use  the marginal
+productivity conditions  to deduce a
+factor price frontier $w=\psi(r)$.  For fixed  $r$,
+we use $w=\psi(r)$  as the wage in the
+savings problem and then deduce $E a(r)$. We want
+the equilibrium $r$ to satisfy
+$$ E a(r) = K(r). \EQN capital $$
+The equilibrium interest rate occurs at the intersection
+of $E a(r)$ with the $F_K - \delta$ curve.  See Figure \Fg{rao1f}.\NFootnote{Recall
+that Figure \Fg{rao1f} was drawn for a fixed wage $w$, fixed at the value
+equal to the marginal product of labor when $K=K_1$. Thus, the
+new version of Figure \Fg{rao1f} that incorporates $w=\psi(r)$ has a new
+curve $E a(r)$ that intersects the $F_K - \delta$ curve at the same
+point $(r_1,K_1)$ as the old curve $E a(r)$  with the fixed wage. Further, the
+new $E a(r)$ curve would not be defined for negative values of
+$K$.}
+
+It follows from the shape of the curves that the equilibrium
+capital stock $K_1$ exceeds $K_0$, the capital stock required
+at the given level of total labor to make the interest rate equal
+$\rho$.  There is capital overaccumulation in
+the stochastic version of the  model.
+
+
+\section{Private IOUs only}
+It is easy to compute the equilibrium of
+   Mark Huggett's (1993) model with Figure \Fg{rao1f}.
+Recall that in Huggett's model the one asset   consists of risk-free
+loans issued by
+other  households.  There are no ``outside'' assets.  This fits
+the basic model, with $a_t$ being the quantity of loans owed to
+the individual at the beginning of $t$.  The equilibrium
+condition is
+$$   E a(r,\phi) = 0,  \EQN clearing $$
+which is depicted as the intersection of the $E a(r)$ curve in
+Figure \Fg{rao1f} with  the $r$-axis.  There is a family of such
+curves, one for each value of the ``ad hoc'' debt limit.  Relaxing
+the ad hoc debt limit (by driving $b \rightarrow + \infty$) sends
+the equilibrium   interest rate upward toward the intersection
+of the furthest to the left  $E a(r)$ curve, the one that is
+associated with the
+natural debt limit,  with the $r$-axis.
+
+
+\subsection{Limitation of what credit can achieve}
+
+  The equilibrium condition \Ep{clearing} and
+$\lim_{r \nearrow \rho} E a(r) = + \infty$
+imply that the equilibrium value of $r$ is less than $\rho$, for
+all values of the debt limit respecting the natural debt limit.
+This outcome supports the following conclusion:
+
+\medskip\noindent{\sc Proposition 2:} (Suboptimality of equilibrium with credit)
+   The equilibrium interest rate associated with the natural debt limit
+is the highest one that Huggett's model can support.  This
+interest rate falls short of $\rho$, the interest rate that
+would prevail in a complete markets world.\NFootnote{Huggett used
+the model to study how tightening the ad hoc debt limit
+parameter $b$ would reduce the risk-free rate
+far enough  below $\rho$ to explain the ``risk-free rate'' puzzle.}
+
+\subsection{Proximity of $r$ to  $\rho$}
+
+  Notice how in Figure \Fg{bewley00w1f} the equilibrium interest rate $r$ gets closer
+to $\rho$ as the borrowing constraint is relaxed.  How close it can get
+under the natural borrowing limit depends on several key parameters
+of the model: (1) the discount factor $\beta$,
+(2) the curvature of $u(\cdot)$, (3) the persistence of the endowment
+process, and (4) the volatility of the innovations to the endowment
+process.  When he selected a plausible $\beta$ and $u(\cdot)$ and then
+calibrated the persistence and volatility of the
+endowment process to U.S. panel data on workers' earnings,
+  Huggett (1993) found that under the natural borrowing limit,
+$r$  is quite close to $\rho$ and that the household can achieve
+substantial self-insurance.\NFootnote{This result depends sensitively
+on how one specifies the left tail of the endowment distribution.  Notice
+that if the minimum endowment $\bar s_1$ is set to zero, then the
+natural borrowing limit is zero. However, Huggett's calibration permits
+positive borrowing under the natural borrowing limit.}
+We shall encounter an echo of this finding when we review
+Krusell and Smith's (1998) finding that under their calibration
+of idiosyncratic risk, a real business cycle model with complete markets does
+a good job of approximating the prices and the aggregate allocation
+of a  model with identical preferences and technology but  in which only a single asset, physical capital, can be traded.
+
+\subsection{Inside money or free banking interpretation}
+
+  Huggett's can be viewed as  a model of  pure ``inside money,'' or
+of circulating private IOUs.  Every person is a ``banker'' in
+this setting, being entitled to issue ``notes'' or evidences of indebtedness, subject
+to the debt limit \Ep{constr3}.    A household has
+issued  more IOU notes of its own  than it holds of those issued by others     whenever $a_{t+1} < 0$.
+
+
+
+  There are several ways to think about
+the ``clearing'' of notes imposed by equation \Ep{clearing}.
+Here is one:  In period $t$, trading occurs in subperiods as
+follows. First, households realize their $s_t$.  Second, some
+households  choose to set $a_{t+1} < a_t \leq 0$ by  issuing new
+IOUs in the amount $-a_{t+1} +a_t$.
+    Other households with $a_t < 0$ may decide
+to set $a_{t+1} \geq  0$, meaning that they want to ``redeem''  their
+outstanding notes and possibly acquire notes issued by others.
+Third, households go to the market and
+exchange goods  for notes.  Fourth, notes are ``cleared''
+or ``netted out'' in a centralized clearinghouse:
+  positive holdings of  notes
+issued by  others are used to retire possibly negative initial holdings of
+one's own notes.   If a person holds positive
+amounts of notes issued by others, some of these are used to retire
+any of his own notes outstanding. This clearing operation leaves each person
+with a particular
+ $a_{t+1}$ to carry into the next period, with no owner of IOUs
+also
+being in the position of having some notes outstanding.
+
+  There are other ways to interpret the trading arrangement in terms
+of circulating notes that implement multilateral long-term lending
+among corresponding ``banks'': notes issued by individual A and
+owned by B are ``honored'' or redeemed  by individual C by being
+exchanged for goods.\NFootnote{It is possible to tell versions of
+this story in which notes issued by one individual or group of
+individuals  are ``extinguished'' by another.}  In a different
+setting, Kocherlakota (1996b) and Kocherlakota and Wallace (1998)
+describe such trading mechanisms.
+
+
+Under the natural borrowing limit, we might think of this pure consumption
+loans or inside money model as a model of free banking.  In
+the model,  households' ability to issue IOUs is restrained only by the
+requirement that all loans be  risk-free and of one period in duration.
+Later, we'll use the equilibrium allocation of this free banking
+model as a benchmark against which to judge the celebrated
+Friedman rule in a model with outside money and a severe borrowing
+limit.
+
+We now tighten the borrowing limit enough to make
+room for  some ``outside money.''
+
+\subsection{Bewley's basic model of fiat money}
+   This version of the  model is set up to generate a demand for fiat money,
+an inconvertible currency  supplied in a fixed nominal
+amount by  an
+entity outside the model called the government.  Individuals can hold currency,
+but not issue it.  To map the individual's problem into
+problem \Ep{rao1},
+we let $m_{t+1} / p = a_{t+1} , b= \phi =0$, where $m_{t+1}$
+is the individual's holding of currency from $t$ to $t+1$,
+and $p$ is a constant price level. With a constant price
+level, $r=0$.   With $b=\phi=0$,
+$\hat a_t = a_t$. Currency is the only
+asset that can   be held.   The fixed supply of currency is $M$.
+The condition for a stationary  equilibrium
+is
+$$ E a(0) = { M   \over p}. \EQN qtheory  $$
+This equation is to be solved for $p$.  The equation states
+a version of the  quantity theory of money.
+
+  Since $r=0$, we need {\it some\/} ad hoc borrowing constraint
+(i.e., $b < \infty$)
+to make this model have a stationary equilibrium.
+    If we relax the borrowing constraint from $b=0$ to permit
+some borrowing (letting $b > 0$), the $E a(r) $ curve
+shifts to the left, causing  $E a(0)$ to fall
+and  the stationary price level to rise.
+
+Let $ \bar m = E a(0, \phi=0)$ be the solution of equation
+\Ep{qtheory} when $\phi =0$.    Proposition
+1 tells how to construct a set of stationary equilibria,
+indexed  by $\phi \in (0, \bar m)$, which
+have identical allocations but different price levels.
+Given an initial stationary equilibrium with $\phi =0$ and a price
+level satisfying equation \Ep{qtheory}, we construct the  equilibrium
+for $\phi \in (0, \bar m)$ by
+setting  $\hat a_t $ for the new equilibrium equal to $\hat a_t$ for
+the old equilibrium for each person for each period.
+
+\index{money!outside}
+\index{money!inside}
+       This set of equilibria
+highlights how  expanding the amount
+of ``inside money,'' by substituting for ``outside'' money,
+causes the value of outside money (currency) to fall.
+The construction also indicates that if we set $\phi > \bar m$,
+then there exists no stationary monetary equilibrium with
+a finite positive price level.
+For $\phi > \bar m$,  $E a(0) < 0$, indicating
+a force for the interest rate to rise and for
+private IOUs to dominate currency in rate of return and to
+drive it out of the model.
+ This outcome leads us to consider proposals to get currency
+back into the model by paying
+interest on it.   Before we do, let's consider some situations
+more often observed, where a government raises revenues
+by an inflation tax.
+
+
+
+
+\section{A model of seigniorage}
+
+The household side of the model is described in the previous section;
+we continue to summarize this in a stationary demand function $Ea(r)$.
+We suppose that $\phi = 0$, so  individuals cannot borrow.
+But now the government augments the nominal
+supply of currency over time to finance a fixed aggregate
+flow of real purchases  $G$.
+The government budget constraint at $t\geq 0$ is
+$$ M_{t+1} = M_t + p_t G, \EQN govbud0 $$
+which for $t \geq 1$ can be expressed
+$$ {M_{t+1} \over p_t} = {M_t \over p_{t-1}} \left({p_{t-1}
+     \over p_t} \right) + G. $$
+We shall seek a stationary  equilibrium with ${p_{t-1}\over p_t} = (1+r)$
+for $t \geq 1$ and ${M_{t+1} \over p_t } = \bar a $ for
+$t\geq 0$.  These guesses make the previous equation
+become
+$$ \bar a = {G \over -r}. \EQN govbud1 $$
+For $G > 0$, this is a rectangular hyperbola in the southeast
+quadrant.  A stationary equilibrium value of  $r$ is determined
+at an intersection of this curve with $E a(r)$ (see Figure \Fg{rao4f}).
+ Evidently,
+when $G > 0$, an equilibrium net interest rate
+ $r <0$; $-r$ can be regarded as an inflation tax.
+Notice that if there is one equilibrium net interest rate, there is typically
+more than one.  This is a consequence of the Laffer curve present
+in this model.\NFootnote{A Laffer curve exists when government revenues from a tax  are not a monotonic function
+of a tax rate.}
+\index{Laffer curve}%
+ Typically if a
+stationary equilibrium exists,
+there are at least two stationary inflation rates that finance
+the government budget. This conclusion follows from the fact that
+both curves in Figure \Fg{rao4f} have positive slopes.
+%\vfil\eject
+
+%%%%%%%%%%%%%
+%$$\grafone{rao4.eps,height=2.7in}{{\bf Figure 14.6}
+%Two stationary equilibrium  rates of return on currency
+%that finance the constant government deficit $G$.}
+%$$
+%%%%%%%%%%%%
+
+\midfigure{rao4f}
+\centerline{\epsfxsize=3truein\epsffile{rao4.eps}}
+\caption{Two stationary equilibrium rates of return on currency that finance the
+constant government deficit $G$.}
+\infiglist{rao4f}
+\endfigure
+
+After $r$ is determined, the initial price level can be determined
+by the time $0$ version of the government budget constraint \Ep{govbud0},
+namely,
+$$ \bar a = M_0/p_0 + G.   $$
+This is the version of the quantity theory of money that prevails in this model.
+An increase in $M_0$ increases $p_0$ and all subsequent prices proportionately.
+
+  Since there are generally multiple stationary equilibrium inflation
+rates, which one should we select?  We recommend choosing
+the one with the highest rate of return to currency, that is, the
+lowest inflation tax.  This selection gives
+``classical'' comparative statics: increasing $G$ causes $r$ to fall.
+In  distinct but related settings, Marcet and Sargent (1989) and
+Bruno and Fischer (1990) give learning procedures that select
+the same equilibrium we have recommended.  Marimon and
+Sunder (1993) describe experiments with human subjects
+that they interpret as supporting this selection.
+
+  Note the effects of alterations in the debt limit $\phi$ on the
+inflation rate.  Raising $\phi$ causes the $E a(r)$ curve to
+shift to the left, and {\it  lowers\/} $r$.  It is even possible
+for such an increase in $\phi$ to cause all stationary equilibria
+to vanish.  This experiment indicates why
+governments intent on raising seigniorage might want to restrict
+private borrowing.  See Bryant and Wallace (1984) for an
+extensive theoretical elaboration of this and related points.
+See Sargent and Velde (1995) for a practical example from the
+French Revolution.
+\auth{Kareken, John}
+\auth{Wallace, Neil}
+\section{Exchange rate indeterminacy}
+
+We can modify the preceding model to display a version of Kareken
+and Wallace's (1980) %and Helpman's (1981)
+%\auth{Helpman, Elhanan}
+ theory of exchange rate indeterminacy.
+\index{exchange rate!indeterminacy}
+Consider a model consisting of two countries, each of which  is
+a Bewley economy with stationary money demand function
+$E a_i(r)$ in country $i$. The same single  consumption
+good is available in each country.  Residents of both countries
+are free to hold the currency of either country.  Households
+of either country are indifferent between the two currencies as long
+as their rates of return are equal.  Let $p_{i,t}$ be the price
+level in country $i$, and let $p_{1,t} = e_t p_{2,t}$ define
+the time $t$ exchange rate $e_t$.  The gross return on
+currency $i$ between $t-1$ and $t$ is $(1+r) = \left({p_{i,t-1}
+\over p_{i,t}}\right)$ for $i=1,2$.
+Equality of rates of return implies $e_t = e_{t-1}$ for all
+$t$ and therefore
+$ p_{1,t} = e p_{2,t}$ for all $t$, where $e$ is a {\it constant}
+exchange rate to be determined.
+
+Each of the two countries finances a fixed
+expenditure level $G_i$ by printing its own currency.
+Let $\bar a_i$ be the stationary level of real balances in
+country $i$'s currency.
+Stationary versions  of the two  countries' budget constraints are
+$$\EQNalign{ \bar a_1 & = \bar a_1 (1+r) + G_1 \EQN govbud1 \cr
+             \bar a_2 & = \bar a_2 (1+r) + G_2 \EQN govbud2 \cr} $$
+Sum these to get
+ $$  \bar a_1 + \bar a_2 ={ \left( G_1 + G_2  \right) \over - r} .$$
+Setting this curve against $E a_1(r) + E a_2(r)$ determines
+a stationary equilibrium rate of return $r$.
+To determine the initial price level  and exchange rate, we use the
+time $0$ budget constraints of the two governments.  The time $0$
+budget constraint for country $i$ is
+$$ {M_{i,1} \over p_{i,0}}  = {M_{i,0} \over p_{i,0} } + G_i $$
+or
+$$ \bar a_i = {M_{i,0} \over p_{i,0}} + G_i.  \EQN wqtheory $$
+Add these
+and use $p_{1,0} = e p_{2,0}$ to get
+$$ (\bar a_1 + \bar a_2) - (G_1 + G_2)  =
+ {M_{1,0} + e M_{2,0} \over p_{1,0}}. $$
+This is one equation in two variables $(e, p_{1,0})$.
+If there is a solution for some $e \in (0, +\infty)$, then
+there is a solution for any other $e \in (0, + \infty)$.
+In this sense, the equilibrium exchange rate is indeterminate.
+
+Equation \Ep{wqtheory} is a quantity theory of money stated in
+terms of the initial ``world  money supply'' $M_{1,0} + e M_{2,0}$.
+
+
+
+
+\section{Interest on currency}
+    Bewley (1980, 1983)  studied whether
+Friedman's recommendation to pay interest on currency could
+improve outcomes in a stationary equilibrium, and possibly even
+support an optimal allocation.  He found  that when
+$\beta < 1$, Friedman's
+rule could improve things but could
+ not implement an optimal allocation, for reasons
+we now describe.
+
+
+As in the earlier fiat money model,
+there is one asset,   fiat currency, issued by a government.
+Households cannot borrow ($b=0$).
+The consumer's budget constraint is
+$$ m_{t+1} + p_t c_t \leq (1+\tilde r) m_t + p_t w s_t - \tau p_t $$
+where $m_{t+1} \geq 0$ is currency carried over from
+$t$ to $t+1$,  $p_t$ is the price level at $t$, $\tilde r$ is
+nominal interest  on currency paid by the government, and
+$\tau $ is a real lump-sum tax.   This tax is used
+to finance the interest payments on currency.
+The government's budget constraint   at $t$ is
+$$ M_{t+1} = M_t +  \tilde r M_t  - \tau p_t , $$
+where $M_t$ is the nominal stock of currency per person
+at the beginning of $t$.
+
+There are two versions of  this model: one
+where the government pays explicit interest while keeping
+the nominal stock of currency fixed, another where the
+government pays no explicit interest but varies the stock of
+currency to pay interest through deflation.
+
+For each setting, we can  show that
+paying interest on currency, where currency holdings
+continue to obey $m_t \geq 0$, can be viewed
+as a device for weakening the impact of this
+nonnegativity constraint.  We establish this point for each
+setting
+by showing that the household's problem is isomorphic
+with Aiyagari's problem as expressed in  \Ep{rao1}, \Ep{constr3},
+and \Ep{constr4}.
+
+\subsection{Explicit interest}
+In the first setting,
+the government leaves the money supply fixed, setting $M_{t+1} = M_t
+\ \forall t$,
+ and undertakes to support a constant price
+level.
+These settings make the government budget constraint imply
+$$ \tau = \tilde r M / p.$$
+Substituting this  into the household's budget constraint and
+rearranging
+gives
+$$ {m_{t+1} \over p} + c_t  \leq {m_t  \over p} (1+ \tilde r)
+  + w s_t  -\tilde r {M \over p}$$
+% $$ \left( {m_{t+1} \over p} - {M \over p} \right) + c_t
+%   \leq  \left({m_t\over p} - {M \over p} \right) (1+\tilde r) + w s_t, $$
+where the choice of currency is subject to $m_{t+1} \geq 0$.
+With appropriate transformations of variables,
+this matches Aiyagari's setup of expressions \Ep{rao1}, \Ep{constr3},
+and \Ep{constr4}.  In particular,  take
+ $r = \tilde r$, $\phi ={M \over p}, {m_{t+1} \over p} =
+ \hat a_{t+1}  \geq 0$.
+With these choices, the solution of the savings problem  of a household
+living in an economy with aggregate real balances of ${M \over p}$ and
+with nominal interest $\tilde r$ on  currency can be read from the
+solution  of the savings problem with the real interest rate $\tilde r$
+and a borrowing constraint parameter  $\phi \equiv {M  \over p}$.
+Let the solution of this problem be given by the
+policy function $a_{t+1} = g(a,s;r, \phi)$.  Because we have set
+${m_{t+1}\over p} = \hat a_{t+1} \equiv a_{t+1} + {M \over p}$,
+the condition that the supply of real balances equals the demand
+    $ E {m_{t+1}\over p}  = {M \over p}$ is equivalent with
+$E \hat a(r) = \phi$.  Note that because $a_t = \hat a_t - \phi$, the
+equilibrium can also be expressed as $E a(r) = 0$, where as usual
+$E a(r)$ is the  average of $a$ computed with respect to the
+invariant distribution $\lambda(a,s)$.
+
+
+   The preceding argument shows that
+an equilibrium  of the money economy with $m_{t+1} \geq 0$,
+equilibrium real balances ${M \over p}$, and explicit
+interest on currency $r$ therefore
+is isomorphic to a pure credit economy
+with borrowing constraint $\phi = {M \over p}$.
+We formalize this conclusion in the following proposition:
+
+\medskip
+\medskip\noindent{\sc Proposition 3:}  A stationary equilibrium with  interest
+on currency financed by lump-sum taxation
+ has the same allocation and interest rate
+as an equilibrium of Huggett's free banking model
+for debt limit $\phi$ equaling the equilibrium real balances
+from the monetary economy.
+\medskip
+\auth{Prescott, Edward C.}
+\auth{Sims, Christopher A.}
+\auth{Alvarez, Fernando}
+\auth{Fitzgerald, T.}
+\auth{Diaz-Gim\' enez, J.}
+   To compute an equilibrium with interest on currency, we use
+a ``back-solving'' method.\NFootnote{See Sims (1989) and Diaz-Gim\' enez,
+Prescott, Fitgerald, and Alvarez (1992) for an explanation and
+application of back-solving.}
+  Thus, even though the spirit of the model is that the government
+names $\tilde r =r$ and commits itself to set the lump-sum tax
+needed to finance interest payments on whatever ${M \over p}$
+emerges, we can compute the equilibrium by naming ${M \over p}$
+{\it first\/}, then finding an $r$ that makes things work.  In
+particular, we use the following steps:\index{back-solving}%
+\medskip
+\noindent{\bf 1.} Set $\phi$ to satisfy $0 \leq \phi \leq {w s_1 \over r}$.
+(We will elaborate on the upper bound in the next section.)
+  Compute real balances and therefore $p$ by
+solving  ${M \over p} = \phi$.
+\medskip
+\noindent{\bf 2.} Find $r$ from  $ E \hat a(r) = {M \over p} $ or $E a(r) = 0$.
+\medskip
+\noindent{\bf 3.} Compute the equilibrium tax rate from
+the government budget constraint $\tau = r  {M\over p}  $.
+\medskip
+\noindent
+This construction finds a constant tax
+that satisfies  the government budget
+constraint and that supports  a level  of
+real balances in the interval $ 0 \leq    {M \over p} \leq {w s_1
+\over r}$.  Evidently,  the largest level of real balances that
+can be supported in equilibrium
+is the one associated with the natural debt limit.    The levels
+of interest rates that are associated with monetary equilibria
+are in the range $0 \leq r \leq r_{FB}$,   where
+$E a(r_{FB}) =0$ and $r_{FB}$ is the equilibrium  interest
+rate in the pure credit economy (i.e., Huggett's model)
+under the natural debt limit.
+
+\subsection{The upper bound on ${M \over p}$}
+  To interpret the upper  bound on attainable ${M \over p}$, note that
+the government's budget constraint and the budget constraint
+of a  household with zero real balances  imply
+that $ \tau  = r  {M \over p} \leq  w s $ for all realizations
+of $s$.    Assume that the stationary distribution
+of real balances has a positive fraction
+of agents with real balances arbitrarily close to zero.   Let the
+distribution of employment shocks $s$  be such that a positive
+fraction of these low-wealth consumers receive income $w s_1$ at any
+time.   Then, for it to be feasible for the lowest wealth
+consumers to pay their lump-sum taxes, we must
+have $\tau \equiv {r M \over p} \leq w s_1$ or
+ $ {M \over p} \leq { w s_1 \over r} $.
+\medskip
+
+
+In Figure \Fg{rao1f}, the equilibrium real interest
+rate $r$ can be read from the intersection of the $E  a(r)$ curve and
+the $r$-axis.  Think of a graph with two $E a(r)$ curves, one with the
+natural debt limit $\phi = {s_1 w \over r}$, the other one with an
+ad hoc debt limit $\phi = \min[b, {s_1 w \over r}]$ shifted to the
+right.  The highest interest rate that can be supported by an
+interest on currency policy is evidently determined by the point where
+the $E a(r)$ curve for the natural debt limit passes through the $r$-axis.
+This is higher than the equilibrium interest rate associated with any of
+the ad hoc debt limits, but must be below $\rho$.  Note that $\rho$ is
+the interest rate associated with the  optimal quantity of money.
+Thus, we have Aiyagari's (1994) graphical version of Bewley's (1983) result
+that the optimal quantity of money (Friedman's rule) cannot be implemented
+in this setting.
+\index{Friedman rule!Bewley's model}
+\medskip
+We summarize this discussion with a proposition about free banking and
+Friedman's rule:\index{Friedman rule!and free banking}
+
+\medskip
+\medskip\noindent{\sc Proposition 4:}
+\ \   The highest interest rate that can be supported by paying interest
+on currency equals that associated with the pure credit (i.e., the pure inside money)
+model with the natural debt limit.
+
+\medskip
+
+ If $\rho >0$, Friedman's rule---to pay real interest on
+currency at the rate $\rho$---cannot be implemented in this
+model.   The most that can be achieved by paying interest
+on currency   is to
+eradicate the restriction  that prevents households from
+issuing currency in competition with the government and
+to implement the free banking outcome.
+
+\auth{Levine, David K.}    \auth{Zame, William}
+\subsection{A very special case}
+  Levine and Zame (2002)
+ have studied a special limiting case of the preceding model
+in which  the free banking equilibrium, which we have seen is
+equivalent to  the best stationary equilibrium with
+interest on currency, is optimal.  They attain this
+special case as the limit of a sequence of economies
+with $\rho \downarrow 0$.  Heuristically, under the natural debt limits,
+the  $Ea(r)$ curves converge to a horizontal line at $r =0$.
+At the limit $\rho=0$, the argument leading to Proposition 4 allows
+for the optimal $r=\rho$ equilibrium.
+
+\subsection{Implicit interest through deflation}
+There is another arrangement equivalent to paying explicit interest on
+currency.  Here the government aspires to pay interest through deflation,
+but abstains from paying explicit interest.  This purpose is accomplished
+by setting $\tilde r=0$ and
+ $ \tau p_t = - g M_t$, where it is intended that the outcome will be
+$ (1+r)^{-1} = (1+g)$, with $g < 0$.  The government budget constraint
+becomes
+$ M_{t+1} = M_t(1+g)$.  This can be written
+$$ {M_{t+1} \over p_t} = {M_t \over p_{t-1}} {p_{t-1} \over p_t} (1+g). $$
+We seek a steady state with constant real balances and inverse of the
+gross inflation rate ${p_{t-1} \over p_t} = (1+r)$.  Such a steady state
+implies that the preceding equation gives
+$ (1+r) = (1+g)^{-1},$  as desired.  The implied lump-sum tax rate is
+$ \tau = - {M_t \over p_{t-1}} (1+r) g. $  Using
+$(1+r)=(1+g)^{-1}$, this can be expressed
+$$ \tau =  {M_t \over p_{t-1}} r. $$
+
+  The household's budget constraint with taxes set in this way
+becomes
+$$ c_t + {m_{t+1} \over p_t} \leq {m_{t} \over p_{t-1}} (1+r)
+      + w s_t - {M_t \over p_{t-1}} r  \EQN rao10$$
+This matches Aiyagari's setup with
+$ {M_t \over p_{t-1}} = \phi.$
+
+   With these matches the steady-state equilibrium is determined
+just as though explicit interest were paid on currency.   The intersection
+of the $E a(r)$ curve with the $r$-axis determines the real interest
+rate.  Given the parameter $b$ setting the debt limit, the interest
+rate equals that for the economy with explicit interest on currency.
+
+
+\section{Precautionary savings}
+As we have seen in the production economy with idiosyncratic labor
+income shocks, the steady-state capital stock is larger when agents
+have no access to insurance markets as compared to
+the capital stock in a complete markets economy. The
+``excessive'' accumulation of capital can be thought of as the
+economy's aggregate amount of {\it \idx{precautionary savings}}---a point
+emphasized by Huggett and Ospina (2000).
+The precautionary
+demand for savings is usually described as the extra savings
+caused by future income being random rather than determinate.\NFootnote{Neng Wang (2003)
+describes an analytically tractable Bewley model with exponential utility. He is
+able to decompose the   savings  of an infinitely lived agent into three pieces:
+(1) a part reflecting a ``rainy day'' motive that would also be present with quadratic preferences;       (2)       a part coming from a precautionary motive; and (3) a   dissaving component due to impatience that reflects the relative sizes of the interest rate and the consumer's discount rate.  Wang  computes the equilibrium of a Bewley  model by hand and  shows that, at the equilibrium
+interest rate, the second and third components cancel, effectively leaving the consumer to behave  as a permanent-income consumer having a martingale consumption policy.}
+\auth{Wang, Neng}
+\auth{Huggett, Mark}
+\auth{Ospina, Sandra}\auth{Leland, Hayne E.}
+\auth{Sandmo, Agnar}
+
+In a partial equilibrium savings problem, it has been known since
+Leland (1968) and Sandmo (1970)
+that precautionary savings in response
+to risk are associated with convexity of the marginal utility
+function, or a positive third derivative of the utility function.
+In a two-period model, the intuition can be obtained
+from the Euler equation, assuming an interior solution with respect
+to consumption:
+$$
+u'[(1+r)a_0+w_0-a_1] = \beta (1+r) E_0 u'[(1+r)a_1+w_1],
+$$
+where $1+r$ is the gross interest rate, $w_t$ is labor
+income (endowment) in period $t=0,1$,   $a_0$ is an initial
+asset level, and $a_1$ is the optimal amount of savings between periods $0$ and
+$1$. Now compare the optimal choice of $a_1$ in two economies
+where next period's labor income $w_1$ is either determinate
+and equal to $\bar w_1$, or random with a mean value of $\bar w_1$.
+Let $a^n_1$ and $a^s_1$ denote the optimal choice of savings in
+the nonstochastic and stochastic economy, respectively,
+that satisfy the Euler equations:
+$$\EQNalign{
+u'[(1+r)a_0+w_0- a^n_1]
+   &= \beta (1+r) u'[(1+r) a^n_1+ \bar w_1]                    \cr
+\noalign{\vskip.2cm}
+u'[(1+r)a_0+w_0- a^s_1]
+   &= \beta (1+r) E_0 u'[(1+r) a^s_1+ w_1]                 \cr
+\noalign{\vskip.1cm}
+   &> \beta (1+r) u'[(1+r) a^s_1+ \bar w_1],   \cr}
+$$
+where the strict inequality is implied by Jensen's inequality
+under the assumption that $u'''>0$. It follows immediately from
+these expressions that
+the optimal asset level is strictly greater in the stochastic
+economy as compared to the nonstochastic economy, $a^s_1>a^n_1$.
+
+\auth{Caballero, Ricardo J.}
+\auth{Kimball, Miles S.}
+\auth{Carroll, Christopher D.}
+\auth{Miller,  Bruce L.}
+\auth{Zeldes, Stephen P.}
+\auth{Sibley, David S.}
+Versions of precautionary savings have been analyzed by
+Miller (1974), Sibley (1975), Zeldes (1989), Caballero (1990),
+Kimball (1990, 1993), and Carroll and Kimball (1996),
+ to mention just a few other studies in a vast literature.
+Using numerical methods for a finite horizon savings problem
+and assuming a constant relative risk aversion utility function,
+Zeldes (1989) found that introducing
+labor income uncertainty made the optimal consumption function
+concave in assets. That is, the marginal propensity to
+consume out of assets or transitory income declines with
+the level of assets. In contrast, without uncertainty and when
+$\beta (1+r)=1$ (as assumed by Zeldes),
+the marginal propensity to consume depends only on the number of
+periods left to live, and is neither a function
+of the agent's asset level nor the present value of lifetime
+wealth.\NFootnote{When
+$\beta (1+r)=1$ and there are $T$ periods left to live in
+a nonstochastic economy, consumption smoothing prescribes
+a constant consumption level $c$ given by
+$\sum_{t=0}^{T-1} {c \over (1+r)^t} = \Omega$, which
+implies % \qquad \Longrightarrow
+ $c = {r \over 1+r} \left[1 - {1 \over (1+r)^T} \right]^{-1} \Omega
+\,\equiv \, {\rm MPC}_T \;\Omega,$
+where $\Omega$ is the agent's current assets plus the present
+value of her future labor income. Hence, the marginal propensity
+to consume out of an additional unit of assets or transitory income,
+${\rm MPC}_T$, is only a function of the time horizon $T$.}
+Here we briefly summarize Carroll and Kimball's (1996) analytical
+explanation for the concavity of the consumption function that
+income uncertainty seemed to induce.
+
+\auth{Kimball, Miles S.}
+\auth{Carroll, Christopher D.}
+In a finite horizon model where
+both the interest rate and endowment are stochastic
+processes, Carroll and Kimball
+cast their argument in terms
+of the class of hyperbolic absolute risk aversion (HARA)
+\index{hyperbolic absolute risk aversion}%
+one-period utility functions.  These are defined by ${u''' u'
+\over u^{\prime \prime 2}} = k$ for some number $k$. To induce
+precautionary savings, it must be true that $k >0$. Most commonly
+used utility functions are of the HARA class: quadratic utility
+has $k=0$, constant absolute risk aversion (CARA) corresponds to
+$k=1$, and constant relative risk aversion (CRRA) utility
+functions satisfy $k>1$. \index{constant relative risk aversion}
+\index{constant absolute risk aversion}
+
+ Carroll and Kimball show that
+if $k >0$, then consumption is a concave function of
+wealth. Moreover, except for some special cases, they
+show that the consumption function is {\it strictly\/} concave;
+that is, the marginal propensity to consume out of wealth declines with
+increases in wealth. The exceptions to strict concavity include
+two well-known cases: CARA utility if all of the risk is to labor
+income (no rate-of-return risk), and CRRA utility if all of
+the risk is rate-of-return risk (no labor-income risk).
+
+In the course of the proof, Carroll and Kimball generalize the
+result of Sibley (1975) that a positive third derivative of the
+utility function is inherited by the value function. For there to
+be precautionary savings, the third derivative of the value
+function with respect to assets must be {\it positive\/}; that is,
+the marginal utility of assets must be a convex function of
+assets.  The case of the quadratic one-period utility is an example
+where  there is no precautionary saving.  Off corners, the value
+function is quadratic, and the third derivative of the value
+function is zero.\NFootnote{In linear-quadratic models, decision
+rules for
+ consumption and asset accumulation are independent of
+the variances of innovations to exogenous income processes.}
+%%\auth{Weil, Phillipe}
+
+Where precautionary saving occurs, and where the marginal utility of
+consumption is  always positive, the consumption function becomes
+approximately linear for large asset levels.\NFootnote{Roughly
+speaking, this follows from applying the Benveniste-Scheinkman
+formula and noting that, where $v$ is the value function, $v''$ is
+increasing in savings and $v''$ is bounded.}
+  This feature of the consumption function plays a decisive role
+in governing the behavior of a model of Krusell and Smith (1998),
+to which we now turn.
+\auth{Smith, Anthony}
+\auth{Krusell, Per}
+
+
+
+%  Within our model of the savings problem,
+%particular conditions on the one-period utility function $u$
+%make the household engage in {\it \idx{precautionary savings}}.
+%Precautionary savings are said to occur if in response
+%to a hypothetical increase in the variance of labor income, holding
+%its mean constant,
+% the household saves more at any given level of assets.
+%  Leland (1987), %Sandmo (19??),
+% Miller (1974),
+% Zeldes (1989), Cabellero (1990), Kimball (1990, 1993),
+%and Carroll and Kimball (1996)
+% have analyzed
+%versions of precautionary savings.
+%In the context of the stochastic saving problem,
+%we briefly summarize some results from the precautionary savings
+%literature.
+%\auth{Cabellero, Ricardo J.}
+%\auth{Kimball, Miles S.}
+%\auth{Carroll, Christopher D.}
+%\auth{Miller,  Bruce L.}
+%\auth{Leland, Hayne E.}
+%\auth{Zeldes, Stephen P.}
+%
+%   We are interested in the situation that $\beta (1+r) < 1$.
+%  Whether precautionary savings emerge depends on the third derivative
+%of the value function, which in turn depends on the  third derivative
+%of the one-period utility function.  For a model in
+%which both the interest rate and endowment are stochastic
+%processes, Carroll and
+%Kimball (1996) give conditions under which the
+%third-derivative properties of the utility function
+%are transmitted to the value function.  For there to be precautionary
+%savings, the third derivative of the value function with
+%respect to assets must be {\it positive\/}; that is, the
+%marginal utility of assets must be a convex function of
+%assets.
+%\index{constant relative risk aversion}
+%\index{hyperbolic absolute risk aversion}
+
+%  Carroll and Kimball cast their argument in terms
+%of the class of hyperbolic absolute risk-aversion (HARA)
+%one-period utility functions.  These are defined by
+%${u''' u' \over u^{\prime \prime 2}} = k$ for some number $k$.
+%To induce precautionary savings, it must be true that
+%$k >0$.       Carroll and Kimball give the following
+%examples of HARA utility functions: $u(c) = -(B-c)^\alpha$ for a constant
+%$B$;
+%for $\alpha = 1.5, 2, 2.5$, the associated values of $k$ are
+%$k=-1, 0, .33$.
+%Carroll and Kimball note that HARA utility functions with $k >1$ are
+%the constant relative risk-aversion CRRA functions.  These display
+%decreasing absolute risk aversion.
+
+% Carroll and Kimball show   that
+%if $k >0$, then consumption   is a concave function of
+%wealth, except in some special cases.   Therefore
+%the marginal propensity to consume out of wealth declines with
+%increases in wealth.
+%\medskip
+%\item{1.}  Sketch argument   based on small noise expansion.
+%\medskip
+
+
+\section{Models with fluctuating aggregate variables}
+  That the aggregate equilibrium state variables are constant helps
+makes the preceding models tractable.  This section describes a way to
+extend such models to situations with time-varying stochastic aggregate
+state variables.\NFootnote{See Duffie, Geanakoplos, Mas-Colell, and
+McLennan (1994) for a general formulation and equilibrium existence
+theorem for such models.   These authors cast doubt on whether
+in general the current distribution of wealth is enough to serve
+as a complete description of the history of the aggregate state.
+They show that in addition to the distribution of wealth, it can be necessary to add
+a sunspot to the state.  See Miao (2003) for a later treatment and for an interpretation of
+the additional state variable in terms of a distribution of continuation values.
+  See Marcet and Singleton (1999) for a computational
+strategy for incomplete markets models with a finite number of
+heterogeneous agents.}
+\auth{Mas-Colell, Andreu}      \auth{Singleton, Kenneth J.}
+\auth{McLennan, Andrew}        \auth{Geanakoplos, John} \auth{Miao, Jianjun}
+\auth{Marcet, Albert}
+
+  Krusell and Smith (1998) modified Aiyagari's (1994) model
+by adding an aggregate state variable $z$, a technology shock
+that follows a Markov process.  Each household continues
+to receive  an idiosyncratic labor-endowment shock $s$ that
+averages to the same constant value for each value  of the aggregate shock
+$z$.  The aggregate shock causes the size of the state of the
+economy to expand dramatically, because every household's wealth
+will depend on the history of the {\it aggregate\/} shock $z$, call it
+$z^t$, as well as the history of the household-specific shock $s^t$.
+That makes the joint histories of $z^t,s^t$ correlated across households,
+which in turn makes the cross-section distribution of $(k,s)$ vary
+randomly over time.  Therefore, the interest rate and wage will also vary
+randomly over time.
+
+  One way to specify the state is to include the cross-section distribution
+$\lambda(k,s)$  {\it each period\/} among the state variables.  Thus, the
+state includes a cross-section probability distribution of
+(capital, employment) pairs.  In addition, a description of a recursive
+competitive equilibrium must include a law of motion mapping today's
+distribution $\lambda(k,s)$ into tomorrow's distribution.
+
+\subsection{Aiyagari's model again}
+To prepare the way for Krusell and Smith's way of handling
+such a model, we recall the structure of
+Aiyagari's model.  The household's Bellman equation in Aiyagari's model
+is
+$$ v(k,s) = \max_{c, k'}\left\{ u(c) + \beta  E [v(k', s') \vert s] \right\}
+   \EQN bellmanrao $$
+where the maximization is subject to
+$$ c+ k'  = \tilde r k + w s + (1-\delta) k, \EQN constr0 $$
+and the prices  $\tilde r$ and $w$ are   fixed numbers satisfying
+$$ \EQNalign{ \tilde r & = \tilde r(K, N) = \alpha \left({K \over N }
+           \right)^{\alpha -1} \EQN constr1;a \cr
+                 w & = w(K, N) = (1- \alpha) \left({K \over N }\right)^\alpha
+    .   \EQN constr1;b \cr }$$
+Recall that  aggregate capital and labor $K,N$
+ are the average values of $k,s$ computed from
+$$\EQNalign{K & = \int k \lambda (k,s) d k d s  \EQN meank \cr
+        N & = \int s \lambda (k,s) d k d s . \EQN meann \cr} $$
+Here we are following Aiyagari by assuming a Cobb-Douglas
+aggregate production function.
+The definition of a stationary equilibrium
+requires that $\lambda(k,s)$ be the stationary distribution of $(k,s)$ across
+households induced by the decision rule that attains the
+right side of equation \Ep{bellmanrao}.
+
+\subsection{Krusell and Smith's extension}
+  Krusell and Smith (1998) modify Aiyagari's model by adding an
+aggregate productivity shock $z$ to the price equations, emanating
+from the presence of $z$ in the production function. The shock $z$
+is governed by an exogenous Markov process.
+Now the state must include $\lambda $ and
+$z$ too, so the household's Bellman equation
+becomes
+  $$ v(k,s;\lambda,z) = \max_{c, k'}\left\{
+ u(c) + \beta  E [v(k', s';\lambda',z') \vert (s,z,\lambda)] \right\}
+   \EQN bellmanrao2 $$
+where the maximization is subject to
+$$ \EQNalign{ c+ k' & = \tilde r(K,N,z)k + w(K,N,z) s +
+ (1-\delta) k \EQN constr2;a \cr
+                 \tilde r & = \tilde r(K, N, z) =z \alpha \left({K \over N }
+           \right)^{\alpha -1} \EQN constr2;b \cr
+                 w & = w(K, N, z) = z (1- \alpha) \left({K \over N }\right)^\alpha
+    \EQN constr2;c \cr
+         \lambda' & = H(\lambda,z) \EQN constr2;d \cr}$$
+where $(K,N)$ is a  stochastic processes determined from\NFootnote{In our
+simplified formulation, $N$ is actually
+constant over time.  But in Krusell
+and Smith's model, $N$ too can be a stochastic process, because
+leisure is in the one-period utility function.}
+$$\EQNalign{K_t  & = \int k \lambda_t (k,s) d k d s  \EQN bmeank \cr
+        N_t & = \int s \lambda_t (k,s) d k d s. \EQN bmeann \cr}$$
+Here $\lambda_t(k,s)$ is the distribution of $k,s$ across
+households at time $t$.  The {\it distribution} is itself
+a random function disturbed by the aggregate shock $z_t$.
+
+Krusell and Smith make the plausible guess that $\lambda_t(k,s)$
+is enough to complete the description of the state.\NFootnote{However,
+in general settings, this guess remains to be verified. Duffie, Geanakoplos,
+Mas-Colell, and McLennan (1994) give an example of an incomplete markets
+economy in which it is necessary to keep track of a longer history of
+the distribution of wealth.}$^,$\NFootnote{Loosely speaking,
+that the individual moves through the distribution of wealth as time
+passes indicates that his implicit Pareto weight is fluctuating.}
+The Bellman equation and the pricing functions induce the
+household to want to forecast the average capital stock $K$,
+in order to forecast future prices.  That desire makes the household want
+to forecast the cross-section distribution of holdings of
+capital. To do so it consults the law of motion \Ep{constr2;d}.
+
+\medskip
+\medskip\noindent{\sc Definition:}  A recursive competitive equilibrium is
+a pair of price functions $\tilde r, w$, a  value function,
+a decision rule $k'=f(k,s;\lambda,z)$, and a law of motion $H$
+for $\lambda(k,s)$ such that
+\medskip
+\noindent (a) given the price functions
+and $H$, the value function solves the Bellman equation \Ep{bellmanrao2} and
+the optimal  decision rule  is $f$;
+\medskip
+\noindent (b) the decision rule $f$ and the
+Markov processes for $s$ and $z$ imply that today's distribution
+$\lambda(k,s)$ is mapped into tomorrow's  $\lambda'(k,s)$ by $H$.
+
+\medskip
+
+\auth{Honkapohja, Seppo}%
+\auth{Evans, George W.}%
+\auth{Sargent, Thomas J.}%
+\auth{Marcet, Albert}%
+The curse of dimensionality makes an equilibrium difficult to compute.
+Krusell and Smith propose a way to approximate an equilibrium using
+simulations.\NFootnote{These simulations  can be justified formally using lessons learned from the literature
+on convergence of least squares learning to rational expectations in self-referential environments. See footnote \use{FT:MSEH} of chapter \use{recurpe}, the paper by
+   Marcet and Sargent (1989), and the book with extensions and many applications by
+   Evans and Honkapohja (2001).} First, they characterize the distribution $\lambda(k,s)$
+by a finite set of moments of capital $m = (m_1, \ldots, m_I)$.  They
+assume a parametric functional form for $H$ mapping today's $m$ into
+next period's value $m'$.  They assume a form that can be conveniently
+estimated using least squares.  They assume initial values for the parameters
+of $H$.  Given $H$, they use numerical dynamic programming to solve the
+Bellman equation
+  $$ v(k,s;m,z) = \max_{c, k'}\left\{
+ u(c) + \beta  E [v(k', s';m',z') \vert (s,z,m)] \right\}$$
+subject to the assumed  law of motion $H$ for $m$.   They take the solution
+of this problem and draw a single long realization from the Markov process
+for $\{z_t\}$, say, of length $T$.  For that particular realization of $z$, they
+then simulate paths of $\{k_t,s_t\}$ of length $T$ for a large number $M$
+of households.  They assemble these $M$ simulations into
+a history  of $T$ empirical cross-section distributions $\lambda_t(k,s)$.
+They use the cross section at $t$ to compute the cross-section
+moments $m(t)$, thereby assembling a time series of length $T$ of the
+cross-section moments $m(t)$.  They use this sample and nonlinear least squares
+to estimate the transition function $H$ mapping $m(t)$ into $m(t+1)$.
+ They return to the beginning of the procedure, use this new guess at
+$H$, and continue, iterating to convergence of the function $H$.
+
+   Krusell and Smith
+compare the  aggregate time series $K_t, N_t,\tilde r_t, w_t$
+from this model with a corresponding representative agent
+(or complete markets) model.  They find that the statistics
+for the  aggregate quantities and prices for the two types of models
+are very close.   Krusell and Smith interpret this result in terms
+of an ``approximate aggregation theorem'' that follows from two properties
+of their parameterized model.  First, consumption as a function of wealth
+ is concave but close to linear for moderate to high wealth levels.
+Second, most of the saving is done by the high-wealth people.  These two
+properties mean that fluctuations in the distribution of wealth have only
+a small effect on the aggregate amount saved and invested.  Thus, distribution
+effects are small.  Also, for these high-wealth people, self-insurance
+works quite well, so aggregate consumption is not much lower than it would
+be for the complete markets economy.
+
+  Krusell and Smith  compare the distributions of wealth
+from their model to the U.S. data.  Relative to the data, the model
+with a constant discount factor generates too few very poor
+people and too many rich people.   Krusell and Smith modify the
+model by making the discount factor an exogenous stochastic process.
+The discount factor switches occasionally between two values.  Krusell and
+Smith find   that a modest difference between two discount factors can
+bring the model's wealth distribution much closer to the data.
+Patient people become wealthier; impatient people eventually become
+poorer.
+
+
+\section{Concluding remarks}
+  The models in this chapter pursue some of the adjustments
+that households  make when their preferences and
+endowments give a motive to insure but markets offer
+limited opportunities to do so.  We have studied
+settings where households' saving  occurs through a single
+risk-free asset.  Households use the asset to ``self-insure,''
+by making intertemporal adjustments of the asset holdings to smooth
+their consumption. Their consumption  rates at a given
+date become a function of their asset holdings,
+which in turn depend on the  histories of their
+endowments.   In pure exchange versions of the model,
+the equilibrium allocation becomes individual history specific,
+in contrast to the history-independence of the corresponding
+complete markets model.
+
+
+  The models of this chapter arbitrarily shut down or allow markets
+without explanation.   The market structure is imposed, its consequences
+then analyzed.  In chapter \use{socialinsurance}, we study a class of  models
+for similar environments that, like the models of this chapter,
+make consumption allocations history dependent. But
+the spirit of the models in chapter \use{socialinsurance} differs from
+those in this chapter in requiring that the trading structure
+be more firmly motivated by the environment.  In particular,
+the models in chapter \use{socialinsurance}
+posit a particular   reason that complete markets do not exist,
+coming from enforcement or information problems, and then study how
+risk sharing among people can best be arranged.
+
+
+%\section{Exercises}
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\noindent{\it Exercise \the\chapternum.1}\quad {\bf Random discount factor}
+\ \ (Bewley-Krusell-Smith)
+\medskip
+\noindent A household has preferences
+over consumption of a single good ordered by a value function
+defined recursively by
+$v(\beta_t, a_t, s_t) = u(c_t) +  \beta_t  E_t v(\beta_{t+1}, a_{t+1},
+ s_{t+1}),$
+where $\beta_t \in (0,1) $ is the time $t$ value of a discount
+factor, and $a_t$ is time $t$ holding of a single asset. Here
+$v$ is the discounted utility for a consumer with
+asset holding $a_t$, discount factor $\beta_t$, and
+employment state $s_t$.
+The discount factor evolves according to a three-state Markov
+chain with transition probabilities $P_{i,j}=
+{\rm Prob} (\beta_{t+1} = \bar \beta_j \vert \beta_t = \bar \beta_i)$.
+The discount factor and employment state at $t$ are both known.
+The household faces the sequence of budget constraints
+$$ a_{t+1} + c_t \leq (1+r) a_t + w s_t $$
+where $s_t$ evolves according to an $n$-state Markov
+chain with  transition matrix ${\cal P}$.   The household
+faces the borrowing constraint $a_{t+1} \geq - \phi$ for all
+$t$.
+\medskip
+\noindent Formulate Bellman equations for the household's problem.
+Describe an algorithm for solving the Bellman equations.
+({\it Hint:} Form three coupled Bellman equations.)
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.2}\quad {\bf Mobility costs}\ \ (Bertola)
+\medskip\noindent
+A worker seeks to maximize
+$E \sum_{t=0}^\infty \beta^t u(c_t)$, where
+$\beta \in (0,1)$ and $u(c) = {c^{1-\sigma} \over (1-\sigma)}$, and
+$E $ is the expectation operator.  Each period,
+the worker supplies one unit of labor inelastically
+(there is no unemployment) and
+either $w^g$ or $w^b$, where $w^g > w^b$.  A  new ``job''
+starts off paying $w^g$ the first period.  Thereafter,
+a job earns a wage governed by the two-state Markov process governing
+transition between good and bad wages on all jobs; the transition matrix
+is $\left[\matrix{ p & (1-p) \cr
+                    (1-p) & p \cr}\right]$.
+A new (well-paying) job is always available, but the worker must pay mobility
+cost $m>0$ to change jobs.  The mobility cost is paid at the beginning of the
+period that a worker decides to move.  The worker's period $t$ budget constraint
+is
+$$ A_{t+1} + c_t + m I_t \leq R A_t + w_t, $$
+where $R$ is a gross interest rate on assets, $c_t$ is consumption
+at $t$, $m>0$ is moving costs, $I_t$ is an indicator equaling $1$
+if the worker moves in period $t$, zero otherwise, and $w_t$ is the wage.
+Assume that $A_0 >0$ is given and that the worker faces the no-borrowing
+constraint, $A_t \geq 0$ for all $t$.
+
+\medskip
+\noindent{\bf a.} Formulate the Bellman equation for the worker.
+\medskip
+\noindent{\bf b.}  Write a Matlab program to  solve the worker's
+Bellman equation.  Show the optimal decision rules computed for
+the following parameter values: $m=.9, p=.8, R=1.02,  \beta = .95,
+w^g= 1.4, w^b =1, \sigma=4$.  Use a range of assets levels of
+$[0, 3]$.  Describe how the decision to move depends on wealth.
+
+\medskip
+\noindent{\bf c.}  Compute the Markov chain governing the transition
+of the individual's state $(A,w)$.   If it exists, compute
+the invariant distribution.
+
+\medskip
+\noindent{\bf d.}  In the fashion of Bewley,
+ use the invariant distribution  computed in part  c
+to describe the distribution of wealth across  a large number of workers
+all facing this same optimum problem.
+
+\vfil\eject
+\medskip\noindent
+{\it Exercise \the\chapternum.3} \quad {\bf Unemployment}
+\medskip\noindent
+ There is a continuum of workers with identical
+probabilities $\lambda$ of being fired each period
+when they are employed. With probability $\mu \in (0,1)$,
+each unemployed worker receives one offer to work
+at wage $w$ drawn from the cumulative distribution
+function $F(w)$. If he accepts the offer,
+the worker receives the offered wage each
+period until he is fired. With probability $1-\mu$, an unemployed
+worker receives no offer this period. The probability
+$\mu$ is determined by the function
+$ \mu= f(U)$, where $U$ is the unemployment rate, and
+$f'(U) < 0, f(0) =1, f(1)=0$. A worker's
+utility is given by $E \sum_{t=0}^\infty \beta^t y_t$, where
+$\beta \in (0,1)$ and $y_t$ is income in period $t$,
+which equals the wage if employed and zero otherwise.
+There is no unemployment compensation. Each worker
+regards $U$ as fixed and constant over time in making his
+decisions.
+\medskip
+\noindent {\bf a.} For fixed $U$, write the Bellman equation
+for the worker. Argue that his optimal policy
+has the reservation wage property.
+\medskip
+\noindent {\bf b.} Given the typical worker's
+policy (i.e., his reservation wage),
+ display a difference equation for the unemployment
+rate. Show that a stationary unemployment rate
+must satisfy
+$$ \lambda (1-U) = f(U) \bigl[ 1-F(\bar w)\bigr] U , $$
+where $\bar w$ is the reservation wage.
+\medskip
+\noindent{\bf c.} Define a {\it stationary equilibrium}.
+\medskip
+\noindent{\bf d.} Describe how to compute a stationary
+equilibrium. You don't actually have to compute it.
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.4} \quad  {\bf Asset insurance}
+\index{deposit insurance}
+\medskip
+\noindent
+Consider the following setup.
+There is a continuum of households that maximize
+$$ E \sum_{t=0}^\infty \beta^t u(c_t) ,$$
+subject to
+$$ c_t + k_{t+1} + \tau \leq y + \max(x_t,g) k_t^\alpha , \quad
+           c_t \geq 0,\ k_{t+1}\geq 0,\ t \geq 0, $$
+where $y> 0$ is a constant level of income not derived from capital,
+$\alpha \in (0,1)$, $\tau$ is a fixed lump-sum tax, $k_t$ is the
+capital held at the beginning of $t$, $g \leq 1$ is an ``investment
+insurance'' parameter set by the government, and $x_t$ is a
+stochastic household-specific gross rate of return on capital.
+We assume that $x_t$ is governed by a two-state Markov process
+with stochastic matrix $\cal P$, which takes on the two values
+$\bar x_1 > 1$ and $\bar x_2 < 1$. When the bad investment return
+occurs, ($x_t = \bar x_2$), the government supplements the
+household's return by $\max(0, g - \bar x_2)$.
+
+  The household-specific randomness is distributed identically and
+independently across households. Except for paying taxes and possibly
+receiving insurance payments from the government, households have
+no interactions with one another; there are no markets.
+
+  Given the government policy parameters $\tau, g$, the household's
+Bellman equation is
+$$ v(k,x) = \max_{k'} \{ u \bigl[ \max(x,g) k^\alpha - k' - \tau\bigr] +
+\beta \sum_{x'} v(k',x') {\cal P} (x,x') \} .$$
+The solution of this problem is attained by a decision rule
+$$k' = G(k,x),$$
+that induces a stationary distribution $\lambda(k,x)$ of agents across
+states $(k,x)$.
+
+  The average (or per capita) physical output of the economy is
+$$ Y = \sum_k \sum_x (x \times k^\alpha) \lambda(k,x) .$$
+The average return on capital to households, {\it including\/}
+the investment insurance, is
+$$ \nu = \sum_k \bar x_1 k^\alpha \lambda(k,x_1) +
+\max(g,\bar x_2) \sum_k k^\alpha \lambda(k,x_2) ,$$
+which states that the government pays out
+insurance to all households for which $g > \bar x_2$.
+
+Define a stationary equilibrium.
+
+%%%AAAAAAA
+
+\medskip
+\noindent{\it Exercise \the\chapternum.5} \quad {\bf Matching and job quality}
+\medskip
+\noindent
+Consider the following Bewley model, a version of which Daron Acemoglu
+and Robert Shimer (2000) calibrate to deduce quantitative statements
+about the effects of government-supplied unemployment insurance on the
+equilibrium level of unemployment, output, and workers' welfare.  Time
+is discrete.  Each of a continuum of {\it {\it ex ante\/}\/} identical workers
+can accumulate nonnegative amounts of a single risk-free asset bearing
+gross one-period rate of return $R$; $R$ is exogenous and satisfies
+$\beta R < 1$.  There are good jobs with wage $w_g$ and bad jobs with
+wage $w_b< w_g$.  Both wages are exogenous.  Unemployed workers must decide
+whether to search for good jobs or bad jobs.  (They cannot search for both.)
+If an unemployment worker devotes $h$ units of time to search for a good job,
+a good job arrives with probability $m_g h$; $h$ units of time devoted to
+searching for bad jobs makes a bad job arrive with probability $ m_b h$.
+Assume that $m_g < m_b$.  Good jobs terminate exogenously each period
+with probability $\delta_g$, bad jobs with probability $\delta_b$.
+Exogenous terminations entitle  an unemployed worker to unemployment
+compensation of $b$, which is independent of the worker's lagged earnings.
+However, each period, an unemployed worker's entitlement to unemployment
+insurance is exposed to an i.i.d.\ probability of $\phi$ of expiring.
+Workers who quit are not entitled to unemployment insurance.
+
+Workers choose $\{c_t, h_t\}_{t=0}^\infty$ to maximize
+$$ E_0 \sum_{t=0}^\infty \beta^t
+(1-\theta)^{-1}(c_t (\bar h - h_t)^\eta)^{1-\theta},$$
+where $\beta \in (0,1)$, and $\theta$ is a  coefficient of relative
+risk aversion, subject to the asset accumulation equation
+$$ a_{t+1} = R (a_t + y_t -  c_t) $$
+and the no-borrowing condition $a_{t+1} \geq 0$; $\eta$ governs the
+substitutability between consumption and leisure.  Unemployed workers
+eligible for unemployment insurance receive income $y_t = b$, while those not eligible
+receive $0$.  Employed workers with good jobs receive after-tax income
+of $y_t = w_g h (1-\tau)$, and those with bad jobs receive
+$y_t = w_b h(1-\tau)$.  In equilibrium,  the flat-rate tax is set so that
+the government budget for unemployment insurance balances.  Workers with bad jobs have
+the option of quitting to search for good jobs.
+
+Define a worker's composite {\it state\/} as his asset level, together with
+one of four possible employment states: (1) employed in a good job, (2)
+employed in a bad job,
+ (3) unemployed and eligible for unemployment insurance;
+ (4) unemployed and ineligible for unemployment insurance.
+\medskip
+\noindent{\bf a.}  Formulate value functions for the four types
+of employment states, and
+describe Bellman equations that link them.
+\medskip
+\noindent{\bf b.}  In the fashion of Bewley,
+define a  stationary   stochastic equilibrium, being careful to define
+all of the objects composing an equilibrium.
+\medskip
+\noindent{\bf c.}   Adjust the Bellman equations to accommodate
+the following modification.  Assume that every period that a worker
+finds himself in a bad job, there is a probability $\delta_{upgrade}$
+that the following period, the bad job is upgraded to a good job,
+conditional on not having been fired.
+
+\medskip
+\noindent{\bf d.}  Acemoglu and Shimer calibrate their model
+to U.S. high school graduates, then perform a local analysis of
+the consequences of increasing the unemployment compensation rate $b$.
+For their calibration, they find that there are substantial benefits
+to raising the unemployment compensation rate and that this conclusion
+prevails despite the presence of a ``moral hazard problem'' associated
+with providing unemployment insurance benefits in their model.  The reason is that too
+many workers choose to search for bad rather than good jobs.  They calibrate
+$\beta$ so that  workers are sufficiently impatient that most workers
+with low assets search for bad jobs.  If workers were more fully insured,
+more workers would search for better jobs. That would put a larger fraction
+of workers in good jobs and  raise average productivity.  In equilibrium,
+unemployed workers with high asset levels {\it do\/} search for good jobs,
+because their assets provide them with the ``self-insurance'' needed to
+support their investment in search for good jobs.  Do you think that
+the modification suggested in part c would affect the outcomes
+of increasing unemployment compensation $b$?
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.6} \quad {\bf Gluing stationary equilibria}
+\medskip
+\noindent At time $-1$, there is a continuum of {\it ex ante\/} identical consumer named $i \in (0,1)$.
+Just before time $0$, net assets $\tilde a(i;0)$ drawn from a cumulative distribution function $F$  are distributed to agents. Net assets may be positive
+or negative.  Agent
+$i$'s net assets at the beginning of time $0$ are then $a_0 = \tilde a(i,0)$.  (To conserve notation, we'll usually supress the $i$.)
+A typical consumer's labor income at time $t$ is $w s_t$ where where $w$ is a fixed positive number and $s_t$
+evolves according to an $m$-state Markov chain with transition
+matrix $\cal P$. Think of initiating the process from the invariant distribution
+of $\cal P$ over $\bar s_i$'s.   If the realization of the process at $t$ is
+$\bar s_i$, then at time $t$ the household receives labor income
+$w \bar s_i$.  Let $a_t$ be the household's net assets at the beginning of period $t$.
+For given initial values ($a_0, s_0$) and a given net risk-free interest rate $r$, a household
+chooses a policy for
+ $\{c_t, a_{t+1}\}_{t=0}^\infty$ to maximize
+$$ E_0 \sum_{t=0}^\infty \beta^t u(c_t) , \leqno(1) $$
+subject to
+$$\eqalign{ c_t + a_{t+1} &= (1+r) a_t + w s_t \cr
+       a_{t+1} &\in {\cal A}(r)\cr } \leqno(2)
+$$
+ where $\beta \in (0,1)$ is a discount factor; $u(c)$ is a strictly
+increasing, strictly concave, twice continuously
+differentiable one-period utility function satisfying
+the Inada condition $\lim_{c \downarrow 0} u'(c) = +\infty$;
+ and $\beta(1+r) < 1$; whether the set $ {\cal A}(r) $ might depend on $r$ depends on whether
+or not we construct it from a natural borrowing limit or some tighter ad hoc limit.
+
+\medskip
+
+\noindent{\bf a.} Describe an equilibrium of an incomplete markets model in the style of Mark Huggett in which the only asset traded is a risk-free private IOU.  Please
+define all objects of which an equilibrium consists and the restrictions that equilibrium imposes on those objects.
+
+\medskip
+
+\noindent{\bf b.}  Let  $\Lambda(a,s)$ be the joint probability distribution over $a, s$ in the equilibrium that you described in part {\bf a}.  How does
+$\Lambda(a,s)$ relate to the cumulative distribution function $F$ in the set up of the problem?
+
+\medskip
+\noindent{\bf c.}  Suppose that parameters are such that the equilibrium net  interest rate  $r$ is negative in your Hugget model.  Call this interest rate
+$r_H < 0$.  Please draw a graph with the net interest rate on the coordinate axis and average net assets across agents on the ordinate axis and show $r_H$ as well
+as average savings across agents as a funtion of $r$.
+
+\medskip
+\noindent{\bf d.}  Now add a government to the  model, starting from initial conditions consistent with the equilibrium $\Lambda(a,s)$ distribution
+associated with the Huggett equilibrium that you described in parts {\bf b} and {\bf c}.  The government acts only at time $0$, when it has  budget constraint
+$$ T_{-1} = {\frac{M_0}{p}} ,  \quad T_{-1} = \int  \tilde T_{-1}(i) d i , $$
+ where $p >0$ is the price level, $T_{-1}$ is the value of aggregate transfers of unbacked fiat currency from the government to consumers before  the beginning of time $0$,
+and $\tilde T_{-1} (i)$ is  the real value of
+transfers awarded to  consumer $i$.  %in the Hugget equilibrium with interest rate $r_H$,
+A typical household's budget constraint  becomes
+$$ c_0 + a_1 \leq w s_0 + (1 + r_H) a_0 +  \tilde T_{-1}(i)  \leqno (3) $$
+at time $0$ and remains inequality   (2)  for $t \geq 1$.
+
+\medskip
+\noindent{\bf e.}  First, please define a stationary equilbrium of an incomplete markets model with valued unbacked fiat currency in the style of Bewley.  Let
+$G$ be the cumulative distribution function of net assets $a$ in this equilbrium.
+
+\medskip
+\noindent{\bf f.}  {\it Extra credit:}  Recalling that $F$ is the cross section CDF of net assets in the equliibrium of the Huggett model of part {\bf c}  and that $G$ is
+the cross section CDF of net assets in the equilibrium of the Bewley model of part {\bf e} please describe a scheme for awarding
+the transfers of fiat money before the beginning of time $0$ that (i) preserves the ranks of all assets in the wealth distribution, and (ii) moves the initial asset distribution from $F$ to $G$,
+where a consumer's initial net assets in the Bewley model are $a_B(i) = (1+ r_0) a_H(i) + \tilde T_{-1} (i)$, where $a_H(i)$ were his initial assets in
+the Huggett model.
+\medskip
+
+\noindent{\it Hint:} Recall that individuals $i$ are distributed according to a uniform distribution on $[0,1]$. Measured in units of time $0$ consumption goods,
+let $\tilde T_{-1} (i)$
+be the transfer to agent $i$.  Guess that the transfer is $\tilde T_{-1} (i) = G^{-1}(i) - F^{-1}(i)$.  Let $a_G(i) = a_F(i)+ \tilde T_{-1} (i)$
+be agent $i$'s initial assets after the transfer.
+Verify that the CDF of $a_G(i)$  is $G$ as desired.\NFootnote{In effect, the guess  recommends applying what is known as an ``inverse probability integral transform'' or
+``Smirnov transform''.}
+\index{Smirnov transform}%
+\index{inverse probability integral transform}%
+
+
+\medskip
+\noindent{\bf g.} {\it Extra credit:} Given the above transfer scheme for moving immediately from a stationary equilibrium of a Huggett model to a stationary
+equilibrium of a Bewley model with valued fiat money, taking as given their rankings in the initial wealth distribution, do all agents prefer one   stationary equilibrium to the other? If so, which equilibrium
+do they prefer? If not all agents prefer one to the other, please describe computations that would allow you to sort agents into those who  prefer to stay in the
+Huggett equilibrium and those who  prefer to move to the Bewley equilibrium.
+
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.7} \quad {\bf Real bills}
+\medskip
+
+\noindent Consider the Bewley model with a constant stock $M_0$ of  valued fiat money described in exercise \the\chapternum.6.  Consider a monetary authority
+that issues additional currency and that uses it to purchase one-period risk-free IOUs issued by consumers.  The monetary authority's
+budget constraint is
+$$ A_{t+1} = A_t + {\frac{M_{t+1} - M_t}{p}} , \quad t \geq 0 \leqno(1) $$
+subject to $A_{t+1} \geq 0$ for $t \geq 0$  and $A_0 =0$, where $A_{t+1}$ is the stock of one-period IOU's that the monetary authority purchases at time $t$.    Here we guess that
+$r=0$ and that s$p$ is the constant equilibrium price level in the Bewley economy with valued fiat currency
+from exercise \the\chapternum.6. The equilibrium condition in the market for risk-free securities is now
+$$ A_{t+1} + E a(0) = {\frac{M_{t+1}}{p}  } .  \leqno (2) $$
+
+\medskip
+\noindent{\bf a.} Solve the difference equation (1) backwards to verify that
+$$ A_{t+1} = {\frac{M_{t+1} - M_0}{p} } . \leqno(3) $$
+
+\medskip
+\noindent{\bf b.}  Verify that if a constant price level $p$ satisfies $E a(0) = {\frac{M_0}{p}}$, as in the original Bewley economy,
+then equilibrium condition (2) is satisfied at the same price level $p$ for any nonnegative sequence $\{A_{t+1}\}_{t=0}^\infty$ and associated
+money supply sequence $\{M_{t+1}\}_{t=0}^\infty$ that satisfy constraint (1).
+
+\medskip
+\noindent{\bf c.}  Argue that an increase in $M_0$, engineered as described in exercise \the\chapternum.6, leads to an increase in the equilibrium
+$p$; but that  increases in $M_{t}$ for $t \geq 1$ leave the price level unaffected.
+
+\medskip
+\noindent{\bf d.}  {\it Remark:} Sometimes $M_0$ is called outside money and $M_{t+1} - M_0$ is called inside money.  It is called
+inside money because it is backed 100\% by safe private IOUs. The real bills doctrine asserts that increases in inside money are not inflationary.
+\index{real bills doctrine}
+
+
+

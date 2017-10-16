@@ -1,0 +1,737 @@
+\noindent{\it Exercise \the\chapternum.5} \quad
+\quad
+  {\bf Ambiguity averse multiplier preferences} \index{multiplier preferences!ambiguity}%
+
+  \medskip\noindent
+Consider the recursion \Ep{Trecur2}, namely,
+$$
+ U_t = c_t - \beta \theta \log E_t \left[ \exp \left( {\frac{-U_{t+1}}{\theta}}\right)\right],
+\eqno(1) $$
+where $c_t = \log C_t, \beta \in (0,1)$, and $0 < \theta $.  Let $c_t$ follow
+the stochastic process
+$$ c_{t+1} = c_t + \mu + \sigma_c \varepsilon_{t+1} ,  \eqno(2) $$
+where $\varepsilon_{t+1} \sim {\cal N}(0,1)$ is an i.i.d.\ random process.
+
+\medskip
+\noindent{\bf a.}  Guess a value function of the form
+$U_t = k_0 + k_1 c_t$, where $k_0$ and $k_1$ are scalar constants.
+In detail, derive formulas for $k_0, k_1$ that verify the recursion \Ep{Trecur2} (or (1) above).
+
+\medskip
+\noindent{\bf b.} Using the formulas for $k_0, k_1$ that you have derived, verify that when $c_t$ obeys (2), another way to express
+recursion (1) is
+$$ U_t = c_t + \beta E_t U_{t+1} - {\frac{\beta}{2 \theta }} {\rm var}_t (U_{t+1}) . \eqno(3) $$
+ % $$ U_t = c_t + \beta E_t U_{t+1} + {\frac{\beta(1-\gamma)}{2}} {\rm var}_t (U_{t+1}) . \eqno(3) $$
+Use representation (3) to offer an interpretation of why the consumer prefers plan A to plan B in figure \Fg{treeAB} and also why he prefers Plan C to Plan D in
+figure \Fg{treeCD}.
+
+\medskip
+\noindent{\bf c.}  For recursion (1), verify in detail that
+$$ \eqalign{ {\frac {\partial U_t}{\partial C_t}} & = {\frac{k_1}{C_t} } \cr
+             {\frac {\partial U_t}{\partial C_{t+1}}} & = \beta ( {\frac{\exp(-\theta^{-1} U_{t+1})}{E_t \exp(-\theta^{-1} U_{t+1}) }} ){\frac{ k_1}{C_{t+1}}}. }
+             $$
+
+\medskip
+\noindent{\bf d.} Explicitly verify  that the likelihood ratio defined as $g$ satisfies
+$$ g(\varepsilon_{t+1}) \equiv \left({\frac{\exp \left( \left(
+1-\beta \right) \left( 1-\gamma \right) U_{t+1}\right) }{E_{t}\left[
+\exp \left( \left( 1-\beta \right) \left( 1-\gamma \right)
+U_{t+1}\right) \right] }}\right)  = \exp(w  \varepsilon_{t+1}  - {\frac{1}{2}} w^2 )
+ $$
+where $w$ is given by
+$$ w = - {\frac{\sigma_c}{\theta\left(1-\beta\right)}} .  $$
+{\it Hint:} Once again, you might want to use the formula for the mean of a log normal random variable.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.6} \quad
+\quad
+  {\bf Exponential affine sdf} \index{stochastic discount factor!exponential affine}%
+
+  \medskip\noindent
+  Consider an exponential affine model of a stochastic discount factor driven by the following vector autoregression for $z_t$:
+$$ \EQNalign{ z_{t+1} & = \mu +   \phi z_t + C \varepsilon_{t+1} \cr
+              r_t & = \delta_0 + \delta_1' z_t,  } $$
+where $\phi$ is a stable $n \times n$ matrix, $C$ is an $n \times n$ matrix,  $\varepsilon_{t+1} \sim {\cal N}(0,I)$ is an i.i.d.\ $n\times 1$ random vector, and $z_t$ is an $n \times 1$ state vector.
+The  logarithm of the stochastic discount factor is affine (i.e., linear plus a constant) in the state vector
+$z_t$ from the vector autoregresssion:
+$$ \EQNalign{ \Lambda_t & = \Lambda_0 + \Lambda_z z_t  \cr
+              \log ( m_{t+1}) & = - r_t - {\frac{1}{2}} \Lambda_t' \Lambda_t - \Lambda_t' \varepsilon_{t+1} . }$$
+Let the gross risky return $R_{j,t+1}$ on an asset be
+$$ R_{j,t+1} = \exp(\nu_t(j) - {\frac{1}{2}} \alpha_t(j)' \alpha_t(j) + \alpha_t(j)' \varepsilon_{t+1} ), \eqno(1) $$
+where $\nu_t(j) $ is a function of $z_t$ that makes $E_t (m_{t+1} R_{j,t+1}) = 1 $ be satisfied and
+$ \alpha_t(j) = \alpha_0(j) + \alpha_z(j) z_t,  $
+where $\alpha_0(j)$ is an $n \times 1$ vector and $\alpha_z(j)$ is an $n \times n$ matrix.
+
+\medskip
+\noindent{\bf a.} Show that (1)  implies
+$$ E_t R_{j,t+1} = \exp(\nu_t(j)) .$$
+
+
+\medskip
+\noindent{\bf b.} Prove that $E_t (m_{t+1} R_{j,t+1}) = 1 $ implies that
+$$ \nu_t(j) = r_t + \alpha_t(j)' \Lambda_t.  \eqno(2) $$
+
+\medskip
+\noindent{\bf c.} Interpret formula (2).
+
+\medskip
+\noindent{\bf d.}  Specify  stochastic dynamics for  aggregate consumption $C_t$ that would make the `ordinary' stochastic discount factor
+ $m_{t+1} = \beta ({\frac{C_{t+1}}{C_t}})^{-\gamma} $ become (a special case of) an exponential affine model of a stochastic discount factor.
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.7} \quad
+\quad
+  {\bf Value function for CRRA}
+
+\medskip
+\noindent Consumption $C_t$ follows the stochastic process
+$$ C_{t+1} = \exp(\mu + \sigma_c \varepsilon_{t+1}) C_t $$
+where $\varepsilon_{t+1} \sim {\cal N}(0,1)$ is an i.i.d.\ scalar random process, $\mu > 0$,
+and $C_0$ is an initial condition.
+The consumer ranks  consumption streams  according to
+$$ U_0 = E_0 \sum_{t=0}^\infty \beta^t ({\frac{C_t^{(1-\gamma)}}{1-\gamma}} ) ,\eqno(1) $$
+where $\beta \in (0,1)$, $E_0$ denotes the mathematical expectation conditional on $C_0$, and
+$\gamma \geq 0$.
+
+\medskip
+\noindent {\bf a.} Find a value function $U_0$ that satisfies (1), giving conditions
+on $\mu, \sigma_c, \gamma, \beta$ that ensure that the right side of (1) exists.
+
+ \medskip
+\noindent {\bf b.}  Describe a recursion
+$$ U_t = {\frac{C_t^{(1-\gamma)}}{1-\gamma}}  + \beta E_t U_{t+1} $$
+whose solution at time $0$ satisfies (1).
+
+%\vfil\eject
+\medskip
+\noindent{\it Exercise \the\chapternum.8} \quad
+\quad
+  {\bf Lucas tree economy}
+  \medskip \noindent
+A representative consumer in a Lucas tree economy has preferences over consumption streams
+ordered by $$ E_0 \sum_{t=0}^\infty \beta^t \log C_t. \eqno(1) $$
+There is one asset, a tree that yields dividends $y_t$ at time $t$, which are governed by a two-state Markov chain $P$ with
+states $s_t \in \{0,1\}$ and
+$$ y_t = \cases{ y_L, & if $s_t =  0 $; \cr
+                 y_H , & if $s_t = 1 $,\cr}  $$
+where $y_H > y_L > 0$.  The tree is the only source of goods in the economy.  There is a single representative consumer, so that
+ $C_t = y_t$. The transition matrix $P = \bmatrix{ \pi_L & 1 - \pi_L \cr 1 - \pi_H & \pi_H } $, where $\pi_L \in (0,1)$ and $\pi_H \in (0,1)$.
+
+ There is a market in trees. (There will be zero volume in equilibrium.) Let $p_t$ be the (ex-dividend) price of a claim to the fruit of the tree from time $t+1$ on.
+ Ownership    of the tree at the beginning of $t$ entitles the owner of the tree to receive dividend $y_t$ at $t$ and then to sell the tree if he wants at price $p_{t+1}$ after collecting the
+ dividend at time
+ $t+1$.
+
+\medskip
+\noindent {\bf a.} Find a stochastic discount factor for this economy. Please tell how to compute the rate of return on one-period risk-free bonds in this economy.
+
+\medskip \noindent
+{\bf b.} Find an equilibrium pricing function mapping the state of the economy at $t$ into the price of the tree $p_t$.
+
+\medskip \noindent
+{\bf c.}  Describe the behavior of the  one period gross return on the tree.
+
+\medskip\noindent
+A zero-net worth  outside entrepreneur  comes into this economy and purchases all trees at time $\bar t > 0$. The outsider has no resources and finances his tree purchases by issuing (1)
+infinite duration risk-free bonds promising to pay $\eta \in (0, y_L)$ each period $t \geq \bar t+1$, and (2) equity that pays share-holders $y_t - \eta$  in period $t \geq \bar t+1$.
+The asset of the entrepreneur is the tree while his/her liabilities are the bonds and equities.
+
+\medskip
+\noindent {\bf d.} Please compute the equilibrium value of the risk-free bonds as a function of the promised coupon payment $\eta$ and the state of the economy.
+\medskip
+\noindent {\bf e.} Please compute the equilibrium value of equity as a function of the bond coupon payment $\eta$ and the state of the economy.
+\medskip
+\noindent{\bf f.} How do your answers in {\bf d} and {\bf e} compare with the value of the tree that you computed in part {\bf b}?
+
+\vfil\eject
+
+\medskip
+\noindent{\it Exercise \the\chapternum.9} \quad
+\quad
+  {\bf Long-run risk, I} \index{long run risk}%
+  \medskip
+
+\noindent Consider the following pure exchange economy with one representative consumer and an exogenous
+consumption process.
+ Consumption $C_t = \exp(c_t)$ follows the stochastic process
+$$\eqalign{ c_{t+1} & = \mu + z_t + c_t + \sigma_c \varepsilon_{t+1} \cr
+            z_{t+1} & = \rho z_t + \sigma_z \varepsilon_{t+1} ,  } $$
+where $\varepsilon_{t+1} \sim {\cal N}(0,1)$ is an i.i.d.\ scalar random process, $\mu > 0$,
+and $c_0, z_0$ are  initial conditions, $\rho \in (0,1)$.  By setting $\rho$ close to but less than unity
+and $\sigma_z$ to be small, $z_t$ becomes a slowly moving component of the conditional mean  of  $E_t (c_{t+1} - c_t)$.
+The consumer ranks consumption streams according to
+$$ U_0 = E_0 \sum_{t=0}^\infty \beta^t ({\frac{C_t^{(1-\gamma)}}{1-\gamma}} ) ,\eqno(1) $$
+where $\beta \in (0,1)$, $E_0$ denotes the mathematical expectation conditional on $C_0$, and
+$\gamma \geq 0$.
+
+\medskip
+\noindent {\bf a.} Find a formula for the consumer's  stochastic discount factor $m_{t+1}$.
+
+\medskip \noindent {\bf b.} Compute $E_t (m_{t+1})$ and interpret it.
+
+\medskip \noindent {\bf c.} Compute $E_t (m_{t+1} m_{t+2})$ and interpret it.
+
+\medskip \noindent{\bf d.} Use your answers to parts {\bf b} and {\bf c} to tell how you would expect the term structure
+of interest rates to behave over time in this economy.
+
+
+\medskip
+\noindent {\bf e.} Find a value function $U_0$ that satisfies (1), giving conditions
+on $\mu, \sigma_c, \sigma_z,  \gamma, \beta$ that ensure that the right side of (1) exists.
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.10} \quad
+\quad
+  {\bf Long-run risk, II} \index{multiplier preferences!ambiguity}%
+\index{long run risk}%
+
+  \medskip\noindent
+
+  \medskip\noindent
+Consider again the recursion \Ep{Trecur2}, namely,
+$$
+ U_t = c_t - \beta \theta \log E_t \left[ \exp \left( {\frac{-U_{t+1}}{\theta}}\right)\right],
+\eqno(1) $$
+where $c_t = \log C_t, \beta \in (0,1)$, and $0 < \theta $.
+Consumption  $C_t = \exp(c_t)$ follows the stochastic process
+$$\eqalign{ c_{t+1} & = \mu + z_t + c_t + \sigma_c \varepsilon_{t+1} \cr
+            z_{t+1} & = \rho z_t + \sigma_z \varepsilon_{t+1} ,  } $$
+where $\varepsilon_{t+1} \sim {\cal N}(0,1)$ is an i.i.d.\ scalar random process, $\mu > 0$,
+and $c_0, z_0$ are  initial conditions, $\rho \in (0,1)$.  By setting $\rho$ close to but less than unity
+and $\sigma_z$ to be small, $z_t$ becomes a slowly moving component of the conditional mean  of  $E_t (c_{t+1} - c_t)$.
+
+
+
+\medskip
+\noindent{\bf a.}  Guess a value function of the form
+$U_t = k_0 + k_1 c_t + k_2 z_t$, where $k_0$, $k_1$, and $k_2$ are scalar constants.
+In detail, derive formulas for $k_0, k_1, k_2$ that verify the recursion \Ep{Trecur2} (or (1) above).
+
+\medskip
+\noindent{\bf b.} ({\it Optional extra credit}) \quad Derive a formula for the stochastic discount factor in this economy.
+
+\medskip
+
+
+\noindent{\it Exercise \the\chapternum.11} \quad
+\quad
+  {\bf Stochastic volatility} \index{stochastic volatility}%
+
+  \medskip\noindent
+
+\noindent Consider the following pure exchange economy with one representative consumer and an exogenous
+consumption process.
+ Consumption $C_t = \exp(c_t)$ follows the stochastic process
+$$ c_{t+1}  = \mu + c_t + \sigma_c (s_t) \varepsilon_{t+1}, $$
+where $\varepsilon_{t+1} \sim {\cal N}(0,1)$ is an i.i.d.\ scalar random process, $\mu > 0$,
+and $c_0, s_0$ are  initial conditions, and $s_t$ is the time $t$ realization of a two state
+Markov chain on $\{0,1\}$  with transition matrix  $P = \bmatrix{ \pi_0 & 1 - \pi_0 \cr 1 - \pi_1 & \pi_1 } $, where $\pi_0 \in (0,1)$ and $\pi_1 \in (0,1)$.
+It is true that
+$$ \sigma_c (s_t) = \cases{ \sigma_L, & if $s_t =  0 $; \cr
+                  \sigma_H , & if $s_t = 1 $,\cr}  $$
+where $0 < \sigma_L < \sigma_H$. At time $t$, the consumer observes $c_t, s_t$ at time $t$.
+The consumer ranks consumption streams  according to
+$$ U_0 = E_0 \sum_{t=0}^\infty \beta^t ({\frac{C_t^{(1-\gamma)}}{1-\gamma}} ) ,\eqno(1) $$
+where $\beta \in (0,1)$, $E_0$ denotes the mathematical expectation conditional on $C_0, s_0$, and
+$\gamma \geq 0$.
+%
+%\medskip
+%\noindent {\bf a.} Find a formula for the consumer's  stochastic discount factor $m_{t,t+1}$.
+%
+%\medskip \noindent {\bf b.} Compute $E_t (m_{t,t+1})$ and interpret it.
+%
+%\medskip \noindent {\bf c.} Compute $E_t (m_{t,t+1} m_{t+1,t+2})$ and interpret it.
+%
+%
+%\medskip \noindent{\bf d.} Use your answers to parts {\bf b} and {\bf c} to tell how you would expect the term structure
+%of interest rates to behave over time in this economy.
+
+
+\medskip
+\noindent {\bf a.} Define the consumer's  stochastic discount factor $m_{t+1}$.
+
+\medskip
+\noindent {\bf b.} Find a formula for the consumer's  stochastic discount factor $m_{t+1}$.
+
+\medskip \noindent {\bf c.} Compute $E_t (m_{t+1})$ and interpret it.
+
+\medskip \noindent {\bf d.} Compute $E_t (m_{t+1} m_{t+2})$ and interpret it.
+
+
+\medskip \noindent{\bf e.} Use your answers to parts {\bf c} and {\bf d} to tell how you would expect the term structure
+of interest rates to behave over time in this economy.
+
+
+\medskip \noindent{\bf f.} Describe how your approach to answering question {\bf c} would change if, instead of observing $c_t, s_t$ at time $t$, the consumer  observes
+only current and past values $c_t, c_{t-1}, \ldots, c_0$ while having a prior distribution $s_0 \sim \tilde \pi_0(s_0)$.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.12} \quad
+\quad
+  {\bf Unknown $\mu$}
+  \medskip
+
+\noindent Consider the following pure exchange economy with one representative consumer and an exogenous
+consumption process.
+ Consumption $C_t = \exp(c_t)$ follows the stochastic process
+$$ c_{t+1}  = \mu + z_t + c_t + \sigma_c \varepsilon_{t+1} , $$
+where $\varepsilon_{t+1} \sim {\cal N}(0,1)$ is an i.i.d.\ scalar random process, $\mu > 0$,
+and $c_0$ is an   initial condition.  The consumer ranks consumption streams according to
+$$ U_0 = E_0 \sum_{t=0}^\infty \beta^t  \log (C_t) ,\eqno(1) $$
+where $\beta \in (0,1)$, $E_0$ denotes the mathematical expectation conditional on $C_0$, and
+$\gamma \geq 0$.  The consumer does not know $\mu$ but at time $0$ believes that $\mu$ is described by
+a prior probability density  $\mu \sim {\cal N}(\hat \mu_0, \sigma_\mu^2)$, where $\sigma_\mu > 0$.  At the beginning of
+time $t+1$, the consumer has observed the history $\{c_{s+1} - c_s, s=1, \ldots , t\}$.
+
+\medskip
+\noindent {\bf a.} Find a formula for the consumer's  stochastic discount factor $m_{t+1}$ for $t \geq 0$.
+
+\medskip \noindent {\bf b.} In this economy, how does the gross rate of return on a one-period risk free bond at time $t$ behave through time?
+Can you tell whether it increases or decreases?
+
+%\vfil\eject
+
+\medskip
+\noindent{\it Exercise \the\chapternum.13} \quad
+\quad
+  {\bf Long-run risk, III}
+  \medskip
+
+\noindent Consider the following pure exchange economy with one representative consumer and an exogenous
+consumption process.
+ Consumption $C_t = \exp(c_t)$ follows the stochastic process
+$$\eqalign{ c_{t+1} & = \mu + z_t + c_t + \sigma_c \varepsilon_{t+1} \cr
+            z_{t+1} & = \rho z_t + \sigma_z \varepsilon_{t+1} ,  } $$
+where $\varepsilon_{t+1} \sim {\cal N}(0,1)$ is an i.i.d.\ scalar random process, $\mu > 0$,
+and $c_0, z_0$ are  initial conditions, $\rho \in (0,1)$.  By setting $\rho$ close to but less than unity
+and $\sigma_z$ to be small, $z_t$ becomes a slowly moving component of the conditional mean  of  $E_t (c_{t+1} - c_t)$.
+The consumer ranks consumption streams according to
+$$ U_0 = E_0 \sum_{t=0}^\infty \beta^t  \log (C_t) ,\eqno(1) $$
+where $\beta \in (0,1)$, $E_0$ denotes the mathematical expectation conditional on $C_0$, and
+$\gamma \geq 0$. % The consumer knows $\rho$ but does not know $\mu$.
+%The consumer knows the values of $\rho $ and $\Biggl(\bmatrix{\hat \mu_0 \cr \hat z_0}, \Sigma_0\Biggr)$, but observes neither  $\mu$ nor $z_t$.
+% At the beginning of period $t$, the consumer does observe $c_t - c_{t-1}$ and remembers
+%the history $c_s - c_{s-1}, s = 1, \ldots, t$.
+At time $0$ the consumer believes that $\mu$ is described by
+a prior probability density  $\mu \sim {\cal N}(\hat \mu_0, \sigma_\mu^2)$, where $\sigma_\mu > 0$.
+The consumer never observes $z_t$ and at the start of period $0$ believes
+that $z_0$ is distributed independently of $\mu$ and that $z_0 \sim {\cal N}(\hat z_0, \sigma_{z_0}^2)$.    At the beginning of
+time $t+1$, the consumer has observed the history $\{c_{s+1} - c_s, s=1, \ldots , t\}$.
+
+\medskip
+\noindent {\bf a.} Find a formula for the consumer's  stochastic discount factor $m_{t+1}$ for $t \geq 0$.
+
+\medskip \noindent {\bf b.} Assume the values $(.995, .005,  0, .99, .005, .00005)$ for $(\beta, \hat \mu_0, \hat z_0, \rho, \sigma_c, \sigma_{z_0})$.
+Please write a Matlab program to compute the gross rate of return on a one-period risk-free bond for $t = 0, \ldots, 10,000$.  Plot it.  In this economy, how does the gross rate of return on a one-period risk free bond at time $t$ behave through time?
+
+\medskip
+
+
+\noindent{\it Exercise \the\chapternum.14} \quad
+\quad
+  {\bf Affine term structure model}
+  \medskip
+\noindent Recall the affine term structure model of section \use{sec:affine_term_structure1}
+ $$ p_t(n) = \exp\left( \bar A_n + \bar B_n z_t \right) .   $$
+ Please verify that  $(\bar A_n,\bar B_n)$ can be computed recursively from
+ $$ \eqalign{ \bar A_{n+1} & = \bar A_n + \bar B_n'(\mu - C \Lambda_0) + {\frac{1}{2}} \bar B_n' C C' \bar B_n - \delta_0  \cr
+                \bar B_{n+1}' & = \bar B_n' (\phi - C \Lambda_z) - \delta_1' ,  }$$
+ subject to the initial conditions $\bar A_1 = - \delta_0, \bar B_1 = -\delta_1$.
+ {\it Hint:} Apply the formula for the mean of a log normal random variable.
+
+ \medskip
+
+%
+\noindent{\it Exercise \the\chapternum.15} \quad
+\quad
+  {\bf Reverse engineering}
+
+  \medskip
+\noindent An econometrician has discovered  that the logarithm of consumption $c_t$ is well described by a stochastic process
+$$ c_{t+1} - c_t = \mu + \sigma_c \varepsilon_{t+1} \leqno(0)  $$
+where $\varepsilon_{t+1} \sim {\cal N}(0,1)$ is an iid scalar stochastic process.  The econometrician has also discovered
+a stochastic discount factor of the
+form
+$$ \log m_{t+1} = - \delta - (c_{t+1} - c_t)  + w \varepsilon_{t+1} - {\frac{1}{2}} w^2 , \leqno(1) $$
+where $\delta > 0, w = \sigma_c(1-\gamma), \gamma \geq 1$.  The stochastic discount factor
+ works well in the sense that for a set of assets $j=1, \ldots, J$, GMM estimates of the Euler equations
+ $$ E_t (R_{j,t+1} m_{t+1} ) = 1  \leqno(2)  $$
+are satisfied to a good approximation.  In addition, the econometrician has found that the gross return $R_{j,t+1}$ on asset $j$ is
+well described by
+$$ \log (R_{j,t+1})  = \eta_{jt} + \alpha_j \varepsilon_{t+1} +  \sigma_j u_{j,t+1}  -  \left({\frac{1}{2}}\right)  ( \alpha_j^2 + \sigma_j^2),    \leqno(3) $$
+where $u_{j,t+1} \sim {\cal N}(0,1)$, $ E u_{j,t+1} \varepsilon_{t+1} = 0$ for all $j$, and $\alpha_1 = 0$.
+
+\medskip
+
+\noindent{\bf a.}  Use  restriction (2) to get a formula for $\eta_{jt}$ as a function of the other parameters in equations (0), (1), (2), and (3).
+
+\medskip
+\noindent{\bf b.}  Recalling that $\alpha_1 = 0$, state a formula for $\eta_{1t}$ that is a special case of the formula that you derived in part {\bf a.}
+Please interpret $\eta_{1t}$.
+
+
+\medskip
+
+\noindent{\bf c.}  From your answers to parts {\bf a} and {\bf b}, please derive a formula that relates $\eta_{jt}$ to $\eta_{1t}$.  Please interpret it
+in terms of risk prices.
+
+\medskip
+
+\noindent{\bf d.} Reverse engineer an economic model in which $m_{t+1}$ described by (1) reflects the preferences of a representative consumer.
+
+\medskip
+
+\noindent{\bf e.} Describe the representative consumer's  preferences derived in part {\bf d} in the special case in which $\gamma = 1$.
+
+\medskip
+
+\noindent{\bf f.} Describe the representative consumer's  preferences derived in part {\bf d} in the general  case that $\gamma >1$.   Please say what aspects of preferences the parameter $\gamma$ governs (e.g., risk aversion or
+intertemporal substitution or yet other things).
+
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.16} \quad  {\bf Incomplete Markets, I}
+
+
+
+\medskip
+\noindent   Consider the following incomplete-markets, pure exchange, two-person economy.
+Consumer $i$, $i =1,2$, orders consumption streams $\{C_t^i\}_{t=0}^\infty$
+by
+$$ E_0 \sum_{t=0}^\infty \beta^t U(C_t^i)  \leqno (1) $$
+where  $U(C) = {C^{1-\gamma}\over 1-\gamma}$, $\gamma > 0$,  and $\beta \in (0,1)$.
+Consumer $i$ has a stochastic endowment of the consumption good described by
+$$ \log Y_{t+1}^i = \log Y_t^i + \mu + \sigma \epsilon_{t+1}^i$$
+where $\epsilon_{t+1}^i \sim {\cal N}(0,1)$ for $i=1,2$, and $Y_0^i$ is given for $i=1,2$.   The consumers trade
+ a single asset: a risk-free bond whose gross rate of return between $t$ and $t+1$ is
+ $R_t= \exp(r_t)$.  Each consumer faces a sequence of budget constraints
+$$ C_t^i + R_t^{-1} b^i_{t+1} \leq Y_t^i + b^i _t, \quad t \geq 0 \leqno(2) $$
+where $b^i_0 = 0 $ for $i =1,2$, and where $b^i_t$ is person $i$'s holdings of free bonds at the beginning of time $t$.
+The gross interest rate $R_t$ is known at time $t$.
+Each consumer faces $R_t$ as  a price taker and chooses a stochastic process for $\{C^i_t, b_{t+1}^i \}$ to maximize (1)
+subject to (2) and the initial conditions $Y_0^i, b_0^i$.
+
+\medskip
+
+\noindent {\bf a.}  For consumer $i$, please compute a ``personal stochastic discount factor'' evaluated at a no-trade $C_t^i = Y_t^i$ allocation.
+For $i \neq  j$, does person $i$'s personal stochastic discount factor equal person $j$'s?
+%where  both these  personal discount factors are evaluated at
+%a $C_t^i = Y_t^i$ allocation?
+Please explain why or why not.
+
+\medskip
+
+\noindent {\bf b.} Where $\log \beta = -\rho$, verify that $C_t^i = Y^i_t, b^i_{t+1} = 0, r_t = \rho +\gamma \mu - .5 \sigma^2 \gamma^2$ are competitive
+equilibrium objects for the incomplete markets economy with financial trades only in a  risk free bond.
+
+\medskip
+
+\noindent{\bf c.}  In what sense does this economy display multiple stochastic discount factors? Is there anything that is unique about the stochastic discount
+factors?
+
+\medskip
+%\vfil\eject
+
+\noindent{\it Exercise \the\chapternum.17} \quad  {\bf Incomplete Markets, II}
+
+\medskip  
+\noindent Consider a version of the economy described in exercise {\it 14.16} % \use{\the\chapternum.16}
+but in which the endowment processes for the two consumers are now described
+by
+$$ \eqalign{\log Y_{t+1}^i  & = \log Y_t^i + \mu + x_t + \sigma \epsilon_{t+1}^i \cr
+             x_{t+1} & = \lambda x_t + \sigma_x u_{t+1} } $$
+where $|\lambda | < 1$, $\epsilon_{t+1} \sim {\cal N}(0,1)$,  and $u_{t+1} \sim {\cal N}(0,1)$.
+Everything else about the economy is the same.
+
+\medskip
+
+\noindent{\bf a.}  Show that equilibrium objects are now $C_t^i = Y^i_t, b^i_{t+1} = 0$ and
+ $$ r_t = \rho +\gamma (\mu + x_t) - .5 \sigma^2 \gamma^2 .$$
+
+\medskip
+
+\noindent{\bf b.}  Explain why the risk-free net interest rate varies over time while it did not in the problem 16 economy.
+
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.18} \quad  {\bf Incomplete Markets, III}
+
+\medskip
+
+\noindent Consider a version of the economy described in exercise {\it 14.16} in which the endowment processes for the two consumers are now described by
+$$ \eqalign{\log Y_{t+1}^i  & = \log Y_t^i + \mu + \sigma_{t} \epsilon_{t+1}^i \cr
+             \log \sigma_{t+1}^2 & = \log \sigma_{t}^2 + \sigma_\sigma u_{t+1} } $$
+where  $u_{t+1} \sim {\cal N}(0,1)$ and $\epsilon_{t+1} \sim {\cal N}(0,1)$.
+
+\medskip
+
+\noindent {\bf a.} Show that there exists an equilibrium net risk-free interest rate process  $\{r_t\}$ such that $C_t^i = Y^i_t, b^i_{t+1} = 0$ are equilibrium objects.
+Compute that $r_t$ process.
+
+\medskip
+\noindent{\bf b.} During what sorts of periods are risk-free interest rates low? When are they high?
+
+
+
+\noindent{\it Exercise \the\chapternum.19} \quad \quad {\bf Relative entropy}
+\medskip
+\noindent Conditional on $x_t$, under the ``physical measure'', an $n$ dimensional state vector  distribution of $x_{t+1}$
+is ${\cal N}(\mu + \phi x_t, CC')$ for all $t \geq 0$. Furthermore, $x_0 \sim {\cal N}(\mu_0, \Sigma_0)$.
+
+\medskip
+\noindent {\bf a.} Verify that $\{x_t\}_{t=0}^\infty$ has a vector autoregressive representation
+$$ x_{t+1} = \mu + \phi x_t + C \varepsilon_{t+1} ,$$
+where $\varepsilon_{t+1} \sim {\cal N}(0,I)$ for all $t\geq 0$.
+
+\medskip
+
+\noindent {\bf b.}  Let $\lambda_t = \lambda_0 + \lambda_1' x_t$. Verify that conditional on $x_t$,
+$$ l(\varepsilon_{t+1}; \lambda_t) = \exp( - {\frac{\lambda_t' \lambda_t}{2}} - \lambda_t' \varepsilon_{t+1}) $$
+is a log normal random variable with mean unity.
+
+\medskip
+\noindent {\bf c.}  Argue that $l_{t+1}$ can be regarded as a likelihood ratio, being careful to describe the probability distributions
+in the numerator and denominator of the likelihood ratio.
+\medskip
+
+\noindent{\bf d.}  Let $\phi(x; \mu + \phi x_t, \Sigma_x)$ be a multivariate normal density with mean vector $\mu + \phi x_t$ and covariance matrix $\Sigma_x = C C'$.
+Verify that multiplying this density by the likelihood ratio $l(\varepsilon_{t+1})$ produces a probability density for $x_{t+1}$ conditional
+on $x_t$ that is normal with mean $\mu_x + \phi x_t - C \lambda_t$ and covariance $C C'$.
+
+\medskip
+\noindent {\bf e.} Where $l$ is a likelihood ratio, the {\it entropy\/} of a density $l \phi$ relative to a density $\phi$ is
+defined as $ E l \log l $, where the expectation is taken under the distribution $\phi$.  But this multiplication by $l$ changes the
+density to $l \phi$, so relative entropy also can be represented $\hat E \log (l) $ where the expectation $\hat E$ is taken with respect to
+the density $\phi l$.  When $\log l_{t+1} = (-{\frac{\lambda_t' \lambda_t}{2}} - \lambda_t \varepsilon_{t+1}) $ and $\phi_t(\epsilon_{t+1}) \sim {\cal N}(0,I)$,
+verify that under the  twisted density $ l_{t+1} \phi_{t+1}$,
+$\varepsilon_{t+1} \sim {\cal N}( - \lambda_t , I)$.  Use these findings to verify that relative entropy equals
+$ {\frac{\lambda_t' \lambda_t}{2}}$.
+
+\medskip
+\noindent{\it Note:} Relative entropy is a non-negative quantity that indicates the discrepancy of one distribution from another.
+
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.20} \quad {\bf Likelihood ratio process}
+\medskip
+\noindent Let $\{\varepsilon_{t+1} \}_{t=0}^\infty$ be a sequence of i.i.d.\ random vectors where $\varepsilon_{t+1} \sim {\cal N}(0,I)$.
+Assume that a likelihood process $\{\xi_{t}\}_{t=0}^\infty$  satisfies the recursion
+$$ {\frac{\xi_{t+1}}{\xi_t}} = \exp ( - \lambda' \varepsilon_{t+1} - {\frac{\lambda' \lambda}{2}} ), \quad t \geq 0  $$
+where $\xi_0 = 1$.
+
+\medskip
+\noindent{\bf a.} Verify that
+$$ \xi_t = \exp( - \lambda'( \varepsilon_t + \cdots + \varepsilon_1) - t {\frac{\lambda' \lambda}{2}} ) \xi_0 $$
+so that $\log \xi_t \sim {\cal N}( -  t {\frac{\lambda' \lambda}{2}},  t \lambda' \lambda )$.
+Verify that $E \xi_t = 1$ for all $t \geq 0$ under the assumption that $\{\varepsilon_{t+1} \}_{t=0}^\infty$ is
+a sequence of i.i.d.\ random vectors where $\varepsilon_{t+1} \sim {\cal N}(0,I)$.
+
+\medskip
+\noindent{\bf b.}  Verify that $\{\xi_{t+1} \}_{t=0}^\infty$ is a martingale under the assumption that $\{\varepsilon_{t+1} \}_{t=0}^\infty$ is
+a sequence of i.i.d.\ random vectors where $\varepsilon_{t+1} \sim {\cal N}(0,I)$.
+
+
+\medskip
+
+\noindent {\bf c.}  Verify that $\xi_t$ is a log normal random variable for $ t \geq 1$.  Please provide formulas for the mean, median, standard deviation, mode,
+variance, and skewness of $\xi_t$.
+
+\medskip
+\noindent {\bf d.}  {\it Extra credit:}  Write a Python or Julia program to evaluate the cumulative distribution function for a log normal random variable.
+Suppose that $\lambda = 1$.  Evaluate the cumulative distribution function (CDF) of $\xi_t$ for $t=1, 5, 100, 1000, 10000$.  Argue informally that as $t \rightarrow + \infty$, $\xi_t$ converges in distribution to $0$
+despite the fact that $E \xi_t =1$ for all $t \geq 1$.  How can this be?  ({\it Hint:} Compute the skewness of the distribution of $\xi_t$ or plot the cdf of $\xi_t$ for various
+values of the nonnegative integer $t$.)
+
+\medskip
+
+
+\noindent{\it Exercise \the\chapternum.21} \quad  \quad {\bf Distorted beliefs}
+
+\medskip
+
+\noindent
+A representative agent with ``distorted beliefs'' prices assets.   The ``physical measure'' that governs the log of consumption growth is conistent with the law of
+motion
+$$ c_{t+1} - c_t = \mu + \sigma_c \varepsilon_{t+1} , \quad t \geq 0 \leqno(1) $$
+where $\varepsilon_{t+1} \sim {\cal N}(0,1)$.  However, the representative agent believes that the disturbance $\varepsilon_{t+1} $
+in  equation (1) actually has distribution ${\cal N}(w, 1)$  where $w$ is a  constant scalar. Call
+the probability measure under this distorted belief ``the subjective measure'' and denote the mathematical expectations taken under
+this measure $E^S (\cdot)$.
+The representative agent uses a stochastic discount factor described by
+$$ m_{t+1}^{*} = \exp(- \rho ) \exp( -(c_{t+1} - c_t) ),   $$
+so he acts as if he has time separable preferences with CRRA preferences and coefficient of risk aversion equal to $1$.
+Assets are priced so that the return $R_{j,t+1}$ on any asset $j = 1, \ldots, J$ obeys
+$$  E_t^S m_{t+1}^* R_{j,t+1} = 1,  \leqno(3) $$
+ where $ E_t^S $ is a conditional expectation with respect to  subjective  biased beliefs rather than the physical measure.
+
+
+
+
+
+\medskip
+\noindent {\bf a.} Please explain the role of the parameters $\rho$ and $w$ in helping specification (2) attain the Hansen-Jagannathan bounds.
+
+\medskip
+
+\noindent{\bf b.}  A macroeconomist from Minnesota always imposes rational expectations, and so, instead of fitting equation (2) to the data taking into account
+the gap between the subjective and physical measure, fits the model
+$$ E_t^P m_{t+1} R_{j,t+1}  = 1 , $$
+where $E_t^P$ denotes a conditional expectation under the physical measure and $m_{t+1}$ is the stochastic discount factor fit by this rational expectations econometrician.
+Please reverse engineer a stochastic discount factor $m_{t+1}$ that this econometrician would he uncover if he managed to fit  data desribed by equation (2) perfectly.
+
+\medskip
+\noindent{\bf c.}  Please interpret the stochastic discount factor $m_{t+1}$ discovered in part {\bf a} in terms of the preference structure employed by
+Thomas Tallarini (2000).
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.22} \quad  \quad {\bf Costs of aggregate fluctuations}
+
+\medskip
+
+\noindent
+Nature or ``the physical measure'' makes   the level of consumption $C_t = \exp (c_t)$ obey
+$$C_{t+1} = \exp( \mu + \sigma_c \varepsilon_{t+1}) C_t, \leqno(1) $$
+where $\varepsilon_{t+1}$ is ${\cal N}(0,1)$.
+
+
+\medskip
+
+\noindent{\bf a.}  Please compute  $E_{t}^P C_{t+j}$ and ${\rm std}_t^P C_{t+j}$ for
+$j=1, 2, \ldots$,  where the superscript $P$ denotes the physical measure and ${\rm std}_t$ denotes
+a conditional standard deviation.
+
+\medskip
+\noindent {\bf b.} A consumer of type $P$ evaluates consumption plans according to the utility recursion
+$$ U_t^P = \log  C_t + \beta E_t^P U_{t+1}^P .  \leqno(2)  $$
+Please find a formula for $U_t^P$ as a function of time $t$ state variables, which you are free to define.
+
+
+\medskip
+\noindent{\bf c.} A consumer of type $S$ believes that consumption growth is governed by equation
+(1) where $\epsilon_{t+1} \sim {\cal N}(w, 1)$, where $w$ is a real valued scalar.
+Let $E^S$ be a mathematical expectation under the (subjective) $S$ distribution.
+A type $S$ consumer evaluates consumption plans according to the utility recursion
+$$ U_t^S = \log  C_t + \beta E_t^S U_{t+1}^S . \leqno(3) $$
+Please find a formula for $U_t^S$ as a function of time $t$ state variables, which you are free to define.
+
+\medskip
+\noindent{\bf d.} Please find a deterministic consumption process $\{C_t^{d,P}\}_{t=0}^\infty$
+process with same expected growth rate as the process $\{C_t\}_{t=0}^\infty$ under the $P$ probability measure, i.e., a nonstochastic
+process satisfying a recursion
+$$ C_{t+1}^{d,P} = \exp( g^P) C_t^{d,P}  \leqno(4) $$
+for all $t \geq 0$.  Tell how $g^P$ varies with $\mu$ and $\sigma_c$.
+
+
+\medskip
+\noindent{\bf e.} Please find a deterministic consumption process $\{C_t^{d,S} \}_{t=0}^\infty$
+process with same expected growth rate as the process $\{C_t\}_{t=0}^\infty$ under the $S$ probability measure, i.e., a nonstochastic
+process satisfying a recursion
+$$ C_{t+1}^{d,S} = \exp( g^S) C_t^{d,S} \leqno(5) $$
+for all $t \geq 0$.  Tell how $g^S$ varies with $\mu,\sigma_c$, and $w$.
+
+\medskip
+\noindent{\bf f.} A consumer of type $P$ is offered a choice between a consumption process (1) under the $P$ measure starting from a given  known and   $C_0$ and a deterministic
+process (4) starting from a value  $\tilde C_0^P$ that gives the same value of $U_0$ satisfying recursion (2). Please compute $\tilde C_0^P$ as a function of $C_0$.
+
+
+\medskip
+\noindent{\bf g.} A consumer of type $S$ is offered a choice between a consumption process (1) under the $S$ measure for $\{\epsilon_{t+1}\}$ starting from a given  known and
+$C_0$ and a deterministic
+process (5) starting from a value  $\tilde C_0^S$ that gives the same value of $U_0$ satisfying recursion (2). Please compute $\tilde C_0^S$ as a function of $C_0$.
+
+
+
+\medskip
+\noindent{\bf h.} ({\it Extra credit}) By comparing $U_0^P$ to $U^S$, please tell how much initial consumption $C_0$ a consumer of type $S$ would be willing to pay
+to become a consumer of type $P$.  Please interpret this strange experiment as one that compares a situation in which a consumer faces  both risk and ambiguity
+with one in which he or she faces   risk only.
+
+
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.23} \quad  \quad {\bf Reverse engineering}
+
+\medskip
+
+\noindent Consider a  setting with complete markets in one-period ahead Arrow securities.  The state at $t$
+is $X_t \in {\bf R}^+$. Let $x_t = \log X_t$.   Arrow securities are characterized by the pricing kernel
+$$ Q(X_t, X_{t+1}) = {\frac{1}{\sigma_x \sqrt{ 2 \pi}}}
+\exp \left( - \rho - \gamma (x_{t+1} - x_t ) + {\frac{(x_{t+1} - x_t - \mu)^2}{2 \sigma_x^2} } \right) .  \leqno(1) $$
+Here $\rho > 0, \mu > 0, \sigma_x > 0$.
+In this economy, the price at time $t$ of one unit of  consumption at date $t+1$  contingent on $ X_{t+1} \in {\cal A} $ is thus
+$$ \int_A Q(X_t, X_{t+1})  d X_{t+1} . $$
+
+
+\medskip
+
+\noindent{\bf a.} Please reverse engineer an economy in which formula (1) is indeed the kernel for one-period Arrow securities.  Please
+describe  preferences, endowments,  technologies, and probability densities  for this economy.
+
+\medskip
+\noindent{\bf b.} Please describe the sense in which this economy does or does not have a representative agent.
+
+\medskip
+
+\noindent {\bf c.} Please compute the yield on  one-period risk-free claims.
+
+\medskip
+
+\noindent{\bf d.}  For this economy, please describe a (or the) stochastic discount factor and also a (or the) ``physical measure''.  Is the stochastic discount factor that you
+propose unique?
+
+\medskip
+
+\noindent {\bf e.}  Is this model of a stochastic discount factor capable of attaining Hansen-Jagannathan bounds with what you regard to be reasonable parameter values?
+Please compute a formula for what Hansen and Jagannathan call ``the market price of risk''.
+
+
+
+
+\medskip
+
+\noindent{\it Exercise \the\chapternum.24} \quad  \quad {\bf Unpriced risk}
+
+\medskip
+
+\noindent Suppose that  the following exponential quadratic stochastic discount factor correctly prices all
+returns:
+$$ \EQNalign{ \lambda_t & = \lambda_0 + \lambda_z z_t \EQN sdflambda1 \cr
+                \log ( m_{t+1}) & = - r_t - {\frac{1}{2}} \lambda_t' \lambda_t - \lambda_t' \varepsilon_{t+1} , }$$
+where the risk vector  $\varepsilon_{t+1} \sim {\cal N}(0,I)$ is an i.i.d.\ vector that  appears in the first-order vector autoregression
+$$ \EQNalign{ z_{t+1} & = \mu +   \phi z_t + C \varepsilon_{t+1}  \cr
+              r_t & = \delta_0 + \delta_1' z_t  .} $$
+ Let $u_{t+1} \sim {\cal N}(0,I)$ be  another  i.i.d.\ vector shock that is orthogonal to $\varepsilon_{s+1}$ for all $t$ and all $s$.
+ Let  a gross return process $R_{j,t+1}$ be described by
+$$ R_{j,t+1} = \exp(\nu_t(j) - {\frac{1}{2}} \alpha_t(j)' \alpha_t(j)  - {\frac{1}{2}} \eta_t(j)' \eta_t(j) + \alpha_t(j)' \varepsilon_{t+1} +
+\eta_t(j)'
+  u_{t+j}   ) \EQN Rjlaw $$
+where
+$$ \EQNalign{ \alpha_t(j) & = \alpha_0(j) + \alpha_z(j) z_t \cr
+              \eta_t(j) & = \eta_0(j) + \alpha_z(j) z_t . } $$
+Here $\alpha_0(j)$ and $\eta_0(j)$  are  $m \times 1$ vectors and $\alpha_z(j)$ and $\eta_z(j)$ are  $m \times m$ matrices.
+
+
+\medskip
+\noindent{\bf a.}  Please verify that $E_t R_{j,t+1} = \exp(\nu_t(j))$.
+
+\medskip
+
+\noindent {\bf b.} Please find a formula for
+$\nu_t(j) $ as a function of $z_t$ that verifies $E (m_{t+1} R_{j,t+1})=1$.
+
+\medskip
+\noindent {\bf c.}  Please explain why $\nu_t(j)$ depends on $\alpha_t(j)$ the way it does.
+
+\medskip
+\noindent {\bf d.} Please explain why $\nu_t(j)$ depends on $\eta_t(j)$ the way it does.
+
+
+
+

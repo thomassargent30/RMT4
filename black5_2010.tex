@@ -1,0 +1,2873 @@
+
+\input grafinp3
+%\input grafinput8
+\input psfig
+\def\th{{\theta}}
+%\eqnotracetrue
+
+%\showchaptIDtrue
+%\def\@chaptID{5.}
+%\input gayejnl.txt
+%\input gayedef.txt
+\def\lege{\raise.3ex\hbox{$>$\kern-.75em\lower1ex\hbox{$<$}}}
+\def\be{{\beta}}
+%\hbox{}
+\chapter{Search and Unemployment\label{search1}}
+\footnum=0
+
+\section{Introduction}
+
+This chapter applies dynamic programming to a choice between
+ two actions, to accept or reject a take-it-or-leave-it
+job offer.  An unemployed worker faces a probability distribution
+of wage offers or job characteristics from which a limited
+number of offers are drawn each period.  Given his perception
+of the probability distribution of offers, the worker must
+devise a strategy for deciding when to accept an offer.
+
+ \auth{McCall, John} \auth{Jovanovic, Boyan} \auth{Stigler, George} \auth{Neal, Derek} %
+The theory of search is a tool for studying unemployment.
+Search theory puts unemployed workers in a setting where
+they  sometimes choose   to reject available offers and to remain
+unemployed now because they prefer to wait for better offers later.
+We use the theory to study how workers respond
+to variations in the rate of unemployment compensation,
+the perceived riskiness of wage distributions, the probability of
+being fired, the quality of
+information about jobs, and the frequency with which a wage
+distribution can be sampled.
+
+
+This chapter provides an introduction to the techniques used in
+the search literature and a sampling of search models.  The chapter
+studies ideas introduced in two important papers by McCall
+(1970) and Jovanovic (1979a).  These papers differ in the search technologies
+with which they confront an unemployed worker.\NFootnote{Stigler's (1961)
+important early paper studied a search technology different
+from both McCall's and Jovanovic's.  In Stigler's model,
+an unemployed worker has to choose in advance a number $n$
+of offers to draw, from which he takes the highest wage offer.
+Stigler's formulation of the search problem was not sequential.}
+We also study a related model of occupational choice by Neal (1999).
+
+
+We hope to convey some of the excitement that Robert E. Lucas, Jr. (1987, p.57)
+expressed when he wrote this about the McCall search model:
+``Questioning a McCall worker is like having a conversation with an out-of-work friend:
+`Maybe you are setting your sights too high' or `Why did you quit your old job before
+you had a new one lined up?' This is real social science: an attempt to model,
+to {\it understand\/}, human behavior by visualizing the situations people find themselves in,
+the options they face and the pros and cons as they themselves see them.'' The modifications
+of the basic McCall model by Jovanovic, Neal, and in the various sections and exercises of this chapter all
+come from visualizing  aspects of the situations in which workers find themselves.
+\section{Preliminaries}
+
+  This section describes elementary properties of probability distributions
+that are used extensively in search theory.
+\subsection{Nonnegative random variables}
+
+We begin with some properties of nonnegative random variables that
+possess finite first moments.  Consider a random variable $p$ with a cumulative
+probability distribution function $F(P)$ defined by ${\rm Prob}\{p\le P\} =F(P)$.  We
+assume that $F(0)=0$, that is, that $p$ is nonnegative.  We assume
+that % $F(\infty)=1$ and that
+$F$, a nondecreasing function, is
+continuous from the right.  We also assume that there is an
+upper bound $B<\infty$ such that $F(B)=1$, so that $p$ is bounded with
+probability 1.
+
+The mean of $p$, $Ep$, is defined by
+$$Ep=\int_0^B p\ dF(p).\EQN 2.1$$
+Let $u=1-F(p)$ and $v=p$ and use the integration-by-parts formula
+$\int_a^b u\ dv=uv \Big\vert_a^b -\int_a^b v\ du,$
+to verify that
+$$\int_0^B [1-F(p)]dp =\int_0^B p\ dF(p).$$
+Thus, we have the following formula for the mean of a
+nonnegative random variable:
+$$Ep=\int_0^B [1-F(p)]dp = B - \int_0^B F(p)dp .\EQN 2.2$$
+
+Now consider two independent random variables $p_1$ and $p_2$ drawn from the
+distribution $F$.  Consider the event $\{(p_1<p)\cap (p_2<p)\}$, which by the
+independence assumption has probability $F(p)^2$.  The event $\{(p_1<p)\cap
+(p_2<p)\}$ is equivalent to the event $\{\max(p_1,p_2)<p\}$, where ``max''
+denotes the maximum.  Therefore, if we use formula \Ep{2.2}, the random
+variable
+$\max (p_1,p_2)$ has mean
+$$E\max (p_1,p_2) = B - \int_0^B F(p)^2 dp %%%\equiv \int_0^B F^2(d \,p)
+.\EQN 2.3$$
+Similarly, if $p_1,p_2,\ldots, p_n$ are $n$ independent random variables drawn
+from $F$, we have Prob$\{\max(p_1,p_2,\ldots, p_n)<p\}=F(p)^n$ and
+$$M_n\equiv E\max (p_1,p_2,\ldots, p_n) = B - \int_0^B F(p)^n
+dp,\EQN 2.4$$
+where $M_n$ is defined as the expected value of the maximum of
+$p_1,\ldots,p_n$.
+
+\subsection{Mean-preserving spreads}
+
+Rothschild and Stiglitz  introduced the idea of a mean-preserving spread
+as a convenient way to  characterize the riskiness of two distributions with
+the same mean.  Consider a class of distributions with the same mean.  We index
+this class by a parameter $r$ belonging to some set $R$.  For the $r$th
+distribution we denote Prob$\{p\le P\} =F(P,r)$ and assume that
+$F(P,r)$ is differentiable with respect to $r$ for all $P \in [0,B]$.
+  We assume that there is a
+single finite $B$ such that $F(B,r)=1$ for all $r$ in $R$ and that $F(0,r)=0$ for all $r$ in $R$, so that we are considering
+a class of distributions $R$ for nonnegative, bounded random variables.
+
+From equation \Ep{2.2}, we have %%%$Ep=\int_0^B [1-F(s,r)]ds$, or
+$$Ep=B-\int_0^B F(p,r) dp.\EQN 2.13$$
+Therefore, two distributions with the same value
+of $\int_0^B F(\theta,r)d \theta$ have
+identical means.  We write this as the identical means condition:
+$$\int_0^B [F(\th,r_1)-F(\th,r_2)]d\th=0.\leqno {\rm (i)}$$
+Two distributions $r_1,r_2$ are said to satisfy the
+\index{single-crossing property}%
+{\it single-crossing property\/} if there exists a $\hat \th$ with
+$0<\hat \th<B$ such that
+$$F(\th,r_2)-F(\th,r_1) \le 0 (\ge 0)\qquad {\rm when}\quad \th\ge
+(\le)\hat \th. \leqno{\rm (ii)} $$
+
+
+%%%%
+%\topinsert{
+%$$
+%\grafone{powdmt3.eps,height=2.5in,angle=-90}{{\bf Figure 5.1} Two
+%distributions, $r_1$ and $r_2$, that satisfy the single-crossing
+%property.}
+%$$
+%}\endinsert
+%%%%%
+
+\midfigure{powdmt3f}
+\centerline{\epsfxsize=3truein\epsffile{powdmt3new.eps}}
+\caption{Two distributions, $r_1$ and $r_2$, that satisfy the single-crossing property.}
+\infiglist{powdmt3f}
+\endfigure
+
+Figure \Fg{powdmt3f} %Figure 5.1
+ illustrates the single-crossing property.  If two distributions
+$r_1$ and $r_2$ satisfy properties
+ (i) and (ii), we can regard distribution $r_2$ as having been obtained from
+$r_1$ by a process that shifts probability toward the tails of the distribution
+while keeping the mean constant.
+
+Properties (i) and (ii) imply  the following property:
+
+$$\int_0^y [F(\th,r_2)-F(\th,r_1)] d\th \ge 0,\qquad 0\le y\le B\, .
+\leqno {\rm (iii)}$$
+
+
+\index{mean-preserving spread}%
+Rothschild and Stiglitz regard properties (i) and (iii) as defining the concept
+of a ``mean-preserving  spread.'' In particular, a distribution
+indexed by $r_2$ is said to have been obtained from a distribution indexed by
+$r_1$ by a mean-preserving  spread if the two distributions satisfy
+(i) and (iii).\NFootnote{Rothschild and Stiglitz (1970, 1971) use properties
+ (i) and %
+(iii) to characterize mean-preserving spreads rather than (i) and (ii) %
+because %
+(i) and (ii) fail to possess transitivity.  That is, if $F(\th, r_2)$ is %
+obtained from $F(\th,r_1)$ via a mean-preserving spread in the sense that the %
+term has in (i) and (ii), and $F(\th,r_3)$ is obtained from $F(\th,r_2)$ via %
+a %
+mean-preserving spread in the sense of (i) and (ii), it does not follow that %
+$F(\th,r_3)$ satisfies the single-crossing property (ii) vis-\`a-vis distribution    %
+$F(\th,r_1)$. A definition based on (i) and (iii), however, does provide a  %
+transitive ordering, which is a desirable feature for a definition designed %
+to  %
+order distributions according to their riskiness.}
+\index{single-crossing property}
+
+For infinitesimal changes in $r$, Diamond and Stiglitz use the differential
+versions of properties
+ (i) and (iii) to rank distributions with the same mean in order of
+riskiness.  An increment in $r$ is said to represent a mean-preserving increase
+in risk if
+$$\int_0^B F_r(\th,r)d\th=0 \leqno {\rm (iv)}$$
+
+$$\int_0^y F_r(\th,r)d\th\ge 0,\qquad 0\le y\le B\ ,\leqno {\rm (v)}$$
+where $F_r(\th,r)=\part F(\th,r)/\part r$.
+
+\section{McCall's model of intertemporal job search}
+
+We now consider an unemployed worker who is searching for a job
+under the following circumstances:  Each period the worker draws one offer $w$
+from the same wage distribution $F(W)={\rm Prob}\{w\le W\}$, with $F(0)=0$,
+$F(B)=1$ for $B<\infty$. The worker has the option of rejecting the offer, in
+which case he or she receives $c$ this period in unemployment compensation and
+waits until next period to draw another offer from $F$; alternatively, the
+worker can accept the offer to work at $w$, in which case he or she receives a
+wage of $w$ per period forever.  Neither quitting nor firing is permitted.
+
+Let $y_t$ be the worker's income in period $t$.  We have $y_t=c$ if the
+worker is unemployed and $y_t=w$ if the worker has accepted an offer to
+work at wage $w$.  The unemployed worker devises a strategy to maximize the mathematical expectation of
+$\sum_{t=0}^\infty \be^t y_t$ where $0<\be<1$ is a discount factor.
+
+Let $v(w)$ be the expected value of $\sum_{t=0}^\infty \be^t y_t$ for a previously unemployed worker
+who has offer $w$ in hand, who is deciding whether to accept or to reject it,
+and who behaves optimally.  We assume no recall. The value function
+$v(w)$ satisfies the Bellman
+equation
+$$v(w)=\max_{\rm accept, reject} \left\{ {w\over 1-\be}, c+\be\int_0^B v(w')
+dF(w')\right\},\EQN 2.14$$
+where the maximization is over the values of outcomes associated with  the two actions: (1) {\it accept}
+the wage offer $w$
+and work forever at wage $w$,
+ or (2) {\it reject} the offer, receive $c$ this period,
+and draw a new offer $w'$ from distribution $F$ next period.  The value of accepting the offer is $ {w\over 1-\be}$, the present value
+of the constant wage.  The value of rejecting the offer is the unemployment compensation $c$ received today plus the discounted expected value
+$\be\int_0^B v(w')$ of drawing a new offer and deciding optimally tomorrow.
+Figure \Fg{powdmt4f} % Figure 5.2
+graphs
+the functional equation \Ep{2.14} and reveals that its solution is of the
+form
+$$\def\pear{{\eqalign{{\overline w\over 1-\be} =c+\be \int_0^B v(w')dF(w')
+&\qquad{\rm if}\quad w\le\overline w\cr
+{w\over 1-\be}{\hskip 4cm} & \qquad{\rm if}\quad w\ge \overline w.\cr}}}
+v(w)= \left\{ \pear\right. \EQN 2.15$$
+
+%%%%%%
+%\topinsert{
+%$$
+%\grafone{powdmt4.eps,height=2.5in,angle=-90}{{\bf Figure 5.2}
+%The function $v(w)=\max\{w/(1-\be),c+\be \int_0^B v(w')dF(w')\}$.
+%The reservation wage $\overline w=(1-\be)[c+\be\int_0^B v(w')dF(w')]$.}
+%$$
+%}\endinsert
+%%%%%
+
+\midfigure{powdmt4f}
+\centerline{\epsfxsize=3true in\epsffile{powdmt4new.eps}}
+\caption{The function $v(w)=\max\{w/(1-\be),c+\be \int_0^B v(w')dF(w')\}$.
+The reservation wage $\overline w=(1-\beta)[c+\be\int_0^B v(w')dF(w')]$.}
+\infiglist{powdmt4f}
+\endfigure
+
+%\topfigure{r2red1a}
+%\centerline{\epsfxsize=3true in\epsffile{r2red1a.eps}}
+%\caption{Impulse response, spectrum, covariogram, and
+%sample path
+%of process $(1 - .9L) y_t = w_t $.}
+%\infiglist{First order a.r.}
+%\endfigure
+
+\medskip
+\noindent
+Using equation \Ep{2.15}, we can convert the functional equation
+\Ep{2.14} in the value function $v(w)$ into an ordinary equation in the reservation wage $\overline w$.
+Evaluating $v(\overline w)$ and using equation \Ep{2.15}, we have
+$$\eqalignno{ {\overline w\over 1-\be} &= c+\be \int_0^{\overline w} {\overline w\over 1-\be}
+dF(w') +\be \int_{\overline w}^B {w'\over 1-\be} dF(w') \cr
+\noalign{\hbox{or}}
+{\overline w\over 1-\be}& \int_0^{\overline w} dF(w') +{\overline w\over 1-\be} \int_{\overline
+w}^B dF (w')\cr
+&= c+\be \int_0^{\overline w} {\overline w\over 1-\be} dF(w') +\be \int_{\overline w}^B
+{w'\over 1-\be} dF(w')\cr
+\noalign{\hbox{or}}
+\overline w&\int_0^{\overline w} dF(w') -c = {1\over 1-\be} \int_{\overline w}^B (\be
+w'-\overline w) dF(w').\cr}$$
+Adding $\overline w\int_{\overline w}^B dF(w')$ to both sides gives
+$$(\overline w-c) ={\be\over 1-\be} \int_{\overline w}^B (w'-\overline w)
+dF(w').\EQN 2.16$$
+Equation \Ep{2.16} is often used to characterize the
+reservation wage $\overline w$.  The left side is the cost of searching one more
+time when an offer $\overline w$ is in hand.  The right side is the expected benefit
+of searching one more time in terms of the expected present value associated
+with drawing $w'>\overline w$.  Equation \Ep{2.16} instructs the agent to set $\overline w$
+so that the cost of searching one more time equals the benefit.
+
+\subsection{Characterizing reservation wage}
+Let us define the function on the right side of equation \Ep{2.16} as
+$$h(w)={\be\over 1-\be} \int_w^B (w'-w) dF(w').\EQN 2.17$$
+Notice that $h(0)= Ew \be /(1-\be)$, that $h(B)=0$, and that $h(w)$ is
+differentiable, with derivative given
+ by\NFootnote{To compute $h'(w)$, we apply Leibniz's rule to equation
+ \Ep{2.17}.  Let
+$\phi(t) = \int_{\alpha(t)}^{\beta(t)} f(x,t) d \, x $ for
+$t \in[c,d]$.  Assume that $f $ and $f_t$ are continuous and that $\alpha,
+\beta$ are differentiable on $[c,d]$. Then Leibniz's rule asserts that
+$\phi(t)$ is differentiable on $[c,d]$ and
+$$ \phi'(t) = f[\beta(t),t] \beta'(t) - f[\alpha(t),t] \alpha'(t)
+  + \int_{\alpha(t)}^{\beta(t)} f_t(x,t) d \, x.$$
+To apply this formula
+ to the equation in the text, let $w$ play the    role
+of $t$.}
+$$h'(w) =-{\be\over 1-\be} [1-F(w)]<0.$$
+We also have
+$$h^\pp (w) ={\be\over 1-\be} F'(w)>0,$$
+so that $h(w) $ is convex to the origin.  Figure \Fg{powdmt5f} %Figure 5.3
+graphs $h(w)$ against
+$(w-c)$ and indicates how $\overline w$ is determined.  From Figure \Fg{powdmt5f} it is
+apparent that an increase in unemployment compensation $c$ leads to an increase in $\overline w$.
+
+%%%%%%
+%$$
+%\grafone{%powdmt5.eps,%
+%fig053.ps,height=2.5in}{{\bf Figure 5.3}
+% The reservation wage, $\overline w$, that satisfies $\overline
+%w-c=[\be/(1-\be)]\int_{\overline w}^B (w'-\overline w) dF(w')\equiv h(\overline w)$.}
+%$$
+%%%%%
+
+\midfigure{powdmt5f}
+\centerline{\epsfxsize=3truein\epsffile{powdmt5.eps}}
+\caption{The reservation wage $\overline w$ that satisfies $\overline
+w-c=[\be/(1-\be)]\int_{\overline w}^B (w'-\overline w) dF(w')\equiv h(\overline w)$.}
+\infiglist{powdmt5f}
+\endfigure
+
+To get another useful characterization  of $\overline w$,
+we express equation \Ep{2.16}  as
+$$\eqalign{ \overline w-c =& {\be\over 1-\be} \int_{\overline w}^B (w'-\overline w)
+dF(w') +{\be\over 1-\be} \int_0^{\overline w} (w'-\overline w) dF(w')\cr
+&- {\be\over 1-\be} \int_0^{\overline w} (w'-\overline w) dF(w')\cr
+=& {\be\over 1-\be} Ew-{\be\over 1-\be} \overline w-{\be\over 1-\be} \int_0^{\overline w}
+(w'-\overline w) dF(w')\cr}$$
+or
+$$\overline w-(1-\be)c=\be Ew-\be \int_0^{\overline w} (w'-\overline w) dF(w').$$
+Applying integration by parts to the last integral on the right side and
+rearranging, we have
+$$\overline w-c =\be (Ew-c) +\be \int_0^{\overline w} F(w') dw'.\EQN 2.18$$
+At this point it is useful to
+define the function
+$$g(s)=\int_0^s F(p)dp.\EQN 2.10$$
+This function has the characteristics that $g(0)=0$, $g(s)\ge 0$,
+$g'(s)=F(s)>0$, and $g^\pp(s)=F'(s)>0$ for $s>0$.
+Then equation \Ep{2.18} can be represented as $\overline w-c=\be (Ew-c)+ \be
+g(\overline w)$. %, where $g(s)$ is the function defined by equation \Ep{2.10}.
+% Recall that $g'(s)
+%=F(s)$, which is between zero and one, and that $g^\pp(s) =F'(s)>0$.
+ Figure
+\Fg{powdmt6f}  uses equation \Ep{2.18} to determine $\overline w$.
+
+%%%%%%
+%\topinsert{
+%$$
+%\grafone{powdmt6.eps,height=2.5in}{{\bf Figure 5.4}
+% The reservation wage, $\overline w$, that satisfies $\overline w-c=\be
+%(Ew-c)+\be \int_0^{\overline w} F(w') dw'\equiv \be (Ew-c)+\be g(\overline w)$.}
+%$$
+%}\endinsert
+%%%%%%%
+
+\midfigure{powdmt6f}
+\centerline{\epsfxsize=3truein\epsffile{powdmt6.eps}}
+\caption{The reservation wage, $\overline w$, that satisfies $\overline w-c=\be
+(Ew-c)+\be \int_0^{\overline w} F(w') dw'\equiv \be (Ew-c)+\be g(\overline w)$.}
+\infiglist{powdmt6f}
+\endfigure
+
+
+
+\subsection{Effects of mean-preserving spreads}
+
+Figure \Fg{powdmt6f} %Figure 5.4
+can be used to establish two propositions about
+$\overline w$.  First, given $F$, $\overline w$ increases when the rate
+of unemployment compensation $c$ increases.  Second, given $c$,
+a mean-preserving increase in risk causes $\overline w$ to increase.
+This second proposition follows directly from Figure \Fg{powdmt6f} %Figure 5.4
+and the
+characterization (iii) or (v) of a mean-preserving increase in risk.
+From the definition of $g$ in equation \Ep{2.10} and the
+characterization (iii) or (v), a mean-preserving spread
+causes an upward shift in $\be(Ew-c)+\be g(w)$.
+
+Since  an increase in unemployment compensation and a mean-preserving
+increase in risk both raise the reservation wage, it follows from the expression
+for the value function in equation \Ep{2.15} that unemployed workers are
+also better off with both such increases. It is obvious that an increase
+in unemployment compensation raises the welfare of unemployed workers but
+it might seem surprising that  a mean-preserving increase in risk does too.
+Intuition for this latter finding can be gleaned from the result in option
+pricing theory that the value of an option is an increasing function of
+the variance in the price of the underlying asset. This is so because
+the option holder chooses to accept  payoffs only from the right tail of
+the distribution. In our context, the unemployed worker has the option
+to accept a job and the asset value of a job offering wage rate $w$ is
+equal to $w/(1-\beta)$.
+%%(The ``exercise price'' for the unemployed worker is the loss of the
+%%right to unemployment compensation.)
+Under a mean-preserving increase in risk, the higher incidence of very
+good wage offers increases the value of searching for a job while
+the higher incidence of very bad wage offers is not detrimental because
+the option to work will  not be exercised at such low
+wages.
+
+\subsection{Allowing quits}\label{quits}%
+ Thus far, we have supposed that the worker cannot quit.
+It happens that had we allowed the worker to
+quit and search again, after being unemployed one period,
+he would never exercise that option.  To see this point,
+recall that the reservation wage $\overline w$ in \Ep{2.15} satisfies
+ $$
+ v(\overline w) = {\overline w \over 1-\beta}= c+\beta \int v(w')dF(w'). \EQN res_wage
+ $$
+ Suppose the agent has in hand an offer to work at wage $w$.
+ Assuming that
+ the agent behaves optimally after any rejection of a wage $w$,
+we can
+ compute the lifetime utility associated with
+three mutually exclusive alternative ways of responding to that offer:
+\medskip
+ \itemitem{A1. } Accept the wage and keep the job forever:
+ $$
+ {w \over 1-\beta}.
+ $$
+ \itemitem{A2. } Accept the wage but quit after $t$ periods:
+ $$
+ {w -\beta^t w \over 1 - \beta} +
+ \beta^t \left(c+\beta \int v(w')dF(w')\right)
+ = {w \over 1 - \beta} - \beta^t {w -\overline w \over 1 - \beta}.
+ $$
+ \itemitem{A3. } Reject the wage:
+ $$
+ c+\beta \int v(w')dF(w') = {\overline w \over 1-\beta}.
+ $$
+
+ \noindent
+ We conclude that if $w<\overline w$,
+ $$
+ A1 \prec A2 \prec A3,
+ $$
+ and if $w>\overline w$,
+ $$
+ A1 \succ A2 \succ A3.
+ $$
+ The three alternatives yield the same lifetime utility when $w=\overline w$.
+
+\subsection{Waiting times}
+
+It is straightforward to derive the probability distribution of the waiting
+time until a job offer is accepted.  Let $N$ be the random variable ``length of
+time until a successful offer is encountered,'' with the understanding that
+$N=1$ if the first job offer is accepted.  Let $\la=\int_0^{\overline w} dF(w')$ be
+the probability that a job offer is rejected.  Then we have
+Prob$\{N=1\}=(1-\la)$.  The event that $N=2$ is the event that the first draw
+is less than $\overline w$, which occurs with probability $\la$, and that the second
+draw is greater than $\overline w$, which occurs with probability $(1-\la)$.  By
+virtue of the independence of successive draws, we have
+Prob$\{N=2\}=(1-\la)\la$.  More generally, Prob$\{N=j\}=(1-\la)\la^{j-1}$, so
+the waiting time is geometrically distributed.  The mean waiting time $\bar N$ is
+given by
+$$\eqalign{
+\bar N &=\sum_{j=1}^\infty j\cdot\ {\rm Prob}\{N=j\}=\sum_{j=1}^\infty
+j(1-\la)\la^{j-1}=(1-\lambda)\sum_{j=1}^\infty \sum_{k=1}^j
+\lambda^{j-1} \cr
+&=(1-\lambda)\sum_{k=0}^\infty \sum_{j=1}^\infty \lambda^{j-1+k}
+=(1-\lambda)\sum_{k=0}^\infty \lambda^{k} (1-\lambda)^{-1}
+=(1-\lambda)^{-1}.\cr}
+$$
+That is, the mean waiting
+time to a successful job offer equals the reciprocal of the probability of
+accepting an offer on a single trial.\NFootnote{An alternative way of deriving the mean
+waiting time is to use the algebra of $z$ transforms. Define  $h(z)=\sum_{j=0}^\infty h_jz^j$ and note
+that $h'(z)=\sum_{j=1}^\infty j h_j z^{j-1}$ and
+$h'(1)=\sum_{j=1}^\infty jh_j$.  (For an introduction to $z$ transforms, see
+Gabel and Roberts, 1973.)  The $z$ transform of the sequence $(1-\la)\la^{j-1}$
+is given by $\sum_{j=1}^\infty (1-\la)\la^{j-1} z^j=(1-\la)z/(1-\la z)$.
+Evaluating $h'(z)$ at $z=1$ gives, after some simplification,
+$h'(1)=1/(1-\la)$. Therefore, we have that the mean waiting time is
+$(1-\la)\sum_{j=1}^\infty j\la^{j-1}=1/(1-\la)$.}
+
+To illustrate the power of  a recursive approach, we can also
+compute the mean waiting time $\bar N$ as follows. First, because the  environment is stationary
+and associated with a constant
+reservation wage and a constant probability of escaping unemployment, it
+follows that  in any  period the ``remaining'' mean waiting time for all unemployed workers
+equals $\bar N$. That is, all unemployed workers face
+a mean waiting time of $\bar N$ regardless of
+how long of an unemployment spell they have endured.
+Second, the mean waiting time $\bar N$ must then be equal to the weighted
+sum of two possible outcomes: either the worker accepts a job next period,
+with probability $(1-\lambda)$; or she remains unemployed in the next
+period, with probability $\lambda$. In the first case, the worker will have
+ended her unemployment after one last period of unemployment while in the
+second case, the worker will have suffered one period of unemployment {\it and}
+will face a remaining mean waiting time of $\bar N$ periods. Hence, the
+mean waiting time must satisfy:
+$$
+\bar N = (1-\lambda)\cdot 1 \,+\, \lambda \cdot (1 + \bar N)
+\hskip1cm \Longrightarrow \hskip1cm  \bar N = (1-\lambda)^{-1}.
+$$
+
+We invite the reader to prove that, given $F$, the mean waiting time
+increases with increases in the rate of unemployment compensation, $c$.
+
+\subsection{Firing}\label{firing}%
+We now consider a modification of the job search model in which each
+period after the first period on the job the worker faces probability
+$\a$
+of being fired, where
+$1>\a>0$.  The probability $\a$ of being fired next period is assumed to
+be independent of tenure.  A previously unemployed worker samples wage offers from a
+time-invariant and known probability distribution $F$. Unemployed workers receive
+unemployment compensation in the amount $c$. The  worker receives a
+time-invariant wage $w$ on a job until she is fired. A worker who is fired
+becomes unemployed for one period before drawing a new wage. Only previously employed workers are fired.
+A previously employed worker who is fired at the beginning of a period cannot draw a new wage offer that period but must
+be unemployed for one period.
+
+We let $\hat v(w)$ be the expected present value of income of a previously
+unemployed worker who has offer $w$ in hand and who behaves optimally.  If she
+rejects the offer, she receives $c$ in unemployment compensation this period
+and next period draws a new offer $w'$, whose value to her now is $\be \int
+\hat v(w') dF(w')$.  If she rejects the offer, $\hat v(w)=c+\be\int \hat v(w')dF(w')$.
+ If she
+accepts the offer, she receives $w$ this period; next period with probability $1-\a $,
+she is not fired  and therefore what she receives is worth  $\be \hat v(w)$ today;
+with probability $\a$,  she is fired next period, which has the consequence that after one period of
+unemployment she draws a new wage, an outcome that today is worth  $\be[c+ \be \int \hat v(w')dF(w')]$.
+Therefore, if she accepts the offer,
+$\hat v(w)=w+\be (1-\a)\hat v(w) + \be \a [c+ \be \int \hat v(w')dF(w')]$.
+ Thus, the Bellman  equation becomes\NFootnote{If a worker who is fired at the beginning of a period were to have the opportunity to draw a new offer that same period,
+ then the Bellman equation would instead be
+ $$ \tilde v(w) = \max_{\rm accept, reject} \Bigl\{ w + \be (1-\a) \tilde v(w) + \beta \alpha \int \tilde v(w') d F(w'), c + \beta \int \tilde v(w') d F(w') \Bigr\} .$$}
+$$\hat v(w)=\max_{\rm accept, reject} \Bigl\{w+\be (1-\a)\hat v(w) + \be \a [c+ \be E\hat v] ,\;
+c+\be E\hat v\Bigr\},$$
+where $E\hat v=\int \hat v(w')dF(w')$. Here the appearance of  $\hat v(w)$ on the right side recognizes that if the worker had accepted wage offer $w$ last period with expected discounted present value $\hat v(w)$,
+the stationarity of the problem (i.e., the fact that $F, \alpha, c $ are all fixed) makes $\hat v(w)$ also be the continuation value associated with retaining this job next period.
+  This equation has a  solution of the
+ form\NFootnote{That it
+takes this form can be established by guessing
+that $\hat v(w)$ is nondecreasing in $w$.  This guess implies the
+equation in the text for $\hat v(w)$, which is nondecreasing in $w$.
+This argument verifies that $\hat v(w)$ is nondecreasing, given the
+uniqueness of the solution of the Bellman equation.}
+%$$\def\apricot{{\eqalign{ {w+\be\a [c+\be Ev]\over 1-\be(1-\a)},&\qquad
+% w\ge \overline w\cr
+%c+\be Ev,& \qquad w\le \overline w,\cr}}}
+%v(w)=\left\{\apricot\right.$$
+%$$
+$$\hat v(w) = \cases{{\displaystyle w+\be\a [c+\be E\hat v]\over \displaystyle 1-\be(1-\a)},&
+if $w\ge \overline w $ \cr
+\Big. c+\be E\hat v,& $w\le \overline w $\cr}$$
+where $\overline w$ solves
+$${\overline w+\be \alpha [c+\be E\hat v]\over 1-\be(1-\a)} =c+\be E\hat v,  $$
+which can be rearranged as
+$$
+{\overline w \over 1-\beta } = %c+\be E\hat v =
+  c+\beta \int \hat v(w')dF(w').    \EQN  firewbar
+$$
+
+
+We can compare the reservation wage in \Ep{firewbar} to the
+reservation wage in expression \Ep{res_wage} when there was no risk of
+being fired. The two expressions look identical but the reservation
+wages differ because the value functions differ.
+In particular,  $\hat v(w)$ is  strictly
+less than $v(w)$. This is an immediate implication of our argument that it
+cannot be optimal to quit if you have accepted a wage strictly
+greater than the reservation wage in the situation without possible  firings
+(see section \use{quits}). So even though workers who face no possible firings can mimic outcomes
+in situations where they would facing possible firings  by
+occasionally ``firing themselves'' by  quitting into unemployment, they choose
+not to do so because that would lower their expected present value of income. Since the
+employed workers in the situation where they face possible firings are worse off than
+employed workers in the situation without possible firings, it follows that $\hat v(w)$
+lies strictly below $v(w)$ over the whole domain because, even at wages
+that are rejected, the value function partly reflects a stream of future outcomes whose
+expectation is less favorable in the situation in which  workers face a chance of
+being fired.
+
+Since the value function $\hat v(w)$  with firings lies
+strictly below the value function $v(w)$ without firings,
+it follows from \Ep{firewbar} and \Ep{res_wage} that the reservation
+wage $\overline w$ is strictly lower  with firings.
+There is less of a reason to hold out for high-paying jobs when a job
+is expected to last for a shorter period of time.
+That is, unemployed workers optimally invest less in search when the
+payoffs associated with wage offers
+have gone down because of the probability of being fired.
+
+
+
+%The optimal policy is of the reservation wage form. The reservation
+%wage $\overline
+%w$ will not be characterized here as a function of $c$, $F$, and $\a$;
+%the reader is invited to do so by pursuing the implications of the preceding
+%formula.
+
+
+% If she
+%accepts the offer, she receives $w$ this period, with probability $\a $ that
+%she is fired and must draw again next period receiving $\be\int v(w')dF(w')$
+%and with probability $(1-\a)$ that she is not fired, in which case
+%she receives
+%$\be v(w)$.  Therefore, if she accepts the offer, $v(w)=w+\be \a\int
+%v(w')dF(w')+\be (1-\a)v(w)$.  Thus the Bellman  equation becomes
+%$$v(w)=\max \{w+ \be\a Ev+\be (1-\a) v(w),c+\be Ev\},$$
+%where $Ev=\int v(w')dF(w')$. This equation has a solution of the
+%form\NFootnote{That it takes this form can be established by guessing
+%that $v(w)$ is nondecreasing in $w$.  This guess implies the
+%equation in the text for $v(w)$, which is nondecreasing in $w$.
+%This argument verifies that $v(w)$ is nondecreasing, given the
+%uniqueness of the solution of the Bellman equation.}
+%$$\def\apricot{{\eqalign{ {w+\be\a Ev\over 1-\be(1-\a)},&\qquad
+% w\ge \overline w\cr
+%c+\be Ev,& \qquad w\le \overline w,\cr}}}
+%v(w)=\left\{\apricot\right.$$
+%where $\overline w$ solves
+%$${\overline w+\be \alpha Ev\over 1-\be(1-\a)} =c+\be Ev.$$
+%The optimal policy is of the reservation wage form. The reservation wage
+%$\overline
+%w$ will not be characterized here as a function of $c$, $F$, and $\a$;
+%the reader is invited to do so by pursuing the implications of the preceding
+%formula.
+
+\section{A lake model}
+
+  Consider an economy consisting of a continuum of {\it ex ante\/}
+identical  workers  living in the environment described in the previous
+section.  These workers move recurrently between unemployment
+and employment.
+The mean duration of each spell of employment
+is $\alpha^{-1}$ and the mean duration of unemployment
+is $[1 - F(\overline w)]^{-1}$.    The average unemployment rate
+$U_t$
+across the continuum of workers  obeys the difference equation
+$$ U_{t+1} = \alpha (1 - U_t ) + F(\overline w) U_t ,  $$
+where $\alpha$ is the hazard rate \index{hazard rate} of escaping employment
+and $[1 - F(\overline w)]$ is the hazard rate of escaping unemployment.
+Solving this difference equation for a stationary solution, i.e., imposing
+$U_{t+1} = U_t = U$, gives
+$$ U ={\alpha \over \alpha + 1 - F (\overline w) } \hskip1cm \Longrightarrow
+\hskip1cm
+U = {\displaystyle {1 \over 1 - F(\overline w)} \over
+  \displaystyle { 1 \over  1 - F(\overline w)} + {1 \over \alpha}  } .
+\EQN Ulake $$
+Equation \Ep{Ulake} expresses the stationary unemployment   rate in terms
+of the ratio of the average duration of unemployment to the
+sum of average durations of unemployment and employment.   The
+unemployment rate, being an average across workers   at each    moment,
+thus reflects the average
+outcomes experienced by workers {\it across time}.
+This way of linking economy-wide averages at a point in time with the
+time-series average for a representative worker is our first
+encounter with a class of models sometimes referred to as
+Bewley models, which we  shall study in depth in chapter \use{incomplete}.
+\index{Bewley models}
+
+  This model of unemployment   is sometimes called a lake model and
+can be depicted as in Figure \Fg{lake1f}, %Figure   5.5
+ with two lakes denoted
+$U$ and $1-U$ representing volumes of unemployment and employment, and streams
+of rate $\alpha$ from the $1-U$ lake to the $U$ lake
+ and of rate $1-F(\overline w)$ from
+the $U$ lake  to the $1-U$ lake.    Equation \Ep{Ulake} allows us to
+study the determinants of the  unemployment rate in
+terms of the hazard rate of becoming unemployed $\alpha$ and
+the hazard rate of escaping unemployment $1 - F(\overline w)$.
+
+%%%%%%%
+%$$
+%\grafone{lake1.eps,height=1.5in}{{\bf Figure 5.5}  Lake model
+%with flows $\alpha$ from employment state $1-U$ to unemployment
+%state $U$ and $[1-F(\overline w)]$ from $U$ to $1-U$.}
+%$$
+%%%%%%%%%%
+
+\midfigure{lake1f}
+\centerline{\epsfxsize=3truein\epsffile{lake1.eps}}
+\caption{Lake model with flows of rate $\alpha$ from employment state $1-U$ to
+unemployment state $U$ and of rate $[1-F(\overline w)]$ from $U$ to $1-U$.}
+\infiglist{Lake model}
+\endfigure
+
+
+\section{A model of career choice}
+
+\auth{Neal, Derek}%
+This section describes a model of occupational choice that
+Derek Neal (1999) used to understand  employment histories
+of recent high school graduates.   Neal wanted to explain
+why young men often switch jobs {\it and\/} careers  early in their
+work histories, then later focus their searches for  jobs within a single
+career, and finally settle down in a particular
+job. Neal's model  can be regarded
+as a simplified version of Brian McCall's (1991) model.
+\auth{McCall, B. P.}
+
+ A worker chooses career-job $(\theta,\epsilon)$ pairs
+subject to the following conditions:  There is no
+unemployment.  The worker's earnings
+at time $t$ equal $\theta_t + \epsilon_t$, where $\theta_t$ is a component specific to a {\it career\/}
+and ${\epsilon_t}$ is a component specific to a particular {\it job}.  The worker
+maximizes $E \sum_{t=0}^\infty  \beta^t (\theta_t + \epsilon_t).$
+A {\it career\/} is a draw
+of $\theta$ from  c.d.f.\  $F$; a {\it job\/} is a draw of
+$\epsilon$ from c.d.f.\ $G$.   Successive draws are independent,
+and $G(0)=F(0)=0$, $G(B_\epsilon)= F(B_\theta)=1$.  The
+worker can draw a new career only if he also draws a
+new job.
+ However, the worker is free to retain his existing
+career $\theta$, and to draw a new job $\epsilon'$.  The worker
+decides at the beginning of a period whether to stay in a
+career-job pair inherited from the past, stay in an inherited career but
+draw  a new job, or  draw a new career-job pair.  There is
+no opportunity to  recall  past jobs or careers.
+
+Let $v(\theta,\epsilon)$ be the optimal value of the problem
+at the beginning of a period
+for a worker currently having inherited  career-job pair $(\theta,\epsilon)$ and
+who is about to decide whether to draw a new career and  or job.
+The value function $v(\theta,\epsilon)$ satisfies the  Bellman equation
+
+
+$$\EQNalign{
+ v(\theta,\epsilon)  = \max &\left\{
+ \theta + \epsilon + \beta v(\theta,\epsilon),\;
+ \theta + \int \left[\epsilon' + \beta v(\theta, \epsilon')\right]
+                                            d\, G(\epsilon'),  \right. \cr
+ & \left. \int \int \left[ \theta' + \epsilon' + \beta v(\theta', \epsilon')
+\right]
+                  d \, F(\theta') d \, G(\epsilon')  \right\}. \EQN s_val}$$
+%{\eightpoint
+%$$ v(\theta,\epsilon)  = \max \left\{
+% \theta + \epsilon + \beta v(\theta,\epsilon), \theta + \epsilon
+%  + \beta \int v(\theta, \epsilon') d\, G(\epsilon'),
+%    \theta + \epsilon + \beta \int v(\theta', \epsilon') d \, F(\theta')
+%    d \, G(\epsilon')  \right\},$$
+%}    % endeightpoint
+\noindent
+Maximization is over  three possible actions: (1) retain
+the present job-career pair; (2) retain the present career but
+draw a new job; and (3) draw both a new job and a new career. We might  nickname these
+three alternatives `stay put', `new job', `new life'.
+The value function is increasing   in both $\theta$ and $\epsilon$.
+
+   Figures \Fg{neal1newaf} and \Fg{neal2newaf} % Figures  5.6 and 5.7
+display the optimal value function
+and the optimal decision rule for Neal's model
+where $F$ and $G$ are each distributed according to  discrete
+uniform
+distributions on $[0, 5]$  with 50 evenly distributed discrete values for
+each of $\theta$ and $\epsilon$ and $\beta = .95$.  We computed
+the value function
+by iterating to convergence on the Bellman equation.
+The optimal policy is characterized by three regions in the $(\theta,
+\epsilon)$ space.  For high enough values of  $\epsilon+\theta$,
+ the worker stays put.
+For high $\theta$ but low  $\epsilon$, the worker retains his
+career but searches for a better job. For low values of $\theta + \epsilon$,
+the worker finds a new career and a new job. In figures \Fg{neal1newaf} and \Fg{neal2newaf}, the decision to {\it retain\/} both job and career  occurs
+in the high $\theta$, high $\epsilon$ region of the state space; the decision to retain career $\theta$ but search for a new job $\epsilon'$
+ occurs in the high $\theta$ and low $\epsilon$ region of the state space; and the decision to  `get a new life' by drawing both a new $\theta'$ and a new $\epsilon'$ occurs in the low $\theta$, low $\epsilon$ region.\NFootnote{The computations were
+performed by the Matlab program {\tt neal2.m}.}
+\mtlb{neal2.m}
+
+%%%%%%%%
+%$$
+%\grafone{neal1newa.eps,height=2.25in}{{\bf Figure 5.6}  Optimal value
+%function for Neal's model with $\beta=.95$. The value function is
+%flat in the reject $(\theta,\epsilon)$ region, increasing in
+%$\theta$ only in the keep-career-but-draw-new-job region,
+%and increasing in both $\theta$ and $\epsilon$ in the stay-put region.}
+%$$
+%%%%%%%%%
+
+\midfigure{neal1newaf}
+\centerline{\epsfxsize=3truein\epsffile{neal1newa.eps}}
+\caption{Optimal value function for Neal's model with $\beta=.95$. The value
+function is flat in the reject $(\theta,\epsilon)$ region; increasing in
+$\theta$ only in the keep-career-but-draw-new-job region; and increasing in
+both $\theta$ and $\epsilon$ in the stay-put region.}
+\infiglist{Neal 1}
+\endfigure
+
+%%%%%%%%%
+%$$\grafone{neal2newa.eps,height=2.25in}{{\bf Figure 5.7} Optimal decision
+%rule for Neal's model.  For $(\theta, \epsilon)$'s
+%within the white area, the worker changes both
+%jobs and careers. In the gray area, the worker retains his career
+%but draws a new job.  The worker accepts $(\theta,\epsilon)$ in
+%the black area.}
+%$$
+%%%%%%%%
+
+\midfigure{neal2newaf}
+\centerline{\epsfxsize=3truein\epsffile{neal2newa.eps}}
+\caption{Optimal decision rule for Neal's model.  For $(\theta, \epsilon)$'s
+within the white area, the worker changes both jobs and careers.  In the grey
+area, the worker retains his career but draws a new job.  The worker accepts
+$(\theta,\epsilon)$ in the black area.}
+\infiglist{Neal 2}
+\endfigure
+
+
+When the career-job pair $(\theta, \epsilon)$ is such that the worker
+chooses to stay put, the value function in \Ep{s_val} attains the
+value $(\theta + \epsilon)/(1-\beta)$. Of course, this happens when
+the decision to stay put weakly dominates the other two actions, which
+occurs when
+$$ {\theta + \epsilon \over 1 - \beta} \geq \max\left\{
+ C(\theta), Q\right\}, \EQN compar1 $$
+where $Q$ is the value of drawing both a new job and a new career,
+$$ Q \equiv \int \int \left[ \theta' + \epsilon' +
+\beta v(\theta', \epsilon')\right]
+              d \, F(\theta') d \, G(\epsilon'), $$
+and $C(\theta)$ is the value of keeping $\theta$ but drawing a new job $\epsilon'$:
+$$C(\theta)=  \theta + \int \left[\epsilon' + \beta v(\theta, \epsilon')\right]
+        d\, G(\epsilon').$$
+For a given career $\theta$, a job $\overline \epsilon
+(\theta) $
+makes equation \Ep{compar1} hold with equality. Evidently,
+$\overline \epsilon(\theta)$ solves
+$$ \overline\epsilon(\theta) = \max [ (1-\beta) C(\theta) -  \theta,
+  (1-\beta) Q - \theta].  $$
+ The decision to stay put is optimal
+for any career-job pair $(\theta, \epsilon)$ that satisfies
+$\epsilon \geq \overline
+\epsilon(\theta)$. When this condition is not satisfied,
+the worker will  draw either a new career-job pair $(\theta', \epsilon')$ or
+only a new job $\epsilon'$.
+ Retaining a career $\theta$
+is optimal when
+$$
+C(\theta)   \geq Q.          \EQN s_career
+$$
+We can solve \Ep{s_career} for the critical career value
+$\overline \theta$ satisfying
+$$ C( \overline \theta ) = Q . \EQN overtheta $$
+Thus, independently of $\epsilon$, the worker will never abandon any
+career $\theta \geq \overline \theta$. The decision rule for accepting
+the current career can thus be expressed as  follows:
+accept the current career $\theta$ if $\theta \geq \overline \theta $
+or if the current career-job pair $(\theta, \epsilon)$ satisfies
+$\epsilon \geq \overline \epsilon(\theta)$.
+
+We can say more about the cutoff value $\overline \epsilon(\theta)$
+in the retain-$\theta$ region $\theta  \geq \overline \theta$.
+When $\theta \geq \overline \theta$, because we know that the
+worker will keep $\theta$ forever, it follows that
+$$ C(\theta) = {\theta \over 1 -\beta} + \int J(\epsilon')
+  d G(\epsilon'), $$
+where $J(\epsilon)$ is the optimal value of % the $epsilon$-component
+$ \sum_{t=0}^\infty \beta^t \epsilon_t$ for a worker who has already decided to keep
+career $\theta$, who
+has just drawn $\epsilon$,  and who can draw a new job  $\epsilon'$ next period.
+The Bellman equation for $J$ is
+$$ J(\epsilon) = \max \left\{ {\epsilon \over 1-\beta},
+  \epsilon + \beta  \int J(\epsilon') d G(\epsilon')\right\} .
+ \EQN littlebell $$
+This resembles the Bellman equation for the optimal value function for the
+basic McCall model, with a slight modification.
+The optimal policy is of the reservation-job form: keep the job $\epsilon$
+if $\epsilon \geq \overline \epsilon$, otherwise  try a new job next
+period.
+The absence of $\theta$ from \Ep{littlebell} implies that
+in the range $\theta \geq  \overline \theta$, $\overline \epsilon$
+is independent of $\theta$.
+
+These results explain some features of the value function
+plotted in Figure \Fg{neal1newaf} %Figure 5.6.
+  At the boundary separating
+the ``new life'' and ``new job''  regions of the $(\theta, \epsilon)$
+plane, equation \Ep{overtheta} is satisfied.   At the boundary
+separating   the ``new job'' and ``stay put'' regions,
+$ {\theta + \epsilon \over 1 - \beta} =  C(\theta) =
+{\theta \over 1-\beta} + \int J(\epsilon') d G(\epsilon')$.
+Finally, between the ``new life'' and ``stay put'' regions,
+${\theta + \epsilon \over 1 - \beta} = Q$, which defines
+a diagonal line in the $(\theta, \epsilon)$ plane (see Figure
+\Fg{neal2newaf}). % Figure 5.7).
+  The value function
+is the constant value $Q$
+in the ``get a new life'' region (i.e., the region in which the optimal decision is to draw a new $(\theta,\epsilon)$
+pair).   Equation \Ep{s_career} helps
+us understand why there is a set of high $\theta$'s in Figure  \Fg{neal2newaf} % Figure 5.7
+for which $v(\theta,\epsilon)$ rises with $\theta$  but
+is flat with respect to $\epsilon$.
+
+  Probably the most interesting feature of the model is that it  is possible
+to draw a $(\theta, \epsilon)$ pair that makes
+the value of keeping the career ($\theta$) and drawing a new
+job match   ($\epsilon'$) exceed both the value of
+stopping search and the value of starting again to
+search from the beginning by drawing a new $(\theta', \epsilon')$ pair.
+This outcome  occurs when a large   $\theta$ is drawn with a small
+$\epsilon$.  In this case, it can occur that  $\theta \geq \overline
+ \theta$ and
+$\epsilon < \overline \epsilon(\theta)$.\NFootnote{Pavan (2011) builds on Neal's model
+in interesting ways.} \auth{Pavan, Ronni}
+
+  Viewed as a normative model for young workers, Neal's model tells them:
+don't shop for a  firm  until you have found a career you like.
+  As a positive model, it predicts that  workers   will not
+switch careers after they have settled on one.   Neal presents
+data indicating that while this stark prediction does not hold up perfectly, it
+is a good first approximation.
+He suggests that extending the model to include learning, along the
+lines of Jovanovic's model to be described in section \use{sec:Jov},
+could help  explain  the later career  switches that
+his model misses.\NFootnote{Neal's model can be used to deduce waiting times
+to the event  $(\theta \geq  \overline \theta) \cup (\epsilon \geq \overline
+ \epsilon(\theta))$.
+ The first event within the union is choosing
+a career that is never abandoned.  The second event
+ is choosing a permanent job.
+Neal used the model to  approximate and
+interpret observed career and job switches of young workers.}
+
+%\note{Neal's model can be used to deduce waiting times
+%to the event  $(\theta \geq  \overline \theta) \cup [{\theta + \epsilon \over
+%1 - \beta}
+%\geq \int v(\theta, \epsilon') d \, G(\epsilon')]$  and the
+%event $[{\theta+ \epsilon \over 1 - \beta} \geq \int
+%v(\theta,\epsilon') d \, G(\epsilon')) \cup ( \int v(\theta,\epsilon')
+%d \, G(\epsilon') \geq  Q]$.
+% The first event is choosing
+%a career.  The second is choosing a job, conditional on having selected
+%a career.
+%Neal used the model to  approximate and
+%interpret observed career and job switches of young workers.}
+
+
+
+\section{Offer distribution unknown}\label{sec:Offer_distribution}%
+Consider the following modification of the McCall search model.
+An unemployed worker wants to maximize the expected present value of
+$\sum_{t=0}^\infty \beta^t y_t$ where $y_t$ equals wage $w$ when employed and unemployment compensation $c$ when unemployed.
+Each period the worker receives one  offer to work forever at a wage $w$ drawn  from one of two
+ cumulative distribution functions $F$ or $G$, where $F(0)=G(0) = 0$ and $F(B) = G(B) = 1$ for $B > 0$.
+Nature draws from the same distribution, either $F$ or $G$, at all dates and the worker knows this, but he or she does not know whether it is $F$ or $G$.
+ At time $0$ {\it before\/} drawing a wage offer, the worker attaches probability $\pi_{-1} \in (0,1)$ to the distribution being
+ $F$.  We assume that the distributions have densities $f$ and $g$, respectively, and that they have common support.
+Before drawing a wage at time $0$, the  worker thus believes that the density of $w_0$
+is $h(w_0;\pi_{-1}) = \pi_{-1} f(w_0) + (1-\pi_{-1}) g(w_0) $.  After drawing $w_0$, the worker uses Bayes' law to deduce that
+the posterior  probability that the density is $f(w)$ is\NFootnote{The worker's initial beliefs induce a joint probability distribution
+ over a potentially infinite sequence of draws $w_0, w_1, \ldots $.  Bayes' law is simply an application of the laws of
+ probability to compute the conditional distribution of the $t$th draw $w_t$ conditional on $[w_0, \ldots, w_{t-1}]$. Since we assume from the start that the   decision maker {\it knows\/} the joint distribution and the laws of probability, one respectable view is that Bayes' law is less a `theory of learning' than a statement  about the consequences of information inflows for a decision maker who thinks he knows the truth (i.e., a joint probability distribution) from the beginning.}\index{Bayes' Law!with search model}%
+$$\pi_0 = { \pi_{-1} f(w_0) \over \pi_{-1} f(w_0) + (1-\pi_{-1}) g(w_0)} .$$
+More generally,  after observing  $w_t$ for the $t$th draw, the worker believes that
+the probability that $w_{t+1}$ is to be drawn from  distribution  $F$ is
+$$ \pi_t = { \pi_{t-1} f(w_t)/g(w_t) \over \pi_{t-1} f(w_t)/g(w_t) + (1-\pi_{t-1})} \EQN update1 $$
+and that the density of $w_{t+1}$ is
+$$h(w_{t+1};\pi_{t}) = \pi_{t} f(w_{t+1}) + (1-\pi_{t}) g(w_{t+1}) . \EQN distribut_t$$
+\offparens
+Notice that
+$$ \eqalign{  E(\pi_t | \pi_{t-1}) & = \int \Bigl[  { \pi_{t-1} f(w) \over \pi_{t-1} f(w) + (1-\pi_{t-1})g(w)  } \Bigr]
+ \Bigl[ \pi_{t-1} f(w) + (1-\pi_{t-1})g(w) \Bigr]  d w \cr
+& = \pi_{t-1} \int  f(w) dw  \cr
+              & = \pi_{t-1}, \cr}$$
+              \autoparens
+so that the process $\pi_t$ is a {\it martingale\/} bounded by $0$ and $1$. (In the first line in the above string of equalities, the term in the first set of brackets
+is just $\pi_t$ as a function of $w_{t}$, while the term in the second set of brackets is the density of $w_{t}$ conditional
+on $\pi_{t-1}$.) Notice that here we are computing $E(\pi_t | \pi_{t-1})$ under the subjective density described in the second
+term in brackets. It follows from the martingale convergence theorem (see appendix A %\use{app:Ach16}
+of chapter \use{selfinsure}) that $\pi_t$ converges almost surely to a random variable in $[0,1]$.  Practically, this means that  probability one is  attached to   sample paths
+ $\{\pi_t\}_{t=0}^\infty$ that  converge.  However,  different sample  paths can  converge to different limiting values.
+ The limit points of  $\{\pi_t\}_{t=0}^\infty$ as $t \rightarrow +\infty$ thus constitute a random variable with what is in general a non-trivial distribution. \index{martingale!convergence theorem}%
+
+
+
+
+Let $v(w_t,\pi_t)$ be the optimal value of the problem for a previously unemployed worker who has just drawn
+$w$ and updated $\pi$ according to \Ep{update1}.  The Bellman equation is
+$$ v(w, \pi_t) = \max_{{\rm accept, reject}} \biggl\{ {w \over 1-\beta}, c
+  + \beta \int v(w', \pi_{t+1}(w')) h(w'; \pi_t) d w' \biggr\} \EQN Bellman_unknown$$
+subject to \Ep{update1} and \Ep{distribut_t}.
+The state vector is the worker's  current draw $w$ and his post-draw estimate of the probability that the distribution is
+$f$.  The second term on the right side of \Ep{Bellman_unknown} integrates the value function evaluated at next period's state vector  with respect to the worker's subjective
+distribution $h(w'; \pi_t)$ of   next period's draw  $w'$. The value function for next period recognizes
+ that $\pi_{t+1}$ will be updated in a way that depends on $w'$  via Bayes' law as captured by equation \Ep{update1}.
+\auth{Jovanovic, Boyan}%
+Evidently, the optimal policy is to set a reservation wage $\bar w(\pi_t)$ that depends on $\pi_t$.
+
+As an example, we have computed the optimal policy by backward induction assuming that $f$ is a uniform distribution
+on $[0, 2]$ while $g$ is a beta distribution with parameters (3,1.2).\NFootnote{The beta distribution for $w$ is characterized by
+ a density $g(w;\alpha, \gamma) \propto w^{\alpha-1}(1-w)^{(\gamma-1)}$, where the factor of proportionality is chosen to make the
+ density integrate to 1.} \index{beta distribution}%
+ We set unemployment compensation $c=.6$ and
+the discount factor $\beta=.95$.\NFootnote{The matlab programs
+{\tt search\_learn\_francisco\_3.m} and {\tt search\_learn\_beta\_2.m} perform these calculations.} The two densities are plotted
+in figure \Fg{two_densities}, which shows that the  $g$ density provides better prospects for the worker than
+does the uniform $f$ density.  It stands to reason that the worker's reservation wage  falls as the posterior
+probability $\pi$ that he places on density $f$ rises, as figure \Fg{reservation_wage_pi} confirms.
+%\mtlb{search\_learn\_francisco_3.m}%
+\mtlb{search\_learn\_francisco\_3.m}%
+\mtlb{search\_learn\_beta\_2.m}%
+
+
+
+
+\midfigure{two_densities}
+\centerline{\epsfxsize=3true in\epsffile{two_densities.eps}}
+\caption{Two densities for wages,  a uniform $f(w)$ and  $g(w)$ that is  a beta distribution
+with parameters 3, 1.2.}
+\infiglist{two_densities}
+\endfigure
+
+
+
+\midfigure{reservation_wage_pi}
+\centerline{\epsfxsize=3true in\epsffile{reservation_wage_pi.eps}}
+\caption{The reservation wage as a function of the posterior probability $\pi$  that the worker thinks
+that the wage is drawn from the  uniform density $f$.}
+\infiglist{reservation_wage_pi}
+\endfigure
+
+
+Figure \Fg{cdf_graph_search} shows empirical cumulative distribution functions for durations of unemployment and $\pi$ at time of job acceptance under two alternative assumptions about whether
+the uniform distribution $F$ or the beta distribution $G$ permanently governs the wage.
+We constructed these by  simulating   the model 10,000 times at the  parameter values just given, starting from a common  initial condition
+for beliefs
+$\pi_{-1} = .5$ and assuming that, unbeknownst to the worker,  either the uniform density $f(w)$ or the beta density $g(w)$ truly governs successive  wage draws.  Only when $\pi_t$ approaches $1$ will workers have learned
+that nature is drawing from $f$ and not $g$.  Evidently,
+most workers accept jobs long before a law of large numbers has enough time to teach them  for sure which of the two densities from which   nature draws wage offers. Thus, workers usually choose not to collect enough observations for them to learn for sure which distribution governs wage offers.   In both panels, the lower line shows the cumulative distribution function when nature draws from $F$ and the lower panel shows the c.d.f.\ when nature draws from $G$.\NFootnote{It is a useful exercise to use recall  formula \Ep{2.2} for the mean of a nonnegative random variable and then glance at  the CDFs in the bottom panel to approximate  the mean $\pi_t$ at  time of job acceptance.}
+%
+%
+%\midfigure{cdf_graph_search}
+%\centerline{\epsfxsize=3true in\epsffile{cdf_graph_search.eps}}
+%\caption{Top panel: CDF of duration of unemployment; bottom panel: CDF of $\pi$ at time worker accepts wage
+%and leaves unemployment.}
+%\infiglist{cdf_graph_searchs}
+%\endfigure
+
+
+\midfigure{cdf_graph_search}
+\centerline{\epsfxsize=3true in\epsffile{Fig663_2.eps}}
+\caption{Top panel: CDF of duration of unemployment; bottom panel: CDF of $\pi$ at time worker accepts wage
+and leaves unemployment. In each panel, the lower filled line is the CDF when nature permanently draws from the uniform density $f$ while
+the dotted line is the CDF when nature permanently draws from the beta density $g$.}
+\infiglist{cdf_graph_searchs}
+\endfigure
+
+
+A comparison of the CDF's when nature draws from $F$ and $G$, respectively, is revealing.  When $G$ prevails, the cumulative distribution functions in the top panel reveal that workers typically accept jobs earlier
+than when $F$ prevails.  This  captures  what the interrogator of an unemployed  McCall worker in the passage of Lucas cited in the introduction might have had in mind when he said `Maybe you are setting your sights too high'.
+The bottom panel reveals that when nature permanently  draws from  $G$, employed workers put  a higher probability on their having actually sampled from $G$ than from $F$, while the reverse is true when nature draws permanently from $F$.
+
+
+\section{An equilibrium price distribution}
+The McCall search model confronts a worker with a given distribution of wages.  In this section, we ask why firms might conceivably choose to confront an {\it ex ante\/} homogenous collection of  workers with a nontrivial distribution of wages.
+Knowing that the workers have a reservation wage policy, why would a firm ever offer a worker {\it more\/} than the reservation wage?  That
+question challenges us to think about whether it is possible to conceive of a coherent setting in which it would be optimal
+for a collection of  profit maximizing firms somehow to make decisions that generate a distribution of wages.
+
+In this section, we take up this  question, but for historical reasons investigate it in the context of a sequential search model in which buyers seek the lowest price.\NFootnote{See
+Burdett and Mortensen (1998) for a parallel analysis of the analogous issues in a model of job search.}
+\auth{Burdett, Kenneth}%
+\auth{Mortensen, Dale T.}%
+Buyers  can draw additional offers from a known
+distribution at a fixed cost $c$ for each  additional {\it batch}  of $n$  independent draws from a known price distribution. Both within and across  batches, successive draws are independent.  The buyer's optimal
+strategy is to set a  reservation price and to continue drawing until the first time a price less than the reservation price has been offered.
+Let $\tilde p$ be the reservation price.
+\auth{Rothschild, Michael}%
+
+Rothschild (1973)  posed the following challenge  for a model in which there is a large number of identical buyers each of whom has reservation price
+$\tilde p$.  If all sellers know the reservation price $\tilde p$, why would any of them offer a price less than $\tilde p$?  This
+cogent question points to a force for the price distribution to collapse, an outcome that would destroy the motive for search behavior
+on the part of buyers.  Thus, the  challenge is to construct an {\it equilibrium} version of a search model  in which it is
+in firms'  interest to generate  the non-trivial price
+distribution that sustains buyers' search activities.
+
+ Burdett and Judd (1983) met this challenge by creating an environment in which {\it ex ante\/} identical buyers
+{\it ex post\/} receive differing numbers of price offers that are drawn from a common distribution set by firms. They construct an equilibrium
+in which a continuum of profit maximizing sellers are content to generate this distribution of prices.  Sellers set their prices to maximize
+ expected profit per customer. But   sellers don't know the number of other offers that a prospective customer has received.
+   Heterogeneity in the number of offers received by buyers together with seller's ignorance of the number and nature of {\it other\/} offers received by a {\it particular\/} customer
+creates a tradeoff between profit per customer and volume that makes possible a non-degenerate equilibrium price distribution.
+Firms that post higher prices are lower-volume sellers. Firms that post lower prices are higher-volume sellers. There exists an equilibrium
+distribution of prices  in which all types of firms
+expect to earn the same profit per potential customer.
+
+\index{Equilibrium price distribution!Burdett-Judd model}%
+
+\auth{Judd, Kenneth L.}%
+\auth{Burdett, Kenneth}%
+
+\subsection{A Burdett-Judd setup}
+
+A continuum of buyers  purchases a single good from one among  a continuum of firms.  Each firm contacts a fixed measure  $\nu$ of potential
+buyers.  The firms produce a homogeneous
+good at zero marginal cost.  Each firm takes the c.d.f.\  of prices charged by other firms  as given and chooses  a price. The firm
+ wants to maximize its expected profits per consumer.   A firm's expected profit
+per consumer equals its price times the probability that its  price  is the minimum among the set of acceptable offers received by the buyer. The distribution
+of prices set by other firms impinges on a firm's expected profits because it affects the probability that its offer will be accepted by a buyer.
+
+\subsection{Consumer problem with noisy search}
+
+A consumer wants to purchase a good  for a minimum price. Firms make offers that buyers can view as being drawn from a distribution of nonnegative prices
+with cumulative distribution function $G(P) = {\rm Prob} (p \leq P)$ with $G(\underline p ) = 0, G(B) = 1$. Assume that $G$ is continuously differentiable and so has an associated probability density.   A buyer's
+ search activity is divided into batches.  Within each batch the buyer receives a random number of offers drawn from the same distribution $G$.
+% In particular, he
+%  receives one offer with probability $q \in (0,1)$ and two offers with probability $1-q$.
+ Burdett and Judd call
+ this structure `noisy search'.
+ \index{noisy search!Burdett and Judd}%
+ In particular, at a cost of $c>0$ per search round, with
+probability $q \in (0,1)$ a buyer receives one offer drawn from $G$  and with probability $1-q$ receives two offers.  Thus, a `round'
+consists of a `compound lottery' first of a random number of draws, then  that number of i.i.d.\ random draws price offers from the c.d.f.\ $G$.  A buyer
+can  recall
+ offers within a round but not across rounds.
+Evidently, ${\rm Prob} \{\min (p_1, p_2) \geq p\} = (1-G(p))^2$ and $
+{\rm Prob}\{\min (p_1,p_2) \leq p \} = 1 - (1-G(p))^2 $.  Then {\it ex ante\/} the c.d.f.\ of low prices drawn in a single round is
+$$ H(p) = q G(p) + (1-q) (1 - (1-G(p))^2 ) .  \EQN BJ_HCDF $$
+
+Let $v(p)$ be the expected price including future search costs of a consumer who has already paid $c$, has offer $p$ in hand, and is
+about to decide whether to accept or reject the offer. The Bellman equation is
+$$ v(p) = \min_{\rm accept, reject} \Bigl\{ p, c + \int_{\underline p}^B v(p') d H (p')    \Bigr\} . \EQN BJ_Bellman $$
+The reservation price $\tilde p$ satisfies $v(\tilde p) = \tilde p = c + \int_{\underline p}^{\tilde p} p' d H(p') $,
+which implies\NFootnote{The Bellman equation implies $\tilde p = c + \int_{\tilde p}^B v(p') d H(p)$, which can be rearranged to
+become $\int_{\underline p}^{\tilde p} (\tilde p - p) d H(p) = c$. Let $u = \tilde p - p$ and $dv = d H(p)$ and apply the
+integration by parts formula  $\int u dv = u v - \int v du $ to the previous equality to  get $\int_{\underline p}^{\tilde p} H(p) dp = c$.}
+$$ c = \int_{\underline p}^{\tilde p}  H(p) d \, p .  \EQN BJstilde $$
+Combining equation \Ep{BJstilde} with the formula $E p = \int_{\underline p}^{\tilde p} (1-H(p)) d \, p $ for the mean of a nonnegative random variable implies
+that the reservation price $\tilde p$ satisfies
+$$ \tilde p = c + E p, $$
+which states that the reservation price equals the cost of one additional round of  search plus the mean  price drawn from  one more round of noisy search.
+The challenge is to construct an equilibrium price distribution $G$, and thus an implied distribution $H$,
+in which most firms choose to post prices less than the buyer's reservation price $\tilde p$.
+\subsection{Firms}
+For simplicity and  to focus our attention entirely on the search problem,  we assume that the good costs firms nothing to produce.
+In setting its price, we assume that a firm seeks to maximize expected profit per customer.
+A firm makes an offer to a customer without knowing whether this is the only offer available to the  customer or whether
+the customer, having drawn two offers, possibly has a lower offer in hand.   The firm begins by computing  the fraction of its customers who will have received one offer and
+the fraction of its customers who will have received only one offer.
+Let there be a large number $\nu$ of total potential buyers per batch, consisting of $\nu q$ persons each of  whom receives one offer and $\nu (1-q)$ people each of whom receives two offers.
+The total number of offers is evidently $\nu (1 q + 2 (1-q)) = \nu (2-q)$.  Evidently,
+the fraction of all offers that is  received by customers who have received one offer is %the fraction of {\it all\/}  offers received by the firm's potential customers that are  received by people who receive one offer is
+${\frac{\nu q}{\nu(2-q)}} = {\frac{q}{2-q}}$.
+%
+%  Say that the firm faces $N$ potential buyers during that batch.  A fraction $q$ of these potential buyers
+%will have received  one offer and a fraction $(1-q)$ will have received two.
+% %This means that the expected
+%number of offers received per  customer in the pool of potential buyers facing the firm  $q \times 1 + (1-q) \times 2 = 2-q$.  {\bf Tom Fix} When the firm
+This calculation induces a typical firm to believe that  the fraction
+of its  customers who receive one offer is $$\hat q = {\frac{q}{2-q}} \EQN hat_q $$ and the fraction
+who receive two offers is $1 - \hat q = {\frac{2(1-q)}{2 - q}}$. The firm regards $\hat q$ as its estimate of the probability that a given customer has received only its offer, while it
+thinks that a fraction $1-\hat q$ of its customers has  also received a competing offer from another firm.
+
+There is a continuum of firms each of which takes as given  a price offer distribution of other firms  with c.d.f.\ $G(p)$, where
+$G(\underline p) = 0, G(\tilde p) = 1$.  We have assume that  $G$ is differentiable.\NFootnote{Burdett and Judd (1983, p. 959, lemma 1) show that an equilibrium $G$ is differentiable when $q \in (0,1)$ and $\tilde p >0$.  Their argument
+  goes as follows.  Suppose to the contrary that there is a positive probability attached to a single price $p' \in (0, \tilde p)$.  Consider a firm that contemplates charging $p'$. When $q <1$, the firm knows that %there are other firms charging $p'$ and that because $q <1$,
+  there  is a positive
+  probability that a prospective consumer has received another offer also of $p'$.  If the firm lowers its offer infinitesimally, it can expect to steal that customer and thereby increase its expected profits. Therefore,
+   a decision to charge $p'$ can't maximize expected profits for a typical firm. We have been led to a contradiction by assuming that $G$ has a discontinuity at $p'$.} This distribution
+    satisfies  the outcome that in equilibrium no firm  makes an offer exceeding
+the buyer's reservation price $\tilde p$.  Let $Q(p)$ be the probability that a consumer will accept an offer  $p$,
+where $ \underline p \leq p \leq \tilde p$.  Evidently, a consumer who receives {\it one\/} offer  $p < \tilde p$ will accept it
+with probability $1$.  But only  a fraction $1-G(p)$ of consumer who receive {\it two\/} offers will accept an offer  $ p < \tilde p$.  Why?
+because $1 - G(p)$ is the fraction of consumers whose {\it other} offer exceeds $p$; so a fraction $G(p)$ of two-offer customers who receive offer $p$ will reject it because they have received an offer lower
+than $p$.     Therefore,
+the overall probability that a randomly encountered consumer will accept an offer  $ p \in [\underline p, \tilde p]$
+is
+$$ Q(p) = \hat q + (1-\hat q) (1-G(p)) . \EQN BJ_Qformula $$
+
+\subsection{Equilibrium}
+
+The  objects in play are a reservation price $\tilde p$ and  a value function $v(p)$  for a typical buyer; and
+a c.d.f.\ $G(p)$  of prices that is the outcome of the independent price-setting decisions of individual firms and that is   taken as given by all buyers and  sellers.
+
+\medskip
+
+\specsec{Definition:}
+An equilibrium is a c.d.f.\ of price offers $G(p)$ on domain $[\underline p, \tilde p]$, a c.d.f.\ of  per-batch price offers to consumers $H(p)$, and a reservation price $\tilde p$ such that (i) the  c.d.f.\ of offers to buyers  $H(p)$ satisfies  \Ep{BJ_HCDF}; (ii) $\tilde p$
+is an optimal reservation price for buyers that satisfies
+$  c = \int_{\underline p}^{\tilde p} d H(p)  $; and (iii) firms are indifferent with respect to charging any
+$p \in [\underline p, \tilde p]$; therefore, firms choose $p$ by randomizing using $G(p)$.
+
+\medskip
+
+We  confirm  an equilibrium by using a guess-and-verify method.
+Make the following guess for an equilibrium c.d.f.\ $G(p)$.\NFootnote{We can make sure
+that the buyer's search problem is consistent with this guess by setting $c$ to confirm
+\Ep{BJstilde}.} First, set
+$$ \underline p =  \hat q \tilde p % \hat p \tilde q  %{\frac{\hat q \tilde p}{1-q}}
+    \EQN HJ_punderline $$
+and then set
+$$ G(p) = \cases { 0 & if $p \leq \underline p$ \cr
+                   1 - {\frac{\tilde p - p}{p}}{\frac{\hat q}{1-\hat q}} & if $ p \in [\underline p, \tilde p]$ \cr
+                   1 & if $ p > \tilde p$ . \cr } \EQN BJ_Gformula  $$
+Under this guess, $Q(p)$ becomes
+$$ Q(p) =  {\frac{\tilde p \hat q}{p}}
+     \quad \forall p \in [\underline p, \tilde p] .$$
+Therefore, the expected profit per customer for a firm that sets price $p\in [\underline p, \tilde p]$ is
+$$ p Q(p) = \tilde p \hat q ,\EQN BJ_profit $$
+which is evidently independent of the firm's choice of offer  $p$ in the interval $[\underline p, \tilde p]$.
+The firm is indifferent about the price it offers on this interval.
+In particular, notice that
+The right  side of equality \Ep{BJ_profit} is the product of the fraction of a firm's buyers receiving one offer, $\hat q$, times the reservation
+ price $\tilde p$. This is the expected profit per customer of a firm that charges the reservation price.  The left side of
+   equality \Ep{BJ_profit} is the product of the price $p$ times  probability $Q(p)$ that a buyer will accept price $p$, which as we have noted equals
+   the expected profit per customer for a firm that sets price $p$.
+
+  We assume that  firms
+randomize over choices of $p$  in such a way that $G(p)$ given by \Ep{BJ_Gformula} emerges as the c.d.f.\ for prices.
+
+\subsection{Special cases}
+The Burdett-Judd model isolates forces for the price distribution to collapse and
+countervailing forces that can sustain a nontrivial price distribution.
+\medskip
+
+\item{1.} Consider the special case in which $q=1$ (and therefore $\hat q =1$).  Here, $\underline p = \tilde p$. The formula \Ep{BJ_Gformula} shows that the  distribution of prices
+collapses. This case exhibits the  Rothschild challenge with which we began.
+
+\item{2.} Next, consider the opposite special case in which $q=0$ (and therefore $\hat q = 0$).  Here, $\underline p = 0$ and the c.d.f.\  $G(p) = 1 \forall p \in [\underline p, \tilde p]$.
+Bertrand competition drives all prices down to the marginal cost of production, which we have assumed to be zero.
+  This case exhibits another force for the price distribution
+to collapse, again in the spirit of Rothschild's challenge. \index{Bertrand competition}%
+
+\item{3} Finally, consider the general case in which $q \in (0, 1)$ and therefore $\hat q \in (0,1)$).  When $q$ is strictly in the interior of $[\underline p, \tilde p]$, we can sustain a nontrivial
+distribution of prices.  Firms are indifferent between being high volume, low price sellers and high price, low volume sellers.
+The equilibrium price distribution $G(p)$ renders a firm's expected profits per prospective customer $p Q(p)$ independent
+of $p$.
+
+
+\medskip
+
+\section{Jovanovic's matching model}\label{sec:Jov}%
+Another  interesting effort to confront Rothschild's questions about the source of the equilibrium wage (or price) distribution
+comes  from matching models, in which the main idea is to
+reinterpret $w$ not as a wage but instead, more broadly, as a parameter
+characterizing the entire quality of a match occurring between a pair of
+agents.  The variable $w$ is regarded as a summary measure of the
+productivities or utilities jointly generated by the activities of the match.
+We can consider pairs consisting of  a firm and a worker, a man and a woman, a
+house and an owner, or a person and a hobby.  The idea is to analyze the way in
+which matches form and maybe also dissolve by viewing both parties to the match
+as being drawn from populations that are statistically homogeneous to an
+outside observer, even though the match is idiosyncratic from the perspective
+of the parties to the match.
+% \vskip-.3truecm  %patch to fix bad spacing
+
+Jovanovic (1979a)  used a model of this kind supplemented by an hypothesis that both
+sides of a match behave optimally but only gradually learn about the quality
+of the match.  Jovanovic was motivated by a desire to explain three features of
+labor market data: (1) on average, wages rise with tenure on the job, (2) quits
+are negatively correlated with tenure (that is, a quit has a higher probability
+of occurring earlier in tenure than later), and (3) the probability of a
+subsequent quit is negatively correlated with the current wage rate.
+Jovanovic's insight was that each of these empirical regularities could be
+interpreted as reflecting the operation of a matching process with gradual
+learning about match quality.
+
+ We consider a simplified version of Jovanovic's
+model of matching.  (Prescott and Townsend, 1980, describe a discrete-time
+version of Jovanovic's model, which has been simplified here.)  A market has
+two sides that could be variously interpreted as consisting of firms and
+workers, or men and women, or owners and renters, or lakes and fishermen.
+Following Jovanovic, we shall adopt the firm-worker interpretation here.  An
+unmatched worker and a firm form a pair and jointly draw a random match
+parameter $\th$ from a probability distribution with cumulative distribution
+function Prob$\{\th\le s\}=F(s)$.  Here the match parameter reflects the
+marginal productivity of the worker in the match.  In the first period, before
+the worker decides whether to work at this match or to wait and
+to draw a new match next period from the same distribution $F$, the worker and
+the firm both observe only $y=\th+u$, where $u$ is a random noise that is
+uncorrelated with $\th$.  Thus, in the first period, the worker-firm pair
+receives only a noisy observation on $\th$.  This situation corresponds to that
+when both sides of the market form only an error-ridden impression of the
+quality of the match at first.  On the basis of this noisy observation, the
+firm, which is imagined to operate competitively under constant returns to
+scale, offers to pay the worker the conditional expectation of $\th$, given
+$(\th+u)$, for the first period, with the understanding that in subsequent
+periods it will pay the worker the expected value of $\th$, depending on
+whatever additional information both sides of the match
+receive.\NFootnote{Jovanovic
+assumed firms to be risk neutral and to maximize the expected present
+value of profits. They compete for workers by offering wage contracts. In
+a long-run equilibrium the payments practices of each firm would be well
+understood, and this fact would support the described implicit contract as a
+competitive equilibrium.}%
+Given this
+policy of the firm, the worker decides whether to accept the match  and to work
+this period for $E[\th|(\th+u)]$  or to refuse the offer and draw a new match
+parameter $\th'$ and noisy observation on it, $(\th'+u')$, next period.  If
+the worker decides to accept the offer in the first period, then in the second
+period both the firm and the worker are assumed to observe the true value of
+$\th$.  This situation corresponds  to that in which both sides learn about
+each other and about the quality of the match.  In the second period the firm
+offers to pay the worker $\th$ then and forever more.  The worker next decides
+whether to accept this offer or to quit, be unemployed this period, and
+draw a new match parameter and a noisy observation on it next period.
+
+We can conveniently think of this process as having three stages.  Stage 1 is
+the ``predraw'' stage, in which a previously unemployed worker has yet to draw
+the one match parameter and the noisy observation on it that he is entitled to
+draw after being unemployed the previous period.  We let $Q$ denote the
+expected present value of wages, before drawing, of a worker who was unemployed
+last period and who behaves optimally.  The second stage of the process occurs
+after the worker has drawn a match parameter $\th$, has received the noisy
+observation of $(\th+u)$ on it, and has received the firm's wage offer of
+$E[\th|(\th+u)]$ for this period.  At this stage, the worker decides whether
+to accept this wage for this period and the prospect of receiving $\th$ in all
+subsequent periods.  The third stage occurs in the next period, when the worker
+and firm discover the true value of $\th$ and the worker must decide whether to
+work at $\th$ this period and in all subsequent periods that he remains at this
+job (match).
+
+We now add some more specific assumptions about the probability distribution of
+$\th$ and $u$.  We assume that $\th$ and $u$ are independently distributed
+random variables.  Both are normally distributed, $\th$ being normal with
+mean $\mu$ and variance $\sigma_{0}^2$, and $u$ being normal with mean 0 and
+variance $\sigma_u^2$.  Thus, we write
+$$\th\sim N(\mu,\sigma_{0}^2),\qquad u\sim N(0,\sigma_u^2)\ .\EQN thm_dist
+$$
+In the first period, after drawing a $\th$, the worker and firm both observe
+the noise-ridden version of $\th$, $y=\th+u$.  Both worker and firm are
+interested in making inferences about $\th$, given the observation $(\th+u)$.
+They are assumed to use Bayes' law and to calculate the posterior
+probability distribution of $\th$, that is, the probability distribution of
+$\th$ conditional on $(\th+u)$.  The probability distribution of $\th$, given
+$\th+u=y$, is known to be normal, with mean $m_0$ and variance
+$\sigma^2_{1}$. Using the Kalman filtering formula in chapter \use{timeseries},
+we have\NFootnote{In %
+the special case in which random variables are jointly normally distributed, %
+linear least-squares projections equal conditional expectations.}
+$$\eqalign{
+m_0 &= E(\th | y) = E(\th) + {{\rm cov}(\th,y) \over {\rm var}(y) }
+[y - E(y)] \cr
+    &= \mu + {\sigma_{0}^2 \over \sigma_{0}^2 + \sigma_u^2 }
+(y - \mu ) \equiv \mu + K_0 (y - \mu ) \,, \cr
+\sigma_{1}^2 &= E[(\th - m_0)^2 | y]
+= {\sigma_{0}^2 \over \sigma_{0}^2 + \sigma_u^2 }  \, \sigma_u^2
+= K_0 \sigma_u^2 \,. \cr}                                       \EQN{th1_dist}
+$$
+After drawing $\th$ and observing $y=\th+u$ the first period, the firm is
+assumed to offer the worker a wage of $m_0=E[\th|(\th+u)]$ the first period
+and a promise to pay $\th$ for the second period and thereafter.
+The worker has the choice of accepting or rejecting
+the offer.
+
+From equation
+ \Ep{th1_dist} and the property that the random variable $y-\mu=\th+u-\mu$ is
+normal, with mean zero and variance $(\sigma_{0}^2 + \sigma_u^2)$,
+it follows that $m_0$ is
+itself normally distributed, with mean $\mu$ and variance
+$\sigma^4_{0}/(\sigma_{0}^2 + \sigma_u^2) = K_0 \sigma_{0}^2$:
+$$m_0\sim N\left(\mu, K_0 \sigma^2_{0}\right).\EQN m1_dist$$
+Note that $K_0 \sigma^2_{0} < \sigma^2_{0}$, so that
+$m_0$ has the same mean but a smaller variance than $\th$.
+
+\subsection{Recursive formulation and solution}
+
+The worker seeks to maximize the expected present value of wages.  We now
+proceed to solve the worker's problem by working backward.  At stage 3, the
+worker knows $\th$ and is confronted by the firm with an offer to work this
+period and forever more at a wage of $\th$.  We let $J(\th)$ be the expected
+present value of wages of a worker at stage 3 who has a known match $\th$ in
+hand and who behaves optimally.  The worker who accepts the match this period
+receives $\th$ this period and faces the same choice at the same $\th$ next
+period. (The worker can quit next period, though it will turn out that the
+worker who does not quit this period never will.)  Therefore, if the worker
+accepts the match, the value of match $\th$ is given by $\th+\be J(\th)$, where
+$\be$ is the discount factor.  The worker who rejects the match must be
+unemployed this period and must draw a new match next period.  The expected
+present value of wages of a worker who was unemployed last period and who
+behaves optimally is $Q$.  Therefore, the Bellman  equation is
+$J(\th)=\max\{\th+\be J(\th),\be Q\}$.  This equation is graphed in Figure \Fg{powdmt7f}
+%Figure 5.8
+and evidently has the solution
+$$J(\th)=\cases{ \th+\be J(\th) ={\th\over 1-\be} & for $\th\ge \overline
+ \th$\cr
+\be Q & for $\th\le\overline\th$.\cr}\EQN J_stage3$$
+The optimal policy is a reservation wage policy: accept offers $\th\ge
+\overline
+\th$, and reject offers $\th\le\overline\th$, where $\th$ satisfies
+$${\overline\th\over 1-\be} =\be Q.\EQN theta_bar$$
+
+%%%%%%%%%%
+%\topinsert{
+%$$
+%\grafone{powdmt7.eps,height=2.5in,angle=-90}{{\bf Figure 5.8}
+% The function $J(\th)=\max \{\th+\be J(\th),\be Q\}$.  The
+%reservation wage in stage 3, $\overline\th$, satisfies $\overline\th/(1-\be)=\be Q$.}
+%$$
+%}\endinsert
+%%%%%%%%%
+
+\midfigure{powdmt7f}
+\centerline{\epsfxsize=3truein\epsffile{powdmt7new.eps}}
+\caption{The function $J(\th)=\max \{\th+\be J(\th),\be Q\}$.  The reservation
+wage in stage 3, $\overline\th$, satisfies $\overline\th/(1-\be)=\be Q$.}
+\infiglist{powdmt7f}
+\endfigure
+
+
+We now turn to the worker's decision in stage 2, given the decision rule in
+stage 3.  In stage 2, the worker is confronted with a current wage offer $m_0=
+E[\th|(\th+u)]$ and a conditional probability distribution function that we
+write as Prob$\{\th\le s|\th+u\} =F(s|m_0,\sigma_{1}^2)$.  (Because the
+distribution is normal, it can be characterized by the two parameters
+$m_0,\sigma_{1}^2$.)  We let $V(m_0)$ be the expected present value of wages of a
+worker at the second stage who has offer $m_0$ in hand and who behaves
+optimally.  The worker who rejects the offer is unemployed this period and
+draws a new match parameter next period.  The expected present value of this
+option is $\be Q$.  The worker who accepts the offer receives a wage of $m_0$
+this period and a probability distribution of  wages of $F(\th'|m_0,\sigma_{1}^2)$
+for next period.  The expected present value of this option is $m_0+\be \int
+J(\th')dF(\th'|m_0,\sigma_{1}^2)$.  The Bellman equation for the second
+stage therefore becomes
+$$V(m_0)= \max\left\{ m_0+\be \int J(\th') dF(\th'|m_0,\sigma_{1}^2),\be
+Q\right\}.\EQN V1_bellman $$
+
+Note that both $m_0$ and $\be\int J(\th') dF(\th'|m_0,\sigma_{1}^2)$ are increasing
+in $m_0$, whereas $\be Q$ is a constant.  For this reason a reservation wage
+policy will be an optimal one.  The functional equation evidently has the
+solution
+%$$\def\orange{{\eqalign{ m_0+\be \int J(\th') dF (\th'|m_0,\sigma_{1}^2)
+%&\qquad{\rm for}\quad m_0\ge \overline m_0\cr
+%\be Q{\hskip 4.5cm} &\qquad{\rm  for}\quad m_0\le \overline m_0.\cr}}}
+%V(m_0) = \left\{\orange\right.  \EQN V1_solution $$
+$$V(m_0)=\cases{ m_0+\be \int J(\th') dF (\th'|m_0,\sigma_{1}^2)
+&for $m_0\ge \overline m_0$ \cr
+\be Q &  for $m_0\le \overline m_0.$\cr} \EQN V1_solution $$
+If we use equation \Ep{V1_solution},
+ an implicit equation for the reservation wage $\overline m_0$ is
+then
+$$V(\overline m_0) =\overline m_0+\be \int J(\th') dF(\th'|\overline m_0,\sigma_{1}^2)=\be Q.
+\EQN V1_m1bar $$
+Using equations
+\Ep{V1_m1bar} and \Ep{J_stage3}, we shall show that $\overline m_0<\overline\th$, so that the
+worker becomes choosier over time with the firm.  This force makes wages rise
+with tenure.
+
+Using equations \Ep{J_stage3} and \Ep{theta_bar} repeatedly in equation
+ \Ep{V1_m1bar}, we obtain
+$$\eqalign{ \overline m_0&+ \be {\overline\th\over 1-\be} \int_{-\infty}^{\overline\th} dF(\th'|\overline
+m_0,\sigma_{1}^2) +{\be\over 1-\be} \int_{\overline\th}^\infty \th' dF (\th'|\overline
+m_0,\sigma_{1}^2)\cr
+&= {\overline\th\over 1-\be} ={\overline\th\over 1-\be} \int_{-\infty}^{\overline\th} dF (\th'|\overline
+m_0,\sigma_{1}^2)\cr
+&+ {\overline\th\over 1-\be} \int_{\overline\th}^\infty dF (\th'|\overline m_0,\sigma_{1}^2).\cr}$$
+Rearranging this equation, we get
+$$\overline\th \int_{-\infty}^{\overline\th} dF (\th'|\overline m_0,\sigma_{1}^2) -\overline m_0 ={1\over 1-\be}
+\int_{\overline \th}^\infty (\be\th'-\overline\th) dF(\th'|\overline
+m_0,\sigma_{1}^2).\EQN theta_m $$
+Now note the identity
+$$
+\overline\th = \int_{-\infty}^{\overline\th} \overline\th dF(\th'|\overline m_0,\sigma_{1}^2)
++ \left({1\over 1-\be} -{\be\over 1-\be}\right)
+\int_{\overline\th}^\infty \overline\th dF(\th'|\overline m_0,\sigma_{1}^2)\,.
+                                                        \EQN theta_id$$
+Adding equation \Ep{theta_id} to
+\Ep{theta_m} gives
+$$\overline\th -\overline m_0 ={\be\over 1-\be} \int_{\overline\th}^\infty (\th'-\overline\th) dF
+(\th'|\overline m_0,\sigma_{1}^2).\EQN theta_meq$$
+The right side of equation
+ \Ep{theta_meq} is positive.  The left side is therefore also
+positive, so that we have established that
+$$\overline\th >\overline m_0.\EQN theta_mineq$$
+Equation \Ep{theta_meq} resembles equation \Ep{2.16} and has
+a related interpretation.  Given $\overline\th$ and $\overline m_0$, the right side is
+the expected benefit of a match $\overline m_0$, namely, the expected present value
+of the match in the event that the match parameter eventually turns out to
+exceed the reservation match $\overline\th$ so that the match endures.  The left
+side is the one-period cost of temporarily staying in a match paying less than
+the eventual reservation match value $\overline\th$: having remained unemployed  for
+a period in order to have the privilege of drawing the match parameter $\th$,
+the worker has made an investment to acquire this opportunity and must make a
+similar investment to acquire a new one.  Having only the noisy observation of
+$(\th+u)$ on $\th$, the worker is willing to stay in matches $m_0$ with $\overline
+m_0<m_0<\overline\th$ because it is worthwhile to speculate that the match is really
+better than it seems now and will seem next period.
+
+Now turning briefly to stage 1, we have defined $Q$ as the predraw expected
+present value of wages of a worker who was unemployed last period and who is
+about to draw a match parameter and a noisy observation on it.  Evidently, $Q$
+is given by
+$$Q=\int V(m_0) dG \left(m_0|\mu, K_0 \sigma^2_{0}\right)\EQN Q_value$$
+where $G(m_0|\mu,K_0 \sigma^2_{0})$ is the normal distribution with mean
+$\mu$ and variance $K_0 \sigma^2_{0}$, which, as we saw before, is the
+distribution of $m_0$.
+
+Collecting some of the equations, we see that the worker's optimal policy is
+determined by
+$$J(\th) =\cases{ \th+\be J(\th) ={\th\over 1-\be} & for $\th\ge\overline\th$\cr
+\be Q & for $\th\le\overline \th$\cr}\EQN J_stage3$$
+
+%$$ \def\orangee{{\eqalign{m_0+\be \int J(\th') dF (\th'|m_0, \sigma^2_{1})
+%&\qquad{\rm for}\quad m_0\ge \overline m_0\cr
+%\be Q{\hskip 4.5cm} &\qquad{\rm for}\quad m_0\le \overline m_0.\cr}}}
+%V(m_0) = \left\{\orangee\right. \EQN V1_solution$$
+$$ V(m_0) = \cases{ m_0+\be \int J(\th') dF (\th'|m_0, \sigma^2_{1})
+& for $m_0\ge \overline m_0$ \cr
+\be Q & for $m_0\le \overline m_0$\cr}
+ \EQN V1_solution $$
+$$\overline\th -\overline m_0 ={\be\over 1-\be} \int_{\overline\th}^\infty (\th'-\overline\th) dF
+(\th'|\overline m_0, \sigma^2_{1})\EQN theta_meq$$
+$$Q=\int V(m_0) dG \left(m_0|\mu, K_0 \sigma^2_{0} \right).\EQN Q_value$$
+To analyze formally the existence and uniqueness of a solution to these
+equations, one would proceed as follows.  Use equations \Ep{J_stage3},
+\Ep{V1_solution}, and \Ep{theta_meq} to
+write a single functional equation in $V$,
+%\ninepoint{
+%$$\EQNalign{ V(m_0)& =\max \left\{ m_0+\be \int \max \left[ {\th\over 1-\be},
+%\be \int V(m'_1)
+%dG \left( m'_1|\mu, K_0 \sigma^2_{0} \right)\right] dF
+%(\th|m_0, \sigma^2_{1}) ,cr
+%&\be \int V(m'_1) dG \left( m'_1|\mu, K_0 \sigma^2_{0}\right)\right\}.\cr} $$  }%\endninepoint
+\offparens
+$$\eqalign{ V(m_0) =& \max \Biggl\{ m_0+\be \int \max \Biggl[ {\th\over 1-\be}\;,
+ \Biggr.\Biggr.\cr
+& \hskip1cm    \Biggl.
+\be \int V(m'_1) dG \left( m'_1|\mu, K_0 \sigma^2_{0} \right)\Biggr] dF
+(\th|m_0, \sigma^2_{1}) \;,  \cr
+&  \hskip1cm  \Biggl.    \be \int V(m'_1) dG \left( m'_1|\mu, K_0 \sigma^2_{0}\right)
+                                                              \Biggr\}.\cr}$$
+\autoparens
+
+The expression on the right defines an operator, $T$, mapping continuous
+functions $V$ into continuous functions $TV$.  This
+ functional equation can
+be expressed $V=TV$.  The operator $T$ can be directly verified to satisfy the
+following two properties: (1) it is monotone, that is, $v(m)\ge z(m)$ for all
+$m$ implies $(Tv) (m) \ge (Tz)(m)$ for all $m$; (2) for all positive constants
+$c$, $T(v+c)\le Tv+\be c$.  These are Blackwell's sufficient conditions
+for the functional equation $Tv=v$ to have  a unique continuous solution. See
+Appendix \use{functional} on functional analysis (see Technical Appendixes).
+\auth{Blackwell, David}
+
+\subsection{Endogenous statistics}
+
+We now proceed to calculate probabilities and expectations of some interesting
+events and variables.  The probability that a previously unemployed worker
+accepts an offer is given by
+$${\rm Prob} \{m_0\ge\overline m_0\} = \int_{\overline m_0}^\infty dG (m_0|\mu,
+K_0 \sigma^2_{0}).$$
+The probability that a previously unemployed worker accepts an offer and then
+quits the second period is given by
+$$
+{\rm Prob} \{(\th\le\overline\th)\cap (m_0\ge \overline m_0)\} =\int_{\overline m_0}^\infty
+\int_{-\infty}^{\overline\th} dF(\th|m_0, \sigma^2_{1})
+dG (m_0|\mu, K_0 \sigma^2_{0}).$$
+The probability that a previously unemployed worker accepts an offer the first
+period and also elects not to quit the second period is given by
+$${\rm Prob} \{(\th\ge\overline \th)\cap (m_0\ge\overline m)\} =\int_{\overline m_0}^\infty
+\int_{\overline\th}^\infty dF (\th|m_0, \sigma^2_{1})
+dG (m_0|\mu, K_0 \sigma^2_{0}).$$
+
+The mean wage of those employed the first period is given by
+$$
+\overline w_1 \;=\; { \displaystyle \int_{\overline m_0}^\infty m_0
+                                    \, dG(m_0 \vert \mu, K_0 \sigma^2_{0})
+         \over \displaystyle \int_{\overline m_0}^\infty
+                                    \, dG(m_0 \vert \mu, K_0 \sigma^2_{0}) },
+\EQN w1_avg
+$$
+whereas the mean wage of those workers who are in the second period of tenure
+is given by
+$$
+\overline w_2 \;=\; { \displaystyle \int_{\overline m_0}^\infty
+                 \int_{\overline \theta}^\infty \theta
+                             \, dF(\theta \vert m_0, \sigma_{1}^2)
+                             \, dG(m_0 \vert \mu, K_0 \sigma^2_{0})
+         \over \displaystyle \int_{\overline m_0}^\infty
+                 \int_{\overline \theta}^\infty
+                             \, dF(\theta \vert m_0, \sigma_{1}^2)
+                             \, dG(m_0 \vert \mu, K_0 \sigma^2_{0})     }.
+\EQN w2_avg
+$$
+
+We shall now prove that $\overline w_2 > \overline w_1$, so that wages rise with
+tenure. After substituting
+$m_0 \equiv \int \theta dF(\theta \vert m_0, \sigma_{1}^2)$ into  equation
+\Ep{w1_avg},
+$$
+\eqalign{
+&\overline w_1 \;=\; { \displaystyle \int_{\overline m_0}^\infty
+                 \int_{-\infty}^\infty \theta
+                             \, dF(\theta \vert m_0, \sigma_1^2)
+                             \, dG(m_0 \vert \mu, K_0 \sigma^2_0)
+         \over \displaystyle \int_{\overline m_0}^\infty
+                                \, dG(m_0 \vert \mu, K_0 \sigma^2_0) } \cr
+&=\; { \displaystyle 1 \over \displaystyle \int_{\overline m_0}^\infty
+                                \, dG(m_0 \vert \mu, K_0 \sigma^2_0) }
+\Biggr\{
+         \int_{\overline m_0}^\infty
+                 \int_{-\infty}^{\overline \theta} \theta
+                             \, dF(\theta \vert m_0, \sigma_1^2)
+                             \, dG(m_0 \vert \mu, K_0 \sigma^2_0)  \cr
+%\Biggr\{
+%         {\displaystyle \int_{\overline m_0}^\infty
+%                 \int_{-\infty}^{\overline \theta} \theta
+%                             \, dF(\theta \vert m_0, \sigma_1^2)
+%                             \, dG(m_0 \vert \mu, K_0 \sigma^2_0)
+%         \over \displaystyle \int_{\overline m_0}^{\infty}
+%                 \int_{-\infty}^{\overline \theta}
+%                             \, dF(\theta \vert m_0, \sigma_1^2)
+%                             \, dG(m_0 \vert \mu, K_0 \sigma^2_0)     }  \cr
+%%\noalign{\vskip.2cm}
+%&\hskip4cm \cdot \int_{\overline m_0}^{\infty} \, \int_{-\infty}^{\overline \theta}
+%                             \, dF(\theta \vert m_0, \sigma_1^2)
+%                             \, dG(m_0 \vert \mu, K_0 \sigma^2_0)         \cr
+%\noalign{\vskip.2cm}
+&\;\hskip3.5cm  \;+\; \overline w_2 \,
+                  \int_{\overline m_0}^{\infty} \, \int_{\overline \theta}^{\infty}
+                             \, dF(\theta \vert m_0, \sigma_1^2)
+                             \, dG(m_0 \vert \mu, K_0 \sigma^2_0)
+                                                   \Biggr\} \cr
+%\noalign{\vskip.5cm}
+%&<\;{ \displaystyle 1 \over \displaystyle \int_{\overline m_0}^{\infty}
+%                                        \, dG(m_0 \vert \mu, K_0 \sigma^2_0) }
+%\Biggl\{ \overline \theta \,
+%                 \int_{\overline m_0}^{\infty} \, \int_{-\infty}^{\overline \theta}
+%                             \, dF(\theta \vert m_0, \sigma_1^2)
+%                             \, dG(m_0 \vert \mu, K_0 \sigma^2_0)    \cr
+%&\hskip2.5cm \;+\; \overline w_2 \,
+%                  \int_{\overline m_0}^{\infty} \, \int_{\overline \theta}^{\infty}
+%                             \, dF(\theta \vert m_0, \sigma_1^2)
+%                             \, dG(m_0 \vert \mu, K_0 \sigma^2_0)
+%                                                   \Biggr\} \cr
+&<\; { \displaystyle \int_{\overline m_0}^\infty
+                 \Bigl\{ \overline \theta \, F(\overline \theta \vert m_0, \sigma_1^2)
+                    \,+\, \overline w_2 [1 - F(\overline \theta \vert m_0, \sigma_1^2)] \Bigr\}
+                             \, dG(m_0 \vert \mu, K_0 \sigma^2_0)
+         \over \displaystyle \int_{\overline m_0}^{\infty}
+                                \, dG(m_0 \vert \mu, K_0 \sigma^2_0) } \cr
+&<\; \overline w_2. \cr }
+$$
+It is quite intuitive that the mean wage of those workers who are in the
+second period of tenure must exceed the mean wage of all employed in the
+first period. The former group is a subset of the latter group where
+workers with low productivities, $\theta<\overline \theta$, have left.
+Since the mean wages are equal to the true average productivity in
+each group, it follows that $\overline w_2 > \overline w_1$.
+
+The model thus implies that ``wages rise with tenure,'' both in the sense that
+mean wages rise with tenure and in the sense that $\overline\th>\overline m_0$, which
+asserts that the lower bound on second-period wages exceeds the lower bound on
+first-period wages.  That wages rise with tenure was observation 1 that
+Jovanovic sought to explain.
+
+Jovanovic's model also explains observation 2, that quits are negatively
+correlated with tenure.  The model implies that quits occur between the first
+and second periods of tenure.  Having decided to stay for two periods, the
+worker never quits.
+
+The model also accounts for observation 3, namely, that the probability of a
+subsequent quit is negatively correlated with the current wage rate.  The
+probability of a subsequent quit is given by
+$${\rm Prob}\{\th'<\overline\th|m_0\} =
+F(\overline \th|m_0,\sigma_1^2),$$
+which is evidently negatively correlated with $m_0$, the first-period wage.
+Thus, the model explains each observation that Jovanovic sought to interpret.
+In the version of the model that we have studied, a worker eventually becomes
+permanently matched with probability 1.  If we were studying a population of
+such workers of fixed size, all workers would eventually be absorbed into the
+state of being permanently matched.  To provide a mechanism for replenishing
+the stock of unmatched workers, one could combine Jovanovic's model
+with the ``firing'' model in section \use{firing}.
+  By letting matches $\th$
+``go bad'' with probability $\la$ each period, one could presumably modify
+Jovanovic's model to get the implication that, with a fixed population of
+workers, a fraction would remain unmatched each period because of the
+dissolution of previously acceptable matches.
+
+\section{A longer horizon version of Jovanovic's model}
+
+Here we consider a $T+1$ period
+version of Jovanovic's model, in which learning about the quality of the match
+continues for $T$ periods before the quality of the match is revealed by
+``nature.''  (Jovanovic assumed that $T = \infty$.)  We use the
+recursive projection technique (the Kalman filter)
+ of chapter \use{timeseries} to handle the firm's and
+worker's sequential learning. The prediction of
+the true match quality can then easily be updated with each additional
+noisy observation.
+
+A firm-worker pair jointly draws a match parameter $\theta$ at the start of
+the match, which we call the beginning of period 0.
+The value $\theta$ is revealed to the pair only at the beginning
+of the $(T+1)$th period of the match.  After $\theta$ is drawn but before the
+match is consummated, the firm-worker pair observes $y_0=\theta +u_0$, where
+$u_0$ is random noise.
+At the beginning of each period of the match, the worker-firm pair
+draws another noisy observation $y_t =\theta +u_t$ on the match parameter
+$\theta$.  The worker then decides whether or not to continue the match for
+the additional period.  Let $y^t = \{y_0, \ldots , y_t\}$ be the
+firm's and worker's information set at time $t$. We assume that
+$\theta$ and $u_t$ are independently distributed random variables with
+$\theta\sim {\cal N} (\mu,\Sigma_0)$
+and $u_t\sim {\cal N} (0,\sigma^2_u)$.  For  $t \geq 0$ define
+$m_t  = E [\theta \vert y^t]$ and $m_{-1} = \mu$.
+ The conditional
+means $m_{t} $  and variances $E ( \theta - m_{t})^2 = \Sigma_{t+1}$
+ can be computed with the Kalman filter via the formulas from
+chapter \use{timeseries}:
+$$\EQNalign{ m_t &  = (1-K_t) m_{t-1} + K_t y_t \EQN kalman6;a \cr
+            K_t & = {\Sigma_t \over \Sigma_t + R} \EQN kalman6;b \cr
+           \Sigma_{t+1} & = {\Sigma_t R \over \Sigma_t + R},
+ \EQN kalman6;c \cr}
+        $$
+where $R = \sigma_u^2$
+ and $\Sigma_0$ is the unconditional
+variance of $\theta$.
+The recursions are  to be initiated from
+$m_{-1} =  \mu$, and given $ \Sigma_0$.
+
+Using the formulas from  chapter \use{timeseries}, we have that
+conditional on $y^t$,
+ $m_{t+1} \sim {\cal N}(m_t, K_{t+1} \Sigma_{t+1})$ and $\theta \sim
+ {\cal N}(m_t, \Sigma_{t+1})$
+ where $\Sigma_0$ is the unconditional
+variance of $\theta$.
+
+%%%%%%%%%%%
+
+\subsection{The Bellman equations}
+
+For $t\geq 0$, let $v_t(m_t)$ be the value of the worker's problem at the
+beginning of period $t$ for a worker who optimally estimates that the match
+value is $m_t$ after having observed $y^t$.   At the start of
+period $T+1$, we suppose
+that the value of the match is revealed without error. Thus, at time
+$T$, $\theta \sim {\cal N}(m_T, \Sigma_{T+1})$.
+The firm-worker pair
+estimates $\theta$ by $m_t$ for $t=0,\ldots,
+T$, and by $\theta$ for $t\geq T+1$.  Then the following functional
+equations characterize the solution of the problem:
+$$\EQNalign{ v_{T+1}(\theta) &= \max \left\{ {\theta\over 1-\beta},\beta Q\right\}\,,
+\EQN v_last \cr
+v_T (m) &=\max \Bigl\{m +\beta\int v_{T+1} (\theta) dF (\theta\mid m,
+\Sigma_{T+1}), \, \beta Q\Bigr\}\,,                               \EQN v_2ndlast \cr
+v_t (m) &=\max \Bigl\{ m+\beta\int v_{t+1} (m^\prime) dF (m^\prime\vert m,
+K_{t+1} \Sigma_{t+1}),\,\beta Q\Bigr\}\,, \cr
+&\hskip6cm  t=0,\ldots,T-1,    \hskip1cm           \EQN vv_t \cr
+Q&=\int v_0 (m) dF (m \vert \mu,K_0 \Sigma_0)\,,        \EQN QQ \cr}$$
+with $K_t$ and $\Sigma_t$ from the Kalman filter.
+Starting from $v_{T+1}$ and reasoning backward, it is evident that
+the worker's optimal policy is to set reservation wages
+$\overline m_t, t=0,\ldots, T$ that satisfy
+$$\EQNalign{
+&\overline m_{T+1} = \overline \th = \beta (1-\beta)Q \,, \cr
+&\overline m_T + \beta\int v_{T+1}(\th) dF(\th\vert \overline m_T,\Sigma_{T+1}) = \beta Q
+\,,                                                                        \EQN mm_bar \cr
+&\overline m_t +\beta\int v_{t+1}(m^\prime) dF(m^\prime\mid \overline m_t,
+K_{t+1} \Sigma_{t+1}) = \beta Q \,,
+\hskip .5cm
+t=1,\ldots,T-1\,. \hskip1cm \cr}  $$
+
+To compute a solution to the worker's problem, we can define a mapping
+from $Q$ into itself, with the property that a fixed point of the
+mapping is the optimal value of $Q$. Here is an algorithm:
+\medskip
+\noindent{\bf a.} \ Guess a value of $Q$,  say $Q^i$ with $i=1$.
+
+\noindent{\bf b.} Given $Q^i$, compute sequentially the value functions in
+equations \Ep{v_last} through \Ep{vv_t}. Let the solutions be denoted
+$v_{T+1}^i(\th)$ and $v_{t}^i(m)$ for $t=0,\ldots , T$.
+
+\noindent{\bf c.} \ Given $v_1^i(m)$, evaluate equation
+ \Ep{QQ} and call the solution
+$\tilde Q^i$.
+
+\noindent{\bf d.} For a fixed ``relaxation parameter'' $g \in (0,1)$, compute
+a new guess of $Q$ from
+$$
+Q^{i+1} = g Q^i + (1-g) \tilde Q^i\,.
+$$
+
+\noindent{\bf e.} \ Iterate on this scheme to convergence.
+
+\medskip
+
+We now turn to the case where the true $\th$ is never revealed by
+nature, that is, $T=\infty$. Note that
+$(\Sigma_{t+1})^{-1} = (\sigma_u^2)^{-1} + (\Sigma_{t})^{-1}$,
+so $\Sigma_{t+1} < \Sigma_{t}$ and $\Sigma_{t+1} \rightarrow 0$
+as $t \rightarrow \infty$. In other words, the accuracy of the
+prediction of $\th$ becomes arbitrarily good as the information
+set $y^t$ becomes large. Consequently, the
+firm and worker eventually learn the true $\th$, and
+the value function  ``at infinity'' becomes
+$$v_{\infty}(\theta) = \max \left\{ {\theta\over 1-\beta},\beta Q\right\}\,,
+$$
+and the Bellman equation for any finite tenure $t$ is given by
+equation \Ep{vv_t}, and $Q$ in equation \Ep{QQ} is the value of an unemployed
+worker. The optimal policy is a reservation wage $\overline m_t$,
+one for each tenure $t$. In fact, in the absence of a final date $T+1$
+when $\th$ is revealed by nature, the solution is
+actually a time-invariant policy function $\overline m(\sigma_t^2)$
+with an acceptance and a rejection region in the space
+of $(m, \sigma^2)$.
+
+
+To compute a numerical solution when $T=\infty$, we would still
+have to rely on the procedure that we have  outlined based on the
+assumption of some finite date
+when the true $\th$ is revealed,  say in period $\hat T+1$.
+The idea is to choose a sufficiently large $\hat T$ so that the
+conditional variance of $\th$ at time $\hat T$, $\sigma_{\hat T}^2$,
+is close to zero. We then examine the approximation that $\sigma_{\hat T+1}^2$
+is equal to zero. That is,
+equations \Ep{v_last} and \Ep{v_2ndlast} are used to truncate an otherwise
+infinite series of value functions.
+
+\section{Concluding remarks}
+
+The situations analyzed in this chapter are ones in which a currently
+unemployed worker rationally chooses to refuse an offer to work, preferring to
+remain unemployed today in exchange for better prospects tomorrow.  The worker
+is voluntarily unemployed \index{unemployment!voluntary}%
+ in one sense, having chosen to reject the current
+draw from the distribution of offers.  In  this model, the activity of
+unemployment is an investment incurred to improve the situation faced in the
+future.  A theory in which unemployment is voluntary
+permits an analysis of the forces impinging on the choice to remain
+unemployed.  Thus we can study the response of the worker's decision rule to
+changes in the distribution of offers, the rate of unemployment compensation,
+the number of offers per period, and so on.
+
+Chapter \use{uninsur1}
+ studies the optimal design of unemployment compensation.
+That issue is a trivial one in the present chapter with risk-neutral
+agents and no externalities. Here the government should avoid any
+policy that affects the workers' decision rules since it would
+harm efficiency, and the first-best way of pursuing distributional
+goals is through lump-sum transfers. In contrast, chapter
+\use{uninsur1} assumes
+risk-averse agents and incomplete insurance markets, which together with
+information asymmetries, make for an intricate contract design problem in
+the provision of unemployment insurance.
+
+Chapter \use{search2}
+ presents various equilibrium models of search and matching.
+We study workers searching for jobs in an island model, workers and firms
+forming matches in a model with a ``matching function,'' and how a medium
+of exchange can overcome the problem of ``double coincidence of wants'' in
+a search model of money.
+
+\appendix{A}{More numerical dynamic programming}\label{searchA}%
+This appendix describes two more  examples  using the numerical
+methods of chapter \use{practical}.
+
+ \index{search model}
+\subsection{Example 4: search}
+ An unemployed worker
+wants to maximize $E_0 \sum_{t=0}^\infty \beta^t y_t$
+where $y_t=w$ if the worker is employed at wage $w$,
+ $y_t= 0$ if the worker is unemployed, and $\beta \in (0,1)$.
+  Each period an
+unemployed worker draws a  positive wage from a discrete-state Markov chain
+with transition matrix $P$. Thus,
+  wage offers evolve according to a Markov process with transition
+probabilities given by
+$$ P(i,j) = {\rm Prob}(w_{t+1}=\tilde w_j \vert
+             w_t = \tilde w_i).$$
+Once he accepts an offer, the worker  works forever at
+the accepted wage.  There is no firing or quitting.
+Let $v$ be an $(n \times 1)$ vector of values $v_i$ representing
+the optimal value of the problem for a worker who
+has offer $w_i, i = 1,\ldots, n$ in hand and who behaves optimally.
+The Bellman equation is
+$$ v_i = \max_{\rm accept,  reject} \left\{ {w_i \over 1 - \beta},
+  \beta \sum_{j=1}^n P_{ij} v_j  \right\}$$
+or
+$$ v = \max\{\tilde w / (1-\beta), \beta P v\}.$$
+Here $\tilde w$ is an $(n \times 1)$ vector of possible wage
+values. This matrix equation can be solved using the numerical
+procedures described earlier.   The optimal policy
+depends on the structure of the Markov chain $P$.   Under
+restrictions on $P$ making $w$ positively
+serially correlated, the optimal policy
+has the following reservation wage form: there is a $\overline w$ such that
+the worker should  accept an offer $w$
+if $w \geq \overline w$.
+  \auth{Jovanovic, Boyan}
+\subsection{Example 5: a Jovanovic model}
+Here is a simplified version of the search model
+of Jovanovic (1979a).
+  A newly unemployed worker draws a job offer from a distribution
+given by $\mu_i={\rm Prob}(w_1 = \tilde w_i)$, where
+$w_1$ is the first-period wage.  Let $\mu$ be
+the $(n \times 1)$ vector with $i$th component $\mu_i$.
+After an offer is drawn, subsequent wages associated
+with the job evolve according to a Markov chain with time-varying
+transition matrices
+$$ P_t(i,j) = {\rm Prob}( w_{t+1} = \tilde w_j \vert w_t = \tilde w_i),$$
+for $t=1, \ldots,T$. We assume that for times $t > T$, the
+transition matrices $P_t =I$, so that after $T$ a job's wage does not
+change anymore with the passage of time.  We specify
+the $P_t$ matrices to capture the idea that the worker-firm
+pair is learning more about the quality of the match with
+the passage of time.  For example, we
+might set
+$$ P_t =\left[\matrix{1- q^t & q^t &0 &0& \ldots &0 & 0\cr
+                       q^t  & 1-2q^t & q^t & 0 & \ldots &0 & 0 \cr
+                       0 & q^t & 1-2q^t & q^t & \ldots & 0 & 0 \cr
+                       \vdots & \vdots & \vdots & \vdots & \vdots & \vdots &
+                                          \vdots \cr
+                       0 & 0 & 0 & 0 & \ldots & 1-2q^t & q^t \cr
+                       0 & 0 & 0 & 0& \ldots & q^t & 1-q^t \cr}\right],$$
+where $q \in (0,1).$  In the following numerical examples, we
+use a slightly more general form of transition matrix
+in which (except at endpoints of the distribution),
+ $$ \eqalign{ {\rm Prob}(w_{t+1}  = \tilde w_{k\pm m} \vert w_t  =
+     \tilde w_k)
+& = P_t(k,k\pm m) = q^t \cr
+P_t(k,k) & = 1 -2q^t. \cr} \EQN modelT $$
+Here $m\geq 1$
+is a parameter that indexes the spread of the distribution.
+
+
+At the beginning of each period, a previously matched
+worker is exposed with probability $\lambda \in (0,1)$ to
+the event that the match dissolves.
+  We then have a set of Bellman equations
+$$ v_t = \max\{\tilde w + \beta (1-\lambda) P_t v_{t+1}
+    + \beta \lambda Q, \beta Q + \overline c\}
+    ,\EQN ob2;a$$
+for $t=1, \ldots, T,$ and
+$$ v_{T+1} = \max\{\tilde w + \beta (1-\lambda) v_{T+1} +
+    \beta \lambda Q,\beta Q + \overline c\}
+     ,\EQN ob2;b$$
+$$\eqalign{ Q &=  \mu' v_1 \otimes {\bf 1} \cr
+           \overline c & = c \otimes {\bf 1}  \cr }$$
+where $\otimes$ is the \idx{Kronecker product}, and ${\bf 1}$ is
+an $(n \times 1)$ vector of ones.
+These equations can be solved by using calculations of the
+kind described previously.  The optimal policy is to
+set a sequence of reservation wages $\{\overline w_j\}_{j=1}^T$.
+
+%%\subsection{Wage distributions}
+
+\vskip.5cm
+\medskip
+\noindent{\bf Wage distributions}
+\smallskip
+\noindent
+We can use recursions to compute  probability distributions of wages
+at tenures $1, 2, \ldots, n$.
+Let the reservation wage for tenure $j$ be $\overline w_j \equiv
+\tilde w_{\rho(j)}$, where $\rho(j)$ is the index associated
+with the cutoff wage.
+For $i \geq \rho(1)$, define
+$$\delta_1 (i) = {\rm Prob}\, \{ w_1 = \tilde w_i\mid w_1 \geq \overline w_1\}
+ = {\mu_i\over \sum^n_{h=\rho(1)} \mu_h}.$$
+Then
+$$\gamma_2 (j) = {\rm Prob}\, \{ w_2 = \tilde w_j \mid w_1 \geq \overline w_1\} =
+\sum^n_{i=\rho(1)}\ P_1 (i,j) \delta_1(i).$$
+For $i \geq \rho(2)$,
+define
+$$\delta_2 (i) = {\rm Prob}\, \{w_2 = \tilde w_i \mid w_2
+      \geq \overline w_2 \cap w_1 \geq \overline w_1\}$$
+or
+$$\delta_2 (i) = {\gamma_2 (i)\over \sum^n_{h = \rho(2)} \gamma_2(h)}.$$
+Then
+$$\gamma_3 (j) = {\rm Prob}\, \{ w_3 = \tilde
+    w_j \mid w_2 \geq \overline w_2 \cap w_1 \geq \overline w_1\}
+= \sum^n_{i=\rho(2)} P_2 (i, j) \delta_2 (i).$$
+Next, for $i \geq \rho(3)$,
+define $\delta_3(i) = {\rm Prob}\, \{w_3 = \tilde w_i \mid (w_3 \geq \overline w_3)
+    \cap (w_2 \geq \overline w_2) \cap (w_1 \geq \overline w_1)\}$.
+Then
+$$\delta_3(i) = {\gamma_3 (i)\over \sum^n_{h =  \rho(3)}\gamma_3 (h)} . $$
+Continuing in this way, we can define the wage
+distributions $\delta_1(i), \delta_2(i),\hfil\break
+\delta_3(i),\ldots$.  The mean wage at tenure $k$ is given by
+$$\sum_{i\geq \rho(k)} \tilde w_i \delta_k (i).$$
+
+%\subsection{Separation probabilities}
+
+\vskip.5cm
+\medskip
+\hbox{}
+\noindent{\bf Separation probabilities}
+\smallskip
+\noindent
+The probability of rejecting a first period offer is
+$Q(1) = \sum_{h < \rho(1)} \mu_h$.  The probability of separating
+at the beginning of period $j \geq 2$ is
+$ Q(j) = \sum_{h<\rho(j)} \gamma_j (h).$
+
+%\subsection{Numerical examples}
+
+\vskip.5cm
+\medskip
+\noindent{\bf Numerical examples}
+\smallskip
+\noindent
+  Figures \Fg{jov1newf}, \Fg{jov2newf}, and \Fg{jov3newf} %5.9, 5.10, and 5.11
+  report some numerical results for three
+versions of this model.  For all versions, we set $\beta=.95, c=0,
+q=.5$, and $T+1=21$.  For all three examples,
+we used a wage grid with $60$  equispaced points on
+the interval $[0,10]$.
+
+   For the initial distribution $\mu$ we used the uniform distribution.
+We used a sequence of transition
+matrices of the form \Ep{modelT}, with a ``gap'' parameter of $m$.
+For the first example, we set $m=6$ and $\lambda=0$, while
+the second sets $m=10$ and $\lambda=0$ and third sets
+$m=10$ and $\lambda=.1$.
+
+   Figure \Fg{jov1newf} %Figure 5.9
+   shows the reservation wage falls as $m$ increases
+from 6 to 10, and that it falls further when the probability
+of being fired $\lambda$ rises from zero to .1.  Figure  \Fg{jov2newf}
+% Figure5.10
+shows the same pattern for average wages.  Figure \Fg{jov3newf} %Figure 5.11
+displays quit probabilities for the first two models.  They
+fall with tenure, with shapes and heights that depend  to
+some degree on $m, \lambda$.
+
+
+%%%%%%%%%
+%$$
+%\grafone{jov1new.ps,height=2.5in}{{\bf Figure 5.9} Reservation
+%wages as function of tenure for model with three different
+%parameter settings $[m=6, \lambda=0]$ (the dots),
+%$[m=10, \lambda=0]$ (the line with circles), and
+%$[m=10, \lambda=.1]$ (the dashed line).}
+%$$%%%%%%
+
+\midfigure{jov1newf}
+\centerline{\epsfxsize=3truein\epsffile{jov1new.ps}}
+\caption{Reservation wages as a function of tenure for model with three
+different parameter settings $[m=6, \lambda=0]$ (the dots),
+$[m=10, \lambda=0]$ (the line with circles), and
+$[m=10, \lambda=.1]$ (the dashed line).}
+\infiglist{Jov1new}
+\endfigure
+
+%%%%%%
+%\topinsert{
+%$$\grafone{jov2new.ps,height=2.5in}{{\bf Figure 5.10} Mean wages as function
+%of tenure for
+%model with three different parameter settings $[m=6,\lambda=0]$
+%(the dots), $[m=10, \lambda=0]$ (the line with circles), and
+%$[m=10, \lambda=.1]$ (the dashed line).}
+%$$
+%}\endinsert
+%%%%%%%%%%
+
+\midfigure{jov2newf}
+\centerline{\epsfxsize=3truein\epsffile{jov2new.ps}}
+\caption{Mean wages as a function of tenure for model with three different
+parameter settings $[m=6,\lambda=0]$ (the dots), $[m=10, \lambda=0]$
+(the line with circles), and $[m=10, \lambda=.1]$ (the dashed line).}
+\infiglist{Jov2new}
+\endfigure
+
+%%%%%%%
+%\midinsert{
+%$$\grafone{jov3new.ps,height=2.5in}{{\bf Figure 5.11} Quit probabilities
+%as a function of tenure for Jovanovic model  with
+%$[m=6, \lambda=0]$ (line with dots) and $[m=10, \lambda=.1]$ (the
+%line with circles).}
+%$$
+%}\endinsert
+%%%%%%%%%%
+
+\midfigure{jov3newf}
+\centerline{\epsfxsize=3truein\epsffile{jov3new.ps}}
+\caption{Quit probabilities as a function of tenure for Jovanovic
+model with $[m=6, \lambda=0]$ (line with dots) and $[m=10, \lambda=.1]$
+(the line with circles).}
+\infiglist{jov3newf}
+\endfigure
+
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+\noindent{\it Exercise \the\chapternum.1}\quad {\bf Being unemployed with
+                                          a chance of an offer}
+\medskip
+\noindent An unemployed worker samples wage offers on the following terms:  each period,
+with probability $\phi$, $1>\phi>0$, she receives no offer (we may regard this
+as a wage offer of zero forever).  With probability $(1-\phi)$ she receives an
+offer to work for $w$ forever, where $w$ is drawn from a cumulative
+distribution function $F(w)$. Assume that $F(0) = 0, F(B) =1$ for some $B >0$.   Successive draws across periods are
+independently and identically distributed.  The worker chooses a strategy to
+maximize
+$$E\sum_{t=0}^\infty \be^t y_t,\qquad {\rm where}\quad 0<\be<1,$$
+$y_t=w$ if the worker is employed, and $y_t=c$ if the worker is unemployed.
+Here $c$ is unemployment compensation, and $w$ is the wage at which the worker
+is employed.  Assume that, having once accepted a job offer at wage $w$, the
+worker stays in the job forever.
+
+Let $v(w)$ be the expected value of $\sum_{t=0}^\infty\be^t y_t$ for an
+unemployed worker who has offer $w$ in hand and who behaves optimally.  Write
+the Bellman equation for the worker's problem.
+\medskip
+\noindent{\it Exercise \the\chapternum.2} \quad {\bf Two offers per period}
+\medskip
+\noindent Consider an unemployed worker who each period can draw {\it two\/} independently
+and identically distributed wage offers from the cumulative probability
+distribution function $F(w)$.  The worker will work forever at the same wage
+ after having once accepted an offer.  In the event of unemployment during a
+period, the worker receives unemployment compensation $c$.  The
+worker derives a decision rule to maximize $E\sum_{t=0}^\infty
+\be^t y_t$, where $y_t=w$ or $y_t=c$, depending on whether she is
+employed or unemployed.  Let $v(w)$ be the value of $E
+\sum_{t=0}^\infty \be^t y_t$ for a currently unemployed worker who
+has best offer $w$ in hand.
+\medskip\noindent{\bf a.}  \ Formulate the
+Bellman equation for the worker's problem.
+\medskip\noindent{\bf b.}
+ Prove that the worker's reservation wage is {\it higher\/} than it
+would be had the worker faced the same $c$ and been drawing only {\it one\/}
+offer from the same distribution $F(w)$ each period.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.3}\quad {\bf A random number of offers per period}
+\medskip
+\noindent An unemployed worker is confronted with a random number, $n$, of job offers
+each period.  With probability $\pi_n$, the worker receives $n$ offers in a
+given period, where $\pi_n\ge 0$ for $n\ge 1$, and $\sum_{n=1}^N \pi_n=1$ for
+$N<+\infty$. Each offer is drawn independently from the same distribution
+$F(w)$.  Assume that the number of offers $n$ is independently distributed
+across time.  The worker works forever at wage $w$ after having accepted a job
+and receives unemployment compensation of $c$ during each period of
+unemployment.  He chooses a strategy to maximize $E\sum_{t=0}^\infty \be^t y_t$
+where $y_t=c$ if he is unemployed, $y_t=w$ if he is employed.
+
+Let $v(w)$ be the value of the objective function of an unemployed worker who
+has best offer $w$ in hand and who proceeds optimally.  Formulate the Bellman
+equation for this worker.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.4}\quad {\bf Cyclical fluctuations in number of job
+offers}
+\medskip
+\noindent Modify exercise {\it \the\chapternum.3\/} as follows:  Let the number of job offers $n$ follow a
+Markov process, with
+$$\eqalign{ &{\rm Prob}\{{\rm Number\ of\ offers\ next\ period}=m|{\rm Number
+\ of\ offers\ this\ period}=n\}  \cr
+&\hskip2cm =\pi_{mn}, \qquad m=1,\ldots, N,\quad n=1,\ldots,N\cr
+&\hskip.65cm \sum_{m=1}^N\pi_{mn}=1\qquad {\rm for}\quad n=1,\ldots,N.\cr}$$
+Here $[\pi_{mn}]$ is a ``stochastic matrix'' generating a Markov chain.  Keep
+all other features of the problem as in exercise {\it \the\chapternum.3\/}.  The worker gets $n$
+offers per period, where $n$ is now generated by a Markov chain so that the
+number of offers is possibly correlated over time.
+\medskip\noindent{\bf a.} Let $v(w,n)$ be the value of $E\sum_{t=0}^\infty \be^t y_t$ for
+an unemployed worker who has received $n$ offers this period, the best of which
+is $w$.  Formulate the Bellman equation for the worker's problem.
+\medskip\noindent{\bf b.} Show that the optimal policy is to set a reservation wage $\overline
+w(n)$ that depends on the number of offers received this period.
+\vfil\eject
+\medskip
+\noindent{\it Exercise \the\chapternum.5}\quad {\bf Choosing the number of offers}
+\medskip
+\noindent An unemployed worker must choose the number of offers $n$ to solicit.  At a
+cost of $k(n)$ the worker receives $n$ offers this period.  Here $k(n+1)>k(n)$
+for $n\ge 1$.  The number of offers $n$ must be chosen in advance at the
+beginning of the period and cannot be revised during the period.  The worker
+wants to maximize $E\sum_{t=0}^\infty \be^t y_t$.  Here $y_t$ consists of $w$
+each period she is employed but not searching, $[w-k(n)]$ the first period she
+is employed but searches for $n$ offers, and $[c-k(n)]$ each period she is
+unemployed but solicits and rejects $n$ offers. The offers are each
+independently drawn from $F(w)$.  The worker who accepts an offer works forever
+at wage $w$.
+
+Let $Q$ be the value of the problem for an unemployed worker
+who has not yet chosen the number of offers to solicit.  Formulate
+the Bellman equation for this worker.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.6}\quad {\bf Mortensen externality}
+\medskip
+\noindent Two parties to a match (say, worker and firm) jointly draw a match parameter
+$\th$ from a c.d.f. $F(\th)$.  Once matched, they stay matched forever, each
+one deriving a benefit of $\th$ per period from the match.  Each unmatched
+pair of agents can influence the number of offers received in a period in the
+following way.   The worker receives $n$ offers per period, where
+$n=f(c_1+c_2)$ and $c_1$ represents
+the resources the worker devotes to searching
+and $c_2$ represents the resources the typical firm  devotes to searching.
+Symmetrically, the representative firm receives $n$ offers per period where
+$n=f(c_1+c_2)$.  (We shall define the situation so that firms and workers have
+the same reservation $\th$ so that there is never unrequited love.)  Both $c_1$
+and $c_2$ must be chosen at the beginning of the period, prior to searching
+during the period.  Firms and workers have the same preferences, given by the
+expected present value of the match parameter $\th$, net of search costs.  The
+discount factor $\be$ is the same for worker and firm.
+
+\medskip\noindent{\bf  a.}
+  Consider a Nash equilibrium in which party $i$ chooses $c_i$, taking
+$c_j$, $j\not=i$, as given.  Let $Q_i$ be the value for an unmatched agent of
+type $i$ before the level of $c_i$ has been chosen.  Formulate the Bellman
+equation for agents of types 1 and 2.
+\medskip\noindent{\bf b.} Consider the social planning problem of choosing $c_1$ and $c_2$
+sequentially so as to maximize the criterion of $\la$ times the utility of
+agent 1 plus $(1-\la)$ times the utility of agent 2, $0<\la <1$.  Let $Q(\la)$
+be the value for this problem for two unmatched agents before $c_1$ and $c_2$
+have been chosen.  Formulate the Bellman equation for this problem.
+\medskip\noindent{\bf c.} Comparing the results in a and b, argue that, in the Nash
+equilibrium, the optimal amount of resources has not been devoted to search.
+\medskip
+\noindent{\it Exercise \the\chapternum.7}\quad{\bf Variable labor supply}
+\medskip
+\noindent An unemployed worker receives each period a wage offer $w$ drawn from the
+distribution $F(w)$.  The worker has to choose whether to accept the job---and
+therefore to work forever---or to search for another offer and collect $c$ in
+unemployment compensation.  The worker who decides to accept the job must
+choose the number of hours to work in each period.  The worker chooses a
+strategy to maximize
+$$E\sum_{t=0}^\infty \be^t u(y_t,l_t),\qquad {\rm where}\quad 0<\be<1,$$
+and $y_t=c$ if the worker is unemployed, and $y_t=w(1-l_t)$ if the worker is
+employed and works $(1-l_t)$ hours; $l_t$ is leisure with $0\le l_t\le 1$.
+
+Analyze the worker's problem.  Argue that the optimal strategy has the
+reservation wage property. Show that the number of hours worked is the same in
+every period.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.8}\quad{\bf Wage growth rate and the reservation
+wage}
+\medskip
+\noindent An unemployed worker receives each period an offer to work for wage $w_t$
+forever, where $w_t=w$ in the first period and $w_t=\phi^tw$ after
+ $t$ periods on
+the job.  Assume $\phi>1$, that is, wages increase with tenure.  The initial
+wage offer is drawn from a distribution $F(w)$ that is constant over time
+(entry-level wages are stationary); successive drawings across periods are
+independently and identically distributed.
+
+The worker's objective function is to maximize
+$$E\sum_{t=0}^\infty \be^t y_t,\qquad {\rm where}\quad 0<\be<1,$$
+and $y_t=w_t$ if the worker is employed and $y_t=c$ if the worker is
+unemployed, where $c$ is unemployment compensation.  Let $v(w)$ be the optimal
+value of the objective function for an unemployed worker who has offer $w$ in
+hand.  Write the Bellman equation for this problem.  Argue that, if two economies
+differ only in the growth rate of wages of employed workers, say
+$\phi_1>\phi_2$, the economy with the higher growth rate has the smaller
+reservation wage.
+{\it Note:} Assume that $\phi_i\be <1$, $i=1,2$.
+\medskip
+\noindent{\it Exercise \the\chapternum.9}\qquad {\bf Search with a finite horizon}
+\medskip
+\noindent Consider a worker who lives two periods.  In each period the worker, if
+unemployed, receives an offer of lifetime work at wage $w$, where $w$ is drawn
+from a distribution $F$.  Wage offers are identically and independently
+distributed over time.  The worker's objective is to maximize $E\{y_1+\be
+y_2\}$, where $y_t=w$ if the worker is employed and is equal to
+$c$---unemployment compensation---if the worker is not employed.
+
+Analyze the worker's optimal decision rule.  In particular, establish that the
+optimal strategy is to choose a reservation wage in each period and to accept
+any offer with a wage at least as high as the reservation wage and to reject
+offers below that level.  Show that the reservation wage decreases over time.
+\medskip
+\noindent{\it Exercise \the\chapternum.10}\quad {\bf Finite horizon and mean-preserving
+spread}
+\medskip
+\noindent Consider a worker who draws every period a job offer to work forever at wage
+$w$.  Successive offers are independently and identically distributed drawings
+from a distribution $F_i(w)$, $i=1,2$.  Assume that $F_1$ has been obtained
+from $F_2$ by a mean-preserving spread.  The worker's
+objective is to maximize
+$$E \sum_{t=0}^T \be^t y_t,\qquad 0<\be <1,$$
+where $y_t=w$ if the worker has accepted employment at wage $w$ and is zero
+otherwise.  Assume that both distributions, $F_1$ and $F_2$, share a common
+upper bound, $B$.
+
+\medskip\noindent{\bf a.} \ Show that the reservation wages of workers drawing from $F_1$ and
+$F_2$ coincide at $t=T$ and $t=T-1$.
+\medskip\noindent{\bf b.} Argue that for $t\le T-2$ the reservation wage of the workers that
+sample wage offers from the distribution $F_1$ is higher than the reservation
+wage of the workers that sample from $F_2$.
+\medskip\noindent{\bf c.} \
+ Now introduce unemployment compensation: the worker who is unemployed
+collects $c$ dollars.  Prove that the result in part a
+ no longer holds; that is,
+the reservation wage of the workers that sample from $F_1$ is higher than the
+one corresponding to workers that sample from $F_2$ for $t=T-1$.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.11} \quad {\bf Pissarides' analysis of taxation and
+variable search intensity}
+
+\medskip
+\noindent An unemployed worker receives each period a zero offer (or no offer) with
+probability $[1-\pi(e)]$.  With probability $\pi(e)$ the worker draws an offer
+$w$ from the distribution $F$.  Here $e$ stands for effort---a measure of
+search intensity---and $\pi(e)$ is increasing in $e$.  A worker who accepts a
+job offer can be fired with probability $\a$, $0<\a<1$.  The worker chooses a
+strategy, that is, whether to accept an offer or not and how much effort to put
+into search when unemployed, to maximize
+$$E\sum_{t=0}^\infty \be^t y_t,\qquad 0<\be <1,$$
+where $y_t=w$ if the worker is employed with wage $w$ and $y_t=1-e+z$ if the
+worker spends $e$ units of leisure searching and does not accept a job.  Here
+$z$ is unemployment compensation.  For the worker who searched and accepted a
+job, $y_t=w-e-T(w)$; that is, in the first period the wage is net of search
+costs.  Throughout, $T(w)$ is the amount paid in taxes when the worker is
+employed.  We assume that $w-T(w)$ is increasing in $w$.  Assume that
+$w-T(w)=0$ for $w=0$, that if $e=0$, then $\pi(e)=0$---that is, the worker
+gets no offers---and that $\pi'(e)>0$, $\pi^\pp (e) <0$.
+
+\medskip\noindent{\bf  a.}
+ Analyze the worker's problem.  Establish that the optimal strategy is
+to choose a reservation wage.  Display the condition that describes the optimal
+choice of $e$, and show that the reservation wage is independent of $e$.
+\medskip\noindent{\bf b.} Assume that $T(w)=t(w-a)$ where $0<t<1$ and $a>0$.  Show that an
+increase in $a$ decreases the reservation wage and increases the level of
+effort, increasing the probability of accepting employment.
+\medskip\noindent{\bf c.} \
+ Show under what conditions a change in $t$ has the opposite effect.
+
+\medskip
+\noindent{\it Exercise \the\chapternum.12} \quad {\bf Search and financial income}
+\medskip
+\noindent An unemployed worker receives every period an offer to work forever at wage
+$w$, where $w$ is drawn from the distribution $F(w)$.  Offers are independently
+and identically distributed.  Every agent has another source of income, which
+we denote $\eps_t$, that may be regarded as financial income.  In every
+period all agents get a realization of $\eps_t$, which is independently and
+identically distributed over time, with distribution function $G(\eps)$.  We
+also assume that $w_t$ and $\eps_t$ are independent.  The objective of a worker
+is to maximize
+$$E\sum_{t=0}^\infty \be^t y_t,\qquad 0<\be <1,$$
+where $y_t=w+\phi\eps_t$ if the worker has accepted a job that pays $w$, and
+$y_t=c+\eps_t$ if the worker remains unemployed.  We assume that $0<\phi<1$ to
+reflect the fact that an employed worker has less time to collect financial income.  Assume $1>{\rm Prob}\{w\ge c+(1-\phi)\eps\}
+>0$.
+
+Analyze the worker's problem.  Write down the Bellman equation, and
+show that the reservation wage increases with the level of financial income.
+\medskip \noindent
+{\it Exercise \the\chapternum.13}\quad {\bf Search and asset accumulation}
+\medskip
+\noindent A previously unemployed worker receives an offer to work forever at wage $w$, but only if he chooses to do so, where
+$w$ is drawn from the distribution $F(w)$.  Previously employed workers receive no offers to work.  But a previously employed  worker is free to quit in any period, receive unemployment compensation that period,
+ and so become
+a previously unemployed worker in the following period.    Wage offers are identically and
+independently distributed over time.  The worker maximizes
+$$E\sum_{t=0}^\infty \be^t \left( u(c_t) + v(l_t) \right),\qquad 0<\be <1,$$
+where $c_t$ is consumption and $l_t$ is leisure. Assume that $u(c)$ is strictly increasing, twice continuously differentiable, bounded,
+and strictly concave, while $v(l)$ is strictly increasing, twice continuously differentiable, and strictly concave;  that $c_t \geq 0$; and that $l_t  \in \{0,1\}$, so that the person can either
+  work full time (here $l_t =0$) or not at all (here $l_t = 1$).
+ A gross return on assets $a_t$  held
+between $t$ and $t+1$  is $R_{t+1}$ and
+is i.i.d.\ with
+c.d.f.\  $H(R)$.  The budget constraint is given by
+$$a_{t+1} \le R_{t+1} (a_t +w_t -c_t)$$
+ if the worker has a job that pays $w_t$. The random gross return $R_{t+1}$ is observed at the beginning of period $t+1$ before
+the worker chooses $n_{t+1}, c_{t+1}$.     If the worker is
+unemployed, the budget constraint is $a_{t+1}\le R_{t+1} (a_t+z-c_t)$ and $l_t=1$.
+Here $z$ is unemployment compensation.  It is assumed that  $a_t$, the worker's asset position, cannot be negative.
+ This is a no-borrowing assumption.  Write a Bellman equation for
+this problem.
+
+\medskip
+\noindent
+{\it Exercise \the\chapternum.14} \quad {\bf Temporary unemployment compensation}
+\medskip
+\noindent Each period an unemployed worker draws one, and only
+one, offer to work forever at wage $w$.  Wages are i.i.d.\ draws
+from the c.d.f. $F$, where $F(0)=0$ and $F(B)=1$.    The worker seeks
+to maximize $E \sum_{t=0}^\infty \beta^t y_t$, where $y_t$ is the
+sum of the worker's wage and unemployment compensation, if any.
+The worker is entitled to unemployment compensation in
+the amount $\gamma >0$ only during
+the {\it first} period that she is unemployed.  After
+one period on unemployment compensation, the worker receives none.
+
+\medskip
+\noindent{\bf a.}  Write the Bellman equations for this problem.
+Prove that the worker's optimal policy is a time-varying reservation
+wage strategy.
+
+\medskip
+\noindent{\bf b.} \ Show how the worker's   reservation wage varies
+with the duration of unemployment.
+\medskip
+\noindent{\bf c.}  \ Show how the worker's ``hazard of leaving
+unemployment'' (i.e., the probability of accepting a job offer)
+varies with the duration of unemployment.
+
+\medskip
+
+Now assume that the worker is also entitled to unemployment compensation
+if she quits a job. As before, the worker receives unemployment
+compensation in the amount of $\gamma$ during the first period of
+an unemployment spell, and zero during the remaining part of an
+unemployment spell. (To qualify again for unemployment compensation, the
+worker must find a job and work for at least one period.)
+
+
+
+The timing of events is as follows. At the very beginning of a period,
+a worker who was employed in the previous period must decide whether
+or not to quit. The decision is irreversible; that is, a quitter cannot
+return to an old job. If the worker quits, she draws a new wage offer
+as described previously, and if she accepts the offer she immediately
+starts earning that wage without suffering any period of unemployment.
+
+
+\medskip
+\noindent{\bf d.} Write the Bellman equations for this problem.
+{\it Hint}: At the very beginning of a period, let $v^e(w)$ denote the
+value of a worker who was employed in the previous period with
+wage $w$ (before any wage draw in the current period). Let $v^u_1(w')$
+be the value of an unemployed worker who has drawn wage offer $w'$ and
+who is entitled to unemployment compensation, if she rejects the
+offer. Similarly, let $v^u_+(w')$ be the value of an unemployed
+worker who has drawn wage offer $w'$ but who is not eligible for
+unemployment compensation.
+
+
+\medskip
+\noindent{\bf e.} \ Characterize the three reservation wages,
+$\overline w^e$, $\overline w^u_1$, and $\overline w^u_+$, associated
+with the value functions in part d. How are they related to $\gamma$?
+({\it Hint}: Two of the reservation wages are straightforward to
+characterize, while the
+remaining one depends on the actual parameterization of the model.)
+
+
+\medskip
+\noindent {\it Exercise \the\chapternum.15} \quad {\bf Seasons, I}
+\medskip
+\noindent
+ An unemployed worker seeks
+to maximize $E \sum_{t=0}^\infty \beta^t y_t$, where
+$\beta \in (0,1)$, $y_t$ is her income at time $t$, and $E$ is
+the mathematical expectation operator.  The person's
+income consists of one of  two parts: unemployment compensation of
+$c$ that she receives each period  she remains unemployed, or
+a fixed wage $w$ that  the worker receives if employed. Once employed,
+the worker is employed forever with no chance of being fired.
+Every odd period (i.e., $t = 1, 3, 5, \ldots$) the worker
+receives one offer to work  forever at a wage drawn from
+the c.d.f. $F(W) = {\rm Prob} (w \leq W)$.  Assume that
+$F(0) = 0$ and $F(B) = 1$ for some $B >0$. Successive
+draws from $F$ are independent.  Every  even    period (i.e.,
+$t=0, 2, 4, \ldots$),
+the unemployed worker receives two offers to work forever
+at a wage  drawn from $F$.   Each of the two offers is drawn
+independently from $F$.
+
+
+\medskip
+\noindent{\bf a.}  Formulate the Bellman equations for the unemployed
+person's problem.
+
+\medskip
+\noindent{\bf b.}  Describe the form of the worker's optimal
+policy.
+
+
+\medskip\noindent
+{\it Exercise \the\chapternum.16} \quad {\bf Seasons, II}
+
+\medskip\noindent
+  Consider the following problem
+confronting an unemployed worker.  The worker wants
+to maximize
+$$ E_0 \sum_0^\infty \beta^t y_t, \quad \beta \in (0,1), $$
+where $y_t = w_t$ in periods in which the worker is employed
+and $y_t=c$ in periods in which the worker is unemployed, where
+$w_t$ is a wage rate and $c$ is a constant level of unemployment
+compensation.  At the start of  each period,
+ an unemployed worker receives one and only
+one offer to work at a wage $w$ drawn from
+a c.d.f. $F(W)$, where $F(0) = 0, F(B) = 1$ for some
+$B >0$.   Successive draws from $F$ are identically and
+independently distributed.  There is no recall of past offers.
+Only unemployed workers receive wage offers.  The wage is
+fixed as long as the worker remains in the job.  The only
+way a worker can leave a job is if she is fired.
+  At the {\it beginning\/}
+of each odd period ($t= 1, 3, \ldots$), a previously
+employed worker faces the probability of $\pi \in (0,1)$
+of being fired.  If a worker is fired,
+she immediately receives a new draw of an offer to
+work at wage $w$.      At each even period
+($t=0, 2, \ldots$), there is no chance of being fired.
+
+\medskip
+\noindent{\bf a.}  Formulate a Bellman equation for
+the worker's problem.
+\medskip
+\noindent{\bf b.}  Describe the form of the worker's optimal
+policy.
+
+%\medskip
+%\noindent{\bf Answer:}
+%$$ v_o(w) = \max\{w + \beta v_e(w),  c + \beta \int v_e(w') d \, F(w') \}$$
+%$$ v_e(w) = \max \{w + \beta \pi \int v_o(w') d \, F(w') + \beta (1-\pi)
+%     v_o(w), c + \beta \int v_o(w') d \, F(w') \}.  $$
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.17} \quad {\bf Gittins indexes for beginners}
+\medskip
+\noindent
+At the end of each period,\NFootnote{See Gittins (1989) for
+more general versions of this problem.}
+\auth{Gittins, J.C.} a worker can
+switch between two jobs, A and B, to  begin the following
+period at a wage that will be drawn at the beginning
+of next period from a wage distribution specific to
+job A or B, and to the worker's history of past wage
+draws from  jobs of either type A or type B.
+The worker must decide to stay or leave a job at the end
+of a period after his wage for this period on his current
+job has been received, but before knowing what his wage
+would be next period in either job.  The wage
+at either job is described by a job-specific $n$-state
+Markov chain.  Each period the worker works at either job
+A or job B.  At the end of the period, before observing next
+period's wage on either job, he chooses which job to go to
+next period.  We use lowercase letters ($i,j = 1 , \ldots, n$)
+to denote states for job A, and uppercase letters
+($I,J = 1, \ldots n$) for job B.
+There is no option of being unemployed.
+\medskip
+Let $w_a(i)$ be the wage on job A when state $i$ occurs
+and $w_b(I)$ be the wage on job B when state $I$ occurs.  Let
+$A = \left[A_{ij}\right]$ be the matrix of one-step transition
+probabilities between the states on job A, and let
+$B = \left[B_{ij}\right]$ be the matrix for job B.  If the worker
+leaves a job and later decides to return to it, he draws  the wage for
+his first new period on the job from the conditional distribution
+determined by his last wage working at that job.
+
+  The worker's objective is to maximize the
+expected discounted value of his lifetime earnings,
+$E_0 \sum_{t=0}^\infty \beta^t y_t$, where $\beta \in (0,1)$
+is the discount factor, and where $y_t$ is his wage from whichever
+job he is working at in period $t$.
+\medskip
+\noindent{\bf a.} \ Consider a worker who has worked
+at both jobs before.  Suppose that $w_a(i)$ was the last wage the
+worker receives on job A and $w_b(I)$ the last wage on job B.
+Write the Bellman equation for the worker.
+\medskip
+\noindent
+{\bf b.}  Suppose that the worker is just entering the labor
+force.  The first time he works at job A, the probability distribution
+for his initial wage is $\pi_a = (\pi_{a1}, \ldots, \pi_{an})$.
+Similarly, the probability distribution for his initial
+wage on job B is $\pi_b = (\pi_{b1}, \ldots, \pi_{bn})$  Formulate
+the decision problem for a new worker, who must decide which
+job to take initially.
+{\it Hint}: Let $v_a(i)$ be the expected discounted present value of lifetime
+earnings for a worker who was last in state $i$ on job A and
+has never worked on job B; define $v_b(I)$ symmetrically.
+
+\medskip\noindent
+{\it Exercise \the\chapternum.18} \quad {\bf Jovanovic (1979b)}
+
+\medskip\noindent
+An employed  worker in the $t$th period of tenure
+on the current job  receives a wage
+$w_t = x_t(1 - \phi_t   - s_t)$  where $x_t$ is
+job-specific human capital, $\phi_t \in (0,1)$ is
+the fraction of time that the  worker spends investing in
+job-specific human capital, and $s_t \in (0,1)$ is
+the fraction of time that the worker spends searching for
+a new job offer.    If the worker devotes $s_t$ to searching
+ at  $t$, then with probability $\pi(s_t) \in (0,1)$ at the beginning of
+$t+1$ the worker receives a new job offer  to begin working
+at new job-specific capital level $\mu'$ drawn from
+the c.d.f.\ $F(\cdot)$.  That is, searching for a new job
+offer promises the prospect of instantaneously reinitializing
+job-specific human capital at $\mu'$.   Assume that
+$\pi'(s) >0, \pi''(s) < 0 $.  While on a given job,
+job-specific human capital
+evolves according to
+$$ x_{t+1} = G(x_t, \phi_t) = g(x_t \phi_t) - \delta x_t   ,$$
+where $g'(\cdot) > 0, g''(\cdot) < 0$, $\delta \in (0,1)$
+is a depreciation rate,  and $x_0 = \mu$ where $t$ is tenure
+on the job, and $\mu$ is the value of the ``match'' parameter
+drawn at the start of the current job.   The worker is
+risk neutral and seeks to maximize $E_0 \sum_{\tau=0}^\infty
+\beta^\tau y_\tau$, where $y_\tau$ is his wage in period $\tau$.
+
+\medskip
+\noindent{\bf a.}  Formulate the worker's Bellman equation.
+
+\medskip
+\noindent{\bf b.} Describe the worker's decision rule
+for deciding whether to accept an offer $\mu'$ at the beginning
+of next period.
+\medskip
+\noindent{\bf c.}  Assume that $g(x \phi) = A(x \phi)^\alpha$
+for $A >0, \alpha \in (0,1)$.  Assume
+that $\pi(s) = s^{.5}$. Assume that $F$ is a discrete
+$n$-valued distribution with probabilities $f_i$; for example,
+let $f_i = n^{-1}$.  Write a Matlab
+program to solve the Bellman equation.  Compute the optimal
+policies for $\phi, s$ and display them.
+\vfil\eject
+\medskip
+\noindent {\it Exercise \the\chapternum.19} \quad {\bf  Value function iteration and
+policy improvement algorithm}, donated by Pierre-Olivier Weill
+\medskip
+\noindent The goal of this exercise is to study, in the context of
+a specific problem, two methods for solving dynamic programs:
+value function iteration and Howard's policy improvement. Consider
+McCall's model of intertemporal job search. An unemployed worker
+draws one offer from a c.d.f.\ $F$, with $F(0)=0$ and $F(B)=1$,
+$B<\infty$. If the worker  rejects the offer, she receives
+unemployment compensation $c$ and can draw a new wage offer next
+period. If she accepts the offer, she works forever at wage $w$.
+The objective of the worker is to maximize the expected discounted
+value of her earnings. Her discount factor is $0<\beta<1$.\medskip
+
+\noindent {\bf a.} \ Write the Bellman equation. Show that the
+optimal policy is of the reservation wage form. Write an equation
+for the
+reservation wage $w^*$.\medskip
+
+\noindent {\bf b.} Consider the value function iteration method.
+Show that at each iteration, the optimal policy is of the
+reservation wage form. Let $w_n$ be the reservation wage at
+iteration $n$. Derive a recursion for $w_n$. Show that $w_n$
+converges to $w^*$ at rate
+$\beta$.\medskip
+
+
+\noindent {\bf c.} Consider Howard's policy improvement algorithm.
+Show that at each iteration, the optimal policy is of the
+reservation wage form. Let $w_n$ be the reservation wage at
+iteration $n$. Derive a recursion for $w_n$. Show that the rate of
+convergence of $w_n$ towards $w^*$ is locally quadratic.
+Specifically use a Taylor expansion to show that, for $w_n$ close
+enough to $w^*$, there is a constant $K$ such that
+ $w_{n+1}-w^* \cong K(w_n-w^*)^2$.\medskip
+
+
+\medskip
+\noindent {\it Exercise \the\chapternum.20} \quad
+\medskip
+\noindent  Different types of unemployed workers are identical, except that they sample from different
+wage distributions.  Each period an unemployed worker of type $\alpha$ draws  a single new offer to work forever at a wage
+$w$  from a cumulative distribution function $F_\alpha$ that satisfies $F_\alpha(w) =0 $ for $w < 0$, $F_\alpha(0) = \alpha, F_\alpha(B) =1$, where $B > 0$ and
+$F_\alpha$ is a right continuous function mapping $[0,B]$ into $[0, 1]$.  The c.d.f.\ of a type $\alpha$ worker is
+given by
+$$ F_\alpha(w) = \cases{\alpha  &  for $0 \leq w \leq \alpha B$ ; \cr
+                  w / B & for $ \alpha B < w < B - \alpha B$ ;\cr
+                  {1 -\alpha } & for $B - \alpha B \leq w < B$;  \cr
+                  1 & for $w =B$\cr}
+                  $$
+ where $\alpha \in [0, .5)$.
+ An unemployed $\alpha$ worker seeks to maximize the
+expected value of $ \sum_{t=0}^\infty \beta^t y_t$, where $\beta \in (0,1)$ and $y_t =w$ if the worker is employed
+and $y_t =c$ if he or she is unemployed,  where $0 < c < B$ is a constant level of unemployment compensation.
+By choosing a strategy for accepting or rejecting job offers, the worker affects the distribution with respect to which the expected value of  $ \sum_{t=0}^\infty \beta^t y_t$ is calculated.
+The worker cannot recall past offers.  If a previously unemployed worker  accepts an offer to work at wage $w$ this period, he must work forever
+at that wage (there is neither quitting nor firing nor searching for a new job while employed).
+
+
+ \medskip
+ \noindent{\bf a.}  Formulate a Bellman equation for a type $\alpha$ worker.  Prove that the worker's optimal
+ strategy is to set a time-invariant reservation wage.
+
+ \medskip
+ \noindent {\bf b.}  Consider two types of workers, $\alpha = 0$ and $\alpha = .3$.  Can you tell which type of worker has a higher
+ reservation wage?
+
+ \medskip
+ \noindent {\bf c.}  Which type of worker would you expect to find a job more quickly?
+
+
+\medskip
+\noindent {\it Exercise \the\chapternum.21} \quad {\bf Searching for the lowest price}
+\medskip
+\noindent
+A buyer wants to purchase an item at the  lowest price, net of total search costs. At a cost of $c>0$ per draw, the buyer can
+draw an offer to buy the item at a price $p$ that is drawn from the c.d.f. $F(P) = {\rm Prob}(p \leq P)$ where $P$ is a non-decreasing,
+right-continuous function with $F(\underline B)=0, F(\overline B) =1$, where $0 < \underline B < \overline B < +\infty$.  All search occurs within one period.
+
+\medskip
+\noindent{\bf a.}  Find the buyer's optimal strategy.
+
+\medskip\noindent
+{\bf b.} Find an expression for the expected value of the purchase price net of all
+search costs.
+
+
+\medskip
+\noindent {\it Exercise \the\chapternum.22} \quad {\bf Quits}
+\medskip
+\noindent Each period an unemployed worker draws one offer to work at a nonnegative wage $w$, where $w$ is governed by
+a c.d.f $F$ that satisfies $F(0)= 0$ and $F(B) = 1$ for some $B >0$. The worker seeks to maximize the expected value
+of $\sum_{t=0}^\infty \beta^t y_t$ where $y_t =w$ if the worker is employed and $c$ if the worker is unemployed.
+At the beginning of each period a worker employed at wage $w$ the previous period is exposed to a probability of
+$\alpha \in (0,1)$ of having his job reclassified, which means that he will be given a new wage $w'$ drawn from $F$.  A reclassified worker has the
+option of working at wage $w'$ until reclassified again, or quitting, receiving unemployment compensation of $c$ this period, and drawing
+a new wage offer the next period.
+
+\medskip
+\noindent{\bf a.}  Formulate the Bellman equation for an unemployed worker.
+
+\medskip
+\noindent{\bf b.} Describe the decision rule for a previously {\it unemployed\/} worker.
+
+\medskip
+\noindent{\bf c.} Describe the decision rule for quitting or staying for a previously {\it employed\/} worker.
+
+\medskip
+\noindent{\bf d.} Describe how to compute the probability that a previously employed worker will quit.
+
+
+
+\medskip
+\noindent {\it Exercise \the\chapternum.23} \quad {\bf A career ladder}
+\medskip
+\noindent Each period a previously unemployed worker draws one offer to work at a nonnegative wage $w$, where $w$ is governed by
+a c.d.f $F$ that satisfies $F(0)= 0$ and $F(B) = 1$ for some $B >0$. The worker seeks to maximize the expected value
+of $\sum_{t=0}^\infty \beta^t y_t$ where $\beta \in (0,1)$ and  $y_t =w$ if the worker is employed and $c$ if the worker is unemployed.
+At the beginning of each period a worker employed at wage $w$ the previous period is exposed to a probability of
+$\alpha \in (0,1)$ of getting a promotion, which means that he will be given a new wage $\gamma w$ where $\gamma > 1$. This new wage
+will prevail until a next promotion.
+
+\medskip
+\noindent{\bf a.}  Formulate a Bellman equation for a previously  employed worker.
+
+\medskip
+
+\noindent {\bf b.} Formulate a Bellman equation for a previously unemployed worker.
+
+\medskip
+\noindent{\bf c.} Describe the decision rule for an unemployed worker.
+
+\medskip
+\noindent{\bf d.} Describe the decision rule for  a previously employed worker.
+
+
+\medskip
+\noindent {\it Exercise \the\chapternum.24} \quad {\bf Human capital}
+\medskip
+\noindent  A previously  unemployed worker draws one offer to work at a wage
+$w h$, where $h$ is his level of human capital and $w$ is  drawn from a c.d.f.\ $F$ where $F(0) = 0, F(B) =1$ for $B >0$.  The worker retains
+$w$, but not $h$, so long as he remains in his current job (or employment spell). The worker knows his current level of $h$ before he draws
+ $w$.  Wage draws are independent over time.
+When employed, the worker's human capital $h$ evolves according to a discrete state  Markov chain on the space
+$[\bar h_1, \bar h_2, \ldots, \bar h_n]$ with transition density $H^e$
+where $H^e(i,j) = {\rm Prob }[h_{t+1} = \bar h_j | h_t = \bar h_i]$. When unemployed, the worker's human capital $h$ evolves according to a discrete state  Markov chain   on the same space
+$[\bar h_1, \bar h_2, \ldots, \bar h_n]$ with transition density $H^u$
+where $H^u(i,j) = {\rm Prob} [h_{t+1} = \bar h_j | h_t = \bar h_i]$. The two transition matrices $H^e$ and $H^u$ are such that an employed worker's human capital
+grows probabilistically (meaning that it is more likely that next period's human capital will be higher than this period's) and an unemployed worker's human capital decays probabilistically (meaning that it is more likely that next period's human capital will be lower than this period's).
+An unemployed worker receives unemployment compensation of $c$ per period. The worker wants to maximize the expected value of $\sum_{t=0}^\infty \beta^t y_t $ where $y_t = w h_t$ when employed, and
+$c$ when unemployed.   At the beginning of each period, employed workers receive their new human capital realization from the Markov chain
+$H^e$. Then they are free to quit, meaning that they surrender their previous $w$, retain their newly realized level of human capital but immediately
+become unemployed,
+and can immediately draw a new $w$ from $F$.  They can accept that new draw immediately or else choose to be unemployed for at least one period while
+waiting for  new opportunities to draw one $w$ offer per period from $F$.
+\medskip
+\noindent {\bf a.}  Obtain a Bellman equation or Bellman equations for the worker's problem.
+
+\medskip
+\noindent {\bf b.} Describe qualitatively the  worker's optimal decision rule.  Do you think employed workers might ever decide to quit?
+
+\medskip
+\noindent {\bf c.} Describe an algorithm to solve the Bellman equation or equations.
+
+
+
+
+\medskip
+\noindent {\it Exercise \the\chapternum.25} \quad {\bf Markov wages}
+\medskip
+\noindent Each period, a previously unemployed worker draws one offer to work forever at wage $w$.  The worker wants to maximize
+  $E \sum_{t=0}^\infty \beta^t y_t $, where $\beta \in (0,1)$ and $y_t = c >0 $ if the worker is unemployed, and $y_t = w$ if the worker is employed.
+  Quitting is not allowed and once hired the worker cannot be fired.  Successive draws of the wage are from a Markov chain
+  with transition probabilities arranged in the $n \times n $ transition matrix $P$ with
+  $(i,j)$ element $ P_{ij} = {\rm Prob}( w_{t+1} = \overline w_j | w_t = \overline w_i ) $ where
+  $\overline w_1 < \overline w_2 < \cdots < \overline w_n $.
+  \medskip
+
+\noindent{\bf a.}  Construct a Bellman equation for the worker.
+%
+%\medskip
+%\noindent {\bf  Answer:}  Let $v_i$ be the value of the problem for a worker who has offer $\overline w_i$ in hand and who
+%behaves optimally. Then
+%$$ v_i = \max_{\rm accept, reject} \Bigl\{ {\frac{\overline w_i}{1 - \beta}}, c+ \beta \sum_j v_j P_{ij} \Bigr\} , $$
+%for $i = 1, \ldots, n$.
+
+\medskip
+\noindent{\bf b.}  Can you prove that the worker's optimal strategy is to set a reservation wage?
+%\medskip
+%\noindent{\bf Answer:} No way.
+
+\medskip
+\noindent{\bf c.}  Assume that $\beta = .95$, $c=1$,  $\bmatrix{\overline w_1 & \overline w_2  & \cdots &  \overline w_n } =
+ \bmatrix{ 1 & 2 & 3 & 4 & 5 }$
+and
+$$ P = \bmatrix{ .8 & .2 & 0 & 0 & 0 \cr
+                 .18 & .8 & .02 & 0 & 0 \cr
+                 .25 & .25 & 0 & .25 & .25 \cr
+                 0 & 0 & .02 & .8 & .18 \cr
+                 0 & 0 & 0 & .2 & .8 } .$$
+Please write a Matlab or R or C++ program to solve the Bellman equation.  Show the optimal policy function and the value function.
+
+\medskip
+\noindent{\bf d.}  Assume that all parameters are the same as in part {\bf c} except for $\beta$, which now equals .99.  Please find
+the optimal policy function and the optimal value function.
+
+\medskip
+\noindent{\bf e.} Please discuss whether, why, and how your answers to parts {\bf c} and {\bf d} differ.
+
+
+
+\medskip
+\noindent {\it Exercise \the\chapternum.26} \quad {\bf Neal model's Markov implications}
+\medskip
+\noindent This will be yet another exercise that illustrates the theme that finding the state is an art.
+Consider the version of the Neal (1999) career choice model that we analyzed in the text. In the text, a worker's
+state is the job, career pair $\epsilon, \theta$ with which the worker enters the period.  Knowing the structure of the outcome
+and the optimal decision rule, let's use figure \Fg{neal2newaf} %6.5.2
+to partition the state space $(\epsilon, \theta)$ into three sets that define
+the  three new states $s_t \in \{1, 2, 3\}$ that we'll use to define the states in a Markov chain.  We say that $s_t =1$ if the worker wants a ``new life'', i.e.,
+he wants to draw a new job, career pair next period.  We say that $s_t=2$ if the worker wants a new job, i.e., if he is content with his career
+$\theta$ but wants to draw a new job $\epsilon'$ next period. We say that $s_t =3$ if the worker plans to remain in his current job, career pair next period.
+Let $P_{ij} = {\rm Prob}(s_{t+1} = j| s_t = i)$.  Assume that the initial probability distribution is
+$\pi_0 = {\rm Prob} ( s_0 =1 ) =1 $.
+
+\medskip
+\noindent{\bf a.} Show that $P$ has the following structure
+$$ P = \bmatrix{ 1 - P_{12} - P_{13} & P_{12} & P_{13} \cr
+                 0  & 1 - P_{23} & P_{23} \cr
+                 0 & 0 & 1 }
+                 $$
+and please tell how to compute the nontrivial elements of $P$ from the information used to compute  figure \Fg{neal2newaf}.
+
+\medskip
+\noindent {\bf b.} Describe the invariant distribution(s) of the Markov chain $(\pi_0, P)$.
+\medskip
+
+\noindent{\bf c.} Is the Markov chain ergodic?
+\medskip
+
+\noindent{\bf d.}  A labor economist has a panel of quarterly observations on a cohort of $N$ 1995 high school graduates who did not go to college but instead
+went to work immediately (so Neal's model seems to apply).  The observations record  dates at which  workers switched jobs and whether or not those were
+also associated with new occupations.  Please describe how the economist might use those data to estimate the probabilities $P_{ij}$ in Neal's model.
+
+
+
+
+\medskip
+\noindent {\it Exercise \the\chapternum.27} \quad {\bf Neal model with unemployment}
+\medskip
+\noindent Consider the following modification of the Neal (1999) model.
+ A worker chooses career-job $(\theta,\epsilon)$ pairs
+subject to the following conditions.  If employed, the worker's earnings
+at time $t$ equal $\theta_t + \epsilon_t$, where $\theta_t$ is a component specific to a {\it career\/}
+and ${\epsilon_t}$ is a component specific to a particular {\it job}.  If unemployed, the worker
+receives unemployment compensation equal to $c$.  The worker
+maximizes $E \sum_{t=0}^\infty  \beta^t  y_t $ where $y_t = (\theta_t + \epsilon_t)$ if the worker is employed
+and $y_t = c$ if the worker is unemployed.
+A {\it career\/} is a draw
+of $\theta$ from  c.d.f.\  $F$; a {\it job\/} is a draw of
+$\epsilon$ from c.d.f.\ $G$.   Successive draws are independent,
+and $G(0)=F(0)=0$, $G(B_\epsilon)= F(B_\theta)=1$.  The
+worker can draw a new career only if he also draws a
+new job.
+ However, the worker is free to retain his existing
+career ($\theta$), and to draw a new job ($\epsilon'$) next period.  The worker
+decides at the beginning of a period whether to stay in a
+career-job pair inherited from the past, stay in the inherited career but
+draw  a new job {\it for next period\/}, or  draw a new career-job pair $(\theta', \epsilon')$ {\it for next period}.  If the worker decides to
+draw either a new $\theta'$ or a new $\epsilon'$ for next period, he or she must   become unemployed this period.
+
+
+\medskip
+\noindent{\bf a.} Let $v(\theta,\epsilon)$ be the optimal value of the problem
+at the beginning of a period
+for a worker currently having inherited  career-job pair $(\theta,\epsilon)$ and
+who is about to decide whether to decide whether to become unemployed in order to draw a new career and  or job next period.
+Formulate a Bellman equation.
+
+\medskip
+\noindent{\bf b.} Characterize the worker's optimal policy.

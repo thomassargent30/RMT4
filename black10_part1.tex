@@ -1,0 +1,2159 @@
+
+\hyphenation{contin-gent}
+\input grafinp3
+\input psfig
+%\eqnotracetrue
+
+%\showchaptIDtrue
+%\def\@chaptID{10.}
+
+%Blackboard Bold R
+\def\bbR{{I\kern-0.3em R}}
+
+%\hbox{}
+\def\epigraph#1#2{%
+\begingroup
+\smallskip
+%\epigraphskip
+\leftskip=2em
+\rightskip=0pt plus2em
+\it\noindent #1\par
+\noindent --- #2\par
+\endgroup\noindent}
+
+\def\tone{{t+1}}
+\def\toner{{t-1}}
+\def\pdp{{{p_{t+1}+d_{t+1}\over p_t}}}
+\def\ucuc{{{u'(c_{t+1})\over u'(c_t)}}}
+\def\ucucc{{{u'(c_{t+2})\over u'(c_t)}}}
+\def\cov{{\rm cov}}
+\footnum=0
+\chapter{Asset Pricing Theory\label{assetpricing1}}
+
+\section{Introduction}
+
+    Chapter \use{recurge} showed how an equilibrium price system
+for an economy with a complete markets model could be used to
+determine the  price  of any redundant asset.  That approach
+allowed us to price any asset whose payoff could be synthesized
+as a measurable function of the economy's state.  We could use
+either the Arrow-Debreu time $0$ prices or the prices of
+one-period Arrow securities to price  redundant assets.
+\index{redundant assets!|see {arbitrage pricing theory}}
+
+  We shall use this
+complete markets approach again later in this chapter and in chapter \use{assetpricing2}.
+However, we begin with another frequently used approach, one
+that does not require the assumption that there are complete markets.
+This approach spells out fewer aspects of the economy and
+assumes fewer markets, but nevertheless
+derives testable intertemporal restrictions on prices and returns
+of different assets, and also across those prices and returns
+and consumption allocations.  This approach uses
+only the Euler equations for a maximizing consumer,
+and supplies stringent restrictions
+without specifying a complete  general equilibrium model.
+In fact, the approach
+imposes only a {\it subset\/} of the restrictions that
+would be imposed in a complete markets  model.  As we
+shall see in chapter \use{assetpricing2}, even these restrictions have proved difficult to
+reconcile with the data, the equity premium
+being a widely discussed example.
+
+\auth{Modigliani, Franco}\auth{Miller, Merton}%
+ Asset-pricing ideas have had diverse ramifications in macroeconomics.
+In this chapter, we describe some of these ideas, including
+the important Modigliani-Miller theorem asserting the irrelevance
+of firms' asset structures.  We describe a closely related
+kind of Ricardian equivalence theorem.\NFootnote{See Duffie (1996) for
+a comprehensive treatment of discrete- and continuous-time asset-pricing
+ theories.  See Campbell, Lo, and MacKinlay (1997) for
+a summary of recent work on empirical implementations.}
+%\auth{Mankiw, Gregory}
+\auth{Duffie, Darrell}
+\auth{Campbell, John Y.}
+\auth{Lo, Andrew W.}
+\auth{MacKinlay, A. Craig}
+
+\section{Asset Euler equations}
+
+We now describe the optimization problem of a single agent who has the
+opportunity to trade two assets.
+%\NFootnote{A representative
+%agent framework is void of any problems pertaining to incomplete
+%markets since all agents are assumed to be the same so there is no
+%need for trade. We are therefore free to introduce assets and
+%markets in a
+%sequential manner because the menu of assets does not affect
+%equilibrium prices and quantities.}
+ Following Hansen and Singleton (1983),
+the household's optimization by itself imposes ample restrictions
+on the comovements of asset prices and the household's consumption.
+These restrictions remain true even if additional assets are
+made available to the agent, and so do not depend on
+specifying the market structure completely. Later we shall
+study a general equilibrium model
+with a large number of identical agents.
+Completing a general equilibrium model may impose additional
+restrictions, but will leave intact individual-specific
+versions of  the ones to be derived here.
+\auth{Singleton, Kenneth J.}     \auth{Hansen, Lars P.}
+
+The agent has wealth $A_t > 0$ at time $t$ and wants to use
+this wealth to maximize expected lifetime utility,
+$$E_t\sum_{j=0}^\infty \be^j u(c_{t+j}),\qquad 0<\be <1,  \EQN ap_utility
+$$
+where $E_t$ denotes the mathematical expectation conditional on
+information known at time $t$, $\beta$ is a subjective discount
+factor, and $c_{t+j}$ is the agent's consumption in period $t+j$. The
+utility function $u(\cdot)$ is concave, strictly increasing, and
+twice continuously differentiable.
+
+To finance future consumption, the agent
+can transfer wealth over time through bond and equity holdings.
+One-period bonds earn a risk-free real gross interest rate $R_t$,
+measured in units of time $t+1$ consumption good per time $t$
+consumption good. Let $L_t$ be gross payout on the agent's
+bond holdings between periods $t$ and $t+1$, payable in period
+$t+1$ with a present value of $R_t^{-1}L_t$ at time $t$.
+The variable
+$L_t$ is negative if the agent issues bonds and \index{borrowing constraint}
+thereby borrows funds. The agent's holdings of equity shares between
+periods $t$ and $t+1$ are denoted $N_t$, where a negative number
+indicates a short position in shares. We impose the
+borrowing constraints $L_t \geq - b_L$ and $N_t \geq  - b_N$,
+where $b_L \geq 0$ and $b_N \geq 0$.\NFootnote{See chapters \use{recurge} and
+\use{incomplete} for
+ further discussions of natural
+and ad hoc borrowing constraints.} A share of equity entitles the
+owner to its stochastic dividend stream ${y_t}$. Let $p_t$ be
+the share price in period $t$ net of that period's dividend. The
+budget constraint becomes
+$$ c_t + R_t^{-1}L_t + p_t N_t \leq A_t,  \EQN ap_bc$$
+and next period's wealth is
+$$ A_{t+1} = L_t + (p_{t+1}+y_{t+1})N_t.  \EQN ap_wealth$$
+
+The stochastic dividend is the only source of exogenous fundamental
+uncertainty, with properties to be specified as needed later. The
+agent's maximization problem is then a dynamic programming problem
+with the state at $t$ being
+$A_t$ and current and past $y$,\NFootnote{Current and past $y$'s enter
+as information variables.  How many past $y$'s appear in the
+Bellman equation depends on the stochastic process for $y$.}
+and the controls being $L_t$ and $N_t$.  At interior solutions,
+the Euler equations associated with controls $L_t$ and $N_t$ are
+$$\EQNalign{
+u'(c_t)R_t^{-1}&= E_t\be u'(c_{t+1}),                      \EQN ap_euler1  \cr
+u'(c_t)p_t&=E_t\be (y_{t+1} + p_{t+1}) u'(c_{t+1}).    \EQN ap_euler2  \cr}
+$$
+These Euler equations give a number of insights into asset prices and
+consumption. Before turning to these, we first note that an optimal
+solution to the agent's maximization problem must also satisfy the following
+transversality conditions:\NFootnote{For a discussion of transversality
+conditions, see Benveniste and Scheinkman (1982) and Brock (1982).}
+$$\EQNalign{
+&\lim_{k\to\infty} E_t \beta^k u'(c_{t+k})R_{t+k}^{-1}L_{t+k} \,=\, 0,
+                                                       \EQN TVC1 \cr
+&\lim_{k\to\infty} E_t \beta^k u'(c_{t+k})p_{t+k}N_{t+k} \,=\, 0.
+                                                       \EQN TVC2 \cr}$$
+
+Heuristically, if any of the expressions in equations \Ep{TVC1} and
+\Ep{TVC2} were strictly positive, the agent would be overaccumulating
+assets so that a higher expected lifetime utility could be achieved by,
+for example, increasing consumption today. The counterpart to such
+nonoptimality in a finite horizon model would be that the agent dies
+with positive asset holdings. For reasons  like those
+in a finite horizon model, the agent would be happy if the two
+conditions \Ep{TVC1} and \Ep{TVC2} could be violated on the negative
+side. But the market would stop the agent from
+financing consumption by accumulating the debts that would be
+associated with  such  violations of \Ep{TVC1} and \Ep{TVC2}. No
+other agent would want to make those loans.
+
+\section{Martingale theories of consumption and stock prices}
+
+In this section, we briefly recall some early theories
+of asset prices and consumption, each of which is derived by
+making special assumptions about either $R_t$ or $u'(c)$ in equations
+\Ep{ap_euler1} and \Ep{ap_euler2}.  These assumptions are too strong
+to be consistent with much empirical evidence, but they are instructive
+benchmarks.
+
+First, suppose that the risk-free interest rate is constant over time,
+$R_t=R>1$, for all $t$.  Then equation \Ep{ap_euler1} implies that
+$$E_t u'(c_{t+1}) =(\be R)^{-1} u'(c_t),                    \EQN ap_euler1a  $$
+which is Robert Hall's (1978) result that the marginal utility of consumption
+follows a univariate linear first-order Markov process, so that no other
+variables in the information set help to predict (to Granger cause)
+$u'(c_{t+1})$, once lagged $u'(c_t)$ has been included.\NFootnote{See
+  Granger (1969) for his %
+definition of causality.  A random process $z_t$ is said {\it not\/} to cause %
+a random process $x_t$ if $E(x_{t+1}|x_t,x_{t-1},\ldots, z_t,z_{t-1},\ldots)    %
+=E(x_{t+1}|x_t,x_{t-1},\ldots)$.  The absence of Granger causality can be     %
+tested in several ways.  A direct way is to compute the two regressions       %
+mentioned in the preceding definition and test for their equality.  An        %
+alternative test was described by Sims (1972).}
+
+As an example,  with the constant-relative-risk-aversion utility function
+$u(c_t)=(1-\gamma)^{-1} c_t^{1- \gamma}$, equation \Ep{ap_euler1a} becomes
+$$ (\beta R)^{-1} = E_t \left(c_{t+1} \over c_t \right)^{-\gamma}.  $$
+Using aggregate data, Hall tested implication \Ep{ap_euler1a} for the special case of
+quadratic utility by testing for the absence of Granger causality from other
+variables to $c_t$.
+
+Efficient stock markets are sometimes construed to mean that the price of a
+stock ought to follow a martingale. Euler equation \Ep{ap_euler2}
+shows that a number of simplifications must be made to
+get a martingale property for the stock price.  We can transform
+the Euler equation
+$$
+E_t\be (y_{t+1} + p_{t+1}) {u'(c_{t+1}) \over u'(c_t)} \,=\, p_t
+$$
+by noting that for any two random variables $x,z$, we have the
+formula $E_txz=E_tx E_tz+ {\rm cov}_t(x,z)$, where ${\rm cov}_t(x,z)
+ \equiv E_t (x-E_tx)(z-E_tz)$.  This formula defines the conditional
+covariance ${\rm cov}_t(x,z)$.
+\index{conditional covariance}%
+Applying this formula in the preceding equation gives
+$$\be E_t (y_{t+1} + p_{t+1})  E_t {u'(c_{t+1}) \over u'(c_t)}
++\be \cov_t \left[(y_{t+1} + p_{t+1})\,,\; {u'(c_{t+1}) \over u'(c_t)} \right]
+\;=\; p_t.                                          \EQN ap_euler2a   $$
+To obtain a martingale theory of stock prices, it is necessary to assume,
+first, that $E_t u'(c_\tone)/u'(c_t)$ is a constant, and second, that
+$$\cov_t \left[(y_{t+1} + p_{t+1})\,,\; {u'(c_{t+1}) \over u'(c_t)} \right] = 0.
+$$
+These conditions are obviously very restrictive and will only hold under
+very special circumstances. For example, a sufficient assumption is that
+agents are risk neutral, so that $u(c_t)$ is linear in $c_t$ and $u'(c_t)$
+becomes independent of $c_t$.  In this case, equation \Ep{ap_euler2a}
+implies that
+$$E_t\be (y_\tone+p_\tone) = p_t.    \EQN ap_euler2b$$
+Equation \Ep{ap_euler2b} states that, adjusted for
+dividends and discounting, the share price follows a first-order
+univariate Markov process and that no other variables Granger cause
+the share price.  These implications have been tested extensively
+in the literature on efficient markets.\NFootnote{For a survey of
+this literature, see Fama (1976a).  See Samuelson (1965) for the
+theory and Roll (1970) for an application to the term structure of interest rates.}
+
+We also note that the stochastic difference equation \Ep{ap_euler2b} has
+the class of solutions
+$$p_t=E_t \sum_{j=1}^\infty \be^j y_{t+j} +\xi_t
+\left({1\over\be}\right)^t,                \EQN ap_share $$
+where $\xi_t$ is any random process that obeys $E_t \xi_{\tone}=\xi_t$ (that
+is, $\xi_t$ is a ``martingale''). Equation \Ep{ap_share} expresses the
+share price $p_t$ as the sum of discounted expected
+future dividends and a ``bubble term'' unrelated to any fundamentals. In the
+general equilibrium model that we will describe later,
+this bubble term always equals zero.
+
+\index{martingale!equivalent measure}
+\section{Equivalent martingale measure}
+
+This section describes adjustments for risk and
+dividends that convert an asset price into
+a martingale.   We return to the setting of chapter \use{recurge} and assume
+that the  state $s_t$  evolves according to a Markov
+chain with transition probabilities  $\pi(s_{t+1} | s_t)$.
+   Let an asset pay a stream of dividends
+$\{d(s_t)\}_{t \geq 0}$.  The cum-dividend\NFootnote{Cum-dividend means
+that the person who owns the asset at the end of time $t$ is entitled
+to the time $t$ dividend. Ex-dividend means that the person who owns the asset at the end of the period does not receive the time $t$ dividend.} time $t$  price
+of this asset, $a(s_t)$,  can be expressed recursively as
+$$ a(s_t) = d(s_t) + \beta \sum_{s_{t+1}} {u'[c^i_{t+1}(s_{t+1})]
+     \over u'[c^i_t(s_t)]} a(s_{t+1}) \pi(s_{t+1} \vert s_t), \EQN assetprice $$
+where $c^i_t$ is the consumption of agent $i$ at date $t$ in state $s_t$.  This equation
+holds for every agent $i$.
+Equation \Ep{assetprice} can be written
+$$ a(s_t) = d(s_t) +  R_t^{-1} \sum_{s_{t+1}}
+       a(s_{t+1}) \tilde \pi(s_{t+1} \vert s_t) \EQN riskneut1 $$
+or
+$$ a(s_t) = d(s_t) +  R_t^{-1} \tilde E_t a(s_{t+1}), \EQN riskneut101 $$
+where $R_t^{-1}$ is the reciprocal of the one period gross risk-free interest rate
+$$   R_t^{-1} = R_t^{-1}(s_t)  \equiv
+   \beta \sum_{s_{t+1}} {u'[c^i_{t+1}(s_{t+1})]
+        \over u'[c^i_t(s_t)]} \pi(s_{t+1} \vert s_t) \EQN Rinv $$
+and $\tilde E$ in equation \Ep{riskneut101} is the mathematical expectation with respect to
+the \idx{distorted transition density}
+$$         \tilde \pi(s_{t+1} \vert s_t)  = R_t \beta  {u'[c_{t+1}^i(s_{t+1})]
+           \over u'[c_t^i(s_t)]} \pi(s_{t+1} \vert s_t). \EQN equivmart;a $$
+%Notice that $R_t^{-1}$ is the reciprocal of the gross one-period
+%risk-free interest rate, as given by equation \Ep{ap_euler1}.
+It can be verified that $\sum_{s_{t+1}} \tilde \pi(s_{t+1} \vert s_t) =1 $ for
+all $s_t$ -- just note that equation \Ep{Rinv} confirms that $R_t^{-1}$ is the conditional expectation of
+$\beta  {u'[c_{t+1}^i(s_{t+1})]
+           \over u'[c_t^i(s_t)]}$, so that $R_t \beta  {u'[c_{t+1}^i(s_{t+1})]
+           \over u'[c_t^i(s_t)]}$ is a nonnegative random variable with conditional expectation equal to unity.  Therefore,
+the term $R_t \beta  {u'[c_{t+1}^i(s_{t+1})]
+           \over u'[c_t^i(s_t)]}$ multiplying the conditional density $\pi(s_{t+1} \vert s_t)$ in \Ep{equivmart;a}
+is a likelihood ratio.  Multiplication of $\pi(s_{t+1} \vert s_t)$ by this likelihood ratio constructs another
+conditional density.
+
+
+
+% The transformed
+%transition probabilities are rendered probabilities---that is, made
+%to sum to $1$---through
+%the multiplication by $\beta R_t$
+%in equation \Ep{equivmart;a}.
+The transformed or ``twisted'' transition density
+\index{twisted transition measure!|see{ martingale}}%
+$\tilde \pi(s_{t+1} \vert s_t)$  can be used to define a twisted joint density
+$$ \tilde \pi_t(s^t) = \tilde \pi(s_t \vert s_{t-1}) \ldots
+              \tilde \pi(s_1 \vert s_0)\tilde\pi(s_0). \EQN equivmart;b $$
+For example,
+$$ \eqalign{\tilde \pi(s_{t+2}, s_{t+1} | s_t) & = R_t(s_t) R_{t+1}(s_{t+1})
+  \beta^2 {u'[c_{t+2}^i(s_{t+2})] \over u'[c_t^i(s_t)]}  %\cr
+   \pi(s_{t+2} |
+     s_{t+1}) \pi(s_{t+1} | s_t). \cr} $$
+The twisted density $\tilde \pi_t(s^t)$ is associated with  an {\it
+ equivalent martingale measure}. \index{martingale!equivalant
+measure}%
+ We explain the meaning of the two adjectives. ``Equivalent'' means
+that $\tilde \pi$ assigns positive probability to any event that
+is assigned positive probability by $\pi$, and vice versa.  The
+equivalence of $\pi$ and $\tilde \pi$ is guaranteed by the assumption
+that $u'(c) >0$ in \Ep{equivmart;a}.\NFootnote{The existence of
+an equivalent martingale measure implies both the existence of a
+{\it positive\/} stochastic discount factor (see the discussion of
+Hansen and Jagannathan bounds in  chapter \use{assetpricing2}), and the
+absence of arbitrage opportunities; see Kreps (1979) and Duffie (1996).}
+\index{stochastic discount factor}
+
+We now turn to the adjective ``martingale.''\NFootnote{Another insight is that the
+likelihood ratio $L(s^t) \equiv {\frac{\tilde \pi_t(s^t)}{\pi_t(s^t)}}$ is a martingale with respect to
+the measure $\pi_t(s^t)$.  To verify this, notice that
+$L(s^t) =  {\frac{\tilde \pi(s_t| s_{t-1})}{\pi(s_t | s_{t-1})}} L(s^{t-1}).$
+Therefore, $E [L(s^t)| s^{t-1}] = L(s^{t-1}) E \biggl[  {\frac{\tilde \pi(s_t| s_{t-1})}{\pi_(s_t | s_{t-1})}} \bigl| s^{t-1} \biggr]$.
+But
+$$ E \biggl[   {\frac{\tilde \pi(s_t| s_{t-1})}{\pi(s_t | s_{t-1})}} \bigl| s^{t-1} \biggr] = \sum_{s_{t+1} \in S}
+ {\frac{\tilde \pi(s_t| s_{t-1})}{\pi(s_t | s_{t-1})}}  \pi(s_t| s_{t-1}) = 1 .$$
+Therefore, $E [L(s^t)|  s^{t-1}] = L(s^{t-1})$, so the likelihood ratio is a martingale.}
+To understand why this term is applied to $\tilde \pi_t(s^t)$, %\Ep{equivmart;a},
+consider the particular case of an  asset with dividend
+stream $d_T = d(s_T)$ and $d_t = 0 $ for $t \neq  T$.  Using
+the arguments in chapter \use{recurge} or iterating on equation \Ep{assetprice},
+the cum-dividend price of this asset can be expressed as
+$$ \EQNalign{ a_T(s_T) & = d(s_T), \EQN example1;a \cr
+             %a_t(s_t)  & = E_{s_t} \beta^{T-t} {u'[c^i_T(s_T)] \over
+%                  u'[c^i_t(s_t)]} a_T(s_T),
+             a_{T-1}(s_{T-1}) & = R_{T-1}^{-1} \tilde E_{T-1} a_T(s_T) \EQN example1;b\cr
+             \vdots \quad \quad & \quad \quad \vdots \cr
+             a_t(s_t) & = R_t^{-1} \tilde E_t R_{t+1}^{-1} R_{t+2}^{-1} \cdots R_{T-1}^{-1} a_T(s_t) \EQN example1;c \cr}$$
+where $\tilde E_{t}$ denotes the conditional expectation under
+the $\tilde \pi$ probability measure.
+Now fix $t < T$ and define the ``deflated'' or ``interest-adjusted'' asset price process
+$$ \tilde a_{t,t+j}  =    {a_{t+j} \over R_t R_{t+1} \ldots R_{t+j-1}},
+   \EQN example2 $$
+for $j = 1, \ldots, T-t$.   It follows  from equation
+\Ep{example1;c}  that %and \Ep{equivmart} that
+$$ \tilde  E_t \tilde a_{t,t+j}  =  a_t(s_t) \equiv \tilde a_{t,t} .\EQN
+   equivmart3 $$
+%where $\tilde a_t(s_t) = a(s_t) - d(s_t)$.
+ Equation \Ep{equivmart3} asserts that relative to the
+twisted measure $\tilde \pi$, the interest-adjusted asset price
+is a \idx{martingale}:  using the twisted measure,
+the best prediction of the future interest-adjusted asset price
+is its current value.
+
+Thus, when the equivalent martingale measure is used to price
+assets, we have so-called risk-neutral pricing.  Notice that in
+equation \Ep{riskneut1} the adjustment for risk is absorbed into
+the \idx{twisted transition measure}.  We can write equation
+\Ep{equivmart3} as $$ \tilde E [a(s_{t+1})\vert s_t] = R_t [
+a(s_t) - d(s_t)] , \EQN riskneutr2 $$ where $\tilde E$ is the
+expectation operator for the twisted transition measure. Equation
+\Ep{riskneutr2} is another way of stating that, after adjusting
+for risk-free interest and dividends, the price of the asset is a
+{\it martingale\/} relative to the equivalent martingale  measure.
+
+   Under the equivalent martingale measure, asset pricing
+reduces to calculating the conditional expectation of
+the stream of dividends that defines the asset.
+For example, consider a European  \index{call option!European}%
+ call option written on the asset described earlier
+that is priced by equations \Ep{example1}.    The owner of the call
+option has the right but not the obligation
+to purchase the ``asset'' at time $T$ at a price
+$K$.  The owner  of the call option will exercise this option
+only if $a_T \geq K$.  The value at $T$ of the option is
+therefore $ Y_T = \max(0, a_T - K) \equiv (a_T-K)^+$.  The price
+of the option at $t <T$ is then
+$$ Y_t = \tilde E_t \left[{(a_T-K)^+\over R_t R_{t+1} \cdots R_{t+T-1}}\right]
+.  \EQN BS  $$
+Black and Scholes (1973) used a particular continuous-time
+ specification of $\tilde \pi$ that made it possible to
+solve equation \Ep{BS} analytically for a function
+$Y_t$.  Their solution is known as
+the \idx{Black-Scholes formula} for option pricing.
+\auth{Black, Fischer} \auth{Scholes, Myron}
+
+\auth{Breeden, Douglas T.}
+\auth{LeRoy, Stephen}
+\auth{Lucas, Robert E., Jr.}
+\section{Equilibrium asset pricing}\label{eq_asset_pricing}%
+The preceding discussion of the Euler equations
+\Ep{ap_euler1} and \Ep{ap_euler2} leaves open
+how the economy generates, for example, the constant gross interest rate
+assumed in Hall's work.  We now explore equilibrium asset pricing
+in a  simple representative agent endowment economy,
+Lucas's asset-pricing model.\NFootnote{See %
+Lucas (1978).  Also see the important early work by Stephen LeRoy
+(1971, 1973). %
+Breeden (1979) was an early work on the consumption-based %
+capital-asset-pricing model.}  We imagine an economy consisting of a large
+number of identical agents with preferences as specified in expression
+ \Ep{ap_utility}.
+The only durable good in the economy is a set of identical ``trees,''
+one for each person  in the economy.
+At the beginning of period $t$, each tree yields fruit or dividends in the
+amount $y_t$.
+%The dividend $y_t$ is a function of
+%$x_t$, which is assumed to be
+%governed by a Markov process with a time-invariant transition probability
+%distribution function given by prob$\{x_{\tone}\le x'|x_t=x\}=F(x',x)$.
+The fruit is not storable, but the tree is perfectly durable.
+Each agent starts life at time zero with one tree.
+
+
+The dividend $y_t$ is assumed to be governed by a Markov process
+and the dividend is the sole state variable $s_t$ of the economy, i.e.,
+$s_t=y_t$. The time-invariant transition probability
+distribution function is given by Prob$\{s_{\tone}\le s'|s_t=s\}=F(s',s)$.
+
+
+All agents maximize expression \Ep{ap_utility} subject to the
+budget constraint \Ep{ap_bc}--\Ep{ap_wealth} and transversality
+conditions \Ep{TVC1}--\Ep{TVC2}. In an equilibrium, asset prices
+clear the markets. That is, the bond holdings of all
+agents sum to zero, and their total stock positions are equal to
+the aggregate number of shares. As a normalization, let there be
+one share per tree.
+
+Due to the assumption that all agents are identical with respect to both
+preferences and endowments, we can work with a representative
+agent.\NFootnote{In chapter \use{recurge}, we showed that some heterogeneity
+is also consistent with the notion of a representative agent.}
+Lucas's model shares features with a variety of
+representative agent asset-pricing models (see Brock, 1982, and Altug,
+1989, for example).  These use versions of stochastic optimal growth models
+to generate allocations and price assets.
+\auth{Brock, William A.}\auth{Altug, Sumru}
+
+Such asset-pricing models can be constructed by the following
+steps:
+\medskip
+\noindent{\bf 1.} Describe the preferences, technology, and endowments of a dynamic
+economy, then solve for the equilibrium intertemporal consumption allocation.
+Sometimes there is a particular  planning problem
+whose solution equals the competitive allocation.
+\medskip
+\noindent{\bf 2.} Set up a competitive market in some particular asset that
+represents a specific claim on future consumption goods.  Permit
+agents to buy and sell at equilibrium asset prices subject to particular
+borrowing and short-sales constraints.  Find an agent's Euler equation,
+analogous to equations \Ep{ap_euler1} and \Ep{ap_euler2}, for this asset.
+\medskip
+\noindent{\bf 3.} Equate the consumption that appears in the Euler equation
+derived in step 2 to the equilibrium consumption derived in step 1.
+This procedure will give the asset price at $t$ as a function of the
+state of the economy at $t$.
+
+\medskip
+\noindent
+In our endowment economy, a planner that treats all agents the same
+would like to maximize
+$E_0\sum_{t=0}^\infty \be^t u(c_t)$ subject to $c_t\le y_t$.  Evidently the
+solution is to set $c_t$ equal to $y_t$. After substituting this
+consumption allocation into equations
+\Ep{ap_euler1} and \Ep{ap_euler2}, we arrive
+at expressions for the risk-free interest rate and
+the share price:
+$$\EQNalign{
+u'(y_t)R_t^{-1} &=E_t\be u'(y_{t+1}),                       \EQN ap_euler1eq  \cr
+u'(y_t)p_t&=E_t\be (y_{t+1} + p_{t+1}) u'(y_{t+1}).    \EQN ap_euler2eq  \cr}
+$$
+
+\section{Stock prices without bubbles}
+
+Using recursions on equation
+\Ep{ap_euler2eq}  and the law of iterated expectations,
+which states that $E_tE_{t+1}(\cdot) =E_t(\cdot)$,
+we arrive at the following expression for the equilibrium share price:
+$$
+u'(y_t) p_t = E_t \sum_{j=1}^\infty \be^j u'(y_{t+j}) y_{t+j}
+            + E_t \lim_{k\to\infty} \beta^k u'(y_{t+k})p_{t+k}.  \EQN ap_share1
+$$
+Moreover, equilibrium share prices have to be consistent with
+market clearing; that is, agents must be willing to hold their endowments
+of trees forever. It follows immediately that the last term in equation
+\Ep{ap_share1} must be zero. Suppose to the contrary that the term is strictly
+positive. That is, the marginal utility gain of selling shares, $u'(y_t) p_t$,
+exceeds the marginal utility loss of
+holding the asset forever and consuming the future stream of dividends,
+$E_t \sum_{j=1}^\infty \be^j u'(y_{t+j}) y_{t+j}$. Thus, all agents
+would like to sell some of their shares and the price would be driven
+down. Analogously, if the last term in equation
+ \Ep{ap_share1} were strictly negative,
+we would find that all agents would like to purchase more shares and the
+price would necessarily be driven up. We can therefore conclude that the
+equilibrium price must satisfy
+$$
+p_t = E_t \sum_{j=1}^\infty \be^j {u'(y_{t+j})\over u'(y_t)} y_{t+j},
+                                                                  \EQN ap_share2
+$$
+which is a generalization of equation
+ \Ep{ap_share} in which the share price is an expected
+discounted stream of dividends but with time-varying and stochastic discount
+rates.
+
+Note that asset bubbles could also have been ruled out by directly
+referring to transversality condition \Ep{TVC2} and market clearing. In an
+equilibrium, the representative agent holds the per capita
+outstanding number of shares.
+ (We have assumed one tree per person and one share per tree.)
+After dividing transversality condition \Ep{TVC2} by this constant
+time-invariant number of shares and replacing $c_{t+k}$ by equilibrium
+consumption $y_{t+k}$, we arrive at the implication that the last
+term in equation
+\Ep{ap_share1} must vanish.\NFootnote{Brock (1982) and Tirole (1982)
+use the transversality condition when proving that asset bubbles cannot
+exist in economies with a constant number of infinitely lived agents.
+However, Tirole (1985) shows that asset bubbles can exist in equilibria
+of overlapping
+generations models that are dynamically inefficient, that is, when
+the growth rate of the economy exceeds the equilibrium rate of return.
+O'Connell and Zeldes (1988) derive the same result for a dynamically
+inefficient economy with a
+growing number of infinitely lived agents.
+ Abel, Mankiw, Summers, and Zeckhauser (1989) provide international
+evidence suggesting that dynamic inefficiency is not a problem in
+practice.\label{footnote11}}
+\auth{Mankiw, Gregory}       \auth{Abel, Andrew}
+\auth{Zeckhauser, Richard}   \auth{Summers, Lawrence}
+
+Moreover, after invoking our assumption that the endowment follows
+a Markov process, it follows that the equilibrium price in equation
+\Ep{ap_share2} can be expressed as a function of the current state
+$s_t\!$,
+$$
+p_t = p(s_t).                                          \EQN ap_share2b
+$$
+
+
+
+\section{Computing asset prices}
+
+  We now turn to three examples in which it is easy to calculate
+an asset-pricing function by solving the expectational difference
+equation \Ep{ap_euler2eq}.
+
+\subsection{Example 1: logarithmic preferences}
+
+Take the special case of equation \Ep{ap_share2} that emerges
+when $u(c_t)=\ln c_t$. Then equation \Ep{ap_share2}  becomes
+$$p_t = {\be\over 1-\be} y_t.             \EQN ap_share3  $$
+Equation \Ep{ap_share3} is our  asset-pricing function. It maps the
+state of the economy at $t$, $y_t$, into the price of a Lucas tree at $t$.
+\auth{Mehra, Rajnish}
+\auth{Prescott, Edward C.}
+\subsection{Example 2: a finite-state version}
+Mehra and Prescott (1985) consider a discrete-state version of Lucas's
+one-kind-of-tree model.  Let dividends assume the $n$ possible distinct values
+$[\si_1,\si_2,\ldots$, $ \si_n]$.  Let dividends evolve through time according
+to a Markov chain, with
+$${\rm prob}\{y_{\tone} =\si_l|y_t=\si_k\} =P_{kl} >0.$$
+The ($n\times n$) matrix $P$ with element $P_{kl}$ is called a stochastic
+matrix.  The matrix satisfies $\sum_{l=1}^n P_{kl}=1$ for each $k$.  Express
+equation \Ep{ap_euler2eq} of Lucas's model as
+$$p_tu'(y_t) =\be E_t p_\tone u'(y_\tone) +\be E_t y_\tone
+u'(y_\tone).                                                \EQN ap_eulereq2
+$$
+Express the price at $t$ as a function of the state $\si_k$ at $t$,
+$p_t=p(\si_k)$.  Define $p_tu'(y_t) =p(\si_k)u'(\si_k)\equiv v_k$, $k=1,\ldots,
+n$.  Also define $\alpha_k=\be E_t y_\tone u'(y_\tone)=\be \sum_{l=1}^n \si_l
+u'(\si_l)P_{kl}$.  Then equation \Ep{ap_eulereq2} can be expressed as
+$$\EQNalign{p(\si_k) u'(\si_k) &= \be \sum_{l=1}^n p(\si_l) u'(\si_l) P_{kl}
++\be \sum_{l=1}^n \si_l u'(\si_l) P_{kl} \cr
+\noalign{\hbox{or}}
+v_k&= \alpha_k+\be \sum_{l=1}^n P_{kl} v_l,\cr}$$
+or in matrix terms, $v=\alpha+\be Pv$, where $v$ and $\alpha$
+ are column vectors.
+The equation can be represented as $(I-\be P)v=\alpha$.  This equation has a
+unique solution given by\NFootnote{Uniqueness follows from the fact that, %
+because $P$ is a nonnegative matrix with row sums all equaling unity, the   %
+eigenvalue of maximum modulus $P$ has modulus unity.  The maximum eigenvalue %
+of  %
+$\be P$ then has modulus $\be$. (This point follows from Frobenius's %
+theorem.) %
+The implication is that $(I-\be P)^{-1}$ exists and that the expansion %
+$I+\be P+ \be^2 P^2+\ldots$ converges and equals $(I-\be P)^{-1}$.}
+$$v=(I-\be P)^{-1}\alpha.                                \EQN mepe_sol
+$$
+The price of the asset in state $\si_k$---call it $p_k$---can then be found
+from $p_k = v_k/[u'(\si_k)]$.  Notice that equation \Ep{mepe_sol} can be represented as
+$$\EQNalign{
+&v= (I+\be P+\be^2 P^2+\ldots)\alpha \cr
+\noalign{\hbox{or}}
+&p(\si_k)=p_k=\sum_l (I+\be P +\be^2 P^2+\ldots)_{kl} {\alpha_l\over u'(\si_k)},\cr}
+$$
+where $(I+\be P+\be^2 P^2+\ldots)_{kl}$ is the $(k,l)$ element of the matrix
+$(I+\be P+\be^2 P^2+\ldots)$.  We ask the reader to interpret this formula
+in terms of a geometric sum of expected future variables.
+
+\subsection{Example 3: asset pricing with growth}
+
+Let's price a Lucas tree in a pure endowment economy
+with $c_t = y_t$ and  $y_{t+1} = \lambda_{t+1} y_t$, where
+$\lambda_t$ is Markov with transition
+matrix $P$.    Let $p_t$ be the ex-dividend price of
+the Lucas tree.   Assume the CRRA utility
+$u(c) = c^{1-\gamma} / (1-\gamma)$.
+Evidently, the price of the Lucas tree satisfies
+$$ p_t = E_t\left[\beta \left({c_{t+1} \over c_t}\right)^{-\gamma}
+      \left( p_{t+1} + y_{t+1}  \right) \right] .$$
+Dividing both sides by $y_t$ and rearranging gives
+$$ {p_t \over y_t} = E_t \left[ \beta (\lambda_{t+1})^{1 - \gamma}
+    \left( { p_{t+1} \over y_{t+1} } + 1\right) \right] $$
+or
+$$ w_i = \beta \sum_j  P_{ij} \lambda_j^{1 -\gamma} (w_j+1) ,
+    \EQN mehra1 $$
+where $w_i$ represents the price-dividend ratio. Equation \Ep{mehra1} was
+used by Mehra and Prescott (1985) to compute equilibrium prices.
+
+\section{The term structure of interest rates}
+
+We will now explore the term structure of interest rates by pricing
+bonds with different maturities.\NFootnote{Dynamic asset-pricing
+theories for the term %
+structure of interest rates have been developed by Cox, Ingersoll, and Ross %
+(1985a, 1985b) and by LeRoy (1982).}  We continue to assume that
+the time $t$ state of the economy is the current dividend
+on a Lucas tree $y_t = s_t$, which is Markov with
+transition $F(s',s)$.  The risk-free real gross return between
+periods $t$ and $t+j$ is denoted $R_{jt}$, measured in units
+of time $(t+j)$ consumption good per time $t$ consumption good.
+Thus, $R_{1t}$ replaces our earlier notation $R_{t}$ for the
+one-period gross interest rate.  At the beginning of $t$, the return
+$R_{jt}$ is known with certainty and is risk free from the viewpoint
+of the agents.  That is, at $t$, $R_{jt}^{-1}$ is the price of a perfectly
+sure claim to one unit of consumption at time $t+j$.  For simplicity, we
+only consider such zero-coupon bonds, and the extra subscript $j$ on gross
+earnings $L_{jt}$ now indicates the date of maturity.  The subscript $t$ still
+refers to the agent's decision to hold the asset between period $t$ and $t+1$.
+
+As an example with one- and two-period safe bonds, the budget constraint
+and the law of motion for wealth in \Ep{ap_bc} and \Ep{ap_wealth} are augmented
+as follows,
+$$\EQNalign{
+& c_t + R_{1t}^{-1}L_{1t} + R_{2t}^{-1}L_{2t} + p_t N_{t} \leq A_t,
+                                                               \EQN ap_bc2   \cr
+& A_{t+1} = L_{1t} + R_{1t+1}^{-1}L_{2t} + (p_{t+1}+y_{t+1})N_{t}.
+                                                               \EQN ap_wealth2 \cr}
+$$
+Even though safe bonds represent sure claims to future consumption, these assets
+are subject to price risk prior to maturity. For example, two-period bonds
+from period $t$, $L_{2t}$, are traded at the price $R_{1t+1}^{-1}$ in period
+$t+1$, as shown in wealth expression \Ep{ap_wealth2}. At time $t$, an agent who
+buys such assets and plans to sell them next period would be uncertain about
+the proceeds, since $R_{1t+1}^{-1}$ is not known at time $t$. The price
+$R_{1t+1}^{-1}$ follows from a simple arbitrage argument, since, in period $t+1$,
+these assets represent identical sure claims to time $(t+2)$ consumption goods
+as newly issued
+one-period bonds in period $t+1$. The variable $L_{jt}$ should therefore
+be understood as the agent's net holdings between periods $t$ and $t+1$ of
+bonds that each pay one unit of consumption good at time $t+j$, without
+identifying when the bonds were initially issued.
+
+Given wealth $A_t$ and current dividend $y_t=s_t$, let $v(A_t,s_t)$ be
+the optimal value of maximizing expression \Ep{ap_utility} subject to
+equations \Ep{ap_bc2} and \Ep{ap_wealth2}, the asset-pricing function
+for trees $p_t = p(s_t)$,
+the stochastic process $F(s_{t+1},s_t)$, and stochastic processes for
+$R_{1t}$ and $R_{2t}$.
+The \idx{Bellman equation} can be written as
+$$\EQNalign{
+v(A_t,s_t)  =&\max_{L_{1t},L_{2t},N_{t}}
+\left\{ u\left[A_t-R_{1t}^{-1}L_{1t} - R_{2t}^{-1}L_{2t} - p(s_t) N_{t}
+ \right]  \right.\cr
+&\left. +\be E_t v\left(L_{1t} + R_{1t+1}^{-1}L_{2t} +
+                       [p(s_{t+1})+s_{t+1}]N_{t} ,\, s_{t+1}\right)
+                      \right\}, \cr} $$
+where we have substituted for consumption $c_t$ and wealth $A_{t+1}$ from
+formulas \Ep{ap_bc2}
+and \Ep{ap_wealth2}, respectively. The first-order necessary
+conditions with respect to $L_{1t}$ and $L_{2t}$ are
+$$\EQNalign{
+u'(c_t)R_{1t}^{-1}&= \be E_t v_1\left(A_{t+1},s_{t+1}\right),     \EQN ap_eulerb1  \cr
+u'(c_t)R_{2t}^{-1}&= \be E_t \left[v_1\left(A_{t+1},s_{t+1}\right)
+                                   R_{1t+1}^{-1}\right].          \EQN ap_eulerb2  \cr}
+$$
+After invoking Benveniste and Scheinkman's result %\Ep{BenSch}
+ and equilibrium
+allocation $c_t=y_t(=s_t)$, we arrive at the following equilibrium rates of return
+$$\EQNalign{
+R_{1t}^{-1} &= \be E_t \left[ {u'(s_{t+1}) \over u'(s_t) } \right]
+              \equiv R_1(s_t)^{-1},            \EQN ap_eulereqb1 \cr
+R_{2t}^{-1}&=
+ \be E_t \left[ {u'(s_{t+1}) \over u'(s_t) } R_{1t+1}^{-1} \right]
+             = \be^2 E_t \left[ {u'(s_{t+2}) \over u'(s_t) } \right]
+              \equiv R_2(s_t)^{-1},    \hskip1cm     \EQN ap_eulereqb2 \cr}
+$$
+where the second equality in \Ep{ap_eulereqb2} is obtained by using
+\Ep{ap_eulereqb1} and the law
+of iterated expectations. Because of our Markov assumption, interest rates
+can be written as time-invariant functions of the economy's current
+state $s_t$.
+The general expression for the price at time $t$ of
+a bond that yields one unit of the consumption good in period $t+j$ is
+$$
+R_{jt}^{-1}=
+\be^j E_t \left[ {u'(s_{t+j}) \over u'(s_t) } \right].  \EQN ap_eulereqbj
+$$
+The term structure of interest rates is commonly defined as the collection of
+yields to maturity for bonds with different dates of maturity. In the case of
+zero-coupon bonds, the yield to maturity is simply
+$$
+\tilde R_{jt} \equiv R_{jt}^{1/j}= \be^{-1}
+   \left\{ u'(s_t) \left[ E_t u'(s_{t+j}) \right]^{-1} \right\}^{1/j}.
+                                                               \EQN ap_term
+$$
+As an example, let us assume that dividends are independently and
+identically distributed over time. The yields to maturity for
+a $j$-period bond and a $k$-period bond are then related as follows:
+$$
+\tilde R_{jt} = \tilde R_{kt}
+   \left\{ u'(s_t) \left[ E u'(s) \right]^{-1} \right\}^{k-j \over kj}.
+$$
+The term structure of interest rates is therefore upward sloping whenever
+$u'(s_t)$ is less than $Eu'(s)$, that is, when consumption is relatively
+high today with a low marginal utility of consumption, and agents would
+like to save for the future. In an equilibrium, the short-term interest
+rate is therefore depressed if there is a diminishing marginal rate of physical
+transformation over time or, as in our model, there is no investment technology
+at all.  \index{term structure!slope}
+
+A classical theory of the term structure of interest rates is that
+long-term interest rates should be determined by expected future short-term
+interest rates. For example, the pure expectations theory hypothesizes that
+$R_{2t}^{-1} = R_{1t}^{-1} E_t R_{1t+1}^{-1}$. Let us examine if this
+relationship holds in our general equilibrium model.  From equation
+ \Ep{ap_eulereqb2}
+and by using equation \Ep{ap_eulereqb1}, we obtain
+$$\EQNalign{
+R_{2t}^{-1}&= \be E_t \left[ {u'(s_{t+1}) \over u'(s_t) }\right] E_t R_{1t+1}^{-1}
+          +\cov_t \left[ \be {u'(s_{t+1}) \over u'(s_t) },\, R_{1t+1}^{-1} \right] \cr
+           &= R_{1t}^{-1} E_t R_{1t+1}^{-1}
+          +\cov_t \left[ \be {u'(s_{t+1}) \over u'(s_t) },\, R_{1t+1}^{-1} \right],
+                                                                     \EQN exptheory \cr}
+$$
+which is a generalized version of the pure expectations theory,
+adjusted for the risk premium
+$\cov_t[ \be u'(s_{t+1}) / u'(s_t),\, R_{1t+1}^{-1} ]$.
+The formula implies that the
+pure expectations theory holds only in special cases.  One special case occurs
+when utility is linear in consumption, so that $u'(s_{t+1}) / u'(s_t)=1$.  In
+this case, $R_{1t}$, given by equation
+\Ep{ap_eulereqb1}, is a constant, equal to $\be^{-1}$,
+and the covariance term is zero. A second special case occurs when there
+is no uncertainty, so that the covariance term is zero for that reason.
+Recall that the first special case of risk neutrality is the same condition
+that suffices to eradicate the risk premium
+appearing in equation \Ep{ap_euler2a} and thereby sustain a martingale
+theory for a  stock price.
+
+\index{term structure!expectations theory}
+
+\section{State-contingent prices}
+
+  Thus far, this chapter has taken a different approach to
+asset pricing than we took in chapter \use{recurge}.  Recall that in
+chapter \use{recurge} we described two alternative complete markets
+models, one with once-and-for-all trading at time $0$ of date- and
+history-contingent claims, the other with sequential
+trading of a complete set of one-period Arrow securities.
+After these state-contingent prices had been computed, we
+were able to price any asset whose payoffs were linear
+combinations of the basic state-contingent commodities, just
+by taking a weighted sum.  That approach would  work easily
+for the Lucas tree economy, which by its simple structure
+with a representative agent can readily be cast as an economy
+with complete markets. The pricing formulas
+that we derived in chapter \use{recurge} apply to the Lucas tree economy,
+adjusting only for the way we have altered the specification
+of the Markov process describing the state of the economy.
+
+  Thus, in chapter \use{recurge}, we gave formulas for a pricing kernel for
+ $j$-step-ahead
+state-contingent claims.  In the notation
+of that chapter, we called $Q_j(s_{t+j} | s_t)$  the price
+when the time $t$ state is $s_t$
+of one unit of consumption in state $s_{t+j}$.   In this
+chapter we have chosen to let the state
+be governed by a continuous-state   Markov process.
+But we continue to use the notation $Q_j(s_j | s)$ to denote
+the $j$-step-ahead state-contingent price.  We have the
+following version of the formula from chapter \use{recurge}  for
+a $j$-period contingent claim
+$$Q_j (s_j|s)=\be^j {u'(s_j)\over u'(s)} f^j (s_j,s),     \EQN ap_contin3$$
+where the $j$-step-ahead transition function obeys
+$$f^j(s_j,s)=\int f(s_j,s_{j-1}) f^{j-1}(s_{j-1},s)ds_{j-1}, \EQN ap_trans
+$$
+and
+$$
+{\rm prob}\{s_{t+j}\le s'|s_t=s\}=\int_{-\infty}^{s'} f^j (w,s)dw.
+$$
+
+  In subsequent sections, we use the state-contingent prices to give
+expositions of several important ideas, including the Modigliani-Miller
+theorem and a Ricardian theorem.
+
+\subsection{Insurance premium}
+
+We shall now use the contingent claims prices to construct a model of
+insurance.  Let $q_\a(s)$ be
+the  price in current consumption goods of a claim on one unit of consumption
+next period, contingent on the event that next period's dividends fall below
+$\a$.  We think of the asset being priced as ``crop insurance,'' a claim to
+consumption when next period's crops fall short of $\a$ per tree.
+
+From the preceding section, we have
+$$q_\a(s) =\be \int_0^\a {u'(s')\over u'(s)} f(s',s) ds'.   \EQN ap_continp2$$
+  Upon noting that
+$$\EQNalign{ \int_0^\a u'(s') f(s',s) ds' ={\rm prob}\{s_{\tone}\le \a
+|s_t=s\} \;
+ E\{u'(s_{\tone})\, |\, s_{\tone} \le \a, s_t=s\},\cr}$$
+we can represent the preceding equation as
+$$q_\a(s) = {\be\over u'(s)} {\rm prob}\{s_{\tone} \le \a |s_t
+=s\} \;
+ E\{ u'(s_\tone)\,|\,s_{\tone} \le \a, s_t=s\}.  \hskip.2cm  \EQN ap_continp2b       $$
+Notice that, in the special case of risk neutrality [$u'(s)$ is a constant],
+equation \Ep{ap_continp2b} collapses to
+$$q_\a(s) =\be \,{\rm prob}\{s_{\tone} \le \a |s_t=s\},$$
+which is an intuitively plausible formula for the risk-neutral case.  When
+$u^\pp <0$ and $s_t\ge \a$, equation \Ep{ap_continp2b} implies that $q_\a(s)>\be {\rm
+prob} \{s_{\tone} \le \a|s_t=s\}$ (because then $E\{u'(s_{\tone})|s_{\tone}\le
+\a, s_t=s\} >u'(s_t)$ for $s_t\ge \a$).  In other words, when the
+representative consumer is risk averse ($u^\pp<0$) and when $s_t\ge \a$, the
+price of crop insurance $q_\a(s)$ exceeds the ``actuarially fair'' price of
+$\be{\rm prob}\{s_{\tone} \le \a|s_t=s\}$.
+
+Another way to represent equation
+ \Ep{ap_continp2} that is perhaps more convenient for purposes of
+empirical testing is
+$$1={\be\over u'(s_t)} E\left[u'(s_{\tone}) R_{t}(\a) \big\vert s_t\right]
+                                                                  \EQN ap_continp2c$$
+where
+$$R_{t}(\a) = \cases{ 0 & if $s_{\tone}>\a$\cr
+1/q_\a(s_t) & if $s_{\tone}\le \a$.\cr}$$
+
+
+\subsection{Man-made uncertainty}
+
+In addition to pricing assets with returns made risky by nature, we can use
+the model to price arbitrary man-made lotteries as demonstrated
+by Lucas (1982). \auth{Lucas, Robert E., Jr.}%
+Suppose that there is a
+market for one-period lottery tickets paying a stochastic prize $\omega$ in next
+period, and let $h(\omega,s',s)$ be a probability density for $\omega$, conditioned on
+$s'$ and $s$. \index{lotteries!man-made}%
+The price of a lottery ticket in state $s$ is denoted $q_L(s)$.
+To obtain an equilibrium expression for this price,
+we follow the steps in section \use{eq_asset_pricing},
+and include purchases of lottery tickets
+in the agent's budget constraint. (Quantities are negative if the agent is
+selling lottery tickets.) Then by reasoning similar to that leading to
+the arbitrage pricing formulas of
+chapter \use{recurge}, we arrive at the lottery ticket price formula:
+$$q_L(s) =\be \int \int {u'(s')\over u'(s)} \omega h(\omega,s',s)
+                                        f(s',s)d\omega \, ds'.         \EQN ap_lott
+$$
+Notice that if $\omega$ and $s'$ are independent, the integrals
+of equation \Ep{ap_lott} can be factored and, recalling equation
+ \Ep{ap_eulereqb1}, we obtain
+$$q_L(s) = \be \int {u'(s')\over u'(s)} f(s',s)\, ds'
+            \,\cdot \int \omega h(\omega, s) d\omega
+         = R_1(s)^{-1} E\{ \omega | s\}.                               \EQN ap_lott2
+$$
+Thus, the price of a lottery ticket is the price of a sure claim to one
+unit of consumption next period, times the expected payoff on a lottery
+ticket. There is no risk premium, since in a competitive market no one is
+in a position to impose risk on anyone else, and no premium need be
+charged for risks not borne.
+
+\subsection{The Modigliani-Miller theorem}
+
+  The Modigliani and Miller theorem\NFootnote{See Modigliani and Miller (1958).} %
+describes circumstances under which the total value  of
+a firm is independent of the firm's  financial structure, that is,
+the particular evidences of debt and equity that it issues.
+Following Hirshleifer (1966) and Stiglitz (1969), the Modigliani-Miller
+theorem can be proved directly in a setting with complete state-contingent
+markets.
+\auth{Modigliani, Franco}
+\auth{Miller, Merton}
+
+Suppose that an agent starts a firm at time $t$ with a tree as its sole asset,
+and then immediately sells the firm to the public by issuing $N$ number of shares
+and $B$ number of bonds as follows.
+Each bond promises to pay off $r$ per period, and $r$
+is chosen so that $rB$ is less than all possible realizations of
+future crops $y_{t+j}(s_{t+j})$, so that $y_{t+j} - r B$ is positive with probability one. After payments to bondholders, the owners of equity  are entitled to the residual crop.
+Thus, the dividend of a share of equity is
+$(y_{t+j}-rB)/N$ in period $t+j$. Let $p^B_t$ and $p^N_t$ be the equilibrium
+prices of a bond and a share, respectively, which can be obtained by
+using the contingent claims prices:
+$$\EQNalign{
+p^B_t &= \sum_{j=1}^\infty \int r Q_j(s_{t+j}|s_t) ds_{t+j},  \EQN ap_issueb \cr
+p^N_t &= \sum_{j=1}^\infty \int {y_{t+j}-rB \over N}
+                                   Q_j(s_{t+j}|s_t) ds_{t+j}. \EQN ap_issues \cr}
+$$
+The total value of bonds and shares is then
+$$
+p^B_t B + p^N_t N= \sum_{j=1}^\infty \int y_{t+j} Q_j(s_{t+j}|s_t) ds_{t+j},
+                                                                \EQN ap_MM
+$$
+which, by equations \Ep{ap_share2} and \Ep{ap_contin3},
+is equal to the tree's initial
+value $p_t$.  Equation \Ep{ap_MM}
+exhibits the Modigliani-Miller proposition that the value of the firm, that is,
+the total value of the firm's bonds and equities, is independent of the number
+of bonds $B$ outstanding.  The
+total value of the firm is also independent of the
+coupon rate $r$.
+
+The total value of the firm is independent of the financing scheme because
+the equilibrium prices of  bonds and shares adjust to reflect the
+riskiness inherent in any mix of liabilities. To illustrate these equilibrium
+effects, let us assume that
+$u(c_t)=\ln c_t$ and $y_{t+j}$ is i.i.d.\ over time so that
+$E_t(y_{t+j})=E(y)$,  and $y_{t+j}^{-1}$is  also i.i.d.\
+ for all $j\ge 1$. With logarithmic preferences, we can define a stochastic discount factor as
+ $m_{t+1} \equiv \beta \left( {\frac{c_t}{c_{t+1}}}\right)$ and express Euler equations like
+ \Ep{ap_euler1} and \Ep{ap_euler2} in the unified form
+ $$ E m_{t+1} R_{j,t+1} = 1 \EQN Euler_universal $$
+ where $R_{j,t+1}$ is the one-period gross rate of return on asset $j$ between $t$ and $t+1$.
+ It follows that with  logarithmic preferences, the price of a tree $p_t$ is given by equation
+\Ep{ap_share3}, and the other two asset prices are now
+$$\EQNalign{
+p^B_t &= \sum_{j=1}^\infty E_t\left[
+r \beta^j {u'(s_{t+j})\over u'(s_t)} \right] = {\beta \over 1-\beta}
+ r E(y^{-1}) y_t,   \EQN ap_bMM   \cr
+p^N_t &= \sum_{j=1}^\infty E_t\left[ {y_{t+j}-rB \over N}
+\beta^j {u'(s_{t+j})\over u'(s_t)} \right]
+ = {\beta \over 1-\beta} \left[1 - rB E(y^{-1})\right] {y_t \over N}, \hskip1.5cm\EQN ap_sMM  \cr}
+$$
+where we have used equations
+ \Ep{ap_issueb}, \Ep{ap_issues}, and \Ep{ap_contin3} and
+$y_t=s_t$. (The expression $[1 - rB E(y^{-1})]$ is positive because
+$rB$ is less than the lowest possible realization of $y$.)
+As can be seen, the price of a share depends negatively
+on the number of bonds $B$ and the coupon $r$, and also the number of shares
+$N$. We now turn to the expected rates of return on different assets, which should
+be related to their riskiness. First,
+notice that, with our special assumptions, the expected capital gains on issued
+bonds and shares are all equal to that of the underlying tree asset,
+$$
+E_t\left[p^B_{t+1} \over p^B_t\right] =
+E_t\left[p^N_{t+1} \over p^N_t\right] =
+E_t\left[p_{t+1} \over p_t\right]  =
+E_t\left[y_{t+1} \over y_t\right] .                             \EQN ap_gain
+$$
+It follows that any differences in expected total rates of return on assets
+must arise from the expected yields due to next period's dividends and coupons.
+Use equations \Ep{ap_share3}, \Ep{ap_bMM}, and \Ep{ap_sMM} to get
+$$\EQNalign{
+& \hskip-1cm {r \over p^B_t} = \left\{\left[
+  1-E_t(y_{t+1})E_t(y_{t+1}^{-1})\right]
+  +E_t(y_{t+1})E_t(y_{t+1}^{-1})\right\} {r \over p^B_t}  \cr
+\noalign{\vskip.1cm}
+&= {1-E(y)E(y^{-1}) \over E(y^{-1}) p_t }
+             + {E_t(y_{t+1}) \over p_t}  <  E_t\left[{y_{t+1} \over p_t}\right],
+                                                            \EQN ap_bret      \cr
+\noalign{\vskip.5cm}
+& \hskip-1cm E_t\left[{ \left(y_{t+1}-rB \right)/ N \over p^N_t}\right]                      \cr
+\noalign{\vskip.1cm}
+         &=\left\{\left[1-rB E(y^{-1})\right] +rB E(y^{-1})\right\}
+           E_t\left[{ \left(y_{t+1}-rB \right)/ N \over p^N_t}\right]            \cr
+\noalign{\vskip.1cm}
+&={E_t\left(y_{t+1}-rB \right) \over p_t}
+           + {rB E(y^{-1}) E_t\left(y_{t+1}-rB \right) \over
+              \left[1-rB E(y^{-1})\right] p_t}                                   \cr
+\noalign{\vskip.1cm}
+&={E_t(y_{t+1}) \over p_t}
+           + {rB \left[E(y^{-1}) E(y)  -1\right] \over
+              \left[1-rB E(y^{-1})\right] p_t}
+         > E_t\left[{y_{t+1}\over p_t}\right] ,               \EQN ap_sret       \cr}
+$$
+where the two inequalities follow from \idx{Jensen's inequality},
+ which states that
+$E(y^{-1}) > [E(y)]^{-1}$ for a nontrivial random variable $y$ (i.e., one with a positive variance). Thus, from
+equations \Ep{ap_gain}--\Ep{ap_sret}, we can conclude that the firm's bonds (shares)
+earn a lower (higher) expected rate of return as compared to the underlying
+asset. Moreover, equation
+ \Ep{ap_sret} shows that the expected rate of return on the
+ shares is positively related to payments to bondholders $rB$.
+In other words, equity owners demand a higher expected return from a more
+leveraged firm because of the greater risk borne.
+Thus, despite the fact that Euler equation \Ep{Euler_universal} holds for both the bond and equity,
+it is true that the expected return on equity exceeds the expected return on the risk-free bond.
+
+\section{Government debt}
+
+\subsection{The Ricardian proposition}
+
+We now use a version of Lucas's tree model to describe the Ricardian
+proposition that tax financing and bond financing of a given stream of
+government expenditures are equivalent.\NFootnote{An article by %
+Robert Barro (1974) promoted strong interest in the Ricardian proposition. %
+Barro described the proposition in a context distinct from the present %
+one but closely related to it.  Barro used an overlapping generations %
+model but assumed altruistic agents who cared about their descendants. %
+Restricting preferences to ensure an operative bequest motive, Barro %
+described an overlapping generations structure that is equivalent to a %
+model with an infinitely lived representative agent. See chapter
+\use{ricardian} for more on Ricardian equivalence.}  This proposition may
+be viewed as an application of the Modigliani-Miller theorem to
+government finance and obtains under circumstances in which the government is
+essentially like a firm in the constraints that it confronts with respect to
+its financing decisions.
+
+We add to Lucas's model a government that spends current output according
+to a nonnegative stochastic process $\{g_t\}$ that satisfies $g_t<y_t$ for all
+$t$.  The variable $g_t$ denotes per capita government expenditures at $t$.
+For analytical convenience we assume that $g_t$ is thrown away, giving  no
+utility to private agents.  The state $s_t = (y_t,g_t)$ of the economy is now
+a vector including the dividend $y_t$ and government expenditures $g_t$.
+We assume that $y_t$ and $g_t$ are jointly described by a Markov process
+with transition density $f(s_{\tone}, s_t) =
+f(\{y_{\tone}, g_{\tone}\},\{y_t,g_t\})$ where
+$${\rm prob} \{y_{\tone}\le y', g_{\tone}\le g'|y_t=y,g_t=g\}
+=\int_0^{y'} \int_0^{g'} f\left(\{z,w\},\{y,g\}\right) dw\ dz.$$
+To emphasize that the dividend $y_t$ and government expenditures $g_t$
+are solely functions of the current state $s_t$, we will use the notation
+$y_t=y(s_t)$ and $g_t = g(s_t)$.
+
+The government finances its expenditures by
+issuing one-period debt that is permitted to be state contingent, and with a
+stream of lump-sum per capita taxes $\{\tau_t\}$, a stream that we assume is a
+stochastic process expressible at time $t$ as a function of $s_t = (y_t,g_t)$
+and any debt from last period. A general way of capturing that taxes and
+new issues of debt depend upon the current state $s_t$ and the government's
+beginning-of-period debt, is to index both these government instruments by the
+history of all past states, $s^t=[s_0, s_1, \ldots, s_t]$. Hence, $\tau_t(s^t)$
+is the lump-sum per capita tax in period $t$, given history $s^t$, and
+$b_t(s_{\tone}|s^t)$ is the amount of $(\tone)$ goods that the government
+promises at $t$ to deliver, provided the economy is in state $s_{\tone}$ at
+$(\tone)$, where this issue of debt is also indexed by the history $s^t$.
+In other words, we are adopting the ``commodity space'' $s^t$ as we also
+did in chapter \use{recurge}. For example, we let $c_t(s^t)$ denote
+the representative agent's consumption at time $t$, after history $s^t$.
+
+
+We can here apply the three steps outlined earlier to construct equilibrium
+prices. Since taxation is lump sum without any distortionary effects, the
+competitive equilibrium consumption allocation still equals that of a
+planning problem where all agents are assigned the same
+ Pareto weight.
+Thus, the social planning problem for our purposes is to maximize $E_0
+\sum_{t=0}^\infty \be^t u(c_t)$ subject to $c_t \le y_t-g_t$, whose solution is
+$c_t=y_t-g_t$ which can alternatively be written as $c_t(s^t)=y(s_t)-g(s_t)$.
+Proceeding as we did in earlier sections, the equilibrium
+share price, interest rates, and state-contingent claims
+ prices are described by
+$$\EQNalign{
+&p(s_t) = E_t \sum_{j=1}^\infty \be^j {u'\!\left(y(s_{t+j})-g(s_{t+j})\right)
+                             \over u'\!\left(y(s_t)-g(s_t)\right)} y(s_{t+j}),  \EQN ap_share20 \cr
+&R_{j}(s_t)^{-1} =\be^j E_t {u'\!\left(y(s_{t+j})-g(s_{t+j})\right)
+   \over u'\!\left(y(s_t)-g(s_t)\right)},  %%%{u'(y_{t+j} -g_{t+j})\over u'(y_t-g_t)},
+                                                           \EQN  ap_rate10 \cr
+&Q_j (s_{t+j}|s_t)=\be^j {u'\!\left(y(s_{t+j})-g(s_{t+j})\right)
+   \over u'\!\left(y(s_t)-g(s_t)\right)}  %%%{u'(y_{t+j} -g_{t+j})\over u'(y_t-g_t)}
+f^j (s_{t+j},s_t),                                    \EQN ap_contin30 \cr}
+$$
+where $f^j (s_{t+j},s_t)$ is the $j$-step-ahead transition function
+that, for $j\ge 2$, obeys equation \Ep{ap_trans}. It also useful to
+compute another set of state-contingent claims prices from chapter \use{recurge},
+$$\EQNalign{
+q^t_{t+j}(s^{t+j}) &= Q_1 (s_{t+j}|s_{t+j-1}) \, Q_1 (s_{t+j-1}|s_{t+j-2}) \ldots
+                     Q_1 (s_{t+1}|s_{t})   \cr
+&=\be^j {u'\!\left(y(s_{t+j})-g(s_{t+j})\right)
+   \over u'\!\left(y(s_t)-g(s_t)\right)}  f(s_{t+j},s_{t+j-1})  \cr
+& \hskip1cm \cdot f(s_{t+j-1},s_{t+j-2}) \cdots f(s_{t+1},s_{t}).    \EQN ap_contin30X \cr}
+$$
+Here $q^t_{t+j}(s^{t+j})$ is the price of one unit of consumption
+delivered at time $t+j$, history $s^{t+j}$, in terms of date-$t$, history-$s^t$
+consumption good. Expression \Ep{ap_contin30X} can be derived from an
+arbitrage argument or an Euler equation evaluated at the equilibrium
+allocation. Notice that equilibrium prices \Ep{ap_share20}--\Ep{ap_contin30X}
+are independent of the government's
+tax and debt policy. Our next step in showing Ricardian equivalence is to
+demonstrate that the private agents' budget sets are also invariant to
+government financing decisions.
+
+Turning first to the government's budget constraint, we have
+$$g(s_t)=\tau_t(s^t)+\int Q_1(s_{\tone}|s_t) b_t(s_{\tone}| s^t) ds_{\tone}
+-b_{t-1}(s_t|s^{t-1}),                                               \EQN ap_gbc1 $$
+where $b_t(s_{\tone}|s^t)$ is the amount of $(\tone)$ goods that the government
+promises at $t$ to deliver, provided the economy is in state $s_{\tone}$ at
+$(\tone)$, where this quantity is indexed by the history $s^t$ at the
+time of issue.  If the government decides to issue only one-period risk-free
+debt, for example, we have $b_t(s_{\tone}|s^t)=b_t(s^t)$ for all $s_{\tone}$, so
+that
+$$ \int Q_1(s_{\tone}| s_t) b_t(s^t) ds_{\tone} \;=\; b_t(s^t) \int
+Q_1(s_{\tone}|s_t) ds_{\tone} \;=\; b_t(s^t)/R_{1}(s_t).$$
+Equation \Ep{ap_gbc1} then becomes
+$$g(s_t)=\tau_t(s^t) +b_t(s^t) /R_{1}(s_t)-b_{t-1}(s^{t-1 }).       \EQN ap_gbc2   $$
+Equation \Ep{ap_gbc2} is a standard form of the government's budget constraint
+under conditions of certainty.
+
+%If we write the budget constraint \Ep{ap_gbc1} in the form
+%$$b_{t-1}(s_t) =\tau_t -g_t +\int Q_1(s_{\tone}|s_t) b_t(s_{\tone})
+%ds_{\tone},$$
+%and iterate upon it to eliminate future $b_{t+j}(s_{t+j+1})$, we eventually find
+%that\NFootnote{Repeated substitution, exchange of orders of %
+%integration, and use of the expression for $j$-step-ahead contingent-%
+%claim-pricing functions are the steps used in deriving the present value
+%budget constraint from the %\Ep{ap_gbc3} from the     %
+%preceding equation.}
+%$$b_{t-1}(s_t) = \tau_t -g_t +\sum_{j=1}^\infty \int \left[
+%\tau_{t+j} - g_{t+j} \right] Q_j (s_{t+j}| s_t) ds_{t+j},
+%                                                              \EQN ap_gbc3
+%$$
+
+
+We can write the budget constraint \Ep{ap_gbc1} in the form
+$$b_{t-1}(s_t|s^{t-1}) =\tau_t(s^t) -g(s_t) +\int Q_1(s_{\tone}|s_t)
+b_t(s_{\tone}|s^t) ds_{\tone}.                               \EQN ap_gbc3a$$
+Then we multiply the corresponding budget constraint in period
+$t+1$ by $Q_1(s_{\tone}|s_t)$ and integrate over $s_{\tone}$,
+$$\EQNalign{
+\int &Q_1(s_{t+1}|s_t) b_{t}(s_{t+1}|s^{t}) ds_{t+1}
+=\int Q_1(s_{t+1}|s_t) \left[\tau_{t+1}(s^{t+1}) -g(s_{t+1})\right] ds_{t+1} \hskip.5cm  \cr
+&\hskip1cm+\int \int Q_1(s_{\tone}|s_t) Q_1(s_{t+2}|s_{t+1})
+b_{t+1}(s_{t+2}|s^{t+1}) d s_{t+2} ds_{\tone},       \cr
+&=\int q^t_{t+1}(s^{t+1}) \left[\tau_{t+1}(s^{t+1}) -g(s_{t+1})\right] d(s^{t+1}|s^t) \cr
+&\hskip1cm+\int q^t_{t+2}(s^{t+2})
+b_{t+1}(s_{t+2}|s^{t+1}) d(s^{t+2}|s^t),    \EQN ap_gbc3b \cr}
+$$
+where we have introduced the following notation for taking multiple integrals,
+$$
+\int x(s^{t+j}) d(s^{t+j}|s^t) \equiv \int \int \ldots \int x(s^{t+j})
+d s_{t+j}\, d s_{t+j-1} \ldots d s_{t+1}.
+$$
+Expression \Ep{ap_gbc3b} can be substituted into budget constraint
+\Ep{ap_gbc3a} by eliminating the bond term
+$\int Q_1(s_{t+1}|s_t) b_{t}(s_{t+1}|s^{t}) ds_{t+1}$. After repeated
+substitutions of consecutive budget constraints,  we eventually arrive
+at the present value budget constraint\NFootnote{The second equality
+follows from the expressions for $j$-step-ahead contingent-
+claim-pricing functions in \Ep{ap_contin30} and \Ep{ap_contin30X},
+and exchanging orders of integration.}
+$$\EQNalign{
+b_{t-1}(s_t|s^{t-1}) &=\tau_t(s^t) -g(s_t)   \cr
+ &\hskip1cm + \sum_{j=1}^\infty
+\int q^t_{t+j}(s^{t+j}) \left[\tau_{t+j}(s^{t+j}) -g(s_{t+j})\right] d(s^{t+j}|s^t) \cr
+&=\tau_t(s^t) -g(s_t)
+- \sum_{j=1}^\infty \int Q_j(s_{t+j}|s_t) g(s_{t+j}) ds_{t+j}  \cr
+& \hskip1cm + \sum_{j=1}^\infty
+\int q^t_{t+j}(s^{t+j}) \tau_{t+j}(s^{t+j})  d(s^{t+j}|s^t) \EQN ap_gbc3 \cr}
+$$
+as long as
+$$ \lim_{k\to\infty} \int q^t_{t+k+1}(s^{t+k+1})
+  b_{t+k}(s_{t+k+1}|s^{t+k}) d (s^{t+k+1}|s^t) \,=\, 0. \EQN ponzi
+$$
+A strictly positive limit of equation
+ \Ep{ponzi} can be ruled out by using
+the transversality conditions for private agents' holdings of government
+bonds that we here denote $b_t^d(s_{t+1}|s^t)$. (The superscript {\it d}
+ stands for demand and distinguishes
+the variable from government's supply of bonds.)
+%As in the case of private bonds in equation
+% \Ep{TVC1} and shares in equation \Ep{TVC2},
+%an individual would be overaccumulating assets unless
+%$$
+%\lim_{k\to\infty} E_t \beta^k u'(c_{t+k})
+%                      \int Q_1(s_{t+k+1}| s_{t+k}) b_{t+k}^d(s_{t+k+1})
+%                            d s_{t+k+1}   \,\leq\, 0.      \EQN TVCg
+%$$
+%After invoking equation
+% \Ep{ap_contin30} and equilibrium conditions $c_{t+k}=y_{t+k}-g_{t+k}$,
+%$b_{t+k}^d(s_{t+k+1})$ $=b_{t+k}(s_{t+k+1})$, we see
+%that the left-hand sides of equations
+%\Ep{ponzi} and \Ep{TVCg} are equal except for a factor of
+%$[u'(y_t-g_t)]^{-1}$ known at time $t$. Therefore, transversality condition
+%\Ep{TVCg} evaluated in an equilibrium ensures that the limit of
+%expression \Ep{ponzi} is nonpositive.
+Next, we simply assume
+away the case of a strictly
+negative limit of expression \Ep{ponzi}, since it would
+correspond to a rather uninteresting situation where the government
+accumulates ``paper claims'' against the private sector by setting
+taxes higher than needed for financial purposes.
+Thus, equation  \Ep{ap_gbc3} states that the value of
+government debt maturing at time $t$ equals the present value of the
+stream of government surpluses.
+
+It is a key implication of the government's present value budget constraint
+\Ep{ap_gbc3} that all government debt has to be backed by future
+primary surpluses $[\tau_{t+j}(s^{t+j})-g(s_{t+j})]$,
+i.e., government debt is the capitalized value of government
+net-of-interest surpluses. \index{primary surplus}%
+A government that starts out with a positive debt must run a
+primary surplus for some state realization in some
+future period. It is an implication of the fact that the economy is dynamically
+efficient.\NFootnote{In contrast, compare to our analysis in
+chapter \use{ogmodels} where we demonstrated that unbacked government
+debt or fiat money can be valued by private agents when the economy
+is dynamically inefficient. These different findings are
+related to the question of whether or not there can exist asset bubbles.
+See footnote \use{footnote11}.}
+
+
+
+We now turn to a private agent's budget constraint at time $t$,
+$$\EQNalign{
+&c_t(s^t) + \tau_t(s^t)
++p(s_t) N_{t}(s^t) +\int Q_1(s_{\tone}|s_t) b_t^d(s_{\tone}|s^t) ds_{\tone}       \cr
+&\hskip1cm \leq \left[p(s_{t})+y(s_{t})\right]N_{t-1}(s^{t-1})
++b_{t-1}^d(s_{t}|s^{t-1}).       \EQN ap_bc4   \cr}
+$$
+We multiply the corresponding budget constraint in period
+$t+1$ by $Q_1(s_{\tone}|s_t)$ and integrate over $s_{\tone}$.
+The resulting expression is substituted into equation \Ep{ap_bc4} by
+eliminating the purchases of government bonds in period $t$. The two
+consolidated budget constraints become
+$$\EQNalign{
+&c_t(s^t)+\tau_t(s^t) +
+\int \left[c_{t+1}(s^{t+1})+\tau_{t+1}(s^{t+1})\right] Q_1(s_{\tone}|s_t) ds_{\tone}   \cr
+&+\left\{ p(s_t)-\int \left[p(s_{t+1})+y(s_{t+1})\right]
+Q_1(s_{\tone}|s_t) ds_{\tone}\right\} N_{t}(s^t) \cr
+& + \int p(s_{t+1}) N_{t+1}(s^{t+1}) Q_1(s_{\tone}|s_t) ds_{\tone} \cr
+&+\int \int Q_1(s_{t+1}|s_t) Q_1(s_{t+2}|s_{t+1}) b_{t+1}^d(s_{t+2}|s^{t+1}) ds_{t+2}
+                                                                      d s_{t+1}  \cr &
+ \quad \quad  \leq \left[ p(s_{t})+y(s_{t})\right] N_{t-1}(s^{t-1})
++b_{t-1}^d(s_{t}|s^{t-1}), \EQN ap_bc5   \cr}
+$$
+where the expression in braces is zero by an arbitrage argument.
+%%(or an Euler equation).
+When continuing the consolidation of all future budget constraints, we
+eventually find that
+$$\EQNalign{
+&c_t(s^t)+\tau_t(s^t) +
+\sum_{j=1}^\infty
+\int \left[c_{t+j}(s^{t+j})+\tau_{t+j}(s^{t+j})\right] q^t_{t+j}(s^{t+j})
+d(s^{t+j}|s^t)         \cr
+&\qquad \qquad \qquad
+\leq \left[ p(s_{t})+y(s_{t})\right] N_{t-1}(s^{t-1})
++b_{t-1}^d(s_{t}|s^{t-1}), \EQN ap_bc6   \cr}
+$$
+where we have imposed limits equal to zero for the two terms involving
+$N_{t+k}(s^{t+k})$ and $b_{t+k}^d(s_{t+k+1}|s^{t+k})$ when $k$ goes to infinity. The
+two terms vanish because of \idx{transversality condition}s
+%%\Ep{TVC2} and
+%%\Ep{TVCg}
+and the reasoning in the preceding paragraph.
+Thus, equation \Ep{ap_bc6} states that the present value of the stream
+of consumption and taxes cannot exceed the agent's initial wealth at
+time $t$.
+
+
+Finally, we substitute the government's present value budget constraint
+\Ep{ap_gbc3} into that of the representative agent \Ep{ap_bc6} by
+eliminating the present value of taxes. Thereafter, we invoke equilibrium
+conditions $N_{t-1}(s^{t-1})=1$ and $b_{t-1}^d(s_{t}|s^{t-1})=b_{t-1}(s_{t}|s^{t-1})$
+and we use the equilibrium expressions for prices \Ep{ap_share20} and
+\Ep{ap_contin30} to express $p(s_t)$ as the
+sum of all future dividends discounted by the $j$-step-ahead pricing
+kernel $Q_j(s_{t+j}|s_t)$. The result is
+$$\EQNalign{
+& c_t(s^t) +
+\sum_{j=1}^\infty
+\int c_{t+j}(s^{t+j}) q^t_{t+j}(s^{t+j}) d(s^{t+j}|s^t)       \cr
+&\leq y(s_t)-g(s_t) +
+\sum_{j=1}^\infty
+\int \left[y(s_{t+j})-g(s_{t+j})\right] Q_j(s_{t+j}|s_t) ds_{t+j}.
+\hskip1cm           \EQN ap_bc7    \cr}
+$$
+Given that equilibrium prices %%%%%%%$Q_j(s_{t+j}|s_t)$
+have been shown to be independent of the government's
+tax and debt policy, the implication of formula \Ep{ap_bc7} is that
+the representative agent's budget set is also invariant to
+government financing decisions. Having no effects on prices and private
+agents' budget constraints, taxes and government debt do not affect
+private consumption decisions.\NFootnote{We have indexed choice
+variables by the history $s^t$ which is the commodity
+space for this economy. But it is instructive to verify that
+private agents will not choose history-dependent consumption when
+facing equilibrium prices \Ep{ap_contin30X}. At time $t$ after
+history $s^t$, an agent's first-order with respect to $c_{t+j}(s^{t+j})$
+is given by
+$$\EQNalign{
+u'\!\left( c_t(s^t) \right) q^t_{t+j}(s^{t+j})
+ =\be^j &u'\!\left( c_{t+j}(s^{t+j}) \right) f(s_{t+j},s_{t+j-1}) \cr
+&\cdot f(s_{t+j-1},s_{t+j-2}) \ldots f(s_{t+1},s_{t}). \cr}
+$$
+After dividing this expression by the corresponding first-order
+condition with respect to $c_{t+j}(\tilde s^{t+j})$ where
+$\tilde s^t=s^t$ and $\tilde s_{t+j}=s_{t+j}$, and invoking
+\Ep{ap_contin30X}, we obtain
+$$ 1 = { u'\!\left( c_{t+j}(s^{t+j}) \right) \over
+       u'\!\left( c_{t+j}(\tilde s^{t+j}) \right) }
+\qquad \Longrightarrow \qquad c_{t+j}(s^{t+j}) = c_{t+j}(\tilde s^{t+j}).
+$$
+Hence, the agent finds it optimal to choose $c_{t+j}(s^{t+j}) = c_{t+j}(\tilde s^{t+j})$
+whenever $s_{t+j} = \tilde s_{t+j}$, regardless of the history leading
+up to that state in period $t+j$.}
+
+
+We can summarize this discussion with the following proposition:
+\medskip
+\noindent{\sc Ricardian Proposition:}
+Equilibrium
+consumption and
+prices depend only on the stochastic
+process for output $y_t$ and government expenditure $g_t$.  In particular,
+consumption and state-contingent prices are both independent of the stochastic
+process $\tau_t$ for taxes.
+
+\medskip
+  In this model, the choices of the time pattern of
+taxes and government bond issues have no effect on any ``relevant'' equilibrium
+price or quantity.
+%(Some asset prices may be affected, however.)
+% This parenthesis would need more explanation -- tax on an asset in fixed
+% supply is equivalent to lump-sum taxation etc.
+  The reason is that, as indicated by equations \Ep{ap_gbc1} and
+\Ep{ap_gbc3}, larger
+deficits $(g_t-\tau_t)$, accompanied by larger values of government debt
+$b_t(s_{t+1})$, now signal future government surpluses.  The agents in this model
+accumulate these government bond holdings and expect to use their proceeds to
+pay off the very future taxes whose prospects support the value of the bonds.
+Notice also that, given the stochastic process for $(y_t,g_t)$, the way in
+which the government finances its deficits (or invests its surpluses) is
+irrelevant.  Thus, it does not matter whether it borrows using short-term,
+long-term, safe, or risky instruments.  This irrelevance of financing is an
+application of the Modigliani-Miller theorem.  Equation \Ep{ap_gbc3} may be
+interpreted as stating that the present value of the government is independent
+of such financing decisions.
+
+The next section elaborates on the significance that future government
+surpluses in equation \Ep{ap_gbc3} are discounted with contingent claims
+prices and not the risk-free interest rate, even though the government
+may choose to issue only safe debt. This distinction is made clear by
+using equations \Ep{ap_contin30X} and \Ep{ap_rate10} to rewrite equation
+ \Ep{ap_gbc3} as
+follows,
+%$$\EQNalign{
+%b_{t-1}(x_t)&  = \tau_t  - g_t +\sum_{j=1}^\infty
+ %\Biggl\{ R_{jt}^{-1} E_t[\tau_{t+j} - g_{t+j}] \Biggr\} \cr
+% &\Biggl. + \  \cov_t \Bigl[ \be^j {u'(y_{t+j}-g_{t+j})
+ %\over u'(y_t-g_t) },\, \tau_{t+j} - g_{t+j} \Bigr] \Biggr\}.
+%                                                       \EQN ap_gbc4 \cr} $$
+\offparens
+$$\EQNalign{
+b_{t-1}(s_t)&  =  \tau_t  - g_t +\sum_{j=1}^\infty
+ E_t \left[ \be^j {u'(y_{t+j}-g_{t+j})
+ \over u'(y_t-g_t) } \, (\tau_{t+j} - g_{t+j}) \right] \cr
+&=  \tau_t  - g_t +\sum_{j=1}^\infty
+ \Biggl\{ R_{jt}^{-1} E_t[\tau_{t+j} - g_{t+j}] \cr %\Biggr\} \cr
+ &%\hskip1cm
+ \Biggl. + \  \cov_t \Biggl[ \be^j {u'(y_{t+j}-g_{t+j})
+ \over u'(y_t-g_t) },\, \tau_{t+j} - g_{t+j} \Biggr] \Biggr\}.
+                                                       \EQN ap_gbc4 \cr} $$
+\autoparens
+\auth{Bohn, Henning}
+\subsection{No Ponzi schemes}\label{sec:Bohnmodel}%
+Bohn (1995) considers a nonstationary discrete-state-space version of
+Lucas's tree economy to demonstrate the importance of using a proper
+criterion when assessing long-run sustainability of fiscal policy,
+that is, determining whether the government's present-value budget constraint
+and the associated transversality condition are satisfied as in
+equations \Ep{ap_gbc3} and \Ep{ponzi} of the earlier model.
+The present-value budget constraint says that any debt at time $t$ must
+be repaid with future surpluses because the transversality condition rules
+out Ponzi schemes---financial trading strategies that involve rolling
+over an initial debt with interest forever.
+
+At each date $t$, there is now a finite set of possible states of nature,
+ and $s^t$ is the history of all past realizations, including the current one.
+Let $\pi_{t+j}(s^{t+j}|s^t)$ be the probability of a history $s^{t+j}$,
+conditional on history $s^t$ having been realized up until time $t$.
+The dividend of a tree in period $t$ is denoted $y_t(s^t)>0$,   and
+can depend on the
+whole history of states of nature. The stochastic process is such
+that a private agent's expected utility remains bounded for any fixed fraction
+$c\in(0,1]$ of the stream $y_t(s^t)$, implying
+$$
+\lim_{j\to\infty} E_t \beta^j u'(c_{t+j}) c_{t+j} = 0          \EQN Bohn_lim
+$$
+for $c_t=c\cdot y_t(s^t)$.\NFootnote{Expected lifetime utility
+is bounded if the sequence of ``remainders'' converges to zero,
+$$
+0 = \lim_{k\to\infty} E_t \sum_{j=k}^\infty \beta^j u(c_{t+j})
+\geq \lim_{k\to\infty} E_t \sum_{j=k}^\infty \beta^j
+ \left\{ u'(c_{t+j}) c_{t+j} \right\} \geq 0,
+$$
+where the first inequality is implied by concavity of $u(\cdot)$.  We
+obtain equation \Ep{Bohn_lim} because $u'(c_{t+j}) c_{t+j}$
+is positive at all dates.}
+
+Bohn (1995) examines the following government policy. Government spending
+is a fixed fraction $(1-c)=g_t/y_t$ of income. The government issues
+safe one-period debt so that the ratio of end-of-period debt to income is
+constant at some level $b=R_{1t}^{-1}b_t/y_t$, i.e.,
+$b_t(s^t) = R_{1t}\,b\,y_t(s^t)$. Given any initial debt, taxes
+can then be computed from budget constraint \Ep{ap_gbc2}. It is intuitively
+clear that this policy can be sustained forever, but let us formally show
+that the government's transversality condition holds in any period $t$,
+given history $s^t$,
+$$
+\lim_{j\to\infty} \sum_{s^{t+j+1}|s^t} \tilde q^t_{t+j+1}(s^{t+j+1})
+b_{t+j}(s^{t+j}) = 0,    \EQN Bohn_ponzi
+$$
+where the summation over $s^{t+j}|s^t$ means that we sum over all possible
+histories $\tilde s^{t+j}$ such that $\tilde s^t=s^t$, and
+$\tilde q^t_{t+j}(s^{t+j})$ is the price at $t$, given history $s^t$,
+of a unit of
+consumption good to be delivered in period $t+j$, contingent on the realization
+of history $s^{t+j}$. In an equilibrium, we have
+$$
+\tilde q^t_{t+j}(s^{t+j}) = \be^j {u'\left[c \cdot y_{t+j}(s^{t+j})\right]
+                  \over u'\left[c \cdot y_t(s^t)    \right]} \pi_{t+j}(s^{t+j}|s^t).
+                                                                   \EQN Bohn_contin
+$$
+After substituting equation
+ \Ep{Bohn_contin}, the debt policy, and $c_t=c\cdot y_t$ into
+the left-hand side of equation \Ep{Bohn_ponzi},
+$$\EQNalign{
+&\lim_{j\to\infty} E_t\left[ \be^{j+1} {u'(c_{t+j+1}) \over u'(c_t)}
+                            R_{1,t+j} \,b {c_{t+j} \over c} \right]         \cr
+&=\lim_{j\to\infty} E_t E_{t+j} \left[ \be^j {u'(c_{t+j}) \over u'(c_t)}
+                                       \be {u'(c_{t+j+1}) \over u'(c_{t+j})}
+                            R_{1,t+j} \,b {c_{t+j} \over c} \right]         \cr
+&={b \over c\, u'(c_t)} \,\lim_{j\to\infty} E_t \left[ \be^j u'(c_{t+j})
+                                       c_{t+j} \right]\;=\; 0.               \cr}
+$$
+The first of these equalities  invokes the law of iterated expectations;
+the second equality uses the equilibrium expression for the one-period
+interest rate, which is still given by expression \Ep{ap_rate10}; and the final
+equality follows from \Ep{Bohn_lim}. Thus, we have shown that the government's
+transversality condition and therefore its present-value budget constraint are
+satisfied.
+
+Bohn (1995) cautions us that this conclusion of fiscal sustainability might
+erroneously be rejected if we instead use the risk-free interest rate to
+compute present values. To derive expressions for the safe interest rate,
+we assume that preferences are given by the constant relative risk-aversion
+utility function $u(c_t)=(c_t^{1-\gamma}-1)/(1-\gamma)$, and the dividend $y_t$
+grows at the rate $\tilde y_t=y_t/y_{t-1}$ which is i.i.d.\ with mean
+$E(\tilde y)$. Thus, risk-free interest rates given by equation
+\Ep{ap_rate10} become
+$$
+R_{jt}^{-1} = E_t \left[ \be^j \left( \prod_{i=1}^j \tilde y_{t+i} \right)^{-\gamma}
+                                                                         \right]
+            = \prod_{i=1}^j E \left( \be \tilde y^{-\gamma} \right)
+ = R_{1}^{-j},
+$$
+where $R_{1}$ is the time-invariant one-period risk-free interest rate.
+That is, the term structure of interest rates obeys the pure expectations
+theory, since interest rates are nonstochastic. (The analogue to
+expression \Ep{exptheory} for this economy would therefore be one where the
+covariance term is zero.)
+
+For the sake of the argument, we now compute the expected value of future
+government debt discounted at the safe interest rate and take the limit
+\offparens
+$$\EQNalign{
+&\lim_{j\to\infty} E_t\Bigl( {b_{t+j} \over R_{j+1,t} } \Bigr)
+= \lim_{j\to\infty} E_t\Bigl( {R_{1,t+j} \,b y_{t+j}
+ \over R_{j+1,t} }\Bigr) \cr & =
+\lim_{j\to\infty} E_t\Bigl( {R_{1} \,b y_{t} \prod_{i=1}^j
+\tilde y_{t+i} \over R_{1}^{j+1} } \Bigr)                  \cr
+\noalign{\smallskip}
+&= b y_{t} \,\lim_{j\to\infty} \Bigl[ {E(\tilde y) \over R_{1}} \Bigr]^j
+=\cases{0,      &if $R_1>E(\tilde y)$;\cr
+        b y_t,  &if $R_1=E(\tilde y)$;\cr
+        \infty, &if $R_1<E(\tilde y)$.\cr}                \EQN Bohn_limb  \cr}
+$$
+\autoparens
+The limit is infinity if the expected growth rate of dividends $E(\tilde y)$
+exceeds the risk-free rate $R_1$. The level of the safe interest rate depends
+on risk aversion and on the variance of dividend growth. This dependence is
+best illustrated with an example. Suppose there are two possible states of
+dividend growth that are equally likely to occur with a mean of 1 percent,
+$E(\tilde y)-1=.01$, and let the subjective discount factor be $\beta=.98$.
+Figure \Fg{returnf} %10.1
+ depicts the equilibrium interest rate $R_1$ as a function of
+the standard deviation of dividend growth and the coefficient
+of relative risk aversion $\gamma$.
+For $\gamma=0$, agents are risk neutral, so the interest rate is given by
+$\beta^{-1}\approx 1.02$ regardless of the amount of uncertainty. When
+making agents risk averse by increasing $\gamma$, there are two opposing
+effects on the equilibrium interest rate. On the one hand, higher risk
+aversion implies also that agents are less willing to substitute consumption
+over time.
+Therefore, there is an upward pressure on the interest rate to
+make agents accept an upward-sloping consumption profile. This fact completely
+explains the positive relationship between $R_1$ and $\gamma$
+when the standard deviation of growth is zero, that is, when
+ deterministic growth
+is 1 percent.
+ On the other hand, higher risk aversion in an uncertain environment
+means that agents attach a higher value to sure claims to future consumption,
+which tends to increase the bond price $R_1^{-1}$. As a result, Figure \Fg{returnf} %10.1
+shows how the risk-free interest $R_1$ falls below the expected gross
+growth rate of the economy
+when agents are sufficiently risk averse and the standard deviation of
+dividend growth is sufficiently large.\NFootnote{A risk-free interest rate
+less than the growth rate would indicate dynamic inefficiency in a
+deterministic steady state but not necessarily in a stochastic economy.
+Our model here of an infinitely lived representative agent is dynamically
+efficient.  For discussions of dynamic inefficiency, see Diamond (1965)
+and Romer (1996, chap. 2).}
+
+%%%%%%%%%%
+%\topinsert
+%$$\grafone{return.ps,height=2.5in}{{\bf Figure 10.1}  The risk-free interest
+%rate $R_1$ as a function of the coefficient of relative risk aversion $\gamma$
+%and the standard deviation of dividend growth. There are two states of dividend
+%growth that are equally likely to occur with a mean of 1 percent,
+% $E(\tilde y)-1=.01$,
+%and the subjective discount factor is $\beta=.98$.}
+%$$\endinsert
+%%%%%%%%%%%
+
+\midfigure{returnf}
+\centerline{\epsfxsize=3truein\epsffile{return.ps}}
+\caption{The risk-free interest rate $R_1$ as a function of the coefficient of
+relative risk aversion $\gamma$ and the standard deviation of dividend growth.
+There are two states of dividend growth that are equally likely to occur with
+a mean of 1 percent, $E(\tilde y)-1=.01$, and the subjective discount factor
+is $\beta=.98$.}
+\infiglist{returnf}
+\endfigure
+
+If $R_1\leq E(\tilde y)$ so that the expected value of future debt
+discounted at the safe interest rate does not converge to zero in equation \Ep{Bohn_limb},
+it follows that the expected sum of all future government surpluses discounted
+at the safe interest rate in equation
+\Ep{ap_gbc4} falls short of the initial debt.
+In fact, our example is then associated with negative
+expected surpluses at all future horizons,
+%{\ninepoint
+$$\EQNalign{
+&E_t\left( \tau_{t+j} - g_{t+j} \right)
+=E_t\left( b_{t+j-1} - b_{t+j}/R_{1,t+j} \right)
+=E_t\left[ (R_1 - \tilde y_{t+j}) b y_{t+j-1} \right] \hskip1cm \cr
+&\qquad \qquad
+=\left[R_1 - E(\tilde y)\right]\,b \left[ E(\tilde y)\right]^{j-1} y_t
+\cases{>0,      &if $R_1>E(\tilde y)$;\cr
+       =0,      &if $R_1=E(\tilde y)$;\cr
+       <0,      &if $R_1<E(\tilde y)$;\cr}                \EQN Bohn_limsurp  \cr}
+$$ %%%}%endninepoint
+where the first equality invokes budget constraint \Ep{ap_gbc2}. Thus,
+for $R_1\leq E(\tilde y)$, the sum of covariance terms in equation
+\Ep{ap_gbc4} must be
+positive. The described debt policy also clearly has this implication where,
+for example, a low realization of $\tilde y_{t+j}$ implies a relatively high
+marginal utility of consumption and at the same time forces taxes up in order
+to maintain the
+targeted debt-income ratio in the face of a relatively low $y_{t+j}$.
+
+As pointed out by Bohn (1995), this example illustrates the problem with
+empirical studies, such as Hamilton and Flavin (1986), Wilcox (1989),
+Hansen, Roberds and Sargent (1991),  Gali (1991), and
+Roberds (1996), which rely on safe interest rates as discount factors
+when assessing the sustainability of fiscal policy.  Such an approach
+would only be justified if future government surpluses were uncorrelated
+with future marginal utilities so that the covariance terms in equation
+\Ep{ap_gbc4} would vanish. This condition is trivially true in a
+nonstochastic economy or if agents are risk neutral; otherwise, it is
+difficult, in practice, to imagine a tax and spending policy that is
+uncorrelated with the difference between aggregate income and government
+spending that determines the marginal utility of consumption.
+\auth{Gali, Jordi}     \auth{Hansen, Lars P.}
+\auth{Roberds, William}
+\auth{Hamilton, James D.}
+\auth{Flavin, Marjorie A.}
+\auth{Wilcox, David W.}
+
+
+
+
+\appendix{A}{Harrison-Kreps (1978) heterogeneous beliefs\label{app:compHarrKrep}}
+
+This appendix sketches a model of Harrison and Kreps (1978) that features heterogeneous
+beliefs, incomplete markets, short sales constraints, and possibly (leverage) limits on an investor's ability
+to borrow  in order to finance purchases of a risky asset.
+ The  model   simplifies by  ignoring  alterations in the distribution of wealth among investors having different beliefs about  fundamentals driving
+asset payouts.\NFootnote{Such wealth distribution  effects are center stage in the models of  heterogeneous beliefs described in  appendices  to
+chapter \use{recurge}.}
+
+
+\auth{Kreps, David M.}%
+\auth{Harrison, J. Michael}%
+There is a fixed number $A$ of shares of an asset.  Each share entitles its owner
+to a stream of dividends $\{d_t\}$  governed by a  Markov chain defined
+on a state space $S \in \{1, 2\}$.
+The dividend obeys
+$$ d_t =\cases{0 & if $s_t = 1$; \cr
+                       1 & if $s_t =2$.\cr}  $$
+Two types $h=a, b$ of investors are distinguished only by their beliefs about a Markov transition
+matrix $P$ with typical element $P(i,j) = {\rm Prob}(s_{t+1} = j| s_t = i)$.
+Agents of type $a$ believe  the transition matrix
+$$P_a = \bmatrix{ {\frac{1}{2}} & {\frac{1}{2}} \cr
+                 {\frac{2}{3}} & {\frac{1}{3}} } $$
+while agents of type $b$ think the transition matrix is
+$$P_b = \bmatrix{ {\frac{2}{3}} & {\frac{1}{3}} \cr
+                 {\frac{1}{4}} & {\frac{3}{4}} }. $$
+Associated with transition matrix $P_a$ is the invariant distribution $\pi_a = \bmatrix{ .57 & .43 }$ and associated with transition matrix $P_b$ is the
+invariant distribution
+$\pi_b = \bmatrix{ .43 & .57 }$.
+
+
+An owner of the asset at the end of time $t$ is entitled to the dividend at time $t+1$ and  the
+right to sell the asset at time $t+1$.  Both  types of investors are risk-neutral and both have the same fixed discount
+factor $\beta \in (0,1)$.  In our numerical example, we'll set $\beta = .75$, just as Harrison and Kreps did.
+
+ We'll eventually  study the consequences of   two different assumptions about the number of shares $A$ relative to the resources that
+our two types of investors can invest in the stock. One possibility  is to  follow Harrison and Kreps and to assume  that both types of investor  have access to enough  resources
+(either wealth or the capacity to borrow) to  purchase the entire stock of the asset.  The alternative  assumption is that no single type of investor
+has sufficient resources to purchase the entire stock of the asset, so  both types of investor  always hold some of the asset.
+  Short sales of the asset are prohibited.\NFootnote{With the specified  preferences, if there were no constraint on short sales, there would exist no equilibrium.
+Pessimistic agents would be willing to sell unbounded amounts of the asset at the equilibrium prices  computed in \Ep{HarrKrep2}.}
+
+
+\subsection{Optimism  and Pessimism}
+The  above specification of the perceived transition matrices $P_a$ and $P_b$, taken directly from Harrison and Kreps, builds in stochastically alternating
+temporary optimism and
+pessimism.  Remember that state $2$ is the high dividend state.  In state $1$, a type $a$ agent is more  optimistic about next period's dividend than is a type $b$ agent,
+while in state $2$, a type
+$b$ agent is  more optimistic about next period's dividend.   However, the invariant distributions $\pi_A = \bmatrix{ .57 & .43 }$ and
+$\pi_B = \bmatrix{ .43 & .57 }$ tell us that a type $B$ person is more optimistic about the dividend process in the long run than is a type A person.
+
+
+\subsection{Equilibrium price function}
+
+Agents know a  function mapping the state $s_t$  into the equilibrium price $p(s_t)$.
+When they choose whether to purchase or sell the asset at $t$, agents  know  $s_t$.
+
+\subsection{Comparisons of equilibrium price functions}
+
+We compute equilibrium price functions under the following sets of alternative assumptions about beliefs:
+
+\medskip
+\item{1.} There is only one type of agent, either $a$ or $b$.
+
+\medskip
+\item{2.} There are two types of agent differentiated only by their beliefs.  Each type of agent has sufficient resources to purchase all of the asset.
+This is Harrison and Kreps's setting.
+
+\medskip
+
+\item{3.} There are two types of agent with different beliefs, but because of limited wealth  and/or limited leverage, both types of agent  hold the asset each period.
+
+\medskip
+
+\subsection{Single belief prices}
+We'll start by pricing the asset under homogeneous beliefs.
+Suppose that there is only one type of investor, either of type $a$ or $b$, and that
+this investor  always ``prices the asset''.  Let $p_h = \bmatrix{ p_h(1) \cr p_h(2) }$ be the equilibrium
+price vector when all investors are of type $h$.  The price today equals the expected discounted value of tomorrow's dividend plus tomorrow's price of the asset:
+$$ p_h(s) = \beta \left( P_h(s,1) p_h(1) + P_h(s,2) ( 1 + p_h(2)) \right), \quad s = 1,2 . $$
+These equations imply that the equilibrium price vector
+is
+$$ \bmatrix{ p_h(1) \cr p_h(2) } = \beta [I - \beta P_h]^{-1} P_h \bmatrix{ 0 \cr 1} . \EQN HarrKrep1 $$
+The first two rows of \Tbl{HKtab} report $p_a(s)$ and $p_b(s)$.
+
+\subsection{Pricing under heterogeneous beliefs}
+
+There are several possibilities.  The first is when both  types of agent have sufficient wealth to purchase all of the asset
+themselves. In this case the marginal investor who prices the asset is the more optimistic type, so that the equilibrium
+price satisfies Harrison and Kreps's key equation:
+$$ \EQNalign{ \overline p(s) &  = \beta \max\Bigl\{  P_a(s,1) \overline p(1) + P_a(s,2) ( 1 +  \overline p(2)) , \cr
+                   &    \quad \quad \quad \quad \quad         P_b(s,1)  \overline p(1) + P_b(s,2) ( 1 +  \overline p(2))  \Bigr\} \EQN HarrKrep2  \cr }
+                                                        $$
+for $s=1,2$. The marginal investor who prices the asset in state $s$ is of type $a$ if  $P_a(s,1)  \overline p(1) + P_a(s,2) ( 1 +  \overline p(2)) >        P_b(s,1)  \overline p(1) + P_b(s,2)
+( 1 +  \overline p(2))$
+and of type $b$ if $P_a(s,1)  \overline p(1) + P_a(s,2) ( 1 +  \overline  p(2)) <      P_b(s,1)  \overline p(1) + P_b(s,2) ( 1 +  \overline  p(2))$.  Thus, the marginal investor is always
+the  (temporarily) more optimistic type.
+
+
+
+
+Equations \Ep{HarrKrep2} form  a functional equation that, like a Bellman equation,  can be solved by starting with a guess
+for the price vector $ \overline p$ and iterating to convergence on the operator that maps a guess $\overline p^j$ into a guess $\overline p^{j+1}$ defined by
+the right side of \Ep{HarrKrep2}, namely
+$$ \EQNalign{ \overline  p^{j+1}(s) &  = \beta \max\Bigl\{  P_a(s,1) \overline p^j(1) + P_a(s,2) ( 1 + \overline p^j(2)) , \cr
+                   &    \quad \quad \quad \quad \quad         P_b(s,1) \overline  p^j(1) + P_b(s,2) ( 1 + \overline  p^j(2))  \Bigr\} \EQN HarrKrep3  \cr }
+                                                        $$
+for $s=1,2$.
+\index{bubbles!leverage constraints}%
+\index{bubbles!short sales constraints}%
+\index{bubbles!and volume}%
+
+\bigskip
+\midtable{HKtab}
+$$\vbox{\offinterlineskip
+\hrule
+\halign{\strut #\hfil & \hfil# &\quad \hfil#\cr
+$s_t $  &  1  & 2  \cr \noalign{\hrule}
+$p_a $ & 1.33  & 1.22 \cr
+$p_b $ & 1.45 & 1.91 \cr
+$\overline p $ & 1.85 & 2.08  \cr
+$\hat p_a$ & 1.85 & 1.69 \cr
+$\hat p_b$ & 1.69 & 2.08 \cr
+$\check p $ & 1 & 1 \cr \noalign{\hrule}
+}}$$
+\caption{Row 1: equilibrium price function $p_a$  under homogeneous beliefs $P_a$. Row 2: equilibrium price function $p_b$ under homogeneous beliefs $P_b$. Row 3: equilibrium price function
+under heterogeneous beliefs with optimistic
+marginal investors. Row 4: type $a$ agents are  willing to pay $\hat p_a$  for asset. Row 5: type $b$ agents are willing to pay $\hat p_b$ for the asset. Row 6: equilibrium price function under
+ heterogeneous beliefs with pessimistic marginal investors.  $\beta = .75$.}
+\endtable
+
+
+The third row of \Tbl{HKtab} reports equilibrium prices that solve the functional equation \Ep{HarrKrep3} when $\beta = .75$.  Here the type that is
+more optimistic about $s_{t+1}$ prices the
+asset in state $s_t$.  It is instructive to compare these prices with
+the equilibrium prices for the homogeneous belief economies that solve \Ep{HarrKrep1} under beliefs  $P_a$ and $P_b$.
+Equilibrium prices $\overline p$ in the heterogeneous beliefs economy exceed what every prospective investor regards as the fundamental value
+of the asset in each possible state.   The reason is that each purchaser of  the asset pays more than he believes
+its future dividends are worth because
+he expects to have the option to sell the asset later to another investor who will value the asset more highly than
+he will.
+
+Agents of type $a$ are willing to pay the following price for the asset
+$$ \hat p_a(s) =\cases{\overline p(1),  & if $s_t = 1$; \cr
+                       \beta(P_a(2,1) \overline p(1) + P_a(2,2) ( 1 +  \overline p(2))) , & if $s_t =2$.\cr}  $$
+while agents of type $b$  are willing to pay
+$$ \hat p_b(s) =\cases{ \beta(P_b(1,1) \overline p(1) + P_b (1,2) ( 1 +  \overline p(2))),  & if $s_t = 1$; \cr
+                       \overline p(2) , & if $s_t =2$.\cr}  $$
+Evidently, $\hat p_a(2) < \overline p(2)$ and $\hat p_b(1) < \overline p(1)$.  Agents of type $a$ want to sell the asset in state $2$ while agents of type $b$ want
+to sell it in state $1$.  The asset changes hands whenever the state changes from $1$ to $2$ or from $2$ to $1$. %so that agents of type $a$ purchase the asset in state $1$ and sell it in state $2$.
+The valuations $\hat p_a(s)$ and $\hat p_b(s)$ are displayed in the fourth and fifth rows of \Tbl{HKtab}. Even the temporarily more pessimistic investors who don't buy the asset think that it is worth
+more than they think future dividends are worth.
+
+
+\subsection{Insufficient funds}
+
+Outcomes differ when the more optimistic type of investor has insufficient wealth -- or  insufficient ability to borrow enough  -- to
+hold the entire stock of the asset. In this case, the asset price must adjust to attract  pessimistic investors.  Instead of equation \Ep{HarrKrep2}, the equilibrium price satisfies
+$$ \EQNalign{ \check p(s) &  = \beta \min\Bigl\{  P_a(s,1)  \check  p(1) + P_a(s,2) ( 1 +   \check  p(2)) , \cr
+                   &    \quad \quad \quad \quad \quad         P_b(s,1)  \check p(1) + P_b(s,2) ( 1 + \check p(2))  \Bigr\} , \EQN HarrKrep4  \cr }
+                                                        $$
+and the marginal investor who prices the asset is always the type that values it {\it less\/} highly than does the other type. Now the marginal investor is always
+the (temporarily) pessimistic type.   Notice from the sixth row of \Tbl{HKtab} that the pessimistic price $\underline p$ is lower than the homogeneous belief prices $p_a$  and $p_b$ in both states.
+
+
+When  pessimistic investors price the asset according to \Ep{HarrKrep4},  optimistic agents think that the asset is underpriced.  If they could, optimistic agents
+would willingly borrow at the one-period
+gross interest rate $\beta^{-1}$ to  purchase more of the asset. Constraints on leverage prohibit them from doing so.
+
+When  optimistic investors price the asset as in \Ep{HarrKrep3}, pessimistic agents think that the asset is overpriced and would like to sell the asset short.  Constraints
+on short sales prevent that.
+
+Scheinkman (2014) interprets  the  Harrison-Kreps model as a model of a bubble -- a situation in which  an asset price  exceeds what every investor thinks
+is merited by the asset's underlying dividend stream. Scheinkman stresses these features of the Harrison-Kreps model:
+
+\medskip
+
+\item {1.}  Compared to the homogeneous beliefs setting that leads to the pricing formula \Ep{HarrKrep1}, high volume occurs when the Harrison-Kreps pricing formula \Ep{HarrKrep3}
+prevails.
+Type $a$ agents sell the entire stock of the asset to type $b$ agents every time the state switches from $s_t =1$ to $s_t =2$.  Type $b$ agents sell the asset to
+type $a$ agents every time the state switches from $s_t = 2$ to $s_t =1$.  Scheinkman takes this as a strength of the model
+because he observed high volume  during ``famous bubbles''.
+
+\medskip
+
+\item {2.}  If the {\it supply\/} of the asset can be increased sufficiently either physically (more ``houses'' are built) or artificially (ways are invented to short sell claims on houses), bubbles  end
+when the supply of the asset has grown enough to outstrip  optimistic investors' resources for purchasing the asset.
+
+\medskip
+\item {3.} If optimistic investors  finance  purchases by borrowing, tightening leverage constraints can extinguish a bubble.
+
+\medskip
+Scheinkman extracts insights about effects of   financial regulations on bubbles. He emphasizes how limiting short sales and limiting
+leverage have opposite effects.
+
+\auth{Scheinkman, Jose}%
+
+
+Please notice
+key differences in the assumptions of the Harrison-Kreps model presented in this appendix and the Blume and Easley model of appendix \use{app:compB} of chapter \use{recurge}.
+The chapter \use{recurge} model assumes complete markets and  risk averse consumers; it focuses on the dynamics of continuation wealth in a competitive equilibrium.  There is
+zero volume in the sense that no  trades occur after date $0$.
+By way of contrast, the  Harrison-Kreps model of this appendix assumes  incomplete markets,  risk-neutral consumers, and restrictions on short sales.  By assuming that  both types
+of agent always have "deep enough pockets" to purchase all of the asset, the model  takes wealth dynamics off the table.   The Harrison-Kreps model
+generates  high trading volume when the state changes either from 1 to 2 or from 2 to 1.
+
+
+
+\appendix{B}{Gaussian asset-pricing model\label{app:appHansSarg}}
+ The theory  of chapter \use{recurge}
+can readily be adapted to a setting in which
+the state of the economy evolves according to a continuous-state
+ Markov process.   We use such a version in chapter \use{assetpricing2}.
+Here we give a taste of how  such an adaptation can be made
+by describing an economy in which the state follows a linear stochastic
+difference equation driven by a Gaussian  disturbance.  If we supplement
+this with the specification that preferences are quadratic,
+we get a setting in which asset prices can be calculated swiftly.
+
+
+
+
+  Suppose that the state evolves   according to the stochastic
+difference equation
+$$ s_{t+1} = A s_t + C w_{t+1}   \EQN lq1 $$
+where $A$ is a matrix whose eigenvalues are bounded from
+above in modulus by $1 /  \sqrt {\beta}$ and
+$w_{t+1}$ is a Gaussian martingale difference sequence adapted to
+the history of $s_t$.  Assume that $E w_{t+1} w_{t+1} = I$.
+The conditional density of $s_{t+1}$  is Gaussian:
+$$ \pi(s_t \vert s_{t-1}) \sim {\cal N}(As_{t-1}, CC'). \EQN lq2$$
+More precisely,
+$$ \pi(s_t \vert s_{t-1}) = K \exp \left\{ -.5 (s_t - As_{t-1} )
+         (C C')^{-1} (s_t - A s_{t-1} ) \right\} , \EQN lq3 $$
+%where $K = (2 \pi)^{-k\over 2} \det (CC')^{-1 \over 2}$ and
+%where $K = (2 \pi)^{-\frac k/2} \det (CC')^{-\frac1/2}$ and $s_t$
+where $K = (2 \pi)^{-{\frac k 2}} \det (CC')^{-{\frac 1 2}}$ and $s_t$
+is  $k \times 1$.   We also assume that $\pi_0(s_0)$ is
+Gaussian.\NFootnote{If $s_t$ is
+ stationary, $\pi_0(s_0)$  can be specified
+to be the stationary distribution of the process.}
+
+
+
+
+  If $\{c_t^i(s_t)\}_{t=0}^\infty$ is the equilibrium allocation to
+agent $i$, and the agent has preferences  represented by
+\Ep{eq0}, the equilibrium
+pricing function satisfies
+$$  q_t^0(s^t)= {\beta^t u'[c_t^i(s_t)] \pi(s^t) \over u'[c_0^i(s_0)]}
+     .\EQN lq4 $$
+
+
+
+
+
+
+Once again, let $\{d_t(s_t)\}_{t=0}^\infty$
+ be a stream of claims to consumption.
+The time $0$ price of the asset with this dividend stream is
+$$ p_0  = \sum_{t=0}^\infty \int_{s^t} q_t^0(s^t) d_t(s_t) d \, s^t .$$
+Substituting equation \Ep{lq4} into the preceding equation gives
+$$ p_0 =  \sum_t \int_{s^t} \beta^t { u'[c_t^i(s_t)]
+  \over u'[c_0^i(s_0)]} d_t(s_t) \pi(s^t)
+  d s^t $$
+or
+$$ p_0 = E \sum_{t=0}^\infty \beta^t { u'[c_t(s_t)]
+     \over u'[c_0(s_0)]} d_t(s_t) .\EQN lq5$$
+This formula expresses the time $0$ asset price as
+an inner product of a discounted marginal utility process and a dividend
+ process.\NFootnote{For two scalar stochastic processes $x,y$,
+the inner product is defined as
+$<x,y> = E \sum_{t=0}^\infty \beta^t x_t y_t $.}
+
+
+
+
+  This formula becomes especially useful in the case that
+the one-period utility function $u(c)$ is quadratic, so that
+marginal utilities become linear, and  the dividend process
+$d_t$ is linear in $s_t$.  In particular,
+assume that
+$$ \EQNalign{ u(c_t) & = -.5(c_t -b)^2 \EQN lq6 \cr
+              d_t & = S_d s_t ,\EQN lq7 \cr}$$
+where $b >0$ is a bliss level of consumption.
+Furthermore, assume that the equilibrium allocation to
+agent $i$ is
+$$ c_t^i = S_{ci} s_t, \EQN lq8 $$
+where $S_{ci}$ is a vector conformable to $s_t$.
+
+
+
+
+The utility function \Ep{lq6} implies that $u'(c^i_t) = b-c^i_t =
+b - S_{ci} s_t$.
+ Suppose that unity is one element of the state space for
+$s_t$, so that we can express $b = S_b s_t$.    Then $b -c_t =
+S_f s_t$, where $S_f = S_b - S_{ci}$, and
+the asset-pricing formula becomes
+$$ p_0 = {E_0  \sum_{t=0}^\infty \beta^t  s_t' S_f' S_d s_t \over S_f s_0} .
+    \EQN lq9  $$
+Thus, to price the asset, we have to evaluate the expectation
+of the  sum of a discounted quadratic form in the state
+variable.  This is easy to do by
+ using results from chapter \use{timeseries}.
+
+
+In chapter \use{timeseries}, we evaluated  the conditional expectation of the
+geometric sum of the quadratic form
+$$
+  \alpha_0 = E_0 \sum^\infty_{t=0} \beta^t
+s^\prime_t S^\prime_f S_d s_t.
+ $$
+We found that it could be written in the form
+$$\alpha_0 = s^\prime_0 \mu s_0 + \sigma, \EQN asset15$$
+where $\mu$ is an $(n\times n)$ matrix and $\sigma$ is a scalar
+that satisfy
+$$\eqalign{ \mu &= S^\prime_f S_d + \beta A^\prime \mu A\cr
+\sigma &= \beta \sigma +\beta \hbox{ trace }\left(\mu CC^\prime
+\right) \cr} \EQN asset16$$
+The first equation of \Ep{asset16} is a {\it discrete Lyapunov
+equation\/} in the square matrix $\mu$, and can be solved by using
+one of several algorithms.\NFootnote{The Matlab control toolkit
+has a program called {\tt dlyap.m};  also see a program called
+{\tt doublej.m}.}
+  After $\mu$ has been computed, the second equation can be
+solved for the scalar $\sigma$. \mtlb{dlyap.m} \mtlb{doublej.m}
+\index{Lyapunov equation!discrete}
+
+% This is how to have big parenthesis prevail across line breaks
+%
+% $$ \EQNalign{ L = \sum_{t=0}^\infty \beta^t
+%   &\Bigl\{ u(c_t, 1-n_t)  \cr
+% & + \Psi_t \left[F(k_t,n_t) - \tilde r_t k_t - \tilde w_t n_t
+%                  + {b_{t+1} \over R_t} - b_t - g_t \right]       \cr
+% & + \theta_t \left[F(k_t,n_t) + (1-\delta) k_t -c_t -g_t -k_{t+1}\right]\cr
+% \noalign{\vskip.1cm}
+% & + \mu_{1t} \left[u_\ell(t) - u_c(t) \tilde w_t \right]            \cr
+% &
+%   + \mu_{2t} \left[u_c(t) - \beta u_c(t+1) \left(\tilde r_{t+1}
+%    +1-\delta\right)\right] \Bigr\},                       \EQN T_RP \cr}
+% $$
+
+%\section{Exercises}
+\showchaptIDfalse
+\showsectIDfalse
+\section{Exercises}
+\showchaptIDtrue
+\showsectIDtrue
+\medskip
+\noindent{\it Exercise \the\chapternum.1}  \quad {\bf A Markov economy}
+
+
+\medskip
+
+
+\noindent Consider a pure-exchange, representative agent economy.  A representative consumer ranks stochastic processes for consumption of a single non-durable
+good $\{C_t\}_{t=0}^\infty$
+according to
+$$ E_0 \sum_{t=0}^\infty \beta^t U(C_t),$$
+where $\beta \in (0,1)$ and $U(C) = {C^{1-\gamma}\over 1-\gamma}$.  The representative consumer's endowment
+obeys
+$$ C_{t+1} = \lambda_{t+1} C_t $$
+where $\lambda_{t+1}$ is described by  a finite state Markov chain with transition matrix
+$$ P_{ij} = {\rm Prob}( \lambda_{t+1} = \bar \lambda_j | \lambda_t = \bar \lambda_i) $$
+and $ \forall t \geq 0$, $\lambda_t \in \{ \bar \lambda_1, \bar \lambda_2, \ldots, \bar \lambda_n \}$.
+
+\medskip
+\noindent{\bf a.} Assume that there are complete markets in one-step-ahead Arrow securities.
+ Compute  equilibrium prices of one-step-ahead Arrow securities.
+
+\medskip
+\noindent{\bf b.}  Compute what prices would be for two-step-ahead Arrow securities if these markets were open too.
+
+\medskip
+\noindent {\bf c.}  Describe how to compute an equilbrium {\it pricing function} of a ``Lucas tree,'' that is, an {\it ex dividend\/} claim to the endowment.
+In particular, using a ``resolvent operator,'' give a formula for the pricing function cast entirely in terms of matrices.
+
+\medskip
+\noindent {\bf d.}  An infinite horizon call option on the Lucas tree entitles the owner of the option to purchase the tree (ex this period's dividend) at any time from now on
+at a {\it strike price\/} $\check p$.  Please write a Bellman equation for the function that prices  an infinite horizon call option on the Lucas tree.  Describe an iterative algorithm
+that you could use to compute this function, using matrix algebra only.
+
+\medskip
+\noindent {\bf e.} Please tell how  the algorithm that you described in your answer to part
+{\bf d} uses a contraction mapping.  Verify that the   mapping in question is a contraction.
+
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.2}  \quad {\bf A Harrison-Kreps asset market}
+
+
+\medskip
+
+
+\noindent {\bf a.}  Consider the Harrison-Kreps model of a market for an asset set out in appendix \use{app:compHarrKrep}.  Suppose that
+agents of types $a$ believe  the transition matrix
+$$P_a = \bmatrix{ {\frac{1}{2}} & {\frac{1}{2}} \cr
+                 {\frac{3}{4}} & {\frac{1}{4}} } $$
+while agents of type $b$ think the transition matrix is
+$$P_b = \bmatrix{ {\frac{3}{4}} & {\frac{1}{4}} \cr
+                 {\frac{1}{2}} & {\frac{1}{2}} }. $$
+Please assume that $\beta = .75$.  For these parameter values, please compute a counterpart to table \Tbl{HKtab}, filling in all rows.
+
+\medskip
+
+\noindent {\bf b.}  Consider the model of the asset market in appendix \use{app:compHarrKrep}.  Suppose that
+agents of types $a$ believe  the transition matrix
+$$P_a = \bmatrix{ {\frac{1}{2}} & {\frac{1}{2}} \cr
+                 {\frac{1}{2}} & {\frac{1}{2}} } $$
+while agents of type $b$ think the transition matrix is
+$$P_b = \bmatrix{ {\frac{3}{4}} & {\frac{1}{4}} \cr
+                 {\frac{2}{3}} & {\frac{1}{3}} }. $$
+Please assume that $\beta = .75$.  For these parameter values, please compute a counterpart to table \Tbl{HKtab}, filling in all rows.
+
+\medskip
+
+\noindent{\bf c.}  Let $\overline  p \in \bbR^2$ be a price vector whose $i$th component is a price in state $s_i$.
+Define an operator $T: \bbR^2 \rightarrow \bbR^2$ for which equation \Ep{ HarrKrep2} can be written $ \overline p = T(\overline p)$.
+Prove that $T$ satisfies Blackwell's sufficient conditions for being a contraction (please see the appendix on functional analysis at the end of this
+book for a statement of these conditions).
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.3}  \quad {\bf Lucas asset pricing model again}
+\medskip
+\noindent Assume that the growth rate of the consumption process $\{c_t\}_{t=0}^\infty$  of a representative consumer is governed by a finite state Markov chain, so that
+$$ c_{t+1}= \lambda_{t+1} c_t, $$
+where   $ \lambda_{t+1} $ %\equiv \left( {\frac{c_{t+1}}{c_t}} \right) $$
+takes one of the values in $\Lambda =
+[{ \overline \lambda_1, \ldots, \overline \lambda_n }]$ and $P$ is a stochastic matrix whose elements are transition probabilities for $\lambda_t$.
+The representative consumer orders consumption streams according to
+$$ E_0 \sum_{t=0}^\infty \beta^t u(c_t), \quad \beta \in (0,1) $$
+where $E_0$ denotes a mathematical expectation conditional on time $0$ information, assumed to include $c_0$ and $\lambda_0$, and % $c_t$ is time $t$ consumption of a representative consumer and
+$$  u(c) = {\frac{c^{1-\gamma}}{1 - \gamma}}  \ {\rm with} \ \gamma > 0 .$$
+
+
+\medskip
+%
+% \noindent{\bf a.} Following Lucas, we want to price an ex-dividend claim on the  consumption endowment stream.
+% Let $p_t$ be the price of this claim at  $t$.
+%  Show that the price obeys the expectational difference equation
+% $$  p_t = E_t \left[ m_{t+1}  ( c_{t+1} + p_{t+1} ) \right], \leqno(1) $$
+% where  $E_t$ is a mathematical expectation conditional on time $t$ information and
+% $$ m_{t+1} = \beta {\frac{u'(c_{t+1})}{u'(c_t)}} . \leqno(2) $$
+% In particular, carefully state an optimization problem and assumptions about what the consumer takes as given that leads to equation (1).
+%
+% \medskip
+% \noindent{\bf b.} Guess that the price takes the form  $p_t = v(\lambda_t) c_t$.  Please tell how to compute the function $v(\lambda)$,
+% giving conditions on $\Lambda, P, \beta, \gamma$ that assure the existence of your candidate $v(\lambda)$.
+%
+% \medskip
+%
+% \noindent{\bf c.}  Show  that $p_t$ also satisfies the equation
+% $$ p_t = E_t m_{t+1} E_t (c_{t+1} + p_{t+1}) + {\rm cov}_t (m_{t+1}, c_{t+1}+ p_{t+1}) $$
+% where ${\rm cov}_t$ indicates a  covariance conditional on time $t$ information, in this case $c_t$ and  $\lambda_t$.
+%
+% \medskip
+
+\noindent{\bf a.}
+Please price a risk-free consol that promises   to pay a constant stream of  $\zeta> 0$ units of time $t$
+consumption goods.  Let $p_t$ be the price of an  ex-coupon claim to the consol, one that entitles an owner at the end of period $t$ to $\zeta$ in period $t+1$ and  the right to sell the claim for $p_{t+1}$ in period $t+1$.
+Give an argument to show  that the price satisfies
+$$  u'(c_t) p_t
+    = \beta E_t \left[ u'(c_{t+1}) (\zeta + p_{t+1}) \right] ,$$
+being careful to state what you are assuming about what the representative investor-consumer takes as given, and what she assumes about what she takes as given.
+
+\medskip
+\noindent{\bf b.}
+Please guess that $p_t$ can be written as a function $p(\lambda_t)$ of the Markov state. Please write a Bellman equation for $p(\lambda)$.  Tell how to solve it and
+also  describe conditions on $\Lambda, P, \beta, \gamma$ that guarantee that a solution exists. % and that your computational algorithm will work.
+
+\medskip
+
+\noindent{\bf c.} \quad {\bf Infinite horizon call option} \quad
+Now we want to price an infinite horizon  option to purchase the  consol described in part {\bf b}  at a ``strike price'' $p_S$.
+The option entitles the owner at the beginning of a period either to purchase the bond at price $p_S$ or not to exercise the option
+now and instead to retain the right to exercise it later. The option does not expire until its current  owner chooses to exercise it. An important detail is that
+the current owner of the option is entitled to purchase the consol at the price  $p_S$ at the beginning of any period, after the coupon has been paid
+to the previous owner of the bond.
+The fundamentals of the economy remain the same.  Thus, the stochastic discount factor continues to be $m_{t+1} = \beta
+{\frac{u'(c_{t+1})}{u'(c_t)}}$ and the consumption growth rate continues to be $\lambda_{t+1}$, which
+is governed by a finite state Markov chain.
+Let $w(\lambda_t)$ be the value of the option when the time $t$ growth state is known to be $\lambda_t$ but before
+the owner has decided whether or not to exercise the option
+at time $t$.  Please form a Bellman equation for $w(\lambda)$ and describe how to solve it.
+
+
+\medskip
+
+\noindent{\bf d.} \quad {\bf Infinite horizon put option} \quad Please describe how to price an option to sell the  consol described in part {\bf b}  at a ``strike price'' $p_S$.
+The option entitles the owner at the beginning of a period either to sell the bond at price $p_S$ or not to exercise the option
+now and instead to retain the right to exercise it later. The option does not expire until its current  owner chooses to exercise it. An important detail is that
+the current owner of the option is entitled to sell the consol at the price  $p_S$ at the beginning of any period, after the coupon has been paid
+to the previous owner of the bond. The fundamentals of the economy remain the same. Let $J(\lambda_t)$ be the value of the option when the time $t$ growth state is known to be $\lambda_t$ but before
+the owner has decided whether or not to exercise the option
+at time $t$.  Please form a Bellman equation for $J(\lambda)$ and describe how to solve it.
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.4}  \quad {\bf A baby Lucas model}
+\medskip
+
+\noindent There is no risk.
+A consumer has preferences over consumption streams $\{c_t\}_{t=0}^\infty$ ordered by
+$$ \sum_{t=0}^\infty \beta^t \left({\frac{c_t^{1-\gamma}}{1 - \gamma}} \right)$$
+where $\beta \in (0,1)$ and $\gamma \geq 1$.  The consumer owns one unit of the time $0$ consumption good and nothing more.
+Each period $t \geq 0$, the consumer can purchase or sell time $t+1$ consumption goods at a price of $Q(t, t+1)$ time $t$ consumption goods
+per unit of time $t$ consumption goods.  It happens that
+$$ Q(t,t+1) = \delta \left( {\frac{X_{t+1}}{X_t}}  \right)^{-\theta} , $$
+where $\{X_t\}_{t=0}^\infty$ is a known sequence with $X_t \geq 0$ for all $t \geq 0$, $\delta \in (0,1), \theta \geq 0$.
+
+\medskip
+\noindent {\bf a.} Please compute $\{{\frac{c_{t+1}}{c_t}}\}_{t=0}^\infty$ in an optimal consumption plan.
+
+
+\medskip
+
+\noindent{\bf b.}  Now assume that % $\delta = \beta $ and that
+$X_t = \phi^t X_0$ where $X_0 > 0$.  %  and  $\phi$ satsifies $ | \beta \phi^{1-\gamma} | < 1$.
+Please compute $\{{\frac{c_{t+1}}{c_t}}\}_{t=0}^\infty$ in an optimal consumption plan.
+
+\medskip
+\noindent {\bf c.} Please compute an optimal consumption plan $\{c_t\}_{t=0}^\infty$, giving sufficient conditions on $\gamma, \theta, \phi, \delta, \beta$ for
+key objects to be well defined.  Please describe the consumer's holdings of risk-free one period bonds at each
+date $t \geq 0$.
+
+
+\noindent {\it Hint:} It can useful to work backwards by first finding $\{{\frac{c_{t+1}}{c_t}}\}_{t=0}^\infty$ in an optimal consumption plan,
+then as a last step to use a time $0$ budget constraint to determine an optimal $c_0$.
+
+
+\medskip
+
+\noindent {\bf d.} Now assume that $\delta = \beta$ and $\gamma = \theta$.
+Please describe  senses in which the consumer now  can and cannot be said to be a ``representative consumer''.
+
+\medskip
+
+
+\medskip
+\noindent{\it Exercise \the\chapternum.5}  \quad {\bf Another baby Lucas model}
+\medskip
+
+\noindent
+There is risk. A consumer has preferences over consumption streams $\{c_t\}_{t=0}^\infty$ ordered by
+$$ \sum_{t=0}^\infty \sum_{s^t} \beta^t \left({\frac{c_t(s^t)^{1-\gamma}}{1 - \gamma}} \right) \pi_t(s^t)  $$
+where $\beta \in (0,1)$, $\gamma \geq 1$, $s^t = [s_0, \ldots, s^t]$, and $s_t \in [\overline s_1, \ldots, \overline s_n]$, the state space
+for an $n$-state Markov chain with transition matrix $P$ whose $i,j$ element is $P_{ij} = {\rm Prob}(s_{t+1} = \overline s_j | s_t = \overline s_i)$; the initial
+state $s_0$ is known at time $t$; $\pi_t(s^t)$ is the implied joint probability density of $s^t$.
+A random variable $X_t = \overline x_i$ when $s_t = \overline s_i$. There is a complete set of Arrow securities at each date.
+In particular, when $X_t = \overline x_i$ at date $t$, one unit of consumption at date $t+1$ when $X_{t+1} = \overline x_j$ costs
+$$ Q_{ij} = \beta \left( {\frac{\overline x_j}{\overline x_i}}\right)^{-\gamma} P_{ij} $$
+units of time $t$ consumption. The consumer owns one unit of time $0$ consumption in known state $s_0$ and nothing else.
+
+
+\medskip
+\noindent{\bf a.}  Compute the consumer's optimal consumption plan $\{c_t\}_{t=0}^\infty$. At each state $\overline x_i$, please describe the consumer's
+holdings of all one-period Arrow securities paying off next period
+at each state   $\overline x_j$.
+
+\medskip
+\noindent {\bf b.}   Please describe a sense in which the consumer in part {\bf a}  can be said to be a ``representative consumer''.
+
+
+\medskip
+
+\noindent {\it Hint:} It can useful to work backwards by first finding $\{{\frac{c_{t+1}}{c_t}}\}_{t=0}^\infty$ in an optimal consumption plan,
+then as a last step to use a time $0$ budget constraint to determine an optimal $c_0$.
+
+
+
+
+%\vfil\eject
+
